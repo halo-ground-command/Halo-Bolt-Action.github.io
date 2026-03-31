@@ -399,15 +399,15 @@ allWeaponProfiles["Forward-facing Hull-mounted Flamethrower (Vehicle)"] = allWea
 
 // --- Weapon Special Rule Descriptions ---
 const weaponSpecialDescriptions = {
-  "Assault": "No penalty to hit when moving and shooting. Infantry armed with an Assault weapon gain Tough Fighters, re-rolling failed damage rolls in close combat.",
+  "Assault": "No -1 to hit when moving and shooting. Models with an Assault weapon gain Tough Fighters, re-rolling in close combat.",
   "Battery Charge": "Has a -1 penalty to hit when firing.",
   "Cover Negation": "When this weapon hits an Infantry or Artillery unit that is in soft cover and not Down, any natural 6 rolled to wound worsens the target’s cover save by one step, for that wound only.",
   "Fixed": "Fixed weapons can only fire within a 45-degree arc. A Run order must be used to reposition them.",
   "Flamethrower": "Automatically hits units in buildings/fortifications, inflicting D6 hits and +1 pin per hit. Always targets top armor on vehicles. Units hit must pass a morale test or be destroyed. Chance to run out of fuel after use.",
   "HE": "Uses templates (1–4). Hits multiple models, causing pins based on template size. HE also has PEN values according to the template.",
   "Howitzer": "Fires either direct or Indirect Fire (minimum range applies; starts hitting at 6+, improves each turn targeting same unit). Switching resets accuracy progression.",
-  "Indirect Fire": "Can target units without direct line of sight. Begins hitting at 6+, improving each consecutive turn. Hits vehicles on top armor.",
-  "Knockback": "After hitting infantry, roll D6: on 4+, move target unit 3\" in opposite direction. Stops 1\" from obstacles, table edge, buildings or other units.",
+  "Indirect Fire": "Can target units without direct line of sight with a Spotter/Observer. Begins hitting at 6+, improving each consecutive turn. Hits vehicles on top armor.",
+  "Knockback": "After hitting infantry, roll D6: on 4+, gains 1 pin and move target unit 3\" in opposite direction. Stops 1\" from obstacles, table edge, buildings or other units.",
   "Overcharge": "Before shooting, choose Overcharge: ignores Energy Shield rule, can pin vehicles up to armor 9+, but imposes a -1 to-hit penalty.",
   "Overheat": "Before shooting, choose which weapons to overheat; each overheated weapon gains +1 shot. After shooting, place 1 pin on the firing unit for each overheated weapon.",
   "MG": "Behaves exactly like a standard machine gun for all game rules and modifiers.",
@@ -429,14 +429,14 @@ window.unitSpecialDescriptions = {
   "Berserker": "When performing an assault, models gain +1 Attack die. Additionally, if an Order test is failed (excluding FUBAR) and an enemy Infantry/Artillery unit is within assault reach, this unit must Run (Assault) the nearest eligible target. Otherwise resolve the failed test as normal (Down).",
   "Composed Beings": "Ignore Horror's -1 morale effect, immune to Flood Infection and cannot benefit from medics.",
   "Engineers": "When assaulting a building, defenders lose Defensive Position.",
-  "Energy Shield": "+1 harder to damage from shooting; 6+ cover in the open; +1 to other cover saves. Remember rolls of 1 always fail.",
-  "Energy Shields": "+1 harder to damage from shooting; 6+ cover in the open; +1 to other cover saves. Remember rolls of 1 always fail.",
+  "Energy Shield": "+1 harder to damage from shooting; 5+ cover in the open; +1 to other cover saves. Remember rolls of 1 always fail.",
+  "Energy Shields": "+1 harder to damage from shooting; 5+ cover in the open; +1 to other cover saves. Remember rolls of 1 always fail.",
   "Fanatics": "Ignore pin modifiers on morale checks and are not routed by pins. If defeated in close quarters, fight again immediately until they win or are wiped out.",
   "Fast": "Move 8\"; Run 16\".",
   "Flak": "Autofires at FAO called aircraft in arc and range. However against on table aircraft just ignore minus 1 to hit vs flying. Pintle weapons count as having Flak.", 
   "Fieldcraft": "Treat rough terrain as open ground for movement. When assaulting through rough ground, defenders lose Defensive Position.",
-  "Strikes First": "Counts as having Defensive Position bonus in close quarters when performing an assault. If the opponent also has Defensive Position, Strikes First or a rule cancels it, then fight simultaneously.",
-  "Flight": "Advance 12\"; Run 18\"; ignore terrain for movement. Cannot end in impassable terrain (or in rough ground after a Run). If ambushed/fired upon while flying, no cover saves. Infantry may instead move on the ground using normal infantry rules.",
+  "Strikes First": "Counts as having Defensive Position bonus in close quarters when performing an assault. If the opponent also has Defensive Position, Strikes First or a rule cancels this rule, then fight simultaneously.",
+  "Flight": "Advance 12\"; Run 18\"; ignore terrain for movement. Cannot end in impassable terrain (or in rough ground after a Run). If ambushed/fired upon while flying, no cover saves. Infantry may instead move on the ground using normal movement rules.",
   "Flood Infection": "When killing Infantry or Artillery in assault, roll one D6 per casualty. Each roll equal to or above this unit’s damage value returns a slain model (up to starting size). Automatons and Composed Beings are immune. Energy Shields increase damage value by 1 for the purposes of this rule.",
   "Green": "First casualty triggers a D6 roll: 1 = gain D6 pins and go Down, 6 = unit upgraded to Regular morale (9).",
   "Gun Shield": "Crew of a gun with a gun shield count as in soft cover vs small arms hits from within the gun’s front arc.",
@@ -453,11 +453,12 @@ window.unitSpecialDescriptions = {
   "Strong": "Ignores Team and Fixed for weapons this unit carries. In close quarters, for every three friendly models involved in the fight, 1 model rolls an extra attack die.",
   "Stubborn": "Ignores pin modifiers on morale checks (but not order tests).",
   "Spotter": "Unarmed model with Infiltrator rule for an indirect-fire team. Acts separately, shares the team’s order die, counts as Down without a die, cannot attack/capture. Removed if the unit is destroyed. Reg/Vet indirect fire/howitzer units may target what any friendly spotter/FO can see.", 
-  "Tank Hunters": "In assaults, use full anti-tank damage rules and ignore Tank Fear.",
+  "Tank Hunters": "In assaults, use full anti-tank damage rules and ignore Tank Fear. Add +1 to melee rolls vs vehicles.",
   "Team Weapon": "Crew-served weapon. Crew count as unarmed and do not fire personal ranged weapons while operating it. Needs at least 2 crew to fire at full effect; if only 1 crewman remains, the weapon can still fire but suffers -1 to hit. Squad-based team weapons also need their loader within 1\" or they suffer -1 to hit.",
   "Tooth and Claw": "Rolls 3 dice instead of 1 per model in close combat.",
-  "Tough Fighters": "Re-roll failed damage rolls in close combat.",
+  "Tough Fighters": "Re-roll failed rolls in close combat vs infantry, artillery and walkers with assault.",
   "VISR": "Can see through smoke and ignores Stealth’s -1 to-hit penalty.",
+  "War Sermon": "When this unit receives its order die (except Down), pick 1 friendly Covenant Infantry or Artillery unit within 6\" and roll a D6 (Inexperienced -1, Veteran +1). On a 4+, remove 1 pin from that unit.",
   "Wide Formation": "Models may maintain up to 2\" coherency (instead of 1\").",
   "Plasma Sword": "In close combat, Officer/NCO rolls 2 dice instead of 1.",
   "Gravity Hammer": "In close combat, Officer/NCO rolls 2 dice instead of 1.",
@@ -471,7 +472,7 @@ window.unitSpecialDescriptions = {
 
 // --- Vehicle Special Rule Descriptions ---
 window.vehicleSpecialDescriptions = {
-  "Agile": "Make one additional 90° pivot per move, or pivot on a Fire order.",
+  "Agile": "Make one additional 90° pivot per move, or 1 pivot on a Fire order.",
   "Amphibious": "Advance half-speed over deep water. May fire, but hull-mounted weapons may be unusable.",
   "Armoured All Round": "Full armor value from all angles; no weak sides/rear.",
   "Assault": "May assault infantry and vehicles using walker assault rules. While Down, gains a 6+ cover save in the open (or +1 to existing cover).",
@@ -482,7 +483,7 @@ window.vehicleSpecialDescriptions = {
   "Nimble": "Evasion save improves by +1, from 5+ to 4+.",
   "One-Man Turret": "Must pass order test to Advance, fires main gun or rear MG (not both).",
   "Open-topped": "Pinned by small arms, automatically destroyed if damaged in assaults, +1 damage if hit on top armor.",
-  "Recce": "May react with a movement when targeted, reverse at full speed.",
+  "Recce": "May react with a movement when targeted, reverse with advance at full speed.",
   "Reinforced Front Armour": "Front armor counts +1 higher.",
   "Slow": "Advance 6\", Run 12\".",
   "Slow Load": "Can only activate after another friendly unit; skip dice if only Slow Load units remain.",
@@ -509,7 +510,7 @@ When a UNSC Officer uses the ‘You men, snap to action!’ ability, they may dr
 Spartan Leadership
 
 - Effect: 
-Friendly units within 9" of a Spartan unit can re-roll failed morale tests.
+Friendly units within 9" of a Spartan unit can re-roll failed morale checks.
 
 Battle-Net Intrusion
 
@@ -646,14 +647,14 @@ const COVENANT_DOCTRINES = {
     baseCostPerModel: 3,
     specialRules: ["Stubborn", "Fieldcraft", "Berserker", "Strong"],
     upgrades: [
-      { name: "Energy Shields", cost: 2, grantsRule: "Energy Shields" },
+      { name: "Energy Shields", cost: 3, grantsRule: "Energy Shields" },
       { name: "Gravity Hammer (NCO/Officer only)", costFlat: 1, grantsRule: "Gravity Hammer", ncoOnly: true }
     ]
   },
   "Elite": {
     label: "Elite",
     allowedVeterancy: ["Veteran"],
-    baseCostPerModel: 6,
+    baseCostPerModel: 8,
     specialRules: ["Behind Enemy Lines", "Fanatics", "Energy Shields", "Fast", "VISR", "Strong", "Strikes First"],
     upgrades: [
       { name: "Stealth", cost: 1, grantsRule: "Stealth" },
@@ -669,7 +670,7 @@ const BANISHED_DOCTRINES = {
     baseCostPerModel: 3,
     specialRules: ["Stubborn", "Fieldcraft", "Berserker", "Strong"],
     upgrades: [
-      { name: "Energy Shields", cost: 2, grantsRule: "Energy Shields" },
+      { name: "Energy Shields", cost: 3, grantsRule: "Energy Shields" },
 	  { name: "Fanatics (replace Stubborn)", cost: 1, grantsRule: "Fanatics", replacesRule: "Stubborn" },
       { name: "Gravity Hammer (NCO/Officer only)", costFlat: 1, grantsRule: "Gravity Hammer", ncoOnly: true }
     ]
@@ -677,7 +678,7 @@ const BANISHED_DOCTRINES = {
   "Elite": {
     label: "Elite",
     allowedVeterancy: ["Veteran"],
-    baseCostPerModel: 6,
+    baseCostPerModel: 8,
     specialRules: ["Behind Enemy Lines", "Fanatics", "Energy Shields", "Fast", "VISR", "Strong", "Strikes First"],
     upgrades: [
       { name: "Stealth", cost: 1, grantsRule: "Stealth" },
@@ -706,10 +707,10 @@ const UNSC_DOCTRINES = {
   "Spartan": {
     label: "Spartan",
     allowedVeterancy: ["Veteran"],
-    baseCostPerModel: 4,
+    baseCostPerModel: 5,
     specialRules: ["Fanatics", "Fast", "Behind Enemy Lines", "VISR", "Strong", "Strikes First"],
     upgrades: [
-      { name: "Energy Shields", cost: 2, grantsRule: "Energy Shields" },
+      { name: "Energy Shields", cost: 3, grantsRule: "Energy Shields" },
       { name: "Stealth", cost: 1, grantsRule: "Stealth" },
       { name: "Melee Weapon (NCO/Officer only)", costFlat: 1, grantsRule: "Melee Weapon", ncoOnly: true }
     ]
@@ -915,18 +916,18 @@ const UNSC_UNITS = [
   name: "Spartan Team",
   type: "Infantry",
   allowedVeterancy: ["Veteran"],
-  costs: { Veteran: 92 },
+  costs: { Veteran: 96 },
   baseMen: 4,
   maxMen: 6,
   weapons: [{ name: "Assault Rifle" }],
   specialRules: ["Fanatics", "Fast", "VISR", "Behind Enemy Lines", "Strong", "Strikes First"],
   options: {
-    extraMenCost: { Veteran: 23 },
+    extraMenCost: { Veteran: 24 },
     squadUpgrades: {
       "Anti-Tank Grenades": { cost: 2, grantsRule: "Tank Hunters" },
       "Jump-Jet Packs": { cost: 1, grantsRule: "Flight" },
       "Stealth Modules": { cost: 1, grantsRule: "Stealth" },
-      "Energy Shield Modules": { cost: 2, grantsRule: "Energy Shields" },
+      "Energy Shield Modules": { cost: 3, grantsRule: "Energy Shields" },
       "Melee Weapon (NCO only)": { cost: 1, grantsRule: "Melee Weapon", perModel: false }
     },
     weaponReplacements: {
@@ -1145,18 +1146,18 @@ const UNSC_UNITS = [
 	  name: "Spartan Attached Leader",
 	  type: "Infantry",
 	  allowedVeterancy: ["Veteran"],
-	  costs: { Veteran: 23 },
+	  costs: { Veteran: 24 },
 	  baseMen: 1,
 	  maxMen: 1,
 	  weapons: [{ name: "Assault Rifle" }],
 	  specialRules: ["Fanatics", "Fast", "VISR", "Behind Enemy Lines", "Strong", "Strikes First", "Attached Caste Leader"],
 	  options: {
-		extraMenCost: { Veteran: 23 },
+		extraMenCost: { Veteran: 24 },
 		squadUpgrades: {
 		  "Anti-Tank Grenades": { cost: 2, grantsRule: "Tank Hunters" },
 		  "Jump-Jet Packs": { cost: 1, grantsRule: "Flight" },
 		  "Stealth Modules": { cost: 1, grantsRule: "Stealth" },
-		  "Energy Shield Modules": { cost: 2, grantsRule: "Energy Shields" },
+		  "Energy Shield Modules": { cost: 3, grantsRule: "Energy Shields" },
 		  "Melee Weapon (NCO only)": { cost: 1, grantsRule: "Melee Weapon", perModel: false }
 		},
 		weaponReplacements: { },
@@ -1650,9 +1651,8 @@ const COVENANT_UNITS = [
       { name: "Spiker" }
     ],
     specialRules: [
-	"For The Great Journey!",
+	"For The Great Journey!", "War Sermon",
 	{ name: "HQ Choice", description: "A force can include a single Chaplain, who is not part of any of the platoon selectors, in the same manner as the Company Commander." },
-    { name: "War Sermon", description: "When this unit receives its order die (except Down), pick 1 friendly Covenant Infantry or Artillery unit within 6″ and roll a D6 (Inexperienced −1, Veteran +1). On a 4+, remove 1 pin from that unit." }
     ],
 	options: {
       extraMenCost: { Regular: 8, Veteran: 11 }
@@ -1745,7 +1745,7 @@ const COVENANT_UNITS = [
     extraMenCost: { Regular: 19, Veteran: 22 },
     squadUpgrades: {
       "Anti-Tank Grenades": { cost: 2, grantsRule: "Tank Hunters" },
-      "Energy Shield Modules": { cost: 2, grantsRule: "Energy Shields" },
+      "Energy Shield Modules": { cost: 3, grantsRule: "Energy Shields" },
       "Gravity Hammer (NCO only)": { cost: 1, grantsRule: "Gravity Hammer", perModel: false }
     },
     weaponReplacements: {
@@ -1787,13 +1787,13 @@ const COVENANT_UNITS = [
   name: "Elite Squad",
   type: "Infantry",
   allowedVeterancy: ["Veteran"],
-  costs: { Veteran: 100 },
+  costs: { Veteran: 108 },
   baseMen: 4,
   maxMen: 6,
   weapons: [{ name: "Plasma Rifle" }],
   specialRules: ["Behind Enemy Lines", "Fanatics", "Energy Shields", "Fast", "VISR", "Strong", "Strikes First"],
   options: {
-    extraMenCost: { Veteran: 25 },
+    extraMenCost: { Veteran: 27 },
     squadUpgrades: {
       "Anti-Tank Grenades": { cost: 2, grantsRule: "Tank Hunters" },
       "Jump-Jet Packs": { cost: 1, grantsRule: "Flight" },
@@ -1853,7 +1853,7 @@ const COVENANT_UNITS = [
     name: "Honor Guard",
     type: "Infantry",
     allowedVeterancy: ["Veteran"],
-    costs: { Veteran: 72 },
+    costs: { Veteran: 80 },
     baseMen: 4,
     maxMen: 6,
     weapons: [{ name: "Plasma Sword" }],
@@ -1861,7 +1861,7 @@ const COVENANT_UNITS = [
       "Behind Enemy Lines", "Fanatics", "Tough Fighters", "Energy Shields", "Fast", "VISR", "Plasma Swords", "Strikes First"
     ],
     options: {
-      extraMenCost: { Veteran: 18 },
+      extraMenCost: { Veteran: 20 },
       squadUpgrades: {
         "Stealth Modules": { cost: 1, grantsRule: "Stealth" },
         "Anti-Tank Grenades": { cost: 2, grantsRule: "Tank Hunters" }
@@ -2143,7 +2143,16 @@ const COVENANT_VEHICLES = [
 	  "Impulse Drive",
       "Needle Cannon: Treat as an Assault Cannon with the Supercombine special rule.",
       "Shardstorm Launcher: Treat as a Medium Machine Gun with the Supercombine special rule."
-    ]
+    ],
+	  options: {
+		weaponUpgrades: {
+		  "Replace Needle Cannon with Light Anti-Tank Gun": {
+			cost: 5,
+			replaces: ["Forward-facing Hull-mounted Needle Cannon"],
+			addsWeapon: "Forward-facing Hull-mounted Light Anti-Tank Gun"
+		  }
+		}
+	  }
   },
   {
     name: 'Type-30 "Locust"',
@@ -2569,7 +2578,7 @@ const BANISHED_UNITS = [
     extraMenCost: { Regular: 19, Veteran: 22 },
 	squadUpgrades: {
 	  "Anti-Tank Grenades": { cost: 2, grantsRule: "Tank Hunters" },
-	  "Energy Shield Modules": { cost: 2, grantsRule: "Energy Shields" },
+	  "Energy Shield Modules": { cost: 3, grantsRule: "Energy Shields" },
 	  "Fanatics (replace Stubborn)": { cost: 1, grantsRule: "Fanatics", replacesRule: "Stubborn" },
 	  "Engineers": { cost: 1, grantsRule: "Engineers" },
 	  "Gravity Hammer (NCO only)": { cost: 1, grantsRule: "Gravity Hammer", perModel: false }
@@ -2615,13 +2624,13 @@ const BANISHED_UNITS = [
   name: "Elite Squad",
   type: "Infantry",
   allowedVeterancy: ["Veteran"],
-  costs: { Veteran: 100 },
+  costs: { Veteran: 108 },
   baseMen: 4,
   maxMen: 6,
   weapons: [{ name: "Plasma Rifle" }],
   specialRules: ["Behind Enemy Lines", "Fanatics", "Energy Shields", "Fast", "VISR", "Strong", "Strikes First"],
   options: {
-    extraMenCost: { Veteran: 25 },
+    extraMenCost: { Veteran: 27 },
     squadUpgrades: {
       "Anti-Tank Grenades": { cost: 2, grantsRule: "Tank Hunters" },
       "Jump-Jet Packs": { cost: 1, grantsRule: "Flight" },
@@ -2663,15 +2672,15 @@ const BANISHED_UNITS = [
     name: "Atriox’s Chosen",
     type: "Infantry",
     allowedVeterancy: ["Veteran"],
-    costs: { Veteran: 68 },
+    costs: { Veteran: 72 },
     baseMen: 4,
     maxMen: 6,
     weapons: [{ name: "Gravity Hammer" }],
     specialRules: ["Fanatics", "Berserker", "Tough Fighters", "Fieldcraft", "Strikes First"],
     options: {
-      extraMenCost: { Veteran: 17 },
+      extraMenCost: { Veteran: 18 },
       squadUpgrades: {
-        "Energy Shield Modules": { cost: 2, grantsRule: "Energy Shields" },
+        "Energy Shield Modules": { cost: 3, grantsRule: "Energy Shields" },
         "Anti-Tank Grenades": { cost: 2, grantsRule: "Tank Hunters" }
       }
     }
@@ -2833,7 +2842,7 @@ const BANISHED_UNITS = [
   name: "Banished Elite Attached Leader",
   type: "Infantry",
   allowedVeterancy: ["Veteran"],
-  costs: { Veteran: 25 },
+  costs: { Veteran: 27 },
   baseMen: 1,
   maxMen: 1,
   weapons: [{ name: "Plasma Rifle" }],
@@ -2865,7 +2874,7 @@ const BANISHED_UNITS = [
     squadUpgrades: {
       "Anti-Tank Grenades": { cost: 2, grantsRule: "Tank Hunters" },
       "Jump-Jet Packs": { cost: 1, grantsRule: "Flight" },
-      "Energy Shield Modules": { cost: 2, grantsRule: "Energy Shields" },
+      "Energy Shield Modules": { cost: 3, grantsRule: "Energy Shields" },
       "Fanatics (replace Stubborn)": { cost: 1, grantsRule: "Fanatics", replacesRule: "Stubborn" },
       "Engineers": { cost: 1, grantsRule: "Engineers" },
       "Gravity Hammer (NCO only)": { cost: 1, grantsRule: "Gravity Hammer", perModel: false }
@@ -2957,7 +2966,16 @@ const BANISHED_VEHICLES = [
 	  "Impulse Drive",
       "Needle Cannon: Treat as an Assault Cannon with the Supercombine special rule.",
       "Shardstorm Launcher: Treat as a Medium Machine Gun with the Supercombine special rule."
-    ]
+    ],
+	  options: {
+		weaponUpgrades: {
+		  "Replace Needle Cannon with Light Anti-Tank Gun": {
+			cost: 5,
+			replaces: ["Forward-facing Hull-mounted Needle Cannon"],
+			addsWeapon: "Forward-facing Hull-mounted Light Anti-Tank Gun"
+		  }
+		}
+	  }
   },
   {
     name: 'Type-30 "Locust"',
@@ -3293,7 +3311,7 @@ const FORERUNNER_UNITS = [
     options: {
       extraMenCost: { Inexperienced: 8, Regular: 11 },
       squadUpgrades: {
-        "Energy Shield Modules": { cost: 2, grantsRule: "Energy Shields" }
+        "Energy Shield Modules": { cost: 3, grantsRule: "Energy Shields" }
       }
     }
   },
@@ -3301,7 +3319,7 @@ const FORERUNNER_UNITS = [
   name: "Crawler Swarm",
   type: "Infantry",
   allowedVeterancy: ["Inexperienced", "Regular"],
-  costs: { Inexperienced: 45, Regular: 60 },
+  costs: { Inexperienced: 49, Regular: 64 },
   baseMen: 5,
   maxMen: 11,
   weapons: [
@@ -3313,7 +3331,7 @@ const FORERUNNER_UNITS = [
     "Energy Shields"
   ],
   options: {
-    extraMenCost: { Inexperienced: 9, Regular: 12 },
+    extraMenCost: { Inexperienced: 10, Regular: 13 },
 
     // Non-NCO replacements only (up to 5 additional Crawlers)
     weaponReplacements: {
@@ -3336,7 +3354,7 @@ const FORERUNNER_UNITS = [
     name: "Warrior-Servant Squad",
     type: "Infantry",
     allowedVeterancy: ["Regular", "Veteran"],
-    costs: { Regular: 100, Veteran: 115 },
+    costs: { Regular: 105, Veteran: 120 },
     baseMen: 5,
     maxMen: 10,
     weapons: [
@@ -3349,7 +3367,7 @@ const FORERUNNER_UNITS = [
       "Stubborn"
     ],
     options: {
-      extraMenCost: { Regular: 20, Veteran: 23 },
+      extraMenCost: { Regular: 21, Veteran: 24 },
       weaponReplacements: {
         "Light Rifles": { max: 7, cost: -5, replaces: "Suppressor", grants: "Light Rifle" }
       },
@@ -3366,7 +3384,7 @@ const FORERUNNER_UNITS = [
     name: "Promethean Soldier Squad",
     type: "Infantry",
     allowedVeterancy: ["Regular", "Veteran"],
-    costs: { Regular: 88, Veteran: 100 },
+    costs: { Regular: 92, Veteran: 104 },
     baseMen: 4,
     maxMen: 6,
     weapons: [
@@ -3381,7 +3399,7 @@ const FORERUNNER_UNITS = [
       "Fast"
     ],
     options: {
-      extraMenCost: { Regular: 22, Veteran: 25 },
+      extraMenCost: { Regular: 23, Veteran: 26 },
       weaponReplacements: {
         "Light Rifles": { max: 6, cost: -5, replaces: "Suppressor", grants: "Light Rifle" },
         "Scattershots": { max: 6, cost: -4, replaces: "Suppressor", grants: "Scattershot" }
@@ -3392,7 +3410,7 @@ const FORERUNNER_UNITS = [
     name: "Promethean Knight Team",
     type: "Infantry",
     allowedVeterancy: ["Veteran"],
-    costs: { Veteran: 58 },
+    costs: { Veteran: 60 },
     baseMen: 2,
     maxMen: 5,
     weapons: [
@@ -3413,7 +3431,7 @@ const FORERUNNER_UNITS = [
       { name: "Limited", description: "Only up to 2 Promethean Knight Teams may be taken per platoon." }
     ],
     options: {
-      extraMenCost: { Veteran: 29 },
+      extraMenCost: { Veteran: 30 },
       weaponReplacements: {
         "Light Rifles": { max: 5, cost: -5, replaces: "Suppressor", grants: "Light Rifle" },
         "Scattershots": { max: 5, cost: -4, replaces: "Suppressor", grants: "Scattershot" },
@@ -3773,7 +3791,7 @@ const FLOOD_UNITS = [
       "Anti-Tank Grenades": { cost: 2, grantsRule: "Tank Hunters" },
 
       // veteran-only is best enforced in UI/validation if your data format supports restrictions
-      "Energy Shield Modules": { cost: 2, grantsRule: "Energy Shields" },
+      "Energy Shield Modules": { cost: 3, grantsRule: "Energy Shields" },
 
       "Melee Weapon (NCO)": { cost: 1, perModel: false, grantsRule: "Melee Weapon" }
     }
