@@ -355,7 +355,7 @@ const allWeaponProfiles = {
   "Needle Cannon": 'Range 36", Shots 1, Pen +2, Overheat, Shaped Charge, Supercombine, HE (2")',
   "Shardstorm Launcher": 'Range 36", Shots 6, Pen –, Team, Supercombine, Fixed',
   "Multiple Launcher": 'Range 36–72", Shots 1, Pen HE, Team, Fixed, Indirect Fire, ML, HE (3")',
-  "Splinter Turret": 'Range 48", Shots 6, Pen +1, Team, Fixed, HE (1")',
+  "Splinter Turret": 'Range 48", Shots 3, Pen +1, Team, Fixed, HE (1")',
 
   // If you keep using "Explosive Charge" as a weapon label in squads
   "Explosive Charge": 'Range – , Shots – , Pen +8, Suicide Charge (special)',
@@ -594,13 +594,13 @@ At the beginning of each turn, if your opponent has more units on the battlefiel
 Teleportation Network
 
 - Effect:
-Once per turn, when you successfully activate a Forerunner Officer, you may select one other friendly non-officer Infantry or Artillery unit with Composed Beings within 9" that has not yet activated and has not been issued an order by this officer’s 'You men, snap to action!' this turn. Take an Order test for it.
+Each time a Forerunner Officer successfully uses You men, snap to action!, you may choose one friendly Infantry or Artillery unit with Composed Beings that is being issued an order by that Snap. The order issued to that unit cannot be Advance, Run, or Assault. A unit carrying an objective cannot be chosen. If the chosen unit is required to take an Order test (e.g., because it is pinned), resolve the test as normal: 
 
-Passed:
-The unit teleports up to 12", ignoring intervening units/terrain. It may not end in impassable terrain, inside a building, outside the battlefield or within 1" of any unit. Teleporting doesn’t trigger Ambush during its movement. After teleporting, place its order die showing Fire, Ambush, Down, or Rally (your choice) and the unit is considered successfully activated (remove pins as normal if pinned).
+  * Failed:
+The unit goes Down (or follows FUBAR if applicable) as normal and does not teleport.
 
-Failed:
-The unit goes Down in place as normal for failing an order test.
+  * Passed (or if no Order test is required):
+The unit teleports up to 12", ignoring intervening units and terrain. It may not end in impassable terrain, inside a building, outside the battlefield, or within 1" of any unit. Teleporting does not trigger enemy Ambush during this movement. After teleporting, the unit resolves its assigned order (Fire, Ambush, Down, or Rally) as normal. 
 `,
 
   "Flood": `
@@ -3442,7 +3442,7 @@ const FORERUNNER_UNITS = [
       "Fieldcraft",
       "Large Infantry",
       { name: "Melee Weapons", description: "Models do an extra melee attack." },
-      { name: "Phase Step", description: "If this unit has not yet activated and is targeted by shooting from more than 6\" away (not Preliminary Bombardment, artillery barrage, or air-strike), it may immediately react by teleporting up to 6\". No order test is required. If you do so, place the unit within 6\" of its starting position, ending farther from the attacking unit than before and not in impassable terrain, inside a building, outside the battlefield or within 1\" of any unit. You may ignore intervening models and terrain while moving. This reaction does not trigger enemy Ambush. After teleporting, set the unit’s die to Down. If no legal placement exists, the unit goes down instead." },
+      { name: "Phase Step", description: "If unactivated, not carrying an objective, and shot from >6\" away (excluding prelim bombardment/artillery barrage/air-strike), it may teleport up to 6\" as a reaction (no test required). Must end within 6\" of start, farther from attacker, and not in impassable/buildings/off-table/within 1\" of any unit; ignores intervening terrain/models; doesn’t trigger Ambush. Then set die to Down (or just goes Down if no legal spot)." },
       { name: "Limited", description: "Only up to 2 Promethean Knight Teams may be taken per platoon." }
     ],
     options: {
