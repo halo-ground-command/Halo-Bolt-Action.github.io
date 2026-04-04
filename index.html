@@ -325,10 +325,10 @@ const allWeaponProfiles = {
   "Heavy Automatic Cannon": 'Range 72", Shots 2, Pen +3, Team, Fixed, HE (1")',
   "Heavy Autocannon": 'Range 72", Shots 2, Pen +3, Team, Fixed, HE (1")',
   "Fuel Rod Autocannon": 'Range 72", Shots 2, Pen +3, Team, Fixed, Tracking, HE (1")',
-  "Light Anti-Tank Gun": 'Range 48", Shots 1, Pen +4, Team, Fixed, HE (1")',
-  "Medium Anti-Tank Gun": 'Range 60", Shots 1, Pen +5, Team, Fixed, HE (1")',
-  "Heavy Anti-Tank Gun": 'Range 72", Shots 1, Pen +6, Team, Fixed, HE (2")',
-  "Super-Heavy Anti-Tank Gun": 'Range 84", Shots 1, Pen +7, Team, Fixed, HE (3")',
+  "Light Anti-Tank Weapon": 'Range 48", Shots 1, Pen +4, Team, Fixed, HE (1")',
+  "Medium Anti-Tank Weapon": 'Range 60", Shots 1, Pen +5, Team, Fixed, HE (1")',
+  "Heavy Anti-Tank Weapon": 'Range 72", Shots 1, Pen +6, Team, Fixed, HE (2")',
+  "Super-Heavy Anti-Tank Weapon": 'Range 84", Shots 1, Pen +7, Team, Fixed, HE (3")',
 
   // FLAMETHROWERS & ALIASES (base names live here; variants added below)
   "Flamethrower": 'Range 6", Shots 1, Pen +2, Team, Flamethrower',
@@ -355,6 +355,7 @@ const allWeaponProfiles = {
   "Needle Cannon": 'Range 36", Shots 1, Pen +2, Overheat, Shaped Charge, Supercombine, HE (2")',
   "Shardstorm Launcher": 'Range 36", Shots 6, Pen –, Team, Supercombine, Fixed',
   "Multiple Launcher": 'Range 36–72", Shots 1, Pen HE, Team, Fixed, Indirect Fire, ML, HE (3")',
+  "Splinter Turret": 'Range 48", Shots 6, Pen +1, Team, Fixed, HE (1")',
 
   // If you keep using "Explosive Charge" as a weapon label in squads
   "Explosive Charge": 'Range – , Shots – , Pen +8, Suicide Charge (special)',
@@ -477,6 +478,7 @@ window.vehicleSpecialDescriptions = {
   "Armoured All Round": "Full armor value from all angles; no weak sides/rear.",
   "Assault": "May assault infantry and vehicles using walker assault rules. While Down, gains a 6+ cover save in the open (or +1 to existing cover).",
   "Command Vehicle": "+1 morale within 12\", can issue one 'You men, snap to action!' to a nearby friendly vehicle.",
+  "Faster": "Advance 12\", Run 24\".",
   "Fist": "Walker gains +1 attack dice per fist in close quarters.",
   "Flak": "Autofires at FAO called aircraft in arc and range. However against on table aircraft just ignore minus 1 to hit vs flying. Pintle weapons count as having Flak.", 
   "Medical Vehicle": "Treats infantry/artillery within 6\" as having medic support.",
@@ -550,34 +552,34 @@ Covenant Infantry and Artillery units with Shirkers lose that rule while they ar
 Brotherhood of Chaos
 
 - Effect: 
-Once per turn, when a Banished infantry unit is destroyed, you may choose one friendly infantry or artillery unit within 9″ of it that has not yet activated this turn and roll a die:
+Once per turn, when a Banished infantry unit is destroyed, you may choose one friendly infantry or artillery unit within 9" of it that has not yet activated this turn and roll a die:
 
   * On a 5+, the chosen unit activates next. Instead of drawing a random die, draw one of your dice from the bag and issue an order as normal. If pinned, an order test is still needed, as usual.
   
-  * If the chosen unit is also within 6″ of an officer (Or an officer itself), activate on a 4+ instead.
+  * If the chosen unit is also within 6" of an officer (or an officer itself), activate on a 4+ instead.
   
   * If you roll below the requirement, nothing happens instead.
-  
-Fueled by Carnage
 
-- Effect: 
-Once per turn, if a Banished unit inflicts 2 or more casualties with shooting or close combat, you may choose to remove D3 Pin markers from a Banished Infantry or Artillery unit within 9" of the targeted enemy unit.
-
-Atriox’s Law
+Atriox's Law
 
 - Effect: 
 Units with the Berserker special rule can ignore the compulsory Run behavior caused by failing an Order test while they are within the morale bubble of a Brute Officer. The suppression ends immediately if the unit exits the bubble or if the officer is removed from play.
 
-Dogs of War
+Blood Price
 
-- Effect: 
-Your army may include 1 single UNSC Infantry unit as a mercenary. You may not include a UNSC Officer, Medic or FO unit—only a single combat unit. The unit retains its original special rules, weapons, and veterancy level as listed in the UNSC army book.
+- Effect:
+When a friendly Banished Infantry or Artillery unit fails an Order test while within 6" of a friendly Banished Officer or Bloodhandler (including FUBAR), you may choose to remove one model from the unit and then re-roll the Order test. The second result stands as normal. This rule only applies to Infantry or Artillery units of three or more models.
+
+Ruthless Push
+
+- Effect:
+When a Banished Infantry or Artillery unit with one or more pin markers is issued an Advance order, it may ignore the -1 to hit penalty for moving and shooting during that activation.
 `,
   "Forerunner": `
 Enhanced Weapon Systems
 
 - Effect:
-When a Forerunner unit fires a Heavy weapon, each natural 6 to hit grants +1 Penetration to that shot’s damage roll. This has no effect on HE shots/templates.
+When a Forerunner unit fires a Heavy weapon, each 6+ to hit grants +1 Penetration to that shot’s damage roll. This has no effect on HE shots/templates.
 
 Uphold the Mantle
 
@@ -592,10 +594,10 @@ At the beginning of each turn, if your opponent has more units on the battlefiel
 Teleportation Network
 
 - Effect:
-Once per turn, when you successfully activate a Forerunner Officer, you may select one other friendly non-officer Infantry or Artillery unit with Composed Beings within 9" that has not yet activated and has not been issued an order by this officer’s 'You men, snap to action!' this turn and immediately take an Order test for it.
+Once per turn, when you successfully activate a Forerunner Officer, you may select one other friendly non-officer Infantry or Artillery unit with Composed Beings within 9" that has not yet activated and has not been issued an order by this officer’s 'You men, snap to action!' this turn. Take an Order test for it.
 
 Passed:
-The unit teleports up to 12", ignoring intervening units/terrain. It may not end in impassable terrain, inside a building, or within 1" of any unit. Teleporting doesn’t trigger Ambush during its movement. After teleporting, place its order die showing Ambush, Down, or Rally (your choice) and the unit is considered successfully activated (remove pins as normal if pinned).
+The unit teleports up to 12", ignoring intervening units/terrain. It may not end in impassable terrain, inside a building, outside the battlefield or within 1" of any unit. Teleporting doesn’t trigger Ambush during its movement. After teleporting, place its order die showing Fire, Ambush, Down, or Rally (your choice) and the unit is considered successfully activated (remove pins as normal if pinned).
 
 Failed:
 The unit goes Down in place as normal for failing an order test.
@@ -634,7 +636,7 @@ Once per turn, just before activating a Flood unit, select one unactivated enemy
   * 1-3: The enemy immediately receives 2 Pin markers.
   * 4: The enemy suffers -1 to hit for the rest of the turn.
   * 5: The enemy cannot target the closest Flood unit with shooting attacks this turn.
-  * 6: The enemy must take a morale test. If failed, roll on the FUBAR table; if passed, no effect.
+  * 6: The enemy must take a morale check. If failed, roll on the FUBAR table; if passed, no effect.
 `
 };
 
@@ -1124,7 +1126,7 @@ const UNSC_UNITS = [
     baseMen: 3,
     maxMen: 3,
     weapons: [
-      { name: "Light Anti-Tank Gun on a rotating platform" }
+      { name: "Light Anti-Tank Weapon on a rotating platform" }
     ],
     specialRules: ["Artillery", "Gun Shield", "For Humanity’s Survival!"]
   },
@@ -1181,7 +1183,7 @@ const UNSC_VEHICLES = [
     allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
     costs: { Inexperienced: 104, Regular: 130, Veteran: 156 },
     weapons: [
-      { name: "Turret-mounted Medium Anti-Tank Gun" }
+      { name: "Turret-mounted Medium Anti-Tank Weapon" }
     ],
     damageValue: "8+ (Light Tank)",
     transportCapacity: 8,
@@ -1211,7 +1213,7 @@ const UNSC_VEHICLES = [
     allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
     costs: { Inexperienced: 168, Regular: 210, Veteran: 252 },
     weapons: [
-      { name: "Turret-mounted Heavy Anti-Tank Gun" },
+      { name: "Turret-mounted Heavy Anti-Tank Weapon" },
       { name: "Co-axial MMG" }
     ],
     damageValue: "9+ (Medium Tank)",
@@ -1223,8 +1225,8 @@ const UNSC_VEHICLES = [
 	  allowedVeterancy: ["Regular", "Veteran"],
 	  costs: { Regular: 380, Veteran: 456 },
 	  weapons: [
-		{ name: "Turret-mounted twin-linked Heavy Anti-Tank Gun" },
-		{ name: "Turret-mounted twin-linked Heavy Anti-Tank Gun" },
+		{ name: "Turret-mounted twin-linked Heavy Anti-Tank Weapon" },
+		{ name: "Turret-mounted twin-linked Heavy Anti-Tank Weapon" },
 		{ name: "Coaxial MMG" }
 	  ],
 	  damageValue: "10+ (Heavy Tank)",
@@ -1241,8 +1243,8 @@ const UNSC_VEHICLES = [
     allowedVeterancy: ["Regular", "Veteran"],
     costs: { Regular: 140, Veteran: 168 },
     weapons: [
-      { name: "Turret-mounted Twin-linked Light Anti-Tank Gun" },
-      { name: "Turret-mounted Twin-linked Light Anti-Tank Gun" }
+      { name: "Turret-mounted Twin-linked Light Anti-Tank Weapon" },
+      { name: "Turret-mounted Twin-linked Light Anti-Tank Weapon" }
     ],
     damageValue: "7+ (Armoured Car)",
     specialRules: [
@@ -1303,7 +1305,7 @@ const UNSC_VEHICLES = [
     allowedVeterancy: ["Regular", "Veteran"],
     costs: { Regular: 250, Veteran: 300 },
     weapons: [
-      { name: "Turret-mounted Heavy Anti-Tank Gun" },
+      { name: "Turret-mounted Heavy Anti-Tank Weapon" },
       { name: "Turret-mounted Light Autocannon" }
     ],
     damageValue: "9+ (Heavy Walker)",
@@ -1390,7 +1392,7 @@ const UNSC_VEHICLES = [
   allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
   costs: { Inexperienced: 68, Regular: 85, Veteran: 102 },
   weapons: [
-    { name: "Turret-mounted Light Anti-Tank Gun" }
+    { name: "Turret-mounted Light Anti-Tank Weapon" }
   ],
   damageValue: "7+ (Armoured Car)",
   specialRules: [
@@ -1399,9 +1401,9 @@ const UNSC_VEHICLES = [
   ],
   options: {
     weaponUpgrades: {
-      "Turret-mounted Flamethrower (replace Light Anti-Tank Gun)": {
+      "Turret-mounted Flamethrower (replace Light Anti-Tank Weapon)": {
         cost: +5,
-        replaces: ["Turret-mounted Light Anti-Tank Gun"],
+        replaces: ["Turret-mounted Light Anti-Tank Weapon"],
         addsWeapon: "Turret-mounted Flamethrower (Vehicle)"
       }
     }
@@ -1450,6 +1452,7 @@ const UNSC_VEHICLES = [
     transportCapacity: 4,
     specialRules: [
       "Flak",
+	  "Agile",
 	  "Nimble"
     ]
   },
@@ -1557,7 +1560,8 @@ const UNSC_VEHICLES = [
     ],
     damageValue: "8+ (Heavy Aircraft)",
     specialRules: [
-      "Flak"
+      "Flak",
+	  "Titanic Aircraft: When rolling on the Aircraft Damage chart against this unit, reduce the result by 1 (to a minimum of 1)."
     ]
   },
 
@@ -1746,6 +1750,7 @@ const COVENANT_UNITS = [
     squadUpgrades: {
       "Anti-Tank Grenades": { cost: 2, grantsRule: "Tank Hunters" },
       "Energy Shield Modules": { cost: 3, grantsRule: "Energy Shields" },
+	  "Jump-Jet Packs": { cost: 1, grantsRule: "Flight" },
       "Gravity Hammer (NCO only)": { cost: 1, grantsRule: "Gravity Hammer", perModel: false }
     },
     weaponReplacements: {
@@ -2077,7 +2082,7 @@ const COVENANT_VEHICLES = [
     allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
     costs: { Inexperienced: 140, Regular: 175, Veteran: 210 },
     weapons: [
-      { name: "Casement-mounted Forward-facing Medium Anti-Tank Gun" }
+      { name: "Casement-mounted Forward-facing Medium Anti-Tank Weapon" }
     ],
     damageValue: "9+ (Medium Hover Tank)",
     transportCapacity: 0,
@@ -2092,7 +2097,7 @@ const COVENANT_VEHICLES = [
     },
     specialRules: [
       "Weak Sides",
-      "Versatile: The medium anti-tank gun can also fire as a medium howitzer."
+      "Versatile: The medium Anti-Tank Weapon can also fire as a medium howitzer."
     ]
   },
   {
@@ -2101,7 +2106,7 @@ const COVENANT_VEHICLES = [
     allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
     costs: { Inexperienced: 196, Regular: 245, Veteran: 294 },
     weapons: [
-      { name: "Casement-mounted Forward-facing Heavy Anti-Tank Gun" },
+      { name: "Casement-mounted Forward-facing Heavy Anti-Tank Weapon" },
       { name: "Forward-facing Hull-mounted Heavy Plasma MG" }
     ],
     damageValue: "9+ (Medium Hover Tank)",
@@ -2116,7 +2121,7 @@ const COVENANT_VEHICLES = [
       }
     },
     specialRules: [
-      "Versatile: The heavy anti-tank gun can also fire as a medium howitzer."
+      "Versatile: The heavy Anti-Tank Weapon can also fire as a medium howitzer."
     ]
   },
 
@@ -2146,10 +2151,10 @@ const COVENANT_VEHICLES = [
     ],
 	  options: {
 		weaponUpgrades: {
-		  "Replace Needle Cannon with Light Anti-Tank Gun": {
+		  "Replace Needle Cannon with Light Anti-Tank Weapon": {
 			cost: 5,
 			replaces: ["Forward-facing Hull-mounted Needle Cannon"],
-			addsWeapon: "Forward-facing Hull-mounted Light Anti-Tank Gun"
+			addsWeapon: "Forward-facing Hull-mounted Light Anti-Tank Weapon"
 		  }
 		}
 	  }
@@ -2160,7 +2165,7 @@ const COVENANT_VEHICLES = [
     allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
     costs: { Inexperienced: 112, Regular: 140, Veteran: 168 },
     weapons: [
-      { name: "Turret-mounted Medium Anti-Tank Gun" }
+      { name: "Turret-mounted Medium Anti-Tank Weapon" }
     ],
     damageValue: "8+ (Medium Walker)",
     transportCapacity: 0,
@@ -2174,7 +2179,7 @@ const COVENANT_VEHICLES = [
     allowedVeterancy: ["Regular", "Veteran"],
     costs: { Regular: 390, Veteran: 468 },
     weapons: [
-      { name: "Hull-mounted Forward-facing Super-Heavy Anti-Tank Gun" },
+      { name: "Hull-mounted Forward-facing Super-Heavy Anti-Tank Weapon" },
       { name: "Turret-mounted Heavy Autocannon" }
     ],
     damageValue: "10+ (Super-heavy Walker)",
@@ -2235,6 +2240,7 @@ const COVENANT_VEHICLES = [
     specialRules: [
       "Recce",
       "Agile",
+	  "Faster",
       "Frontal Armour: This vehicle cannot be damaged by small arms hits from the frontal arc, but will still be pinned as normal."
     ]
   },
@@ -2289,14 +2295,14 @@ const COVENANT_VEHICLES = [
     allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
     costs: { Inexperienced: 76, Regular: 95, Veteran: 114 },
     weapons: [
-      { name: "Casement-mounted Forward-facing Light Anti-Tank Gun" }
+      { name: "Casement-mounted Forward-facing Light Anti-Tank Weapon" }
     ],
     damageValue: "7+ (Light Hover Vehicle)",
     transportCapacity: 0,
     specialRules: [
       "Recce",
       "Agile",
-      "Versatile: The Light Anti-Tank Gun can also fire as a Light Howitzer.",
+      "Versatile: The Light Anti-Tank Weapon can also fire as a Light Howitzer.",
       "Open-topped"
     ]
   },
@@ -2315,6 +2321,7 @@ const COVENANT_VEHICLES = [
     transportCapacity: 0,
     specialRules: [
       "Flak",
+	  "Agile",
 	  "Nimble"
     ]
   },
@@ -2484,7 +2491,7 @@ const BANISHED_UNITS = [
     ],
     specialRules: ["Forged In Chains",
 	{ name: "HQ Choice", description: "A force can include a single Bloodhandler, who is not part of any of the platoon selectors, in the same manner as the Company Commander." },
-    { name: "Blood Quota", description: "Each time a friendly Regular or Veteran Banished Infantry or Artillery unit within 6 suffers casualties, remove 1 pin from that unit for every two models lost during that attack." }
+    { name: "Blood Quota", description: "Each time a friendly Banished Infantry or Artillery unit within 6 suffers casualties from enemy attacks, remove 1 pin from that unit." }
     ],
 	options: {
       extraMenCost: { Regular: 8, Veteran: 11 }
@@ -2579,6 +2586,7 @@ const BANISHED_UNITS = [
 	squadUpgrades: {
 	  "Anti-Tank Grenades": { cost: 2, grantsRule: "Tank Hunters" },
 	  "Energy Shield Modules": { cost: 3, grantsRule: "Energy Shields" },
+	  "Jump-Jet Packs": { cost: 1, grantsRule: "Flight" },
 	  "Fanatics (replace Stubborn)": { cost: 1, grantsRule: "Fanatics", replacesRule: "Stubborn" },
 	  "Engineers": { cost: 1, grantsRule: "Engineers" },
 	  "Gravity Hammer (NCO only)": { cost: 1, grantsRule: "Gravity Hammer", perModel: false }
@@ -2900,7 +2908,7 @@ const BANISHED_VEHICLES = [
     allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
     costs: { Inexperienced: 140, Regular: 175, Veteran: 210 },
     weapons: [
-      { name: "Casement-mounted Forward-facing Medium Anti-Tank Gun" }
+      { name: "Casement-mounted Forward-facing Medium Anti-Tank Weapon" }
     ],
     damageValue: "9+ (Medium Hover Tank)",
     transportCapacity: 0,
@@ -2915,7 +2923,7 @@ const BANISHED_VEHICLES = [
     },
     specialRules: [
       "Weak Sides",
-      "Versatile: The medium anti-tank gun can also fire as a medium howitzer."
+      "Versatile: The medium Anti-Tank Weapon can also fire as a medium howitzer."
     ]
   },
   {
@@ -2924,7 +2932,7 @@ const BANISHED_VEHICLES = [
     allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
     costs: { Inexperienced: 196, Regular: 245, Veteran: 294 },
     weapons: [
-      { name: "Casement-mounted Forward-facing Heavy Anti-Tank Gun" },
+      { name: "Casement-mounted Forward-facing Heavy Anti-Tank Weapon" },
       { name: "Forward-facing Hull-mounted Heavy Plasma MG" }
     ],
     damageValue: "9+ (Medium Hover Tank)",
@@ -2939,7 +2947,7 @@ const BANISHED_VEHICLES = [
       }
     },
     specialRules: [
-      "Versatile: The heavy anti-tank gun can also fire as a medium howitzer."
+      "Versatile: The heavy Anti-Tank Weapon can also fire as a medium howitzer."
     ]
   },
 
@@ -2969,10 +2977,10 @@ const BANISHED_VEHICLES = [
     ],
 	  options: {
 		weaponUpgrades: {
-		  "Replace Needle Cannon with Light Anti-Tank Gun": {
+		  "Replace Needle Cannon with Light Anti-Tank Weapon": {
 			cost: 5,
 			replaces: ["Forward-facing Hull-mounted Needle Cannon"],
-			addsWeapon: "Forward-facing Hull-mounted Light Anti-Tank Gun"
+			addsWeapon: "Forward-facing Hull-mounted Light Anti-Tank Weapon"
 		  }
 		}
 	  }
@@ -2983,7 +2991,7 @@ const BANISHED_VEHICLES = [
     allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
     costs: { Inexperienced: 112, Regular: 140, Veteran: 168 },
     weapons: [
-      { name: "Turret-mounted Medium Anti-Tank Gun" }
+      { name: "Turret-mounted Medium Anti-Tank Weapon" }
     ],
     damageValue: "8+ (Medium Walker)",
     transportCapacity: 0,
@@ -3025,7 +3033,7 @@ const BANISHED_VEHICLES = [
     allowedVeterancy: ["Regular", "Veteran"],
     costs: { Regular: 405, Veteran: 486 },
     weapons: [
-      { name: "Hull-mounted Forward-facing Super-Heavy Anti-Tank Gun" },
+      { name: "Hull-mounted Forward-facing Super-Heavy Anti-Tank Weapon" },
       { name: "Turret-mounted Rocket Launcher" }
     ],
     damageValue: "10+ (Super-heavy Walker)",
@@ -3078,6 +3086,7 @@ const BANISHED_VEHICLES = [
     specialRules: [
       "Recce",
       "Agile",
+	  "Faster",
       "Frontal Armour: This vehicle cannot be damaged by small arms hits from the frontal arc, but will still be pinned as normal."
     ]
   },
@@ -3100,7 +3109,7 @@ const BANISHED_VEHICLES = [
 	type: "Car",
 	allowedVeterancy: ["Regular", "Veteran"],
 	costs: { Regular: 145, Veteran: 174 },
-	weapons: [ { name: "Turret-mounted Light Anti-Tank Gun" }, { name: "Coaxial Rocket Launcher" } ],
+	weapons: [ { name: "Turret-mounted Light Anti-Tank Weapon" }, { name: "Coaxial Rocket Launcher" } ],
 	damageValue: "7+ (Light Hover Vehicle)", transportCapacity: 0,
 	specialRules: [ "Recce", "Agile", "Versatile: The Light AT Gun can also fire as a Light Howitzer.", "Open-topped" ]
 	},
@@ -3135,6 +3144,7 @@ const BANISHED_VEHICLES = [
     transportCapacity: 0,
     specialRules: [
       "Flak",
+	  "Agile",
 	  "Nimble"
     ]
   },
@@ -3220,7 +3230,7 @@ const BANISHED_VEHICLES = [
 	type: "Car",
 	allowedVeterancy: ["Regular", "Veteran"],
 	costs: { Regular: 125, Veteran: 150 },
-	weapons: [ { name: "Casement-mounted Forward-facing Light Anti-Tank Gun" } ],
+	weapons: [ { name: "Casement-mounted Forward-facing Light Anti-Tank Weapon" } ],
 	damageValue: "7+ (Armoured Hovercraft)", transportCapacity: 16,
 	specialRules: [ "Reinforced Front Armour", "Versatile: The Light AT Gun can also fire as a Light Howitzer." ]
 	}
@@ -3335,8 +3345,8 @@ const FORERUNNER_UNITS = [
 
     // Non-NCO replacements only (up to 5 additional Crawlers)
     weaponReplacements: {
-      "Suppressors": { max: 5, cost: 7, replaces: "Boltshot", grants: "Suppressor" },
-      "Light Rifles": { max: 5, cost: 2, replaces: "Boltshot", grants: "Light Rifle" }
+      "Suppressors": { max: 8, cost: 7, replaces: "Boltshot", grants: "Suppressor" },
+      "Light Rifles": { max: 8, cost: 2, replaces: "Boltshot", grants: "Light Rifle" }
     },
 
     // NCO uses separate selector
@@ -3396,14 +3406,19 @@ const FORERUNNER_UNITS = [
       "Fanatics",
       "VISR",
       "Behind Enemy Lines",
+	  "Strong",
       "Fast"
     ],
     options: {
       extraMenCost: { Regular: 23, Veteran: 26 },
       weaponReplacements: {
-        "Light Rifles": { max: 6, cost: -5, replaces: "Suppressor", grants: "Light Rifle" },
-        "Scattershots": { max: 6, cost: -4, replaces: "Suppressor", grants: "Scattershot" }
-      }
+        "Light Rifles": { max: 5, cost: -5, replaces: "Suppressor", grants: "Light Rifle" },
+        "Scattershots": { max: 5, cost: -4, replaces: "Suppressor", grants: "Scattershot" }
+      },
+	    ncoReplacement: {
+        options: ["Suppressor", "Light Rifle", "Scattershot"],
+        costs: { "Light Rifle": -5, "Scattershot": -4 }
+      },
     }
   },
   {
@@ -3427,7 +3442,7 @@ const FORERUNNER_UNITS = [
       "Fieldcraft",
       "Large Infantry",
       { name: "Melee Weapons", description: "Models do an extra melee attack." },
-      { name: "Phase Step", description: "If this unit has not yet activated and is targeted by shooting from more than 6\" away (not Preliminary Bombardment, artillery barrage, or air-strike), it may immediately react by teleporting up to 6\". No order test is required. If you do so, place the unit within 6\" of its starting position, ending farther from the attacking unit than before and not in impassable terrain, inside a building, or within 1\" of any unit. You may ignore intervening models and terrain while moving. This reaction does not trigger enemy Ambush. After teleporting, set the unit’s die to Down. If no legal placement exists, the unit goes down instead." },
+      { name: "Phase Step", description: "If this unit has not yet activated and is targeted by shooting from more than 6\" away (not Preliminary Bombardment, artillery barrage, or air-strike), it may immediately react by teleporting up to 6\". No order test is required. If you do so, place the unit within 6\" of its starting position, ending farther from the attacking unit than before and not in impassable terrain, inside a building, outside the battlefield or within 1\" of any unit. You may ignore intervening models and terrain while moving. This reaction does not trigger enemy Ambush. After teleporting, set the unit’s die to Down. If no legal placement exists, the unit goes down instead." },
       { name: "Limited", description: "Only up to 2 Promethean Knight Teams may be taken per platoon." }
     ],
     options: {
@@ -3437,17 +3452,25 @@ const FORERUNNER_UNITS = [
         "Scattershots": { max: 5, cost: -4, replaces: "Suppressor", grants: "Scattershot" },
         "Incineration Cannon": { max: 1, cost: 33, replaces: "Suppressor", grants: "Incineration Cannon" }
       },
-      squadUpgrades: {
-        "Knight Battlewagons": { cost: 2, grantsRule: ["Tank Hunters"] },
-        "Knight Commander (0-1 per army)": {
-          cost: 45,
-          grantsRule: [
-            "Knight Commander",
-            "Limited: Only 1 Knight Commander may be taken per army"
-          ],
-          note: "Add a single officer model to this unit; does not fulfill Platoon Commander requirement."
-        }
-      }
+	  	ncoReplacement: {
+        options: ["Suppressor", "Light Rifle", "Scattershot"],
+        costs: { "Light Rifle": -5, "Scattershot": -4 }
+      },
+		squadUpgrades: {
+		  "Knight Battlewagons": { cost: 2, grantsRule: ["Tank Hunters"] },
+
+			"Knight Commander (0-1 per army)": {
+			  cost: 45,
+			  perModel: false,          // flat cost
+			  addMan: 1,                // +1 extra model (officer)
+			  ignoreExtraMenCost: true, // don't charge +30 for this extra model
+			  grantsRule: [
+				"Knight Commander",
+				"Limited: Only 1 Knight Commander may be taken per army"
+			  ],
+			  note: "Add a single officer model to this unit; does not fulfill Platoon Commander requirement."
+			}
+		}
     }
   },
 
@@ -3470,8 +3493,19 @@ const FORERUNNER_UNITS = [
       "Fanatics",
       "VISR",
       "Behind Enemy Lines",
+	  "Strong",
       "Fast"
-    ]
+    ],
+    options: {
+      squadUpgrades: {
+        "Rocket Launcher": {
+          cost: 0,
+          grantsRule: "Rocket Launcher",
+          perModel: false,
+          replacesWeapon: "Incineration Cannon"
+        }
+      }
+    },
   },
   {
     name: "Sniper Team",
@@ -3493,6 +3527,7 @@ const FORERUNNER_UNITS = [
       "Fanatics",
       "VISR",
       "Behind Enemy Lines",
+	  "Strong",
       "Fast"
     ],
     options: {
@@ -3500,7 +3535,7 @@ const FORERUNNER_UNITS = [
         "Knight Lancers (Veteran only)": {
           cost: 4,
           perModel: true,
-          grantsRule: ["Resilient", "Fieldcraft", "Strong", "Melee Weapons", "Large Infantry", "Tough Fighters"],
+          grantsRule: ["Resilient", "Fieldcraft", "Melee Weapons", "Large Infantry", "Tough Fighters"],
           replacesRule: ["Energy Shields", "Fast"]
         }
       }
@@ -3514,7 +3549,7 @@ const FORERUNNER_UNITS = [
     baseMen: 3,
     maxMen: 3,
     weapons: [
-      { name: "Medium Machine Gun" }
+      { name: "Splinter Turret" }
     ],
     specialRules: [
       "Team Weapon",
@@ -3524,19 +3559,9 @@ const FORERUNNER_UNITS = [
       "Fanatics",
       "VISR",
       "Behind Enemy Lines",
+	  "Strong",
       "Fast"
     ],
-    options: {
-      squadUpgrades: {
-        "Upgrade to Heavy Machine Gun": {
-          cost: 26,
-          grantsRule: "Heavy Machine Gun",
-          addMan: 1,
-          perModel: false,
-          replacesWeapon: "Medium Machine Gun"
-        }
-      }
-    }
   }
 ];
 
@@ -3550,7 +3575,7 @@ const FORERUNNER_VEHICLES = [
     allowedVeterancy: ["Regular", "Veteran"],
     costs: { Regular: 130, Veteran: 156 },
     weapons: [
-      { name: "Forward-facing Hull-mounted Medium Anti-Tank Gun" },
+      { name: "Forward-facing Hull-mounted Medium Anti-Tank Weapon" },
       { name: "Fist" },
       { name: "Fist" }
     ],
@@ -3664,7 +3689,30 @@ const FORERUNNER_VEHICLES = [
       "Nimble",
       { name: "Phase Blink", description: "Once per turn, when you fail an Evasion save for this vehicle, you may re-roll that save." }
     ]
-  }
+  },
+	{
+	  name: "Retriever Sentinel",
+	  type: "Aircraft",
+	  allowedVeterancy: ["Regular", "Veteran"],
+	  costs: { Regular: 235, Veteran: 282 },
+	  weapons: [
+		{ name: "Hull-mounted Forward-facing Super-Heavy Anti-Tank Weapon" }
+	  ],
+	  damageValue: "8+ (Heavy Aircraft)",
+	  specialRules: [
+		"Flak",
+		"Titanic Aircraft: When rolling on the Aircraft Damage chart against this unit, reduce the result by 1 (to a minimum of 1)."
+	  ],
+	  options: {
+		weaponUpgrades: {
+		  "Command Vehicle": {
+			cost: 10,
+			grantsRule: "Command Vehicle",
+			perModel: false
+		  }
+		}
+	  }
+	}
 ];
 
 // --- FLOOD UNITS ---
@@ -4522,18 +4570,38 @@ function updateLiveUnitCost() {
         if (cb && cb.checked && upgrade.addMan) men += upgrade.addMan;
       });
     }
-  } else {
-    men = parseInt(document.getElementById("editMenInput")?.value) || unit.men || unitData.baseMen;
-  }
+	} else {
+	  // Infantry: base men comes from the input (capped by maxMen)
+	  const baseMenInputRaw = parseInt(document.getElementById("editMenInput")?.value);
+	  const baseMenInput = !isNaN(baseMenInputRaw) ? baseMenInputRaw : (unit.men || unitData.baseMen);
+	  const baseMenCapped = Math.min(baseMenInput, unitData.maxMen);
+
+	  // Add bonus men from checked squad upgrades (e.g. Knight Commander)
+	  let bonusMen = 0;
+	  if (unitData.options?.squadUpgrades) {
+		Object.entries(unitData.options.squadUpgrades).forEach(([label, upgrade]) => {
+		  const cb = document.querySelector(`.editSquadUpgrade[data-upgrade="${label}"]`);
+		  if (cb && cb.checked && upgrade?.addMan) bonusMen += upgrade.addMan;
+		});
+	  }
+
+	  // IMPORTANT: commander does NOT count toward maxMen
+	  men = baseMenCapped + bonusMen;
+
+	  // store how many "bonus" men are free of extraMenCost
+	  window.__previewBonusMenNoExtraCost = bonusMen; // because all addMan upgrades should not be charged as extraMenCost
+	}
 
   let veterancy = document.getElementById("editVeterancySelect")?.value || unit.veterancy;
   let baseCost = (unitData.costs && unitData.costs[veterancy]) || 0;
   let extraCost = 0;
 
   // Extra men cost (Infantry only, not Team)
-  if (unitData.type !== "Team" && men > unitData.baseMen && unitData.options?.extraMenCost) {
-    extraCost = (men - unitData.baseMen) * (unitData.options.extraMenCost[veterancy] || 0);
-  }
+	if (unitData.type !== "Team" && men > unitData.baseMen && unitData.options?.extraMenCost) {
+	  const bonusFree = window.__previewBonusMenNoExtraCost || 0;
+	  const paidMen = Math.max(unitData.baseMen, men - bonusFree); // remove commander bonus before charging extraMenCost
+	  extraCost = (paidMen - unitData.baseMen) * (unitData.options.extraMenCost[veterancy] || 0);
+	}
 
   // --- Squad Upgrades ---
   let squadUpgradesCost = 0;
@@ -5256,6 +5324,27 @@ function saveEdit() {
       }
       unit.men = men;
     }
+	// MEN COUNT for INFANTRY (allow addMan upgrades WITHOUT counting toward maxMen)
+	if (unit.type === "Infantry") {
+	  const baseMenInputRaw = parseInt(document.getElementById("editMenInput")?.value);
+	  const baseMenInput = !isNaN(baseMenInputRaw) ? baseMenInputRaw : (unit.men || unitData.baseMen);
+	  const baseMenCapped = Math.min(baseMenInput, unitData.maxMen);
+
+	  let bonusMen = 0;
+	  if (unit.squadUpgrades && unitData.options?.squadUpgrades) {
+		Object.entries(unit.squadUpgrades).forEach(([label, picked]) => {
+		  if (!picked) return;
+		  const upgrade = unitData.options.squadUpgrades[label];
+		  if (upgrade?.addMan) bonusMen += upgrade.addMan;
+		});
+	  }
+
+	  // commander doesn't count toward maxMen
+	  unit.men = baseMenCapped + bonusMen;
+
+	  // store for cost calc (so we don't charge extraMenCost for bonus models)
+	  unit._bonusMenNoExtraCost = bonusMen;
+	}
 
     // WEAPONS (robust swaps from squad upgrades)
     let weapons = Array.isArray(unitData.weapons) ? unitData.weapons.map(w => ({ ...w })) : [];
@@ -5279,11 +5368,13 @@ function saveEdit() {
     let baseCost = (unitData.costs && unitData.costs[veterancy] !== undefined) ? unitData.costs[veterancy] : 0;
     let men = (unit.men !== undefined) ? unit.men : (unitData.baseMen || 0);
 
-    let extraCost = 0;
-    if (unit.type !== "Team" && men > unitData.baseMen && unitData.options?.extraMenCost) {
-      let extraMenCost = unitData.options.extraMenCost ? unitData.options.extraMenCost[veterancy] : 0;
-      extraCost = (men - unitData.baseMen) * (extraMenCost || 0);
-    }
+	let extraCost = 0;
+	if (unit.type !== "Team" && men > unitData.baseMen && unitData.options?.extraMenCost) {
+	  const extraMenCost = unitData.options.extraMenCost?.[veterancy] || 0;
+	  const bonusFree = unit._bonusMenNoExtraCost || 0;
+	  const paidMen = Math.max(unitData.baseMen, men - bonusFree); // don't charge for commander bonus model
+	  extraCost = (paidMen - unitData.baseMen) * extraMenCost;
+	}
 
     let squadUpgradesCost = 0;
     if (unit.squadUpgrades && unitData.options && unitData.options.squadUpgrades) {
