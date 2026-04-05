@@ -438,7 +438,7 @@ window.unitSpecialDescriptions = {
   "Fieldcraft": "Treat rough terrain as open ground for movement. When assaulting through rough ground, defenders lose Defensive Position.",
   "Strikes First": "Counts as having Defensive Position bonus in close quarters when performing an assault. If the opponent also has Defensive Position, Strikes First or a rule cancels this rule, then fight simultaneously.",
   "Flight": "Advance 12\"; Run 18\"; ignore terrain for movement. Cannot end in impassable terrain (or in rough ground after a Run). If ambushed/fired upon while flying, no soft/hard cover saves. Cannot pick up or carry objectives on a Run order. Infantry may instead move on the ground using normal movement rules.",
-  "Flood Infection": "When killing Infantry or Artillery in assault, roll one D6 per casualty. Each roll equal to or above this unit’s damage value returns a slain model (up to starting size). Automatons and Composed Beings are immune. Energy Shields increase damage value by 1 for the purposes of this rule.",
+  "Flood Infection": "When winning vs Infantry or Artillery in assault, roll one D6 per enemy casualty. Each roll equal to or above this flood unit’s damage value returns a slain model (up to starting size). Automatons and Composed Beings are immune. Energy Shields increase damage value by 1 for the purposes of this rule.",
   "Green": "First casualty triggers a D6 roll: 1 = gain D6 pins and go Down, 6 = unit upgraded to Regular morale (9).",
   "Gun Shield": "Crew of a gun with a gun shield count as in soft cover vs small arms hits from within the gun’s front arc.",
   "Horror": "When this unit assaults an enemy, that enemy suffers -1 Morale and must immediately morale test, on a fail it goes Down (Loses Defensive position bonus) and cannot react. Units with Horror are immune to this rule.",
@@ -607,7 +607,7 @@ The unit teleports up to 12", ignoring intervening units and terrain. It may not
 Biomass Remnants
 
 - Effect:
-When a non-Vehicle, non-Automaton, and non-Composed Being unit is destroyed without triggering Flood Infection and not destroyed by flamethrower weapons, place a Biomass Marker at the location where the unit was removed. A Flood Infantry or Artillery unit with Flood Infection activating within 3" of a Biomass Marker may take a Down order to harvest it:
+When an enemy non-Vehicle, non-Automaton, and non-Composed Being unit is destroyed without triggering Flood Infection, place a Biomass Marker at the location where the last model of the unit was removed. A Flood Infantry or Artillery unit with Flood Infection activating within 3" of a Biomass Marker may take a Down order to harvest it:
 
 Roll one D6 for each missing model (up to the unit’s original starting size). Each model is restored on a result equal to or greater than the Flood unit’s damage value +1. If the unit has Energy Shields, increase the required result by an additional +1. If the total required exceeds 6+, the unit must roll two consecutive 6s per model to succeed.
 
@@ -3804,12 +3804,10 @@ const FLOOD_UNITS = [
     // non-NCO replacements only
     weaponReplacements: {
       "Needlers": { max: 13, cost: -2, replaces: "Assault Rifle", grants: "Needler" },
+	  "SMGs": { max: 13, cost: -2, replaces: "Assault Rifle", grants: "SMG" },
       "Plasma Rifles": { max: 13, cost: 0, replaces: "Assault Rifle", grants: "Plasma Rifle" },
       "Spikers": { max: 13, cost: 0, replaces: "Assault Rifle", grants: "Spiker" },
       "Shotguns": { max: 13, cost: -4, replaces: "Assault Rifle", grants: "Shotgun" },
-
-      // only non-NCO combat forms (max 4 base + extras if your UI logic supports dynamic maxs it can stay 13;
-      // if not, keep this capped at 4 to match the printed option)
       "Battle Rifles": { max: 4, cost: -3, replaces: "Assault Rifle", grants: "Battle Rifle" },
       "Covenant Carbines": { max: 4, cost: -3, replaces: "Assault Rifle", grants: "Covenant Carbine" }
     },
@@ -3819,6 +3817,7 @@ const FLOOD_UNITS = [
       options: [
         "Assault Rifle",
         "Needler",
+		"SMG",
         "Plasma Rifle",
         "Spiker",
         "Shotgun",
@@ -3827,6 +3826,7 @@ const FLOOD_UNITS = [
       ],
       costs: {
         "Needler": -2,
+		"SMG": -2,
         "Plasma Rifle": 0,
         "Spiker": 0,
         "Shotgun": -4,
@@ -5694,10 +5694,13 @@ function renderUnitCard(pdf, unit, margin, width, y) {
   );
 
   const seen = new Set(), specialArr = [];
-  raw.forEach(entry => entry.split(",").forEach(p => {
-    const rule = p.trim();
-    if (rule && !seen.has(rule)) { seen.add(rule); specialArr.push(rule); }
-  }));
+  raw.forEach(entry => {
+    const rule = String(entry || "").trim();
+    if (rule && !seen.has(rule)) {
+      seen.add(rule);
+      specialArr.push(rule);
+    }
+  });
 
   const isChooseAny =
     unit.type === "Infantry" &&
@@ -5794,19 +5797,62 @@ function renderUnitCard(pdf, unit, margin, width, y) {
 
     const isVehicle = unit.damageValue !== undefined && unit.type !== "Infantry" && unit.type !== "Team";
 
-    pdf.setFont("helvetica", "normal").setFontSize(10.7).setTextColor(40, 40, 60);
-    specialArr.forEach(rule => {
-      let desc = isVehicle
-        ? (window.vehicleSpecialDescriptions?.[rule] || "")
-        : (window.unitSpecialDescriptions?.[rule] || "");
+    specialArr.forEach(ruleText => {
+      const text = String(ruleText || "").trim();
+      if (!text) return;
 
-      const line = `- ${rule}${desc ? ": " + desc : ""}`;
-      const wrapped = pdf.splitTextToSize(line, width - 28);
-      wrapped.forEach(wl => {
-        yy = checkPageBreak(pdf, yy);
-        pdf.text(wl, x, yy);
-        yy += 13;
-      });
+      const [rule, ...rest] = text.split(":");
+      const ruleName = rule.trim();
+      const extra = rest.join(":").trim();
+
+      const summary = isVehicle
+        ? (window.vehicleSpecialDescriptions?.[ruleName] || "")
+        : (window.unitSpecialDescriptions?.[ruleName] || "");
+
+      const full = (summary ? summary + (extra ? " " : "") : "") + extra;
+
+      yy = checkPageBreak(pdf, yy, 16);
+
+      // bullet
+      pdf.setFont("helvetica", "normal").setFontSize(10.7).setTextColor(40, 40, 60);
+      pdf.text("•", x, yy);
+
+      // bold rule name
+      pdf.setFont("helvetica", "bold").setFontSize(10.7);
+      const ruleLabel = ruleName + ":";
+      pdf.text(ruleLabel, x + 10, yy);
+
+      // normal description
+      const ruleLabelWidth = pdf.getTextWidth(ruleLabel);
+      pdf.setFont("helvetica", "normal").setFontSize(10.7);
+
+      if (full) {
+        const firstLineX = x + 10 + ruleLabelWidth + 4;
+        const firstLineWidth = margin + width - firstLineX - 10;
+        const laterLineWidth = width - 38;
+
+        const wrapped = pdf.splitTextToSize(full, firstLineWidth);
+
+        if (wrapped.length > 0) {
+          pdf.text(wrapped[0], firstLineX, yy);
+        }
+
+        yy += 12;
+
+        if (wrapped.length > 1) {
+          const remainingText = wrapped.slice(1).join(" ");
+          const wrappedRest = pdf.splitTextToSize(remainingText, laterLineWidth);
+          wrappedRest.forEach(line => {
+            yy = checkPageBreak(pdf, yy, 12);
+            pdf.text(line, x + 10, yy);
+            yy += 12;
+          });
+        }
+      } else {
+        yy += 12;
+      }
+
+      yy += 2;
     });
   }
 
