@@ -604,24 +604,20 @@ The unit teleports up to 12", ignoring intervening units and terrain. It may not
 `,
 
   "Flood": `
-Biomass Remnants
+Living Nightmare
 
 - Effect:
-When an enemy non-Vehicle, non-Automaton, and non-Composed Being unit is destroyed without triggering Flood Infection, place a Biomass Marker at the location where the last model of the unit was removed. A Flood Infantry or Artillery unit with Flood Infection activating within 3" of a Biomass Marker may take a Down order to harvest it:
-
-Roll one D6 for each missing model (up to the unit’s original starting size). Each model is restored on a result equal to or greater than the Flood unit’s damage value +1. If the unit has Energy Shields, increase the required result by an additional +1. If the total required exceeds 6+, the unit must roll two consecutive 6s per model to succeed.
-
-Biomass Markers are removed after harvesting and may only be used once.
+All Flood Infantry and Artillery units have the Fanatics special rule, and automatically pass any Morale Check.
 
 Corrupted Arsenal
 
 - Effect:
 The Flood may include vehicles from other factions' army lists. These vehicles must always be Inexperienced.
 
-Living Nightmare
+Predatory Ambush
 
 - Effect:
-All Flood units automatically gain the Fanatics and Horror special rules.
+When a Flood Infantry unit ends the turn on Ambush and chooses to attempt the normal end-of-turn Fire action, roll a D6 as usual. On a 4+, the unit may either fire normally or, instead of firing, declare an Assault against a visible enemy Infantry or Artillery unit within assault range. On a 3 or less, the unit does nothing and its Ambush die is returned to the bag as normal.
 
 Hivemind Coordination
 
@@ -3722,7 +3718,7 @@ const FLOOD_UNITS = [
     name: "Officer - Key Mind Node (Platoon commander)",
     type: "Infantry",
     allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
-    costs: { Inexperienced: 21, Regular: 30, Veteran: 39 },
+    costs: { Inexperienced: 19, Regular: 28, Veteran: 37 },
     baseMen: 1,
     maxMen: 4,
     weapons: [
@@ -3731,19 +3727,20 @@ const FLOOD_UNITS = [
     specialRules: [
       { name: "Tendrils", description: "Models that replace 'men' in the unit." },
       "Flood Infection",
+	  "Horror",
       "Slow",
       "Wide Formation",
       { name: "Immobile", description: "If no tendrils are present, the unit cannot move." }
     ],
     options: {
-      extraMenCost: { Inexperienced: 7, Regular: 10, Veteran: 13 }
+      extraMenCost: { Inexperienced: 5, Regular: 8, Veteran: 11 }
     }
   },
   {
     name: "Officer - Proto-Gravemind (Company commander)",
     type: "Infantry",
     allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
-    costs: { Inexperienced: 42, Regular: 60, Veteran: 78 },
+    costs: { Inexperienced: 40, Regular: 58, Veteran: 76 },
     baseMen: 1,
     maxMen: 4,
     weapons: [
@@ -3752,12 +3749,13 @@ const FLOOD_UNITS = [
     specialRules: [
       { name: "Tendrils", description: "Models that replace 'men' in the unit." },
       "Flood Infection",
+	  "Horror",
       "Slow",
       "Wide Formation",
       { name: "Immobile", description: "If no tendrils are present, the unit cannot move." }
     ],
     options: {
-      extraMenCost: { Inexperienced: 7, Regular: 10, Veteran: 13 }
+      extraMenCost: { Inexperienced: 5, Regular: 8, Veteran: 11 }
     }
   },
   {
@@ -3777,10 +3775,11 @@ const FLOOD_UNITS = [
     ],
     specialRules: [
       "Infiltrator",
+	  "Horror",
       "Flood Infection"
     ],
     options: {
-      extraMenCost: { Regular: 11, Veteran: 14 }
+      extraMenCost: { Regular: 13, Veteran: 16 }
     }
   },
 
@@ -3795,6 +3794,7 @@ const FLOOD_UNITS = [
   weapons: [{ name: "Assault Rifle" }],
   specialRules: [
     "Flood Infection",
+	"Horror",
     "Fieldcraft"
     // NOTE: Tank Hunters / Energy Shields should be granted by upgrades, not always-on
   ],
@@ -3857,13 +3857,14 @@ const FLOOD_UNITS = [
     ],
     specialRules: [
       "Flood Infection",
+	  "Horror",
       "Fieldcraft",
       "Fast",
       "Infiltrator",
       { name: "Limited", description: "Only 1 Stalker Form Swarm may be taken per platoon." }
     ],
     options: {
-      extraMenCost: { Veteran: 20 }
+      extraMenCost: { Veteran: 16 }
     }
   },
   {
@@ -3878,6 +3879,7 @@ const FLOOD_UNITS = [
     ],
     specialRules: [
       "Flood Infection",
+	  "Horror",
       "Tooth and Claw",
       "Fieldcraft",
       "Tough Fighters",
@@ -3896,7 +3898,7 @@ const FLOOD_UNITS = [
     name: "Infection Form Swarm",
     type: "Infantry",
     allowedVeterancy: ["Inexperienced"],
-    costs: { Inexperienced: 60 },
+    costs: { Inexperienced: 70 },
     baseMen: 10,
     maxMen: 15,
     weapons: [
@@ -3904,11 +3906,11 @@ const FLOOD_UNITS = [
     ],
     specialRules: [
       "Flood Infection",
-      { name: "Assimilate", description: "If this unit wins an assault against a target affected by Flood Infection, you can replace each surviving Infection Form with an unarmed Combat Form. If so, the unit immediately becomes Regular, becomes an unarmed Combat Form unit and retains its current order die." },
-      { name: "Biomass Hauler", description: "At the start of a move, this unit may pick up one Biomass Marker within 1\" and carry it as if it were a model in the unit. Only one marker can be carried at a time." }
+	  "Horror",
+      { name: "Assimilate", description: "If this unit wins an assault against a target affected by Flood Infection, you can replace each surviving Infection Form with an unarmed Combat Form. If so, the unit immediately becomes Regular, becomes an unarmed Combat Form unit and retains its current order die." }     
     ],
     options: {
-      extraMenCost: { Inexperienced: 6 }
+      extraMenCost: { Inexperienced: 7 }
     }
   },
 
@@ -3926,9 +3928,10 @@ const FLOOD_UNITS = [
     specialRules: [
       "Tank Hunters",
       "Infiltrator",
+	  "Horror",
       { name: "Suicide Charge", description: "If this model successfully assaults an enemy unit and makes contact, it is immediately removed, and the assaulted unit suffers a HE (2\") hit." },
       { name: "Explosive Biomass", description: "If this model is destroyed (by shooting, assault, or other means), immediately place a 2\" HE template centered on its final position. Resolve hits against all units under the template, friend or foe." },
-      { name: "Spawn Infection Forms", description: "When this unit is destroyed, roll a die. On a 4+, immediately replace the model with a new unit of 1D3 Inexperienced Infection Forms. These are placed at least 1\" away from any other units, lose all pins, and use the same Order Die the unit had. If there is not enough space to place them all, place as many as possible." },
+      { name: "Spawn Infection Forms", description: "When this unit is destroyed, immediately replace the model with a new unit of 1D3 Inexperienced Infection Forms. Place them as close as possible to the position where the Carrier Form was destroyed, while remaining at least 1\" away from any other units. These Infection Forms lose all pins and use the same Order Die the unit had. If there is not enough space to place them all, place as many as possible." },
       { name: "Extra Selection", description: "You may take up to 3 Carrier Form Teams as a single choice in any platoon selector that allows an Anti-Tank Team. This does not prevent you from also taking a standard Anti-Tank Team." }
     ]
   },
@@ -3945,6 +3948,7 @@ const FLOOD_UNITS = [
     specialRules: [
       "Team Weapon",
       "Shaped Charge",
+	  "Horror",
       "Flood Infection"
     ]
   },
@@ -3963,6 +3967,7 @@ const FLOOD_UNITS = [
       "Team Weapon",
       "Sniper",
       "Infiltrator",
+	  "Horror",
       "Flood Infection"
     ]
   },
@@ -3978,6 +3983,7 @@ const FLOOD_UNITS = [
     ],
     specialRules: [
       "Team Weapon",
+	  "Horror",
       "Flood Infection"
     ],
     options: {
