@@ -230,12 +230,13 @@ button:not(.active):hover { background: #2e50b7; }
 		  <button onclick="selectFaction('Flood')" id="btnFlood">Flood</button>
 		  <button onclick="selectFaction('Other')" id="btnOther" style="display:none">Other Faction</button>
 		</div>
-      <div class="control-row" id="addControls" style="display:none;">
-        <select id="unitSelect"></select>
-        <select id="veterancySelect"></select>
-        <button onclick="addSelectedUnit()">Add</button>
-        <!-- PDF button REMOVED here -->
-      </div>
+		<div class="control-row" id="addControls" style="display:none;">
+		  <select id="unitSelect"></select>
+		  <select id="veterancySelect"></select>
+		  <select id="armyBonusSelect" style="display:none;" onchange="onArmyBonusChange()"></select>
+		  <button onclick="addSelectedUnit()">Add</button>
+		  <!-- PDF button REMOVED here -->
+		</div>
       <div class="army-list" id="armyList"></div>
       <div class="total-points" id="totalPointsDiv"></div>
     </div>
@@ -353,7 +354,7 @@ const allWeaponProfiles = {
   "Fist": '+1 close combat attack per Fist (Walker only)',
   "Fists": '+1 close combat attack per Fist (Walker only)',
   "Needle Cannon": 'Range 36", Shots 1, Pen +2, Overheat, Shaped Charge, Supercombine, HE (2")',
-  "Shardstorm Launcher": 'Range 36", Shots 6, Pen –, Team, Supercombine, Fixed',
+  "Shardstorm Launcher": 'Range 36", Shots 6, Pen –, Team, Supercombine, Fixed, MG',
   "Multiple Launcher": 'Range 36–72", Shots 1, Pen HE, Team, Fixed, Indirect Fire, ML, HE (3")',
   "Splinter Turret": 'Range 48", Shots 3, Pen +1, Team, Fixed, HE (1")',
 
@@ -401,12 +402,12 @@ allWeaponProfiles["Forward-facing Hull-mounted Flamethrower (Vehicle)"] = allWea
 // --- Weapon Special Rule Descriptions ---
 const weaponSpecialDescriptions = {
   "Assault": "No -1 to hit when moving and shooting. Models with an Assault weapon gain Tough Fighters, re-rolling in close combat.",
-  "Battery Charge": "Has a -1 penalty to hit when firing.",
+  "Battery Charge": "Has a -1 penalty to hit when shooting.",
   "Cover Negation": "When this weapon hits an Infantry or Artillery unit that is in soft cover and not Down, any natural 6 rolled to wound worsens the target’s cover save by one step, for that wound only.",
   "Fixed": "Fixed weapons can only fire within a 45-degree arc. A Run order must be used to reposition them.",
   "Flamethrower": "Automatically hits units in buildings/fortifications, inflicting D6 hits and +1 pin per hit. Always targets top armor on vehicles. Units hit must pass a morale test or be destroyed. Chance to run out of fuel after use.",
   "HE": "Uses templates (1–4). Hits multiple models, causing pins based on template size. HE also has PEN values according to the template.",
-  "Howitzer": "Fires either direct or Indirect Fire (minimum range applies; starts hitting at 6+, improves each turn targeting same unit). Switching resets accuracy progression.",
+  "Howitzer": "Fires either direct or Indirect Fire (minimum range applies; starts hitting at 6+, improves each turn targeting same unit unless moving). Switching spotter also resets accuracy progression.",
   "Indirect Fire": "Can target units without direct line of sight with a Spotter/Observer. Begins hitting at 6+, improving each consecutive turn. Hits vehicles on top armor.",
   "Knockback": "After hitting infantry, roll D6: on 4+, gains 1 pin and move target unit 3\" in opposite direction. Stops 1\" from obstacles, table edge, buildings or other units.",
   "Overcharge": "Before shooting, choose Overcharge: ignores Energy Shield rule, can pin vehicles up to armor 9+, but imposes a -1 to-hit penalty.",
@@ -414,6 +415,7 @@ const weaponSpecialDescriptions = {
   "MG": "Behaves exactly like a standard machine gun for all game rules and modifiers.",
   "ML": "Always 6+ to hit, after resolving, each other enemy unit within 6\" is hit on a 6+, firer gains 1 pin after firing; towed counts as Light Howitzer; smoke: place D3-1 extra smoke markers within 6\" of the first.",
   "Range Finder": "At targets within 6\", only provides +1 point-blank bonus (instead of +2).",
+  "Paired": "Paired machine guns do not halve their shots when mounted on a vehicle.",
   "Shaped Charge": "Ignores the -1 Penetration penalty at long range and does not gain the +1 Penetration bonus at point-blank range.",
   "Sniper": "Grants unit the Sniper special rule.",
   "Supercombine": "Each natural roll of 6 to hit allows rolling an extra die to wound against the same target, even when using HE.",
@@ -438,7 +440,7 @@ window.unitSpecialDescriptions = {
   "Fieldcraft": "Treat rough terrain as open ground for movement. When assaulting through rough ground, defenders lose Defensive Position.",
   "Strikes First": "Counts as having Defensive Position bonus in close quarters when performing an assault. If the opponent also has Defensive Position, Strikes First or a rule cancels this rule, then fight simultaneously.",
   "Flight": "Advance 12\"; Run 18\"; ignore terrain for movement. Cannot end in impassable terrain (or in rough ground after a Run). If ambushed/fired upon while flying, no soft/hard cover saves. Cannot pick up or carry objectives on a Run order. Infantry may instead move on the ground using normal movement rules.",
-  "Flood Infection": "When winning vs Infantry or Artillery in assault, roll one D6 per enemy casualty. Each roll equal to or above this flood unit’s damage value returns a slain model (up to starting size). Automatons and Composed Beings are immune. Energy Shields increase damage value by 1 for the purposes of this rule.",
+  "Flood Infection": "When winning vs Infantry or Artillery in CQ, roll one D6 per enemy casualty. Each roll equal to or above this flood unit’s damage value returns a slain model (up to starting size). Automatons and Composed Beings are immune. Energy Shields increase damage value by 1 for the purposes of this rule.",
   "Green": "First casualty triggers a D6 roll: 1 = gain D6 pins and go Down, 6 = unit upgraded to Regular morale (9).",
   "Gun Shield": "Crew of a gun with a gun shield count as in soft cover vs small arms hits from within the gun’s front arc.",
   "Horror": "When this unit assaults an enemy, that enemy suffers -1 Morale and must immediately morale test, on a fail it goes Down (Loses Defensive position bonus) and cannot react. Units with Horror are immune to this rule.",
@@ -639,6 +641,7 @@ Once per turn, just before activating a Flood unit, select one unactivated enemy
 
 // --- Army Doctrines ---
 const COVENANT_DOCTRINES = {
+  _defaultLabel: "Grunt/Jackal",
   "Brute": {
     label: "Brute",
     allowedVeterancy: ["Regular", "Veteran"],
@@ -662,6 +665,7 @@ const COVENANT_DOCTRINES = {
 };
 
 const BANISHED_DOCTRINES = {
+  _defaultLabel: "Grunt/Jackal",
   "Brute": {
     label: "Brute",
     allowedVeterancy: ["Regular", "Veteran"],
@@ -686,6 +690,7 @@ const BANISHED_DOCTRINES = {
 };
 
 const UNSC_DOCTRINES = {
+  _defaultLabel: "Trooper",
   "Marine": {
     label: "Marine",
     allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
@@ -1373,7 +1378,7 @@ const UNSC_VEHICLES = [
     allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
     costs: { Inexperienced: 56, Regular: 70, Veteran: 84 },
     weapons: [
-      { name: "Turret-mounted Heavy Machine Gun" }
+      { name: "Turret-mounted Paired Heavy Machine Gun" }
     ],
     damageValue: "7+ (Armoured Car)",
     specialRules: [
@@ -1441,7 +1446,7 @@ const UNSC_VEHICLES = [
     allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
     costs: { Inexperienced: 84, Regular: 105, Veteran: 126 },
     weapons: [
-      { name: "Hull-mounted Forward-facing Heavy Machine Gun" },
+      { name: "Hull-mounted Forward-facing Paired Heavy Machine Gun" },
       { name: "Hull-mounted Forward-facing Rocket Launcher" }
     ],
     damageValue: "6+ (Light Aircraft)",
@@ -2103,7 +2108,7 @@ const COVENANT_VEHICLES = [
     costs: { Inexperienced: 196, Regular: 245, Veteran: 294 },
     weapons: [
       { name: "Casement-mounted Forward-facing Heavy Anti-Tank Weapon" },
-      { name: "Forward-facing Hull-mounted Heavy Plasma MG" }
+      { name: "Forward-facing Hull-mounted Paired Heavy Plasma MG" }
     ],
     damageValue: "9+ (Medium Hover Tank)",
     transportCapacity: 0,
@@ -2229,7 +2234,7 @@ const COVENANT_VEHICLES = [
     allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
     costs: { Inexperienced: 44, Regular: 55, Veteran: 66 },
     weapons: [
-      { name: "Hull-mounted Forward-facing Heavy Plasma MG" }
+      { name: "Hull-mounted Forward-facing Paired Heavy Plasma MG" }
     ],
     damageValue: "6+ (Soft-skin Hovercraft)",
     transportCapacity: 0,
@@ -2246,7 +2251,7 @@ const COVENANT_VEHICLES = [
     allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
     costs: { Inexperienced: 52, Regular: 65, Veteran: 78 },
     weapons: [
-      { name: "Turret-mounted Heavy Plasma MG" }
+      { name: "Turret-mounted Paired Heavy Plasma MG" }
     ],
     damageValue: "7+ (Armoured Hovercraft)",
     transportCapacity: 2,
@@ -2310,7 +2315,7 @@ const COVENANT_VEHICLES = [
     allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
     costs: { Inexperienced: 80, Regular: 100, Veteran: 120 },
     weapons: [
-      { name: "Hull-mounted Forward-facing Heavy Plasma MG" },
+      { name: "Hull-mounted Forward-facing Paired Heavy Plasma MG" },
       { name: "Hull-mounted Forward-facing Fuel Rod Gun" }
     ],
     damageValue: "6+ (Light Aircraft)",
@@ -2385,7 +2390,7 @@ const COVENANT_VEHICLES = [
 
   // TRANSPORTS AND TOWS
   {
-    name: "Ru'swum-pattern Troop Carrier “Shadow”",
+    name: "Ruwaa-pattern Troop Carrier “Shadow”",
     type: "Car",
     allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
     costs: { Inexperienced: 32, Regular: 40, Veteran: 48 },
@@ -2929,7 +2934,7 @@ const BANISHED_VEHICLES = [
     costs: { Inexperienced: 196, Regular: 245, Veteran: 294 },
     weapons: [
       { name: "Casement-mounted Forward-facing Heavy Anti-Tank Weapon" },
-      { name: "Forward-facing Hull-mounted Heavy Plasma MG" }
+      { name: "Forward-facing Hull-mounted Paired Heavy Plasma MG" }
     ],
     damageValue: "9+ (Medium Hover Tank)",
     transportCapacity: 0,
@@ -3075,7 +3080,7 @@ const BANISHED_VEHICLES = [
     allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
     costs: { Inexperienced: 44, Regular: 55, Veteran: 66 },
     weapons: [
-      { name: "Hull-mounted Forward-facing Heavy Plasma MG" }
+      { name: "Hull-mounted Forward-facing Paired Heavy Plasma MG" }
     ],
     damageValue: "6+ (Soft-skin Hovercraft)",
     transportCapacity: 0,
@@ -3133,7 +3138,7 @@ const BANISHED_VEHICLES = [
     allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
     costs: { Inexperienced: 80, Regular: 100, Veteran: 120 },
     weapons: [
-      { name: "Hull-mounted Forward-facing Heavy Plasma MG" },
+      { name: "Hull-mounted Forward-facing Paired Heavy Plasma MG" },
       { name: "Hull-mounted Forward-facing Fuel Rod Gun" }
     ],
     damageValue: "6+ (Light Aircraft)",
@@ -3541,15 +3546,14 @@ const FORERUNNER_UNITS = [
     name: "Machine Gun Team",
     type: "Team",
     allowedVeterancy: ["Regular", "Veteran"],
-    costs: { Regular: 64, Veteran: 73 },
-    baseMen: 3,
-    maxMen: 3,
+    costs: { Regular: 90, Veteran: 105 },
+    baseMen: 4,
+    maxMen: 4,
     weapons: [
       { name: "Splinter Turret" }
     ],
     specialRules: [
       "Team Weapon",
-      "Fixed",
       "Composed Beings",
       "Energy Shields",
       "Fanatics",
@@ -3658,7 +3662,7 @@ const FORERUNNER_VEHICLES = [
     allowedVeterancy: ["Regular", "Veteran"],
     costs: { Regular: 135, Veteran: 162 },
     weapons: [
-      { name: "Hull-mounted Forward-facing Heavy Machine Gun" },
+      { name: "Hull-mounted Forward-facing Paired Heavy Machine Gun" },
       { name: "Hull-mounted Forward-facing Rocket Launcher" }
     ],
     damageValue: "7+ (Medium Aircraft)",
@@ -4051,6 +4055,15 @@ const FLOOD_VEHICLES = [
 // Army state and source data
 window.armyList = [];
 window.currentFaction = null;
+window.selectedArmyBonus = "";
+
+const COVENANT_ARMY_BONUSES = [
+  { value: "", label: "Caste System: None" },
+  { value: "Commanding Presence", label: "Caste System: Commanding Presence" },
+  { value: "Cannon Fodder", label: "Caste System: Cannon Fodder" },
+  { value: "Wall of Deflection", label: "Caste System: Wall of Deflection" },
+  { value: "Fury Unleashed", label: "Caste System: Fury Unleashed" }
+];
 window.UNIT_LISTS = {
   UNSC: UNSC_UNITS,
   Covenant: COVENANT_UNITS,
@@ -4067,6 +4080,90 @@ window.VEHICLE_LISTS = {
   Flood: FLOOD_VEHICLES
 };
 
+function updateArmyBonusUI() {
+  const sel = document.getElementById("armyBonusSelect");
+  if (!sel) return;
+
+  if (window.currentFaction !== "Covenant") {
+    sel.style.display = "none";
+    sel.innerHTML = "";
+    return;
+  }
+
+  sel.style.display = "";
+  sel.innerHTML = "";
+
+  COVENANT_ARMY_BONUSES.forEach(optData => {
+    const opt = document.createElement("option");
+    opt.value = optData.value;
+    opt.textContent = optData.label;
+    sel.appendChild(opt);
+  });
+
+  sel.value = window.selectedArmyBonus || "";
+}
+
+function renderSummaryBlock() {
+  const block = document.getElementById("summaryBlock");
+  if (!block) return;
+
+  if (window.currentFaction === "Covenant") {
+    block.innerHTML = `<div><b>Caste System:</b> ${window.selectedArmyBonus || "None"}</div>`;
+    return;
+  }
+
+  block.innerHTML = "";
+}
+
+function getCovenantGruntTemplate() {
+  return (window.UNIT_LISTS?.Covenant || []).find(
+    u => u.name === "Grunt Squad" && u.type === "Infantry"
+  ) || null;
+}
+
+function buildFreeCannonFodderUnit() {
+  const grunt = getCovenantGruntTemplate();
+  if (!grunt) return null;
+
+  const freeUnit = {
+    name: grunt.name,
+    type: grunt.type,
+    veterancy: "Inexperienced",
+    men: grunt.baseMen || 5,
+    damageValue: grunt.damageValue || "",
+    transportCapacity: grunt.transportCapacity ?? undefined,
+    weapons: Array.isArray(grunt.weapons) ? grunt.weapons.map(w => ({ ...w })) : [],
+    squadUpgrades: {},
+    weaponReplacements: {},
+    ncoReplacement: grunt.options?.ncoReplacement?.options?.[0] || undefined,
+    doctrine: undefined,
+    extraDoctrineUpgrades: {},
+    special: Array.isArray(grunt.specialRules) ? [...grunt.specialRules] : [],
+    forcedCommandVehicle: false,
+    cost: 0,
+    lockedByArmyBonus: true,
+    armyBonusSource: "Cannon Fodder"
+  };
+
+  freeUnit.weaponsTable = buildWeaponsTable(freeUnit);
+  return freeUnit;
+}
+
+function syncArmyBonusEffects() {
+  window.armyList = (window.armyList || []).filter(unit => !unit.lockedByArmyBonus);
+
+  if (window.currentFaction === "Covenant" && window.selectedArmyBonus === "Cannon Fodder") {
+    const freeUnit = buildFreeCannonFodderUnit();
+    if (freeUnit) window.armyList.unshift(freeUnit);
+  }
+}
+
+function onArmyBonusChange() {
+  const sel = document.getElementById("armyBonusSelect");
+  window.selectedArmyBonus = sel ? sel.value : "";
+  syncArmyBonusEffects();
+  renderArmyList();
+}
 
 // Add Doctrine Special Rules to unit for display/export (helper function)
 function addDoctrineSpecialRules(unit) {
@@ -4111,8 +4208,9 @@ function addDoctrineSpecialRules(unit) {
       if (rule && !unit.special.includes(rule)) unit.special.push(rule);
     });
   } else {
-    // If NO doctrine, restore the plain triggerRule at the top
-    unit.special.unshift(triggerRule);
+    // If NO doctrine, show the faction default label
+    const defaultLabel = doctrineSet?._defaultLabel;
+    unit.special.unshift(defaultLabel ? `${triggerRule} [${defaultLabel}]` : triggerRule);
   }
 }
 
@@ -4182,6 +4280,7 @@ function getBaseWeaponName(label) {
     /\brear[- ]?\b/ig,
     /\bside[- ]mounted\b/ig,
     /\bmounted\b/ig,
+	/\bpaired\b/ig,
     /\bcovering\b/ig,
     /\bfront arc\b/ig,
     /\bleft arc\b/ig,
@@ -4250,6 +4349,7 @@ function injectDoctrineOptions(units, doctrineSet, triggerRule) {
       if (choices.length) {
         unit.options.doctrine = {
           label: "Doctrine",
+          defaultLabel: doctrineSet._defaultLabel || "Default",
           choices
         };
       }
@@ -4416,6 +4516,24 @@ function buildWeaponsTable(unit) {
   return table;
 }
 
+function canForceCommandVehicle(unit, unitData) {
+  if (!unit || !unitData) return false;
+
+  // only vehicles
+  if (unit.type === "Infantry" || unit.type === "Team") return false;
+
+  // aircraft may only be Command Vehicles if their profile already has it
+  // or if they can buy it normally
+  if (unit.type === "Aircraft") return false;
+
+  const hasBuiltIn = Array.isArray(unitData.specialRules) &&
+    unitData.specialRules.some(r => (typeof r === "string" ? r === "Command Vehicle" : r?.name === "Command Vehicle"));
+
+  const canBuyNormally = !!unitData.options?.weaponUpgrades?.["Command Vehicle"];
+
+  return !hasBuiltIn && !canBuyNormally;
+}
+
 // Always use the table that already knows the real quantities
 function getFinalWeaponsList(unit) {
   return buildWeaponsTable(unit);
@@ -4559,6 +4677,9 @@ function updateLiveUnitCost() {
       totalCost += Number(upg.cost) || 0;
       upgradesCounted.add(upgLabel);
     });
+
+    const forcedCV = document.getElementById("editForcedCommandVehicle");
+    if (forcedCV && forcedCV.checked) totalCost += 10;
 
     // Show preview
     let prevDiv = document.getElementById("modalCostPreview");
@@ -4720,8 +4841,9 @@ function getUnitsForSelector(faction) {
 function selectFaction(faction) {
   console.log("selectFaction called with faction =", faction);
 
-  window.currentFaction = faction; // set first
+  window.currentFaction = faction;
   window.armyList = [];
+  window.selectedArmyBonus = "";
 
   // UI updates
   document.getElementById("btnUNSC").classList.toggle("active", faction === "UNSC");
@@ -4735,8 +4857,9 @@ function selectFaction(faction) {
   document.getElementById("sidebar").style.display = "";
   document.getElementById("backBtn").style.display = "";
 
-  // populate with correct faction
+  updateArmyBonusUI();
   populateUnitSelect();
+  renderSummaryBlock();
   renderArmyList();
 
   console.log("currentFaction is now", window.currentFaction);
@@ -4751,6 +4874,9 @@ function goBackToFaction() {
   document.getElementById("totalPointsDiv").innerHTML = "";
   window.armyList = [];
   window.currentFaction = null;
+  window.selectedArmyBonus = "";
+  updateArmyBonusUI();
+  renderSummaryBlock();
 }
 
 // --- Populate Units and Veterancy dropdowns ---
@@ -4862,6 +4988,7 @@ function addSelectedUnit() {
     doctrine: unit.options?.doctrine ? undefined : undefined,
     extraDoctrineUpgrades: unit.options?.doctrine ? {} : undefined,
     special: Array.isArray(unit.specialRules) ? [...unit.specialRules] : (unit.specialRules ? [unit.specialRules] : []),
+    forcedCommandVehicle: false,
 	  // ✅ keep source info for Corrupted Arsenal vehicles
 	  isFloodBorrowed: !!unit.isFloodBorrowed,
 	  sourceFaction: unit.sourceFaction || null,
@@ -4933,13 +5060,13 @@ function editUnit(idx) {
 
   let html = "";
 
-  // Render edit fields for Infantry and Team units (they can have upgrades)
+  // Render edit fields for Infantry and Team units
   if (unit.type === "Infantry" || unit.type === "Team") {
     html += renderInfantryEditFields(unit, unitData);
   }
 
-  // Vehicles
-  if (unit.type !== "Infantry" && unit.type !== "Team" && unitData?.options?.weaponUpgrades) {
+  // Render edit fields for ALL vehicles
+  if (unit.type !== "Infantry" && unit.type !== "Team") {
     html += renderVehicleUpgradeFields(unit, unitData);
   }
 
@@ -4952,11 +5079,10 @@ function editUnit(idx) {
   // Show the modal
   document.getElementById("editModalBg").style.display = "flex";
 
-  // After-modal logic for Infantry and Team units (Jackal Squad, etc)
+  // After-modal logic for Infantry and Team units
   if (unit.type === "Infantry" || unit.type === "Team") {
     afterInfantryModalRender(unit, unitData);
 
-    // JACKAL SQUAD: Robust mutual exclusion for upgrades
     if (unit.name === "Jackal Squad") {
       setTimeout(() => {
         const dg = document.querySelector('input[data-upgrade="Defense Gauntlets"]');
@@ -5016,7 +5142,7 @@ function renderInfantryEditFields(unit, unitData) {
 
       html += `<label>
         <input type="checkbox" class="editSquadUpgrade" data-upgrade="${label}" ${checked} ${disabled} onchange="updateLiveUnitCost()">
-        ${label} (+${upgrade.cost} pts${upgrade.perModel === false ? " flat" : " per model"}) ${upgrade.grantsRule ? "– Grants: " + upgrade.grantsRule : ""}
+        ${label} (${Number(upgrade.cost) >= 0 ? "+" : "-"}${Math.abs(Number(upgrade.cost))} pts${upgrade.perModel === false ? " flat" : " per model"}) ${upgrade.grantsRule ? "– Grants: " + upgrade.grantsRule : ""}
       </label><br>`;
     });
     html += `</div>`;
@@ -5030,7 +5156,7 @@ function renderInfantryEditFields(unit, unitData) {
       html += `
         <label>${label}:
           <input type="number" class="editWeaponReplacement" data-label="${label}" min="0" max="${spec.max}" value="${curr}" style="width:40px;" oninput="updateLiveUnitCost()">
-          (max ${spec.max}, ${spec.cost >= 0 ? "+" : ""}${spec.cost} pts each)
+          (max ${spec.max}, ${Number(spec.cost) >= 0 ? "+" : "-"}${Math.abs(Number(spec.cost))} pts each)
         </label><br>
       `;
     });
@@ -5053,7 +5179,7 @@ function renderInfantryEditFields(unit, unitData) {
     html += `
       <div style="margin-top:10px;"><b>${unitData.options.doctrine.label}:</b><br>
         <select id="editDoctrineSelect" onchange="updateLiveUnitCost()">
-          <option value="">— None —</option>
+                    <option value="">— None (${unitData.options.doctrine.defaultLabel || "Default"}) —</option>
           ${unitData.options.doctrine.choices.map(choice => `
             <option value="${choice.name}"${unit.doctrine === choice.name ? " selected" : ""}>
               ${choice.name} (Special: ${choice.specialRules.join(", ")}; +${choice.costPerModel} pts/model)
@@ -5182,8 +5308,9 @@ function afterInfantryModalRender(unit, unitData) {
 
 // VEHICLE MODAL FIELDS, with live preview
 function renderVehicleUpgradeFields(unit, unitData) {
-  const upgrades = unitData.options.weaponUpgrades;
+  const upgrades = unitData.options?.weaponUpgrades || {};
   let currentSelected = new Set(unit.selectedUpgrades || []);
+  const canForceCV = canForceCommandVehicle(unit, unitData);
 
   function getRequired(set) {
     let required = new Set();
@@ -5210,6 +5337,7 @@ function renderVehicleUpgradeFields(unit, unitData) {
     let allChecked = new Set([...checkedSet, ...required]);
 
     container.innerHTML = "";
+
     Object.entries(upgrades).forEach(([label, upg]) => {
       const id = `upg-${Math.random().toString(36).substr(2, 6)}`;
       let checked = allChecked.has(label) ? "checked" : "";
@@ -5218,20 +5346,29 @@ function renderVehicleUpgradeFields(unit, unitData) {
       container.innerHTML += `
         <label>
           <input type="checkbox" class="editVehicleUpgrade" value="${label}" id="${id}" ${checked} ${disabled}>
-          ${label} (+${upg.cost} pts)
+          ${label} (${Number(upg.cost) >= 0 ? "+" : "-"}${Math.abs(Number(upg.cost))} pts)
         </label><br>
       `;
     });
+
+    if (canForceCV) {
+      container.innerHTML += `
+        <label>
+          <input type="checkbox" id="editForcedCommandVehicle" ${unit.forcedCommandVehicle ? "checked" : ""}>
+          Force Command Vehicle (+10 pts)
+        </label><br>
+      `;
+    }
   }
 
-  let html = `<div style="margin-top:10px;"><b>Weapon Upgrades:</b><br><div id="upgradeBoxList"></div></div>`;
+  let html = `<div style="margin-top:10px;"><b>Vehicle Upgrades:</b><br><div id="upgradeBoxList"></div></div>`;
 
   setTimeout(() => {
     const container = document.getElementById("upgradeBoxList");
     renderCheckboxes(container, currentSelected);
 
     function refresh() {
-      let checkedNow = Array.from(container.querySelectorAll('input[type="checkbox"]:checked')).map(cb => cb.value);
+      let checkedNow = Array.from(container.querySelectorAll('.editVehicleUpgrade:checked')).map(cb => cb.value);
       let required = getRequired(new Set(checkedNow));
       let finalChecked = new Set([...checkedNow, ...required]);
       currentSelected = finalChecked;
@@ -5242,9 +5379,12 @@ function renderVehicleUpgradeFields(unit, unitData) {
     }
 
     function attach() {
-      container.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+      container.querySelectorAll('.editVehicleUpgrade').forEach(cb => {
         cb.addEventListener("change", refresh);
       });
+
+      const forced = document.getElementById("editForcedCommandVehicle");
+      if (forced) forced.addEventListener("change", updateLiveUnitCost);
     }
 
     attach();
@@ -5481,13 +5621,15 @@ function saveEdit() {
   }
 
   // VEHICLES: weapon upgrades with forced logic
-  if (unit.type !== "Infantry" && unit.type !== "Team" && unitData.options && unitData.options.weaponUpgrades) {
+  if (unit.type !== "Infantry" && unit.type !== "Team") {
     let upgrades = [];
     document.querySelectorAll(".editVehicleUpgrade:checked").forEach(cb => upgrades.push(cb.value));
 
+    const vehicleUpgradesDef = unitData.options?.weaponUpgrades || {};
+
     let allUpgrades = new Set(upgrades);
     function addReq(upgLabel) {
-      const upg = unitData.options.weaponUpgrades[upgLabel];
+      const upg = vehicleUpgradesDef[upgLabel];
       if (!upg || !upg.requires) return;
       const reqs = Array.isArray(upg.requires) ? upg.requires : [upg.requires];
       reqs.forEach(dep => {
@@ -5501,6 +5643,9 @@ function saveEdit() {
 
     unit.selectedUpgrades = Array.from(allUpgrades);
 
+    const forcedCVBox = document.getElementById("editForcedCommandVehicle");
+    unit.forcedCommandVehicle = !!(forcedCVBox && forcedCVBox.checked);
+
     const baseCost = (unitData.costs && unitData.costs[unit.veterancy]) || 0;
     let totalCost = baseCost;
     let weapons = Array.isArray(unitData.weapons) ? unitData.weapons.map(w => ({ ...w })) : [];
@@ -5511,7 +5656,7 @@ function saveEdit() {
     const grantedRules = [];
 
     unit.selectedUpgrades.forEach(upgLabel => {
-      const upg = unitData.options.weaponUpgrades[upgLabel];
+      const upg = vehicleUpgradesDef[upgLabel];
       if (!upg || upgradesCounted.has(upgLabel)) return;
 
       totalCost += (Number(upg.cost) || 0);
@@ -5523,6 +5668,11 @@ function saveEdit() {
       if (upg.grantsRule) grantedRules.push(upg.grantsRule);
       if (Array.isArray(upg.grantsRules)) upg.grantsRules.forEach(r => r && grantedRules.push(r));
     });
+
+    if (unit.forcedCommandVehicle) {
+      totalCost += 10;
+      grantedRules.push("Command Vehicle");
+    }
 
     weapons = weapons.filter(w => !removeLabels.has(w.name));
     addWeapons = addWeapons.filter(newW => !removeLabels.has(newW.name));
@@ -5626,14 +5776,19 @@ function renderArmyList() {
             }
           </ul>
         </div>
-        <div><b>Cost:</b> ${unit.cost} pts</div>
-        <button class="edit-btn" onclick="editUnit(${idx})">Edit</button>
-        <button class="remove-btn" onclick="removeUnit(${idx})">Remove</button>
+		<div><b>Cost:</b> ${unit.cost} pts</div>
+		${unit.lockedByArmyBonus
+		  ? `<div style="margin-top:10px;color:#b9c6ff;"><b>Army Bonus Unit:</b> ${unit.armyBonusSource} (locked basic squad)</div>`
+		  : `
+			<button class="edit-btn" onclick="editUnit(${idx})">Edit</button>
+			<button class="remove-btn" onclick="removeUnit(${idx})">Remove</button>
+		  `
+		}
       </div>
     `;
     listDiv.appendChild(card);
   });
-
+  renderSummaryBlock();
   const total = (window.armyList || []).reduce((sum, u) => sum + (Number(u.cost) || 0), 0);
   document.getElementById("totalPointsDiv").innerHTML = `<b>Total Points: ${total}</b>`;
 }
@@ -5887,6 +6042,10 @@ function renderWeaponSpecialRulesPage(pdf, armyList, margin = 55) {
         let ruleKey = r.trim().replace(/\s*\(.+\)$/, "");
         if (ruleKey && weaponSpecialDescriptions[ruleKey]) weaponRulesUsed.add(ruleKey);
       });
+
+      if (/\bPaired\b/i.test(String(row.label || ""))) {
+        weaponRulesUsed.add("Paired");
+      }
     });
 
     if (
@@ -5901,6 +6060,10 @@ function renderWeaponSpecialRulesPage(pdf, armyList, margin = 55) {
           let ruleKey = r.trim().replace(/\s*\(.+\)$/, "");
           if (ruleKey && weaponSpecialDescriptions[ruleKey]) weaponRulesUsed.add(ruleKey);
         });
+
+        if (/\bPaired\b/i.test(String(w.name || ""))) {
+          weaponRulesUsed.add("Paired");
+        }
       });
     }
   });
@@ -5949,7 +6112,7 @@ function renderWeaponSpecialRulesPage(pdf, armyList, margin = 55) {
   });
 }
 
-function renderArmySpecialRulesPage(pdf, rulesText, margin, width) {
+function renderArmySpecialRulesPage(pdf, rulesText, margin, width, faction, selectedBonus) {
   pdf.addPage();
   let y = 64;
 
@@ -5958,6 +6121,18 @@ function renderArmySpecialRulesPage(pdf, rulesText, margin, width) {
   pdf.setTextColor(47, 84, 150);
   pdf.text("Army Special Rules", margin, y);
   y += 24;
+
+  if (faction === "Covenant") {
+    pdf.setFont("helvetica", "bold");
+    pdf.setFontSize(12.5);
+    pdf.setTextColor(0, 0, 0);
+    pdf.text("Selected Caste System bonus:", margin, y);
+    y += 15;
+
+    pdf.setFont("helvetica", "normal");
+    pdf.text(selectedBonus || "None", margin + 12, y);
+    y += 18;
+  }
 
   const ruleSections = String(rulesText || "")
     .split(/\n(?=[A-Z][A-Za-z0-9 '’\-]+(\n|- Effect:))/)
@@ -6059,7 +6234,14 @@ function exportPdf() {
 
   // Army Special Rules page
   if (window.currentFaction && armyRulesText && armyRulesText[window.currentFaction]) {
-    renderArmySpecialRulesPage(pdf, armyRulesText[window.currentFaction], margin, width);
+    renderArmySpecialRulesPage(
+      pdf,
+      armyRulesText[window.currentFaction],
+      margin,
+      width,
+      window.currentFaction,
+      window.selectedArmyBonus
+    );
   }
 
 	const factionSlug = (window.currentFaction || "unknown")
@@ -6079,10 +6261,11 @@ function exportPdf() {
 // SAVE LIST TO FILE
 // =====================
 function saveList() {
-  const data = {
-    armyList: window.armyList,
-    currentFaction: window.currentFaction
-  };
+	const data = {
+	  armyList: window.armyList,
+	  currentFaction: window.currentFaction,
+	  selectedArmyBonus: window.selectedArmyBonus
+	};
   const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
   const url = URL.createObjectURL(blob);
   const a = document.createElement("a");
@@ -6133,8 +6316,9 @@ function loadList() {
           return;
         }
 
-        window.armyList = data.armyList;
-        window.currentFaction = data.currentFaction;
+		window.armyList = data.armyList;
+		window.currentFaction = data.currentFaction;
+		window.selectedArmyBonus = data.selectedArmyBonus || "";
 
         document.getElementById("btnUNSC").classList.toggle("active", data.currentFaction === "UNSC");
         document.getElementById("btnCovenant").classList.toggle("active", data.currentFaction === "Covenant");
@@ -6147,8 +6331,10 @@ function loadList() {
         document.getElementById("sidebar").style.display = "";
         document.getElementById("backBtn").style.display = "";
 
-        populateUnitSelect();
-        renderArmyList();
+		updateArmyBonusUI();
+		syncArmyBonusEffects();
+		populateUnitSelect();
+		renderArmyList();
       } catch (err) {
         alert("Error loading file: " + err);
       }
