@@ -364,7 +364,7 @@ const allWeaponProfiles = {
   // FLOOD CUSTOM WEAPONS
   "Tentacle Lash": 'Range 6", Shots 1, Pen +1, –',
   "Tentacle Whip": 'Range 12", Shots 1, Pen +3, HE (1")',
-  "Explosive Biomass": 'Range –, Shots –, Pen HE, Suicide Charge, HE (2")',
+  "Explosive Biomass": 'Range –, Shots –, Pen HE, Suicide Charge, HE (1")',
 };
 
 // --- Aliases / naming variants (must be AFTER object declaration) ---
@@ -3254,7 +3254,7 @@ const FORERUNNER_UNITS = [
       "Flight",
       "Composed Beings",
       "Energy Shield",
-      { name: "Custodian Uplink", description: "If the Officer is destroyed, immediately replace Composed Beings with Automaton for the remaining models in this unit for the rest of the game." }
+      { name: "Custodian Uplink", description: "If the Officer is destroyed, immediately replace the Composed Beings special rule with Automaton for the remaining models in this unit for the rest of the game." }
     ],
     options: {
       extraMenCost: { Inexperienced: 7, Regular: 10, Veteran: 13 }
@@ -3274,7 +3274,7 @@ const FORERUNNER_UNITS = [
       "Flight",
       "Composed Beings",
       "Energy Shield",
-      { name: "Custodian Uplink", description: "If the Officer is destroyed, immediately replace Composed Beings with Automaton for the remaining models in this unit for the rest of the game." }
+      { name: "Custodian Uplink", description: "If the Officer is destroyed, immediately replace the Composed Beings special rule with Automaton for the remaining models in this unit for the rest of the game." }
     ],
     options: {
       extraMenCost: { Inexperienced: 7, Regular: 10, Veteran: 13 }
@@ -3670,7 +3670,7 @@ const FORERUNNER_VEHICLES = [
       "Flak",
       "Open-topped",
       { name: "Hard-Light Pavise", description: "Shooting attacks that hit the Front arc cause pin markers only if they penetrate (i.e., the damage roll equals or exceeds DV); otherwise ignore pins." },
-      { name: "Gravitic Grapplers", description: "If this aircraft makes an Advance and its movement path crosses one or more enemy non-Aircraft vehicles, then after moving you may forgo all shooting to target one of those vehicles. Roll a D6: On a 1–3, nothing happens. On a 4+ the target is hit; on a natural 6 to hit, the attack gains +1 Pen. The target suffers D2 pin markers, then resolve one Top-Armour damage roll at +2 Pen (or +3 Pen on the natural 6)." }
+      { name: "Gravitic Grapplers", description: "If this aircraft makes an Advance and its movement path crosses one or more enemy non-Aircraft vehicles, then after moving you may forgo all shooting to target one of those vehicles. Roll a D6: On a 1–3, nothing happens. On a 4+ the target is hit. The target suffers D2 pin markers, then resolve one Top-Armour damage roll at +2 Pen." }
     ]
   },
   {
@@ -3911,7 +3911,8 @@ const FLOOD_UNITS = [
     specialRules: [
       "Flood Infection",
 	  "Horror",
-      { name: "Assimilate", description: "If this unit wins an assault against a target affected by Flood Infection, you can replace each surviving Infection Form with an unarmed Combat Form. If so, the unit immediately becomes Regular, becomes an unarmed Combat Form unit and retains its current order die." }     
+      { name: "Assimilate", description: "If this unit wins an assault against a target affected by Flood Infection, you can replace each surviving Infection Form with an unarmed Combat Form. If so, the unit immediately becomes Regular, becomes an unarmed Combat Form unit and retains its current order die." },  
+      { name: "Mindless Hunger", description: "This unit cannot pick up, carry or control objectives. It may still contest objectives." }	  
     ],
     options: {
       extraMenCost: { Inexperienced: 7 }
@@ -3933,9 +3934,9 @@ const FLOOD_UNITS = [
       "Tank Hunters",
       "Infiltrator",
 	  "Horror",
-      { name: "Suicide Charge", description: "If this model successfully assaults an enemy unit and makes contact, it is immediately removed, and the assaulted unit suffers a HE (2\") hit." },
-      { name: "Explosive Biomass", description: "If this model is destroyed (by shooting, assault, or other means), immediately place a 2\" HE template centered on its final position. Resolve hits against all units under the template, friend or foe." },
-      { name: "Spawn Infection Forms", description: "When this unit is destroyed, immediately replace the model with a new unit of 1D3 Inexperienced Infection Forms. Place them as close as possible to the position where the Carrier Form was destroyed, while remaining at least 1\" away from any other units. These Infection Forms lose all pins and use the same Order Die the unit had. If there is not enough space to place them all, place as many as possible." },
+      { name: "Suicide Charge", description: "If this model successfully assaults an enemy unit, it is immediately destroyed, and the assaulted unit suffers a HE (1\") hit. Being down does not halve hits for this attack." },
+      { name: "Explosive Biomass", description: "If this model is destroyed (by shooting, assault, or other means), all units within 1\" suffer a HE (1\") hit. Being down does not halve hits for this attack." },
+      { name: "Spawn Infection Forms", description: "When this unit is destroyed, immediately replace the model with a new unit of 1D3 Inexperienced Infection Forms. Place them as close as possible to the position where the Carrier Form was destroyed, while remaining at least 1\" away from any other units. These Infection Forms lose all pins and use the same Order Die the carrier form unit had. If there is not enough space to place them all, place as many as possible." },
       { name: "Extra Selection", description: "You may take up to 3 Carrier Form Teams as a single choice in any platoon selector that allows an Anti-Tank Team. This does not prevent you from also taking a standard Anti-Tank Team." }
     ]
   },
