@@ -543,12 +543,12 @@ When a Covenant unit is destroyed, one friendly regular or veteran infantry or a
 Zealotry
 
 - Effect: 
-Pinned veteran Covenant units have +1 morale when taking Advance or Run order tests.
+Pinned regular or veteran Covenant units have +1 morale when taking Advance or Run order tests.
 
 Faithful When Supervised
 
 - Effect: 
-Covenant Infantry and Artillery units with Shirkers lose that rule while they are positioned within the morale bubble of a friendly Elite or Brute Officer. If they exit the bubble or the Officer is lost, they regain Shirkers until within range of another valid Officer. If a unit exits the Officer’s morale bubble as part of a Snap to Action activation, it cannot regain Shirkers until the Officer and all units activated through that Snap have completed their orders.
+Covenant Infantry and Artillery units with Shirkers lose that rule while they are positioned within the morale bubble of a friendly Covenant Officer. If they exit the bubble or the Officer is lost, they regain Shirkers until within range of another valid Officer. If a unit exits the Officer’s morale bubble as part of a Snap to Action activation, it cannot regain Shirkers until the Officer and all units activated through that Snap have completed their orders.
 `,
   "Banished": `
 Brotherhood of Chaos
@@ -556,16 +556,16 @@ Brotherhood of Chaos
 - Effect: 
 Once per turn, when a Banished infantry unit is destroyed, you may choose one friendly infantry or artillery unit within 9" of it that has not yet activated this turn and roll a die:
 
-  * On a 5+, the chosen unit activates next. Instead of drawing a random die, draw one of your dice from the bag and issue an order as normal. If pinned, an order test is still needed, as usual.
+  * On a 4+, the chosen unit activates next. Instead of drawing a random die, draw one of your dice from the bag and issue an order as normal. If pinned, an order test is still needed, as usual.
   
-  * If the chosen unit is also within 6" of an officer (or an officer itself), activate on a 4+ instead.
+  * If the chosen unit is also within 6" of an officer (or an officer itself), activate on a 3+ instead.
   
   * If you roll below the requirement, nothing happens instead.
 
 Atriox's Law
 
 - Effect: 
-Units with the Berserker special rule can ignore the compulsory Run behavior caused by failing an Order test while they are within the morale bubble of a Brute Officer. The suppression ends immediately if the unit exits the bubble or if the officer is removed from play.
+Units with the Berserker special rule can ignore the compulsory Run behavior caused by failing an Order test while they are within the morale bubble of a Banished Officer. The suppression ends immediately if the unit exits the bubble or if the officer is removed from play.
 
 Blood Price
 
@@ -1224,7 +1224,7 @@ const UNSC_VEHICLES = [
 	  name: "M850 Grizzly",
 	  type: "Tank",
 	  allowedVeterancy: ["Regular", "Veteran"],
-	  costs: { Regular: 380, Veteran: 456 },
+	  costs: { Regular: 395, Veteran: 475 },
 	  weapons: [
 		{ name: "Turret-mounted twin-linked Heavy Anti-Tank Weapon" },
 		{ name: "Turret-mounted twin-linked Heavy Anti-Tank Weapon" },
@@ -1232,8 +1232,7 @@ const UNSC_VEHICLES = [
 	  ],
 	  damageValue: "10+ (Heavy Tank)",
 	  specialRules: [
-		"Reinforced Front Armour",
-		"Slow"
+		"Reinforced Front Armour"
 	  ]
 	},
 
@@ -1316,6 +1315,33 @@ const UNSC_VEHICLES = [
   },
 
   // SELF-PROPELLED ARTILLERY / ANTI-AIRCRAFT
+	{
+	  name: "M400 Kodiak",
+	  type: "Armoured Car",
+	  allowedVeterancy: ["Regular", "Veteran"],
+	  costs: { Regular: 125, Veteran: 150 },
+	  weapons: [
+		{ name: "Turret-mounted Medium Howitzer" },
+		{ name: "Pintle-mounted MMG (forward arc)" }
+	  ],
+	  damageValue: "7+ (Armoured Car)",
+	  specialRules: [
+		"Slow Load"
+	  ]
+	},
+	{
+	  name: "Rhino",
+	  type: "Tank",
+	  allowedVeterancy: ["Regular", "Veteran"],
+	  costs: { Regular: 235, Veteran: 282 },
+	  weapons: [
+		{ name: "Turret-mounted Heavy Howitzer" }
+	  ],
+	  damageValue: "9+ (Medium Tank)",
+	  specialRules: [
+		"Slow Load"
+	  ]
+	},
   {
     name: "M808B2 Sun Devil",
     type: "Tank",
@@ -1551,7 +1577,7 @@ const UNSC_VEHICLES = [
     name: "AC-220 Vulture",
     type: "Aircraft",
     allowedVeterancy: ["Regular", "Veteran"],
-    costs: { Regular: 300, Veteran: 360 },
+    costs: { Regular: 360, Veteran: 432 },
     weapons: [
       { name: "Hull-mounted Quad-linked Forward-facing Heavy Autocannon" },
       { name: "Hull-mounted Quad-linked Forward-facing Heavy Autocannon" },
@@ -1559,12 +1585,31 @@ const UNSC_VEHICLES = [
       { name: "Hull-mounted Quad-linked Forward-facing Heavy Autocannon" },
       { name: "Hull-mounted Forward-facing Rocket Launcher" }
     ],
-    damageValue: "8+ (Heavy Aircraft)",
+    damageValue: "9+ (Super-Heavy Aircraft)",
     specialRules: [
       "Flak",
 	  "Titanic Aircraft: When rolling on the Aircraft Damage chart against this unit, reduce the result by 1 (to a minimum of 1)."
     ]
   },
+	{
+	  name: "Condor Gunship",
+	  type: "Aircraft",
+	  allowedVeterancy: ["Regular", "Veteran"],
+	  costs: { Regular: 415, Veteran: 500 },
+	  weapons: [
+		{ name: "Turret-mounted Super-Heavy Anti-Tank Weapon" },
+		{ name: "Turret-mounted Linked Light Automatic Cannon" },
+		{ name: "Turret-mounted Linked Light Automatic Cannon" },
+		{ name: "Turret-mounted Linked Light Automatic Cannon" },
+		{ name: "Turret-mounted Linked Light Automatic Cannon" },
+		{ name: "Turret-mounted Linked Light Automatic Cannon" }
+	  ],
+	  damageValue: "9+ (Super-Heavy Aircraft)",
+	  specialRules: [
+		"Flak",
+		"Titanic Aircraft: When rolling on the Aircraft Damage chart against this unit, reduce the result by 1 (to a minimum of 1)."
+	  ]
+	},
 
   // TRANSPORTS AND TOWS
   {
@@ -2077,54 +2122,54 @@ const COVENANT_UNITS = [
 // --- COVENANT VEHICLES (Tank Example) ---
 const COVENANT_VEHICLES = [
   // TANKS
-  {
-    name: "Zurdo-pattern Wraith",
-    type: "Tank",
-    allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
-    costs: { Inexperienced: 140, Regular: 175, Veteran: 210 },
-    weapons: [
-      { name: "Casement-mounted Forward-facing Medium Anti-Tank Weapon" }
-    ],
-    damageValue: "9+ (Medium Hover Tank)",
-    transportCapacity: 0,
-    options: {
-      weaponUpgrades: {
-        "Pintle-mounted Medium Plasma MG (forward arc)": {
-          cost: 15,
-          replaces: null,
-          addsWeapon: "Pintle-mounted Medium Plasma MG (forward arc)"
-        }
-      }
-    },
-    specialRules: [
-      "Weak Sides",
-      "Versatile: The medium Anti-Tank Weapon can also fire as a medium howitzer."
-    ]
-  },
-  {
-    name: "Muz-pattern Wraith",
-    type: "Tank",
-    allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
-    costs: { Inexperienced: 196, Regular: 245, Veteran: 294 },
-    weapons: [
-      { name: "Casement-mounted Forward-facing Heavy Anti-Tank Weapon" },
-      { name: "Forward-facing Hull-mounted Paired Heavy Plasma MG" }
-    ],
-    damageValue: "9+ (Medium Hover Tank)",
-    transportCapacity: 0,
-    options: {
-      weaponUpgrades: {
-        "Pintle-mounted Medium Plasma MG (forward arc)": {
-          cost: 15,
-          replaces: null,
-          addsWeapon: "Pintle-mounted Medium Plasma MG (forward arc)"
-        }
-      }
-    },
-    specialRules: [
-      "Versatile: The heavy Anti-Tank Weapon can also fire as a medium howitzer."
-    ]
-  },
+	{
+	  name: "Zurdo-pattern Wraith",
+	  type: "Tank",
+	  allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
+	  costs: { Inexperienced: 144, Regular: 180, Veteran: 216 },
+	  weapons: [
+		{ name: "Casement-mounted Forward-facing Medium Anti-Tank Weapon" }
+	  ],
+	  damageValue: "9+ (Medium Hover Tank)",
+	  transportCapacity: 0,
+	  options: {
+		weaponUpgrades: {
+		  "Pintle-mounted Medium Plasma MG (forward arc)": {
+			cost: 15,
+			replaces: null,
+			addsWeapon: "Pintle-mounted Medium Plasma MG (forward arc)"
+		  }
+		}
+	  },
+	  specialRules: [
+		"Weak Sides",
+		"Versatile: The medium anti-tank Weapon can also fire as a medium howitzer."
+	  ]
+	},
+	{
+	  name: "Muz-pattern Wraith",
+	  type: "Tank",
+	  allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
+	  costs: { Inexperienced: 192, Regular: 240, Veteran: 288 },
+	  weapons: [
+		{ name: "Casement-mounted Forward-facing Heavy Anti-Tank Weapon" },
+		{ name: "Forward-facing Hull-mounted Paired Heavy Plasma MG" }
+	  ],
+	  damageValue: "9+ (Medium Hover Tank)",
+	  transportCapacity: 0,
+	  options: {
+		weaponUpgrades: {
+		  "Pintle-mounted Medium Plasma MG (forward arc)": {
+			cost: 15,
+			replaces: null,
+			addsWeapon: "Pintle-mounted Medium Plasma MG (forward arc)"
+		  }
+		}
+	  },
+	  specialRules: [
+		"Versatile: The heavy anti-tank Weapon can also fire as a medium howitzer."
+	  ]
+	},
 
   // WALKERS
   {
@@ -2174,31 +2219,31 @@ const COVENANT_VEHICLES = [
       "Slow"
     ]
   },
-  {
-    name: "Deutoros-pattern Scarab",
-    type: "Walker",
-    allowedVeterancy: ["Regular", "Veteran"],
-    costs: { Regular: 390, Veteran: 468 },
-    weapons: [
-      { name: "Hull-mounted Forward-facing Super-Heavy Anti-Tank Weapon" },
-      { name: "Turret-mounted Heavy Autocannon" }
-    ],
-    damageValue: "10+ (Super-heavy Walker)",
-    transportCapacity: 20,
-    specialRules: [
-      "Flak",
-      "Slow",
-      "Titanic Walker: When rolling on the Vehicle Damage chart against this unit, reduce the result by 1 (to a minimum of 1)."
-    ],
-    options: {
-      weaponUpgrades: {
-        "3 Pintle-mounted Medium Plasma Machine Gun": {
-          cost: 45,
-          addsWeapon: "3x Pintle-mounted Medium Plasma Machine Gun"
-        }
-      }
-    }
-  },
+	{
+	  name: "Deutoros-pattern Scarab",
+	  type: "Walker",
+	  allowedVeterancy: ["Regular", "Veteran"],
+	  costs: { Regular: 435, Veteran: 520 },
+	  weapons: [
+		{ name: "Hull-mounted Forward-facing Super-Heavy Anti-Tank Weapon" },
+		{ name: "Turret-mounted Heavy Automatic Cannon" }
+	  ],
+	  damageValue: "10+ (Super-heavy Walker)",
+	  transportCapacity: 20,
+	  specialRules: [
+		"Flak",
+		"Titanic Walker: When rolling on the Vehicle Damage chart against this unit, reduce the result by 1 (to a minimum of 1).",
+		"Towering Strider: For movement purposes, this walker treats all terrain and units as open ground, except tall terrain and other Titanic Walkers."
+	  ],
+	  options: {
+		weaponUpgrades: {
+		  "3 Pintle-mounted Medium Plasma MGs (left, right, rear arcs)": {
+			cost: 45,
+			addsWeapon: "Pintle-mounted Medium Plasma MG (left arc), Pintle-mounted Medium Plasma MG (right arc), Pintle-mounted Medium Plasma MG (rear arc)"
+		  }
+		}
+	  }
+	},
 
   // ANTI-AIRCRAFT VEHICLES
   {
@@ -2903,54 +2948,54 @@ const BANISHED_UNITS = [
 // --- BANISHED VEHICLES (Tank Example) ---
 const BANISHED_VEHICLES = [
   // TANKS
-  {
-    name: "Zurdo-pattern Wraith",
-    type: "Tank",
-    allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
-    costs: { Inexperienced: 140, Regular: 175, Veteran: 210 },
-    weapons: [
-      { name: "Casement-mounted Forward-facing Medium Anti-Tank Weapon" }
-    ],
-    damageValue: "9+ (Medium Hover Tank)",
-    transportCapacity: 0,
-    options: {
-      weaponUpgrades: {
-        "Pintle-mounted Medium Plasma MG (forward arc)": {
-          cost: 15,
-          replaces: null,
-          addsWeapon: "Pintle-mounted Medium Plasma MG (forward arc)"
-        }
-      }
-    },
-    specialRules: [
-      "Weak Sides",
-      "Versatile: The medium Anti-Tank Weapon can also fire as a medium howitzer."
-    ]
-  },
-  {
-    name: "Muz-pattern Wraith",
-    type: "Tank",
-    allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
-    costs: { Inexperienced: 196, Regular: 245, Veteran: 294 },
-    weapons: [
-      { name: "Casement-mounted Forward-facing Heavy Anti-Tank Weapon" },
-      { name: "Forward-facing Hull-mounted Paired Heavy Plasma MG" }
-    ],
-    damageValue: "9+ (Medium Hover Tank)",
-    transportCapacity: 0,
-    options: {
-      weaponUpgrades: {
-        "Pintle-mounted Medium Plasma MG (forward arc)": {
-          cost: 15,
-          replaces: null,
-          addsWeapon: "Pintle-mounted Medium Plasma MG (forward arc)"
-        }
-      }
-    },
-    specialRules: [
-      "Versatile: The heavy Anti-Tank Weapon can also fire as a medium howitzer."
-    ]
-  },
+	{
+	  name: "Zurdo-pattern Wraith",
+	  type: "Tank",
+	  allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
+	  costs: { Inexperienced: 144, Regular: 180, Veteran: 216 },
+	  weapons: [
+		{ name: "Casement-mounted Forward-facing Medium Anti-Tank Weapon" }
+	  ],
+	  damageValue: "9+ (Medium Hover Tank)",
+	  transportCapacity: 0,
+	  options: {
+		weaponUpgrades: {
+		  "Pintle-mounted Medium Plasma MG (forward arc)": {
+			cost: 15,
+			replaces: null,
+			addsWeapon: "Pintle-mounted Medium Plasma MG (forward arc)"
+		  }
+		}
+	  },
+	  specialRules: [
+		"Weak Sides",
+		"Versatile: The medium anti-tank Weapon can also fire as a medium howitzer."
+	  ]
+	},
+	{
+	  name: "Muz-pattern Wraith",
+	  type: "Tank",
+	  allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
+	  costs: { Inexperienced: 192, Regular: 240, Veteran: 288 },
+	  weapons: [
+		{ name: "Casement-mounted Forward-facing Heavy Anti-Tank Weapon" },
+		{ name: "Forward-facing Hull-mounted Paired Heavy Plasma MG" }
+	  ],
+	  damageValue: "9+ (Medium Hover Tank)",
+	  transportCapacity: 0,
+	  options: {
+		weaponUpgrades: {
+		  "Pintle-mounted Medium Plasma MG (forward arc)": {
+			cost: 15,
+			replaces: null,
+			addsWeapon: "Pintle-mounted Medium Plasma MG (forward arc)"
+		  }
+		}
+	  },
+	  specialRules: [
+		"Versatile: The heavy anti-tank Weapon can also fire as a medium howitzer."
+	  ]
+	},
 
   // WALKERS
   {
@@ -3028,23 +3073,23 @@ const BANISHED_VEHICLES = [
 	damageValue: "7+ (Light Walker)", transportCapacity: 0,
 	specialRules: [ "Assault", "Fist", "Open-topped", "Siege Fists: +1 Penetration to melee attacks." ]
 	},
-  {
-    name: "Barukaza Workshop Scarab",
-    type: "Walker",
-    allowedVeterancy: ["Regular", "Veteran"],
-    costs: { Regular: 405, Veteran: 486 },
-    weapons: [
-      { name: "Hull-mounted Forward-facing Super-Heavy Anti-Tank Weapon" },
-      { name: "Turret-mounted Rocket Launcher" }
-    ],
-    damageValue: "10+ (Super-heavy Walker)",
-    transportCapacity: 20,
-    specialRules: [
-      "Flak",
-      "Slow",
-      "Titanic Walker: When rolling on the Vehicle Damage chart against this unit, reduce the result by 1 (to a minimum of 1)."
-    ]
-  },
+	{
+	  name: "Barukaza Workshop Scarab",
+	  type: "Walker",
+	  allowedVeterancy: ["Regular", "Veteran"],
+	  costs: { Regular: 445, Veteran: 535 },
+	  weapons: [
+		{ name: "Hull-mounted Forward-facing Super-Heavy Anti-Tank Weapon" },
+		{ name: "Turret-mounted Rocket Launcher" }
+	  ],
+	  damageValue: "10+ (Super-heavy Walker)",
+	  transportCapacity: 20,
+	  specialRules: [
+		"Flak",
+		"Titanic Walker: When rolling on the Vehicle Damage chart against this unit, reduce the result by 1 (to a minimum of 1).",
+		"Towering Strider: For movement purposes, this walker treats all terrain and units as open ground, except tall terrain and other Titanic Walkers."
+	  ]
+	},
 
   // ANTI-AIRCRAFT VEHICLES
   {
@@ -3106,13 +3151,23 @@ const BANISHED_VEHICLES = [
     ]
   },
 	{
-	name: "Eklon'Dal Workshop \"Marauder\"",
-	type: "Car",
-	allowedVeterancy: ["Regular", "Veteran"],
-	costs: { Regular: 145, Veteran: 174 },
-	weapons: [ { name: "Turret-mounted Light Anti-Tank Weapon" }, { name: "Coaxial Rocket Launcher" } ],
-	damageValue: "7+ (Light Hover Vehicle)", transportCapacity: 0,
-	specialRules: [ "Recce", "Agile", "Versatile: The Light AT Gun can also fire as a Light Howitzer.", "Open-topped" ]
+	  name: "Eklon'Dal Workshop \"Marauder\"",
+	  type: "Car",
+	  allowedVeterancy: ["Regular", "Veteran"],
+	  costs: { Regular: 110, Veteran: 132 },
+	  weapons: [
+		{ name: "Turret-mounted Light Anti-Tank Weapon" },
+		{ name: "Coaxial Rocket Launcher" }
+	  ],
+	  damageValue: "7+ (Light Hover Vehicle)",
+	  transportCapacity: 0,
+	  specialRules: [
+		"Recce",
+		"Agile",
+		"Versatile: The Light Anti-Tank Weapon can also fire as a Light Howitzer.",
+		"Coaxial Rocket Launcher: When this vehicle fires, it may fire either its Light Anti-Tank Weapon or its Coaxial Rocket Launcher, but not both.",
+		"Open-topped"
+	  ]
 	},
   {
     name: "Type-25 RAV \"Chopper\"",
@@ -3694,14 +3749,15 @@ const FORERUNNER_VEHICLES = [
 	  name: "Retriever Sentinel",
 	  type: "Aircraft",
 	  allowedVeterancy: ["Regular", "Veteran"],
-	  costs: { Regular: 235, Veteran: 282 },
+	  costs: { Regular: 315, Veteran: 380 },
 	  weapons: [
 		{ name: "Hull-mounted Forward-facing Super-Heavy Anti-Tank Weapon" }
 	  ],
-	  damageValue: "8+ (Heavy Aircraft)",
+	  damageValue: "9+ (Super-Heavy Aircraft)",
 	  specialRules: [
 		"Flak",
-		"Titanic Aircraft: When rolling on the Aircraft Damage chart against this unit, reduce the result by 1 (to a minimum of 1)."
+		"Titanic Aircraft: When rolling on the Aircraft Damage chart against this unit, reduce the result by 1 (to a minimum of 1).",
+		"Gravitic Beam: When this unit is given a successful Fire order, it may activate its gravitic beam. If it does, each other unit within 6\" of this unit receives D3 pins."
 	  ],
 	  options: {
 		weaponUpgrades: {
