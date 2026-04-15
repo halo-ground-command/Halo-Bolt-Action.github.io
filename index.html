@@ -405,11 +405,11 @@ const weaponSpecialDescriptions = {
   "Battery Charge": "Has a -1 penalty to hit when shooting.",
   "Cover Negation": "When this weapon hits an Infantry or Artillery unit that is in soft cover and not Down, any natural 6 rolled to wound worsens the target’s cover save by one step, for that wound only.",
   "Fixed": "Fixed weapons can only fire within a 45-degree arc. A Run order must be used to reposition them.",
-  "Flamethrower": "Automatically hits units in buildings/fortifications, inflicting D6 hits and +1 pin per hit. Always targets top armor on vehicles. Units hit must pass a morale test or be destroyed. Chance to run out of fuel after use.",
-  "HE": "Uses templates (1–4). Hits multiple models, causing pins based on template size. HE also has PEN values according to the template.",
-  "Howitzer": "Fires either direct or Indirect Fire (minimum range applies; starts hitting at 6+, improves each turn targeting same unit unless moving). Switching spotter also resets accuracy progression.",
-  "Indirect Fire": "Can target units without direct line of sight with a Spotter/Observer. Begins hitting at 6+, improving each consecutive turn. Hits vehicles on top armor.",
-  "Knockback": "After hitting infantry, roll D6: on 4+, gains 1 pin and move target unit 3\" in opposite direction. Stops 1\" from obstacles, table edge, buildings or other units.",
+  "Flamethrower": "Automatically hits units in buildings/fortifications, inflicting D6 hits and +1 pin per hit. Always targets top armor on vehicles, and ignores -1 for long range. Units hit must pass a morale test or be destroyed. Chance to run out of fuel after use.",
+  "HE": "Uses templates (1–4). Hits multiple models, causes pins based on template size, and uses the template’s PEN value.",
+  "Howitzer": "Fires either direct with no minimum range or Indirect Fire (minimum range applies; starts hitting at 6+, improves each turn targeting same unit unless moving). Switching spotter also resets accuracy progression.",
+  "Indirect Fire": "Fires indirectly starting on 6+ to hit, improving against the same target each turn. Uses the listed minimum range, hits vehicles on top armor, and resets if the firer moves or changes spotter.",
+  "Knockback": "After an ungarrisoned infantry unit takes at least 1 hit, roll D6: on 4+, it gains 1 pin and must move 3\" directly away. If this would move it into impassable terrain, a building, or another unit, it stops 1\" short.",
   "Overcharge": "Before shooting, choose Overcharge: ignores Energy Shield rule, can pin vehicles up to armor 9+, but imposes a -1 to-hit penalty.",
   "Overheat": "Before shooting, choose which weapons to overheat; each overheated weapon gains +1 shot. After shooting, place 1 pin on the firing unit for each overheated weapon.",
   "MG": "Behaves exactly like a standard machine gun for all game rules and modifiers.",
@@ -440,7 +440,7 @@ window.unitSpecialDescriptions = {
   "Fieldcraft": "Treat rough terrain as open ground for movement. When assaulting through rough ground, defenders lose Defensive Position.",
   "Strikes First": "Counts as having Defensive Position bonus in close quarters when performing an assault. If the opponent also has Defensive Position, Strikes First or a rule cancels this rule, then fight simultaneously.",
   "Flight": "Advance 12\"; Run 18\"; ignore terrain for movement. Cannot end in impassable terrain (or in rough ground after a Run). If ambushed/fired upon while flying, no soft/hard cover saves. Cannot pick up or carry objectives on a Run order. Infantry may instead move on the ground using normal movement rules.",
-  "Flood Infection": "When winning vs Infantry or Artillery in CQ, roll one D6 per enemy casualty. Each roll equal to or above this flood unit’s damage value returns a slain model (up to starting size). Automatons and Composed Beings are immune. Energy Shields increase damage value by 1 for the purposes of this rule.",
+  "Flood Infection": "Automatons and Composed Beings are immune to this rule. When winning vs Infantry or Artillery in CQ, immediately roll one D6 per enemy model removed during and after combat. Each roll equal to or above this flood unit’s damage value returns a slain model (up to starting size). If the flood unit has Energy Shields, it increases the requirement by +1.",
   "Green": "First casualty triggers a D6 roll: 1 = gain D6 pins and go Down, 6 = unit upgraded to Regular morale (9).",
   "Gun Shield": "Crew of a gun with a gun shield count as in soft cover vs small arms hits from within the gun’s front arc.",
   "Horror": "When this unit assaults an enemy, that enemy suffers -1 Morale and must immediately morale test, on a fail it goes Down (Loses Defensive position bonus) and cannot react. Units with Horror are immune to this rule.",
@@ -456,7 +456,7 @@ window.unitSpecialDescriptions = {
   "Strong": "Ignores Team and Fixed for weapons this unit carries. In close quarters, for every three friendly models involved in the fight, 1 model rolls an extra attack die.",
   "Stubborn": "Ignores pin modifiers on morale checks (but not order tests).",
   "Spotter": "Unarmed model with Infiltrator rule for an indirect-fire team. Acts separately, shares the team’s order die, counts as Down without a die, cannot attack/capture. Removed if the unit is destroyed. Reg/Vet indirect fire/howitzer units may target what any friendly spotter/FO can see.", 
-  "Tank Hunters": "In assaults, use full anti-tank damage rules and ignore Tank Fear. Add +1 to melee rolls vs vehicles.",
+  "Tank Hunters": "In assaults, use full anti-tank damage rules and ignore Tank Fear. Add +1 to damage rolls vs vehicles.",
   "Team Weapon": "Crew-served weapon. Crew count as unarmed and do not fire personal ranged weapons while operating it. Needs at least 2 crew to fire at full effect; if only 1 crewman remains, the weapon can still fire but suffers -1 to hit. Squad-based team weapons also need their loader within 1\" or they suffer -1 to hit.",
   "Tooth and Claw": "Rolls 3 dice instead of 1 per model in close combat.",
   "Tough Fighters": "Re-roll failed rolls in close combat vs infantry, artillery and walkers with assault.",
@@ -477,7 +477,7 @@ window.unitSpecialDescriptions = {
 window.vehicleSpecialDescriptions = {
   "Agile": "Make one additional 90° pivot per move, or 1 pivot on a Fire order.",
   "Amphibious": "Advance half-speed over deep water. May fire, but hull-mounted weapons may be unusable.",
-  "Armoured All Round": "Full armor value from all angles; no weak sides/rear.",
+  "Armoured All Round": "Uses full armor value against all hits; no side, rear, or top armor modifiers apply.",
   "Assault": "May assault infantry and vehicles using walker assault rules. While Down, gains a 6+ cover save in the open (or +1 to existing cover).",
   "Command Vehicle": "+1 morale within 12\", can issue one 'You men, snap to action!' to a nearby friendly vehicle.",
   "Faster": "Advance 12\", Run 24\".",
@@ -486,7 +486,7 @@ window.vehicleSpecialDescriptions = {
   "Medical Vehicle": "Treats infantry/artillery within 6\" as having medic support.",
   "Nimble": "Evasion save improves by +1, from 5+ to 4+.",
   "One-Man Turret": "Must pass order test to Advance, fires main gun or rear MG (not both).",
-  "Open-topped": "Pinned by small arms, automatically destroyed if damaged in assaults, +1 damage if hit on top armor.",
+  "Open-topped": "Pinned by small arms like a soft-skinned vehicle, automatically destroyed if damaged in assaults, and suffers +1 to damage rolls and damage table results when hit on top armor.",
   "Recce": "May react with a movement when targeted, reverse with advance at full speed.",
   "Reinforced Front Armour": "Front armor counts +1 higher.",
   "Slow": "Advance 6\", Run 12\".",
@@ -531,7 +531,7 @@ When creating a Covenant army, you may select one bonus from the following list:
   
   * Cannon Fodder: Your army gets a free basic inexperienced Grunt squad unit.
   
-  * Wall of Deflection: If the line of fire to a Covenant infantry or artillery unit without the Shield Wall rule passes through at least one friendly Shield Wall or Resilient unit, improve whatever cover save that unit already has (soft or hard) by +1 step. This bonus cannot improve cover saves beyond 2+, as rolls of 1 always fail.
+  * Wall of Deflection: If the line of fire to a Covenant infantry or artillery unit without the Shield Wall or Resilient rule passes through at least one friendly Shield Wall or Resilient unit, improve whatever cover save that unit already has by +1. This bonus cannot improve cover saves beyond 2+, as rolls of 1 always fail.
   
   * Fury Unleashed: Covenant infantry units that fail their Run/Assault order test when within 9" of a Brute unit may re-roll the failed order test.
 
@@ -822,12 +822,12 @@ const UNSC_UNITS = [
     },
     weaponReplacements: {
       "DMRs":      { max: 5, cost: -5, replaces: "Assault Rifle", grants: "DMR" },
-      "Shotguns":  { max: 2, cost: -4, replaces: "Assault Rifle", grants: "Shotgun" },
+      "Shotguns":  { max: 2, cost: -3, replaces: "Assault Rifle", grants: "Shotgun" },
       "LMG":       { max: 1, cost: 9,  replaces: "Assault Rifle", grants: "LMG" }
     },
     ncoReplacement: {
       options: ["Assault Rifle", "DMR", "Shotgun"],
-      costs: { "DMR": -5, "Shotgun": -4 }
+      costs: { "DMR": -5, "Shotgun": -3 }
     }
   }
 },
@@ -846,13 +846,13 @@ const UNSC_UNITS = [
       "Anti-Tank Grenades": { cost: 2, grantsRule: "Tank Hunters" }
     },
     weaponReplacements: {
-      "Shotguns":     { max: 4, cost: -4, replaces: "Assault Rifle", grants: "Shotgun" },
+      "Shotguns":     { max: 4, cost: -3, replaces: "Assault Rifle", grants: "Shotgun" },
       "SMGs":         { max: 4, cost: -2, replaces: "Assault Rifle", grants: "Submachine Gun" },
       "Flamethrower": { max: 1, cost: 24, replaces: "Assault Rifle", grants: "Infantry Flamethrower" }
     },
     ncoReplacement: {
       options: ["Assault Rifle", "Shotgun", "SMG"],
-      costs: { "Shotgun": -4, "SMG": -2 }
+      costs: { "Shotgun": -3, "SMG": -2 }
     }
   }
 },
@@ -872,13 +872,13 @@ const UNSC_UNITS = [
     },
     weaponReplacements: {
       "Battle Rifles":   { max: 6, cost: -3, replaces: "Assault Rifle", grants: "Battle Rifle" },
-	  "Shotguns":   { max: 6, cost: -4, replaces: "Assault Rifle", grants: "Shotgun" },
+	  "Shotguns":   { max: 6, cost: -3, replaces: "Assault Rifle", grants: "Shotgun" },
       "Submachine Guns": { max: 4, cost: -2, replaces: "Assault Rifle", grants: "Submachine Gun" },
       "LMG":             { max: 2, cost: 9,  replaces: "Assault Rifle", grants: "LMG" }
     },
     ncoReplacement: {
       options: ["Assault Rifle", "Battle Rifle", "Submachine Gun", "Shotgun"],
-      costs: { "Battle Rifle": -3, "Submachine Gun": -2, "Shotgun": -4 }
+      costs: { "Battle Rifle": -3, "Submachine Gun": -2, "Shotgun": -3 }
     }
   }
 },
@@ -910,7 +910,7 @@ const UNSC_UNITS = [
         "DMR": -5,
         "Battle Rifle": -3,
         "Submachine Gun": -2,
-        "Shotgun": -4
+        "Shotgun": -3
       }
     }
   }
@@ -935,7 +935,7 @@ const UNSC_UNITS = [
     },
     weaponReplacements: {
       "Battle Rifles":     { max: 3, cost: -3, replaces: "Assault Rifle", grants: "Battle Rifle" },
-      "Shotguns":          { max: 3, cost: -4, replaces: "Assault Rifle", grants: "Shotgun" },
+      "Shotguns":          { max: 3, cost: -3, replaces: "Assault Rifle", grants: "Shotgun" },
       "DMRs":              { max: 3, cost: -5, replaces: "Assault Rifle", grants: "DMR" },
       "Grenade Launcher":  { max: 1, cost: 17, replaces: "Assault Rifle", grants: "Grenade Launcher" },
       "LMG":               { max: 1, cost: 9,  replaces: "Assault Rifle", grants: "LMG" },
@@ -943,7 +943,7 @@ const UNSC_UNITS = [
     },
     ncoReplacement: {
       options: ["Assault Rifle", "Battle Rifle", "Shotgun", "DMR"],
-      costs: { "Battle Rifle": -3, "Shotgun": -4, "DMR": -5 }
+      costs: { "Battle Rifle": -3, "Shotgun": -3, "DMR": -5 }
     }
   }
 },
@@ -1166,7 +1166,7 @@ const UNSC_UNITS = [
 		weaponReplacements: { },
 		ncoReplacement: {
 		  options: ["Assault Rifle", "Battle Rifle", "Shotgun", "DMR"],
-		  costs: { "Battle Rifle": -3, "Shotgun": -4, "DMR": -5 }
+		  costs: { "Battle Rifle": -3, "Shotgun": -3, "DMR": -5 }
 		}
 	  }
 	}
@@ -2130,7 +2130,7 @@ const COVENANT_VEHICLES = [
 	  weapons: [
 		{ name: "Casement-mounted Forward-facing Medium Anti-Tank Weapon" }
 	  ],
-	  damageValue: "9+ (Medium Hover Tank)",
+	  damageValue: "9+ (Medium Anti-Grav Tank)",
 	  transportCapacity: 0,
 	  options: {
 		weaponUpgrades: {
@@ -2143,6 +2143,7 @@ const COVENANT_VEHICLES = [
 	  },
 	  specialRules: [
 		"Weak Sides",
+		"Heavy Thrusters: This vehicle only doubles its movement on roads when given a Run order.",
 		"Versatile: The medium anti-tank Weapon can also fire as a medium howitzer."
 	  ]
 	},
@@ -2155,7 +2156,7 @@ const COVENANT_VEHICLES = [
 		{ name: "Casement-mounted Forward-facing Heavy Anti-Tank Weapon" },
 		{ name: "Forward-facing Hull-mounted Paired Heavy Plasma MG" }
 	  ],
-	  damageValue: "9+ (Medium Hover Tank)",
+	  damageValue: "9+ (Medium Anti-Grav Tank)",
 	  transportCapacity: 0,
 	  options: {
 		weaponUpgrades: {
@@ -2167,6 +2168,7 @@ const COVENANT_VEHICLES = [
 		}
 	  },
 	  specialRules: [
+	    "Heavy Thrusters: This vehicle only doubles its movement on roads when given a Run order.",
 		"Versatile: The heavy anti-tank Weapon can also fire as a medium howitzer."
 	  ]
 	},
@@ -2255,7 +2257,7 @@ const COVENANT_VEHICLES = [
       { name: "Twin-linked Casement-mounted Forward-facing Fuel Rod Autocannon" },
       { name: "Twin-linked Casement-mounted Forward-facing Fuel Rod Autocannon" }
     ],
-    damageValue: "9+ (Heavy Hover Tank)",
+    damageValue: "9+ (Heavy Anti-Grav Tank)",
     transportCapacity: 0,
     options: {
       weaponUpgrades: {
@@ -2268,6 +2270,7 @@ const COVENANT_VEHICLES = [
     },
     specialRules: [
       "Weak Sides",
+	  "Heavy Thrusters: This vehicle only doubles its movement on roads when given a Run order.",
       "Flak"
     ]
   },
@@ -2281,7 +2284,7 @@ const COVENANT_VEHICLES = [
     weapons: [
       { name: "Hull-mounted Forward-facing Paired Heavy Plasma MG" }
     ],
-    damageValue: "6+ (Soft-skin Hovercraft)",
+    damageValue: "6+ (Soft-skin Anti-Grav)",
     transportCapacity: 0,
     specialRules: [
       "Recce",
@@ -2298,7 +2301,7 @@ const COVENANT_VEHICLES = [
     weapons: [
       { name: "Turret-mounted Paired Heavy Plasma MG" }
     ],
-    damageValue: "7+ (Armoured Hovercraft)",
+    damageValue: "7+ (Armoured Anti-Grav)",
     transportCapacity: 2,
     specialRules: [
       "Open-topped",
@@ -2313,7 +2316,7 @@ const COVENANT_VEHICLES = [
     weapons: [
       { name: "Pintle-mounted Medium Plasma MG (360° arc of fire)" }
     ],
-    damageValue: "7+ (Light Hover Vehicle)",
+    damageValue: "7+ (Light Anti-Grav Vehicle)",
     transportCapacity: 4,
     specialRules: [
       "Open-topped"
@@ -2343,7 +2346,7 @@ const COVENANT_VEHICLES = [
     weapons: [
       { name: "Casement-mounted Forward-facing Light Anti-Tank Weapon" }
     ],
-    damageValue: "7+ (Light Hover Vehicle)",
+    damageValue: "7+ (Light Anti-Grav Vehicle)",
     transportCapacity: 0,
     specialRules: [
       "Recce",
@@ -2440,7 +2443,7 @@ const COVENANT_VEHICLES = [
     allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
     costs: { Inexperienced: 32, Regular: 40, Veteran: 48 },
     weapons: [],
-    damageValue: "7+ (Armoured Hovercraft)",
+    damageValue: "7+ (Armoured Anti-Grav)",
     transportCapacity: 10,
     options: {
       weaponUpgrades: {
@@ -2956,7 +2959,7 @@ const BANISHED_VEHICLES = [
 	  weapons: [
 		{ name: "Casement-mounted Forward-facing Medium Anti-Tank Weapon" }
 	  ],
-	  damageValue: "9+ (Medium Hover Tank)",
+	  damageValue: "9+ (Medium Anti-Grav Tank)",
 	  transportCapacity: 0,
 	  options: {
 		weaponUpgrades: {
@@ -2969,6 +2972,7 @@ const BANISHED_VEHICLES = [
 	  },
 	  specialRules: [
 		"Weak Sides",
+		"Heavy Thrusters: This vehicle only doubles its movement on roads when given a Run order.",
 		"Versatile: The medium anti-tank Weapon can also fire as a medium howitzer."
 	  ]
 	},
@@ -2981,7 +2985,7 @@ const BANISHED_VEHICLES = [
 		{ name: "Casement-mounted Forward-facing Heavy Anti-Tank Weapon" },
 		{ name: "Forward-facing Hull-mounted Paired Heavy Plasma MG" }
 	  ],
-	  damageValue: "9+ (Medium Hover Tank)",
+	  damageValue: "9+ (Medium Anti-Grav Tank)",
 	  transportCapacity: 0,
 	  options: {
 		weaponUpgrades: {
@@ -2993,6 +2997,7 @@ const BANISHED_VEHICLES = [
 		}
 	  },
 	  specialRules: [
+	    "Heavy Thrusters: This vehicle only doubles its movement on roads when given a Run order.",
 		"Versatile: The heavy anti-tank Weapon can also fire as a medium howitzer."
 	  ]
 	},
@@ -3101,7 +3106,7 @@ const BANISHED_VEHICLES = [
       { name: "Twin-linked Casement-mounted Forward-facing Fuel Rod Autocannon" },
       { name: "Twin-linked Casement-mounted Forward-facing Fuel Rod Autocannon" }
     ],
-    damageValue: "9+ (Heavy Hover Tank)",
+    damageValue: "9+ (Heavy Anti-Grav Tank)",
     transportCapacity: 0,
     options: {
       weaponUpgrades: {
@@ -3114,6 +3119,7 @@ const BANISHED_VEHICLES = [
     },
     specialRules: [
       "Weak Sides",
+	  "Heavy Thrusters: This vehicle only doubles its movement on roads when given a Run order.",
       "Flak"
     ]
   },
@@ -3127,7 +3133,7 @@ const BANISHED_VEHICLES = [
     weapons: [
       { name: "Hull-mounted Forward-facing Paired Heavy Plasma MG" }
     ],
-    damageValue: "6+ (Soft-skin Hovercraft)",
+    damageValue: "6+ (Soft-skin Anti-Grav)",
     transportCapacity: 0,
     specialRules: [
       "Recce",
@@ -3144,7 +3150,7 @@ const BANISHED_VEHICLES = [
     weapons: [
       { name: "Pintle-mounted Medium Plasma MG (360° arc of fire)" }
     ],
-    damageValue: "7+ (Light Hover Vehicle)",
+    damageValue: "7+ (Light Anti-Grav Vehicle)",
     transportCapacity: 4,
     specialRules: [
       "Open-topped"
@@ -3159,7 +3165,7 @@ const BANISHED_VEHICLES = [
 		{ name: "Turret-mounted Light Anti-Tank Weapon" },
 		{ name: "Coaxial Rocket Launcher" }
 	  ],
-	  damageValue: "7+ (Light Hover Vehicle)",
+	  damageValue: "7+ (Light Anti-Grav Vehicle)",
 	  transportCapacity: 0,
 	  specialRules: [
 		"Recce",
@@ -3278,7 +3284,7 @@ const BANISHED_VEHICLES = [
 	allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
 	costs: { Inexperienced: 52, Regular: 65, Veteran: 78 },
 	weapons: [ { name: "Turret-mounted Medium Plasma MG" } ],
-	damageValue: "7+ (Armoured Hovercraft)", transportCapacity: 10,
+	damageValue: "7+ (Armoured Anti-Grav)", transportCapacity: 10,
 	specialRules: [ "Recce", "Open-topped" ]
 	},
 	{
@@ -3287,7 +3293,7 @@ const BANISHED_VEHICLES = [
 	allowedVeterancy: ["Regular", "Veteran"],
 	costs: { Regular: 125, Veteran: 150 },
 	weapons: [ { name: "Casement-mounted Forward-facing Light Anti-Tank Weapon" } ],
-	damageValue: "7+ (Armoured Hovercraft)", transportCapacity: 16,
+	damageValue: "7+ (Armoured Anti-Grav)", transportCapacity: 16,
 	specialRules: [ "Reinforced Front Armour", "Versatile: The Light AT Gun can also fire as a Light Howitzer." ]
 	}
 ];
@@ -3469,11 +3475,11 @@ const FORERUNNER_UNITS = [
       extraMenCost: { Regular: 23, Veteran: 26 },
       weaponReplacements: {
         "Light Rifles": { max: 5, cost: -5, replaces: "Suppressor", grants: "Light Rifle" },
-        "Scattershots": { max: 5, cost: -4, replaces: "Suppressor", grants: "Scattershot" }
+        "Scattershots": { max: 5, cost: -3, replaces: "Suppressor", grants: "Scattershot" }
       },
 	    ncoReplacement: {
         options: ["Suppressor", "Light Rifle", "Scattershot"],
-        costs: { "Light Rifle": -5, "Scattershot": -4 }
+        costs: { "Light Rifle": -5, "Scattershot": -3 }
       },
     }
   },
@@ -3481,7 +3487,7 @@ const FORERUNNER_UNITS = [
     name: "Promethean Knight Team",
     type: "Infantry",
     allowedVeterancy: ["Veteran"],
-    costs: { Veteran: 60 },
+    costs: { Veteran: 58 },
     baseMen: 2,
     maxMen: 5,
     weapons: [
@@ -3502,16 +3508,20 @@ const FORERUNNER_UNITS = [
       { name: "Limited", description: "Only up to 2 Promethean Knight Teams may be taken per platoon." }
     ],
     options: {
-      extraMenCost: { Veteran: 30 },
+      extraMenCost: { Veteran: 29 },
       weaponReplacements: {
-        "Light Rifles": { max: 5, cost: -5, replaces: "Suppressor", grants: "Light Rifle" },
-        "Scattershots": { max: 5, cost: -4, replaces: "Suppressor", grants: "Scattershot" },
+        "Light Rifles": { max: 5, cost: -4, replaces: "Suppressor", grants: "Light Rifle" },
+        "Scattershots": { max: 5, cost: -3, replaces: "Suppressor", grants: "Scattershot" },
         "Incineration Cannon": { max: 1, cost: 33, replaces: "Suppressor", grants: "Incineration Cannon" }
       },
-	  	ncoReplacement: {
-        options: ["Suppressor", "Light Rifle", "Scattershot"],
-        costs: { "Light Rifle": -5, "Scattershot": -4 }
-      },
+		ncoReplacement: {
+		  options: ["Suppressor", "Light Rifle", "Scattershot", "Incineration Cannon"],
+		  costs: {
+			"Light Rifle": -4,
+			"Scattershot": -3,
+			"Incineration Cannon": 33
+		  }
+		},
 		squadUpgrades: {
 		  "Knight Battlewagons": { cost: 2, grantsRule: ["Tank Hunters"] },
 
@@ -3654,7 +3664,7 @@ const FORERUNNER_VEHICLES = [
     weapons: [
       { name: "Hull-mounted Forward-facing Heavy Plasma MG" }
     ],
-    damageValue: "8+ (Medium Hover Tank)",
+    damageValue: "8+ (Medium Anti-Grav Tank)",
     transportCapacity: 1,
     specialRules: [
       "Agile",
@@ -3847,8 +3857,8 @@ const FLOOD_UNITS = [
 {
   name: "Combat Form Squad",
   type: "Infantry",
-  allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
-  costs: { Inexperienced: 80, Regular: 95, Veteran: 110 },
+  allowedVeterancy: ["Regular", "Veteran"],
+  costs: { Regular: 95, Veteran: 110 },
   baseMen: 5,
   maxMen: 14,
   weapons: [{ name: "Assault Rifle" }],
@@ -3859,7 +3869,7 @@ const FLOOD_UNITS = [
     // NOTE: Tank Hunters / Energy Shields should be granted by upgrades, not always-on
   ],
   options: {
-    extraMenCost: { Inexperienced: 16, Regular: 19, Veteran: 22 },
+    extraMenCost: { Regular: 19, Veteran: 22 },
 
     // non-NCO replacements only
     weaponReplacements: {
@@ -3867,7 +3877,7 @@ const FLOOD_UNITS = [
 	  "SMGs": { max: 13, cost: -2, replaces: "Assault Rifle", grants: "SMG" },
       "Plasma Rifles": { max: 13, cost: 0, replaces: "Assault Rifle", grants: "Plasma Rifle" },
       "Spikers": { max: 13, cost: 0, replaces: "Assault Rifle", grants: "Spiker" },
-      "Shotguns": { max: 13, cost: -4, replaces: "Assault Rifle", grants: "Shotgun" },
+      "Shotguns": { max: 13, cost: -3, replaces: "Assault Rifle", grants: "Shotgun" },
       "Battle Rifles": { max: 4, cost: -3, replaces: "Assault Rifle", grants: "Battle Rifle" },
       "Covenant Carbines": { max: 4, cost: -3, replaces: "Assault Rifle", grants: "Covenant Carbine" }
     },
@@ -3889,7 +3899,7 @@ const FLOOD_UNITS = [
 		"SMG": -2,
         "Plasma Rifle": 0,
         "Spiker": 0,
-        "Shotgun": -4,
+        "Shotgun": -3,
         "Battle Rifle": -3,
         "Covenant Carbine": -3
       }
@@ -4705,6 +4715,188 @@ function addRequired(label, allUpgrades, upgradesDef) {
   Array.isArray(upg.requires) ? upg.requires.forEach(add) : add(upg.requires);
 }
 
+function getEditorBaseMen(unit, unitData) {
+  if (!unit || !unitData) return 0;
+  if (unit.type === "Team") return unitData.baseMen || 0;
+
+  const input = document.getElementById("editMenInput");
+  const raw = input ? parseInt(input.value, 10) : unit.men;
+  const minMen = unitData.baseMen || 0;
+  const maxMen = unitData.maxMen ?? minMen;
+  const fallback = unit.men || minMen;
+
+  const value = isNaN(raw) ? fallback : raw;
+  return Math.max(minMen, Math.min(maxMen, value));
+}
+
+function getEditorBonusMen(unitData) {
+  let bonusMen = 0;
+  document.querySelectorAll(".editSquadUpgrade:checked").forEach(cb => {
+    const upg = unitData?.options?.squadUpgrades?.[cb.dataset.upgrade];
+    if (upg?.addMan) bonusMen += upg.addMan;
+  });
+  return bonusMen;
+}
+
+function getSavedBonusMen(unit, unitData) {
+  let bonusMen = 0;
+  if (!unit?.squadUpgrades || !unitData?.options?.squadUpgrades) return 0;
+
+  Object.entries(unit.squadUpgrades).forEach(([label, picked]) => {
+    if (!picked) return;
+    const upgrade = unitData.options.squadUpgrades[label];
+    if (upgrade?.addMan) bonusMen += upgrade.addMan;
+  });
+
+  return bonusMen;
+}
+
+function getEditorDisplayedBaseMen(unit, unitData) {
+  const minMen = unitData?.baseMen || 0;
+  const maxMen = unitData?.maxMen ?? minMen;
+  const totalMen = unit?.men ?? minMen;
+  const savedBonusMen = getSavedBonusMen(unit, unitData);
+
+  return Math.max(minMen, Math.min(maxMen, totalMen - savedBonusMen));
+}
+
+function getEditorTotalMen(unit, unitData) {
+  return getEditorBaseMen(unit, unitData) + getEditorBonusMen(unitData);
+}
+
+function getSelectedNcoWeapon(unit, unitData) {
+  const select = document.getElementById("editNcoReplacement");
+  if (select) return select.value;
+
+  return unit?.ncoReplacement ||
+    unitData?.options?.ncoReplacement?.options?.[0] ||
+    unitData?.weapons?.[0]?.name ||
+    null;
+}
+
+function getReplaceableWeaponSlots(unit, unitData, totalMen = null) {
+  const men = totalMen ?? getEditorTotalMen(unit, unitData);
+
+  // If the unit has a separate NCO selector, reserve 1 model for the NCO.
+  const hasSeparateNco = !!unitData?.options?.ncoReplacement;
+
+  return Math.max(0, men - (hasSeparateNco ? 1 : 0));
+}
+
+function clampWeaponReplacementInputs(unit, unitData, changedInput = null) {
+  if (!unitData?.options?.weaponReplacements) return { used: 0, limit: 0 };
+
+  const inputs = Array.from(document.querySelectorAll(".editWeaponReplacement"));
+  const limit = getReplaceableWeaponSlots(unit, unitData);
+  const selectedNcoWeapon = getSelectedNcoWeapon(unit, unitData);
+  const ncoHasIncineration = selectedNcoWeapon === "Incineration Cannon";
+
+  // First sanitize each input to >= 0 and <= its own hard max
+  inputs.forEach(input => {
+    const label = input.dataset.label;
+    const spec = unitData.options.weaponReplacements[label];
+    let hardMax = Number(spec?.max ?? limit);
+
+if (label === "Incineration Cannon" && ncoHasIncineration) {
+  hardMax = 0;
+}
+
+    let val = parseInt(input.value, 10);
+    if (isNaN(val)) val = 0;
+
+    input.value = Math.max(0, Math.min(val, hardMax));
+  });
+
+  // If one field was just changed, clamp that field against the remaining shared pool
+  if (changedInput) {
+    const label = changedInput.dataset.label;
+    const spec = unitData.options.weaponReplacements[label];
+    let hardMax = Number(spec?.max ?? limit);
+
+if (label === "Incineration Cannon" && ncoHasIncineration) {
+  hardMax = 0;
+}
+
+    const others = inputs
+      .filter(i => i !== changedInput)
+      .reduce((sum, i) => sum + (parseInt(i.value, 10) || 0), 0);
+
+    let val = parseInt(changedInput.value, 10);
+    if (isNaN(val)) val = 0;
+
+    changedInput.value = Math.max(0, Math.min(val, hardMax, Math.max(0, limit - others)));
+  } else {
+    // Initial normalize pass
+    let usedSoFar = 0;
+    inputs.forEach(input => {
+      const label = input.dataset.label;
+      const spec = unitData.options.weaponReplacements[label];
+      let hardMax = Number(spec?.max ?? limit);
+
+if (label === "Incineration Cannon" && ncoHasIncineration) {
+  hardMax = 0;
+}
+
+      let val = parseInt(input.value, 10);
+      if (isNaN(val)) val = 0;
+
+      val = Math.max(0, Math.min(val, hardMax, Math.max(0, limit - usedSoFar)));
+      input.value = val;
+      usedSoFar += val;
+    });
+  }
+
+  const totalUsed = inputs.reduce((sum, input) => sum + (parseInt(input.value, 10) || 0), 0);
+
+  // Update each input's max dynamically based on the shared pool
+  inputs.forEach(input => {
+    const label = input.dataset.label;
+    const spec = unitData.options.weaponReplacements[label];
+    let hardMax = Number(spec?.max ?? limit);
+
+if (label === "Incineration Cannon" && ncoHasIncineration) {
+  hardMax = 0;
+}
+    const current = parseInt(input.value, 10) || 0;
+    const others = totalUsed - current;
+
+    input.max = Math.max(0, Math.min(hardMax, limit - others + current));
+  });
+
+  const info = document.getElementById("editWeaponReplacementInfo");
+  if (info) {
+    info.textContent = `Model weapon swaps used: ${totalUsed}/${limit}`;
+  }
+
+  return { used: totalUsed, limit };
+}
+
+function updateEditorModelInfo(unit, unitData) {
+  const info = document.getElementById("editMenInfo");
+  if (!info || !unit || !unitData || unit.type !== "Infantry") return;
+
+  const baseChosen = getEditorBaseMen(unit, unitData);
+  const bonusMen = getEditorBonusMen(unitData);
+  const totalMen = baseChosen + bonusMen;
+  const maxMen = unitData.maxMen ?? baseChosen;
+  const remaining = Math.max(0, maxMen - baseChosen);
+
+	info.textContent =
+	  `Unit size: ${baseChosen}/${maxMen}. You can still add ${remaining} more base model` +
+	  `${remaining === 1 ? "" : "s"}${bonusMen ? ` (+${bonusMen} bonus model${bonusMen === 1 ? "" : "s"} from upgrades)` : ""}. ` +
+	  `Current total models: ${totalMen}.`;
+}
+
+function syncInfantryEditorState(changedInput = null) {
+  const unit = window.currentEditUnit;
+  const unitData = getUnitData(unit);
+  if (!unit || !unitData) return;
+
+  updateEditorModelInfo(unit, unitData);
+  clampWeaponReplacementInputs(unit, unitData, changedInput);
+  updateLiveUnitCost();
+}
+
 // Live Cost Preview for Infantry, Teams, and Vehicles
 function updateLiveUnitCost() {
   const unit = window.currentEditUnit;
@@ -4774,6 +4966,10 @@ function updateLiveUnitCost() {
 
 	  // store how many "bonus" men are free of extraMenCost
 	  window.__previewBonusMenNoExtraCost = bonusMen; // because all addMan upgrades should not be charged as extraMenCost
+	}
+	
+	if (unitData.options?.weaponReplacements) {
+	  clampWeaponReplacementInputs(unit, unitData);
 	}
 
   let veterancy = document.getElementById("editVeterancySelect")?.value || unit.veterancy;
@@ -5177,11 +5373,17 @@ function renderInfantryEditFields(unit, unitData) {
   if (!unitData) return html;
 
   // Men: Editable input for Infantry, static label for Team
-  if (unit.type === "Infantry") {
-    html += `<label>Men: <input type="number" id="editMenInput" min="${unitData.baseMen}" max="${unitData.maxMen}" value="${unit.men}" oninput="updateLiveUnitCost()" /></label>`;
-  } else if (unit.type === "Team") {
-    html += `<div>Men: <span id="teamMenCount">${typeof unit.men !== "undefined" ? unit.men : unitData.baseMen}</span></div>`;
-  }
+	if (unit.type === "Infantry") {
+	  html += `
+		<label>
+		  Men:
+		  <input type="number" id="editMenInput" min="${unitData.baseMen}" max="${unitData.maxMen}" value="${getEditorDisplayedBaseMen(unit, unitData)}" oninput="syncInfantryEditorState()" />
+		</label>
+		<div id="editMenInfo" style="margin-top:4px;font-size:12px;color:#cfd6ff;"></div>
+	  `;
+	} else if (unit.type === "Team") {
+	  html += `<div>Men: <span id="teamMenCount">${typeof unit.men !== "undefined" ? unit.men : unitData.baseMen}</span></div>`;
+	}
 
   // Squad Upgrades (checkboxes)
   if (unitData.options && unitData.options.squadUpgrades) {
@@ -5198,7 +5400,7 @@ function renderInfantryEditFields(unit, unitData) {
         disabled = "disabled";
 
       html += `<label>
-        <input type="checkbox" class="editSquadUpgrade" data-upgrade="${label}" ${checked} ${disabled} onchange="updateLiveUnitCost()">
+        <input type="checkbox" class="editSquadUpgrade" data-upgrade="${label}" ${checked} ${disabled} onchange="syncInfantryEditorState()">
         ${label} (${Number(upgrade.cost) >= 0 ? "+" : "-"}${Math.abs(Number(upgrade.cost))} pts${upgrade.perModel === false ? " flat" : " per model"}) ${upgrade.grantsRule ? "– Grants: " + upgrade.grantsRule : ""}
       </label><br>`;
     });
@@ -5206,25 +5408,26 @@ function renderInfantryEditFields(unit, unitData) {
   }
 
   // Weapon Replacements
-  if (unitData.options && unitData.options.weaponReplacements) {
-    html += `<div style="margin-top:10px;"><b>Weapon Replacements:</b><br>`;
-    Object.entries(unitData.options.weaponReplacements).forEach(([label, spec]) => {
-      const curr = (unit.weaponReplacements && unit.weaponReplacements[label]) || 0;
-      html += `
-        <label>${label}:
-          <input type="number" class="editWeaponReplacement" data-label="${label}" min="0" max="${spec.max}" value="${curr}" style="width:40px;" oninput="updateLiveUnitCost()">
-          (max ${spec.max}, ${Number(spec.cost) >= 0 ? "+" : "-"}${Math.abs(Number(spec.cost))} pts each)
-        </label><br>
-      `;
-    });
-    html += `</div>`;
-  }
+	if (unitData.options && unitData.options.weaponReplacements) {
+	  html += `<div style="margin-top:10px;"><b>Weapon Replacements:</b><br>`;
+	  Object.entries(unitData.options.weaponReplacements).forEach(([label, spec]) => {
+		const curr = (unit.weaponReplacements && unit.weaponReplacements[label]) || 0;
+		html += `
+		  <label>${label}:
+			<input type="number" class="editWeaponReplacement" data-label="${label}" min="0" max="${spec.max}" value="${curr}" style="width:40px;" oninput="syncInfantryEditorState(this)">
+			(max ${spec.max}, ${Number(spec.cost) >= 0 ? "+" : "-"}${Math.abs(Number(spec.cost))} pts each)
+		  </label><br>
+		`;
+	  });
+	  html += `<div id="editWeaponReplacementInfo" style="margin-top:6px;font-size:12px;color:#cfd6ff;"></div>`;
+	  html += `</div>`;
+	}
 
   // NCO Weapon Replacement
   if (unitData.options && unitData.options.ncoReplacement) {
     const currNCO = unit.ncoReplacement || unitData.options.ncoReplacement.options[0];
     html += `<label style="margin-top:10px;display:block;">NCO Weapon:
-      <select id="editNcoReplacement" onchange="updateLiveUnitCost()">`;
+      <select id="editNcoReplacement" onchange="syncInfantryEditorState()">`;
     unitData.options.ncoReplacement.options.forEach(opt => {
       html += `<option value="${opt}"${currNCO === opt ? " selected" : ""}>${opt}</option>`;
     });
@@ -5361,6 +5564,8 @@ function afterInfantryModalRender(unit, unitData) {
       }
     });
   }
+
+  syncInfantryEditorState();
 }
 
 // VEHICLE MODAL FIELDS, with live preview
@@ -5470,8 +5675,12 @@ function saveEdit() {
   if (unit.type === "Infantry" || unit.type === "Team") {
     // Men count
     if (unit.type === "Infantry") {
-      let val = parseInt(document.getElementById("editMenInput")?.value);
-      if (!isNaN(val)) unit.men = val;
+      let val = parseInt(document.getElementById("editMenInput")?.value, 10);
+      const minMen = unitData.baseMen || 0;
+      const maxMen = unitData.maxMen ?? minMen;
+
+      if (isNaN(val)) val = unit.men || minMen;
+      unit.men = Math.max(minMen, Math.min(maxMen, val));
     }
 
     // Squad Upgrades
@@ -5479,15 +5688,6 @@ function saveEdit() {
       unit.squadUpgrades = {};
       document.querySelectorAll(".editSquadUpgrade").forEach(cb => {
         unit.squadUpgrades[cb.dataset.upgrade] = cb.checked;
-      });
-    }
-
-    // Weapon Replacements
-    if (unitData.options && unitData.options.weaponReplacements) {
-      unit.weaponReplacements = {};
-      Object.entries(unitData.options.weaponReplacements).forEach(([label]) => {
-        const n = parseInt(document.querySelector(`.editWeaponReplacement[data-label="${label}"]`)?.value) || 0;
-        unit.weaponReplacements[label] = n;
       });
     }
 
@@ -5548,6 +5748,17 @@ function saveEdit() {
 	  // store for cost calc (so we don't charge extraMenCost for bonus models)
 	  unit._bonusMenNoExtraCost = bonusMen;
 	}
+
+    // Weapon Replacements (after final men count is known)
+    if (unitData.options && unitData.options.weaponReplacements) {
+      clampWeaponReplacementInputs(unit, unitData);
+
+      unit.weaponReplacements = {};
+      Object.entries(unitData.options.weaponReplacements).forEach(([label]) => {
+        const n = parseInt(document.querySelector(`.editWeaponReplacement[data-label="${label}"]`)?.value, 10) || 0;
+        unit.weaponReplacements[label] = n;
+      });
+    }
 
     // WEAPONS (robust swaps from squad upgrades)
     let weapons = Array.isArray(unitData.weapons) ? unitData.weapons.map(w => ({ ...w })) : [];
