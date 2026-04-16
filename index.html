@@ -693,7 +693,7 @@ const UNSC_DOCTRINES = {
   _defaultLabel: "Trooper",
   "Marine": {
     label: "Marine",
-    allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
+    allowedVeterancy: ["Regular", "Veteran"],
     baseCostPerModel: 1,
     specialRules: ["Stubborn"],
     upgrades: []
@@ -809,14 +809,14 @@ const UNSC_UNITS = [
 {
   name: "Regular Infantry Squad",
   type: "Infantry",
-  allowedVeterancy: ["Regular", "Veteran"],
-  costs: { Regular: 80, Veteran: 95 },
+  allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
+  costs: { Inexperienced: 65, Regular: 80, Veteran: 95 },
   baseMen: 5,
   maxMen: 10,
   weapons: [{ name: "Assault Rifle" }],
   specialRules: [],
   options: {
-    extraMenCost: { Regular: 16, Veteran: 19 },
+    extraMenCost: { Inexperienced: 13, Regular: 16, Veteran: 19 },
     squadUpgrades: {
       "Anti-Tank Grenades": { cost: 2, grantsRule: "Tank Hunters" }
     },
@@ -859,14 +859,14 @@ const UNSC_UNITS = [
 {
   name: "Marine Squad",
   type: "Infantry",
-  allowedVeterancy: ["Veteran"],
-  costs: { Veteran: 100 },
+  allowedVeterancy: ["Regular", "Veteran"],
+  costs: { Regular: 85, Veteran: 100 },
   baseMen: 5,
   maxMen: 10,
   weapons: [{ name: "Assault Rifle" }],
   specialRules: ["Stubborn"],
   options: {
-    extraMenCost: { Veteran: 20 },
+    extraMenCost: { Regular: 17, Veteran: 20 },
     squadUpgrades: {
       "Anti-Tank Grenades": { cost: 2, grantsRule: "Tank Hunters" }
     },
@@ -967,7 +967,7 @@ const UNSC_UNITS = [
     }
   },
 	{
-	  name: "Inexperienced Squad",
+	  name: "Militia Squad",
 	  type: "Infantry",
 	  allowedVeterancy: ["Inexperienced"],
 	  costs: { Inexperienced: 55 },
@@ -1002,8 +1002,8 @@ const UNSC_UNITS = [
   {
     name: "Machine Gun Team",
     type: "Team",
-    allowedVeterancy: ["Regular", "Veteran"],
-    costs: { Regular: 50, Veteran: 65 },
+    allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
+    costs: { Inexperienced: 35, Regular: 50, Veteran: 65 },
     baseMen: 3,
     maxMen: 4,
     weapons: [
@@ -1025,8 +1025,8 @@ const UNSC_UNITS = [
   {
     name: "Anti Tank Team",
     type: "Team",
-    allowedVeterancy: ["Regular", "Veteran"],
-    costs: { Regular: 70, Veteran: 91 },
+    allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
+    costs: { Inexperienced: 49, Regular: 70, Veteran: 91 },
     baseMen: 2,
     maxMen: 2,
     weapons: [
@@ -1072,8 +1072,8 @@ const UNSC_UNITS = [
   {
     name: "Grenade Launcher Team",
     type: "Team",
-    allowedVeterancy: ["Regular", "Veteran"],
-    costs: { Regular: 40, Veteran: 54 },
+    allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
+    costs: { Inexperienced: 26, Regular: 40, Veteran: 54 },
     baseMen: 2,
     maxMen: 3,
     weapons: [
@@ -1953,8 +1953,8 @@ const COVENANT_UNITS = [
   {
     name: "Machine Gun Team",
     type: "Team",
-    allowedVeterancy: ["Regular", "Veteran"],
-    costs: { Regular: 50, Veteran: 65 },
+    allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
+    costs: { Inexperienced: 35, Regular: 50, Veteran: 65 },
     baseMen: 3,
     maxMen: 4,
     weapons: [{ name: "Medium Plasma Machine Gun" }],
@@ -1974,8 +1974,8 @@ const COVENANT_UNITS = [
   {
     name: "Anti Tank Team",
     type: "Team",
-    allowedVeterancy: ["Regular", "Veteran"],
-    costs: { Regular: 70, Veteran: 91 },
+    allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
+    costs: { Inexperienced: 49, Regular: 70, Veteran: 91 },
     baseMen: 2,
     maxMen: 2,
     weapons: [{ name: "Fuel Rod Gun" }],
@@ -2007,8 +2007,8 @@ const COVENANT_UNITS = [
   {
     name: "Grenade Launcher Team",
     type: "Team",
-    allowedVeterancy: ["Regular", "Veteran"],
-    costs: { Regular: 40, Veteran: 54 },
+    allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
+    costs: { Inexperienced: 26, Regular: 40, Veteran: 54 },
     baseMen: 2,
     maxMen: 3,
     weapons: [{ name: "Brute Shot" }],
@@ -2781,8 +2781,8 @@ const BANISHED_UNITS = [
   {
     name: "Machine Gun Team",
     type: "Team",
-    allowedVeterancy: ["Regular", "Veteran"],
-    costs: { Regular: 50, Veteran: 65 },
+    allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
+    costs: { Inexperienced: 35, Regular: 50, Veteran: 65 },
     baseMen: 3,
     maxMen: 4,
     weapons: [{ name: "Medium Plasma Machine Gun" }],
@@ -2802,8 +2802,8 @@ const BANISHED_UNITS = [
   {
     name: "Anti Tank Team",
     type: "Team",
-    allowedVeterancy: ["Regular", "Veteran"],
-    costs: { Regular: 70, Veteran: 91 },
+    allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
+    costs: { Inexperienced: 49, Regular: 70, Veteran: 91 },
     baseMen: 2,
     maxMen: 2,
     weapons: [{ name: "Fuel Rod Gun" }],
@@ -2835,8 +2835,8 @@ const BANISHED_UNITS = [
   {
     name: "Grenade Launcher Team",
     type: "Team",
-    allowedVeterancy: ["Regular", "Veteran"],
-    costs: { Regular: 40, Veteran: 54 },
+    allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
+    costs: { Inexperienced: 26, Regular: 40, Veteran: 54 },
     baseMen: 2,
     maxMen: 3,
     weapons: [{ name: "Brute Shot" }],
@@ -4009,8 +4009,8 @@ const FLOOD_UNITS = [
   {
     name: "Anti Tank Team",
     type: "Team",
-    allowedVeterancy: ["Regular", "Veteran"],
-    costs: { Regular: 70, Veteran: 91 },
+    allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
+    costs: { Inexperienced: 50, Regular: 71, Veteran: 92 },
     baseMen: 2,
     maxMen: 2,
     weapons: [
@@ -4027,7 +4027,7 @@ const FLOOD_UNITS = [
     name: "Sniper Team",
     type: "Team",
     allowedVeterancy: ["Regular", "Veteran"],
-    costs: { Regular: 52, Veteran: 67 },
+    costs: { Regular: 53, Veteran: 68 },
     baseMen: 2,
     maxMen: 2,
     weapons: [
@@ -4045,8 +4045,8 @@ const FLOOD_UNITS = [
   {
     name: "Grenade Launcher Team",
     type: "Team",
-    allowedVeterancy: ["Regular", "Veteran"],
-    costs: { Regular: 40, Veteran: 54 },
+    allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
+    costs: { Inexperienced: 27, Regular: 41, Veteran: 55 },
     baseMen: 2,
     maxMen: 3,
     weapons: [
@@ -4406,12 +4406,13 @@ function injectDoctrineOptions(units, doctrineSet, triggerRule) {
       const allowedVets = Array.isArray(unit.allowedVeterancy) ? unit.allowedVeterancy : [];
       const choices = Object.values(doctrineSet || {})
         .filter(doc => Array.isArray(doc.allowedVeterancy) && doc.allowedVeterancy.some(v => allowedVets.includes(v)))
-        .map(doc => ({
-          name: doc.label,
-          costPerModel: doc.baseCostPerModel,
-          specialRules: (doc.specialRules || []).slice(),
-          extraUpgrades: (doc.upgrades && doc.upgrades.length) ? doc.upgrades.slice() : []
-        }));
+		.map(doc => ({
+		  name: doc.label,
+		  costPerModel: doc.baseCostPerModel,
+		  allowedVeterancy: (doc.allowedVeterancy || []).slice(),
+		  specialRules: (doc.specialRules || []).slice(),
+		  extraUpgrades: (doc.upgrades && doc.upgrades.length) ? doc.upgrades.slice() : []
+		}))
 
       if (choices.length) {
         unit.options.doctrine = {
@@ -4430,6 +4431,15 @@ injectDoctrineOptions(COVENANT_UNITS, COVENANT_DOCTRINES, "For The Great Journey
 injectDoctrineOptions(BANISHED_UNITS, BANISHED_DOCTRINES, "Forged In Chains");
 // Now all eligible units will have the right doctrine block in their options!
 
+function getAllowedDoctrineChoicesForUnit(unit, unitData) {
+  const allChoices = unitData?.options?.doctrine?.choices || [];
+  const vet = unit?.veterancy;
+
+  return allChoices.filter(choice => {
+    if (!Array.isArray(choice.allowedVeterancy) || choice.allowedVeterancy.length === 0) return true;
+    return choice.allowedVeterancy.includes(vet);
+  });
+}
 
 ////////////////////////////////////////////////////////////////////////////////
 // 5. WEAPON PROFILE HELPERS & TABLE BUILDERS
@@ -5019,8 +5029,8 @@ function updateLiveUnitCost() {
   let extraDoctrineCost = 0;
 
   if (unitData.options && unitData.options.doctrine) {
-    let doctrine = document.getElementById("editDoctrineSelect")?.value;
-    let doctrineSpec = (unitData.options.doctrine.choices || []).find(dc => dc.name === doctrine);
+	let doctrine = document.getElementById("editDoctrineSelect")?.value;
+	let doctrineSpec = getAllowedDoctrineChoicesForUnit(unit, unitData).find(dc => dc.name === doctrine);
 
     if (doctrineSpec) {
       doctrineCost += (doctrineSpec.costPerModel || 0) * men;
@@ -5440,11 +5450,11 @@ function renderInfantryEditFields(unit, unitData) {
       <div style="margin-top:10px;"><b>${unitData.options.doctrine.label}:</b><br>
         <select id="editDoctrineSelect" onchange="updateLiveUnitCost()">
                     <option value="">— None (${unitData.options.doctrine.defaultLabel || "Default"}) —</option>
-          ${unitData.options.doctrine.choices.map(choice => `
-            <option value="${choice.name}"${unit.doctrine === choice.name ? " selected" : ""}>
-              ${choice.name} (Special: ${choice.specialRules.join(", ")}; +${choice.costPerModel} pts/model)
-            </option>
-          `).join("")}
+		${getAllowedDoctrineChoicesForUnit(unit, unitData).map(choice => `
+		  <option value="${choice.name}"${unit.doctrine === choice.name ? " selected" : ""}>
+			${choice.name} (Special: ${choice.specialRules.join(", ")}; +${choice.costPerModel} pts/model)
+		  </option>
+		`).join("")}
         </select>
         <div id="doctrineExtraUpgradesBox"></div>
       </div>
@@ -5508,7 +5518,7 @@ function afterInfantryModalRender(unit, unitData) {
 
   // Doctrine extras
   if (unitData.options && unitData.options.doctrine) {
-    const doctrineChoices = unitData.options.doctrine.choices;
+    const doctrineChoices = getAllowedDoctrineChoicesForUnit(unit, unitData);
     const doctrineSelect = document.getElementById("editDoctrineSelect");
     const doctrineBox = document.getElementById("doctrineExtraUpgradesBox");
 
@@ -5699,11 +5709,16 @@ function saveEdit() {
 
     // Doctrine & doctrine extra upgrades
     if (unitData.options && unitData.options.doctrine) {
-      const doctrineSelect = document.getElementById("editDoctrineSelect");
-      unit.doctrine = doctrineSelect ? doctrineSelect.value : null;
+		const doctrineSelect = document.getElementById("editDoctrineSelect");
+		const allowedDoctrineChoices = getAllowedDoctrineChoicesForUnit(unit, unitData);
 
-      unit.extraDoctrineUpgrades = {};
-      let doctrineSpec = (unitData.options.doctrine.choices || []).find(dc => dc.name === unit.doctrine);
+		unit.doctrine = doctrineSelect ? doctrineSelect.value : null;
+		if (!allowedDoctrineChoices.some(dc => dc.name === unit.doctrine)) {
+		  unit.doctrine = null;
+		}
+
+		unit.extraDoctrineUpgrades = {};
+		let doctrineSpec = allowedDoctrineChoices.find(dc => dc.name === unit.doctrine);
 
       if (doctrineSpec && doctrineSpec.extraUpgrades) {
         doctrineSpec.extraUpgrades.forEach(upg => {
