@@ -4458,6 +4458,43 @@ function parseWeaponProfile(profileStr) {
   };
 }
 
+function adjustVehicleMountedMGShots(label, prof) {
+  if (!prof || !prof.shots) return prof;
+
+  const fullLabel = String(label || "");
+  const baseName = getBaseWeaponName(fullLabel);
+
+  // Only apply to vehicle-mounted machine guns
+  const machineGunNames = new Set([
+    "LMG",
+    "Light Machine Gun",
+    "MMG",
+    "Medium Machine Gun",
+    "HMG",
+    "Heavy Machine Gun",
+    "Plasma Repeater",
+    "Medium Plasma MG",
+    "Heavy Plasma MG",
+    "Medium Plasma Machine Gun",
+    "Heavy Plasma Machine Gun"
+  ]);
+
+  if (!machineGunNames.has(baseName)) return prof;
+
+  // Paired MGs keep full shots
+  if (/\bPaired\b/i.test(fullLabel)) return prof;
+
+  const rawShots = String(prof.shots).trim();
+
+  // Only halve plain numeric shot values
+  if (!/^\d+$/.test(rawShots)) return prof;
+
+  return {
+    ...prof,
+    shots: String(Math.max(1, Math.floor(Number(rawShots) / 2)))
+  };
+}
+
 function buildWeaponsTable(unit) {
   let table = [];
   const unitData = getUnitData(unit);
@@ -4568,9 +4605,36 @@ function buildWeaponsTable(unit) {
     return table;
   }
 
-  // 5. VEHICLES/CREW-SERVED/ANYTHING ELSE
-  if (unit.type !== "Infantry") {
-    // Group all weapons by label
+  // 5. CREW-SERVED TEAMS / ARTILLERY
+  if (unit.type === "Team" && Array.isArray(unit.weapons)) {
+    const weaponMap = {};
+
+    (unit.weapons || []).forEach(w => {
+      const label = typeof w === "string" ? w : w?.name;
+      if (!label) return;
+      if (!weaponMap[label]) weaponMap[label] = { qty: 0, label };
+      weaponMap[label].qty += 1;
+    });
+
+    Object.values(weaponMap).forEach(item => {
+      let prof = parseWeaponProfile(allWeaponProfiles[getBaseWeaponName(item.label)] || "");
+
+      table.push({
+        ...prof,
+        qty: item.qty,
+        label: (item.qty > 1 ? `${item.qty}x ` : "") + item.label
+      });
+    });
+
+    return table;
+  }
+
+  // 6. VEHICLES ONLY
+  const isActualVehicle =
+    unit.type !== "Infantry" &&
+    unit.type !== "Team";
+
+  if (isActualVehicle) {
     const weaponMap = {};
     (unit.weapons || []).forEach(w => {
       const label = typeof w === "string" ? w : w?.name;
@@ -4580,7 +4644,9 @@ function buildWeaponsTable(unit) {
     });
 
     Object.values(weaponMap).forEach(item => {
-      const prof = parseWeaponProfile(allWeaponProfiles[getBaseWeaponName(item.label)] || "");
+      let prof = parseWeaponProfile(allWeaponProfiles[getBaseWeaponName(item.label)] || "");
+      prof = adjustVehicleMountedMGShots(item.label, prof);
+
       table.push({
         ...prof,
         qty: item.qty,
