@@ -357,6 +357,7 @@ const allWeaponProfiles = {
   "Shardstorm Launcher": 'Range 36", Shots 6, Pen –, Team, Supercombine, Fixed, MG',
   "Multiple Launcher": 'Range 36–72", Shots 1, Pen HE, Team, Fixed, Indirect Fire, ML, HE (3")',
   "Splinter Turret": 'Range 48", Shots 3, Pen +1, Team, Fixed, HE (1")',
+  "Needle Cannon": 'Range 48", Shots 2, Pen +2, Overheat, Tracking, Supercombine, HE (1")',
 
   // If you keep using "Explosive Charge" as a weapon label in squads
   "Explosive Charge": 'Range – , Shots – , Pen +8, Suicide Charge (special)',
@@ -1235,6 +1236,29 @@ const UNSC_VEHICLES = [
 		"Reinforced Front Armour"
 	  ]
 	},
+	{
+	  name: "M700 Viper",
+	  type: "Tank",
+	  allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
+	  costs: { Inexperienced: 95, Regular: 120, Veteran: 145 },
+	  weapons: [
+		{ name: "Turret-mounted Light Anti-Tank Weapon" }
+	  ],
+	  damageValue: "8+ (Light Tank)",
+	  specialRules: [
+		"Weak Sides",
+		"Faster",
+		{ name: "Stealth Hull", description: "While this vehicle is in cover, ranged attacks against it suffer an additional -1 to hit, provided it has not been assigned an Advance or Run order." }
+	  ],
+	  options: {
+		weaponUpgrades: {
+		  "Turret-mounted MMG": {
+			cost: 15,
+			addsWeapon: "Turret-mounted MMG"
+		  }
+		}
+	  }
+	},
 
   // TANK DESTROYERS
   {
@@ -1464,6 +1488,22 @@ const UNSC_VEHICLES = [
       "Recce"
     ]
   },
+	{
+	  name: "M35 Cougar",
+	  type: "Armoured Car",
+	  allowedVeterancy: ["Regular", "Veteran"],
+	  costs: { Regular: 100, Veteran: 120 },
+	  weapons: [
+		{ name: "Turret-mounted twin-linked Light Automatic Cannon" },
+		{ name: "Turret-mounted twin-linked Light Automatic Cannon" },
+		{ name: "Coaxial MMG" }
+	  ],
+	  damageValue: "7+ (Armoured Car)",
+	  specialRules: [
+		"Recce",
+		"Open-topped"
+	  ]
+	},
 
   // AIRCRAFT
   {
@@ -2246,6 +2286,22 @@ const COVENANT_VEHICLES = [
 		}
 	  }
 	},
+	{
+	  name: "Gorgon",
+	  type: "Walker",
+	  allowedVeterancy: ["Regular", "Veteran"],
+	  costs: { Regular: 120, Veteran: 144 },
+	  weapons: [
+		{ name: "Hull-mounted Forward-facing Twin-linked Needle Cannon" },
+		{ name: "Hull-mounted Forward-facing Twin-linked Needle Cannon" }
+	  ],
+	  damageValue: "7+ (Light Walker)",
+	  transportCapacity: 0,
+	  specialRules: [
+		"Flak",
+		"Assault"
+	  ]
+	},
 
   // ANTI-AIRCRAFT VEHICLES
   {
@@ -2435,6 +2491,25 @@ const COVENANT_VEHICLES = [
       }
     }
   },
+	{
+	  name: "Covenant Air Artillery",
+	  type: "Aircraft",
+	  allowedVeterancy: ["Regular", "Veteran"],
+	  costs: { Regular: 105, Veteran: 126 },
+	  weapons: [
+		{ name: "Turret-mounted Multiple Launcher" }
+	  ],
+	  damageValue: "7+ (Medium Aircraft)",
+	  transportCapacity: 0,
+	  specialRules: [
+		"Slow Load",
+		"Open-topped",
+		{
+		  name: "Bombardment Platform",
+		  description: "This aircraft may only fire its turret-mounted weapons on a Fire order, whether flying or landed."
+		}
+	  ]
+	},
 
   // TRANSPORTS AND TOWS
   {
