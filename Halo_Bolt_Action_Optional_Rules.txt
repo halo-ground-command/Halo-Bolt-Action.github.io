@@ -1,0 +1,1003 @@
+﻿Halo: Bolt Action - Optional Rules v1.3
+
+Introduction
+This supplement collects optional rules modules for Halo: Bolt Action, designed primarily for narrative play but usable in any game if both players agree.
+These rules are intended to add flavor, cinematic moments, and extra tactical options to Halo: Bolt Action. Unless a module says otherwise, all normal rules still apply.
+This is a modular toolbox: players may use all, some, or none of these rules. Each optional rule or section is self-contained wherever possible.
+Current modules in this supplement include:
+* Heroes (Officer replacement characters with Luck / Resolve / Edge resources)
+* Attached Caste Leaders (embedded Spartan / Elite / Brute leaders within eligible squads)
+* Template-Free HE (streamlined HE resolution without blast templates)
+* Towing & Airlifting (standard artillery towing and VTOL lift operations for certain aircraft)
+* And others.
+
+Using Optional Rules
+Before the game, players should clearly agree which optional modules are in use. If a rule from this supplement conflicts with a core rule, the optional rule takes precedence.
+
+
+
+
+
+
+
+
+Simplified List Building
+Use this optional rule if both players want a simpler force-building method than full Bolt Action Third Edition platoon construction. If both players use this rule, ignore normal Bolt Action Third Edition platoon requirements except where specifically noted below.
+Core Requirements
+A force built using this method must include:
+ ● At least 1 Platoon Commander.
+● At least 2 Infantry units for each Platoon Commander unit taken.
+● Any number of Infantry and Artillery units.
+If a unit has a restriction per platoon of any type, change platoon to Platoon commander. Company commanders and other HQ units are limited to 1 per army.
+Vehicles
+If a force includes any Vehicles:
+● It must include at least 1 Command Vehicle.
+● For each Command Vehicle in the force, you must also include at least 1 other Vehicle without the Command Vehicle special rule.
+● For every Command Vehicle you take, you may take 4 additional Vehicles.
+● If none of the vehicles in the force have the Command Vehicle special rule, and none may purchase it from their profile options, one non-Aircraft vehicle may be given the Command Vehicle special rule for +10 pts, even if its profile entry does not normally allow it.
+
+HERO RESOURCES
+Each Hero’s profile lists their starting pools. Heroes may have different amounts of each resource, and each Hero has a unique ability powered by Edge. Unless a rule says otherwise, spent points are deducted from the Hero’s pool for the rest of the game.
+
+
+Luck (L) — fortune & survivability
+   * Re‑roll (1 L): Re‑roll any single die (yours or your opponent’s). The second result stands. This is the only time a re‑roll may itself be re‑rolled (each attempt costs 1 Luck). The Hero does not have to be the unit making the roll in order to use this ability.
+   * Brush with Death (1 L): If the Hero would be removed as a casualty, spend 1 Luck to keep them in play.
+Resolve (R) — precision, tempo & last‑ditch grit
+   * Modify (1 R): After any one D6 made by or against the hero is rolled (before outcomes), adjust that die by +1 or −1. You may spend multiple Resolve on the same die (final value cannot exceed 6 or go below 1).
+   * Hand Back an Order (1 R): During the Orders Phase, before the next die is drawn, return the Order Die currently assigned to the Hero or a friendly unit within 6" to the bag. That unit counts as not activated this turn. You cannot rewind already‑resolved actions.
+Note: Officers still follow normal Snap to Action! limits even if later reactivated with Resolve.
+   * Stalemate (1 R): When the Hero’s unit would lose in Close Quarters, you may spend 1 Resolve to force a draw instead. Do this after hits/damage are resolved but before removing the losing unit. 
+   * Refuse to Die: If the Hero would be removed as a casualty, roll D6 + remaining Resolve. On 7+, the Hero remains in play and loses 1 Resolve instead.
+Edge (E) — spark for hero plays
+      * Active (1 E): During the Hero’s activation, spend 1 Edge to use that Hero’s unique ability. 
+Using multiple resources (order & stacking)
+      * If a Hero has more than one resource available, the controlling player chooses the order to use them. If both affect the same die, resolve Luck (re‑roll) first, then apply Resolve (±1) to the new result.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+UNSC HEROES
+Master Chief (John-117) — replaces Veteran Spartan Platoon Commander
+Pools: L2 / R1 / E2
+Active (1E) — Follow Me!: On activation, pick one UNSC infantry unit within 6": remove 1 Pin and that unit gains +1 to hit with shooting and Close Quarters until end of turn. (Does not affect Indirect Fire.)
+Sergeant Major Avery J. Johnson — replaces Veteran Marine Platoon Commander
+Pools: L1 / R2 / E1
+Active (1E) — Motivational Yelling: When a UNSC unit within 6" is about to take an Order or Morale test, before rolling, it automatically passes, then remove 1 Pin from that unit.
+Sergeant John Forge — replaces Veteran Marine Platoon Commander
+Pools: L1 / R2 / E1
+Active (1E) — Forge Ahead!: After an enemy die is drawn (before it resolves), immediately draw and resolve your next die on an unactivated unit within 6". 
+Captain Jacob Keyes — replaces Veteran Marine Company Commander
+Pools: L1 / R2 / E1
+Active (1E) — The Keyes Loop: When you Snap to Action!, either extend range by +6" or pull +1 extra die for this Snap.
+Captain James Cutter — replaces Veteran Marine Company Commander
+Pools: L1 / R2 / E1
+Active (1E) — Fire Support: On activation, pick an UNSC Infantry unit within 9". It immediately Fires as if it had Advanced (−1 applies).
+
+
+Jerome-092 — replaces Veteran Spartan Platoon Commander
+Pools: L1 / R2 / E1
+Active (1E) — Spartan Protocol: When a friendly unit within 6" becomes the target of shooting, treat it as in one better cover for that attack. If no casualties are caused, that unit cannot be targeted again this turn.
+Edward Buck — replaces Veteran ODST Platoon Commander
+Pools: L2 / R1 / E2
+Active (1E) — Shock Troopers: On activation, an activated UNSC Infantry unit within 6" may switch its Order Die to Ambush.
+Carter-A259 — replaces Veteran Platoon Commander
+Pools: L1 / R2 / E1
+Active (1E) — Wolfpack Move: On activation, one friendly unit within 6" auto-passes an Order test, then ignores −1 to hit from moving this activation.
+ONI Agent Veronica Dare — replaces Veteran ODST Company Commander
+Pools: L1 / R2 / E1
+Active (1E) — Clean Extraction: On activation, pick one friendly Infantry within 9": remove all Pins, then place it in Reserve.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+COVENANT HEROES
+The Arbiter — replaces Veteran Elite Platoon Commander
+Pools: L1 / R2 / E1
+Active (1E) — Sword-Line Advance: On activation, choose one Covenant unit within 12": it may perform a free Run/Assault immediately and gains +1 to hit in Close Quarters until end of turn. This move does not require drawing or changing any Order dice; the unit’s current Order Die remains unchanged.
+Thel ‘Vadam — replaces Veteran Elite Company Commander
+Pools: L1 / R2 / E2
+Active (1E) — Intercept: When an enemy unit moves within 12" of a friendly Infantry unit on Ambush that is itself within 12" of Thel, you may interrupt before the enemy completes its move. Immediately declare an Assault with that friendly unit against the mover (normal LOS/charge rules apply). Flip the friendly unit’s die to Run.
+Rtas ‘Vadum — replaces Veteran Elite Platoon Commander
+Pools: L1 / R2 / E1
+Active (1E) — Zealot’s Volley: Upon activation, choose one Covenant Infantry unit within 6". Until the end of turn, it re-rolls 1s to hit when shooting and ignores any Pins it would suffer from overheating its weapons.
+Tartarus — replaces Veteran Brute Company Commander
+Pools: L1 / R2 / E1
+Active (1E) — Savage Rush: Upon activation, one friendly unit within 12" gains +3" to Advance/Run/Assault and ignores Rough Ground for that move.
+
+
+Jul ‘Mdama — replaces Veteran Elite Company Commander
+Pools: L1 / R2 / E1
+Active (1E) — Zealot’s Edict: Choose one visible enemy unit within 12". Until the end of turn, Covenant units that attack it gain +1 to hit (shooting). However, Covenant units that attack that unit this turn and cause no casualties gain +1 Pin.
+Zuka ‘Zamamee — replaces Veteran Elite Platoon Commander
+Pools: L2 / R1 / E1
+Active (1E) — Hunter’s Prey: Choose one visible enemy unit within 18". Until the end of turn, Covenant units shooting at it re-roll 1s to hit and 1s to wound.
+Yayap — replaces Veteran Unggoy Platoon Commander
+Pools: L2 / R1 / E1
+Active (1E) — Sneak & Squeal: On activation, one Covenant Infantry unit within 6" may redeploy 3" (no entering new terrain), remove 1 Pin, and go on Ambush.
+Maccabeus — replaces Veteran Brute Platoon Commander
+Pools: L1 / R2 / E1
+Active (1E) — Pack Hunt: After a Brute unit within 9" wins Close Quarters, it may immediately Advance 3" and inflict D2 Pins on a different enemy unit within 3".
+
+
+
+
+
+
+
+
+
+
+BANISHED HEROES
+Atriox — replaces Veteran Brute Company Commander
+Pools: L1 / R2 / E2
+Active (1E) — Unyielding Line: On activation, pick up to two Banished Infantry or Brute units within 9". Each removes 1 Pin. Until the end of turn, the first time each of those units would suffer casualties from shooting or Close Quarters, ignore up to 2 casualties and instead give that unit +2 Pin markers.
+Escharum — replaces Veteran Brute Company Commander
+Pools: L1 / R2 / E1
+Active (1E) — Last Stand: When a friendly Banished unit within 12" is reduced to half strength or fewer models, before it takes any Morale test you may trigger this ability. That unit immediately takes a Morale test ignoring all Pin modifiers. If it passes, it may immediately perform a Run or Assault; if it Assaults, it gains +1 to hit in Close Quarters this turn.
+Let ‘Volir — replaces Veteran Elite Company Commander
+Pools: L1 / R2 / E1
+Active (1E) — Boarding Strike: On activation, pick one Banished Infantry or Elite unit within 9". It immediately Runs; if it ends this move in contact with an enemy Vehicle, it gains +1 Pen in Close Quarters against that target this turn.
+Voridus — replaces Veteran Brute Platoon Commander
+Pools: L1 / R2 / E1
+Active (1E) — Volatile Infusion: On activation, choose one Banished Infantry or Brute unit within 6". Until end of turn, its shooting attacks gain +1 Pen and it ignores any Pins it would suffer from overheating or overcharging its weapons.
+Pavium — replaces Veteran Brute Platoon Commander (Support)
+Pools: L1 / R2 / E1
+Active (1E) — Iron Bulwark: On activation, choose one Banished Infantry or Brute unit within 6". Remove 1 Pin from that unit. Until the start of your next turn, enemy shooting attacks against it suffer −1 to hit and it counts as in one better cover (to a maximum of Hard Cover).
+Jega ‘Rdomnai — replaces Veteran Elite Platoon Commander
+Pools: L2 / R1 / E1
+Active (1E) — Shadow Pounce: On activation, choose one Banished Infantry or Elite unit within 6". It may immediately Advance or Assault. If it declares an Assault and began this move out of Line of Sight of the target unit, enemy reactive fire against this charge suffers −2 to hit.
+Hyperius — replaces Veteran Brute Platoon Commander
+Pools: L1 / R2 / E1
+Active (1E) — Jetpack Blitz: On activation, choose one Banished Infantry or Brute unit with Jump/Jet ability within 6". It gains +3" to Advance/Run/Assault and ignores Rough Ground and Obstacles for that move. If it declares an Assault as part of this move, enemy reactive fire suffers −1 to hit.
+Tovarus — replaces Veteran Brute Platoon Commander (Fire Support)
+Pools: L1 / R2 / E1
+Active (1E) — Saturation Fire: On activation, choose one Banished Infantry or Weapon Team unit within 9". For its next shooting attack this turn, it re-rolls 1s to hit; if it scores at least one hit, the target unit suffers +1 Pin marker (even if no casualties are caused).
+ATTACHED CASTE LEADER 
+This optional rule lets players field “embedded” leaders (Spartans, Elites, or Brutes) inside squads. An Attached Caste Leader is a single model added to an eligible unit during army creation (or before deployment, if you prefer). While attached, it remains part of that unit for the whole game.
+CORE RULE: ONE UNIT
+While a unit contains an Attached Caste Leader, it is treated as one unit for all rules purposes, with the exceptions noted below. This means:
+      * One Order Die
+
+      * One pool of Pins
+
+      * Normal coherency, activation, and orders
+
+SPECIAL RULES: UNIT VS MODEL
+The Attached Caste Leader and the rest of the unit do not grant special rules to each other, with the exceptions and clarifications below.
+1) Shirkers
+An Attached Caste Leader cancels the Shirkers special rule from the unit it is part of while the leader is present.
+2) Unit-state rules (tests, routing, behaviour, outcomes)
+While the unit contains at least one non-leader model, use the unit’s own special rules for anything that determines the unit’s tests or outcomes, including: Order tests, Morale tests, routing, and any rule that changes behaviour/outcome (e.g. Stubborn/Fanatics pin effects, Berserker compulsory assault, Fast/Slow/Flight/Fieldcraft movement behaviour, auto-rout thresholds, etc.).
+The Attached Caste Leader’s special rules do not affect these tests/outcomes while any non-leader models remain.
+However, when taking an Order test or Morale test for the unit, use the highest veterancy present in the unit (usually the leader’s).
+3) Leader-only rules while attached (general principle)
+While the unit contains at least one non-leader model, ignore special rules on the Attached Caste Leader that the unit does not have, unless those rules directly affect:
+         * attacks made by the leader,
+
+         * attacks directed at the leader, or
+
+         * other effects specifically resolved against/from the leader model.
+
+This means leader-only defensive/offensive rules (for example, rules affecting the leader’s attacks, damage value, or how attacks are resolved against the leader) still apply when resolving the leader’s portion of an attack or close quarters.
+4) Leader breaks off
+The unit only starts using the Attached Caste Leader special rules for tests/behaviour once it is the only model left in the unit. This can happen in two ways:
+A) Bodyguards destroyed by casualties
+If all non-leader models are removed as casualties, the leader becomes its own unit immediately after.
+B) Bodyguards removed by routing
+If the unit fails a Morale test and would rout while a leader model is still present:
+            * Remove the non-leader models as normal (using the unit’s rules).
+
+            * Then resolve the Attached Caste Leader as a separate unit using its own profile and special rules. If it would not rout, it remains on the table; otherwise it routs too.
+
+Once the leader breaks off, it is treated as a normal single-model unit for the rest of the game.
+5) Model-resolution rules
+Rules that modify how attacks are resolved against the Attached Caste Leader (e.g. Damage Value changes, Stealth, Energy Shields, Resilient, cover/To Hit/To Wound modifiers that apply to the leader model) apply normally, but only when resolving attacks against the leader.
+SHOOTING
+Same target
+If the unit shoots (including Ambush), the Attached Caste Leader and the rest of the unit must shoot the same target unit.
+Pins from shooting
+Apply pinning as normal for a single unit firing, unless a leader’s weapon rule causes additional Pins.
+Allocating casualties
+When shooting at a unit with an Attached Caste Leader, resolve the attack one weapon group at a time, in any order chosen by the firing player (e.g., rifles, then SMGs, then LMGs). For each weapon group, complete the full shooting sequence before resolving the next group: roll To Hit, roll To Damage, take saves, etc.
+While at least one non-leader model remains, casualties caused by the weapon group currently being resolved must be removed from non-leader models only.
+If that weapon group causes more casualties than the non-leader models remaining at that moment, the excess casualties are lost (they do not spill onto the leader).
+Once all non-leader models have been removed, any remaining unresolved weapon groups may be resolved against the Attached Caste Leader normally (using the leader’s own Damage Value and any modifiers that apply to the leader).
+Shooting exceptions
+               * HE Templates: If an HE template affects the leader, resolve hits against the leader separately using the leader’s own Damage Value; the leader can only be removed by hits resolved against the leader.
+
+               * Snipers: Snipers (and any rule that can pick out an NCO) may target the Attached Caste Leader as if it were the unit’s NCO.
+
+CLOSE QUARTERS
+Before rolling attacks, the attacking player declares how many attacks are directed at:
+                  * the Attached Caste Leader
+
+                  * the rest of the unit
+
+Resolve attacks directed at the leader against the leader’s Damage Value and resolve attacks directed at the unit against the unit’s normal Damage Value.
+Break-off during Close Quarters
+If all non-leader models are removed during close quarters and the Attached Caste Leader survives, the leader immediately breaks off as a separate unit and remains in the combat. From that point on, resolve the remainder of the combat using the leader’s own profile and special rules.
+OBJECTIVES
+While the Attached Caste Leader is part of a unit, it does not count as a separate unit for objectives.
+NCO INTERACTION
+While the Attached Caste Leader is alive, the unit ignores the −1 Morale modifier for having its NCO dead.
+Take the hit: The first time the Attached Caste Leader would be removed as a casualty, you may instead remove the unit’s NCO model. If you do, the Attached Caste Leader remains in play. If the unit has no NCO remaining, remove the Attached Caste Leader normally.
+ELIGIBILITY
+A unit may purchase one Attached Caste Leader if it is one of the following:
+                     * UNSC: Regular Infantry Squad, Engineer Squad, Marine Squad, ODST Squad
+
+                     * Covenant: Grunt Squad, Jackal Squad
+
+                     * Banished: Grunt Squad, Jackal Squad
+
+Limit: Maximum 1 Attached Caste Leader per eligible unit.
+F.A.Q
+Q: How do I decide whether a leader-only special rule applies while attached? A: Use this rule of thumb while at least one non-leader model remains in the unit:
+                        * If the rule affects unit tests, routing, movement behaviour, compulsory actions, or other unit-state outcomes, ignore the leader’s version and use the attached unit’s rules instead.
+
+                        * If the rule directly affects attacks made by the leader, attacks directed at the leader, or another effect specifically resolved against/from the leader model, it applies when resolving the leader’s part of the action.
+
+
+                        * Once the leader breaks off and becomes a separate unit, use the leader’s own special rules in full.
+Q: If the attached unit fails a Morale test and would rout, does the leader automatically rout too? A: Not always. First remove the non-leader models as normal (the unit routs). Then resolve the Attached Caste Leader as a separate unit using its own profile/special rules. If the leader would not rout, it remains in play; otherwise it routs as well.
+Q: If the unit has already activated this turn and the Attached Caste Leader breaks off later (because all bodyguards are destroyed), can the leader activate again this turn as a separate unit? A: No. The unit and the Attached Caste Leader shared one Order Die while attached. If that unit has already activated this turn, the leader cannot activate again that turn after breaking off.
+Q: If a non-Fanatic unit with an Attached Caste Leader that has Fanatics loses Close Quarters, what happens? A: Remove the non-leader models as normal (the unit lost the combat). The leader then immediately breaks off as a separate unit. From that point on, resolve the combat using the leader’s own profile and special rules (including Fanatics, if applicable).
+Q: What happens if an Attached Caste Leader has Strong, but the unit it is attached to does not? A: The unit does not gain Strong from the leader. However, while attached, the leader may use Strong when resolving the leader’s own attacks/effects (as applicable). This does not grant Strong to the rest of the unit.
+Q: What happens if an Attached Caste Leader has Berserker, but the unit it is attached to does not? A: The unit does not gain Berserker from the leader. While at least one non-leader model remains, use the unit’s rules for Order tests and compulsory behaviour, so the leader’s Berserker compulsory Run (Assault) rule is ignored.
+However, the leader’s Berserker close-quarters bonus (the extra attack in assaults) applies when resolving the leader’s own attacks in Close Quarters, because that part affects attacks made by the leader.
+If the leader breaks off and becomes a separate unit, Berserker applies in full to the leader from that point on.
+Q: What happens if an Attached Caste Leader has Behind Enemy Lines, but the unit it is attached to does not?A: The unit does not gain Behind Enemy Lines from the leader while the leader is attached.   
+Q: What happens if an Attached Caste Leader has Fast, Slow, Flight or Fieldcraft but the unit it is attached to does not?A: The unit does not gain them from the leader. These change movement values (Advance/Run), which is unit-state movement behaviour, so while at least one non-leader model remains, the attached unit uses its own movement rules. If the leader breaks off, these rules apply normally to the leader from that point on.
+Q: What happens if an Attached Caste Leader has Strikes First, but the unit it is attached to does not?A: The unit does not gain Strikes First from the leader. However, while attached, Strikes First applies when resolving the leader’s own attacks in Close Quarters (it affects the timing of the leader’s attacks, not the whole unit’s attacks). The rest of the unit fights using its normal rules. If the leader breaks off, Strikes First applies normally to the leader as a separate unit.
+
+
+ATTACHED CASTE LEADER PROFILES
+UNSC
+Attached Spartan
+Cost
+	24pts (Veteran)
+	Composition
+	1 Spartan
+	Weapons
+	Assault Rifle
+	Options
+	- Replace Assault Rifle with Battle Rifle for -3pts
+- Replace Assault Rifle with Shotgun for -4pts
+- Replace Assault Rifle with DMR for -5pts
+- May take Jump-Jet Pack for +1pt
+- May take Stealth Module for +1pt
+- May take Energy Shield Module for +3pts
+- May take Anti-tank grenades for +2pts
+- May take a Melee Weapon for +1pt (this model rolls 2 dice in close combat instead of 1)
+	Special Rules
+	- Fanatics                                                                                 
+- Fast                                                                                        
+- VISR
+- Behind Enemy Lines
+- Strong 
+- Strikes First
+- Stealth: If Stealth Modules are taken
+- Tank Hunters: If anti-tank grenades are taken
+- Energy Shields: If Energy Shield Modules are taken
+- Flight: If Jump-Jet Packs are taken
+- Melee Weapon: If taken, the model rolls 2 dice in close combat instead of 1
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Covenant
+Attached Elite
+Cost
+	27pts (Veteran)
+	Composition
+	1 Elite
+	Weapons
+	Plasma Rifle
+	Options
+	- Replace Plasma Rifle with Needler for -2pts
+- Replace Plasma Rifle with Covenant Carbine for -3pts
+- May take Jump-Jet Pack for +1pt
+- May take Stealth Module for +1pt
+- May take Anti-tank grenades for +2pts
+- May take a Plasma Sword for +1pt (this model rolls 2 dice in close combat instead of 1)
+	Special Rules
+	- Behind Enemy Lines                                                                
+- Fanatics    
+- Strong      
+- Strikes First                                                                          
+- Energy Shields  
+- Fast  
+- VISR   
+- Stealth: If Stealth Modules are taken  
+- Flight: If Jump-Jet Packs are taken  
+- Tank Hunters: If anti-tank grenades are taken 
+- Plasma Sword: If taken, the model rolls 2 dice in close combat instead of 1
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Covenant
+Attached Brute
+Cost
+	22pts (Veteran)
+	Composition
+	1 Brute
+	Weapons
+	Spiker
+	Options
+	- Replace Spiker with Mauler for -5pts
+- Replace Spiker with Covenant Carbine for -3pts
+- May replace Spiker with Plasma Rifle for +0pts
+- May take Anti-tank grenades for +2pts
+- May take Energy Shield Module for +3pts
+- May take a Gravity Hammer for +1pt (this model rolls 2 dice in close combat instead of 1)
+	Special Rules
+	- Stubborn
+- Berserker
+- Fieldcraft
+- Strong
+- Energy Shields: If Energy Shield Modules are taken
+- Tank Hunters: If anti-tank grenades are taken
+- Gravity Hammer: If taken, the model rolls 2 dice in close combat instead of 1
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Banished
+Attached Elite
+Cost
+	27pts (Veteran)
+	Composition
+	1 Elite
+	Weapons
+	Plasma Rifle
+	Options
+	- Replace Plasma Rifle with Needler for -2pts
+- Replace Plasma Rifle with Pulse Carbine for -2pts
+- May take Stealth Module for +1pt
+- May take Anti-tank grenades for +2pts
+- May take a Plasma Sword for +1pt (this model rolls 2 dice in close combat instead of 1)
+	Special Rules
+	- Behind Enemy Lines  
+- Fanatics  
+- Energy Shields  
+- Fast  
+- VISR  
+- Strong
+- Strikes First
+- Stealth: If Stealth Modules are taken  
+- Tank Hunters: If anti-tank grenades are taken 
+- Plasma Sword: If taken, the model rolls 2 dice in close combat instead of 1
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Banished
+Attached Brute
+Cost
+	22pts (Veteran)
+	Composition
+	1 Brute
+	Weapons
+	Spiker
+	Options
+	- Replace Spiker with Mangler for -4pts
+- Replace Spiker with Pulse Carbine for -2pts
+- May replace Spiker with Plasma Rifle for +0pts
+- May take Anti-tank grenades for +2pts
+- May take Jump-Jet Pack for +1pt
+- May take Energy Shield Module for +3pts
+- May take a Gravity Hammer for +1pt (this model rolls 2 dice in close combat instead of 1)
+- May replace Stubborn with Fanatics for +1pt
+	Special Rules
+	- Stubborn
+- Berserker
+- Fieldcraft
+- Strong
+- Energy Shields: If Energy Shield Modules are taken
+- Flight: If Jump-Jet Packs are taken  
+- Tank Hunters: If anti-tank grenades are taken
+- Engineers: If Engineers are taken
+- Gravity Hammer: If taken, the model rolls 2 dice in close combat instead of 1
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Optional rule: Template-Free HE
+Use this optional rule if you do not own blast templates, or if you want to speed up gameplay.
+When using this rule, ignore HE templates.
+HE Hits
+If an HE shot hits an Infantry or Artillery unit, do not place a template. Instead, the hit causes a fixed number of hits based on HE size:
+                           * HE (1") = 3 hits
+
+                           * HE (2") = 5 hits
+
+                           * HE (3") = 8 hits
+
+                           * HE (4") = 12 hits
+
+Maximum Hits
+The total number of HE hits caused on a target unit cannot exceed the number of models in that unit (each model can only be hit once).
+Down Reaction
+If the target unit reacts by going Down, halve the total number of HE hits caused, rounding up.
+Multiple HE Hits
+If a weapon or unit scores multiple HE hits in the same attack:
+                              * Add the hits from all successful HE hits together.
+
+                              * Apply the maximum hits limit above.
+
+                              * If the target is Down, halve the total (rounding up).
+All Other HE Rules
+Except for the changes above, all other HE rules are resolved as normal, as explained in the Bolt Action Third Edition Rulebook.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+TOWING & AIRLIFTING
+Use this optional rule if you want artillery towing and/or VTOL lift operations in Halo: Bolt Action.
+This rule covers:
+● Standard artillery towing (as in Bolt Action Third Edition)
+● VTOL Airlift / Sling-Load for certain aircraft (such as Pelicans, Spirits, and Phantoms)
+Design Notes
+ ● Standard towing follows Bolt Action Third Edition towing rules.
+● Aircraft do not “tow” in the normal Bolt Action sense. Instead, some aircraft use Airlift.
+● Some aircraft may carry troops internally (using the normal Aircraft Transport Rules) and may also carry one airlifted load.
+● An airlifted load may be:
+○ 1 Artillery unit, or
+○ 1 Vehicle up to Medium classification
+● Aircraft may never airlift other Aircraft.
+Standard Vehicle Towing
+Use the normal towing rules from the Bolt Action Third Edition rulebook for artillery. With this exception:
+What can be towed
+To simplify, a non-aircraft vehicle may only tow an artillery unit if:
+● its profile is found within the transports and tows category (See army rulebooks).
+Any artillery unit may be towed by that type of vehicle.
+
+
+
+
+
+
+VTOL Airlift / Sling-Load
+This is the Halo-flavoured add-on for aircraft, allowing them to move artillery or vehicles using lift capability rather than ground towing.
+Airlift Capability
+Only Pelicans, Phantoms and Spirits may use this rule.
+An aircraft with Airlift may carry:
+● 1 Artillery unit (Any artillery unit), or
+● 1 Vehicle up to Medium classification
+Aircraft may not airlift:
+● Heavy or Super-heavy vehicles
+● other Aircraft
+Airlifted Loads Are Separate Units
+The aircraft and the airlifted unit remain separate units for activation and orders, as with normal transports.
+● They use separate Order Dice
+● They activate separately
+● The airlifted unit cannot act while airlifted except to deploy/disembark as described below
+Picking Up an Airlifted Load
+To airlift an artillery unit or vehicle:
+                                 1. The aircraft must be landed.
+
+                                 2. The unit to be airlifted must be given an order and move toward the aircraft.
+
+                                 3. If it ends its move within 1" of the aircraft, it may be picked up.
+
+                                 4. Remove the unit from the board; it is now considered airlifted aboard the aircraft.
+
+Reserve Entry with a Load
+An aircraft may enter the battlefield from Reserve already carrying an airlifted unit.
+Targeting and Pins While Airlifted
+While airlifted:
+● The load cannot be targeted separately
+● Target the aircraft instead
+Pins
+If the aircraft suffers pin markers:
+● Airlifted artillery / crewed guns suffer the same number of pin markers
+● Airlifted vehicles do not receive shared pin markers
+Dropping / Deploying an Airlifted Load
+To deploy an airlifted unit, the aircraft must be landed.
+● The airlifted unit must then be given its own movement order to deploy.
+Orders required to deploy
+ ● Vehicle: may deploy with an Advance or Run order
+● Artillery: must deploy with a Run order 
+Restrictions
+A unit deployed from Airlift may not make an Assault.
+Aircraft Lost While Carrying an Airlifted Load
+If an aircraft carrying an airlifted unit becomes:
+● Destroyed, or
+● Abandoned / Routed
+The airlifted entity is immediately dropped and resolved as follows:
+Immediate Drop
+Place the airlifted unit:
+● within 1" of the aircraft base
+● more than 1" from any other unit, if possible
+The dropped unit then takes a Down order.
+Additional Effects If the Aircraft Was Flying When Destroyed
+If the airlifted entity is a Vehicle
+If the aircraft was flying when destroyed, the airlifted vehicle must immediately roll on the Superficial Damage Table.
+If the airlifted entity is Artillery
+If the aircraft is destroyed or abandoned/routed while carrying an artillery entity, resolve it using the same rules used for infantry/passengers in your Aircraft Transport Rules (including any crash or forced disembark effects that apply).
+Bolt Action Third Edition Compatibility
+Except where replaced or expanded by this optional rule, all other towing, transport, and artillery rules are resolved normally using the Bolt Action Third Edition rulebook.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+BEN’S HOUSE RULES
+Use this optional section if both players wish to include the cinematic house rules featured in Ben’s games night Halo battle report.
+MASTER CHIEF
+Use this optional rule if both players agree to field a more heroic, cinematic version of Master Chief.
+Design Benchmark
+For balance purposes, Master Chief in this format should be treated as roughly equivalent to a 5-man Veteran Spartan squad, plus the value of his additional special rules and equipment.
+Spartan-II Resolve
+Master Chief never receives Pin markers.
+Spartan Regeneration
+At the start of each turn, Master Chief regains 1 lost wound.
+If Master Chief is issued a Rally order, he regains D3 lost wounds.
+Spartan Reflexes
+Each time Master Chief is activated, he may perform two actions during that activation.
+Bubble Shield
+Once per game, when Master Chief is targeted by an enemy shooting attack, he may immediately deploy a Bubble Shield as a reaction. This does not require an activation.
+While the Bubble Shield is active, ignore any shooting attacks against Master Chief.
+The Bubble Shield remains in play until the end of the turn, or until Master Chief moves for any reason, whichever comes first.
+SPECIAL LEADER TARGETING
+When shooting at a unit that contains a special embedded leader model (for example, an Elite in a Grunt unit), the attacking player must declare before rolling to hit how many shots are allocated to the leader and how many are allocated to the rest of the unit.
+Resolve attacks allocated to the leader separately from attacks allocated to the rest of the unit.
+OVERCHARGE FIRE
+When an Anti-Tank Team makes a shooting attack, it may choose to fire at double its normal number of shots.
+If it does so, that team cannot fire in its next activation.
+VEHICLE HIJACKING
+When an Infantry unit assaults an enemy vehicle and scores a successful penetrating hit, it may choose to hijack the vehicle instead of destroying it.
+If it does so:
+                                    * remove the infantry unit from the board
+                                    * the vehicle is not destroyed
+                                    * the vehicle comes under that player’s control
+                                    * from that point onward, the hijacked vehicle uses its own Order Die as normal
+Hijacked Vehicle Destroyed
+If a hijacked vehicle is later destroyed, the unit that hijacked it suffers D3 wounds.
+If it survives, place it back on the table as an infantry unit in base contact with the vehicle, or as close as possible.
+Abandon Hijacked Vehicle
+If Master Chief, or any unit controlling a hijacked vehicle, is given an Advance or Run order, it may choose to abandon the vehicle.
+If it does so, the vehicle is immediately destroyed and the controlling unit is placed back on the table as infantry.
+GRUNT GRENADE ASSAULT
+When a Grunt unit declares an Assault, the controlling player may declare that some or all of its models are making grenade attacks.
+Roll one die for each grenading Grunt:
+                                    * on a 1, that Grunt inflicts D6 automatic hits on its own unit instead
+                                    * on a 2+, that Grunt inflicts D6 automatic hits on the enemy unit instead
+Resolve damage from these hits as normal.
+After resolving its grenade attack, each grenading Grunt is removed as a casualty.
+MELEE WEAPONS
+When using this optional rule, melee weapons such as Plasma Swords, Gravity Hammers, and similar weapons no longer grant +1 extra attack in Close Quarters.
+Instead, a model armed with a melee weapon receives +2 to its dice rolls in Close Quarters.
+
+
+
+
+ | Page

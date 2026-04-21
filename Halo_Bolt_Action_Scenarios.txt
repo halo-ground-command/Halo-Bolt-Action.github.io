@@ -1,0 +1,494 @@
+﻿Halo: Bolt Action - Scenarios v1.3
+
+Introduction
+This supplement is designed to expand your Halo: Bolt Action games with a variety of mission types and victory conditions, inspired by classic Halo multiplayer modes and story campaigns.
+All core mechanics for deployment zones and deployment types follow the official Bolt Action 3rd Edition Rulebook. Players should roll or agree upon those elements as normal after determining the mission victory conditions.
+This document is divided into two sections:
+* Victory Conditions: Six balanced missions, designed for matched play, adapted from Halo multiplayer game modes.
+
+* Story Scenarios: Asymmetric narrative missions inspired by iconic battles and moments from the Halo universe. Story scenarios make for more thematic and dramatic games than matched play missions. As a result, they are not always balanced: players often have different roles, deployment areas, and objectives. To ensure fairness, players can play each scenario twice, switching attacker and defender roles and comparing results.
+
+
+
+
+
+
+
+
+Victory Conditions
+Determine victory conditions for the game. You can either agree and choose one of the six options listed below, or roll a D6 die:
+   1. Artifact Recovery
+
+   2. Lockdown
+
+   3. Capture the Flag
+
+   4. Oddball
+
+   5. Territories
+
+   6. Extraction
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1. ARTIFACT RECOVERY
+In this Scenario, a number of alien relics lie scattered across the battlefield. Both sides have orders to recover these artefacts and return them to their command for extraction before the enemy can do the same.
+First set up 3–5 Relic Markers along the centre line of the table, spaced evenly. These should each be 1" in diameter. They are treated as Impassable Terrain, but have no other bearing on the battlefield (they do not affect Line of Sight, provide Cover, and so on).
+Only Infantry units can seize relics. To do so, a unit must be given an Advance or Run order and end its move with at least one model touching a Relic Marker (or occupying the Building section in which it lies). That model immediately picks up the relic and the unit carries it from that point on. A unit may carry only one relic at a time.
+If the model carrying a relic is killed, the relic is immediately transferred to another model in the unit. If the entire unit is destroyed or removed from play, the relic is left in place of the model that was carrying it for another unit to recover later. If a unit carrying a relic is destroyed in an Assault, the enemy unit that destroyed it can immediately claim the relic and place it next to one of their models before they make their Regroup move. If a relic ever ends up in Impassable Terrain, then a model may pick it up by moving into contact with that Impassable Terrain.
+In this Scenario, a relic is exfiltrated if the unit carrying it is successfully ordered to Advance or Run and then moves off its own deployment zone edge. Remove both the unit and the relic from play; that relic has been successfully extracted.
+Note that in this Scenario, all units (including Infiltrators) must be deployed more than 12" from any Relic Marker (or a Building containing one), so they cannot pick one up in the first turn of the game, unless of course they disembark from a Transport that has moved close enough, or also have the Fast special rule.
+Victory Points:
+      * 3 VP per relic exfiltrated off your edge.
+
+      * 1 VP per relic held by a friendly unit at game’s end.
+
+      * 1 VP per friendly relic carrier unit wholly within your own deployment zone at game’s end. 
+If one side scores at least 2 more victory points than the other, that side has won a clear victory. Otherwise, the game is a draw.
+2. LOCKDOWN
+Vital comm arrays are activating across the battlefield. Each force must move quickly to secure and upload data from key control zones before the enemy does.
+Before the game begins, place one Lockdown Zone (Objective Marker) in the centre of the table. Then roll off: the winner places the second Lockdown Zone, and the opponent places the third. Lockdown Zones must be placed more than 6" from any Deployment Zone and any table edge, and more than 12" from each other.
+All three Lockdown Zones are active from the start of Turn 1. At the end of each turn, each player may score only one Lockdown Zone of their choice, though they may contest any number of zones. To control a Lockdown Zone, one of your Infantry or Artillery units must end its movement within 3" of the marker, and there must be no enemy unit of any type within 3" of it. Vehicles may contest Lockdown Zones, but cannot control them.
+Victory Points
+         * 1 VP at the end of each turn for controlling a Lockdown Zone.
+
+         * 2 VP instead if the Lockdown Zone you control was placed by your opponent.
+
+         * At the end of the game, the central Lockdown Zone is worth 3 VP instead of the normal 1 VP if you control it.
+If one side scores at least 2 more victory points than the other, that side has won a clear victory. Otherwise, the game is a draw.
+3. CAPTURE THE FLAG
+Enemy battle networks must be breached and secured. Strike teams are tasked with infiltrating enemy territory and recovering vital command data.
+Each player places a base with one Flag Marker in their deployment zone, at least 6" from any table edge. Only Infantry and Artillery units may seize or carry Flags.
+To pick up the enemy Flag, a unit must be given an Advance or Run order and end its move in base contact with the Flag Marker. That unit immediately claims the Flag and carries it from that point on. If the model carrying a Flag is killed, it is immediately transferred to another model in the unit. If the entire unit is destroyed or removed from play, the Flag is left in place of the model that was carrying it for another unit to recover later. If a unit carrying a Flag is destroyed in an Assault, the enemy unit that destroyed it can immediately claim the Flag before making its Regroup move. The Flag is then immediately returned to its original position in that player’s base. If a unit ends an Advance or Run order in base contact with its own dropped Flag, the Flag is immediately returned to its original position in that player’s base.
+To score, a unit carrying the enemy Flag must return to its own base and end an Advance or Run move in base contact with its own Flag Marker, provided its own Flag is present in its original starting position. Upon scoring, the enemy Flag is returned to its original position in the opposing base.
+
+
+
+
+
+
+Victory Points
+            * 3 VP per enemy Flag captured.
+
+            * 1 VP if you are carrying the enemy Flag at game’s end.
+
+            * 1 VP per friendly unit within 1" of the enemy base at game’s end.
+If one side scores at least 2 more victory points than the other, that side has won a clear victory. Otherwise, the game is a draw.
+4. ODDBALL
+A strange alien artefact pulses at the centre of the battlefield. Whoever holds it gains the edge, if they can keep it.
+Place a single Objective Marker (the “Skull”) in the exact centre of the battlefield. It is treated as Impassable Terrain, but has no other bearing on the battlefield. Only Infantry and Artillery units may pick up the Skull. To do so, a unit must be given an Advance or Run order and end its move in base contact with the Skull (or occupying the Building section in which it lies). That unit immediately claims the Skull and carries it from that point on. A unit carrying the Skull may not be given a Run or Ambush order. If given an Advance order, it may move no more than 6". Units carrying the Skull cannot board Transports nor be towed.
+If the model carrying the Skull is killed, it is immediately transferred to another model in the unit. If the entire unit is destroyed or removed from play, the Skull is left in place of the model that was carrying it for another unit to recover later. If the Skull ever ends up in Impassable Terrain, then a model may pick it up by moving into contact with that Impassable Terrain.
+Note that in this Scenario, all units must be deployed more than 12" from the marker (or the Building containing it).
+Victory Points:
+               * 1 VP at the end of each turn the Skull is held.
+
+               * 3 VP instead if the Skull is held at game end.
+
+               * +1 VP per enemy unit destroyed.
+If one side scores at least 2 more victory points than the other, that side has won a clear victory. Otherwise, the game is a draw.
+5. TERRITORIES
+Wide control of the battlefield is vital. Your forces must secure key sectors and hold them against enemy encroachment.
+Divide the battlefield into three equal sectors: left, centre, and right. Place one Objective Marker at the centre of each sector to indicate its control point. If there is a Building at a marker’s location, remove it or move it aside.
+To control a sector, a player must have more Infantry and Artillery models within 6" of that sector’s Objective Marker than their opponent. A unit cannot capture or contest more than one control point at the same time; if a unit is within range of more than one Objective Marker, its models only count towards one of them. Vehicle units do not count and cannot contest sectors.
+Victory Points:
+                  * 1 VP at the end of each turn for each sector controlled.
+                  * 2 bonus VP at the end of the game for each sector controlled.
+
+
+If one side scores at least 2 more victory points than the other, that side has won a clear victory. Otherwise, the game is a draw.
+
+
+6. EXTRACTION
+Priority intel must be secured and transmitted. Deploy extraction beacons and defend them until data transfer is complete.
+Place two Extraction Zones between 12-18" from the centre of the battlefield, positioned equally on opposite sides of the centre line.
+Only Infantry and Artillery units may plant a beacon. To do so, a unit must end an Advance or Run order within 3" of an Extraction Zone and perform no other actions during that activation; it may not fire, assault, board a Transport, or use any rule or ability that requires it to take an additional action. The beacon becomes active at the end of the turn if there is no enemy unit of any type within 3" of that Extraction Zone. If it becomes active, points are then scored.
+After a player scores an Extraction Zone, that player cannot score that same zone again in the following turn. After that, they may score it again as normal.
+Victory Points:
+                     * 1 VP for each successful Extraction beacon planted and activated.
+
+                     * 2 VP for each beacon planted and activated at the last turn.
+
+If one side scores at least 2 more victory points than the other, that side has won a clear victory. Otherwise, the game is a draw.
+
+
+
+
+
+
+STORY SCENARIOS
+1. THE SILENT CARTOGRAPHER
+A Forerunner structure containing valuable intelligence has been discovered on an island. One force must launch a coordinated beach assault to seize the site, while the defenders dig in for a last stand.
+DEPLOYMENT
+Both players roll a die (re-roll ties). The highest scorer chooses whether to be the Attacker or the Defender.
+                        * The Defender picks a long table edge to use as their reserves entry zone, and then deploys up to half of their force within 18" of the center of the table, around the Cartographer structure. These units may use Hidden Deployment. The rest are reserves.
+
+                        * The Attacker does not deploy any units at the start of the game. They must nominate at least half of their army as their first wave, with any remainder placed in reserve.
+
+                        * Reserves may not use outflanking in this scenario.
+
+OBJECTIVE
+The Attacker must capture the Cartographer structure in the center of the battlefield. The Defender must prevent this at all costs. To control the Cartographer, a player must have an Infantry or Artillery unit within 3" of the structure and no enemy unit of any type within 3" of it.
+PREPARATORY BOMBARDMENT
+The Attacker rolls a die: on a 2+, a preparatory bombardment strikes enemy positions (see Preparatory Bombardment table). On a 1, the barrage fails to materialise.
+FIRST TURN
+The battle begins. During Turn 1, the Attacker must bring their first wave onto the table. These units may enter from any point along their long table edge and must be given either a Run or Advance order. No order test is required to move units onto the table as part of the first wave.
+GAME DURATION
+Keep track of turns as the game progresses. At the end of Turn 6, roll a die:
+                           * On a 1–3, the game ends.
+
+                           * On a 4–6, play one final turn.
+
+VICTORY
+                              * Attacker
+  +3 VP if the Cartographer is controlled at the end of the game.
+ +1 VP per enemy unit destroyed.
+
+                              * Defender
+  +1 VP at the end of each turn where the Attacker has no units within 3" of the Cartographer.
+ +1 VP per enemy unit destroyed.
+
+If one side scores at least 2 more Victory Points than the other, that side has won a clear victory. Otherwise, the result is a draw.
+2. EVACUATION PROTOCOL
+A civilian sector is under siege. With Covenant forces closing in, the last remaining UNSC transports must break through the encroaching blockade and reach the extraction zone. Hold the line. No one gets left behind.
+DEPLOYMENT
+Both players roll a die (re-roll ties). The highest scorer chooses whether to play as the UNSC or the Covenant.
+                                 * The UNSC player places 3 soft-skin transport vehicles (e.g., Trucks) in a road column within 12" of their short table edge, centered. These transports may each carry one Infantry unit, if desired.
+
+                                 * The UNSC then deploys up to half of their army within 18" of the transports. Rest go into reserves.
+
+                                 * The Covenant player does not deploy any units at the start. They must nominate half of their force (Rounded up)  as their first wave, with the remainder left in reserve.
+
+                                 * Reserves may use outflanking.
+Use the Quarters deployment map.
+OBJECTIVE
+The UNSC must evacuate at least one transport off the opposite short table edge. The Covenant must destroy the transports or prevent escape.
+To escape, a transport must move entirely off the opposite short table edge using standard movement. Once it does, it is considered successfully evacuated.
+SPECIAL RULE: CONVOY UNIT
+The three wheeled UNSC transports share one Order Die, but each vehicle may move independently once activated.
+If a transport is destroyed, its passengers suffer D6 hits as per soft-skin vehicle rules and survivors disembark. Infantry may still evacuate on foot by reaching the escape edge.
+PREPARATORY BOMBARDMENT
+The Covenant player rolls a die: on a 2+, a preparatory bombardment strikes UNSC positions. On a 1, the barrage fails to materialise.
+FIRST TURN
+The battle begins. During Turn 1, the Covenant player must bring their first wave onto the table. These units enter using the Quarters deployment map, from any point within their assigned quarter, and must be given a Run or Advance order. No order test is required to enter.
+GAME DURATION
+At the end of Turn 6, roll a die. On a result of 1–3, the game ends. On a 4–6, play one final turn.
+VICTORY
+                                    * UNSC (Defender)
+  +2 VP for each transport successfully evacuated.
+ +1 VP for each Infantry unit that escapes.
+ +1 VP for each enemy unit destroyed.
+                                    * Covenant (Attacker)
+  +2 VP for each transport destroyed.
+ +1 VP for each enemy unit destroyed.
+ +1 VP if no transports escape.
+
+If one side scores at least 2 more Victory Points than the other, that side has won a clear victory. Otherwise, the result is a draw.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3. RESCUE THE SURVIVORS
+A number of Bumblebee escape pods have crashed behind enemy lines. Veteran UNSC survivors cling to life inside their wrecked drop pods. A rescue team must reach and extract them before the Covenant can destroy or capture them.
+DEPLOYMENT
+Both players roll a die (re-roll ties). The highest scorer chooses whether to play as the UNSC or the Covenant/Banished.
+                                       * The UNSC player places 3–5 Bumblebee crash site markers across the board, spaced at least 15" apart and more than 6" from deployment zones.
+
+                                       * Use the Long Edges deployment zones.
+
+                                       * On each marker, place one basic Regular or Veteran UNSC Infantry unit to represent the survivors. These units are considered to be within the Bumblebee and count as being in hard cover.
+
+                                       * Survivor units may only be given Down, Rally, or Fire orders. They may not Advance or Run, and they ignore FUBAR effects if a failed order is rolled.
+
+                                       * The Covenant and UNSC players then each deploy up to half of their army within their respective deployment zones, but no closer than 9" to any survivor unit.
+
+                                       * Remaining units are placed in reserve. Reserves may use outflanking.
+
+OBJECTIVE
+The UNSC must reach and extract the survivor units. The Covenant must destroy or capture them.
+To extract a survivor:
+                                          * A UNSC Infantry unit must end an Advance or Run order within 2" of a survivor unit and take no other action that turn.
+
+                                          * This unit plants an Extraction Beacon. At the end of the turn, if the area is not contested (i.e., no enemy unit within 3"), the survivor unit is considered extracted and is removed from play.
+
+To capture a survivor:
+                                             * A Covenant Infantry unit must assault a survivor unit and win.
+
+                                             * The survivor unit is considered captured and is removed from play.
+
+If a survivor unit is destroyed, it is permanently lost.
+PREPARATORY BOMBARDMENT
+None. The mission begins mid-crisis and under pressure.
+
+
+
+
+
+
+FIRST TURN
+The battle begins.
+GAME DURATION
+The game lasts 6 turns. At the end of Turn 6, roll a die:
+                                                * On 1–3, the game ends.
+
+                                                * On 4–6, play one additional turn.
+
+VICTORY
+                                                   * UNSC (Rescuers)
+  +3 VP per survivor unit extracted.
+ +1 VP per Covenant unit destroyed.
+
+                                                   * Covenant (Hunters)
+  +1 VP per survivor unit destroyed.
+ +2 VP per survivor unit captured.
+ +1 VP per non-survivor UNSC unit destroyed.
+
+If one side scores at least 2 more Victory Points than the other, that side has won a clear victory. Otherwise, the result is a draw.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4. RAID THE ARCHIVE
+A secret ONI research facility has come under Covenant assault. The data stored inside is too sensitive to fall into enemy hands. The defenders must hold the installation at all costs while initiating emergency purge protocols. The Covenant, relentless in their belief, must breach the defenses and seize the terminals before the purge completes.
+DEPLOYMENT
+Both players roll a die (re-roll ties). The highest scorer chooses whether to play as the UNSC or the Covenant/Banished.
+                                                      * The UNSC player is the Defender and must deploy first. They place more than half of their army inside or within 24" of the ONI Archive, which should be a central fortified terrain feature or building placed at the center of the battlefield. Any not placed UNSC units are reserves.
+
+                                                      * The UNSC also places three Objective Terminals, each one within 24" of the center of the table and at least 9" from each other. These terminals represent classified ONI data cores. They cannot be moved or destroyed by any means.
+
+                                                      * The Covenant player begins the game with no units on the table.
+
+                                                      * The Covenant army is divided: up to one-third (rounded up) may enter as the first wave, while the remaining two-thirds are held in reserve.
+
+                                                      * All reserve units (for both players) may enter from any table edge.
+
+OBJECTIVE
+The UNSC must defend the three terminals and allow the data purge to complete.
+The Covenant must seize the data from each terminal before the purge concludes.
+SEIZING A TERMINAL
+To seize a terminal, a Covenant Infantry unit must:
+                                                         * End an Advance or Run order in base contact with a terminal.
+
+                                                         * On their next activation, the unit must be still in base contact and successfully complete a Fire order.
+ - (This Fire order does not represent shooting, but simulates the unit accessing and downloading the terminal’s data.)
+
+Once this action is completed, the terminal is considered seized and is removed from play.
+SPECIAL RULE: WAVE ATTACK
+From the start of every turn after the fourth turn, the Covenant player may roll a dice for any previously destroyed Covenant units. On a 4+, they go back to reserve.  These units may re-enter play as reserves, simulating endless Covenant reinforcements flooding the battlefield.
+PREPARATORY BOMBARDMENT
+The Covenant player rolls a die: on a 2+, a preparatory bombardment strikes UNSC positions. On a 1, the barrage fails to materialize.
+FIRST TURN
+The battle begins. During Turn 1, the Covenant player brings their first wave onto the table. These units may enter from any board edge and must be given an Advance or Run order.
+No order test is required to enter as part of the first wave.
+GAME DURATION
+The game lasts 6 turns. At the end of Turn 6, roll a die:
+                                                            * On a result of 1–3, the game ends.
+
+                                                            * On 4–6, play one additional turn.
+
+If the Covenant seizes all three terminals before the end of the game, the mission ends immediately in a Covenant victory.
+VICTORY
+                                                               * UNSC (Defenders)
+  +2 VP per terminal not seized at the end of the game.
+ +1 VP per Covenant unit destroyed.
+
+                                                               * Covenant (Attackers)
+  +2 VP per terminal seized.
+ +1 VP per UNSC unit destroyed.
+
+If one side scores at least 2 more Victory Points than the other, that side has won a clear victory. Otherwise, the result is a draw.
+
+
+
+
+5. UPLINK INTERRUPTED
+A UNSC field team is attempting to activate a series of uplink towers to transmit a critical evacuation signal to orbit. Covenant/Banished forces have triangulated the position and must prevent the transmission at all costs. Time is running out.
+DEPLOYMENT
+Both players roll a die (re-roll ties). The highest scorer chooses whether to play as the UNSC or the Covenant/Banished.
+                                                                  * The UNSC player is the Defender and deploys first. They place up to half of their army within 12" of the central uplink tower, plus two additional uplink towers placed anywhere within 18" of the center and at least 12" apart. These towers are the Uplink Objectives.
+The rest of the UNSC units are placed in reserve.
+
+                                                                  * The Covenant/Banished player is the Attacker and does not deploy any units at the start. They must nominate at least half their army as their first wave. The remainder are held in reserve and may use outflanking.
+
+Use Long Edge deployment zones. Covenant/Banished units must enter from their own long edge or from reserve as normal.
+OBJECTIVE
+The UNSC must activate and maintain control of as many Uplink Towers as possible before the end of the game. The Covenant/Banished must prevent the transmission by deactivating or seizing the towers.
+ACTIVATING AN UPLINK
+To activate an uplink tower:
+                                                                     * A UNSC Infantry unit must end an Advance or Run order in base contact with the tower.
+
+                                                                     * On their next activation, the unit must remain in contact and successfully complete a Fire order (no shooting required).
+Once this is done, the uplink is considered active and remains active until deactivated.
+
+DEACTIVATING AN UPLINK
+To deactivate an active uplink:
+                                                                        * A Covenant/Banished Infantry unit must end an Advance or Run order in base contact with it.
+
+                                                                        * On their next activation, they must remain in contact and successfully complete a Fire order. (no shooting required).
+The tower is then deactivated and can be reactivated by either side.
+
+PREPARATORY BOMBARDMENT
+The Covenant/Banished player rolls a die: on a 2+, a preparatory bombardment strikes the battlefield. On a 1, the barrage fails to materialise.
+FIRST TURN
+The battle begins. During Turn 1, the Covenant/Banished player must bring their first wave onto the table. These units enter from their long edge and must be given either a Run or Advance order.
+No order test is required to enter as part of the first wave.
+GAME DURATION
+The game lasts 6 turns. At the end of Turn 6, roll a die:
+                                                                           * On 1–3, the game ends.
+
+                                                                           * On 4–6, play one additional turn.
+
+VICTORY
+UNSC (Defender)
+                                                                              * +1 VP for each uplink that remains active at the end of the game.
+
+                                                                              * +1 VP for each Covenant/Banished unit destroyed.
+
+Covenant/Banished (Attacker)
+                                                                                 * +1 VP for each uplink deactivated at the end of the game.
+
+                                                                                 * +1 VP for each UNSC unit destroyed.
+
+If one side scores at least 2 more Victory Points than the other, that side has won a clear victory. Otherwise, the result is a draw.
+
+
+
+
+
+
+
+
+
+
+6. POWER CORE MELTDOWN
+A Covenant/Banished sabotage team has triggered a catastrophic overload in a UNSC power core facility. Emergency shutdown systems are offline. A rapid-response UNSC strike force must deploy a combat engineer team to stabilize the core — before it detonates and wipes out everything nearby.
+DEPLOYMENT
+Both players roll a die (re-roll ties). The highest scorer chooses whether to play as the Covenant/Banished (Defender) or the UNSC (Attacker).
+                                                                                    * The Covenant/Banished player deploys up to half of their army within 12" of the Power Core, which should be placed at the center of the table. These units may use Hidden Deployment. Remaining units are placed in reserve.
+
+                                                                                    * The UNSC deploys no units at the start of the game. They must nominate at least half of their force as their first wave, with the rest placed in reserve.
+
+                                                                                    * Reserves may not use outflanking in this scenario.
+
+OBJECTIVE
+The UNSC must reach the Power Core and stabilize it before it detonates. The Covenant/Banished must prevent this and ensure the meltdown completes.
+STABILIZING THE CORE
+To stabilize the core:
+                                                                                       * A UNSC Infantry unit with the Engineer special rule must end an Advance or Run order within 1" of the Power Core.
+
+                                                                                       * On their next activation, they must still be in contact and successfully complete a Fire order (no shooting required).
+
+                                                                                       * If successful, the core is stabilized immediately, and the UNSC wins the game automatically.
+
+MELTDOWN TIMER
+At the end of Turn 6, roll a die:
+                                                                                          * On a 1–3, the Power Core explodes immediately.
+
+                                                                                          * On a 4–6, the core remains unstable — play one more turn.
+
+                                                                                          * If the core has not been stabilized by the end of Turn 7, it automatically explodes.
+
+CORE EXPLOSION
+If the Power Core explodes:
+                                                                                             * All units within 12" of the Power Core are immediately destroyed, regardless of armour or cover.
+
+                                                                                             * Remove the core and any affected units from the battlefield.
+
+                                                                                             * The game ends immediately after the explosion.
+
+PREPARATORY BOMBARDMENT
+The UNSC player rolls a die:
+                                                                                                * On a 2+, a preparatory bombardment strikes enemy positions.
+
+                                                                                                * On a 1, the barrage fails to materialise.
+
+FIRST TURN
+The UNSC player must bring their first wave onto the table. These units enter from the UNSC long table edge and must be given either a Run or Advance order.
+No order test is required to enter as part of the first wave.
+GAME DURATION
+The game continues until the Power Core is stabilized, explodes, or the end of Turn 7.
+VICTORY
+UNSC (Attacker)
+                                                                                                   * Automatically wins if the Power Core is stabilized.
+
+                                                                                                   * +1 VP for each enemy unit destroyed.
+
+Covenant/Banished (Defender)
+                                                                                                      * +2 VP if the Power Core explodes before being stabilized.
+
+                                                                                                      * +1 VP for each enemy unit destroyed.
+
+If the core is not stabilized, and the Covenant/Banished score at least 2 more Victory Points, they win a clear victory. Otherwise, the result is a draw.
+
+
+
+
+ | Page
