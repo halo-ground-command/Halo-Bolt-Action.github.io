@@ -1,0 +1,977 @@
+﻿Halo: Bolt Action Rulebook V3.0
+Introduction
+Welcome to Halo: Bolt Action, where the tactical depth of Bolt Action meets the epic universe of Halo. Command forces from the UNSC or Covenant in fast-paced tabletop battles, using infantry, vehicles, and air support to outmaneuver and defeat your opponent.
+Tabletop simulator mod here
+List builder/calculator here
+Table of Contents
+Introduction        1
+Requirements to play HBA        1
+Types of units        2
+Aircraft        2
+Walkers        5
+Anti-Grav        7
+Damage Value Chart        7
+Weapons table        8
+Weapons special rules        10
+Units special rules        12
+Vehicles special rules        15
+Rules summary        17
+
+
+
+
+
+
+
+
+
+
+Requirements to play HBA
+
+
+In order to play HBA you will need:
+* Bolt Action V3 Rulebook.
+* Order Dice (Or standard D6 dice can be used as substitutes).
+* Tokens and Templates.
+* D6 Dice.
+* A Bag or a similar non-transparent container.
+* A Tape Measure (preferably marked in inches).
+* Appropriate Halo Models for your Force.
+* A flat Game Surface to act as a battlefield.
+* Terrain such as woods, hills or buildings. 
+
+
+Types of Units
+Aircraft (Helicopters/VTOLs)
+Aircraft are a unique class of vehicles designed to reflect their speed, agility, and airborne capabilities on the battlefield. These rules distinguish them from standard ground vehicles and grant them greater tactical flexibility.
+Deployment
+Aircraft always begin the game in Reserve (Except Breakthrough) and must enter the battlefield using an Advance or Run order. Upon doing so, they are considered flying.
+Movement
+Aircraft use the Advance and Run orders for movement.
+Advance: Move up to 24 inches with unlimited pivots.
+Run: Move up to 48 inches with unlimited pivots.
+Flying Aircraft may move over any terrain, unit or obstacle without penalty, simulating their ability to fly above the battlefield. Aircraft must land or end their move in a position where the model/base/stand physically fits and remains stable. They cannot land in impassable terrain.
+Airborne and Landed States
+An Aircraft becomes airborne when it enters the battlefield using an Advance or Run order from Reserve. A flying Aircraft remains airborne (Flying) as long as it receives an Advance, Run, Fire, Rally, or Ambush order.
+To land, an Aircraft must be given a Down order. When this happens, it descends and lands within 9 inches horizontally in a legal position and may pivot freely. If the Down order is the result of a failed order test, the Aircraft does not land, unlike other types of Bolt Action vehicles, it simply loses its activation and remains airborne without moving (No reverse), or if already landed, it remains landed.
+Once landed, the Aircraft treats objectives like other vehicles and remains on the ground until it is issued an Advance or Run order, which causes it to take off and become airborne (Flying) again. If a landed Aircraft receives a Fire, Rally, Ambush or Down order, it remains on the ground.
+Players should use a clear method to distinguish between flying and landed states, such as attaching or removing a flight stand, or placing a visual marker.
+Line of Sight and Cover
+Flying Aircraft are elevated above the battlefield and interact differently with line of sight. They can see and be seen over most battlefield features, including dense terrain. However, tall terrain (such as multi-story buildings, high cliffs, or towers) blocks line of sight unless both the observer and the target are flying Aircraft. Players should agree before the game which terrain features are considered “tall.”
+Flying Aircraft do not block line of sight and cannot provide cover to any unit. They also ignore line of sight obstructions from ground models. Additionally, when a flying Aircraft targets a unit on the ground, it ignores any friendly units in the line of fire. Normally, a unit cannot shoot through another friendly unit it could potentially harm, but this restriction does not apply to flying Aircraft.
+When a flying Aircraft targets a ground unit, the target only receives cover if the intervening element (terrain or unit) is both within 3 inches of the target and crosses the line of sight between the Aircraft and the target. Otherwise, intervening elements are ignored for cover purposes. This same rule can optionally be used for line of sight blocking if players agree.
+When a ground unit targets a flying Aircraft, the Aircraft does not receive cover from any intervening units or terrain. Ground units may freely fire at a flying Aircraft even if friendly or enemy models are directly in the line of fire. This does not prevent the attack and does not risk friendly fire.
+Landed Aircraft follow normal vehicle rules for line of sight. They can be seen as normal, may block line of sight to other units, and can provide or benefit from soft and hard cover.
+Shooting
+Flying Aircraft may fire all of their weapons when issued an Advance or Fire order. They do not gain point-blank bonuses when firing, and units firing at them do not benefit from point-blank bonuses either.
+If an Aircraft is flying, enemy units suffer a -1 penalty to hit it unless they have the Flak special rule. AT Guns do not gain the +1 to Hit vehicles vs flying aircraft. Aircraft are treated as having the same armor value on all facings; attacks do not gain bonuses for hitting side, rear, or top armor. Flying Aircraft have a special 5+ Evasion save that negates damage but not Pin markers, similar to cover saves. 
+Once landed, Aircraft may only fire pintle-mounted weapons unless stated otherwise in their profile.
+Command Aircraft
+Aircraft cannot be designated as Command Vehicles unless specifically stated in their unit profile. Any HQ units transported aboard follow the standard transport rules.
+Transport Rules (If passenger capacity)
+Units may embark or disembark from an Aircraft  only when it is landed. Units with the Flight special rule may disembark from a flying Aircraft using an Advance or Run order. No units may embark onto a flying Aircraft.
+Damage to Passengers
+If a landed Aircraft is destroyed, the standard transport destruction rules apply (D6 hits, and any survivors dismount at the wreck location).
+If a flying Aircraft is destroyed, each unit aboard suffers D3 pin markers, then the Aircraft crashes, and the standard transport destruction rules are applied. If the crash location is not suitable for the Aircraft model to physically land, the wreck is placed in the closest legal landing position.
+If a flying Aircraft becomes On Fire, resolve the fire effect as normal. Once resolved, all transported units must disembark immediately.
+If a flying Aircraft would flee for any reason or be destroyed due to accumulated pin markers while carrying passengers, it must immediately land in the nearest legal position. It is then considered abandoned and becomes a wreck. The crew is removed, and all transported units dismount safely without taking further damage as per the normal rules.
+
+
+Assaults
+Aircraft can’t initiate assaults, whether flying or landed. Flying Aircraft are immune to assault. Landed Aircraft may be assaulted using the standard rules for vehicles and transports.
+Aircraft Damage Rules
+Aircraft use the following vehicle damage tables. However, Aircraft with Damage Value 6+ are destroyed outright when damaged. 
+SUPERFICIAL DAMAGE RESULTS ON AIRCRAFT
+D6
+	Effect
+	1, 2, or 3
+	Crew Shaken: Add 1 pin marker and take a morale test. If it fails and the aircraft is flying, the Aircraft must take a Down order and land immediately in the nearest legal position.  If it fails and the aircraft is already landed, it cannot perform further actions this turn. Place a Down order die to represent this.
+	 4 or 5
+	Engine Damage: The Aircraft's speed is halved for the remainder of the game. If this result occurs again, add 1 pin marker and take a Down order to land.
+	6
+	System Malfunction: The Aircraft must land immediately within 9 inches in the nearest legal position. Add 2 pin markers and take a Down order. If already landed, treat this as "On Fire" from the Full Damage Table.
+	Note: If the Aircraft takes superficial damage and no legal landing position is available, roll on the Full Damage Table instead of the Superficial Damage Table.
+FULL DAMAGE RESULTS ON AIRCRAFT TABLE
+
+
+D6
+	Effect
+	1
+	Crew Shaken: Add 1 pin marker. If flying, the Aircraft must take a Down order and land immediately in the nearest legal position. If landed, it cannot perform further actions this turn. Place a Down order die to represent this.
+
+
+	2
+	Targeting Failure: The weapon’s targeting system glitches. The affected vehicle suffers a –1 to hit penalty on all shooting for the rest of the game. Add 1 pin marker.
+
+
+	3
+	On Fire: Add 2 pin markers. Roll a morale check. If passed, extinguish the fire and take a Down order and land. If failed and the Aircraft is landed, the crew abandons the Aircraft , and it is destroyed. If the Aircraft is flying, treat it like "Destroyed" below.
+	4, 5 or 6
+	Destroyed: The Aircraft is destroyed and becomes a wreck. If flying, all units within 6 inches horizontally take D3 pin markers from falling debris.
+	Note: If the Aircraft takes full damage and you get an effect that requires the Aircraft to land while there is no legal landing position available, add +1 to the roll for determining full damage effects.
+Walkers
+Walkers are a distinct class of vehicles, combining the mobility and resilience of armored vehicles with the tactical versatility of infantry. Their unique locomotion allows them to navigate terrain and engage in close-quarters combat in ways conventional vehicles cannot.
+Movement
+Walkers use the Advance and Run orders for movement. 
+When using an Advance order, a walker may move up to 9 inches and perform up to two 90-degree pivots during its move. These may be combined into a single 180-degree pivot. 
+When using a Run order, it may move up to 18 inches but it is limited to a single 90-degree pivot during the move.
+Walkers can traverse open ground, rough ground, and obstacles. However, they may not enter buildings. On roads, walkers double their movement distances.
+Shooting at Walkers
+Shooting at walkers follows the standard rules for targeting vehicles. However, walkers are treated as having the same armor value on all facings; attacks do not gain bonuses for hitting side, rear, or top armor. If a walker is damaged, roll on the Standard Vehicle Superficial or Full Damage Table as normal. Walkers with Damage Value 6+ are destroyed outright if damaged.
+
+
+Walker Assaults
+By default, fully enclosed walkers are treated as tanks when performing assaults, requiring a Run order and resolving impact per standard vehicle rules. However, walkers equipped with the Assault special rule use a different set of mechanics; Assault walkers roll 2 base attacks, plus 1 additional attack per Fist. Walkers can halve their attacks rounded up to get an extra +1 PEN. Each attack uses a PEN value based on the walker's class:
+Walker Class
+	PEN Value
+	Scout
+	+1
+	Light
+	+2
+	Medium
+	+3
+	Heavy
+	+4
+	Super-Heavy
+	+5
+	Walkers with Assault Assaulting Infantry or Artillery
+A walker with Assault must be issued a Run order and move within 1" of the target. As normal, if starting more than 6" from the target, the enemy may react with a Fire order. If starting within 6", only units on Ambush may.
+Combat is always resolved simultaneously. Units never receive defensive positions (inc. Strikes First) in this type of combat. Assault walkers can assault units on the ground floor by ending the assault move within 1" of a building opening. 
+Infantry/artillery must roll a 6+ to hit the walker, as a walker that is assaulting is moving. The total number of successful hits becomes a bonus modifier to a single D6 damage roll against the walker. If the walker takes damage, roll on the Vehicle Damage Table (or destroy it if it has Damage Value 6+ or open topped). If the result is immobilized, it must pass a Morale check or be destroyed. If the infantry/artillery unit fails to cause any damage and suffers casualties, the entire unit loses the fight and is destroyed. Artillery units also lose the gun (no abandoned gun remains). If neither side inflicts damage, immediately fight another round of combat. If the walker is damaged but survives, infantry units may fall back by a D6" regroup move, even if they took casualties. 
+Infantry Assaulting Walkers with Assault
+This follows the same procedure. Infantry without Tank Hunters assaulting a fully enclosed walker must pass a Morale test at -3, even if unpinned. Infantry cannot perform an assault order on a walker that has a Run order, unless it is immobilized or forced Down. Once hits are determined, proceed as per close combat resolution above. To hit:
+* Run order: 6+ to hit.
+* Advance order: 6+ to hit.
+* Down / Immobilized / Unactivated or any other order than run or advance: 4+ to hit
+
+Vehicles without Assault Assaulting a Walker of any kind
+This is treated as a ram using standard vehicle-on-vehicle assault rules.
+Walkers with Assault Assaulting Vehicles
+A walker with Assault may assault a vehicle using a Run order, ending within 1 inch of the target. As normal, If the vehicle is unactivated, within firing arc, and the assault starts more than 6" away, it may react with a Fire order.
+Attacks are resolved directly as damage rolls. Each uses the PEN value for the walker’s class and is applied to the target vehicle’s front armor. If damaged, resolve as per standard vehicle damage or destroy the target if it is soft-skinned or open topped.
+If the vehicle gets an immobilized result, it must take a Morale test or be destroyed. If it survives the assault, the target receives 1 pin plus 1 pin for each fist the walker possesses and the walker must fall back by a D6" regroup move.
+Assaults Between Walkers Both with Assault
+When two walkers with the Assault special rule engage each other in close combat, the fight is resolved as the rules above but with some differences. Each walker rolls its attacks using its appropriate PEN values. All damage is resolved at the same time. 
+If none are destroyed as a result, each walker receives 1 pin marker plus 1 additional pin marker for each Fist possessed by its opponent. This combat immediately continues until one or both walkers are destroyed or forced to route.
+Other Rules
+Other than the above rules, Walkers use the standard vehicle rules.
+Anti-Grav
+Anti-grav vehicles are a class of highly mobile units, hovering close to the ground and using advanced propulsion systems to glide effortlessly over terrain.
+Movement
+Anti-grav vehicles use the Advance and Run orders for movement.
+When given an Advance order, an anti-grav vehicle may move up to 9 inches and perform up to four 90-degree pivots during the move. These may be combined into a single pivot of up to 360 degrees.
+With a Run order, it may move up to 18 inches and perform up to two 90-degree pivots, which may be combined into a single 180-degree pivot.
+Anti-grav vehicles may traverse open ground, rough ground, and obstacles. They may not enter buildings or ruins, and cannot Run through rough terrain.
+
+On roads, anti-grav vehicles benefit from doubled movement distance, like wheeled vehicles.
+Assaulting
+Anti-grav vehicles follow the standard assault rules for vehicles. If the vehicle is fully enclosed, it is treated as a tank for assault resolution.
+Other Rules
+Other than the above rules, anti-grav vehicles use the standard vehicle rules.
+Damage Value Chart
+Troops and Soft-Skinned Targets
+Result N.
+	Target Type
+	3+
+	Inexperienced infantry or artillery
+	4+
+	Regular infantry or artillery
+	5+
+	Veteran infantry or artillery
+	6+
+	All soft-skinned vehicles, including Light Aircraft and Scout Walkers
+	
+
+Armored Targets
+Result N.
+	Target Type
+	7+
+	Armored car/carrier, Light Walker, Medium Aircraft 
+	8+
+	Light tank, Medium Walker, Heavy Aircraft 
+	9+
+	Medium tank, Heavy Walker, Super-Heavy Aircraft
+	10+
+	Heavy tank, Super-heavy Walker
+	11+
+	Super-heavy tank
+	Weapons Table
+Type - SMALL ARMS
+	Range
+	Shots
+	Pen
+	Special Rules
+	Pistol/Boltshot
+	6"
+	1
+	-
+	–
+	Plasma Pistol/Disruptor
+	12"
+	1
+	-
+	Overcharge, Overheat
+	Submachine Gun (SMG)
+	12"
+	2
+	-
+	Assault
+	Mangler
+	12"
+	1
+	-
+	Assault
+	Needler
+	6"/12"
+	2/1
+	-
+	Assault, Tracking, Supercombine
+	Mauler
+	6"
+	2
+	-
+	Assault
+	Rifle/Sentinel Beam
+	24"
+	1
+	-
+	–
+	Shock Rifle
+	24"
+	1
+	-
+	Overcharge
+	Shotgun/Heatwave/Scattershot
+	18"
+	1
+	-
+	Assault
+	Assault Rifle/Suppressor
+	18"
+	2
+	-
+	Assault
+	Spike Rifle
+	18"
+	2
+	-
+	Assault, Cover Negation
+	Plasma Rifle
+	18"
+	2
+	-
+	Overheat, Assault
+	Battle Rifle/Covenant Carbine
+	24"/30"
+	2/1
+	-
+	–
+	Pulse Carbine
+	24"/30"
+	2/1
+	-
+	Overheat, Tracking
+	DMR/Stalker Rifle/Light Rifle
+	30"
+	1
+	-
+	Range Finder
+	Needle Rifle
+	30"
+	1
+	-
+	Supercombine, Range Finder
+	Automatic Rifle
+	30"
+	2
+	-
+	–
+	Sniper Rifle/Binary Rifle
+	36"
+	1
+	-
+	Sniper, Team
+	Beam Rifle
+	36"
+	1
+	-
+	Sniper, Team, Overheat
+	Plasma Repeater (LMG)
+	36"
+	4
+	-
+	Overheat, MG
+	Light Machine Gun (LMG)
+	36"
+	4
+	-
+	–
+	Medium Plasma MG (MMG)
+	36"
+	6
+	-
+	Team, Fixed, MG, Overheat
+	Medium Machine Gun (MMG)
+	36"
+	6
+	-
+	Team, Fixed
+	
+
+Type - HEAVY WEAPONS
+	Range
+	Shots
+	Pen
+	Special Rules
+	Heavy Machine Gun (HMG)
+	48"
+	6
+	+1
+	Team, Fixed
+	Heavy Plasma MG (HMG)
+	48"
+	6
+	+1
+	Team, Fixed, MG, Overheat
+	Anti-Tank Rifle/Skewer
+	48"
+	1
+	+2
+	–
+	Spartan Laser
+	30"
+	1
+	+7
+	Team, Battery Charge, Shaped Charge
+	Rocket/Plasma Launcher
+	30"
+	1
+	+5
+	Team, Shaped Charge, Tracking, HE (1")
+	Fuel Rod Gun
+	30"
+	1
+	+4
+	Team, Shaped Charge, HE (2")
+	Incineration Cannon
+	30"
+	1
+	+4
+	Team, Shaped Charge, Overheat, HE (1")
+	Assault Cannon
+	36"
+	1
+	+2
+	Overheat, Shaped Charge, HE (2")
+	Light Automatic Cannon
+	48"
+	2
+	+2
+	Team, Fixed, HE (1")
+	Light Plasma Cannon
+	48"
+	2
+	+2
+	Overheat, Team, Fixed, HE (1")
+	Heavy Automatic Cannon
+	72"
+	2
+	+3
+	Team, Fixed, HE (1")
+	Fuel Rod Autocannon
+	72"
+	2
+	+3
+	Team, Fixed, Tracking, HE (1")
+	Light Anti-Tank Weapon
+	48"
+	1
+	+4
+	Team, Fixed, HE (1"), AT Gun
+	Medium Anti-Tank Weapon
+	60"
+	1
+	+5
+	Team, Fixed, HE (1"), AT Gun
+	Heavy Anti-Tank Weapon
+	72"
+	1
+	+6
+	Team, Fixed, HE (2"), AT Gun
+	Super-Heavy Anti-Tank Weap.
+	84"
+	1
+	+7
+	Team, Fixed, HE (3"), AT Gun
+	Flamethrower (Infantry)
+	6"
+	1
+	+2
+	Team, Flamethrower
+	Flamethrower (Vehicle)
+	12"
+	1
+	+2
+	Flamethrower
+	Ravager
+	12"
+	1
+	+2
+	Team, Flamethrower
+	Grenade Launcher/Brute Shot
+	30" (12–36")
+	1
+	HE
+	Howitzer, HE (1")
+	Concussion Rifle/Cindershot
+	30" (12–36")
+	1
+	HE
+	Knockback, Howitzer, HE (1")
+	Light Howitzer
+	48" (30–60")
+	1
+	HE
+	Team, Fixed, Howitzer, HE (2")
+	Medium Howitzer
+	60" (36–72")
+	1
+	HE
+	Team, Fixed, Howitzer, HE (3")
+	Heavy Howitzer
+	72" (42–84")
+	1
+	HE
+	Team, Fixed, Howitzer, HE (4")
+	Weapon Special Rules
+The following special rules are used to represent the different types of weapons, as indicated on the Weapons Table.
+Assault
+Weapons with the Assault rule suffer no penalty to hit when moving and shooting. Additionally, infantry models armed with an Assault weapon count as having the Tough Fighters special rule, allowing them to re-roll failed rolls in close combat.
+Battery Charge
+Weapons with this rule require to charge up powerful energy attacks. As a result, they suffer a -1 to hit modifier when shooting.
+Cover Negation
+When this weapon hits an Infantry or Artillery unit that is in soft cover and not Down, any natural 6 rolled to wound worsens the target’s cover save by one step, for that wound only. 
+Fixed
+Fixed weapons can only fire within a 45-degree arc. A Run order must be used to reposition them.
+Flamethrower
+Flamethrowers automatically hit units inside buildings or fortifications and cause D6 hits per attack. Each hit inflicts an additional +1 Pin Marker in addition to damage. Flamethrowers always strike the top armor of vehicles, ignoring the -1 penetration modifier for long range and the +1 penetration bonus for point-blank range. Units hit by a flamethrower must make an immediate morale check, with failure resulting in the unit being destroyed.
+HE (High Explosive)
+Weapons with the HE rule can fire explosive rounds that deal area damage using templates (ranging from 1" to 4"). Units under the template take damage, and multiple hits may be inflicted. HE weapons also cause pin markers proportional to the template size.
+Howitzer
+Howitzers are versatile artillery pieces capable of both direct and indirect fire. When firing over open sights for direct fire, howitzers have no minimum range and operate like any weapon with a direct line of sight. However, when firing indirectly, howitzers follow the rules for Indirect Fire and have a minimum range as noted on the Weapons Table (e.g., 30"–60" for light howitzers). Switching between direct fire and indirect fire resets the zeroing-in process for indirect fire, even if the same target is aimed at.
+Indirect Fire
+Shots fired indirectly start with a 6 to hit, improving with successive turns against the same target. Indirect fire weapons typically have a minimum range, and they hit vehicles on the top armor if successful. Moving or switching spotters resets the zero in.
+Knockback
+After an ungarrisoned infantry unit takes at least one hit, roll a D6. On a 4+, the unit must immediately move 3" directly away from the firer and gains 1 pin. If this movement would cause the unit to enter impassable terrain, a building, or another unit, it stops 1" before contact instead.
+MG
+Weapons with the MG rule are treated as machine guns for all gameplay purposes. This includes interactions such as halved shots when mounted on vehicles and any rules or effects that specifically reference machine guns.
+Overcharge
+When a weapon with this rule shoots, declare that the weapon is overcharging. If so, shots ignore the target’s Energy Shields rule and can pin vehicles up to armor 9+, even if they do not have the open-topped rule. However, overcharging applies a -1 to hit modifier.
+Overheat
+Before shooting, choose which weapons in the unit are overheated. Each overheated weapon gains +1 shot for this attack. After resolving all shooting, place 1 pin marker on the firing unit for each weapon that was overheated. Weapons do not have to be overheated simultaneously, you may mix overheated and normal fire, even with the same weapon type. 
+Paired
+Paired machineguns do not halve their shoots.
+Range Finder
+Weapons with the Range Finder rule are optimized for long-distance engagements and fare poorly at close range. As a result, if the target is within 6 inches, the shooter suffers a -1 to hit penalty (reducing the usual point-blank bonus to +1 instead of +2).
+Sniper
+Units equipped with this weapon count as having the Sniper special rule.
+Supercombine
+Weapons with the Supercombine rule cause chain reactions when hitting vital points. When rolling to hit, each natural roll of 6 allows you to roll one additional die to wound against the same target. Even if the weapon uses HE.
+Team
+Weapons with the Team rule require at least two models to operate effectively. If only one operator remains, the weapon suffers a -1 to hit modifier due to the increased workload.
+Tracking
+Weapons with the Tracking rule are highly advanced and accurate. When issuing a FIRE order, ignore the -1 to hit penalty caused by the unit being pinned. All other modifiers apply as normal.
+Medics
+SELF-DEFENCE
+Ignore this rule from the Bolt Action rulebook when playing with a medic unit.
+
+
+
+
+
+
+
+
+
+
+Unit Special Rules
+The following unit special rules apply to various units as described in the army lists. These rules represent specific skills, abilities, or unique characteristics of particular unit types.
+Automaton
+Automatons possess basic decision-making capabilities but lack the quick reactions and judgment of human soldiers. Units with this rule cannot be issued Ambush orders and are not affected by Horror’s -1 morale. Automatons cannot benefit from medics or the YOU MEN, SNAP TO ACTION! rule.
+Behind Enemy Lines
+Units with the Behind Enemy Lines special rule are highly trained in infiltration and surprise tactics. When entering the battlefield using Reserves or the Outflank deployment, these units ignore the -1 modifier to the order test for coming onto the table.
+Berserker
+When performing an assault, models in the unit count as having 1 extra attack in close combat. Additionally, If a Berserker unit fails an Order test (excluding FUBAR) and there is an enemy Infantry or Artillery unit within assault reach (i.e., eligible to be assaulted under the core rules), it must immediately take a Run (Assault) order against the nearest eligible unit. If no such unit is within assault reach, resolve the failed test as normal (the unit goes Down).
+
+
+
+
+Composed Beings
+Prometheans and other advanced AI mechanical constructs, often the result of biological entities being transformed into machines, exhibit unwavering focus and resilience on the battlefield. These units are not affected by Horror's -1 morale and cannot benefit from medics.
+Engineers
+When an Engineer unit assaults a building, the defenders do not benefit from the defensive position bonus.
+Energy Shield
+Units equipped with advanced energy shielding gain additional protection in battle. When targeted by shooting attacks, units with this rule increase their "to wound" difficulty by +1 (e.g., a weapon that would normally wound on a 4+ now wounds on a 5+). In addition, units with this rule have a 5+ cover save in the open and add +1 to their other cover saves.
+Fanatics
+Fanatics refuse to retreat or surrender, choosing instead to fight to the bitter end. They ignore negative morale modifiers from pin markers when taking morale checks. Fanatics are not automatically routed when their pin markers equal or exceed their morale value. In close quarters, if a Fanatic infantry/artillery unit is defeated, the fight is treated as a draw, and another round of combat is immediately fought. This continues until the Fanatics either win or are wiped out.
+Fast
+Units with the Fast rule have a base movement of 8 inches, allowing them to Run up to 16 inches.
+Fieldcraft
+Units with Fieldcraft treat rough terrain as open ground for movement. When they assault a unit through rough ground, the defender loses Defensive Position.
+Flight
+These units can Advance up to 12 inches and Run up to 18 inches, ignoring terrain restrictions during their movement. However, they cannot end their move in impassable terrain, nor in rough ground if a run order was issued instead. If a unit with the Flight rule is ambushed or fired upon while flying, it cannot benefit from soft/hard cover saves. Infantry units with this rule may opt to move on the ground instead, following the standard movement rules for infantry. Units that use Flight cannot pick up or carry objectives on a Run order.
+Flood Infection
+Immediately after a unit with this rule defeats an enemy Infantry or Artillery unit in close quarters, roll one D6 for each enemy model removed during and after that combat. For each roll equal to or greater than the damage value of the Flood unit, one slain model may be immediately returned to the unit, up to its original starting size. If the unit has Energy Shields, increase the requirement by +1 for the purposes of this rule. This ability has no effect against Automatons and Composed Beings, who are immune due to their machine nature.
+Green
+Green units represent inexperienced troops who are unpredictable on the battlefield. These units are rated as Inexperienced with a morale value of 8.
+The first time a Green unit takes a casualty, roll a D6 (after resolving any morale checks from the attack):
+   * 1: The unit gains additional D6 pin markers and goes Down.
+   * 2–5: The unit continues as normal with no additional effects.
+   * 6: The unit is upgraded to Regular with a morale value of 9 for the rest of the battle.
+Horror
+When a unit is assaulted by a Horror unit, it suffers a -1 morale penalty and must immediately take a morale check. If the check fails, the unit goes Down and cannot perform any reactions. Units with the Horror rule themselves are immune to this rule.
+Infiltrator
+These units gain an additional +1 to their cover saves if they have no Advance or Run order dice on them. Infiltrators may also benefit from special deployment rules.
+Large Infantry
+Some models are significantly larger than standard soldiers. Units with the Large Infantry rule count as double when calculating transport capacity. Additionally, in close quarters the opponent never gains Defensive Position.
+Resilient
+This rule replaces Energy Shields and Shield Wall. Units with the Resilient rule are exceptionally tough. They have a damage value of 6+, a 5+ cover save in the open or in Close Quarters and add +2 to their other cover saves.
+Shield Wall
+When a unit with the Shield Wall rule is in open ground, it benefits from a base 6+ cover save. If the unit goes Down in the open, this save improves by +2, becoming a 4+ cover save. When the unit is in cover, Shield Wall improves the cover save by one step—soft cover provides a 4+ save (instead of 5+), and hard cover provides a 3+ save (instead of 4+). If the unit is both in cover and Down, apply the usual +2 cover save. Rolls of 1 always fail, regardless of modifiers.
+Shirkers
+Shirkers are unwilling or unmotivated soldiers who perform poorly under pressure. For all morale checks, order tests, and routing calculations, pin markers count as double for units with this rule (e.g., 1 pin marker counts as -2, 2 pin markers count as -4, etc.). Additionally, Shirkers must always take an order test when issued an order, even if they are not pinned.
+Sniper
+While at full strength (2 models), one friendly Regular or Veteran Indirect Fire unit (including Howitzers) may draw line of sight from this team as if the team were its Spotter. If the sniper is killed, the remaining model may fire the sniper rifle at –1 to hit, and the unit suffers the usual –1 Morale for losing its leader. When the sniper is not using the scope, both models may fire their personal weapons and fully participate in assaults. When firing on a Fire or Ambush order, you may declare a scope shot, if the target is within 12", the shot automatically misses; otherwise the shot is +1 to hit, ignores cover, and is +1 to damage against Infantry or Artillery units, and if it causes damage you may choose the unit leader as the casualty.
+Slow
+Units with the Slow rule have reduced mobility compared to standard infantry. Their base movement is limited to 4 inches, and they can Run up to 8 inches.
+Stealth
+While a unit with the Stealth rule has a Down order, ranged attacks targeting it suffer an additional -1 to hit modifier.
+Strikes First
+The unit counts as having Defensive Position bonus when performing assaults, causing it to fight first. If the opponent also has Defensive Position, Strikes First or a rule cancels this rule, then fight simultaneously.
+Strong
+This unit ignores the Team Weapon and Fixed special rules for weapons it carries. In addition, for every three models in your unit involved in close quarters you may add an additional die when rolling to damage for one chosen model.
+Stubborn
+If forced to take a morale check, they ignore negative morale modifiers from pin markers. Remember that order tests are not morale checks, and are therefore modified as normal.
+Tank Hunters
+If a tank hunter unit wins an assault and scores damage against a vehicle, the effect is resolved on the Damage Results Table rather than the Superficial Damage Table. In addition, these troops don’t suffer from the Tank Fear rule when assaulting fully enclosed armoured vehicles, and their rolls to damage vehicles have a +1.
+Tooth and Claw
+Models with the Tooth and Claw special rule excel in hand-to-hand combat, rolling three base attack dice instead of one in close quarters.
+Tough Fighters
+Units with the Tough Fighters rule are skilled in close combat. When attacks from a model with this rule fail to hit/inflict damage during close quarters combat against infantry, artillery or assault walkers it may re-roll failed melee rolls.
+VISR
+Units equipped with the Visual Intelligence System, Reconnaissance system have advanced sensors and targeting capabilities. Units with the VISR special rule can see through smoke, treating it as if it were not present when determining line of sight. Additionally, when targeting a unit with the Stealth rule, ignore the -1 to hit modifier from the Stealth rule.
+Wide Formation
+Models in a unit with this rule may keep up to 2" coherency between models instead of 1", reducing vulnerability to blasts while maintaining mutual support.
+Vehicle Special Rules
+The following special rules apply to various vehicles, providing unique traits and abilities for gameplay.
+Agile
+A vehicle with this rule may make an additional 90-degree pivot during its movement and is capable of pivoting on a Fire order.
+Armoured All Round
+Vehicles with this rule have equivalent armor on all sides. No penetration modifiers apply for attacks against the sides, rear, or top—shots count against the full armor value regardless of angle.
+Assault
+Restricted to walkers. A vehicle with this rule can assault infantry and vehicles using the unique rules for walkers. In addition, while being Down they gain a 6+ cover save in the open or +1 to their cover save.
+Command Vehicle
+Vehicles with this rule are equipped with enhanced communication systems that provide a morale bonus of +1 to themselves and all friendly vehicles within 12". Additionally, a Command Vehicle can issue one ‘You men, snap to action!’ order to a single friendly vehicle within 12", except other Command Vehicles.
+Faster
+Vehicles with the Faster rule benefit from enhanced mobility. Fast vehicles can move 12" with an Advance order and 24" with a Run order.
+Fist
+Some walkers are equipped with powerful mechanical fists designed for devastating close-quarters combat. Walkers with this rule gain an additional attack dice in close quarters for each fist they possess. This rule only applies in close combat.
+Flak
+Units with Flak automatically fire at aircraft called by Forward Air Observers if the aircraft is within their range and arc, as described in the BA third edition rulebook. However, against on-table aircraft units (e.g., helicopters and VTOLs), Flak does not auto-fire; it simply ignores the −1 to hit penalty for targeting flying aircraft. Pintle-mounted weapons count as having Flak.
+Impulse Drive
+At the start of this vehicle’s activation, you may declare Impulse Drive. During this activation, when this unit Advances or Runs it ignores other models and terrain for movement (distances unchanged; no road bonus), but it cannot end its move on impassable terrain, in buildings, in rough ground, or within 1" of enemy units (unless assaulting per assault walker rules). Any Ambush fire resolved during this movement treats the vehicle as in the open (no cover saves); after it finishes moving, resolve cover normally for subsequent attacks.
+Nimble
+Aircraft with this rule are exceptionally agile. This aircraft’s Evasion save improves by +1 (4+ instead of 5+).
+Open-Topped
+Vehicles with this rule are more vulnerable to attacks and offer less protection to their occupants. They are pinned by small-arms fire like soft-skinned vehicles and automatically destroyed in assaults if damaged. If hit on the top armor, they suffer an additional +1 to the damage roll and damage table.
+Recce
+Reconnaissance vehicles can perform special escape reactions when shot at, moving with an Advance or Run order to avoid damage. They may also reverse at full Advance speed. Specific rules for their escape reactions apply during shooting and assaults, as detailed in the main rules.
+Reinforced Front Armour
+Vehicles with this rule count their front armor as 1 higher than their listed value against all shots hitting the front arc.
+Slow
+Vehicles with this rule are less mobile, moving only 6" with an Advance order and 12" with a Run order.
+Weak Sides
+Vehicles with this rule have vulnerable side armor. Attacks against the sides count as hitting the rear, gaining a +2 penetration modifier instead of +1.
+Rules Summary
+Vehicle Maneuver Chart
+Unit Type
+	Advance
+	Pivot (90°) when Advancing
+	Run
+	Pivot (90°) when Running
+	Tracked vehicle
+	9"
+	2
+	18"
+	1
+	Half-tracked vehicle
+	9"
+	2
+	18"
+	1
+	Wheeled vehicle
+	12"
+	2
+	24"
+	1
+	Walkers
+	9"
+	2
+	18"
+	1
+	Anti-grav vehicle
+	9"
+	4
+	18"
+	2
+	Aircraft
+	24"
+	Unlimited
+	48"
+	Unlimited
+	Terrain Effects Chart
+Terrain Category
+	Infantry
+	Artillery
+	Wheeled Vehicles
+	Tracked Vehicles
+	Walkers
+	Anti-Grav
+	Aircraft
+	Open ground
+	OK
+	OK
+	OK
+	OK
+	OK
+	OK
+	OK
+	Rough ground
+	No Run
+	No*
+	No
+	No Run
+	OK
+	No Run
+	OK/
+	Obstacle
+	No Run
+	No
+	No
+	OK*
+	OK
+	OK*
+	OK/
+	Building
+	OK
+	No*
+	No
+	No (!)
+	No (!)
+	No (!)
+	OK/
+	Road
+	OK
+	OK
+	X2
+	OK
+	X2
+	x2
+	OK
+	OK*: The unit can cross this kind of terrain without hindrance unless it has been designated as an anti-tank obstacle.
+No*: The unit cannot enter or move within this kind of terrain, but it can be deployed within the terrain at the start of the game. In this case, it cannot move once deployed.
+
+
+
+
+
+
+No (!): The unit cannot enter or move within this kind of terrain, except that heavy and super-heavy vehicles may move through and demolish some buildings in some situations.
+OK/: The unit can move through this type of terrain without hindrance. It may end its movement here, provided it can remain stable and avoid falling. However, Aircraft cannot land in this type of terrain unless players agree to.
+Hit Modifiers Chart
+4+ BASE
+Criteria
+	Modifier
+	Fire on the move (Not if Assault)
+	-1
+	Firer is pinned (Not if Tracking)
+	-1
+	Firer is inexperienced  
+	-1
+	Point-blank range (Not VS flying Aircraft) and (Range Finder = -1)
+	+2
+	FIRE order with AT Gun vs Vehicles (Not vs Flying aircraft)
+	+1
+	Target is down and has Stealth (Not if VISR)
+	-1
+	Target is a flying aircraft (Not if FLAK)
+	-1
+	Vehicle Penetration Modifiers Chart
+Criteria
+	Modifier
+	Vehicle’s side or top armor (Not vs Aircraft/Walkers)
+	+1
+	Vehicle’s rear armor (Not vs Aircraft/Walkers)
+	+2
+	Long Range
+	-1
+	Point-blank range (Not vs Flying Aircraft)
+	+1
+	
+
+Damage Value Chart
+Troops and Soft-Skinned Targets
+Result N.
+	Target Type
+	3+
+	Inexperienced infantry or artillery
+	4+
+	Regular infantry or artillery
+	5+
+	Veteran infantry or artillery
+	6+
+	All soft-skinned vehicles, including Light Aircraft and Scout Walkers
+	Armored Targets
+Result N.
+	Target Type
+	7+
+	Armored car/carrier, Light Walker, Medium Aircraft 
+	8+
+	Light tank, Medium Walker, Heavy Aircraft 
+	9+
+	Medium tank, Heavy Walker, Super-Heavy Aircraft
+	10+
+	Heavy tank, Super-heavy Walker
+	11+
+	Super-heavy tank
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+SUPERFICIAL DAMAGE RESULTS ON AIRCRAFT
+D6
+	Effect
+	1, 2, or 3
+	Crew Shaken: Add 1 pin marker and take a morale test. If it fails and the aircraft is flying, the Aircraft must take a Down order and land immediately in the nearest legal position.  If it fails and the aircraft is already landed, it cannot perform further actions this turn. Place a Down order die to represent this.
+	 4 or 5
+	Engine Damage: The Aircraft's speed is halved for the remainder of the game. If this result occurs again, add 1 pin marker and take a Down order to land.
+	6
+	System Malfunction: The Aircraft must land immediately within 9 inches in the nearest legal position. Add 2 pin markers and take a Down order. If already landed, treat this as "On Fire" from the Full Damage Table.
+	Note: If the Aircraft takes superficial damage and no legal landing position is available, roll on the Full Damage Table instead of the Superficial Damage Table.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+FULL DAMAGE RESULTS ON AIRCRAFT TABLE
+D6
+	Effect
+	1
+	Crew Shaken: Add 1 pin marker. If flying, the Aircraft must take a Down order and land immediately in the nearest legal position. If landed, it cannot perform further actions this turn. Place a Down order die to represent this.
+
+
+	2
+	Targeting Failure: The weapon’s targeting system glitches. The affected vehicle suffers a –1 to hit penalty on all shooting for the rest of the game. Add 1 pin marker.
+
+
+	3
+	On Fire: Add 2 pin markers. Roll a morale check. If passed, extinguish the fire and take a Down order and land. If failed and the Aircraft is landed, the crew abandons the Aircraft , and it is destroyed. If the Aircraft is flying, treat it like "Destroyed" below.
+	4, 5 or 6
+	Destroyed: The Aircraft is destroyed and becomes a wreck. If flying, all units within 6 inches horizontally take D3 pin markers from falling debris.
+	Note: If the Aircraft takes full damage and you get an effect that requires the Aircraft to land while there is no legal landing position available, add +1 to the roll for determining full damage effects.
+
+
+
+
+Vehicle Type Summary
+Walkers
+Assault Rules
+Walkers with the Assault rule roll 2 base attacks plus +1 per Fist. Halve attacks to get a +1 PEN. Each attack rolls directly for damage using the following PEN value based on the walker’s class:
+Walker Class
+	PEN Value
+	Scout
+	+1
+	Light
+	+2
+	Medium
+	+3
+	Heavy
+	+4
+	Super-Heavy
+	+5
+	Infantry Assaulting Walkers
+   * Must roll a 6+ to hit if the walker has moved (Can’t perform assault if run), or 4+ if another order, immobilized, or unactivated.
+
+   * Each successful hit adds +1 to a single damage roll against the walker’s damage value.
+
+   * Assault walkers roll directly to damage; use the appropriate PEN value.
+
+   * Assaulting fully enclosed walkers requires a Morale test at –3 (Tank Hunters are exempt).
+
+   * If the infantry causes no damage and takes casualties, the infantry unit loses the combat.
+
+   * If neither side causes damage or casualties, the combat continues.
+
+   * If the walker is damaged and survives, the infantry may fall back D6", even if they took casualties.
+
+Walker vs. Walker
+      * If both walkers have Assault, resolve the fight simultaneously.
+
+      * If no victor, at the end of each round, each walker suffers 1 pin +1 per Fist from its opponent.
+
+      * Combat continues until one or both are routed or destroyed.
+
+Vehicles Assaulting Walkers
+         * Treated as standard vehicle rams.
+
+Assault Walkers Assaulting Vehicles
+            * Must use a Run order to assault.
+
+            * Roll 2 + 1 per Fist direct damage rolls against the target’s front armor (no to-hit roll).
+
+            * Add the walker’s PEN value to each damage roll.
+
+            * If target survives, it suffers 1 pin +1 per Fist, and the walker must fall back D6".
+
+Shooting at Walkers
+               * Walkers are treated as having the same armor value on all facings.
+
+               * Attacks do not gain bonuses for hitting side, rear, or top armor.
+
+Aircraft
+Aircraft operate in two distinct states: Flying and Landed, with very different rules.
+Flying Aircraft
+                  * Cannot assault or be assaulted, and do not provide or receive cover.
+
+                  * Move 24" (Advance) or 48" (Run) with unlimited pivots.
+
+                  * Do not block line of sight, and do not benefit from or interfere with cover.
+
+                  * Ignore intervening terrain and models for LOS and cover when firing or being fired upon. Unless tall, or within 3".
+
+                  * When airborne, attacks against them suffer –1 to hit, unless the attacker has Flak. They also have a 5+ evasion save.
+
+                  * Cannot embark/disembark units.
+
+                  * Do not gain or grant Point Blank bonus. AT guns do not have +1 to hit on a FIRE vs them either.
+
+Landed Aircraft
+                     * Land on a down order within 9, until a run or advance order is given.
+
+                     * May be assaulted and benefit from cover.
+
+                     * May embark/disembark as normal.
+
+                     * May only fire pintle-mounted weapons, unless otherwise specified in its profile.
+
+Shooting at Aircraft
+                        * Treated as having the same armor value on all facings.
+
+                        * Attacks do not gain bonuses for hitting side, rear, or top armor.
+
+                        * Point Blank bonus does not apply when targeting or being targeted while Flying.
+
+Damage Tables
+                           * Use the Aircraft Damage Table.
+
+                           * Aircraft with Armor 6+ are destroyed outright if damaged.
+
+                           * Special rules apply for morale, fire, and crash landing.
+
+Anti-Grav Vehicles
+Anti-grav vehicles hover just above the ground, offering high mobility and flexibility.
+Movement
+                              * Advance: 9" with up to 4×90° pivots (or one 360° pivot).
+
+                              * Run: 18" with up to 2×90° pivots (or one 180° pivot).
+
+                              * May not Run through rough terrain or enter buildings.
+
+                              * May cross obstacles (unless antitank).
+
+                              * On roads, movement is doubled.
+
+Assaults
+                                 * Follow standard vehicle assault rules.
+
+                                 * Fully armored enclosed anti-grav vehicles are treated as tanks.
+
+Shooting at Anti-Grav Vehicles
+                                    * Follow standard vehicle targeting rules.
+
+Other Rules
+                                       * Use standard rules for LOS, shooting, transport, and damage.
+
+
+
+
+F.A.Q
+Q: How do line of sight and cover work when a flying Aircraft shoots at (or is shot by) a ground unit? A: Use this three-step check:
+                                          1. Line of sight (LoS)
+
+                                             * Tall terrain in between? (e.g., multi-story building, cliff you agreed counts as “tall”) → LoS is blocked both ways unless both models are flying Aircraft.
+
+                                             * No tall terrain in between? LoS is open. Intervening models/terrain don’t block LoS for air↔ground.
+
+                                                2. Cover
+
+                                                   * Ground unit being shot by a flying Aircraft: The ground unit only gets cover if an intervening element or unit is within 3" of the ground target and the LoS crosses it. (This includes friendly or enemy models near the target.)
+
+                                                   * Flying Aircraft being shot by ground units: Flying Aircraft never receive cover (They still get their 5+ Evasion save as normal.)
+
+                                                      3. Optional variant (declare pre-game)
+
+                                                         * Before the game, players may agree that certain non-tall elements within 3″ of the target that the LoS crosses block LoS (both ways) rather than merely granting cover—useful for very large and dense hedges or high walls that still don’t qualify as “tall.”
+Q: If a unit is behind both terrain (e.g., a wall) and a friendly Shield Wall unit, what cover bonus does it receive from Wall of Deflection? A:  The unit receives a total improvement of +1 to its cover save. For example, if the unit already has hard cover (4+), this is upgraded to a 3+. If the unit goes Down, it is upgraded to a maximum of 2+, as rolls of 1 always fail.
+Q: Can Aircraft like the Sparrowhawk negate cover granted by Wall of Deflection? A: Yes. Flying Aircraft ignore the Wall of Deflection if the Shield Wall/Resilient unit is more than 3" from the target even if the line of fire crosses it. Wall of Deflection also has no effect against indirect fire weapons, flamethrowers, nor snipers.
+Q: Does a unit gain the Desperate Measures bonus every time it is reduced to half strength? A: No. A unit only gains the Desperate Measures bonus once, the first time it is reduced to half or fewer of its starting models (rounding up).
+Q: Does the "Cannon Fodder" free Grunt Squad count towards the normal platoon infantry limits? A: No, it does not count towards the limit; it is an additional free squad.
+Q: Does Spartan Leadership allow re-rolls of order tests as well as morale checks? A: No, Spartan Leadership specifically allows re-rolls of morale checks only, not order tests.
+Q: Can a flying Aircraft that is landing with a Down order be Ambushed? A: Yes. Landing is considered movement, so if a flying Aircraft lands within 9" of its previous position and crosses the line of sight and firing arc of a unit in Ambush, the Ambush may be triggered as normal.
+
+
+Q: Does a flying Aircraft still count as airborne (and suffer the -1 to be hit) when ambushed and landing with a Down order? A: Yes. A flying Aircraft remains airborne and retains its -1 to be hit modifier until it completes the Down order and physically lands. Therefore, if Ambushed during the landing move, the -1 to be hit still applies.
+Q: Does a flying Aircraft receive cover when Ambushed while landing? A: No. Flying Aircraft do not benefit from cover while airborne, including during a landing move. However, they still benefit from their 5+ Evasion save against any hits taken while landing, as they are considered airborne until the Down order is completed.
+Q: If I have a unit with multiple Plasma Rifles, can I choose to Overheat only some of them? A: Yes. Weapons with the Overheat rule may be overheated individually, even if multiple models in the unit have the same weapon. You may choose to Overheat some, all, or none of the Plasma Rifles when firing. Overheat is declared per weapon before rolling to hit, and only those weapons that are overheated will gain the extra shot and the Pin marker.
+Q: Can flying Aircraft capture or contest objectives? A: No. Flying Aircraft cannot capture or contest objectives while airborne. They must perform a Down order and physically land to interact with objective points.
+Q: Does Knockback (or any forced movement) make an indirect-fire weapon lose its ranging-in? A: Yes. If the target or firer unit moves more than 2" for any reason before the next indirect shot, start again at 6+.
+
+
+
+
+Q: After Assimilate turns an Infection Form unit into an (unarmed) Combat Form unit, how many models can it later recover via Flood Infection? A: Use the Infection Form unit’s original starting size (the number of models it had when it first deployed) as the cap. The converted Combat Form unit can replenish back up to that number, but never exceed it.
+Q: Do spotters benefit from the special rules and doctrine bonuses of their parent unit? A: Yes, spotters inherit the unit-wide special rules and doctrine effects of their team (e.g., Stealth, Fieldcraft, Stubborn, Fanatics, Energy Shields, VISR), and they still can’t shoot, assault, or capture objectives.
+Q: If a Forerunner unit teleports using Teleportation Network or Phase Step, can it score in missions where a unit must reach a table edge to exit and score? A: No. Teleportation Network and Phase Step do not allow a unit to move off the battlefield or “exit” via a table edge. Teleport moves must end on the battlefield, so they cannot be used to score objectives that require leaving the battlefield.
+Q: For Enhanced Weapon Systems, does a natural 6 always trigger the +1 Penetration, even if there are negative to-hit modifiers? A:  No. The trigger is a final modified hit roll of 6+, not an unmodified natural 6. Apply all to-hit modifiers first; if the result is 6 or higher, that shot gains +1 Penetration. For example, with -1 to hit, an unmodified 6 becomes a 5 and does not trigger this rule. With +2 to hit (e.g., point blank), an unmodified 4 becomes a 6 and does trigger this rule.
+ | Page
