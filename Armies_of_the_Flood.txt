@@ -1,0 +1,607 @@
+﻿Armies of the Floodv3.0
+
+Army Special Rules
+Living Nightmare
+All Flood embody terror and relentless aggression.
+* Effect: All Flood Infantry and Artillery units have the Fanatics special rule, and automatically pass any Morale Checks.
+Corrupted Arsenal
+The Flood assimilate their enemies' equipment and vehicles, turning them against their creators.
+* Effect: The Flood may include vehicles from other factions' army lists. These vehicles must always be inexperienced.
+Predatory Ambush
+The Flood can fall into an unnatural, corpse-like stillness, only to erupt in a sudden burst of violence when prey strays too close.
+* Effect: When a Flood Infantry unit ends the turn on Ambush and chooses to attempt the normal end-of-turn Fire action, roll a D6 as usual. On a 4+, the unit may either fire normally or, instead of firing, declare an Assault against a visible enemy Infantry or Artillery unit within assault range. On a 3 or less, the unit does nothing and its Ambush die is returned to the bag as normal.
+Hivemind Coordination
+The Flood’s collective consciousness ensures cohesion even when individual leaders fall.
+* Effect: Flood Infantry and Artillery units do not suffer the –1 morale penalty for losing their NCO.
+Logic Plague
+Flood presence corrupts and destabilizes synthetic minds, causing unpredictable malfunctions.
+* Effect: Once per turn, just before activating a Flood unit, select one unactivated enemy Automaton or Composed Being within 9" of any friendly Flood unit and roll a D6:
+   * 1-3: The enemy immediately receives 2 Pin markers.
+   * 4: The enemy suffers –1 to hit for the rest of the turn.
+   * 5: The enemy cannot target the closest Flood unit with shooting attacks this turn.
+   * 6: The enemy must take a morale check. If failed, roll on the FUBAR table; if passed, no effect.
+
+
+
+
+INFANTRY
+HEADQUARTERS UNITS
+Officer
+Cost
+	- Platoon commander (Key Mind Node):  
+19pts (Inexperienced), 28pts (Regular), 37pts (Veteran) 
+- Company commander (Proto-Gravemind):  
+40pts (Inexperienced), 58pts (Regular), 76pts (Veteran)
+	Team
+	1 officer and up to 3 further tendrils
+	Weapons
+	Unarmed
+	Options
+	- The officer may be accompanied by up to 3 tendrils at a cost of +5pts per tendril (Inexperienced), +8pts per tendril (Regular), or +11pts per tendril (Veteran)
+	Special Rules
+	- Tendrils: Models that replace "men" in the unit.
+- Flood Infection
+- Slow
+- Immobile: If no tendrils are present, the unit cannot move.
+- Wide Formation
+- Horror
+	Forward Observer
+Cost
+	Forward observer (air force or artillery)
+75pts (Regular), 90pts (Veteran)
+	Team
+	1 forward observer and up to 2 further combat forms
+	Weapons
+	Assault Rifle, Plasma Rifle, Needler, SMG, Shotgun or Spiker, as depicted on the models.
+	Options
+	- The observer may be accompanied by up to 2 men at a cost of +13pts per man (Regular) or +16pts per man (Veteran)
+	Special Rules
+	- Infiltrator
+- Flood Infection
+- Horror
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+INFANTRY SQUADS AND TEAMS
+Combat Form Squad
+Cost
+	95pts (Regular), 110pts (Veteran) 
+	Composition
+	1 NCO and 4 Combat forms
+	Weapons
+	Assault Rifles
+	Options
+	- Add up to 9 additional combat forms for +19pts each (Regular) or +22pts each (Veteran)  
+- The NCO and up to 13 combat forms may replace their Assault Rifles with:
+  – Needlers for -2pts each  
+  – SMGs for -2pts each 
+  – Plasma rifles for +0pts each  
+  – Spikers for +0pts each
+  – Shotguns for -3pts each
+- The NCO and up to 4 combat forms may replace their Assault Rifles with Battle rifles/Covenant Carbines for -3pts each
+- The unit may be given Anti-Tank Grenades for +2pts per model
+- If taken as Veteran, the unit may be given Energy Shield modules for +3pts per model
+- The NCO may be given a Melee Weapon (2 attacks in close combat) for +1pt
+	Special Rules
+	- Tank Hunters: If anti-tank grenades are taken
+- Energy Shields: If energy shield modules are taken
+- Flood Infection                                                                      - Horror
+- Fieldcraft
+	Stalker Form Swarm
+Cost
+	80pts (Veteran) 
+	Composition
+	1 NCO and 4 Stalker Forms
+	Weapons
+	Unarmed
+	Options
+	- Add up to 5 additional Stalker Forms for +16pts each.
+	Special Rules
+	- Flood Infection
+- Fieldcraft
+- Fast
+- Infiltrator
+- Horror
+- Limited: Only 1 Stalker Form Swarm may be taken per platoon.
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Tank Form Pack
+Cost
+	46pts (Veteran) 
+	Composition
+	1 NCO and 1 Tank form
+	Weapons
+	Unarmed
+	Options
+	- Add up to 3 additional Tank Forms for +23pts each
+	Special Rules
+	- Flood Infection
+- Tooth and Claw
+- Fieldcraft
+- Tough Fighters
+- Berserker 
+- Tank Hunters
+- Slow
+- Resilient
+- Large Infantry
+- Horror
+- Limited: Only 1 Tank Form Pack may be taken per platoon
+	Infection Form Swarm
+Cost
+	70pts (Inexperienced) 
+	Composition
+	1 NCO and 9 infection forms
+	Weapons
+	- Unarmed
+	Options
+	- Add up to 5 additional infection forms for +7pts each (Inexperienced). 
+	Special Rules
+	- Flood Infection
+- Horror
+- Assimilate: If this unit wins an assault against a target affected by Flood Infection, you can replace each surviving Infection Form with an unarmed Combat Form. If so, the unit immediately becomes Regular, becomes an unarmed Combat Form unit (Uses their rules instead) and retains its current order die. 
+- Mindless Hunger: This unit cannot pick up, carry or control objectives. It may still contest objectives. 
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Carrier Form Team 
+Cost
+	14pts (Inexperienced), 20pts (Regular), 26pts (Veteran) 
+	Composition
+	1 Carrier form
+	Weapons
+	Explosive Biomass
+	Special Rules
+	- Suicide Charge: If this model successfully assaults an enemy unit, it is immediately destroyed, and the assaulted unit suffers a HE (1") hit. Being down does not halve hits for this attack.
+- Explosive Biomass: If this model is destroyed (by shooting, assault, or other means), all units within 1" suffer a HE (1") hit. Being down does not halve hits for this attack.
+- Spawn Infection Forms: When this unit is destroyed, immediately replace the model with a new unit of 1D3 Inexperienced Infection Forms. Place them as close as possible to the position where the Carrier Form was destroyed, while remaining at least 1" away from any other units. These Infection Forms lose all pins and use the same Order Die the carrier form unit had. If there is not enough space to place them all, place as many as possible.
+- Tank Hunters  
+- Infiltrator  
+- Horror
+- Extra Selection: You may take up to 3 Carrier Form Teams as a single choice in any platoon selector that allows an Anti-Tank Team. This does not prevent you from also taking a standard Anti-Tank Team.
+	Anti Tank Team
+Cost
+	50pts (Inexperienced), 71pts (Regular), 92pts (Veteran)
+	Composition
+	2 combat forms
+	Weapons
+	1 Rocket Launcher
+	Special Rules
+	- Team Weapon  
+- Shaped charge  
+- Flood Infection
+- Horror
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Sniper Team
+Cost
+	53pts (Regular), 68pts (Veteran)
+	Composition
+	2 Combat forms
+	Weapons
+	Sniper has a Sniper Rifle, spotter has a Pistol
+	Special Rules
+	- Team weapon
+- Sniper
+- Infiltrator
+- Flood Infection
+- Horror
+	Grenade Launcher Team
+Cost
+	27pts (Inexperienced), 41pts (Regular), 55pts (Veteran)  
+	Composition
+	2 Combat forms
+	Weapons
+	1 Grenade launcher
+	Options
+	- May add a spotter for +10pts (If unit is in a heavy weapons platoon)
+	Special Rules
+	- Team Weapon
+- Flood Infection
+- Horror
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+VEHICLES
+WALKERS
+Juggernaut 
+Cost
+	90pts (Regular), 108pts (Veteran)
+	Weapons
+	2 Forward facing Tentacle Lash (Range: 6", Shots: 1, Pen: +1) , 2 Fists
+	Damage Value
+	7+ (Light Walker)
+	Special Rules
+	- Assault
+- Fist 
+- Agile
+- Faster
+- Open-topped
+- Synaptic Relay: If at least one Flood Officer is alive, this unit extends that officer’s command bubble to Flood Infantry and Artillery within 6" of it, but with the morale bonus halved. For normal morale checks, affected units use the highest officer’s morale bonus available (halved). For Snap To via this relay, only the activating officer’s halved morale bonus is used, even if another officer on the field has a higher bonus.
+	Abomination
+Cost
+	230pts (Regular), 264pts (Veteran)
+	Weapons
+	2 Forward facing Tentacle Whip (Range 12", Shots 1, Pen +3, HE (1") ) , 2 Fists
+	Damage Value
+	9+ (Heavy Walker)
+	Special Rules
+	- Assault
+- Fist 
+- Slow
+- Synaptic Relay: If at least one Flood Officer is alive, this unit extends that officer’s command bubble to Flood Infantry and Artillery within 6" of it, but with the morale bonus halved. For normal morale checks, affected units use the highest officer’s morale bonus available (halved). For Snap To via this relay, only the activating officer’s halved morale bonus is used, even if another officer on the field has a higher bonus.
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ | Page

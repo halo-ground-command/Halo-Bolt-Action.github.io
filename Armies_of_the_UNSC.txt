@@ -1,0 +1,1588 @@
+﻿Armies of the UNSC v3.0
+
+Army Special Rules
+Desperate Measures
+When humanity is pushed to the brink, its soldiers rally with unwavering determination.
+* Effect: When a UNSC infantry or artillery unit is reduced to half or less of its initial starting strength (rounding up), the remaining models in that unit gain the Stubborn special rule. Units that already have Stubborn gain the Fanatics special rule instead. Units that already have Fanatics gain Energy Shields. If they already have Energy Shields, they gain Resilient instead.
+Experienced Commanders
+UNSC officers are trained to manage diverse forces and battlefield conditions effectively.
+* Effect: When a UNSC Officer uses the ‘You men, snap to action!’ ability, they may draw and assign one additional Order Die from the bag to a friendly unit within range, following the normal rules for that ability. This increases the number of units that can be activated by one.
+Spartan Leadership
+Spartans inspire exceptional performance from allied troops.
+* Effect: Friendly units within 9" of a Spartan unit can re-roll failed morale checks.
+Battle-Net Intrusion
+UNSC commanders use linked battle-net systems and tactical AI support to exploit brief windows of advantage before the enemy can respond.
+* Effect: Once per game, at the start of any Game Turn, the UNSC player may choose one Order Die to draw from the dice bag instead of drawing randomly. If this Order Die is assigned to an Officer, it cannot be used to trigger You Men, Snap to Action! If more than one UNSC player wishes to use this rule at the same time, roll off. The winner uses this rule that turn, and the loser must wait until a future turn to use it.
+
+
+
+
+
+
+
+
+FOR HUMANITY’S SURVIVAL!
+This rule allows you to customize units to represent specific UNSC sub-factions. Each eligible unit may be upgraded individually — you can freely mix and match Marine, ODST, and Spartan squads within the same force.
+Units whose profiles include “FOR HUMANITY’S SURVIVAL!” in their Special Rules section may benefit from this customization.
+When selected, apply all associated rules and point costs to every model in the squad. Mixed designations are not allowed within the same unit.
+TROOPERS
+Default. No Bonuses.
+MARINES
+Must be taken as Regular or Veteran.
+Gain the Stubborn special rule.
+Cost: +1pt per model.
+ODSTs
+Must be taken as Veteran.
+Gain the Stubborn, Behind Enemy Lines, and VISR special rules.
+Cost: +2pts per model.
+Optional additional upgrades (ODST-only):
+ – The squad can be given Strong for +1pt per model.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+SPARTANS
+Must be taken as Veteran.
+Gain the Fanatics, Fast, Behind Enemy Lines, Strong,  Strikes First and VISR special rules.
+Cost: +5pts per model.
+Optional additional upgrades (Spartan-only):
+ – The squad can be given Energy Shields for +3pts per model.
+ – The squad can be given Stealth for +1pt per model.
+– The NCO/Officer may be given a Melee Weapon for +1pt (This model rolls 2 dice in close combat instead of 1) 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+INFANTRY
+HEADQUARTERS UNITS
+Officer
+Cost
+	- Platoon commander (1st Lieutenant, 2nd Lieutenant)
+21pts (Inexperienced), 30pts (Regular), 39pts (Veteran)
+- Company commander (Captain, Major)
+42pts (Inexperienced), 60pts (Regular), 78pts (Veteran)
+	Team
+	1 officer and up to 3 further men
+	Weapons
+	Pistol, Submachine Gun, DMR, Battle Rifle, or Assault Rifle, as depicted on the models.
+	Options
+	- The officer may be accompanied by up to 3 men at a cost of +7pts per man (Inexperienced), +10pts per man (Regular), or +13pts per man (Veteran)
+	Special Rules
+	- For Humanity’s Survival!
+	Medic
+Cost
+	Medic 23pts (Regular), 30pts (Veteran)
+	Team
+	1 medic and up to 2 further men
+	Weapons
+	Pistol or none, as depicted on the models
+	Options
+	- The medic may be accompanied by up to 2 men at a cost of +8pts per man (Regular) or +11pts per man (Veteran)
+	Special Rules
+	- For Humanity’s Survival!
+	Forward Observer
+Cost
+	Forward observer (air force or artillery)
+75pts (Regular), 90pts (Veteran)
+	Team
+	1 forward observer and up to 2 further men
+	Weapons
+	Pistol, Submachine Gun, DMR, Battle Rifle, or Assault Rifle, as depicted on the models.
+	Options
+	- The observer may be accompanied by up to 2 men at a cost of +11pts per man (Regular) or +14pts per man (Veteran)
+	Special Rules
+	- Infiltrator
+- For Humanity’s Survival!
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+INFANTRY SQUADS AND TEAMS
+Regular Infantry Squad
+Cost
+	65pts (Inexperienced), 80pts (Regular), 95pts (Veteran)
+	Composition
+	1 NCO and 4 men
+	Weapons
+	Assault Rifles
+	Options
+	- Add up to 5 additional men for +13pts each (Inexperienced), +16pts each (Regular) or +19pts each (Veteran)
+- The NCO and up to 5 additional men may have DMRs instead of Assault Rifles for -5pts each
+- The NCO and up to 2 men may have Shotguns instead of Assault Rifles for -3pts each
+- Up to 1 man may have a Light Machine Gun for +9pts
+- The squad can be given anti-tank grenades for +2pts per man
+	Special Rules
+	- Tank Hunters: If anti-tank grenades are taken
+	Engineer Squad
+Cost
+	80pts (Regular), 95pts (Veteran)
+	Composition
+	1 NCO and 4 men
+	Weapons
+	Assault Rifles
+	Options
+	- Add up to 5 additional men for +16pts each (Regular) or +19pts each (Veteran)
+- The NCO and up to 4 men may have Shotguns instead of Assault Rifles for -3pts each
+- The NCO and up to 4 men may have SMGs instead of Assault Rifles for -2pts each
+- Up to 1 man may have a Flamethrower for +24pts – another man becomes the assistant
+- The squad can be given anti-tank grenades for +2pts per man
+	Special Rules
+	- Engineers
+- Tank Hunters: If anti-tank grenades are taken
+- For Humanity’s Survival!
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Marine Squad
+Cost
+	85pts (Regular), 100pts (Veteran)
+	Composition
+	1 NCO and 4 men
+	Weapons
+	Assault Rifles
+	Options
+	- Add up to 5 additional men for +17pts (Regular) or +20pts (Veteran) each
+- The NCO and up to 6 men may have Battle Rifles instead of Assault Rifles for -3pts each
+- The NCO and up to 6 men may have Shotguns instead of Assault Rifles for -3pts each
+- The NCO and up to 4 men may have Submachine Guns instead of Assault Rifles for -2pts each
+- Up to 2 men may have a Light Machine Gun for +9pts 
+- The squad can be given anti-tank grenades for +2pts per man
+	Special Rules
+	- Stubborn
+- Tank Hunters: If anti-tank grenades are taken
+	ODST Squad
+Cost
+	105pts (Veteran)
+	Composition
+	1 NCO and 4 men
+	Weapons
+	Assault Rifles
+	Options
+	- Add up to 5 additional men for +21pts each
+- The NCO and up to 3 men may have DMRs instead of Assault Rifles for -5pts each
+- The NCO and up to 4 men may have Battle Rifles instead of Assault Rifles for -3pts each
+- The NCO and up to 9 men may have Submachine Guns instead of Assault Rifles for -2pts each
+- Up to 2 man may have a Light Machine Gun for +9pts
+- Up to 3 men may have Shotguns instead of Assault Rifles for -3pts each
+- The squad can be given anti-tank grenades for +2pts per man
+- The squad can be given Jump-Jet Packs for +1pt per man
+	Special Rules
+	- Behind Enemy Lines
+- Stubborn
+- VISR
+- Tank Hunters: If anti-tank grenades are taken
+- Flight: If Jump-Jet Packs are taken
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Spartan Team
+Cost
+	96pts (Veteran)
+	Composition
+	1 NCO and 3 men
+	Weapons
+	Assault Rifles
+	Options
+	- Add up to 2 additional men for +24pts each
+- The NCO and up to 3 men may have Battle Rifles instead of Assault Rifles for -3pts each
+- The NCO and up to 3 men may have Shotguns instead of Assault Rifles for -3pts each
+- The NCO and up to 3 men may have DMRs instead of Assault Rifles for -5pts each
+- Up to 1 man may have a Grenade Launcher for +17pts
+- Up to 1 man may have a Light Machine Gun for +9pts
+- Up to 1 man may have a Anti-Tank Rifle for +10pts
+- The squad can be given Jump-Jet Packs for +1pt per man
+- The squad can be given Stealth Modules for +1pt per man
+- The squad can be given Energy Shield Modules for +3pts per man
+- The NCO may be given a Melee Weapon for +1pt (This model rolls 2 dice in close combat instead of 1) 
+	Special Rules
+	- Fanatics                                                                                 - Strong 
+- Fast                                                                                        - Strikes First
+- VISR
+- Behind Enemy Lines
+- Stealth: If Stealth Modules are taken
+- Tank Hunters: If anti-tank grenades are taken
+- Energy Shields: If Energy Shield Modules are taken
+- Flight: If Jump-Jet Packs are taken
+- Melee Weapon: If taken, the model rolls 2 dice in close combat instead of 1
+	ONI Operative Team
+Cost
+	72pts (Veteran)
+	Composition
+	1 NCO and 3 men  
+	Weapons
+	SMGs
+	Options
+	- The squad can be given anti-tank grenades for +2pts per man 
+	Special Rules
+	- Infiltrator                                                             - For Humanity’s Survival!
+- Limited: Only 1 ONI Operative Team may be taken per platoon.
+- Tank Hunters: If anti-tank grenades are taken
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Militia Squad
+Cost
+	55pts (Inexperienced)
+	Composition
+	1 NCO and 4 men  
+	Weapons
+	Assault Rifles
+	Options
+	- Add up to 7 additional men for +11pts each  
+- The NCO and up to 4 men may have Submachine Guns instead of Assault Rifles for -2pts each  
+- The squad can be given anti-tank grenades for +2pts per man 
+	Special Rules
+	- Green  
+- Shirkers  
+- Tank Hunters: If anti-tank grenades are taken
+	Machine Gun Team 
+Cost
+	35pts (Inexperienced), 50pts (Regular), 65pts (Veteran)   
+	Composition
+	3 men  
+	Weapons
+	1 Medium Machine Gun 
+	Options
+	- Upgrade the Medium Machine Gun to a Heavy Machine Gun for +20pts, gaining 1 extra man
+	Special Rules
+	- Team Weapon  
+- Fixed  
+- For Humanity’s Survival!
+	Anti Tank Team
+Cost
+	49pts (Inexperienced), 70pts (Regular), 91pts (Veteran)
+	Composition
+	2 men  
+	Weapons
+	1 Rocket Launcher  
+	Options
+	- Replace rocket launcher with spartan laser for +15pts
+	Special Rules
+	- Team Weapon  
+- Shaped charge  
+- For Humanity’s Survival!
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Sniper Team
+Cost
+	52pts (Regular), 67pts (Veteran)
+	Composition
+	2 men  
+	Weapons
+	Sniper has a sniper rifle and a pistol, spotter has a pistol 
+	Special Rules
+	- Team weapon
+- Sniper
+- Infiltrator
+- For Humanity’s Survival!
+	Flamethrower Team
+Cost
+	50pts (Regular), 65pts (Veteran)  
+	Composition
+	2 men  
+	Weapons
+	1 Infantry Flamethrower  
+	Special Rules
+	- Flamethrower  
+- Team Weapon
+- For Humanity’s Survival!
+	Grenade Launcher Team
+Cost
+	26pts (Inexperienced), 40pts (Regular), 54pts (Veteran)  
+	Composition
+	2 men  
+	Weapons
+	1 Grenade Launcher 
+	Options
+	- May add a spotter for +10pts (If unit is in a heavy weapons platoon)
+	Special Rules
+	- Team Weapon
+- For Humanity’s Survival!
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+VEHICLES
+TANKS
+M808B Scorpion
+Cost
+	104pts (Inexperienced), 130pts (Regular), 156pts (Veteran) 
+	Weapons
+	Turret-mounted Medium Anti-Tank Weapon
+	Damage Value
+	8+ (Light Tank)  
+	Transport
+	Up to 8 men 
+	Options
+	- Add pintle-mounted MMG covering the forward arc for +15pts  
+- Add coaxial MMG for +10pts  
+- Gain the Reinforced Front Armour rule for +15pts
+	Special Rules
+	- Reactive Disembarkation: If the Scorpion is targeted by any attack any passengers must immediately disembark before any dice are rolled. The attacker must be in range of the tank. Disembarking units are immediately placed within 1" of the vehicle and automatically count as having gone Down.
+	M808S Scorpion
+Cost
+	168pts (Inexperienced), 210pts (Regular), 252pts (Veteran)
+	Weapons
+	Turret-mounted Heavy Anti-Tank Weapon and co-axial MMG 
+	Damage Value
+	9+ (Medium Tank)  
+	M850 Grizzly
+Cost
+	395 pts (Regular), 475 pts (Veteran)
+	Weapons
+	2 turret-mounted twin-linked Heavy Anti-Tank Weapons with coaxial paired MMG
+	Damage Value
+	10+ (Heavy Tank)  
+	Special Rules
+	- Reinforced Front Armour
+- Slow Load
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+TANK DESTROYERS
+SP42 Cobra
+Cost
+	140 pts (Regular), 168 pts (Veteran) 
+	Weapons
+	2 Turret-mounted Twin-linked Light Anti-Tank Weapons
+	Damage Value
+	7+ (Armoured Car) 
+	Special Rules
+	- Versatile: Can fire as a single Medium Howitzer on a Fire order instead
+	WALKERS
+HRUNTING Mark III (S) Cyclops
+Cost
+	110pts (Regular), 132pts (Veteran)
+	Weapons
+	Forward-facing Hull-mounted Light Autocannon and HMG, 2 Fists
+	Damage Value
+	7+ (Light Walker)
+	Options
+	- Replace Light Autocannon and HMG with a Flamethrower (Vehicle) for free
+	Special Rules
+	- Assault                                                             - Fist
+- Agile
+- Recce
+- Open-topped
+	HRUNTING/YGGDRASIL Mk IX ADS "Mantis"
+Cost
+	160pts (Regular), 192pts (Veteran)
+	Weapons
+	Turret-mounted Heavy Machine Gun and Rocket Launcher
+	Damage Value
+	8+ (Medium Walker)
+	Special Rules
+	- Assault
+	Colossus
+Cost
+	250pts (Regular), 300pts (Veteran)
+	Weapons
+	Turret-mounted Heavy Anti-Tank Weapon and Light Autocannon
+	Damage Value
+	9+ (Heavy Walker)
+	Special Rules
+	- Slow
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+SELF-PROPELLED ARTILLERY
+M400 Kodiak
+Cost
+	125pts (Regular), 150pts (Veteran)  
+	Weapons
+	Turret-mounted Medium Howitzer, Pintle-mounted MMG covering the forward arc
+	Damage Value
+	7+ (Armored Car) 
+	Special Rules
+	- Slow load
+	Rhino
+Cost
+	235pts (Regular), 282pts (Veteran)  
+	Weapons
+	Turret-mounted Heavy Howitzer
+	Damage Value
+	9+ (Medium Tank) 
+	Special Rules
+	- Slow load
+	ANTI-AIRCRAFT VEHICLES
+M808B2 Sun Devil
+Cost
+	140pts (Inexperienced), 175pts (Regular), 210pts (Veteran)  
+	Weapons
+	4 Turret-mounted Quad-Linked Light Autocannons
+	Damage Value
+	8+ (Light Tank)  
+	Transport
+	Up to 8 men 
+	Options
+	- Add pintle-mounted MMG covering the forward arc for +15pts  
+	Special Rules
+	- Flak
+- Reactive Disembarkation: If the Sun Devil is targeted by any attack (regardless of weapon type), any infantry riding as passengers must immediately disembark before any dice are rolled. The attacker must be in range of the tank. Disembarking units are immediately placed within 1" of the vehicle and automatically count as having gone Down or remain Down if already Down.
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+M9 Wolverine
+Cost
+	120 pts (Regular), 144 pts (Veteran)  
+	Weapons
+	Turret-mounted Rocket Launcher, Hull-mounted Forward-facing Grenade Launcher
+	Damage Value
+	7+ (Armoured Half-Track)
+	Special Rules
+	- Flak
+	ARMOURED CARS
+M274 Mongoose 
+Cost
+	60pts (Inexperienced), 75pts (Regular), 90pts (Veteran)
+	Weapons
+	Forward-facing pintle-mounted Rocket Launcher 
+	Damage Value
+	6+ (Soft-skin) 
+	Special Rules
+	- Agile  
+- Recce  
+	M12LRV Warthog
+Cost
+	56pts (Inexperienced), 70pts (Regular), 84pts (Veteran)
+	Weapons
+	Turret-mounted Paired HMG
+	Damage Value
+	7+ (Armoured Car)
+	Special Rules
+	- Recce
+- Open-topped
+- Flak
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+M12G1 Gauss Warthog
+Cost
+	68pts (Inexperienced), 85pts (Regular), 102pts (Veteran)
+	Weapons
+	Turret-mounted Light Anti-Tank Weapon
+	Damage Value
+	7+ (Armoured Car)
+	Options
+	- Replace Light Anti-Tank Weapon with a Flamethrower (Vehicle) for +5pts
+	Special Rules
+	- Recce
+- Open-topped
+	M12R Rocket Warthog 
+Cost
+	76pts (Inexperienced), 95pts (Regular), 114pts (Veteran)
+	Weapons
+	Turret-mounted Rocket Launcher
+	Damage Value
+	7+ (Armoured Car)
+	Special Rules
+	- Recce
+- Open-topped
+- Flak
+	M121 Jackrabbit 
+Cost
+	50 pts (Regular), 60 pts (Veteran) 
+	Weapons
+	Turret-mounted Grenade Launcher
+	Damage Value
+	6+ (Soft-skin) 
+	Special Rules
+	- Recce  
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+AIRCRAFTS
+AV-14 Attack VTOL "Hornet"
+Cost
+	84pts (Inexperienced), 105pts (Regular), 126pts (Veteran) 
+	Weapons
+	Hull-mounted Forward-facing Paired Heavy Machine Gun and Rocket Launcher  
+	Damage Value
+	6+ (Light Aircraft)  
+	Transport 
+	Up to 4 men
+	Special Rules
+	- Flak                                                     - Agile
+- Nimble
+	UH-144 Falcon
+Cost
+	64pts (Inexperienced), 80pts (Regular), 96pts (Veteran)  
+	Weapons
+	Hull-mounted Forward-facing Light Autocannon  
+	Damage Value
+	7+ (Medium Aircraft)  
+	Options
+	- Add 2 pintle-mounted MMGs, 1 MMG covering the front arc, and 1 MMG covering the right arc for +30pts
+- Replace the 2 pintle-mounted MMGs with 2 pintle-mounted Grenade Launchers for +15pts  
+	Transport 
+	Up to 7 men
+	Special Rules
+	- Flak  
+- Open-topped
+	AV-22 Sparrowhawk
+Cost
+	200 pts (Regular), 240 pts (Veteran)
+	Weapons
+	Turret-mounted Heavy Autocannon, 4 Hull-mounted Quad-linked Forward-facing Light Autocannons 
+	Damage Value
+	7+ (Medium Aircraft)  
+	Options
+	- Replace Heavy Autocannon with Spartan Laser for +25 pts
+	Special Rules
+	- Flak  
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Pelican
+Cost
+	108pts (Inexperienced), 135pts (Regular), 162pts (Veteran)  
+	Weapons
+	Turret-mounted Light Automatic Cannon  
+	Damage Value
+	8+ (Heavy Aircraft)  
+	Options
+	- Replace Light Automatic Cannon with a Heavy Automatic Cannon for +15pts
+- Add a Hull-mounted Forward-facing Rocket Launcher for +50pts
+- Add a pintle-mounted MMG covering the rear arc for +15pts
+- Upgrade to Command Vehicle for +10pts
+	Transport 
+	Up to 16 men
+	Special Rules
+	- Flak
+- Command Vehicle (If Command Vehicle is taken)
+	TITANIC AIRCRAFT
+Vulture
+Cost
+	360 pts (Regular), 432 pts (Veteran)
+	Weapons
+	4 Hull-mounted Quad-linked Forward-facing Heavy Autocannons, Hull-mounted Forward-facing Rocket Launcher
+	Damage Value
+	9+ (Super-Heavy Aircraft)  
+	Special Rules
+	- Flak
+- Titanic Aircraft: When rolling on the Aircraft Damage chart against this unit, reduce the result by 1 (to a minimum of 1).
+	Condor Gunship
+Cost
+	415 pts (Regular), 500 pts (Veteran)
+	Weapons
+	Turret-mounted Super-Heavy Anti-Tank Weapon, 5 Turret-mounted Linked Light Automatic Cannons
+	Damage Value
+	9+ (Super-Heavy Aircraft)  
+	Special Rules
+	- Flak
+- Titanic Aircraft: When rolling on the Aircraft Damage chart against this unit, reduce the result by 1 (to a minimum of 1).
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+TRANSPORTS AND TOWS
+M831 Troop Transport Warthog
+Cost
+	40pts (Inexperienced), 50pts (Regular), 60pts (Veteran)
+	Weapons
+	None
+	Damage Value
+	7+ (Armoured Car)
+	Transport 
+	Up to 7 men
+	Special Rules
+	- Recce
+- Open-topped
+	Mastodon
+Cost
+	70pts (Regular), 84pts (Veteran)
+	Weapons
+	Turret-mounted Medium Machine Gun
+	Damage Value
+	7+ (Armoured Car)
+	Transport 
+	Up to 15 men
+	Special Rules
+	
+
+	ARTILLERY
+FIELD ARTILLERY
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ANTI-AIRCRAFT GUNS
+M41 LAAG Defensive Mount
+Cost
+	50pts (Inexperienced), 65pts (Regular), 80pts (Veteran)
+	Team
+	4 men
+	Weapons
+	1 heavy machine gun on a rotating platform
+	Special Rules
+	- Flak                                                                                     For Humanity’s Survival!
+- Gun Shield
+	M71 Anti-Aircraft Gun (Scythe)
+Cost
+	35pts (Inexperienced), 50pts (Regular), 65pts (Veteran)
+	Team
+	4 men
+	Weapons
+	1 heavy automatic cannon on a rotating platform
+	Special Rules
+	- Flak                                                                                     For Humanity’s Survival!
+- Static: Once deployed, this unit cannot be moved by its crew.
+	ANTI-TANK GUNS
+M68 Gauss Cannon 
+Cost
+	35pts (Inexperienced), 50pts (Regular), 65pts (Veteran)
+	Team
+	3 men
+	Weapons
+	1 light anti-tank weapon on a rotating platform
+	Special Rules
+	- Gun Shield                                                                               For Humanity’s Survival!
+	M79 Anti-Air Rocket Launcher
+Cost
+	50pts (Inexperienced), 65pts (Regular), 80pts (Veteran)
+	Team
+	3 men
+	Weapons
+	1 rocket launcher on a rotating platform
+	Special Rules
+	- Flak                                                                                     For Humanity’s Survival!
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+LEGENDS
+TANKS
+M700 VIPER
+Cost
+	100pts (Inexperienced), 125pts (Regular), 150pts (Veteran) 
+	Weapons
+	Turret-mounted Light Anti-Tank Weapon
+	Damage Value
+	8+ (Light Tank)  
+	Options
+	- Add turret-mounted MMG for +15pts  
+	Special Rules
+	- Stealth Hull: While this vehicle is in cover, ranged attacks against it suffer an additional -1 to hit, provided it has not been assigned an Advance or Run order.
+- Weak Sides
+- Faster
+	ARMOURED CARS
+M35 Cougar
+Cost
+	100pts (Regular), 120pts (Veteran)
+	Weapons
+	2 Turret-mounted twin-linked Light Automatic Cannons, Coaxial MMG
+	Damage Value
+	7+ (Armoured Car)
+	Special Rules
+	- Recce
+- Open-topped
+	
+
+ | Page

@@ -1,0 +1,778 @@
+﻿Armies of the Forerunnerv3.0
+
+Army Special Rules
+Enhanced Weapon Systems
+Forerunner weapons exhibit unmatched precision and lethality.
+* Effect: When a Forerunner Infantry or Artillery unit fires a Heavy weapon, each 6+ to hit grants +1 Penetration to that shot’s damage roll. This however has no effect on HE shots/templates.
+Uphold the Mantle
+Guided by an ancient charge to preserve order.
+* Effect: Any Regular or Veteran Forerunner unit that passes an Order test may remove 2 Pin markers instead of 1.
+Warden of Balance
+Forerunner doctrine punishes overextension.
+* Effect: At the beginning of each turn, if your opponent has more units on the battlefield than you, select one friendly Forerunner Infantry or Artillery unit from your army list. During this turn, that unit gains +1 to hit when shooting. This does not stack across turns and expires at the end of each turn.
+Teleportation Network
+Phase relays enable instantaneous redeployment.
+* Effect: Each time a Forerunner Officer successfully uses You men, snap to action!, you may choose one friendly Infantry or Artillery unit with Composed Beings that is being issued an order by that Snap. The order issued to that unit cannot be Advance, Run, or Assault. A unit carrying an objective cannot be chosen. If the chosen unit is required to take an Order test (e.g., because it is pinned), resolve the test as normal:
+   * Failed: The unit goes Down (or follows FUBAR if applicable) as normal and does not teleport.
+   * Passed (or if no Order test is required): The unit teleports up to 12", ignoring intervening units and terrain. It may not end in impassable terrain, inside a building, outside the battlefield, or within 1" of any unit. Teleporting does not trigger enemy Ambush during this movement. After teleporting, the unit resolves its assigned order (Fire, Ambush, Down, or Rally) as normal.
+
+
+INFANTRY
+HEADQUARTERS UNITS
+Officer
+Cost
+	- Platoon commander (Sub-monitor):  
+21pts (Inexperienced), 30pts (Regular), 39pts (Veteran) 
+- Company commander (Monitor):  
+42pts (Inexperienced), 60pts (Regular), 78pts (Veteran)
+	Team
+	1 officer and up to 3 further Sentinels
+	Weapons
+	- Sentinel Beam
+	Options
+	- The officer may be accompanied by up to 3 Sentinels at a cost of +7pts per Sentinel (Inexperienced), +10pts per Sentinel  (Regular), or +13pts per Sentinel (Veteran)
+	Special Rules
+	- Flight
+- Composed Being
+- Energy Shield
+- Custodian Uplink: If the Officer is destroyed, immediately replace the Composed Beings special rule with Automaton for the remaining models in this unit for the rest of the game.
+	Watcher
+Cost
+	Forward observer (air force or artillery)
+85pts (Regular), 100pts (Veteran)
+	Team
+	1 Watcher and up to 2 further Sentinels
+	Weapons
+	- Sentinel Beam or Boltshot, as depicted on the models.
+	Options
+	- The watcher may be accompanied by up to 2 sentinels at a cost of +11pts per sentinel (Regular) or +14pts per sentinel (Veteran)
+	Special Rules
+	- Infiltrator
+- Automaton
+- Energy Shield
+- Forward Observer: Counts as an Air force or artillery forward observer.
+- Flight
+- Reconstruction Suite: If a friendly Infantry or Artillery model/unit with Composed Beings or Automaton is within 6" of the Watcher and takes damage from Small Arms fire, roll one die per point of damage; for each 6, ignore one point of damage.
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+INFANTRY SQUADS AND TEAMS
+Sentinel Swarm
+Cost
+	40pts (Inexperienced), 55pts (Regular) 
+	Composition
+	1 NCO and 4 Sentinels
+	Weapons
+	Sentinel Beams
+	Options
+	- Add up to 6 additional Sentinels for +8pts each (Inexperienced), or +11pts each (Regular) 
+- The unit may be given Energy Shield modules for +3pts per model
+	Special Rules
+	- Automaton
+- Energy Shields: If energy shield modules are taken
+- Flight
+	Crawler Swarm
+Cost
+	49pts (Inexperienced), 64pts (Regular) 
+	Composition
+	1 NCO and 4 Crawlers
+	Weapons
+	Boltshot
+	Options
+	- Add up to 6 additional Crawlers for +10pts each (inexperienced), or +13pts each (regular) 
+- The NCO and up to 8 additional Crawlers may have Suppressors instead of Boltshots  for +7pts each
+- The NCO and up to 8 additional Crawlers may have Light rifles instead of Boltshots  for +2pts each
+	Special Rules
+	- Automaton
+- Fieldcraft
+- Energy Shields
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Warrior-Servant Squad
+Cost
+	105pts (Regular), 120pts (Veteran) 
+	Composition
+	1 NCO and 4 men
+	Weapons
+	Suppressors 
+	Options
+	- Add up to 5 additional men for +21pts each (Regular), or +24pts each (Veteran) 
+- The NCO and up to 7 models may replace Suppressor with Light Rifle for –5pts each 
+- The NCO may replace Suppressor with Boltshot for –7pts
+- The NCO may be given a Melee Weapon for +1pt (This model rolls 2 dice in close combat instead of 1) 
+	Special Rules
+	- Energy Shields
+- VISR
+- Stealth
+- Stubborn
+	Promethean Soldier Squad
+Cost
+	92pts (Regular), 104pts (Veteran)
+	Composition
+	1 NCO and 3 soldiers
+	Weapons
+	Suppressors
+	Options
+	- Add up to 2 additional Soldiers for +23pts each (Regular) or +26pts each (Veteran)
+- Any model may replace Suppressor with Light Rifle for –5pts each
+- Any model may replace Suppressor with Scattershot for –3pts each
+	Special Rules
+	- Composed Beings
+- Energy Shields
+- Fanatics
+- VISR
+- Behind Enemy Lines
+- Fast
+- Strong
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Promethean Knight Team
+Cost
+	58pts (Veteran)
+	Composition
+	1 NCO and 1 Knight
+	Weapons
+	Suppressors
+	Options
+	- Add up to 3 additional Knights for +29pts each (Veteran)
+- Any model may replace Suppressor with Light Rifle for –4pts each
+- Any model may replace Suppressor with Scattershot for –3pts each
+- One model may replace its Suppressor with an Incineration Cannon for +33pts
+- The unit may be upgraded to Knight Battlewagons, gaining Tank Hunters for +2pts per model
+- Knight Commander (Second Lieutenant, 0–1 per army): Add a single officer model to this unit for +45pts; note that this is just the addition of a single officer model, not an entire Officer HQ, and does not fulfil the requirement for a Platoon Commander to lead the platoon. Limited to 1 per army.
+	Special Rules
+	- Composed Beings
+- Fanatics
+- Resilient
+- Strong
+- Melee Weapons: Models do an extra melee attack.
+- Tough Fighters
+- VISR
+- Behind Enemy Lines
+- Fieldcraft
+- Large Infantry
+- Phase Step: If this unit has not yet activated, it isn’t carrying an objective and is targeted by shooting from more than 6" away (not Preliminary Bombardment, artillery barrage, or air-strike), it may immediately react by teleporting up to 6". No order test is required. If you do so, place the unit within 6" of its starting position, ending farther from the attacking unit than before and not in impassable terrain, inside a building, outside the battlefield or within 1" of any unit. You may ignore intervening models and terrain while moving. This reaction does not trigger enemy Ambush. After teleporting, set the unit’s die to Down. If no legal placement exists, the unit goes down instead.
+- Knight Commander (If Knight commander is taken): Representing a First or Second Lieutenant who leads his men directly, this officer model follows the rules of a Platoon Commander, except that his morale bonus is only +1 and his ‘You men, snap to action!’ only affects 1 other unit instead of 2. The unit does not suffer from the effects of losing its NCO while the officer is alive.
+- Limited: Only up to 2 Promethean Knight teams may be taken per platoon. 
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Anti Tank Team
+Cost
+	82pts (Regular), 103pts (Veteran) 
+	Composition
+	2 Soldiers
+	Weapons
+	1 Incineration Cannon
+	Options
+	- Replace Incineration Cannon with Rocket launcher for no additional cost
+	Special Rules
+	- Team Weapon  
+- Shaped charge
+- Composed Beings
+- Energy Shields
+- Fanatics
+- VISR
+- Behind Enemy Lines
+- Fast
+- Strong
+	Sniper Team
+Cost
+	64pts (Regular), 79pts (Veteran)
+	Composition
+	2 Soldiers
+	Weapons
+	Sniper has a Binary Rifle, spotter has a Boltshot
+	Options
+	- If taken as Veteran, the 2 soldiers can be upgraded to Knight Lancers, replacing the special rules Energy shields by Resilient and Fast by Fieldcraft. Additionally, the unit also gains the special rules Melee Weapons, Large infantry and Tough Fighters for +4pts per model.
+	Special Rules
+	- Team weapon
+- Sniper
+- Infiltrator
+- Composed Beings
+- Energy Shields
+- Fanatics
+- VISR
+- Behind Enemy Lines
+- Fast
+- Strong
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Machine Gun Team 
+Cost
+	90pts (Regular), 105pts (Veteran)   
+	Composition
+	4 soldiers 
+	Weapons
+	Splinter Turret
+	Special Rules
+	- Team Weapon  
+- Fixed  
+- Composed Beings
+- Energy Shields
+- Fanatics
+- VISR
+- Behind Enemy Lines
+- Fast
+- Strong
+- Splinter Turret: Heavy weapon: Range 48", Shots 3, Pen +1, Team, Fixed, HE (1")
+	VEHICLES
+WALKERS
+Warden Eternal 
+Cost
+	130pts (Regular), 156pts (Veteran)
+	Weapons
+	Forward-facing Hull-mounted Medium AT Weapon, 2 Fists
+	Damage Value
+	7+ (Light Walker)
+	Special Rules
+	- Assault  
+- Fist  
+- Agile  
+- Recce  
+- Open-topped  
+- Command Vehicle  
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+TANKS
+Eradicator Sentinel 
+Cost
+	100pts (Regular), 120pts (Veteran)
+	Weapons
+	Hull-mounted forward-facing Heavy Plasma MG
+	Damage Value
+	8+ (Medium Anti-Grav Tank)
+	Transport
+	1 officer
+	Options
+	- You may add up to 2 additional weapons, in any combination, from the list below: 
+Hull-mounted forward-facing Medium Plasma MG for +10pts
+Hull-mounted forward-facing Heavy Plasma MG for +20pts
+Hull-mounted forward-facing Rocket Launcher for +50pts
+Hull-mounted forward-facing Incineration Cannon for +40pts
+Hull-mounted forward-facing Cindershot for +25pts
+	Special Rules
+	- Agile  
+- Impulse Drive
+- Adjunct Dock: This vehicle can only transport 1 Officer model. While an Officer is aboard, this vehicle has the Open-Topped rule.
+	AIRCRAFTS
+Enforcer Sentinel 
+Cost
+	135pts (Regular), 162pts (Veteran) 
+	Weapons
+	Hull-mounted Forward-facing Paired Heavy Machine Gun and Rocket Launcher  
+	Damage Value
+	7+ (Medium Aircraft)  
+	Special Rules
+	- Flak
+- Open-Topped
+- Hard-Light Pavise: Shooting attacks that hit the Front arc cause pin markers only if they penetrate (i.e., the damage roll equals or exceeds DV); otherwise ignore pins. 
+- Gravitic Grapplers: If this aircraft makes an Advance and its movement path crosses one or more enemy non-Aircraft vehicles, then after moving you may forgo all shooting to target one of those vehicles. Roll a D6: On a 1–3, nothing happens. But on a 4+ the target is hit. The target suffers D2 pin markers, then resolve one Top-Armour damage roll at +2 Pen
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Z-1800 Phaeton
+Cost
+	170pts (Regular), 204pts (Veteran) 
+	Weapons
+	2 Turret-mounted Twin-linked Light Autocannons, Hull-mounted Forward-facing Rocket Launcher  
+	Damage Value
+	7+ (Medium Aircraft)  
+	Special Rules
+	- Flak
+- Nimble
+- Phase Blink: Once per turn, when you fail an Evasion save for this vehicle, you may re-roll that save.
+	TITANIC AIRCRAFT
+Retriever Sentinel 
+Cost
+	315pts (Regular), 380pts (Veteran) 
+	Weapons
+	Hull-mounted Forward-facing Super-Heavy Anti-Tank Weapon 
+	Damage Value
+	9+ (Super-Heavy Aircraft)  
+	Options
+	- Upgrade to Command Vehicle for +10pts
+	Special Rules
+	- Flak
+- Titanic Aircraft: When rolling on the Aircraft Damage chart against this unit, reduce the result by 1 (to a minimum of 1).
+- Gravitic Beam:  When this unit is given a successful Fire order, it may activate its gravitic beam. If it does, each other unit within 6" of this unit receives D3 pins.
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ | Page
