@@ -1583,6 +1583,18 @@ Cost
 	Special Rules
 	- Recce
 - Open-topped
+	SELF-PROPELLED ARTILLERY
+M808B3 Tarantula
+Cost
+	145pts (Regular), 174pts (Veteran) 
+	Weapons
+	Turret-mounted Multiple Launcher
+	Damage Value
+	8+ (Light Tank)  
+	Transport
+	Up to 8 men 
+	Special Rules
+	- Reactive Disembarkation: If the Tarantula is targeted by any attack any passengers must immediately disembark before any dice are rolled. The attacker must be in range of the tank. Disembarking units are immediately placed within 1" of the vehicle and automatically count as having gone Down.
 	
 
  | Page
