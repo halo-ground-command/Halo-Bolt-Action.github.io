@@ -1229,11 +1229,12 @@ const UNSC_VEHICLES = [
 	  weapons: [
 		{ name: "Turret-mounted twin-linked Heavy Anti-Tank Weapon" },
 		{ name: "Turret-mounted twin-linked Heavy Anti-Tank Weapon" },
-		{ name: "Coaxial MMG" }
+		{ name: "Coaxial paired MMG" }
 	  ],
 	  damageValue: "10+ (Heavy Tank)",
 	  specialRules: [
-		"Reinforced Front Armour"
+		"Reinforced Front Armour",
+		"Slow Load"
 	  ]
 	},
 	{
@@ -1406,6 +1407,20 @@ const UNSC_VEHICLES = [
       "Flak"
     ],
   },
+	{
+	  name: "M808B3 Tarantula",
+	  type: "Tank",
+	  allowedVeterancy: ["Regular", "Veteran"],
+	  costs: { Regular: 145, Veteran: 174 },
+	  weapons: [
+		{ name: "Turret-mounted Multiple Launcher" }
+	  ],
+	  damageValue: "8+ (Light Tank)",
+	  transportCapacity: 8,
+	  specialRules: [
+		"Reactive Disembarkation: If the Tarantula is targeted by any attack, any infantry riding as passengers must immediately disembark before any dice are rolled. The attacker must be in range of the tank. Disembarking units are immediately placed within 1\" of the vehicle and automatically count as having gone Down."
+	  ]
+	},
 
   // ARMOURED CARS
   {
@@ -2502,7 +2517,6 @@ const COVENANT_VEHICLES = [
 	  damageValue: "7+ (Medium Aircraft)",
 	  transportCapacity: 0,
 	  specialRules: [
-		"Slow Load",
 		"Open-topped",
 		{
 		  name: "Bombardment Platform",
