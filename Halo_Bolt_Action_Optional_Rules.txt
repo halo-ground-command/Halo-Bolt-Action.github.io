@@ -1,7 +1,7 @@
-﻿Halo: Bolt Action - Optional Rules v1.3
+﻿Halo: Bolt Action - Optional Rules v1.4
 
 Introduction
-This supplement collects optional rules modules for Halo: Bolt Action, designed primarily for narrative play but usable in any game if both players agree.
+This supplement contains optional rules modules for Halo: Bolt Action, designed primarily for narrative play but usable in any game if both players agree.
 These rules are intended to add flavor, cinematic moments, and extra tactical options to Halo: Bolt Action. Unless a module says otherwise, all normal rules still apply.
 This is a modular toolbox: players may use all, some, or none of these rules. Each optional rule or section is self-contained wherever possible.
 Current modules in this supplement include:
@@ -42,15 +42,15 @@ Each Hero’s profile lists their starting pools. Heroes may have different amou
 
 Luck (L) — fortune & survivability
    * Re‑roll (1 L): Re‑roll any single die (yours or your opponent’s). The second result stands. This is the only time a re‑roll may itself be re‑rolled (each attempt costs 1 Luck). The Hero does not have to be the unit making the roll in order to use this ability.
-   * Brush with Death (1 L): If the Hero would be removed as a casualty, spend 1 Luck to keep them in play.
+   * Brush with Death (1 L): If the Hero would be removed as a casualty, spend 1 Luck to keep it in play.
 Resolve (R) — precision, tempo & last‑ditch grit
    * Modify (1 R): After any one D6 made by or against the hero is rolled (before outcomes), adjust that die by +1 or −1. You may spend multiple Resolve on the same die (final value cannot exceed 6 or go below 1).
-   * Hand Back an Order (1 R): During the Orders Phase, before the next die is drawn, return the Order Die currently assigned to the Hero or a friendly unit within 6" to the bag. That unit counts as not activated this turn. You cannot rewind already‑resolved actions.
+   * Hand Back an Order (1 R): During the Orders Phase, before the next die is drawn, return the Order Die currently assigned to the Hero or a friendly unit within 6" of it to the bag. That unit counts as not activated this turn. You cannot rewind already‑resolved actions.
 Note: Officers still follow normal Snap to Action! limits even if later reactivated with Resolve.
    * Stalemate (1 R): When the Hero’s unit would lose in Close Quarters, you may spend 1 Resolve to force a draw instead. Do this after hits/damage are resolved but before removing the losing unit. 
    * Refuse to Die: If the Hero would be removed as a casualty, roll D6 + remaining Resolve. On 7+, the Hero remains in play and loses 1 Resolve instead.
 Edge (E) — spark for hero plays
-      * Active (1 E): During the Hero’s activation, spend 1 Edge to use that Hero’s unique ability. 
+      * Active (1 E): Spend 1 Edge to use that Hero’s unique ability. 
 Using multiple resources (order & stacking)
       * If a Hero has more than one resource available, the controlling player chooses the order to use them. If both affect the same die, resolve Luck (re‑roll) first, then apply Resolve (±1) to the new result.
 
@@ -75,34 +75,36 @@ Using multiple resources (order & stacking)
 
 UNSC HEROES
 Master Chief (John-117) — replaces Veteran Spartan Platoon Commander
-Pools: L2 / R1 / E2
-Active (1E) — Follow Me!: On activation, pick one UNSC infantry unit within 6": remove 1 Pin and that unit gains +1 to hit with shooting and Close Quarters until end of turn. (Does not affect Indirect Fire.)
+Pools: L3 / R2 / E2
+Active (1E) — Follow Me!: On activation, you may pick one UNSC infantry unit within 6": remove 1 Pin and that unit gains +1 to hit with shooting and +1 to damage in Close Quarters until end of turn. (+1 to hit does not affect Indirect Fire.)
 Sergeant Major Avery J. Johnson — replaces Veteran Marine Platoon Commander
-Pools: L1 / R2 / E1
+Pools: L2 / R3 / E1
 Active (1E) — Motivational Yelling: When a UNSC unit within 6" is about to take an Order or Morale test, before rolling, it automatically passes, then remove 1 Pin from that unit.
 Sergeant John Forge — replaces Veteran Marine Platoon Commander
-Pools: L1 / R2 / E1
-Active (1E) — Forge Ahead!: After an enemy die is drawn (before it resolves), immediately draw and resolve your next die on an unactivated unit within 6". 
+Pools: L2 / R3 / E1
+Active (1E) — Forge Ahead!: After an enemy order die is drawn (before it is assigned), immediately draw and resolve your next order die on an unactivated unit within 6". 
 Captain Jacob Keyes — replaces Veteran Marine Company Commander
-Pools: L1 / R2 / E1
-Active (1E) — The Keyes Loop: When you Snap to Action!, either extend range by +6" or pull +1 extra die for this Snap.
+Pools: L2 / R3 / E1
+Active (1E) — The Keyes Loop: When this hero does a Snap to Action!, either extend range by +6" or pull +1 extra die for this Snap.
 Captain James Cutter — replaces Veteran Marine Company Commander
-Pools: L1 / R2 / E1
+Pools: L2 / R3 / E1
 Active (1E) — Fire Support: On activation, pick an UNSC Infantry unit within 9". It immediately Fires as if it had Advanced (−1 applies).
 
 
 Jerome-092 — replaces Veteran Spartan Platoon Commander
-Pools: L1 / R2 / E1
-Active (1E) — Spartan Protocol: When a friendly unit within 6" becomes the target of shooting, treat it as in one better cover for that attack. If no casualties are caused, that unit cannot be targeted again this turn.
+Pools: L2 / R3 / E1
+Active (1E) — Spartan Protocol: When a friendly unit within 6" becomes the target of shooting, treat it as +1 better cover for that attack. If no casualties are caused, that unit cannot be targeted again this turn, unless it moves.
 Edward Buck — replaces Veteran ODST Platoon Commander
-Pools: L2 / R1 / E2
+Pools: L3 / R2 / E2
 Active (1E) — Shock Troopers: On activation, an activated UNSC Infantry unit within 6" may switch its Order Die to Ambush.
 Carter-A259 — replaces Veteran Platoon Commander
-Pools: L1 / R2 / E1
-Active (1E) — Wolfpack Move: On activation, one friendly unit within 6" auto-passes an Order test, then ignores −1 to hit from moving this activation.
+Pools: L2 / R3 / E1
+Active (1E) — Wolfpack Move: One friendly unit within 6" auto-passes an Order test, then ignores −1 to hit from moving this activation.
 ONI Agent Veronica Dare — replaces Veteran ODST Company Commander
-Pools: L1 / R2 / E1
+Pools: L2 / R3 / E1
 Active (1E) — Clean Extraction: On activation, pick one friendly Infantry within 9": remove all Pins, then place it in Reserve.
+
+
 
 
 
@@ -119,31 +121,31 @@ Active (1E) — Clean Extraction: On activation, pick one friendly Infantry with
 
 COVENANT HEROES
 The Arbiter — replaces Veteran Elite Platoon Commander
-Pools: L1 / R2 / E1
-Active (1E) — Sword-Line Advance: On activation, choose one Covenant unit within 12": it may perform a free Run/Assault immediately and gains +1 to hit in Close Quarters until end of turn. This move does not require drawing or changing any Order dice; the unit’s current Order Die remains unchanged.
+Pools: L2 / R3 / E1
+Active (1E) — Sword-Line Advance: On activation, choose one Covenant unit within 9": it may perform a free Run/Assault immediately and gains +1 to wound in Close Quarters until end of turn. This move does not require drawing or changing any Order dice; the unit’s current Order Die remains unchanged.
 Thel ‘Vadam — replaces Veteran Elite Company Commander
-Pools: L1 / R2 / E2
+Pools: L2 / R3 / E2
 Active (1E) — Intercept: When an enemy unit moves within 12" of a friendly Infantry unit on Ambush that is itself within 12" of Thel, you may interrupt before the enemy completes its move. Immediately declare an Assault with that friendly unit against the mover (normal LOS/charge rules apply). Flip the friendly unit’s die to Run.
 Rtas ‘Vadum — replaces Veteran Elite Platoon Commander
-Pools: L1 / R2 / E1
-Active (1E) — Zealot’s Volley: Upon activation, choose one Covenant Infantry unit within 6". Until the end of turn, it re-rolls 1s to hit when shooting and ignores any Pins it would suffer from overheating its weapons.
+Pools: L2 / R3 / E1
+Active (1E) — Zealot’s Volley: Choose one Covenant Infantry unit within 6". Until the end of turn, it re-rolls 1s to hit when shooting and it does not gain any Pins it would suffer from overheating its weapons.
 Tartarus — replaces Veteran Brute Company Commander
-Pools: L1 / R2 / E1
-Active (1E) — Savage Rush: Upon activation, one friendly unit within 12" gains +3" to Advance/Run/Assault and ignores Rough Ground for that move.
+Pools: L2 / R3 / E1
+Active (1E) — Savage Rush: One friendly unit within 9" gains +3" to Advance/Run/Assault and ignores Rough Ground for that move.
 
 
 Jul ‘Mdama — replaces Veteran Elite Company Commander
-Pools: L1 / R2 / E1
-Active (1E) — Zealot’s Edict: Choose one visible enemy unit within 12". Until the end of turn, Covenant units that attack it gain +1 to hit (shooting). However, Covenant units that attack that unit this turn and cause no casualties gain +1 Pin.
+Pools: L2 / R3 / E1
+Active (1E) — Zealot’s Edict: Choose one visible enemy unit within 12". Until the end of turn, Covenant units that attack it gain +1 to hit (shooting). However, Covenant units that attack that unit this turn and cause no casualties gain +1 Pin of shame.
 Zuka ‘Zamamee — replaces Veteran Elite Platoon Commander
-Pools: L2 / R1 / E1
+Pools: L3 / R2 / E2
 Active (1E) — Hunter’s Prey: Choose one visible enemy unit within 18". Until the end of turn, Covenant units shooting at it re-roll 1s to hit and 1s to wound.
 Yayap — replaces Veteran Unggoy Platoon Commander
-Pools: L2 / R1 / E1
-Active (1E) — Sneak & Squeal: On activation, one Covenant Infantry unit within 6" may redeploy 3" (no entering new terrain), remove 1 Pin, and go on Ambush.
+Pools: L3 / R2 / E2
+Active (1E) — Sneak & Squeal: On activation, one Covenant Infantry unit within 6" may redeploy 6" (no entering building), remove 1 Pin, and go on Ambush.
 Maccabeus — replaces Veteran Brute Platoon Commander
-Pools: L1 / R2 / E1
-Active (1E) — Pack Hunt: After a Brute unit within 9" wins Close Quarters, it may immediately Advance 3" and inflict D2 Pins on a different enemy unit within 3".
+Pools: L2 / R3 / E1
+Active (1E) — Pack Hunt: After a Brute unit within 9" wins Close Quarters, instead of making the regroup D6 move, it may immediately Move up to 6" and inflict D2 Pins on an enemy unit within 3".
 
 
 
@@ -156,29 +158,35 @@ Active (1E) — Pack Hunt: After a Brute unit within 9" wins Close Quarters, it 
 
 BANISHED HEROES
 Atriox — replaces Veteran Brute Company Commander
-Pools: L1 / R2 / E2
-Active (1E) — Unyielding Line: On activation, pick up to two Banished Infantry or Brute units within 9". Each removes 1 Pin. Until the end of turn, the first time each of those units would suffer casualties from shooting or Close Quarters, ignore up to 2 casualties and instead give that unit +2 Pin markers.
+Pools: L2 / R3 / E1
+Active (1E) — Unyielding Line: Pick up to two Banished Infantry or Brute units within 12". Each removes 1 Pin. Until the end of turn, the first time each of those units would suffer casualties from shooting or Close Quarters, ignore up to 2 casualties and instead give that unit +2 Pin markers.
 Escharum — replaces Veteran Brute Company Commander
-Pools: L1 / R2 / E1
-Active (1E) — Last Stand: When a friendly Banished unit within 12" is reduced to half strength or fewer models, before it takes any Morale test you may trigger this ability. That unit immediately takes a Morale test ignoring all Pin modifiers. If it passes, it may immediately perform a Run or Assault; if it Assaults, it gains +1 to hit in Close Quarters this turn.
+Pools: L2 / R3 / E1
+Active (1E) — Last Stand: When a friendly Banished unit within 12" is reduced to half strength or fewer models, before it takes any Morale test you may trigger this ability. That unit immediately takes a Morale test ignoring all Pin modifiers. If it passes, it may immediately perform a Run or Assault; if it Assaults, it gains +1 to wound in Close Quarters this turn.
 Let ‘Volir — replaces Veteran Elite Company Commander
-Pools: L1 / R2 / E1
-Active (1E) — Boarding Strike: On activation, pick one Banished Infantry or Elite unit within 9". It immediately Runs; if it ends this move in contact with an enemy Vehicle, it gains +1 Pen in Close Quarters against that target this turn.
+Pools: L2 / R3 / E1
+Active (1E) — Boarding Strike: On activation, pick one Banished Infantry or Elite unit within 12". It immediately Runs/Assaults; if it ends this move in contact with an enemy Vehicle, it gains +2 to the wound roll in Close Quarters against that target this turn.
 Voridus — replaces Veteran Brute Platoon Commander
-Pools: L1 / R2 / E1
-Active (1E) — Volatile Infusion: On activation, choose one Banished Infantry or Brute unit within 6". Until end of turn, its shooting attacks gain +1 Pen and it ignores any Pins it would suffer from overheating or overcharging its weapons.
+Pools: L2 / R3 / E1
+Active (1E) — Volatile Infusion: On activation, choose one Banished Infantry unit within 6". Until end of turn, its shooting attacks gain +1 to wound and it ignores any pins it would suffer from overheating its weapons.
 Pavium — replaces Veteran Brute Platoon Commander (Support)
-Pools: L1 / R2 / E1
-Active (1E) — Iron Bulwark: On activation, choose one Banished Infantry or Brute unit within 6". Remove 1 Pin from that unit. Until the start of your next turn, enemy shooting attacks against it suffer −1 to hit and it counts as in one better cover (to a maximum of Hard Cover).
+Pools: L2 / R3 / E1
+Active (1E) — Iron Bulwark: Choose one Banished Infantry unit within 6". Remove 1 Pin from that unit. Until the start of your next turn, enemy shooting attacks against it suffer −1 to hit and it counts as in one better cover (to a maximum of Hard Cover).
 Jega ‘Rdomnai — replaces Veteran Elite Platoon Commander
-Pools: L2 / R1 / E1
-Active (1E) — Shadow Pounce: On activation, choose one Banished Infantry or Elite unit within 6". It may immediately Advance or Assault. If it declares an Assault and began this move out of Line of Sight of the target unit, enemy reactive fire against this charge suffers −2 to hit.
+Pools: L3 / R2 / E1
+Active (1E) — Shadow Pounce: On activation, choose one Banished Infantry or Elite unit within 6". It may immediately Advance or Assault. If it declares an Assault, enemy reactive fire against this charge suffers −2 to hit.
 Hyperius — replaces Veteran Brute Platoon Commander
-Pools: L1 / R2 / E1
-Active (1E) — Jetpack Blitz: On activation, choose one Banished Infantry or Brute unit with Jump/Jet ability within 6". It gains +3" to Advance/Run/Assault and ignores Rough Ground and Obstacles for that move. If it declares an Assault as part of this move, enemy reactive fire suffers −1 to hit.
-Tovarus — replaces Veteran Brute Platoon Commander (Fire Support)
-Pools: L1 / R2 / E1
-Active (1E) — Saturation Fire: On activation, choose one Banished Infantry or Weapon Team unit within 9". For its next shooting attack this turn, it re-rolls 1s to hit; if it scores at least one hit, the target unit suffers +1 Pin marker (even if no casualties are caused).
+Pools: L2 / R3 / E1
+Active (1E) — Jetpack Blitz: Choose one Banished Infantry unit within 6". It gains +3" to Advance/Run/Assault and ignores Rough Ground and Obstacles for that move.
+Tovarus — replaces Veteran Brute Platoon Commander
+Pools: L2 / R3 / E1
+Active (1E) — Saturation Fire: On activation, choose one Banished Infantry or Weapon Team unit within 9". For its next shooting attack this turn, it re-rolls 1s to hit; if it scores at least one hit, the target unit suffers an additional +1 Pin marker.
+
+
+
+
+
+
 ATTACHED CASTE LEADER 
 This optional rule lets players field “embedded” leaders (Spartans, Elites, or Brutes) inside squads. An Attached Caste Leader is a single model added to an eligible unit during army creation (or before deployment, if you prefer). While attached, it remains part of that unit for the whole game.
 CORE RULE: ONE UNIT
@@ -951,16 +959,19 @@ Except where replaced or expanded by this optional rule, all other towing, trans
 
 
 BEN’S HOUSE RULES
-Use this optional section if both players wish to include the cinematic house rules featured in Ben’s games night Halo battle report.
+Use this optional section if both players wish to include rules like the cinematic house rules featured in Ben’s games night Halo battle report.
 MASTER CHIEF
 Use this optional rule if both players agree to field a more heroic, cinematic version of Master Chief.
 Design Benchmark
-For balance purposes, Master Chief in this format should be treated as roughly equivalent to a 5-man Veteran Spartan squad, plus the value of his additional special rules and equipment.
+For balance purposes, Master Chief in this format should be treated as roughly equivalent to a 5-man Veteran Spartan squad, plus the value of his additional special rules and equipment, with Resilient.
 Spartan-II Resolve
 Master Chief never receives Pin markers.
 Spartan Regeneration
 At the start of each turn, Master Chief regains 1 lost wound.
 If Master Chief is issued a Rally order, he regains D3 lost wounds.
+Spartan Combat Output
+Master Chief fights at full effectiveness even after suffering wounds.
+He does not lose attacks, movement, special rules, or command abilities as he loses wounds.
 Spartan Reflexes
 Each time Master Chief is activated, he may perform two actions during that activation.
 Bubble Shield
@@ -987,15 +998,31 @@ Abandon Hijacked Vehicle
 If Master Chief, or any unit controlling a hijacked vehicle, is given an Advance or Run order, it may choose to abandon the vehicle.
 If it does so, the vehicle is immediately destroyed and the controlling unit is placed back on the table as infantry.
 GRUNT GRENADE ASSAULT
+Use this rule to represent desperate Grunts charging the enemy with live plasma grenades.
 When a Grunt unit declares an Assault, the controlling player may declare that some or all of its models are making grenade attacks.
+Declare how many Grunts are making grenade attacks before moving the unit.
 Roll one die for each grenading Grunt:
-                                    * on a 1, that Grunt inflicts D6 automatic hits on its own unit instead
-                                    * on a 2+, that Grunt inflicts D6 automatic hits on the enemy unit instead
+                                    * On a 1, that Grunt inflicts D6 automatic hits on its own unit instead.
+                                    * On a 2+, that Grunt inflicts D6 automatic hits on the enemy unit instead.
 Resolve damage from these hits as normal.
 After resolving its grenade attack, each grenading Grunt is removed as a casualty.
+A Grunt that makes a grenade attack does not also make normal Close Quarters attacks.
+Pinning
+If a Grunt grenade attack causes at least one casualty, the target suffers Pins as normal for being damaged.
+If a Grunt grenade attack hits its own unit and causes at least one casualty, the Grunt unit suffers Pins as normal.
+Optional Plasma Grenade Version
+If players want the attack to feel more dangerous, Grunt grenade attacks are resolved with Pen +1.
 MELEE WEAPONS
-When using this optional rule, melee weapons such as Plasma Swords, Gravity Hammers, and similar weapons no longer grant +1 extra attack in Close Quarters.
-Instead, a model armed with a melee weapon receives +2 to its dice rolls in Close Quarters.
+Use this optional rule if players want melee weapons to feel more decisive without increasing the number of dice rolled.
+When using this rule, melee weapons such as Plasma Swords, Gravity Hammers, Energy Daggers, Brute Mauls, and similar weapons no longer grant +1 extra attack in Close Quarters.
+Instead, a model armed with a melee weapon receives +1 to its damage rolls in Close Quarters.
+This bonus applies only to attacks made by that model.
+Examples
+A model with a Plasma Sword does not roll an extra attack. Instead, its Close Quarters attacks gain +1 to damage rolls.
+
+
+
+
 
 
 
