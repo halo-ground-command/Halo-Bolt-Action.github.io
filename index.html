@@ -320,7 +320,7 @@ const allWeaponProfiles = {
   "Plasma Launcher": 'Range 30", Shots 1, Pen +5, Team, Shaped Charge, Tracking, HE (1")',
   "Fuel Rod Gun": 'Range 30", Shots 1, Pen +4, Team, Shaped Charge, HE (2")',
   "Incineration Cannon": 'Range 30", Shots 1, Pen +4, Team, Shaped Charge, Overheat, HE (1")',
-  "Assault Cannon": 'Range 36", Shots 1, Pen +2, Overheat, Shaped Charge, HE (2")',
+  "Assault Cannon": 'Range 36", Shots 1, Pen +3, Overheat, Shaped Charge, HE (2")',
   "Light Automatic Cannon": 'Range 48", Shots 2, Pen +2, Team, Fixed, HE (1")',
   "Light Plasma Cannon": 'Range 48", Shots 2, Pen +2, Overheat, Team, Fixed, HE (1")',
   "Heavy Automatic Cannon": 'Range 72", Shots 2, Pen +3, Team, Fixed, HE (1")',
@@ -353,11 +353,10 @@ const allWeaponProfiles = {
   // MISC (FISTS, ETC)
   "Fist": '+1 close combat attack per Fist (Walker only)',
   "Fists": '+1 close combat attack per Fist (Walker only)',
-  "Needle Cannon": 'Range 36", Shots 1, Pen +2, Overheat, Shaped Charge, Supercombine, HE (2")',
-  "Shardstorm Launcher": 'Range 36", Shots 6, Pen –, Team, Supercombine, Fixed, MG',
+  "Needle Cannon": 'Range 48", Shots 2, Pen +2, Tracking, Supercombine, HE (1")',
+  "Shardstorm Launcher": 'Range 36", Shots 6, Pen –, Supercombine',
   "Multiple Launcher": 'Range 36–72", Shots 1, Pen HE, Team, Fixed, Indirect Fire, ML, HE (3")',
   "Splinter Turret": 'Range 48", Shots 3, Pen +1, Team, Fixed, HE (1")',
-  "Needle Cannon": 'Range 48", Shots 2, Pen +2, Overheat, Tracking, Supercombine, HE (1")',
 
   // If you keep using "Explosive Charge" as a weapon label in squads
   "Explosive Charge": 'Range – , Shots – , Pen +8, Suicide Charge (special)',
@@ -491,12 +490,12 @@ window.vehicleSpecialDescriptions = {
   "Recce": "May react with a movement when targeted, reverse with advance at full speed.",
   "Reinforced Front Armour": "Front armor counts +1 higher.",
   "Slow": "Advance 6\", Run 12\".",
-  "Slow Load": "Can only activate after another friendly unit; skip dice if only Slow Load units remain.",
+  "Slow Load": "Can only activate after another friendly unit; skip the first drawn dice if only Slow Load units remain.",
   "Turn on the Spot": "Free pivoting during moves.",
   "Turret Rear-Mounted Machine Gun": "Rear MG fires opposite direction of main turret weapon.",
   "Unreliable": "Gains an extra pin marker when hit.",
   "Weak Sides": "Side hits count as rear hits (+2 penetration instead of +1).",
-  "Impulse Drive": "At the start of its activation, declare Impulse Drive. This activation, when it Advances or Runs it ignores models and terrain for movement (distance unchanged; no road bonus), but cannot end on impassable terrain, in buildings/rough ground, or within 1\" of enemies (unless assaulting). Ambush fire during this movement treats it as in the open (no cover); after moving, resolve cover normally."
+  "Impulse Drive": "At the start of its activation, declare Impulse Drive. This activation, when it Advances or Runs it ignores models and terrain for movement (distance unchanged; no road bonus), but cannot end on impassable terrain, in buildings/rough ground, or within 1\" of enemies (unless assaulting). Ambush fire during this movement treats it as in the open (no soft/hard cover); after moving, resolve cover normally."
 };
 
 // --- Army Rules ---
@@ -515,7 +514,7 @@ When a UNSC Officer uses the ‘You men, snap to action!’ ability, they may dr
 Spartan Leadership
 
 - Effect: 
-Friendly units within 9" of a Spartan unit can re-roll failed morale checks.
+While at least one friendly Spartan unit is alive and on the battlefield, all friendly UNSC units may re-roll failed Morale checks.
 
 Battle-Net Intrusion
 
@@ -528,7 +527,7 @@ Caste System
 - Effect: 
 When creating a Covenant army, you may select one bonus from the following list:
 
-  * Commanding Presence: Covenant infantry and artillery units that are within 9 of at least one Elite unit and not within an officer’s morale bubble gain a +1 Morale bonus.
+  * Commanding Presence: Covenant infantry and artillery units that are within 6" of at least one Elite unit and not within an officer’s morale bubble gain a +1 Morale bonus.
   
   * Cannon Fodder: Your army gets a free basic inexperienced Grunt squad unit.
   
@@ -539,12 +538,12 @@ When creating a Covenant army, you may select one bonus from the following list:
 Honor in Death
 
 - Effect: 
-When a Covenant unit is destroyed, one friendly regular or veteran infantry or artillery unit within 9" of it may immediately remove 1 pin marker.
+Once per turn, when a friendly Covenant unit is destroyed, one friendly Regular or Veteran Covenant Infantry or Artillery unit may immediately remove up to 2 Pin markers. 
 
 Zealotry
 
 - Effect: 
-Pinned regular or veteran Covenant units have +1 morale when taking Advance or Run order tests.
+Regular or Veteran Covenant units ignore the Morale penalty from 1 Pin when taking Advance or Run order tests, if they are not benefiting from a friendly morale bonus bubble.
 
 Faithful When Supervised
 
@@ -555,7 +554,7 @@ Covenant Infantry and Artillery units with Shirkers lose that rule while they ar
 Brotherhood of Chaos
 
 - Effect: 
-Once per turn, when a Banished infantry unit is destroyed, you may choose one friendly infantry or artillery unit within 9" of it that has not yet activated this turn and roll a die:
+Once per turn, when a Banished infantry unit is destroyed, you may choose one friendly infantry or artillery unit that has not yet activated this turn and roll a die:
 
   * On a 4+, the chosen unit activates next. Instead of drawing a random die, draw one of your dice from the bag and issue an order as normal. If pinned, an order test is still needed, as usual.
   
@@ -630,11 +629,10 @@ Flood Infantry and Artillery units do not suffer the -1 morale penalty for losin
 Logic Plague
 
 - Effect:
-Once per turn, just before activating a Flood unit, select one unactivated enemy Automaton or Composed Being within 9" of any friendly Flood unit and roll a D6:
+Once per turn, just before activating a Flood unit, select one unactivated enemy Automaton or Composed Being within 6" of any friendly Flood unit and roll a D6:
 
   * 1-3: The enemy immediately receives 2 Pin markers.
-  * 4: The enemy suffers -1 to hit for the rest of the turn.
-  * 5: The enemy cannot target the closest Flood unit with shooting attacks this turn.
+  * 4-5: The enemy suffers -1 to hit for the rest of the turn.
   * 6: The enemy must take a morale check. If failed, roll on the FUBAR table; if passed, no effect.
 `
 };
@@ -1241,7 +1239,7 @@ const UNSC_VEHICLES = [
 	  name: "M700 Viper",
 	  type: "Tank",
 	  allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
-	  costs: { Inexperienced: 95, Regular: 120, Veteran: 145 },
+	  costs: { Inexperienced: 100, Regular: 125, Veteran: 150 },
 	  weapons: [
 		{ name: "Turret-mounted Light Anti-Tank Weapon" }
 	  ],
@@ -2104,7 +2102,7 @@ const COVENANT_UNITS = [
     baseMen: 4,
     maxMen: 4,
     weapons: [
-      { name: "Light Autocannon on a rotating platform" }
+      { name: "Light Plasma Cannon on a rotating platform" }
     ],
     specialRules: ["Artillery", "Flak", "For The Great Journey!"]
   },
@@ -2233,7 +2231,7 @@ const COVENANT_VEHICLES = [
     name: "Pnap-pattern Goblin",
     type: "Walker",
     allowedVeterancy: ["Regular", "Veteran"],
-    costs: { Regular: 115, Veteran: 138 },
+    costs: { Regular: 110, Veteran: 132 },
     weapons: [
       { name: "Forward-facing Hull-mounted Needle Cannon" },
       { name: "Forward-facing Hull-mounted Shardstorm Launcher" },
@@ -2250,12 +2248,12 @@ const COVENANT_VEHICLES = [
       "Open-topped",
 	  "Impulse Drive",
       "Needle Cannon: Treat as an Assault Cannon with the Supercombine special rule.",
-      "Shardstorm Launcher: Treat as a Medium Machine Gun with the Supercombine special rule."
+      "Shardstorm Launcher: Use the stats of a Medium Machine Gun with the Supercombine special rule."
     ],
 	  options: {
 		weaponUpgrades: {
 		  "Replace Needle Cannon with Light Anti-Tank Weapon": {
-			cost: 5,
+			cost: 10,
 			replaces: ["Forward-facing Hull-mounted Needle Cannon"],
 			addsWeapon: "Forward-facing Hull-mounted Light Anti-Tank Weapon"
 		  }
@@ -2468,7 +2466,7 @@ const COVENANT_VEHICLES = [
     allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
     costs: { Inexperienced: 120, Regular: 150, Veteran: 180 },
     weapons: [
-      { name: "Turret-mounted Light Autocannon" }
+      { name: "Turret-mounted Light Plasma Cannon" }
     ],
     damageValue: "8+ (Heavy Aircraft)",
     transportCapacity: 30,
@@ -2482,7 +2480,7 @@ const COVENANT_VEHICLES = [
     allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
     costs: { Inexperienced: 108, Regular: 135, Veteran: 162 },
     weapons: [
-      { name: "Turret-mounted Light Autocannon" }
+      { name: "Turret-mounted Light Plasma Cannon" }
     ],
     damageValue: "8+ (Heavy Aircraft)",
     transportCapacity: 16,
@@ -2491,9 +2489,9 @@ const COVENANT_VEHICLES = [
     ],
     options: {
       weaponUpgrades: {
-        "2 Turret-mounted Light Autocannons": {
+        "2 Turret-mounted Light Plasma Cannons": {
           cost: 50,
-          addsWeapon: "2x Turret-mounted Light Autocannons"
+          addsWeapon: "2x Turret-mounted Light Plasma Cannons"
         },
         "2 Pintle-mounted Medium Plasma Machine Gun": {
           cost: 30,
@@ -2536,10 +2534,10 @@ const COVENANT_VEHICLES = [
     transportCapacity: 10,
     options: {
       weaponUpgrades: {
-        "Turret-mounted Light Automatic Cannon": {
+        "Turret-mounted Light Plasma Cannon": {
           cost: 25,
           replaces: null,
-          addsWeapon: "Turret-mounted Light Automatic Cannon"
+          addsWeapon: "Turret-mounted Light Plasma Cannon"
         }
       }
     },
@@ -2675,10 +2673,10 @@ const BANISHED_UNITS = [
     weaponReplacements: {
       "Needlers": { max: 5, cost: 3, replaces: "Disruptor", grants: "Needler" } 
     },
-    ncoReplacement: {
-      options: ["Disruptor", "Needler", "Plasma Rifle"],
-      costs: { "Needler": 3, "Plasma Rifle": 5 }
-    }
+	ncoReplacement: {
+	  options: ["Disruptor", "Needler", "Plasma Rifle", "Spiker"],
+	  costs: { "Needler": 3, "Plasma Rifle": 5, "Spiker": 5 }
+	}
   }
 },
  {
@@ -2701,12 +2699,12 @@ const BANISHED_UNITS = [
     weaponReplacements: {
       "Needlers":      { max: 4, cost: 3, replaces: "Disruptor", grants: "Needler" },
       "Pulse Carbines":      { max: 4, cost: 3, replaces: "Disruptor", grants: "Pulse Carbine" },
-      "Needle Rifles": { max: 4, cost: 1, replaces: "Disruptor", grants: "Needle Rifle" },
+      "Stalker Rifles": { max: 4, cost: 0, replaces: "Disruptor", grants: "Stalker Rifle" },
       "Plasma Rifles": { max: 4, cost: 5, replaces: "Disruptor", grants: "Plasma Rifle" }
     },
     ncoReplacement: {
-      options: ["Disruptor", "Needler", "Pulse Carbine", "Needle Rifle", "Plasma Rifle"],
-      costs: { "Needler": 3, "Pulse Carbine": 3, "Needle Rifle": 1, "Plasma Rifle": 5 }
+      options: ["Disruptor", "Needler", "Pulse Carbine", "Stalker Rifle", "Plasma Rifle"],
+      costs: { "Needler": 3, "Pulse Carbine": 3, "Stalker Rifle": 0, "Plasma Rifle": 5 }
     }
   }
 },
@@ -2966,7 +2964,7 @@ const BANISHED_UNITS = [
     baseMen: 4,
     maxMen: 4,
     weapons: [
-      { name: "Light Autocannon on a rotating platform" }
+      { name: "Light Plasma Cannon on a rotating platform" }
     ],
     specialRules: ["Artillery", "Flak", "Forged In Chains"]
   },
@@ -3096,7 +3094,7 @@ const BANISHED_VEHICLES = [
     name: "Pnap-pattern Goblin",
     type: "Walker",
     allowedVeterancy: ["Regular", "Veteran"],
-    costs: { Regular: 115, Veteran: 138 },
+    costs: { Regular: 110, Veteran: 132 },
     weapons: [
       { name: "Forward-facing Hull-mounted Needle Cannon" },
       { name: "Forward-facing Hull-mounted Shardstorm Launcher" },
@@ -3113,12 +3111,12 @@ const BANISHED_VEHICLES = [
       "Open-topped",
 	  "Impulse Drive",
       "Needle Cannon: Treat as an Assault Cannon with the Supercombine special rule.",
-      "Shardstorm Launcher: Treat as a Medium Machine Gun with the Supercombine special rule."
+      "Shardstorm Launcher: Use the stats of a Medium Machine Gun with the Supercombine special rule."
     ],
 	  options: {
 		weaponUpgrades: {
 		  "Replace Needle Cannon with Light Anti-Tank Weapon": {
-			cost: 5,
+			cost: 10,
 			replaces: ["Forward-facing Hull-mounted Needle Cannon"],
 			addsWeapon: "Forward-facing Hull-mounted Light Anti-Tank Weapon"
 		  }
@@ -3327,7 +3325,7 @@ const BANISHED_VEHICLES = [
     allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
     costs: { Inexperienced: 120, Regular: 150, Veteran: 180 },
     weapons: [
-      { name: "Turret-mounted Light Autocannon" }
+      { name: "Turret-mounted Light Plasma Cannon" }
     ],
     damageValue: "8+ (Heavy Aircraft)",
     transportCapacity: 30,
@@ -3341,7 +3339,7 @@ const BANISHED_VEHICLES = [
     allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
     costs: { Inexperienced: 108, Regular: 135, Veteran: 162 },
     weapons: [
-      { name: "Turret-mounted Light Autocannon" }
+      { name: "Turret-mounted Light Plasma Cannon" }
     ],
     damageValue: "8+ (Heavy Aircraft)",
     transportCapacity: 16,
@@ -3350,9 +3348,9 @@ const BANISHED_VEHICLES = [
     ],
     options: {
       weaponUpgrades: {
-        "2 Turret-mounted Light Autocannons": {
+        "2 Turret-mounted Light Plasma Cannons": {
           cost: 50,
-          addsWeapon: "2x Turret-mounted Light Autocannons"
+          addsWeapon: "2x Turret-mounted Light Plasma Cannons"
         },
         "2 Pintle-mounted Medium Plasma Machine Gun": {
           cost: 30,
@@ -3833,8 +3831,8 @@ const FORERUNNER_VEHICLES = [
     allowedVeterancy: ["Regular", "Veteran"],
     costs: { Regular: 170, Veteran: 204 },
     weapons: [
-      { name: "Turret-mounted Twin-linked Light Autocannon" },
-      { name: "Turret-mounted Twin-linked Light Autocannon" },
+      { name: "Turret-mounted Twin-linked Light Plasma Cannon" },
+      { name: "Turret-mounted Twin-linked Light Plasma Cannon" },
       { name: "Hull-mounted Forward-facing Rocket Launcher" }
     ],
     damageValue: "7+ (Medium Aircraft)",
