@@ -1,4 +1,4 @@
-﻿Halo: Bolt Action Rulebook V3.0
+﻿Halo: Bolt Action Rulebook V3.1
 Introduction
 Welcome to Halo: Bolt Action, where the tactical depth of Bolt Action meets the epic universe of Halo. Command forces from the UNSC or Covenant in fast-paced tabletop battles, using infantry, vehicles, and air support to outmaneuver and defeat your opponent.
 Tabletop simulator mod here
@@ -361,7 +361,7 @@ Type - HEAVY WEAPONS
 	Assault Cannon
 	36"
 	1
-	+2
+	+3
 	Overheat, Shaped Charge, HE (2")
 	Light Automatic Cannon
 	48"
@@ -830,7 +830,7 @@ Walker Class
 	+4
 	Super-Heavy
 	+5
-	Infantry Assaulting Walkers
+	Infantry Assaulting Walkers and viceversa
    * Must roll a 6+ to hit if the walker has moved (Can’t perform assault if run), or 4+ if another order, immobilized, or unactivated.
 
    * Each successful hit adds +1 to a single damage roll against the walker’s damage value.

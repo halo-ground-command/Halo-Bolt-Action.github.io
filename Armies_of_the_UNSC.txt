@@ -1,4 +1,4 @@
-﻿Armies of the UNSC v3.0
+﻿Armies of the UNSC v3.1
 
 Army Special Rules
 Desperate Measures
@@ -9,7 +9,7 @@ UNSC officers are trained to manage diverse forces and battlefield conditions ef
 * Effect: When a UNSC Officer uses the ‘You men, snap to action!’ ability, they may draw and assign one additional Order Die from the bag to a friendly unit within range, following the normal rules for that ability. This increases the number of units that can be activated by one.
 Spartan Leadership
 Spartans inspire exceptional performance from allied troops.
-* Effect: Friendly units within 9" of a Spartan unit can re-roll failed morale checks.
+* Effect: While at least one friendly Spartan unit is alive and on the battlefield, all friendly UNSC units may re-roll failed Morale checks.
 Battle-Net Intrusion
 UNSC commanders use linked battle-net systems and tactical AI support to exploit brief windows of advantage before the enemy can respond.
 * Effect: Once per game, at the start of any Game Turn, the UNSC player may choose one Order Die to draw from the dice bag instead of drawing randomly. If this Order Die is assigned to an Officer, it cannot be used to trigger You Men, Snap to Action! If more than one UNSC player wishes to use this rule at the same time, roll off. The winner uses this rule that turn, and the loser must wait until a future turn to use it.
@@ -671,12 +671,6 @@ Cost
 
 
 
-
-
-
-
-
-
 VEHICLES
 TANKS
 M808B Scorpion
@@ -712,6 +706,12 @@ Cost
 	- Reinforced Front Armour
 - Slow Load
 	
+
+
+
+
+
+
 
 
 

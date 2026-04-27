@@ -1,11 +1,11 @@
-﻿Armies of the Banishedv3.0
+﻿Armies of the Banishedv3.1
 
 Army Special Rules
 Brotherhood of Chaos
 The Banished ranks are composed of fierce but unruly factions, constantly vying for dominance.
-* Effect: Once per turn, when a Banished infantry unit is destroyed, you may choose one friendly infantry or artillery unit within 9″ of it that has not yet activated this turn and roll a die:
+* Effect: Once per turn, when a Banished infantry unit is destroyed, you may choose one friendly infantry or artillery unit that has not yet activated this turn and roll a die:
    * On a 4+, the chosen unit activates next. Instead of drawing a random die, draw one of your dice from the bag and issue an order as normal. If pinned, an order test is still needed, as usual.
-   * If the chosen unit is also within 6″ of an officer (Or an officer itself), activate on a 3+ instead.
+   * If the chosen unit is within 6″ of an officer (Or an officer itself), activate on a 3+ instead.
    * If you roll below the requirement, nothing happens instead.
 Atriox’s Law
 Though prone to bloodlust, Banished warriors will restrain themselves in the presence of a commanding Brute.
@@ -19,7 +19,7 @@ Banished leaders do not inspire loyalty—they enforce obedience through fear an
 * Effect: When a friendly Banished Infantry or Artillery unit fails an Order test while within 6″ of a friendly Banished Officer or Bloodhandler (including FUBAR), you may choose to remove one model from the unit and then re-roll the Order test. The second result stands as normal. This rule only applies to Infantry or Artillery units of three or more models.
 Ruthless Push
 Banished warbands press the attack through sheer brutality, even under heavy fire.
-* Effect: When a Banished Infantry or Artillery unit with one or more pin markers is issued an Advance order, it may ignore the -1 to hit penalty for moving and shooting during that activation.
+* Effect: When a Banished Infantry or Artillery unit with one or more pin markers performs an Advance order, it may ignore the -1 to hit penalty for moving and shooting during that activation.
 
 
 
@@ -968,13 +968,13 @@ TANK DESTROYERS
 WALKERS
 Pnap-pattern Goblin 
 Cost
-	115pts (Regular), 138pts (Veteran)
+	110pts (Regular), 132pts (Veteran)
 	Weapons
 	Forward-facing Hull-mounted Needle Cannon and Shardstorm Launcher, 2 Fists
 	Damage Value
 	7+ (Light Walker)
 	Options
-	- Replace Needle Cannon with a Light Anti-Tank Weapon for +5pts
+	- Replace Needle Cannon with a Light Anti-Tank Weapon for +10pts
 	Special Rules
 	- Assault  
 - Fist  
@@ -982,8 +982,8 @@ Cost
 - Recce  
 - Open-topped  
 - Impulse Drive
-- Needle Cannon: Treat as an Assault Cannon with the Supercombine special rule.  
-- Shardstorm Launcher: Treat as a Medium Machine Gun with the Supercombine special rule.
+- Needle Cannon: Range 48", Shots 2, Pen +2, Shaped Charge, Tracking, Supercombine, HE (1") 
+- Shardstorm Launcher: Range 36", Shots 6, Pen –, Team, Supercombine, Fixed
 	Type-30 Light Excavation/Anti-Fortification Platform "Locust" 
 Cost
 	112pts (Inexperienced), 140pts (Regular), 168pts (Veteran) 
@@ -1004,8 +1004,6 @@ Cost
 	- Flak
 - Assault
 	
-
-
 
 
 
@@ -1246,9 +1244,11 @@ Cost
 
 
 
+
+
 Eklon'Dal Workshop "Marauder"
 Cost
-	145 pts (Regular), 174 pts (Veteran)
+	110 pts (Regular), 132 pts (Veteran)
 	Weapons
 	Turret-mounted Light Anti-Tank Weapon, Coaxial Rocket Launcher
 	Damage Value
@@ -1366,7 +1366,7 @@ Cost
 Cost
 	120pts (Inexperienced), 150pts (Regular), 180pts (Veteran)  
 	Weapons
-	Turret-mounted Light Automatic Cannon  
+	Turret-mounted Light Plasma Cannon  
 	Damage Value
 	8+ (Heavy Aircraft)  
 	Transport 
@@ -1377,11 +1377,11 @@ Cost
 Cost
 	108pts (Inexperienced), 135pts (Regular), 162pts (Veteran)  
 	Weapons
-	Turret-mounted Light Automatic Cannon  
+	Turret-mounted Light Plasma Cannon
 	Damage Value
 	8+ (Heavy Aircraft)  
 	Options
-	- Add 2 Turret-mounted Light Automatic Cannons for +50pts
+	- Add 2 Turret-mounted Light Plasma Cannons for +50pts
 - Add 2 pintle-mounted PMMGs, 1 PMMG covering the front arc, and 1 PMMG covering the right arc for +30pts
 - Upgrade to Command Vehicle for +10pts
 	Transport 
@@ -1583,7 +1583,7 @@ Cost
 	Team
 	4 men
 	Weapons
-	1 light automatic cannon on a rotating platform
+	1 Light Plasma Cannon on a rotating platform
 	Special Rules
 	- Flak
 	

@@ -1,4 +1,4 @@
-﻿Armies of the Forerunnerv3.0
+﻿Armies of the Forerunnerv3.1
 
 Army Special Rules
 Enhanced Weapon Systems
@@ -692,7 +692,7 @@ Z-1800 Phaeton
 Cost
 	170pts (Regular), 204pts (Veteran) 
 	Weapons
-	2 Turret-mounted Twin-linked Light Autocannons, Hull-mounted Forward-facing Rocket Launcher  
+	2 Turret-mounted Twin-linked Light Plasma Cannons, Hull-mounted Forward-facing Rocket Launcher  
 	Damage Value
 	7+ (Medium Aircraft)  
 	Special Rules

@@ -1,4 +1,4 @@
-﻿Armies of the Floodv3.0
+﻿Armies of the Floodv3.1
 
 Army Special Rules
 Living Nightmare
@@ -15,11 +15,14 @@ The Flood’s collective consciousness ensures cohesion even when individual lea
 * Effect: Flood Infantry and Artillery units do not suffer the –1 morale penalty for losing their NCO.
 Logic Plague
 Flood presence corrupts and destabilizes synthetic minds, causing unpredictable malfunctions.
-* Effect: Once per turn, just before activating a Flood unit, select one unactivated enemy Automaton or Composed Being within 9" of any friendly Flood unit and roll a D6:
+* Effect: Once per turn, just before activating a Flood unit, select one unactivated enemy Automaton or Composed Being within 6" of any friendly Flood unit and roll a D6:
    * 1-3: The enemy immediately receives 2 Pin markers.
-   * 4: The enemy suffers –1 to hit for the rest of the turn.
-   * 5: The enemy cannot target the closest Flood unit with shooting attacks this turn.
+   * 4-5: The enemy suffers –1 to hit for the rest of the turn.
    * 6: The enemy must take a morale check. If failed, roll on the FUBAR table; if passed, no effect.
+
+
+
+
 
 
 

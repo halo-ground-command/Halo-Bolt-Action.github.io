@@ -1,4 +1,4 @@
-﻿Armies of the Covenant v3.0
+﻿Armies of the Covenant v3.1
 
 Army Special Rules
 Caste System
@@ -10,10 +10,10 @@ The Covenant draws its strength from the unique abilities of its member species,
    * Fury Unleashed: Covenant infantry units that fail their Run/Assault order test when within 9" of a Brute unit may re-roll the failed order test.
 Honor in Death
 The Covenant believe that death in battle brings them closer to the Great Journey.
-* Effect: When a Covenant unit is destroyed, one friendly regular or veteran infantry or artillery unit within 9" of it may immediately remove 1 pin marker.
+* Effect: Once per turn, when a friendly Covenant unit is destroyed, one friendly Regular or Veteran Covenant Infantry or Artillery unit may immediately remove up to 2 Pin markers. 
 Zealotry
 Covenant troops are fanatically devoted to their cause, fighting without fear of death.
-* Effect: Pinned regular or veteran Covenant units have +1 morale when taking Advance or Run order tests.
+* Effect: Regular or Veteran Covenant units ignore the Morale penalty from 1 Pin when taking Advance or Run order tests, if they are not benefiting from a friendly morale bonus bubble.
 Faithful When Supervised
 Covenant troops fight bravely—so long as a superior is watching.
 * Effect: Covenant Infantry and Artillery units with Shirkers lose that rule while they are positioned within the morale bubble of a friendly Covenant Officer. If they exit the bubble or the Officer is lost, they regain Shirkers until within range of another valid Officer. If a unit exits the Officer’s morale bubble as part of a Snap to Action activation, it cannot regain Shirkers until the Officer and all units activated through that Snap have completed their orders.
@@ -947,13 +947,13 @@ TANK DESTROYERS
 WALKERS
 Pnap-pattern Goblin 
 Cost
-	115pts (Regular), 138pts (Veteran)
+	110pts (Regular), 132pts (Veteran)
 	Weapons
 	Forward-facing Hull-mounted Needle Cannon and Shardstorm Launcher, 2 Fists
 	Damage Value
 	7+ (Light Walker)
 	Options
-	- Replace Needle Cannon with a Light Anti-Tank Weapon for +5pts
+	- Replace Needle Cannon with a Light Anti-Tank Weapon for +10pts
 	Special Rules
 	- Assault  
 - Fist  
@@ -961,8 +961,8 @@ Cost
 - Recce  
 - Open-topped  
 - Impulse Drive
-- Needle Cannon: Treat as an Assault Cannon with the Supercombine special rule.  
-- Shardstorm Launcher: Treat as a Medium Machine Gun with the Supercombine special rule.
+- Needle Cannon: Range 48", Shots 2, Pen +2, Shaped Charge, Tracking, Supercombine, HE (1") 
+- Shardstorm Launcher: Range 36", Shots 6, Pen –, Team, Supercombine, Fixed
 	Type-30 Light Excavation/Anti-Fortification Platform "Locust" 
 Cost
 	112pts (Inexperienced), 140pts (Regular), 168pts (Veteran) 
@@ -1345,7 +1345,7 @@ Spirit
 Cost
 	120pts (Inexperienced), 150pts (Regular), 180pts (Veteran)  
 	Weapons
-	Turret-mounted Light Automatic Cannon  
+	Turret-mounted Light Light Plasma Cannon  
 	Damage Value
 	8+ (Heavy Aircraft)  
 	Transport 
@@ -1356,11 +1356,11 @@ Cost
 Cost
 	108pts (Inexperienced), 135pts (Regular), 162pts (Veteran)  
 	Weapons
-	Turret-mounted Light Automatic Cannon  
+	Turret-mounted Light Plasma Cannon  
 	Damage Value
 	8+ (Heavy Aircraft)  
 	Options
-	- Add 2 Turret-mounted Light Automatic Cannons for +50pts
+	- Add 2 Turret-mounted Light Plasma Cannons for +50pts
 - Add 2 pintle-mounted PMMGs, 1 PMMG covering the front arc, and 1 PMMG covering the right arc for +30pts
 - Upgrade to Command Vehicle for +10pts
 	Transport 
@@ -1453,7 +1453,7 @@ Cost
 	Damage Value
 	7+ (Armoured Anti-Grav Vehicle)
 	Options
-	- Add a turret-mounted Light Automatic Cannon for +25pts
+	- Add a turret-mounted Light Plasma Cannon for +25pts
 	Transport 
 	Up to 10 men
 	Special Rules
@@ -1574,7 +1574,7 @@ Cost
 	Team
 	4 men
 	Weapons
-	1 light automatic cannon on a rotating platform
+	1 Light Plasma Cannon on a rotating platform
 	Special Rules
 	- Flak
 	
@@ -1649,7 +1649,7 @@ Cost
 	Special Rules
 	- Flak
 - Assault
-- Needle Cannon: Treat it as a Light Plasma Cannon with the Supercombine and Tracking special rules 
+- Needle Cannon: Range 48", Shots 2, Pen +2, Shaped Charge, Tracking, Supercombine, HE (1") 
 	AIRCRAFT
 Air Artillery
 Cost
