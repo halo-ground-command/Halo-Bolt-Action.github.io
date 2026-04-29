@@ -346,10 +346,11 @@ Cost
 	1 Rocket Launcher
 	Special Rules
 	- Team Weapon  
-- Shaped charge  
 - Flood Infection
 - Horror
 	
+
+
 
 
 

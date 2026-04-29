@@ -17,6 +17,107 @@ Phase relays enable instantaneous redeployment.
    * Passed (or if no Order test is required): The unit teleports up to 12", ignoring intervening units and terrain. It may not end in impassable terrain, inside a building, outside the battlefield, or within 1" of any unit. Teleporting does not trigger enemy Ambush during this movement. After teleporting, the unit resolves its assigned order (Fire, Ambush, Down, or Rally) as normal.
 
 
+
+
+
+
+Counter-Assault Protocols
+Forged by centuries of war against the Flood, these combat routines allow Promethean units to read the momentum of an incoming assault and cut it apart before it reaches full force. 
+* Effect: When a unit with the Counter-Assault Protocols special rule is assaulted by enemy Infantry or Artillery, the attacking unit halves its total number of attack dice, rounding up, during the first round of that close combat only. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 INFANTRY
 HEADQUARTERS UNITS
 Officer
@@ -245,9 +346,8 @@ Cost
 - Behind Enemy Lines
 - Fast
 - Strong
+- Counter-Assault Protocols
 	
-
-
 
 
 
@@ -325,6 +425,7 @@ Cost
 - Knight Commander (Second Lieutenant, 0–1 per army): Add a single officer model to this unit for +45pts; note that this is just the addition of a single officer model, not an entire Officer HQ, and does not fulfil the requirement for a Platoon Commander to lead the platoon. Limited to 1 per army.
 	Special Rules
 	- Composed Beings
+- Counter-Assault Protocols
 - Fanatics
 - Resilient
 - Strong
@@ -395,8 +496,6 @@ Cost
 
 
 
-
-
 Anti Tank Team
 Cost
 	82pts (Regular), 103pts (Veteran) 
@@ -408,7 +507,6 @@ Cost
 	- Replace Incineration Cannon with Rocket launcher for no additional cost
 	Special Rules
 	- Team Weapon  
-- Shaped charge
 - Composed Beings
 - Energy Shields
 - Fanatics
@@ -416,6 +514,7 @@ Cost
 - Behind Enemy Lines
 - Fast
 - Strong
+- Counter-Assault Protocols
 	Sniper Team
 Cost
 	64pts (Regular), 79pts (Veteran)
@@ -436,11 +535,8 @@ Cost
 - Behind Enemy Lines
 - Fast
 - Strong
+- Counter-Assault Protocols
 	
-
-
-
-
 
 
 
@@ -515,6 +611,7 @@ Cost
 - Behind Enemy Lines
 - Fast
 - Strong
+- Counter-Assault Protocols
 - Splinter Turret: Heavy weapon: Range 48", Shots 3, Pen +1, Team, Fixed, HE (1")
 	VEHICLES
 WALKERS
@@ -533,6 +630,8 @@ Cost
 - Open-topped  
 - Command Vehicle  
 	
+
+
 
 
 
