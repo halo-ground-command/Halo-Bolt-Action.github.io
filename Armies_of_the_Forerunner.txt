@@ -6,7 +6,7 @@ Forerunner weapons exhibit unmatched precision and lethality.
 * Effect: When a Forerunner Infantry or Artillery unit fires a Heavy weapon, each 6+ to hit grants +1 Penetration to that shot’s damage roll. This however has no effect on HE shots/templates.
 Uphold the Mantle
 Guided by an ancient charge to preserve order.
-* Effect: Any Regular or Veteran Forerunner unit that passes an Order test may remove 2 Pin markers instead of 1.
+* Effect: Any Veteran Forerunner unit that passes an Order test may remove 2 Pin markers instead of 1.
 Warden of Balance
 Forerunner doctrine punishes overextension.
 * Effect: At the beginning of each turn, if your opponent has more units on the battlefield than you, select one friendly Forerunner Infantry or Artillery unit from your army list. During this turn, that unit gains +1 to hit when shooting. This does not stack across turns and expires at the end of each turn.
