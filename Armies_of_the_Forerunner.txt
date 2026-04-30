@@ -23,7 +23,7 @@ Phase relays enable instantaneous redeployment.
 
 Counter-Assault Protocols
 Forged by centuries of war against the Flood, these combat routines allow Promethean units to read the momentum of an incoming assault and cut it apart before it reaches full force. 
-* Effect: When a unit with the Counter-Assault Protocols special rule is assaulted by enemy Infantry or Artillery, the attacking unit halves its total number of attack dice, rounding up, during the first round of that close combat only. 
+* Effect: When a unit with the Counter-Assault Protocols special rule is assaulted by enemy Infantry or Artillery while not Down, the attacking unit halves its total number of attack dice, rounding up, during the first round of that close combat only. 
 
 
 
