@@ -1071,6 +1071,7 @@ Cost
 	Special Rules
 	- Assault
 - Recce
+- Impulse Drive
 	Goliath 
 Cost
 	50pts (Regular), 60pts (Veteran) 
@@ -1280,8 +1281,6 @@ Cost
 	- Flak  
 - Multiple Launcher: Can only be used while the aircraft is landed.
 	
-
-
 
 
 

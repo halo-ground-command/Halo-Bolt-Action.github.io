@@ -362,8 +362,8 @@ const allWeaponProfiles = {
   "Explosive Charge": 'Range – , Shots – , Pen +8, Suicide Charge (special)',
   
   // FLOOD CUSTOM WEAPONS
-  "Tentacle Lash": 'Range 6", Shots 1, Pen +1, –',
-  "Tentacle Whip": 'Range 12", Shots 1, Pen +3, HE (1")',
+  "Tentacle Lash": 'Range 6", Shots 1, Pen +2, Shaped Charge',
+  "Tentacle Whip": 'Range 12", Shots 1, Pen +3, Shaped Charge',
   "Explosive Biomass": 'Range –, Shots –, Pen HE, Suicide Charge, HE (1")',
 };
 
@@ -3155,7 +3155,7 @@ const BANISHED_VEHICLES = [
 	costs: { Inexperienced: 60, Regular: 75, Veteran: 90 },
 	weapons: [ { name: "Turret-mounted twin-linked Light automatic cannons" }, { name: "Turret-mounted twin-linked Light automatic cannons" } ],
 	damageValue: "6+ (Scout Walker)", transportCapacity: 0,
-	specialRules: [ "Assault", "Recce" ]
+	specialRules: [ "Assault", "Recce", "Impulse Drive" ]
 	},
 	{
 	name: "Goliath",
@@ -4094,7 +4094,7 @@ const FLOOD_UNITS = [
 	  "Horror",
       { name: "Suicide Charge", description: "If this model successfully assaults an enemy unit, it is immediately destroyed, and the assaulted unit suffers a HE (1\") hit. Being down does not halve hits for this attack." },
       { name: "Explosive Biomass", description: "If this model is destroyed (by shooting, assault, or other means), all units within 1\" suffer a HE (1\") hit. Being down does not halve hits for this attack." },
-      { name: "Spawn Infection Forms", description: "When this unit is destroyed, immediately replace the model with a new unit of 1D3 Inexperienced Infection Forms. Place them as close as possible to the position where the Carrier Form was destroyed, while remaining at least 1\" away from any other units. These Infection Forms lose all pins and use the same Order Die the carrier form unit had. If there is not enough space to place them all, place as many as possible." },
+      { name: "Spawn Infection Forms", description: "When this unit is destroyed, immediately replace the model with a 1D3 Inexperienced Infection Forms unit. Place them as close as possible to the position where the Carrier Form was destroyed, while remaining at least 1\" away from any other units. These Infection Forms lose all pins and use the same Order Die the Carrier Form unit had. If there is not enough space to place them all, place as many as possible. For scoring purposes, the Carrier Form and any Infection Forms spawned by this rule count as a single unit." },
       { name: "Extra Selection", description: "You may take up to 3 Carrier Form Teams as a single choice in any platoon selector that allows an Anti-Tank Team. This does not prevent you from also taking a standard Anti-Tank Team." }
     ]
   },
