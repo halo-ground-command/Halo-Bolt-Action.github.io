@@ -466,7 +466,7 @@ After an ungarrisoned infantry unit takes at least one hit, roll a D6. On a 4+, 
 MG
 Weapons with the MG rule are treated as machine guns for all gameplay purposes. This includes interactions such as halved shots when mounted on vehicles and any rules or effects that specifically reference machine guns.
 Overcharge
-When a weapon with this rule shoots, declare that the weapon is overcharging. If so, shots ignore the target’s Energy Shields rule and can pin vehicles up to armor 9+, even if they do not have the open-topped rule. However, overcharging applies a -1 to hit modifier.
+When a weapon with this rule shoots, declare that the weapon is overcharging. If so, shots ignore the target’s Energy Shields and Shield Wall rule and can pin vehicles up to armor 9+, even if they do not have the open-topped rule. However, overcharging applies a -1 to hit modifier.
 Overheat
 Before shooting, choose which weapons in the unit are overheated. Each overheated weapon gains +1 shot for this attack. After resolving all shooting, place 1 pin marker on the firing unit for each weapon that was overheated. Weapons do not have to be overheated simultaneously, you may mix overheated and normal fire, even with the same weapon type. 
 Paired
@@ -484,10 +484,6 @@ Weapons with the Tracking rule are highly advanced and accurate. When issuing a 
 Medics
 SELF-DEFENCE
 Ignore this rule from the Bolt Action rulebook when playing with a medic unit.
-
-
-
-
 
 
 
