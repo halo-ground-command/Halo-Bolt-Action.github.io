@@ -309,9 +309,9 @@ Cost
 - Up to 3 men may have Shotguns instead of Assault Rifles for -3pts each
 - The squad can be given anti-tank grenades for +2pts per man
 - The squad can be given Jump-Jet Packs for +1pt per man
+- The NCO may be given a Melee Weapon for +1pt (This model rolls 2 dice in close combat instead of 1) 
 	Special Rules
-	- Behind Enemy Lines
-- Stubborn
+	- Behind Enemy Lines                                              - Stubborn
 - VISR
 - Tank Hunters: If anti-tank grenades are taken
 - Flight: If Jump-Jet Packs are taken
@@ -479,10 +479,10 @@ Cost
 	Options
 	- Add up to 7 additional men for +11pts each  
 - The NCO and up to 4 men may have Submachine Guns instead of Assault Rifles for -2pts each  
+- The NCO and up to 4 men may have Shotguns instead of Assault Rifles for -3pts each
 - The squad can be given anti-tank grenades for +2pts per man 
 	Special Rules
-	- Green  
-- Shirkers  
+	- Green                           - Shirkers
 - Tank Hunters: If anti-tank grenades are taken
 	Machine Gun Team 
 Cost
@@ -511,8 +511,6 @@ Cost
 - Shaped charge  
 - For Humanity’s Survival!
 	
-
-
 
 
 

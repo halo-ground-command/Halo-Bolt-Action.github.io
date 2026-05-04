@@ -895,7 +895,8 @@ const UNSC_UNITS = [
     extraMenCost: { Veteran: 21 },
     squadUpgrades: {
       "Anti-Tank Grenades": { cost: 2, grantsRule: "Tank Hunters" },
-      "Jump-Jet Packs": { cost: 1, grantsRule: "Flight" }
+      "Jump-Jet Packs": { cost: 1, grantsRule: "Flight" },
+	  "Melee Weapon (NCO only)": { cost: 1, grantsRule: "Melee Weapon", perModel: false }
     },
     weaponReplacements: {
       "DMRs":           { max: 3, cost: -5, replaces: "Assault Rifle", grants: "DMR" },
@@ -988,11 +989,12 @@ const UNSC_UNITS = [
 			cost: -2,
 			replaces: "Assault Rifle",
 			grants: "Submachine Gun"
-		  }
+		  },
+		  "Shotguns":          { max: 4, cost: -3, replaces: "Assault Rifle", grants: "Shotgun" }
 		},
 		ncoReplacement: {
-		  options: ["Assault Rifle", "Submachine Gun"],
-		  costs: { "Submachine Gun": -2 }
+		  options: ["Assault Rifle", "Submachine Gun", "Shotgun"],
+		  costs: { "Submachine Gun": -2, "Shotgun": -3 }
 		}
 	  }
 	},
