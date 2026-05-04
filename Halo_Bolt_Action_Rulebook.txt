@@ -450,7 +450,7 @@ Weapons with the Assault rule suffer no penalty to hit when moving and shooting.
 Battery Charge
 Weapons with this rule require to charge up powerful energy attacks. As a result, they suffer a -1 to hit modifier when shooting.
 Cover Negation
-When this weapon hits an Infantry or Artillery unit that is in soft cover and not Down, any natural 6 rolled to wound worsens the target’s cover save by one step, for that wound only. 
+When this weapon hits an Infantry or Artillery unit that is in soft cover and not Down, any natural 6 rolled to wound worsens the target’s cover save by 1, for that wound only. 
 Fixed
 Fixed weapons can only fire within a 45-degree arc. A Run order must be used to reposition them.
 Flamethrower
@@ -462,7 +462,7 @@ Howitzers are versatile artillery pieces capable of both direct and indirect fir
 Indirect Fire
 Shots fired indirectly start with a 6 to hit, improving with successive turns against the same target. Indirect fire weapons typically have a minimum range, and they hit vehicles on the top armor if successful. Moving or switching spotters resets the zero in.
 Knockback
-After an ungarrisoned infantry unit takes at least one hit, roll a D6. On a 4+, the unit must immediately move 3" directly away from the firer and gains 1 pin. If this movement would cause the unit to enter impassable terrain, a building, or another unit, it stops 1" before contact instead.
+After an ungarrisoned infantry unit takes at least one hit, roll a D6. On a 4+, the unit must immediately move 3" directly away from the firer and gains 1 pin. If this movement would cause the unit to enter impassable terrain, a building, a table edge or another unit, it stops 1" before contact instead.
 MG
 Weapons with the MG rule are treated as machine guns for all gameplay purposes. This includes interactions such as halved shots when mounted on vehicles and any rules or effects that specifically reference machine guns.
 Overcharge
@@ -501,9 +501,7 @@ Automatons possess basic decision-making capabilities but lack the quick reactio
 Behind Enemy Lines
 Units with the Behind Enemy Lines special rule are highly trained in infiltration and surprise tactics. When entering the battlefield using Reserves or the Outflank deployment, these units ignore the -1 modifier to the order test for coming onto the table.
 Berserker
-When performing an assault, models in the unit count as having 1 extra attack in close combat. Additionally, If a Berserker unit fails an Order test (excluding FUBAR) and there is an enemy Infantry or Artillery unit within assault reach (i.e., eligible to be assaulted under the core rules), it must immediately take a Run (Assault) order against the nearest eligible unit. If no such unit is within assault reach, resolve the failed test as normal (the unit goes Down).
-
-
+When this unit performs an assault, each model in the unit rolls 1 additional attack die during the first round of that close combat. Additionally, If a Berserker unit fails an Order test (excluding FUBAR) and there is an enemy Infantry or Artillery unit within assault reach (i.e., eligible to be assaulted under the core rules), it must immediately take a Run (Assault) order against the nearest eligible unit. If no such unit is within assault reach, resolve the failed test as normal (the unit goes Down).
 
 
 Composed Beings
@@ -529,7 +527,7 @@ The first time a Green unit takes a casualty, roll a D6 (after resolving any mor
    * 2–5: The unit continues as normal with no additional effects.
    * 6: The unit is upgraded to Regular with a morale value of 9 for the rest of the battle.
 Horror
-When a unit is assaulted by a Horror unit, it suffers a -1 morale penalty and must immediately take a morale check. If the check fails, the unit goes Down and cannot perform any reactions. Units with the Horror rule themselves are immune to this rule.
+When a unit is assaulted by a Horror unit, it suffers a -1 morale penalty during the assault and must immediately take a morale check. If the check fails, the unit goes Down and cannot perform any reactions. Units with the Horror rule themselves are immune to this rule.
 Infiltrator
 These units gain an additional +1 to their cover saves if they have no Advance or Run order dice on them. Infiltrators may also benefit from special deployment rules.
 Large Infantry
@@ -537,11 +535,11 @@ Some models are significantly larger than standard soldiers. Units with the Larg
 Resilient
 This rule replaces Energy Shields and Shield Wall. Units with the Resilient rule are exceptionally tough. They have a damage value of 6+, a 5+ cover save in the open or in Close Quarters and add +2 to their other cover saves.
 Shield Wall
-When a unit with the Shield Wall rule is in open ground, it benefits from a base 6+ cover save. If the unit goes Down in the open, this save improves by +2, becoming a 4+ cover save. When the unit is in cover, Shield Wall improves the cover save by one step—soft cover provides a 4+ save (instead of 5+), and hard cover provides a 3+ save (instead of 4+). If the unit is both in cover and Down, apply the usual +2 cover save. Rolls of 1 always fail, regardless of modifiers.
+When a unit with the Shield Wall rule is in open ground, it benefits from a base 6+ cover save. If the unit goes Down in the open, this save improves by +2, becoming a 4+ cover save. When the unit is in cover, Shield Wall improves the cover save by 1—soft cover provides a 4+ save (instead of 5+), and hard cover provides a 3+ save (instead of 4+). If the unit is both in cover and Down, apply the usual +2 cover save. Rolls of 1 always fail, regardless of modifiers.
 Shirkers
 Shirkers are unwilling or unmotivated soldiers who perform poorly under pressure. For all morale checks, order tests, and routing calculations, pin markers count as double for units with this rule (e.g., 1 pin marker counts as -2, 2 pin markers count as -4, etc.). Additionally, Shirkers must always take an order test when issued an order, even if they are not pinned.
 Sniper
-While at full strength (2 models), one friendly Regular or Veteran Indirect Fire unit (including Howitzers) may draw line of sight from this team as if the team were its Spotter. If the sniper is killed, the remaining model may fire the sniper rifle at –1 to hit, and the unit suffers the usual –1 Morale for losing its leader. When the sniper is not using the scope, both models may fire their personal weapons and fully participate in assaults. When firing on a Fire or Ambush order, you may declare a scope shot, if the target is within 12", the shot automatically misses; otherwise the shot is +1 to hit, ignores cover, and is +1 to damage against Infantry or Artillery units, and if it causes damage you may choose the unit leader as the casualty.
+While at full strength (e.g., 2 models), one friendly Regular or Veteran Indirect Fire unit (including Howitzers) may draw line of sight from this team as if the team were its Spotter. If the sniper is killed, the remaining model may fire the sniper rifle at –1 to hit, and the unit suffers the usual –1 Morale for losing its leader. When the sniper is not using the scope, both models may fire their personal weapons and fully participate in assaults. When firing on a Fire or Ambush order, you may declare a scope shot, if the target is within 12", the shot automatically misses; otherwise the shot is +1 to hit, ignores cover, and is +1 to damage against Infantry or Artillery units, and if it causes damage you may choose the unit leader as the casualty.
 Slow
 Units with the Slow rule have reduced mobility compared to standard infantry. Their base movement is limited to 4 inches, and they can Run up to 8 inches.
 Stealth
@@ -549,7 +547,7 @@ While a unit with the Stealth rule has a Down order, ranged attacks targeting it
 Strikes First
 The unit counts as having Defensive Position bonus when performing assaults, causing it to fight first. If the opponent also has Defensive Position, Strikes First or a rule cancels this rule, then fight simultaneously.
 Strong
-This unit ignores the Team Weapon and Fixed special rules for weapons it carries. In addition, for every three models in your unit involved in close quarters you may add an additional die when rolling to damage for one chosen model.
+This unit ignores the Team Weapon and Fixed special rules for weapons it carries. In addition, for every three models in your unit involved in close quarters you may add +1 attack for one chosen model.
 Stubborn
 If forced to take a morale check, they ignore negative morale modifiers from pin markers. Remember that order tests are not morale checks, and are therefore modified as normal.
 Tank Hunters
@@ -565,7 +563,7 @@ Models in a unit with this rule may keep up to 2" coherency between models inste
 Vehicle Special Rules
 The following special rules apply to various vehicles, providing unique traits and abilities for gameplay.
 Agile
-A vehicle with this rule may make an additional 90-degree pivot during its movement and is capable of pivoting on a Fire order.
+A vehicle with this rule may make an additional 90-degree pivot during its movement and is capable of pivoting 90-degrees on a Fire order.
 Armoured All Round
 Vehicles with this rule have equivalent armor on all sides. No penetration modifiers apply for attacks against the sides, rear, or top—shots count against the full armor value regardless of angle.
 Assault
