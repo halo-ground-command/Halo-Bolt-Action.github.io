@@ -807,27 +807,27 @@ const UNSC_UNITS = [
 
   // Infantry Squads
 {
-  name: "Regular Infantry Squad",
+  name: "Trooper Infantry Squad",
   type: "Infantry",
   allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
-  costs: { Inexperienced: 65, Regular: 80, Veteran: 95 },
+  costs: { Inexperienced: 40, Regular: 55, Veteran: 70 },
   baseMen: 5,
   maxMen: 10,
-  weapons: [{ name: "Assault Rifle" }],
+  weapons: [{ name: "DMR" }],
   specialRules: [],
   options: {
-    extraMenCost: { Inexperienced: 13, Regular: 16, Veteran: 19 },
+    extraMenCost: { Inexperienced: 8, Regular: 11, Veteran: 14 },
     squadUpgrades: {
       "Anti-Tank Grenades": { cost: 2, grantsRule: "Tank Hunters" }
     },
     weaponReplacements: {
-      "DMRs":      { max: 5, cost: -5, replaces: "Assault Rifle", grants: "DMR" },
-      "Shotguns":  { max: 2, cost: -3, replaces: "Assault Rifle", grants: "Shotgun" },
-      "LMG":       { max: 1, cost: 9,  replaces: "Assault Rifle", grants: "LMG" }
+      "Assault Rifles": { max: 6, cost: 5, replaces: "DMR", grants: "Assault Rifle" },
+      "Shotguns":       { max: 3, cost: 2, replaces: "DMR", grants: "Shotgun" },
+      "LMG":            { max: 1, cost: 14, replaces: "DMR", grants: "LMG" }
     },
     ncoReplacement: {
-      options: ["Assault Rifle", "DMR", "Shotgun"],
-      costs: { "DMR": -5, "Shotgun": -3 }
+      options: ["DMR", "Assault Rifle", "Shotgun"],
+      costs: { "Assault Rifle": 5, "Shotgun": 2 }
     }
   }
 },
@@ -899,10 +899,10 @@ const UNSC_UNITS = [
 	  "Melee Weapon (NCO only)": { cost: 1, grantsRule: "Melee Weapon", perModel: false }
     },
     weaponReplacements: {
-      "DMRs":           { max: 3, cost: -5, replaces: "Assault Rifle", grants: "DMR" },
-      "Battle Rifles":  { max: 4, cost: -3, replaces: "Assault Rifle", grants: "Battle Rifle" },
+      "DMRs":           { max: 5, cost: -5, replaces: "Assault Rifle", grants: "DMR" },
+      "Battle Rifles":  { max: 5, cost: -3, replaces: "Assault Rifle", grants: "Battle Rifle" },
       "Submachine Guns":{ max: 9, cost: -2, replaces: "Assault Rifle", grants: "Submachine Gun" },
-      "Shotguns":       { max: 3, cost: -4, replaces: "Assault Rifle", grants: "Shotgun" },
+      "Shotguns":       { max: 5, cost: -4, replaces: "Assault Rifle", grants: "Shotgun" },
       "LMG":            { max: 2, cost: 9,  replaces: "Assault Rifle", grants: "LMG" }
     },
     ncoReplacement: {
@@ -935,16 +935,16 @@ const UNSC_UNITS = [
       "Melee Weapon (NCO only)": { cost: 1, grantsRule: "Melee Weapon", perModel: false }
     },
     weaponReplacements: {
-      "Battle Rifles":     { max: 3, cost: -3, replaces: "Assault Rifle", grants: "Battle Rifle" },
-      "Shotguns":          { max: 3, cost: -3, replaces: "Assault Rifle", grants: "Shotgun" },
-      "DMRs":              { max: 3, cost: -5, replaces: "Assault Rifle", grants: "DMR" },
-      "Grenade Launcher":  { max: 1, cost: 17, replaces: "Assault Rifle", grants: "Grenade Launcher" },
-      "LMG":               { max: 1, cost: 9,  replaces: "Assault Rifle", grants: "LMG" },
-      "Anti-Tank Rifle":   { max: 1, cost: 10, replaces: "Assault Rifle", grants: "Anti-Tank Rifle" }
+      "Battle Rifles":     { max: 5, cost: -3, replaces: "Assault Rifle", grants: "Battle Rifle" },
+      "Shotguns":          { max: 4, cost: -3, replaces: "Assault Rifle", grants: "Shotgun" },
+      "DMRs":              { max: 4, cost: -5, replaces: "Assault Rifle", grants: "DMR" },
+      "Grenade Launcher":  { max: 2, cost: 17, replaces: "Assault Rifle", grants: "Grenade Launcher" },
+      "LMG":               { max: 2, cost: 9,  replaces: "Assault Rifle", grants: "LMG" },
+      "Anti-Tank Rifle":   { max: 2, cost: 10, replaces: "Assault Rifle", grants: "Anti-Tank Rifle" }
     },
     ncoReplacement: {
-      options: ["Assault Rifle", "Battle Rifle", "Shotgun", "DMR"],
-      costs: { "Battle Rifle": -3, "Shotgun": -3, "DMR": -5 }
+      options: ["Assault Rifle", "Battle Rifle", "Shotgun", "DMR", "Anti-Tank Rifle"],
+      costs: { "Battle Rifle": -3, "Shotgun": -3, "DMR": -5, "Anti-Tank Rifle": 10 }
     }
   }
 },
@@ -1910,12 +1910,12 @@ const COVENANT_UNITS = [
     weaponReplacements: {
       "Needlers":           { max: 5, cost: -2,  replaces: "Plasma Rifle", grants: "Needler" },
       "Covenant Carbines":  { max: 5, cost: -3,  replaces: "Plasma Rifle", grants: "Covenant Carbine" },
-      "Concussion Rifle":   { max: 1, cost: 21,  replaces: "Plasma Rifle", grants: "Concussion Rifle" },
-      "Plasma Repeater":    { max: 1, cost: 9,   replaces: "Plasma Rifle", grants: "Plasma Repeater" }
+      "Concussion Rifle":   { max: 2, cost: 21,  replaces: "Plasma Rifle", grants: "Concussion Rifle" },
+      "Plasma Repeater":    { max: 2, cost: 9,   replaces: "Plasma Rifle", grants: "Plasma Repeater" }
     },
     ncoReplacement: {
-      options: ["Plasma Rifle", "Needler", "Covenant Carbine"],
-      costs: { "Needler": -2, "Covenant Carbine": -3 }
+      options: ["Plasma Rifle", "Needler", "Covenant Carbine", "Concussion Rifle", "Plasma Repeater"],
+      costs: { "Needler": -2, "Covenant Carbine": -3, "Concussion Rifle": 21, "Plasma Repeater": 9 }
     }
     // ncoExtraUpgrades could go here if needed for "Plasma Sword"
   }
@@ -2736,12 +2736,12 @@ const BANISHED_UNITS = [
 		"Plasma Rifles": { max: 2, cost: 0, replaces: "Spiker", grants: "Plasma Rifle" },
 		"Brute Shot": { max: 1, cost: 21, replaces: "Spiker", grants: "Brute Shot" },
 		"Plasma Repeater": { max: 1, cost: 9, replaces: "Spiker", grants: "Plasma Repeater" },
-		"Skewer": { max: 1, cost: 10, replaces: "Spiker", grants: "Skewer" },
+		"Skewer": { max: 2, cost: 10, replaces: "Spiker", grants: "Skewer" },
 		"Ravager (requires Engineers)": { max: 1, cost: 34, replaces: "Spiker", grants: "Ravager" }
     },
 	ncoReplacement: {
-	  options: ["Spiker", "Mangler", "Pulse Carbine", "Plasma Rifle"],
-	  costs: { "Mangler": -4, "Pulse Carbine": -2, "Plasma Rifle": 0 }
+	  options: ["Spiker", "Mangler", "Pulse Carbine", "Plasma Rifle", "Skewer"],
+	  costs: { "Mangler": -4, "Pulse Carbine": -2, "Plasma Rifle": 0, "Skewer": 10 }
 	} 
   }
 },
@@ -2787,12 +2787,12 @@ const BANISHED_UNITS = [
 	weaponReplacements: {
 	"Needlers": { max: 5, cost: -2, replaces: "Plasma Rifle", grants: "Needler" },
 	"Pulse Carbines": { max: 5, cost: -2, replaces: "Plasma Rifle", grants: "Pulse Carbine" },
-	"Concussion Rifle": { max: 1, cost: 21, replaces: "Plasma Rifle", grants: "Concussion Rifle" },
-	"Plasma Repeater": { max: 1, cost: 9, replaces: "Plasma Rifle", grants: "Plasma Repeater" }
+	"Concussion Rifle": { max: 2, cost: 21, replaces: "Plasma Rifle", grants: "Concussion Rifle" },
+	"Plasma Repeater": { max: 2, cost: 9, replaces: "Plasma Rifle", grants: "Plasma Repeater" }
 	},
     ncoReplacement: {
-      options: ["Plasma Rifle", "Needler", "Pulse Carbine"],
-      costs: { "Needler": -2, "Pulse Carbine": -2 }
+      options: ["Plasma Rifle", "Needler", "Pulse Carbine", "Concussion Rifle", "Plasma Repeater"],
+      costs: { "Needler": -2, "Pulse Carbine": -2, "Concussion Rifle": 21, "Plasma Repeater": 9 }
     }
     // ncoExtraUpgrades could go here if needed for "Plasma Sword"
   }
