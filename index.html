@@ -399,6 +399,11 @@ allWeaponProfiles["Forward facing Tentacle Whip"] = allWeaponProfiles["Tentacle 
 allWeaponProfiles["Turret-mounted Flamethrower (Vehicle)"] = allWeaponProfiles["Flamethrower (Vehicle)"];
 allWeaponProfiles["Forward-facing Hull-mounted Flamethrower (Vehicle)"] = allWeaponProfiles["Flamethrower (Vehicle)"];
 
+// --- Armoury weapon aliases ---
+allWeaponProfiles["M301 Grenade Launcher"] = allWeaponProfiles["Grenade Launcher"];
+allWeaponProfiles["Volatile Biomass"] = 'Range –, Shots –, Pen HE, Suicide Charge, HE (2")';
+
+
 // --- Weapon Special Rule Descriptions ---
 const weaponSpecialDescriptions = {
   "Assault": "No -1 to hit when moving and shooting. Models with an Assault weapon gain Tough Fighters, re-rolling in close combat.",
@@ -410,7 +415,7 @@ const weaponSpecialDescriptions = {
   "Howitzer": "Fires either direct with no minimum range or Indirect Fire (minimum range applies; starts hitting at 6+, improves each turn targeting same unit unless moving). Switching spotter also resets accuracy progression.",
   "Indirect Fire": "Fires indirectly starting on 6+ to hit, improving against the same target each turn. Uses the listed minimum range, hits vehicles on top armor, and resets if the firer moves or changes spotter.",
   "Knockback": "After an ungarrisoned infantry unit takes at least 1 hit, roll D6: on 4+, it gains 1 pin and must move 3\" directly away. If this would move it into impassable terrain, a building, a table edge or another unit, it stops 1\" short.",
-  "Overcharge": "Before shooting, choose Overcharge: ignores Energy Shield or Shield Wall rule, can pin vehicles up to armor 9+, but imposes a -1 to-hit penalty.",
+  "Overcharge": "Before shooting, choose Overcharge: ignores Energy Shield or Shield Wall rule, can pin vehicles up to armor 9+, but imposes a -1 to-hit penalty. A weapon using Overcharge cannot also use Overheat during the same shooting attack.",
   "Overheat": "Before shooting, choose which weapons to overheat; each overheated weapon gains +1 shot. After shooting, place 1 pin on the firing unit for each overheated weapon.",
   "MG": "Behaves exactly like a standard machine gun for all game rules and modifiers.",
   "ML": "Always 6+ to hit, after resolving, each other enemy unit within 6\" is hit on a 6+, firer gains 1 pin after firing; towed counts as Light Howitzer; smoke: place D3-1 extra smoke markers within 6\" of the first.",
@@ -445,7 +450,7 @@ window.unitSpecialDescriptions = {
   "Green": "First casualty triggers a D6 roll: 1 = gain D6 pins and go Down, 6 = unit upgraded to Regular morale (9).",
   "Gun Shield": "Crew of a gun with a gun shield count as in soft cover vs small arms hits from within the gun’s front arc.",
   "Horror": "When this unit assaults an enemy, that enemy suffers -1 Morale during the assault and must immediately morale test, on a fail it goes Down (Loses Defensive position bonus) and cannot react. Units with Horror are immune to this rule.",
-  "Infiltrator": "+1 cover if stationary (no Advance/Run orders). Can use special deployment rules if scenario allows.",
+  "Infiltrator": "+1 cover if stationary (no Advance/Run orders) against shooting attacks. Can use special deployment rules if scenario allows.",
   "Knight Commander": "Embedded officer for a Knight unit. Counts as a weaker Platoon Commander (+1 Morale; Snap To affects only 1 other unit). While alive, the unit ignores losing its NCO.",
   "Large Infantry": "Counts double for transport capacity. When this unit assaults or is assaulted, opponent loses Defensive Position.",
   "Resilient": "Replaces Energy Shields/Shield Wall; Damage Value 6+; 5+ cover in open or CQ; +2 to other cover saves. Remember rolls of 1 always fail.",
@@ -498,6 +503,163 @@ window.vehicleSpecialDescriptions = {
   "Weak Sides": "Side hits count as rear hits (+2 penetration instead of +1).",
   "Impulse Drive": "At the start of its activation, declare Impulse Drive. This activation, when it Advances or Runs it ignores models and terrain for movement (distance unchanged; no road bonus), but cannot end on impassable terrain, in buildings/rough ground, or within 1\" of enemies (unless assaulting). Ambush fire during this movement treats it as in the open (no soft/hard cover); after moving, resolve cover normally."
 };
+
+// --- Armoury Special Rule Descriptions ---
+window.unitSpecialDescriptions["MJOLNIR Biofoam Systems"] =
+  "5+ cover save in the open and close quarters. While Down, improves cover saves by +3 instead of +2, to a max of 2+; rolls of 1 always fail.";
+
+window.unitSpecialDescriptions["M301 Grenade Launcher"] =
+  "Carried in addition to the model’s other weapon. When shooting, that model may fire either the M301 or its other weapon, not both.";
+
+window.unitSpecialDescriptions["Sacred Relic"] =
+  "A designated non-Officer/NCO Elite model carries the relic. Friendly Covenant Infantry and Artillery within 12\" and LoS of that model may re-roll failed Morale checks.";
+
+window.unitSpecialDescriptions["Plasma Capacitor Cells"] =
+  "After using Overheat, roll one D6 per overheated weapon; each 5+ removes one Pin generated by that Overheat.";
+
+window.unitSpecialDescriptions["Trophy Plate Harness"] =
+  "6+ cover save in the open and close quarters.";
+
+window.unitSpecialDescriptions["Reconstruction Matrix"] =
+  "After a successful Rally order, roll a D6. If the result is equal to or above this unit’s Damage Value, return one removed model, up to starting size. Energy Shields worsen the required result by +1, max 6+.";
+
+window.unitSpecialDescriptions["Custodian Command Node"] =
+  "May be affected by You men, snap to action! despite having Automaton.";
+
+window.vehicleSpecialDescriptions["Scrap Armour Screens"] =
+  "Shaped Charge weapons do not gain +1 Pen for side-arc hits against this vehicle.";
+
+const ARMOURY_DEFS = {
+  UNSC: [
+    {
+      id: "mjolnirBiofoam",
+      type: "ruleCheckbox",
+      label: "MJOLNIR Biofoam Systems",
+      cost: 2,
+      costMode: "perModel",
+      grantsRules: ["MJOLNIR Biofoam Systems"],
+      appliesTo: (unit, unitData) =>
+        window.currentFaction === "UNSC" &&
+        unit.type === "Infantry" &&
+        isSpartan(unit, unitData)
+    }
+  ],
+
+  Covenant: [
+	{
+	  id: "sacredRelic",
+	  type: "ruleCheckbox",
+	  label: "Sacred Relic",
+	  cost: 15,
+	  costMode: "flat",
+	  grantsRules: ["Sacred Relic"],
+	  appliesTo: (unit, unitData) =>
+		window.currentFaction === "Covenant" &&
+		unit.veterancy === "Veteran" &&
+		isElite(unit, unitData) &&
+		hasNonOfficerOrNcoModel(unit, unitData) &&
+		(
+		  !armyHasSquadUpgrade("Sacred Relic", unit) ||
+		  unit.squadUpgrades?.["Sacred Relic"]
+		)
+	},
+    {
+      id: "plasmaCapacitorCells",
+      type: "ruleCheckbox",
+      label: "Plasma Capacitor Cells",
+      cost: 1,
+      costMode: "perModel",
+      grantsRules: ["Plasma Capacitor Cells"],
+      appliesTo: (unit, unitData) =>
+        window.currentFaction === "Covenant" &&
+        unit.type === "Infantry" &&
+        ["Regular", "Veteran"].includes(unit.veterancy)
+    }
+  ],
+
+  Banished: [
+    {
+      id: "scrapArmourScreens",
+      type: "vehicleRuleCheckbox",
+      label: "Scrap Armour Screens",
+      cost: 10,
+      costMode: "flat",
+      grantsRules: ["Scrap Armour Screens"],
+      appliesTo: (unit, unitData) =>
+        window.currentFaction === "Banished" &&
+        isArmouredVehicle(unitData) &&
+        unitData.type !== "Walker" &&
+        unitData.type !== "Aircraft"
+    },
+    {
+      id: "trophyPlateHarness",
+      type: "ruleCheckbox",
+      label: "Trophy Plate Harness",
+      cost: 1,
+      costMode: "perModel",
+      grantsRules: ["Trophy Plate Harness"],
+		appliesTo: (unit, unitData) =>
+		  window.currentFaction === "Banished" &&
+		  unit.veterancy === "Veteran" &&
+		  unit.type === "Infantry" &&
+		  isBrute(unit, unitData)
+    }
+  ],
+
+  Flood: [
+    {
+      id: "volatileBiomass",
+      type: "weaponProfileSwap",
+      label: "Volatile Biomass",
+      cost: 5,
+      costMode: "flat",
+      fromWeapon: "Explosive Biomass",
+      toWeapon: "Volatile Biomass",
+      appliesTo: (unit, unitData) =>
+        window.currentFaction === "Flood" &&
+        unit.name === "Carrier Form Team"
+    },
+	{
+	  id: "burrowingTendrils",
+	  type: "ruleCheckbox",
+	  label: "Burrowing Tendrils",
+	  cost: 2,
+	  costMode: "perModel",
+	  grantsRules: ["Infiltrator", "Stealth"],
+	  appliesTo: (unit, unitData) =>
+		window.currentFaction === "Flood" &&
+		unit.type === "Infantry" &&
+		String(unit.name || "").includes("Officer")
+	}
+  ],
+
+  Forerunner: [
+    {
+      id: "reconstructionMatrix",
+      type: "ruleCheckbox",
+      label: "Reconstruction Matrix",
+      cost: 1,
+      costMode: "perModel",
+      grantsRules: ["Reconstruction Matrix"],
+      appliesTo: (unit, unitData) =>
+        window.currentFaction === "Forerunner" &&
+        hasRule(unit, unitData, "Composed Beings")
+    },
+    {
+      id: "custodianCommandNode",
+      type: "ruleCheckbox",
+      label: "Custodian Command Node",
+      cost: 1,
+      costMode: "perModel",
+      grantsRules: ["Custodian Command Node"],
+      appliesTo: (unit, unitData) =>
+        window.currentFaction === "Forerunner" &&
+        unit.type === "Infantry" &&
+        hasRule(unit, unitData, "Automaton")
+    }
+  ]
+};
+
 
 // --- Army Rules ---
 const armyRulesText = {
@@ -597,7 +759,7 @@ At the beginning of each turn, if your opponent has more units on the battlefiel
 Teleportation Network
 
 - Effect:
-Each time a Forerunner Officer successfully uses You men, snap to action!, you may choose one friendly Infantry or Artillery unit with Composed Beings that is being issued an order by that Snap. The order issued to that unit cannot be Advance, Run, or Assault. A unit carrying an objective cannot be chosen. If the chosen unit is required to take an Order test (e.g., because it is pinned), resolve the test as normal: 
+Each time a Forerunner Officer successfully uses You men, snap to action!, you may choose one friendly Infantry or Artillery unit that is being issued an order by that Snap. The order issued to that unit cannot be Advance, Run, or Assault. A unit carrying an objective cannot be chosen. If the chosen unit is required to take an Order test (e.g., because it is pinned), resolve the test as normal: 
 
   * Failed:
 The unit goes Down (or follows FUBAR if applicable) as normal and does not teleport.
@@ -3894,6 +4056,7 @@ const FLOOD_UNITS = [
 	  "Horror",
       "Slow",
       "Wide Formation",
+	  "Tough Fighters",
       { name: "Immobile", description: "If no tendrils are present, the unit cannot move." }
     ],
     options: {
@@ -4094,7 +4257,7 @@ const FLOOD_UNITS = [
       "Tank Hunters",
       "Infiltrator",
 	  "Horror",
-      { name: "Suicide Charge", description: "If this model successfully assaults an enemy unit, it is immediately destroyed, and the assaulted unit suffers a HE (1\") hit. Being down does not halve hits for this attack." },
+      { name: "Suicide Charge", description: "If this model successfully assaults an enemy unit, it is immediately destroyed, and explosive biomass takes effect." },
       { name: "Explosive Biomass", description: "If this model is destroyed (by shooting, assault, or other means), all units within 1\" suffer a HE (1\") hit. Being down does not halve hits for this attack." },
       { name: "Spawn Infection Forms", description: "When this unit is destroyed, immediately replace the model with a 1D3 Inexperienced Infection Forms unit. Place them as close as possible to the position where the Carrier Form was destroyed, while remaining at least 1\" away from any other units. These Infection Forms lose all pins and use the same Order Die the Carrier Form unit had. If there is not enough space to place them all, place as many as possible. For scoring purposes, the Carrier Form and any Infection Forms spawned by this rule count as a single unit." },
       { name: "Extra Selection", description: "You may take up to 3 Carrier Form Teams as a single choice in any platoon selector that allows an Anti-Tank Team. This does not prevent you from also taking a standard Anti-Tank Team." }
@@ -4211,6 +4374,257 @@ const FLOOD_VEHICLES = [
 ////////////////////////////////////////////////////////////////////////////////
 // 3. GLOBALS, ARMY STATE, AND UTILITY FUNCTIONS
 ////////////////////////////////////////////////////////////////////////////////
+
+//Armoury Helpers
+
+function getArmouryDefsForCurrentFaction() {
+  return ARMOURY_DEFS?.[window.currentFaction] || [];
+}
+
+function applyArmouryToUnitData(unit, rawUnitData) {
+  if (!unit || !rawUnitData) return rawUnitData;
+
+  const unitData = cloneUnitData(rawUnitData);
+  unitData.options = unitData.options || {};
+  unitData.options.squadUpgrades = unitData.options.squadUpgrades || {};
+  unitData.options.weaponUpgrades = unitData.options.weaponUpgrades || {};
+
+  const defs = getArmouryDefsForCurrentFaction();
+
+  defs.forEach(def => {
+    if (!def.appliesTo || !def.appliesTo(unit, unitData)) return;
+
+    if (def.type === "ruleCheckbox") {
+      unitData.options.squadUpgrades[def.label] = {
+        cost: def.cost,
+        perModel: def.costMode !== "flat",
+        grantsRule: def.grantsRules?.length === 1 ? def.grantsRules[0] : def.grantsRules
+      };
+    }
+
+    if (def.type === "vehicleRuleCheckbox") {
+      unitData.options.weaponUpgrades[def.label] = {
+        cost: def.cost,
+        grantsRule: def.grantsRules?.length === 1 ? def.grantsRules[0] : def.grantsRules
+      };
+    }
+
+    if (def.type === "weaponProfileSwap") {
+      unitData.options.squadUpgrades[def.label] = {
+        cost: def.cost,
+        perModel: def.costMode !== "flat",
+        profileSwap: true,
+        fromWeapon: def.fromWeapon,
+        toWeapon: def.toWeapon
+      };
+    }
+  });
+
+  return unitData;
+}
+
+function applyVolatileBiomassSpecialRules(unit, specialRules) {
+  if (!unit?.squadUpgrades?.["Volatile Biomass"]) return specialRules;
+
+  return (specialRules || []).map(rule => {
+    const name = typeof rule === "string" ? rule.split(":")[0].trim() : rule?.name;
+
+    if (name === "Explosive Biomass") {
+      return {
+        name: "Volatile Biomass",
+        description: "If this model is destroyed by shooting, assault, or any other means, all units within 2\" suffer a HE (2\") hit. Being Down does not halve hits for this attack."
+      };
+    }
+
+    return rule;
+  });
+}
+
+const M301_SUFFIX = " + M301 Grenade Launcher";
+const M301_CARRIER_WEAPONS = ["Assault Rifle", "Battle Rifle", "Infantry Flamethrower"];
+
+function isM301ComboWeapon(name) {
+  return String(name || "").includes(M301_SUFFIX);
+}
+
+function getM301CarrierWeapon(name) {
+  return String(name || "").replace(M301_SUFFIX, "").trim();
+}
+
+function makeM301ComboWeapon(baseWeapon) {
+  return `${baseWeapon}${M301_SUFFIX}`;
+}
+
+function isM301ReplacementLabel(label) {
+  return String(label || "").includes(M301_SUFFIX);
+}
+
+function getM301Max(unit) {
+  return Math.floor((Number(unit?.men) || 0) / 4);
+}
+
+function isChooseAnyWeaponUnit(unit, unitData) {
+  if (!unit || !unitData) return false;
+
+  const replacements = Object.values(unitData.options?.weaponReplacements || {});
+  const hasOnlyGeneratedM301Replacements =
+    replacements.length === 0 || replacements.every(spec => spec?.isM301);
+
+  return (
+    unit.type === "Infantry" &&
+    Array.isArray(unitData.weapons) &&
+    unitData.weapons.length > 1 &&
+    hasOnlyGeneratedM301Replacements
+  );
+}
+
+function getM301Selections(unit, unitData) {
+  const selections = [];
+
+  if (unit?.weaponReplacements && unitData?.options?.weaponReplacements) {
+    Object.entries(unit.weaponReplacements).forEach(([label, qty]) => {
+      const count = Number(qty) || 0;
+      if (count <= 0) return;
+
+      const spec = unitData.options.weaponReplacements[label];
+      const granted = spec?.grants || label;
+
+      if (isM301ComboWeapon(granted)) {
+        selections.push({
+          role: "model",
+          baseWeapon: getM301CarrierWeapon(granted),
+          count
+        });
+      }
+    });
+  }
+
+  if (isM301ComboWeapon(unit?.ncoReplacement)) {
+    selections.push({
+      role: "nco",
+      baseWeapon: getM301CarrierWeapon(unit.ncoReplacement),
+      count: 1
+    });
+  }
+
+  return selections;
+}
+
+function getM301SelectionCount(unit, unitData) {
+  return getM301Selections(unit, unitData)
+    .reduce((sum, s) => sum + (Number(s.count) || 0), 0);
+}
+
+function unitHasM301(unit, unitData = getUnitData(unit)) {
+  if (!unit) return false;
+
+  if (isM301ComboWeapon(unit.ncoReplacement)) return true;
+
+  if (unitData) {
+    return getM301SelectionCount(unit, unitData) > 0;
+  }
+
+  return Object.entries(unit.weaponReplacements || {}).some(([label, qty]) =>
+    isM301ReplacementLabel(label) && (Number(qty) || 0) > 0
+  );
+}
+
+function getBaseWeaponReplacementCost(unitData, weaponName) {
+  const defaultWeapon = getBaseWeaponName(unitData?.weapons?.[0]?.name);
+
+  if (defaultWeapon === weaponName) return 0;
+
+  const replacements = unitData?.options?.weaponReplacements || {};
+  for (const spec of Object.values(replacements)) {
+    if (getBaseWeaponName(spec.grants) === weaponName) {
+      return Number(spec.cost) || 0;
+    }
+  }
+
+  // Choose-any units like Officers may have AR/BR as profile weapons.
+  const hasProfileWeapon = (unitData?.weapons || []).some(w => getBaseWeaponName(w.name) === weaponName);
+  if (hasProfileWeapon) return 0;
+
+  return null;
+}
+
+function getBaseNcoWeaponCost(unitData, weaponName) {
+  const nco = unitData?.options?.ncoReplacement;
+
+  if (!nco) return null;
+  if (!nco.options?.includes(weaponName)) return null;
+
+  return Number(nco.costs?.[weaponName] || 0);
+}
+
+function injectM301Options(unit, unitData) {
+  if (!unit || !unitData) return unitData;
+
+  const eligible =
+    window.currentFaction === "UNSC" &&
+    unit.type === "Infantry" &&
+    isMarineODSTOrSpartan(unit, unitData);
+
+  if (!eligible) return unitData;
+
+  const maxM301 = Math.floor((unitData.maxMen || unit.men || 0) / 4);
+  if (maxM301 < 1) return unitData;
+
+  unitData.options = unitData.options || {};
+  unitData.options.weaponReplacements = unitData.options.weaponReplacements || {};
+
+  const chooseAny = isChooseAnyWeaponUnit(unit, unitData);
+
+  M301_CARRIER_WEAPONS.forEach(baseWeapon => {
+    const baseCost = getBaseWeaponReplacementCost(unitData, baseWeapon);
+    if (baseCost === null) return;
+
+    const combo = makeM301ComboWeapon(baseWeapon);
+
+    unitData.options.weaponReplacements[combo] = {
+      max: maxM301,
+      cost: baseCost + 22,
+      replaces: unitData.weapons?.[0]?.name || baseWeapon,
+      grants: combo,
+      isM301: true
+    };
+  });
+
+  if (chooseAny && !unitData.options.ncoReplacement) {
+    unitData.options.ncoReplacement = {
+      options: [],
+      costs: {}
+    };
+
+    (unitData.weapons || []).forEach(w => {
+      const base = getBaseWeaponName(w.name);
+      if (!unitData.options.ncoReplacement.options.includes(base)) {
+        unitData.options.ncoReplacement.options.push(base);
+      }
+      unitData.options.ncoReplacement.costs[base] = 0;
+    });
+  }
+
+  if (unitData.options.ncoReplacement) {
+    M301_CARRIER_WEAPONS.forEach(baseWeapon => {
+      const baseCost = chooseAny
+        ? getBaseWeaponReplacementCost(unitData, baseWeapon)
+        : getBaseNcoWeaponCost(unitData, baseWeapon);
+
+      if (baseCost === null) return;
+
+      const combo = makeM301ComboWeapon(baseWeapon);
+
+      if (!unitData.options.ncoReplacement.options.includes(combo)) {
+        unitData.options.ncoReplacement.options.push(combo);
+      }
+
+      unitData.options.ncoReplacement.costs[combo] = baseCost + 22;
+    });
+  }
+
+  return unitData;
+}
 
 // Army state and source data
 window.armyList = [];
@@ -4479,11 +4893,253 @@ function getBaseWeaponName(label) {
   return s;
 }
 
+function getRuleName(rule) {
+  if (!rule) return "";
+  if (typeof rule === "string") return rule.split(":")[0].trim();
+  return rule.name || "";
+}
+
+function hasRule(unit, unitData, ruleName) {
+  const rules = [
+    ...(Array.isArray(unitData?.specialRules) ? unitData.specialRules : []),
+    ...(Array.isArray(unit?.special) ? unit.special : [])
+  ];
+
+  return rules.some(r => getRuleName(r) === ruleName);
+}
+
+function hasNonOfficerOrNcoModel(unit, unitData) {
+  const men = Number(unit?.men ?? unitData?.baseMen ?? 0);
+  const name = String(unit?.name || "");
+
+  // These profiles are leader-style units where 1 model means only the Officer/NCO/leader exists.
+  const isLeaderProfile =
+    /Officer|Forward Observer|Chaplain|Bloodhandler|Attached Leader/i.test(name);
+
+  // Normal squads have an NCO plus other models if they have more than 1 model.
+  // Leader profiles also need more than 1 model to have a non-Officer/non-NCO bodyguard.
+  return men > 1;
+}
+
+function isSpartan(unit, unitData) {
+  const name = String(unit?.name || "").toLowerCase();
+
+  return (
+    unit?.doctrine === "Spartan" ||
+    name.includes("spartan")
+  );
+}
+
+function isElite(unit, unitData) {
+  const name = String(unit?.name || "").toLowerCase();
+
+  return (
+    unit?.doctrine === "Elite" ||
+    name.includes("elite")
+  );
+}
+
+function isBrute(unit, unitData) {
+  const name = String(unit?.name || "").toLowerCase();
+
+  return (
+    unit?.doctrine === "Brute" ||
+    name.includes("brute")
+  );
+}
+
+function isMarineODSTOrSpartan(unit, unitData) {
+  const doctrine = String(unit?.doctrine || "");
+  const name = String(unit?.name || "").toLowerCase();
+
+  return (
+    ["Marine", "ODST", "Spartan"].includes(doctrine) ||
+    name.includes("marine") ||
+    name.includes("odst") ||
+    name.includes("spartan")
+  );
+}
+
+function isArmouredVehicle(unitData) {
+  const match = String(unitData?.damageValue || "").match(/(\d+)\+/);
+  return !!(match && Number(match[1]) >= 7);
+}
+
+function cloneUnitData(data) {
+  return JSON.parse(JSON.stringify(data));
+}
 
 
 ////////////////////////////////////////////////////////////////////////////////
 // 4. DOCTRINE OPTION INJECTION & DISPLAY HELPERS
 ////////////////////////////////////////////////////////////////////////////////
+
+function armyHasSquadUpgrade(label, exceptUnit = null) {
+  return (window.armyList || []).some(u =>
+    u !== exceptUnit &&
+    u?.squadUpgrades?.[label]
+  );
+}
+
+function removeSpecialRuleByName(unit, ruleName) {
+  if (!unit || !Array.isArray(unit.special)) return;
+
+  unit.special = unit.special.filter(rule => getRuleName(rule) !== ruleName);
+}
+
+function getSquadUpgradeCostForUnit(unit, label) {
+  const unitData = getUnitData(unit);
+  const upgrade = unitData?.options?.squadUpgrades?.[label];
+
+  if (!upgrade) {
+    // Fallback for known armoury upgrades in older saved lists.
+    if (label === "Sacred Relic") return 15;
+    return 0;
+  }
+
+  if (upgrade.perModel === false) {
+    return Number(upgrade.cost) || 0;
+  }
+
+  return (Number(upgrade.cost) || 0) * (Number(unit?.men) || 0);
+}
+
+function enforceOnePerArmySquadUpgrade(label) {
+  let alreadyFound = false;
+
+  (window.armyList || []).forEach(unit => {
+    if (!unit?.squadUpgrades?.[label]) return;
+
+    if (!alreadyFound) {
+      alreadyFound = true;
+      return;
+    }
+
+    const costToRemove = getSquadUpgradeCostForUnit(unit, label);
+
+    unit.squadUpgrades[label] = false;
+    unit.cost = Math.max(0, (Number(unit.cost) || 0) - costToRemove);
+
+    removeSpecialRuleByName(unit, label);
+  });
+}
+
+function getArmourySquadUpgradeDefsByLabel() {
+  const map = {};
+
+  Object.values(ARMOURY_DEFS || {}).forEach(defs => {
+    (defs || []).forEach(def => {
+      if (
+        def &&
+        def.label &&
+        ["ruleCheckbox", "weaponProfileSwap"].includes(def.type)
+      ) {
+        map[def.label] = def;
+      }
+    });
+  });
+
+  return map;
+}
+
+function purgeIllegalArmourySquadUpgrades(unit, unitData = getUnitData(unit)) {
+  if (!unit?.squadUpgrades) return;
+
+  const armouryDefsByLabel = getArmourySquadUpgradeDefsByLabel();
+  const legalSquadUpgrades = unitData?.options?.squadUpgrades || {};
+
+  Object.keys(unit.squadUpgrades).forEach(label => {
+    // Only auto-purge armoury-generated upgrades.
+    // Do not delete normal unit upgrades like Anti-Tank Grenades.
+    if (!armouryDefsByLabel[label]) return;
+
+    const isLegalNow = !!legalSquadUpgrades[label];
+
+    if (!isLegalNow) {
+      delete unit.squadUpgrades[label];
+
+      const def = armouryDefsByLabel[label];
+      const grantedRules = def.grantsRules || [];
+
+      // Also remove the lingering displayed special rule.
+      if (Array.isArray(unit.special) && grantedRules.length) {
+        unit.special = unit.special.filter(r => {
+          const ruleName = getRuleName(r);
+          return !grantedRules.includes(ruleName);
+        });
+      }
+    }
+  });
+}
+
+function syncM301EditorLegality(unit, unitData) {
+  if (!unit || !unitData) return;
+
+  const currentMen = getEditorTotalMen(unit, unitData);
+  const m301Limit = getM301Max({ ...unit, men: currentMen });
+
+  // NCO / Officer selector: disable M301 package if unit has fewer than 4 models.
+  const ncoSelect = document.getElementById("editNcoReplacement");
+  if (ncoSelect) {
+    Array.from(ncoSelect.options).forEach(opt => {
+      if (isM301ComboWeapon(opt.value)) {
+        opt.disabled = m301Limit < 1;
+      }
+    });
+
+    if (m301Limit < 1 && isM301ComboWeapon(ncoSelect.value)) {
+      const fallback = getM301CarrierWeapon(ncoSelect.value);
+      const hasFallback = Array.from(ncoSelect.options).some(o => o.value === fallback);
+
+      ncoSelect.value =
+        hasFallback
+          ? fallback
+          : (unitData.options?.ncoReplacement?.options?.[0] || "");
+    }
+  }
+
+  // Trooper M301 package counters: force to 0 if unit has fewer than 4 models.
+  document.querySelectorAll(".editWeaponReplacement").forEach(input => {
+    if (!isM301ReplacementLabel(input.dataset.label)) return;
+
+    if (m301Limit < 1) {
+      input.value = 0;
+      input.disabled = true;
+    } else {
+      input.disabled = false;
+    }
+  });
+}
+
+function purgeIllegalM301Selections(unit) {
+  if (!unit) return;
+
+  const limit = getM301Max(unit);
+  let used = 0;
+
+  // NCO / Officer M301 package.
+  if (isM301ComboWeapon(unit.ncoReplacement)) {
+    if (used < limit) {
+      used += 1;
+    } else {
+      unit.ncoReplacement = getM301CarrierWeapon(unit.ncoReplacement);
+    }
+  }
+
+  // Trooper M301 packages.
+  if (unit.weaponReplacements) {
+    Object.keys(unit.weaponReplacements).forEach(label => {
+      if (!isM301ReplacementLabel(label)) return;
+
+      const allowed = Math.max(0, limit - used);
+      const current = Number(unit.weaponReplacements[label]) || 0;
+      const kept = Math.min(current, allowed);
+
+      unit.weaponReplacements[label] = kept;
+      used += kept;
+    });
+  }
+}
 
 // --- AUTO-INJECT DOCTRINE OPTION BLOCK TO ALL ELIGIBLE UNITS ---
 function injectDoctrineOptions(units, doctrineSet, triggerRule) {
@@ -4588,6 +5244,19 @@ function adjustVehicleMountedMGShots(label, prof) {
   };
 }
 
+function getLeaderWeaponPrefix(unit) {
+  const name = String(unit?.name || "");
+
+  if (/^Officer\b/i.test(name)) return "Officer";
+  if (/Forward Observer/i.test(name)) return "Observer";
+  if (/Medic/i.test(name)) return "Medic";
+  if (/Chaplain/i.test(name)) return "Chaplain";
+  if (/Bloodhandler/i.test(name)) return "Bloodhandler";
+  if (/Watcher/i.test(name)) return "Watcher";
+
+  return "NCO";
+}
+
 function buildWeaponsTable(unit) {
   let table = [];
   const unitData = getUnitData(unit);
@@ -4615,28 +5284,89 @@ function buildWeaponsTable(unit) {
     return table;
   }
 
-  // 2. "Choose any" INFANTRY/TEAM: Multiple weapons, no swaps
-  const isChooseAny = (
+	// 2. Choose-any infantry, including officers with optional M301 carriers
+	if (isChooseAnyWeaponUnit(unit, unitData)) {
+	  const totalMen = unit.men || unitData.baseMen || 1;
+	  const m301Selections = getM301Selections(unit, unitData);
+	  const m301Count = getM301SelectionCount(unit, unitData);
+	  const genericCount = Math.max(0, totalMen - m301Count);
+
+	  // Show M301 carriers first.
+	  m301Selections.forEach(sel => {
+		const baseProf = parseWeaponProfile(allWeaponProfiles[getBaseWeaponName(sel.baseWeapon)] || "");
+		const m301Prof = parseWeaponProfile(allWeaponProfiles["M301 Grenade Launcher"] || "");
+
+		const prefix = sel.role === "nco"
+		  ? getLeaderWeaponPrefix(unit)
+		  : (sel.count > 1 ? `${sel.count}x M301 carrier` : "M301 carrier");
+
+		table.push({
+		  qty: sel.count,
+		  label: `${prefix}: ${sel.baseWeapon}`,
+		  ...baseProf
+		});
+
+		table.push({
+		  qty: sel.count,
+		  label: `${prefix}: M301 Grenade Launcher`,
+		  ...m301Prof
+		});
+	  });
+
+	  // Then show the remaining models as one grouped "may choose" block.
+	  if (genericCount > 0) {
+		table.push({
+		  qty: genericCount,
+		  label: `${genericCount}x`,
+		  range: "",
+		  shots: "",
+		  pen: "",
+		  special: "",
+		  chooseAnyHeader: true
+		});
+
+		unitData.weapons.forEach(w => {
+		  const prof = parseWeaponProfile(allWeaponProfiles[getBaseWeaponName(w.name)] || "");
+
+		  table.push({
+			qty: genericCount,
+			label: w.name,
+			...prof,
+			chooseAnyOption: true
+		  });
+		});
+	  }
+
+	  return table;
+	}
+
+  // 2b. Legacy choose-any fallback for non-M301 units.
+  // This should NOT catch units whose unitData has generated weapon replacement options.
+  const hasUnitDataWeaponReplacements =
+    Object.keys(unitData.options?.weaponReplacements || {}).length > 0;
+
+  const isLegacyChooseAny = (
     (unit.type === "Infantry" || unit.type === "Team") &&
     !unit.weaponReplacements &&
-    (!unit.options || !unit.options.weaponReplacements) &&
-    Array.isArray(unitData.weapons) && unitData.weapons.length > 1
+    !hasUnitDataWeaponReplacements &&
+    Array.isArray(unitData.weapons) &&
+    unitData.weapons.length > 1
   );
 
-  if (isChooseAny) {
-    // Show all available weapons, qty = unit.men (or 1)
+  if (isLegacyChooseAny) {
     const count = unit.men || unitData.baseMen || 1;
+
     unitData.weapons.forEach(w => {
-      let prof = parseWeaponProfile(allWeaponProfiles[getBaseWeaponName(w.name)] || "");
+      const prof = parseWeaponProfile(allWeaponProfiles[getBaseWeaponName(w.name)] || "");
       table.push({
         qty: count,
-        label: (count > 1 ? `${count}x ` : "") + w.name,
+        label: (count > 1 ? `${count}x may choose: ` : "may choose: ") + w.name,
         ...prof
       });
     });
+
     return table;
   }
-
   // 3. INFANTRY SQUADS (multi-man, with possible weapon swaps)
   if (unit.type === "Infantry" && unit.men > 1) {
     let menLeft = unit.men - 1; // NCO is separate
@@ -4648,8 +5378,16 @@ function buildWeaponsTable(unit) {
         if (cnt > 0) {
           const repl = unitData.options.weaponReplacements[upgradeLabel];
           if (repl && repl.grants && repl.replaces) {
-            weaponCounts[repl.grants] = (weaponCounts[repl.grants] || 0) + cnt;
-            menLeft -= cnt;
+			if (isM301ComboWeapon(repl.grants)) {
+			  const baseWeapon = getM301CarrierWeapon(repl.grants);
+
+			  weaponCounts[baseWeapon] = (weaponCounts[baseWeapon] || 0) + cnt;
+			  weaponCounts["M301 Grenade Launcher"] = (weaponCounts["M301 Grenade Launcher"] || 0) + cnt;
+			} else {
+			  weaponCounts[repl.grants] = (weaponCounts[repl.grants] || 0) + cnt;
+			}
+
+			menLeft -= cnt;
           }
         }
       });
@@ -4675,15 +5413,76 @@ function buildWeaponsTable(unit) {
       unit.ncoReplacement ||
       (unitData.options?.ncoReplacement?.options?.[0] || unitData.weapons?.[0]?.name || "Plasma Pistol");
 
-    let ncoProf = parseWeaponProfile(allWeaponProfiles[getBaseWeaponName(ncoWeapon)] || "");
-    table.push({
-      qty: 1,
-      label: `NCO: ${ncoWeapon}`,
-      ...ncoProf
-    });
+	if (isM301ComboWeapon(ncoWeapon)) {
+	  const baseWeapon = getM301CarrierWeapon(ncoWeapon);
+
+	  let baseProf = parseWeaponProfile(allWeaponProfiles[getBaseWeaponName(baseWeapon)] || "");
+	  table.push({
+		qty: 1,
+		label: `NCO: ${baseWeapon}`,
+		...baseProf
+	  });
+
+	  let m301Prof = parseWeaponProfile(allWeaponProfiles["M301 Grenade Launcher"] || "");
+	  table.push({
+		qty: 1,
+		label: "NCO: M301 Grenade Launcher",
+		...m301Prof
+	  });
+	} else {
+	  let ncoProf = parseWeaponProfile(allWeaponProfiles[getBaseWeaponName(ncoWeapon)] || "");
+	  table.push({
+		qty: 1,
+		label: `NCO: ${ncoWeapon}`,
+		...ncoProf
+	  });
+	}
 
     return table;
   }
+
+// 4a. SINGLE-MODEL INFANTRY/TEAM WITH WEAPON REPLACEMENTS
+if (
+  (unit.type === "Infantry" || unit.type === "Team") &&
+  unit.men === 1 &&
+  unit.weaponReplacements &&
+  unitData.options?.weaponReplacements
+) {
+  let addedReplacement = false;
+
+  Object.entries(unit.weaponReplacements).forEach(([upgradeLabel, cnt]) => {
+    if ((Number(cnt) || 0) <= 0) return;
+
+    const repl = unitData.options.weaponReplacements[upgradeLabel];
+    if (!repl?.grants) return;
+
+    if (isM301ComboWeapon(repl.grants)) {
+      const baseWeapon = getM301CarrierWeapon(repl.grants);
+
+      table.push({
+        qty: 1,
+        label: baseWeapon,
+        ...parseWeaponProfile(allWeaponProfiles[getBaseWeaponName(baseWeapon)] || "")
+      });
+
+      table.push({
+        qty: 1,
+        label: "M301 Grenade Launcher",
+        ...parseWeaponProfile(allWeaponProfiles["M301 Grenade Launcher"] || "")
+      });
+    } else {
+      table.push({
+        qty: 1,
+        label: repl.grants,
+        ...parseWeaponProfile(allWeaponProfiles[getBaseWeaponName(repl.grants)] || "")
+      });
+    }
+
+    addedReplacement = true;
+  });
+
+  if (addedReplacement) return table;
+}
 
   // 4. SINGLE-MODEL INFANTRY OR TEAM (e.g., sniper, hero, FO)
   if ((unit.type === "Infantry" || unit.type === "Team") && unit.men === 1 && Array.isArray(unitData.weapons)) {
@@ -4752,6 +5551,36 @@ function buildWeaponsTable(unit) {
   return table;
 }
 
+function applyArmouryWeaponProfileSwaps(unit, table) {
+  if (!unit || !Array.isArray(table)) return table;
+
+  const upgrades = unit.squadUpgrades || {};
+
+  if (upgrades["Volatile Biomass"]) {
+    return table.map(row => {
+      const base = getBaseWeaponName(row.label);
+      if (base !== "Explosive Biomass") return row;
+
+      const prof = parseWeaponProfile(allWeaponProfiles["Volatile Biomass"]);
+      return {
+        ...row,
+        label: String(row.label || "").replace("Explosive Biomass", "Volatile Biomass"),
+        ...prof
+      };
+    });
+  }
+
+  return table;
+}
+
+const buildWeaponsTableBase = buildWeaponsTable;
+
+buildWeaponsTable = function(unit) {
+  let table = buildWeaponsTableBase(unit);
+  table = applyArmouryWeaponProfileSwaps(unit, table);
+  return table;
+};
+
 function canForceCommandVehicle(unit, unitData) {
   if (!unit || !unitData) return false;
 
@@ -4780,24 +5609,34 @@ function getFinalWeaponsList(unit) {
 function getUnitData(unit) {
   if (!unit || !window.currentFaction) return null;
 
+  let rawUnitData = null;
+
   // --- Special case: Flood borrowed vehicle (Corrupted Arsenal) ---
   if (window.currentFaction === "Flood" && unit.isFloodBorrowed && unit.sourceFaction) {
     const sourceUnits = window.UNIT_LISTS?.[unit.sourceFaction] || [];
     const sourceVehicles = window.VEHICLE_LISTS?.[unit.sourceFaction] || [];
     const sourceList = sourceUnits.concat(sourceVehicles);
 
-    // Remove the display suffix we added in the selector, if present
-    const baseName = String(unit.originalName || unit.name || "").replace(/\s+\[Corrupted Arsenal(?: - .*?)?\]$/, "");
+    const baseName = String(unit.originalName || unit.name || "")
+      .replace(/\s+\[Corrupted Arsenal(?: - .*?)?\]$/, "");
 
-    return sourceList.find(u => u.name === baseName && u.type === unit.type) || null;
+    rawUnitData = sourceList.find(u => u.name === baseName && u.type === unit.type) || null;
+
+    // IMPORTANT:
+    // Flood borrowed units use source unit data, but armoury upgrades are still checked
+    // against window.currentFaction, so Banished/UNSC/Covenant/Forerunner armoury
+    // will not appear in Flood armies.
+    return injectM301Options(unit, applyArmouryToUnitData(unit, rawUnitData));
   }
 
-  // --- Normal behavior for all other units ---
-  const units = (window.UNIT_LISTS?.[window.currentFaction] || []);
-  const vehicles = (window.VEHICLE_LISTS?.[window.currentFaction] || []);
+  // --- Normal behavior ---
+  const units = window.UNIT_LISTS?.[window.currentFaction] || [];
+  const vehicles = window.VEHICLE_LISTS?.[window.currentFaction] || [];
   const list = units.concat(vehicles);
 
-  return list.find(u => u.name === unit.name && u.type === unit.type) || null;
+  rawUnitData = list.find(u => u.name === unit.name && u.type === unit.type) || null;
+
+  return injectM301Options(unit, applyArmouryToUnitData(unit, rawUnitData));
 }
 
 function unitHasDoctrine(unitData) {
@@ -4952,6 +5791,30 @@ function getReplaceableWeaponSlots(unit, unitData, totalMen = null) {
   return Math.max(0, men - (hasSeparateNco ? 1 : 0));
 }
 
+function syncConditionalArmouryCheckboxes(unit, unitData) {
+  const men = getEditorTotalMen(unit, unitData);
+
+  const burrowing = document.querySelector('.editSquadUpgrade[data-upgrade="Burrowing Tendrils"]');
+
+  if (burrowing) {
+    const legal =
+      window.currentFaction === "Flood" &&
+      unit?.type === "Infantry" &&
+      String(unit?.name || "").includes("Officer") &&
+      men >= 2;
+
+    if (!legal) {
+      // If the Officer has no tendrils, the upgrade is not legal.
+      burrowing.checked = false;
+      burrowing.disabled = true;
+    } else {
+      // If the Officer has tendrils, allow the player to choose it.
+      // This does NOT automatically tick it again.
+      burrowing.disabled = false;
+    }
+  }
+}
+
 function clampWeaponReplacementInputs(unit, unitData, changedInput = null) {
   if (!unitData?.options?.weaponReplacements) return { used: 0, limit: 0 };
 
@@ -5037,6 +5900,26 @@ if (label === "Incineration Cannon" && ncoHasIncineration) {
     info.textContent = `Model weapon swaps used: ${totalUsed}/${limit}`;
   }
 
+// M301 shared limit: one M301 per full 4 models, including NCO M301.
+const m301Limit = getM301Max({ ...unit, men: getEditorTotalMen(unit, unitData) });
+const ncoUsesM301 = isM301ComboWeapon(getSelectedNcoWeapon(unit, unitData)) ? 1 : 0;
+const m301TrooperLimit = Math.max(0, m301Limit - ncoUsesM301);
+const m301Inputs = inputs.filter(input => isM301ReplacementLabel(input.dataset.label));
+
+let m301Used = 0;
+m301Inputs.forEach(input => {
+  let val = parseInt(input.value, 10) || 0;
+  val = Math.max(0, Math.min(val, Math.max(0, m301TrooperLimit - m301Used)));
+  input.value = val;
+  m301Used += val;
+});
+
+m301Inputs.forEach(input => {
+  const current = parseInt(input.value, 10) || 0;
+  const others = m301Used - current;
+  input.max = Math.max(0, m301TrooperLimit - others + current);
+});
+
   return { used: totalUsed, limit };
 }
 
@@ -5062,7 +5945,9 @@ function syncInfantryEditorState(changedInput = null) {
   if (!unit || !unitData) return;
 
   updateEditorModelInfo(unit, unitData);
+  syncM301EditorLegality(unit, unitData);
   clampWeaponReplacementInputs(unit, unitData, changedInput);
+  syncConditionalArmouryCheckboxes(unit, unitData);
   updateLiveUnitCost();
 }
 
@@ -5279,10 +6164,22 @@ function selectFaction(faction) {
   document.getElementById("sidebar").style.display = "";
   document.getElementById("backBtn").style.display = "";
 
-  updateArmyBonusUI();
-  populateUnitSelect();
-  renderSummaryBlock();
-  renderArmyList();
+	updateArmyBonusUI();
+	syncArmyBonusEffects();
+
+	(window.armyList || []).forEach(unit => {
+	  const unitData = getUnitData(unit);
+
+	  purgeIllegalArmourySquadUpgrades(unit, unitData);
+	  purgeIllegalM301Selections(unit);
+
+	  unit.weaponsTable = buildWeaponsTable(unit);
+	});
+
+	enforceOnePerArmySquadUpgrade("Sacred Relic");
+
+	populateUnitSelect();
+	renderArmyList();
 
   console.log("currentFaction is now", window.currentFaction);
 }
@@ -5409,6 +6306,7 @@ function addSelectedUnit() {
     ncoReplacement: unit.options?.ncoReplacement ? undefined : undefined,
     doctrine: unit.options?.doctrine ? undefined : undefined,
     extraDoctrineUpgrades: unit.options?.doctrine ? {} : undefined,
+	armoury: {},
     special: Array.isArray(unit.specialRules) ? [...unit.specialRules] : (unit.specialRules ? [unit.specialRules] : []),
     forcedCommandVehicle: false,
 	  // ✅ keep source info for Corrupted Arsenal vehicles
@@ -5536,6 +6434,57 @@ function editUnit(idx) {
   }
 }
 
+function captureInfantryModalStateToUnit() {
+  const unit = window.currentEditUnit;
+  if (!unit) return;
+
+  const unitData = getUnitData(unit);
+  if (!unitData) return;
+
+  if (unit.type === "Infantry") {
+    const menRaw = parseInt(document.getElementById("editMenInput")?.value, 10);
+    if (!isNaN(menRaw)) {
+      const minMen = unitData.baseMen || 0;
+      const maxMen = unitData.maxMen ?? minMen;
+      unit.men = Math.max(minMen, Math.min(maxMen, menRaw));
+    }
+  }
+
+  if (unitData.options?.squadUpgrades) {
+    unit.squadUpgrades = unit.squadUpgrades || {};
+    document.querySelectorAll(".editSquadUpgrade").forEach(cb => {
+      unit.squadUpgrades[cb.dataset.upgrade] = cb.checked;
+    });
+  }
+
+  if (unitData.options?.weaponReplacements) {
+    unit.weaponReplacements = unit.weaponReplacements || {};
+    document.querySelectorAll(".editWeaponReplacement").forEach(input => {
+      unit.weaponReplacements[input.dataset.label] = parseInt(input.value, 10) || 0;
+    });
+  }
+
+  const ncoSelect = document.getElementById("editNcoReplacement");
+  if (ncoSelect) unit.ncoReplacement = ncoSelect.value;
+
+  const doctrineSelect = document.getElementById("editDoctrineSelect");
+  if (doctrineSelect) unit.doctrine = doctrineSelect.value || null;
+
+  unit.extraDoctrineUpgrades = unit.extraDoctrineUpgrades || {};
+  document.querySelectorAll(".editDoctrineExtraUpgrade").forEach(cb => {
+    unit.extraDoctrineUpgrades[cb.dataset.upgrade] = cb.checked;
+  });
+  
+	const refreshedUnitData = getUnitData(unit);
+	purgeIllegalArmourySquadUpgrades(unit, refreshedUnitData);
+}
+
+function rerenderCurrentEditModal() {
+  if (editIdx == null) return;
+  captureInfantryModalStateToUnit();
+  editUnit(editIdx);
+}
+
 // Render Infantry/Team Modal Fields (dynamic doctrine upgrades)
 function renderInfantryEditFields(unit, unitData) {
   let html = "";
@@ -5584,7 +6533,10 @@ function renderInfantryEditFields(unit, unitData) {
 		html += `
 		  <label>${label}:
 			<input type="number" class="editWeaponReplacement" data-label="${label}" min="0" max="${spec.max}" value="${curr}" style="width:40px;" oninput="syncInfantryEditorState(this)">
-			(max ${spec.max}, ${Number(spec.cost) >= 0 ? "+" : "-"}${Math.abs(Number(spec.cost))} pts each)
+			${spec.isM301
+			  ? `(M301 package, ${Number(spec.cost) >= 0 ? "+" : "-"}${Math.abs(Number(spec.cost))} pts each)`
+			  : `(max ${spec.max}, ${Number(spec.cost) >= 0 ? "+" : "-"}${Math.abs(Number(spec.cost))} pts each)`
+			}
 		  </label><br>
 		`;
 	  });
@@ -5602,12 +6554,12 @@ function renderInfantryEditFields(unit, unitData) {
     });
     html += `</select></label>`;
   }
-
+  
   // Doctrine (dropdown, dynamic extra upgrades box)
   if (unitData.options && unitData.options.doctrine) {
     html += `
       <div style="margin-top:10px;"><b>${unitData.options.doctrine.label}:</b><br>
-        <select id="editDoctrineSelect" onchange="updateLiveUnitCost()">
+        <select id="editDoctrineSelect" onchange="rerenderCurrentEditModal()">
                     <option value="">— None (${unitData.options.doctrine.defaultLabel || "Default"}) —</option>
 		${getAllowedDoctrineChoicesForUnit(unit, unitData).map(choice => `
 		  <option value="${choice.name}"${unit.doctrine === choice.name ? " selected" : ""}>
@@ -5704,10 +6656,7 @@ function afterInfantryModalRender(unit, unitData) {
       });
     }
 
-    doctrineSelect.addEventListener("change", () => {
-      renderDoctrineExtras();
-      updateLiveUnitCost();
-    });
+    doctrineSelect.addEventListener("change", rerenderCurrentEditModal);
 
     renderDoctrineExtras();
   }
@@ -5733,7 +6682,6 @@ function afterInfantryModalRender(unit, unitData) {
       }
     });
   }
-
   syncInfantryEditorState();
 }
 
@@ -5835,7 +6783,7 @@ function saveEdit() {
   if (editIdx == null) return;
 
   const unit = window.armyList[editIdx];
-  const unitData = getUnitData(unit);
+  let unitData = getUnitData(unit);
 
   console.log("[saveEdit] Editing unit:", unit?.name, { unit, unitData });
   if (!unit || !unitData) return;
@@ -5858,6 +6806,7 @@ function saveEdit() {
       document.querySelectorAll(".editSquadUpgrade").forEach(cb => {
         unit.squadUpgrades[cb.dataset.upgrade] = cb.checked;
       });
+	  enforceOnePerArmySquadUpgrade("Sacred Relic");
     }
 
     // NCO Weapon
@@ -5923,6 +6872,16 @@ function saveEdit() {
 	  unit._bonusMenNoExtraCost = bonusMen;
 	}
 
+	// Refresh unitData after doctrine/men changes, then purge illegal armoury upgrades.
+	// This prevents stale armoury options like MJOLNIR, Sacred Relic, or Trophy Plate Harness.
+	unitData = getUnitData(unit);
+	purgeIllegalArmourySquadUpgrades(unit, unitData);
+	
+    // Remove conditional armoury upgrades that are no longer legal.
+    if (unit.squadUpgrades?.["Burrowing Tendrils"] && unit.men < 2) {
+      unit.squadUpgrades["Burrowing Tendrils"] = false;
+    }
+	
     // Weapon Replacements (after final men count is known)
     if (unitData.options && unitData.options.weaponReplacements) {
       clampWeaponReplacementInputs(unit, unitData);
@@ -5932,6 +6891,7 @@ function saveEdit() {
         const n = parseInt(document.querySelector(`.editWeaponReplacement[data-label="${label}"]`)?.value, 10) || 0;
         unit.weaponReplacements[label] = n;
       });
+	  purgeIllegalM301Selections(unit);
     }
 
     // WEAPONS (robust swaps from squad upgrades)
@@ -6053,9 +7013,19 @@ function saveEdit() {
       });
     }
 
-    // FINALIZE SPECIAL RULES and add doctrine display rules if applicable
-    unit.special = specialRules;
-    if (unitData.options && unitData.options.doctrine) addDoctrineSpecialRules(unit);
+	// Apply any special-rule transformations first.
+	specialRules = applyVolatileBiomassSpecialRules(unit, specialRules);
+
+	// M301 cleanup:
+	// Remove any old/duplicate M301 rule, then add it back once if the unit currently has M301.
+	specialRules = specialRules.filter(r => getRuleName(r) !== "M301 Grenade Launcher");
+
+	if (unitHasM301(unit, unitData)) {
+	  specialRules.push("M301 Grenade Launcher");
+	}
+	// FINALIZE SPECIAL RULES and add doctrine display rules if applicable
+	unit.special = specialRules;
+	if (unitData.options && unitData.options.doctrine) addDoctrineSpecialRules(unit);
 
     unit.cost = baseCost + extraCost + squadUpgradesCost + weaponReplCost + ncoCost + doctrineCost + extraDoctrineCost;
 
@@ -6157,32 +7127,16 @@ function renderArmyList() {
     const showDamage = dmgText && String(dmgText).trim() !== "";
     const showTransport = typeof unit.transportCapacity === "number" && unit.transportCapacity > 0;
 
-    // Detect "choose any" (officer/FO/medic/etc)
-    const isChooseAny =
-      unit.type === "Infantry" &&
-      !unit.weaponReplacements &&
-      (!unit.options || !unit.options.weaponReplacements) &&
-      Array.isArray(unit.weapons) && unit.weapons.length > 1;
-
     // Weapons block
-    let weaponHtml = "";
-    if (isChooseAny && unit.men > 1) {
-      weaponHtml += `<b>${unit.men}x</b><br>`;
-      (unit.weapons || []).forEach(w => {
-        let prof = parseWeaponProfile(allWeaponProfiles[getBaseWeaponName(w.name)] || "");
-        weaponHtml += `<div style="margin-left:14px;">
-          ${w.name} <span style="display:inline-block;width:60px;"></span>
-          ${prof.range} <span style="display:inline-block;width:48px;"></span>
-          ${prof.shots} <span style="display:inline-block;width:34px;"></span>
-          ${prof.pen} <span style="display:inline-block;width:22px;"></span>
-          ${prof.special}
-        </div>`;
-      });
-    } else {
-      weaponHtml = (Array.isArray(getFinalWeaponsList(unit)) ? getFinalWeaponsList(unit) : [])
-        .map(w => w.label)
-        .join("<br>");
-    }
+    // Always use buildWeaponsTable/getFinalWeaponsList, because that already knows about
+    // M301 carriers, NCO packages, armoury profile swaps, and normal weapon counts.
+    const finalWeapons = Array.isArray(getFinalWeaponsList(unit))
+      ? getFinalWeaponsList(unit)
+      : [];
+
+    let weaponHtml = finalWeapons.length
+      ? finalWeapons.map(w => w.label).join("<br>")
+      : "—";
 
     const card = document.createElement("div");
     card.className = "card";
@@ -6305,12 +7259,6 @@ function renderUnitCard(pdf, unit, margin, width, y) {
     }
   });
 
-  const isChooseAny =
-    unit.type === "Infantry" &&
-    !unit.weaponReplacements &&
-    (!unit.options || !unit.options.weaponReplacements) &&
-    Array.isArray(unit.weapons) && unit.weapons.length > 1;
-
   let blockHeight = 60
     + (hasDamage ? 16 : 0)
     + (hasTP ? 13 : 0)
@@ -6351,45 +7299,24 @@ function renderUnitCard(pdf, unit, margin, width, y) {
 
   pdf.setFont("helvetica", "normal").setFontSize(11).setTextColor(40, 40, 60);
 
-  if (isChooseAny && unit.men > 1) {
-    pdf.setFont("helvetica", "bold").setFontSize(13).setTextColor(46, 71, 142);
-    yy = checkPageBreak(pdf, yy);
-    pdf.text(`${unit.men}x`, x, yy);
-    yy += 13;
-    pdf.setFont("helvetica", "normal").setFontSize(11).setTextColor(40, 40, 60);
+   (weapons || []).forEach(row => {
+    const labelLines = pdf.splitTextToSize(String(row.label || ""), 150);
 
-    (unit.weapons || []).forEach(w => {
-      let prof = parseWeaponProfile(allWeaponProfiles[getBaseWeaponName(w.name)] || "");
-      let labelLines = pdf.splitTextToSize(String(w.name), 150);
-      yy = checkPageBreak(pdf, yy);
-      pdf.text(labelLines[0], x, yy);
-      pdf.text(prof.range, x + 160, yy);
-      pdf.text(prof.shots, x + 220, yy);
-      pdf.text(prof.pen, x + 265, yy);
-      pdf.text(prof.special, x + 305, yy);
-      for (let i = 1; i < labelLines.length; i++) {
-        yy += 13;
-        yy = checkPageBreak(pdf, yy);
-        pdf.text(labelLines[i], x, yy);
-      }
+    yy = checkPageBreak(pdf, yy);
+    pdf.text(labelLines[0], x, yy);
+    pdf.text(String(row.range || ""), x + 160, yy);
+    pdf.text(String(row.shots || ""), x + 220, yy);
+    pdf.text(String(row.pen || ""), x + 265, yy);
+    pdf.text(String(row.special || ""), x + 305, yy);
+
+    for (let i = 1; i < labelLines.length; i++) {
       yy += 13;
-    });
-    yy += 3;
-  } else {
-    (weapons || []).forEach(row => {
-      const labelLines = pdf.splitTextToSize(String(row.label || ""), 150);
       yy = checkPageBreak(pdf, yy);
-      pdf.text(labelLines[0], x, yy);
-      pdf.text(String(row.range || ""), x + 160, yy);
-      pdf.text(String(row.shots || ""), x + 220, yy);
-      pdf.text(String(row.pen || ""), x + 265, yy);
-      pdf.text(String(row.special || ""), x + 305, yy);
-      for (let i = 1; i < labelLines.length; i++) {
-        yy += 13; yy = checkPageBreak(pdf, yy); pdf.text(labelLines[i], x, yy);
-      }
-      yy += 16;
-    });
-  }
+      pdf.text(labelLines[i], x, yy);
+    }
+
+    yy += 16;
+  });
 
   if (specialArr.length) {
     yy += 6;
@@ -6775,6 +7702,16 @@ function loadList() {
 
 		updateArmyBonusUI();
 		syncArmyBonusEffects();
+
+		// Enforce one-per-army upgrades after loading saved JSON lists.
+		// This catches old/corrupt lists where more than one unit had Sacred Relic.
+		enforceOnePerArmySquadUpgrade("Sacred Relic");
+
+		// Rebuild weapon tables after any loaded-list cleanup.
+		(window.armyList || []).forEach(unit => {
+		  unit.weaponsTable = buildWeaponsTable(unit);
+		});
+
 		populateUnitSelect();
 		renderArmyList();
       } catch (err) {

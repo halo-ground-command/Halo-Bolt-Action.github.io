@@ -1,4 +1,4 @@
-﻿Armies of the Banishedv3.1
+﻿Armies of the Banishedv3.2
 
 Army Special Rules
 Brotherhood of Chaos
@@ -54,6 +54,93 @@ Cost: +8pts per model.
 Optional additional upgrades (Elite-only):
  – The squad may be given Stealth for +1pts per model. 
 – The NCO/Officer may be given a Plasma Sword for +1pt (This model rolls 2 dice in close combat instead of 1) 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Banished Armoury
+Scrap Armour Screens
+Banished armoured vehicles with Damage Value 7+ or higher may take Scrap Armour Screens for +10pts. This upgrade may not be taken by Walkers or Aircraft.
+Weapons with Shaped Charge do not gain +1 Penetration bonus for hitting this vehicle in the side arc.
+Trophy Plate Harness
+Veteran Banished Brute Infantry units may take Trophy Plate Harnesses for +1pt per model.
+Models with Trophy Plate Harnesses have a 6+ cover save in the open and a 6+ cover save in close quarters.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -387,7 +474,7 @@ Cost
 - The NCO and up to 2 Brutes may have Plasma Rifles instead of Spikers for no additional cost  
 - Up to 1 Brute may have a Brute Shot for +21pts  
 - Up to 1 Brute may have a Plasma Repeater for +9pts 
-- Up to 1 Brute may have a Skewer for +10pts
+- The NCO and up to 2 Brutes may have a Skewer for +10pts
 - The squad may be given Jump-Jet Packs for +1pt per Brute 
 - The squad can be given anti-tank grenades for +2pts per Brute 
 - The squad can be given Energy Shield Modules for +3pts per Brute
@@ -484,8 +571,8 @@ Cost
 	- Add up to 2 additional Elites for +27pts each  
 - The NCO and up to 5 Elites may have or Needlers instead of Plasma Rifles for –2pts each 
 - The NCO and up to 5 Elites may have Pulse Carbines instead of Plasma Rifles for –2pts each  
-- Up to 1 Elite may have a Concussion Rifle for +21pts 
-- Up to 1 Elite may have a Plasma Repeater for +9pts  
+- The NCO and up to 2 Elites may have a Concussion Rifle for +21pts 
+- The NCO and up to 2 Elites may have a Plasma Repeater for +9pts  
 - The squad may be given Jump-Jet Packs for +1pt per Elite
 - The squad may be given anti-tank grenades for +2pts per Elite  
 - The squad may be given Stealth Modules for +1pt per Elite  

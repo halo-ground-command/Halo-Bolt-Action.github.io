@@ -1,4 +1,4 @@
-﻿Armies of the Forerunnerv3.1
+﻿Armies of the Forerunnerv3.2
 
 Army Special Rules
 Enhanced Weapon Systems
@@ -12,7 +12,7 @@ Forerunner doctrine punishes overextension.
 * Effect: At the beginning of each turn, if your opponent has more units on the battlefield than you, select one friendly Forerunner Infantry or Artillery unit from your army list. During this turn, that unit gains +1 to hit when shooting. This does not stack across turns and expires at the end of each turn.
 Teleportation Network
 Phase relays enable instantaneous redeployment.
-* Effect: Each time a Forerunner Officer successfully uses You men, snap to action!, you may choose one friendly Infantry or Artillery unit with Composed Beings that is being issued an order by that Snap. The order issued to that unit cannot be Advance, Run, or Assault. A unit carrying an objective cannot be chosen. If the chosen unit is required to take an Order test (e.g., because it is pinned), resolve the test as normal:
+* Effect: Each time a Forerunner Officer successfully uses You men, snap to action!, you may choose one friendly Infantry or Artillery unit that is being issued an order by that Snap. The order issued to that unit cannot be Advance, Run, or Assault. A unit carrying an objective cannot be chosen. If the chosen unit is required to take an Order test (e.g., because it is pinned), resolve the test as normal:
    * Failed: The unit goes Down (or follows FUBAR if applicable) as normal and does not teleport.
    * Passed (or if no Order test is required): The unit teleports up to 12", ignoring intervening units and terrain. It may not end in impassable terrain, inside a building, outside the battlefield, or within 1" of any unit. Teleporting does not trigger enemy Ambush during this movement. After teleporting, the unit resolves its assigned order (Fire, Ambush, Down, or Rally) as normal.
 
@@ -24,81 +24,14 @@ Phase relays enable instantaneous redeployment.
 Counter-Assault Protocols
 Forged by centuries of war against the Flood, these combat routines allow Promethean units to read the momentum of an incoming assault and cut it apart before it reaches full force. 
 * Effect: When a unit with the Counter-Assault Protocols special rule is assaulted by enemy Infantry or Artillery while not Down, the attacking unit halves its total number of attack dice, rounding up, during the first round of that close combat only. 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Forerunner Armoury
+Reconstruction Matrix
+Forerunner units with Composed Beings may take a Reconstruction Matrix for +1pt per model.
+After this unit successfully receives a Rally order, roll one D6. If the result is equal to or greater than the unit’s Damage Value, one previously removed model from this unit may be returned, up to its original starting size. If the unit has Energy Shields, increase the required result by +1, to a maximum of 6+.
+The returned model must be placed in unit coherency and more than 1" from enemy units. If it cannot be placed, it is not returned.
+Custodian Command Node
+Forerunner Automaton Infantry units may take a Custodian Command Node for +1pt per model.
+This unit may be affected by You men, snap to action! as if it did not have the Automaton special rule.
 
 
 

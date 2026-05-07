@@ -1,4 +1,4 @@
-﻿Halo: Bolt Action Rulebook V3.1
+﻿Halo: Bolt Action Rulebook V3.2
 Introduction
 Welcome to Halo: Bolt Action, where the tactical depth of Bolt Action meets the epic universe of Halo. Command forces from the UNSC or Covenant in fast-paced tabletop battles, using infantry, vehicles, and air support to outmaneuver and defeat your opponent.
 Tabletop simulator mod here
@@ -466,7 +466,7 @@ After an ungarrisoned infantry unit takes at least one hit, roll a D6. On a 4+, 
 MG
 Weapons with the MG rule are treated as machine guns for all gameplay purposes. This includes interactions such as halved shots when mounted on vehicles and any rules or effects that specifically reference machine guns.
 Overcharge
-When a weapon with this rule shoots, declare that the weapon is overcharging. If so, shots ignore the target’s Energy Shields and Shield Wall rule and can pin vehicles up to armor 9+, even if they do not have the open-topped rule. However, overcharging applies a -1 to hit modifier.
+When a weapon with this rule shoots, declare that the weapon is overcharging. If so, shots ignore the target’s Energy Shields and Shield Wall rule and can pin vehicles up to armor 9+, even if they do not have the open-topped rule. However, overcharging applies a -1 to hit modifier. If you overcharge, you can’t Overheat.
 Overheat
 Before shooting, choose which weapons in the unit are overheated. Each overheated weapon gains +1 shot for this attack. After resolving all shooting, place 1 pin marker on the firing unit for each weapon that was overheated. Weapons do not have to be overheated simultaneously, you may mix overheated and normal fire, even with the same weapon type. 
 Paired
@@ -525,7 +525,7 @@ The first time a Green unit takes a casualty, roll a D6 (after resolving any mor
 Horror
 When a unit is assaulted by a Horror unit, it suffers a -1 morale penalty during the assault and must immediately take a morale check. If the check fails, the unit goes Down and cannot perform any reactions. Units with the Horror rule themselves are immune to this rule.
 Infiltrator
-These units gain an additional +1 to their cover saves if they have no Advance or Run order dice on them. Infiltrators may also benefit from special deployment rules.
+Gain an additional +1 to their cover saves against shooting attacks if they have no Advance or Run order dice on them. Infiltrators may also benefit from special deployment rules.
 Large Infantry
 Some models are significantly larger than standard soldiers. Units with the Large Infantry rule count as double when calculating transport capacity. Additionally, in close quarters the opponent never gains Defensive Position.
 Resilient
@@ -976,4 +976,7 @@ Q: For Enhanced Weapon Systems, does a natural 6 always trigger the +1 Penetrati
 
 Q: When a Carrier Form spawns 1D3 Infection Forms, what is the spawned unit’s original starting size for Flood Infection?  A: Use the number of models shown in the original unit’s army list Composition. A Carrier Form Team is listed as 1 model, so any Infection Forms spawned by it have a Flood Infection cap of 1 model, even if 2–3 Infection Forms were placed. 
 Q: What happens if a Flood unit and its enemy destroy each other in the same round of close quarters? A: If both units are completely destroyed in the same round of close quarters, the combat is treated as a draw and both units are removed. The Flood unit does not resolve Flood Infection, as no surviving Flood unit remains to be replenished. 
+Q: If a unit is Down and is assaulted while it has a rule like Resilient or MJOLNIR Biofoam Injectors, does it receive the Down bonus to its cover save in close quarters? A: No. Being Down does not provide or improve cover saves in close quarters, even if a rule gives the unit a cover save in close quarters. 
+
+
  | Page

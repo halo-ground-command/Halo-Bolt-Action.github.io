@@ -1,4 +1,4 @@
-﻿Armies of the Floodv3.1
+﻿Armies of the Floodv3.2
 
 Army Special Rules
 Living Nightmare
@@ -19,6 +19,100 @@ Flood presence corrupts and destabilizes synthetic minds, causing unpredictable 
    * 1-3: The enemy immediately receives 2 Pin markers.
    * 4-5: The enemy suffers –1 to hit for the rest of the turn.
    * 6: The enemy must take a morale check. If failed, roll on the FUBAR table; if passed, no effect.
+
+
+
+
+
+
+
+
+
+
+Flood Armoury
+Volatile Biomass
+A Carrier Form Team may take Volatile Biomass for +5pts.
+Increase the HE value of Explosive Biomass from HE (1") to HE (2"). Now it reaches up to 2".
+Burrowing Tendrils
+Flood Officer units that contain tendrils may take Burrowing Tendrils for +2pt per model. If taken, the unit gains the Infiltrator and Stealth special rules.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -48,6 +142,7 @@ Cost
 - Immobile: If no tendrils are present, the unit cannot move.
 - Wide Formation
 - Horror
+- Tough Fighters
 	Forward Observer
 Cost
 	Forward observer (air force or artillery)
@@ -330,7 +425,7 @@ Cost
 	Weapons
 	Explosive Biomass
 	Special Rules
-	- Suicide Charge: If this model successfully assaults an enemy unit, it is immediately destroyed, and the assaulted unit suffers a HE (1") hit. Being down does not halve hits for this attack.
+	- Suicide Charge: If this model successfully assaults an enemy unit, it is immediately destroyed, and explosive biomass takes effect.
 - Explosive Biomass: If this model is destroyed (by shooting, assault, or other means), all units within 1" suffer a HE (1") hit. Being down does not halve hits for this attack.
 - Spawn Infection Forms: When this unit is destroyed, immediately replace the model with a 1D3 Inexperienced Infection Forms unit. Place them as close as possible to the position where the Carrier Form was destroyed, while remaining at least 1" away from any other units. These Infection Forms lose all pins and use the same Order Die the Carrier Form unit had. If there is not enough space to place them all, place as many as possible. For scoring purposes, the Carrier Form and any Infection Forms spawned by this rule count as a single unit. 
 - Tank Hunters  
@@ -441,6 +536,8 @@ Cost
 - Flood Infection
 - Horror
 	
+
+
 
 
 
