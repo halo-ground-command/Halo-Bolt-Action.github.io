@@ -5246,6 +5246,24 @@ function purgeIllegalM301Selections(unit) {
   }
 }
 
+const COST_DISPLAY_VETERANCIES = ["Inexperienced", "Regular", "Veteran"];
+
+function getBaseCostDisplay(unit) {
+  if (!unit || !unit.costs) return "";
+
+  const costs = COST_DISPLAY_VETERANCIES.map(vet => {
+    const allowed = Array.isArray(unit.allowedVeterancy)
+      ? unit.allowedVeterancy.includes(vet)
+      : unit.costs[vet] !== undefined;
+
+    if (!allowed || unit.costs[vet] === undefined) return "—";
+
+    return unit.costs[vet];
+  });
+
+  return `(${costs.join("/") } pts)`;
+}
+
 // --- AUTO-INJECT DOCTRINE OPTION BLOCK TO ALL ELIGIBLE UNITS ---
 function injectDoctrineOptions(units, doctrineSet, triggerRule) {
   (units || []).forEach(unit => {
@@ -6319,7 +6337,7 @@ function populateUnitSelect() {
   units.forEach((unit, idx) => {
     let opt = document.createElement("option");
     opt.value = idx;
-    opt.textContent = unit.name || "Unnamed";
+    opt.textContent = `${unit.name || "Unnamed"} ${getBaseCostDisplay(unit)}`;
     unitSel.appendChild(opt);
   });
 
