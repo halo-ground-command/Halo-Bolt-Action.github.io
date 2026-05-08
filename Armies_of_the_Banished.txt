@@ -19,7 +19,7 @@ Banished leaders do not inspire loyalty—they enforce obedience through fear an
 * Effect: When a friendly Banished Infantry or Artillery unit fails an Order test while within 6″ of a friendly Banished Officer or Bloodhandler (including FUBAR), you may choose to remove one model from the unit and then re-roll the Order test. The second result stands as normal. This rule only applies to Infantry or Artillery units of three or more models.
 Ruthless Push
 Banished warbands press the attack through sheer brutality, even under heavy fire.
-* Effect: When a Banished Infantry or Artillery unit with one or more pin markers performs an Advance order, it may ignore the -1 to hit penalty for moving and shooting during that activation.
+* Effect: When a Banished Regular or Veteran Infantry unit with one or more pin markers performs an Advance order, any models armed with small arms may ignore the -1 to hit penalty for moving and shooting during that activation.
 
 
 
@@ -855,6 +855,8 @@ Cost
 
 
 
+
+
 Machine Gun Team 
 Cost
 	35pts (Inexperienced), 50pts (Regular), 65pts (Veteran)  
@@ -1368,8 +1370,6 @@ Cost
 	- Flak  
 - Multiple Launcher: Can only be used while the aircraft is landed.
 	
-
-
 
 
 

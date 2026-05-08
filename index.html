@@ -738,7 +738,7 @@ When a friendly Banished Infantry or Artillery unit fails an Order test while wi
 Ruthless Push
 
 - Effect:
-When a Banished Infantry or Artillery unit with one or more pin markers is issued an Advance order, it may ignore the -1 to hit penalty for moving and shooting during that activation.
+When a Banished Regular or Veteran Infantry unit with one or more pin markers performs an Advance order, any models armed with small arms may ignore the -1 to hit penalty for moving and shooting during that activation.
 `,
   "Forerunner": `
 Enhanced Weapon Systems
@@ -948,7 +948,26 @@ const UNSC_UNITS = [
     }
   },
   {
-    name: "Forward Observer",
+    name: "Forward Observer (Air force)",
+    type: "Infantry",
+    allowedVeterancy: ["Regular", "Veteran"],
+    costs: { Regular: 75, Veteran: 90 },
+    baseMen: 1,
+    maxMen: 3,
+    weapons: [
+      { name: "Pistol" },
+      { name: "Submachine Gun" },
+      { name: "DMR" },
+      { name: "Battle Rifle" },
+      { name: "Assault Rifle" }
+    ],
+    specialRules: ["Infiltrator", "For Humanity’s Survival!"],
+    options: {
+      extraMenCost: { Regular: 11, Veteran: 14 }
+    }
+  },
+  {
+    name: "Forward Observer (Artillery)",
     type: "Infantry",
     allowedVeterancy: ["Regular", "Veteran"],
     costs: { Regular: 75, Veteran: 90 },
@@ -1927,7 +1946,26 @@ const COVENANT_UNITS = [
     }
   },     
   {
-    name: "Forward Observer",
+    name: "Forward Observer (Air Force)",
+    type: "Infantry",
+    allowedVeterancy: ["Regular", "Veteran"],
+    costs: { Regular: 75, Veteran: 90 },
+    baseMen: 1,
+    maxMen: 3,
+    weapons: [
+      { name: "Plasma Pistol" },
+      { name: "Plasma Rifle" },
+      { name: "Needler" },
+      { name: "Carbine" },
+      { name: "Spiker" }
+    ],
+    specialRules: ["Infiltrator", "For The Great Journey!"],
+    options: {
+      extraMenCost: { Regular: 11, Veteran: 14 }
+    }
+  },
+  {
+    name: "Forward Observer (Artillery)",
     type: "Infantry",
     allowedVeterancy: ["Regular", "Veteran"],
     costs: { Regular: 75, Veteran: 90 },
@@ -2799,7 +2837,27 @@ const BANISHED_UNITS = [
     }
   },     
   {
-    name: "Forward Observer",
+    name: "Forward Observer (Air force)",
+    type: "Infantry",
+    allowedVeterancy: ["Regular", "Veteran"],
+    costs: { Regular: 75, Veteran: 90 },
+    baseMen: 1,
+    maxMen: 3,
+    weapons: [
+      { name: "Disruptor" },	  
+	  { name: "Stalker Rifle" },
+      { name: "Plasma Rifle" },
+      { name: "Needler" },
+      { name: "Pulse Carbine" },
+      { name: "Spiker" }
+    ],
+    specialRules: ["Infiltrator", "Forged In Chains"],
+    options: {
+      extraMenCost: { Regular: 11, Veteran: 14 }
+    }
+  },
+  {
+    name: "Forward Observer (Artillery)",
     type: "Infantry",
     allowedVeterancy: ["Regular", "Veteran"],
     costs: { Regular: 75, Veteran: 90 },
@@ -3594,7 +3652,7 @@ const FORERUNNER_UNITS = [
     }
   },
   {
-    name: "Watcher",
+    name: "Watcher (Air force)",
     type: "Infantry",
     allowedVeterancy: ["Regular", "Veteran"],
     costs: { Regular: 85, Veteran: 100 },
@@ -3609,7 +3667,30 @@ const FORERUNNER_UNITS = [
       "Automaton",
       "Energy Shield",
       "Flight",
-      { name: "Forward Observer", description: "Counts as an Air force or artillery forward observer." },
+      { name: "Forward Observer", description: "Counts as an Air force forward observer." },
+      { name: "Reconstruction Suite", description: "If a friendly Infantry or Artillery model/unit with Composed Beings or Automaton is within 6\" of the Watcher and takes damage from Small Arms fire, roll one die per point of damage; for each 6, ignore one point of damage." }
+    ],
+    options: {
+      extraMenCost: { Regular: 11, Veteran: 14 }
+    }
+  },
+  {
+    name: "Watcher (Artillery)",
+    type: "Infantry",
+    allowedVeterancy: ["Regular", "Veteran"],
+    costs: { Regular: 85, Veteran: 100 },
+    baseMen: 1,
+    maxMen: 3,
+    weapons: [
+      { name: "Sentinel Beam" },
+      { name: "Boltshot" }
+    ],
+    specialRules: [
+      "Infiltrator",
+      "Automaton",
+      "Energy Shield",
+      "Flight",
+      { name: "Forward Observer", description: "Counts as an Artillery forward observer." },
       { name: "Reconstruction Suite", description: "If a friendly Infantry or Artillery model/unit with Composed Beings or Automaton is within 6\" of the Watcher and takes damage from Small Arms fire, roll one die per point of damage; for each 6, ignore one point of damage." }
     ],
     options: {
@@ -4086,7 +4167,31 @@ const FLOOD_UNITS = [
     }
   },
   {
-    name: "Forward Observer",
+    name: "Forward Observer (Air force)",
+    type: "Infantry",
+    allowedVeterancy: ["Regular", "Veteran"],
+    costs: { Regular: 75, Veteran: 90 },
+    baseMen: 1,
+    maxMen: 3,
+    weapons: [
+      { name: "Assault Rifle" },
+      { name: "Plasma Rifle" },
+      { name: "Needler" },
+      { name: "Submachine Gun" },
+      { name: "Shotgun" },
+      { name: "Spiker" }
+    ],
+    specialRules: [
+      "Infiltrator",
+	  "Horror",
+      "Flood Infection"
+    ],
+    options: {
+      extraMenCost: { Regular: 13, Veteran: 16 }
+    }
+  },
+  {
+    name: "Forward Observer (Artillery)",
     type: "Infantry",
     allowedVeterancy: ["Regular", "Veteran"],
     costs: { Regular: 75, Veteran: 90 },
