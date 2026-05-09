@@ -495,7 +495,7 @@ window.vehicleSpecialDescriptions = {
   "Open-topped": "Pinned by small arms like a soft-skinned vehicle, automatically destroyed if damaged in assaults, and suffers +1 to damage rolls and damage table results when hit on top armor.",
   "Recce": "May react with a movement when targeted, reverse with advance at full speed.",
   "Reinforced Front Armour": "Front armor counts +1 higher.",
-  "Slow": "Advance 6\", Run 12\".",
+  "Slower": "Advance 6\", Run 12\".",
   "Slow Load": "Can only activate after another friendly unit; skip the first drawn dice if only Slow Load units remain.",
   "Turn on the Spot": "Free pivoting during moves.",
   "Turret Rear-Mounted Machine Gun": "Rear MG fires opposite direction of main turret weapon.",
@@ -668,6 +668,15 @@ Desperate Measures
 
 - Effect: 
 When a UNSC infantry or artillery unit is reduced to half or less of its initial starting strength (rounding up), the remaining models in that unit gain the Stubborn special rule. Units that already have Stubborn gain the Fanatics special rule instead. Units that already have Fanatics gain Energy Shields. If they already have Energy Shields, they gain Resilient instead.
+
+Reminder:
+Stubborn: Ignore pin modifiers on Morale checks, remember Morale checks are not Order tests.
+
+Fanatics: Ignore pin modifiers on Morale checks and are not routed by pins. If defeated in close quarters, fight again immediately until they win or are wiped out.
+
+Energy Shields: +1 harder to damage from shooting; 5+ cover save in the open; +1 to other cover saves. Remember rolls of 1 always fail.
+
+Resilient: Replaces Energy Shields/Shield Wall. Damage Value 6+; 5+ cover save in the open and close quarters; +2 to other cover saves. Remember rolls of 1 always fail.
 
 Experienced Commanders
 
@@ -2185,8 +2194,7 @@ const COVENANT_UNITS = [
     weapons: [{ name: "Explosive Charge" }],
     specialRules: [
        "Tank Hunters", "Infiltrator",
-	  { name: "Suicide Charge", description: "If this model successfully assaults an enemy unit and makes contact, it is immediately removed, and the assaulted unit either suffers a single hit with a Penetration value of +8 (Without any other modifiers), or HE 2"},
-      { name: "Extra Selection", description: "You may take up to 3 Suicide Anti-Tank Teams as a single choice in any platoon selector that allows an Anti-Tank Team. This does not prevent you from also taking a standard Anti-Tank Team." }
+	  { name: "Suicide Charge", description: "If this model successfully assaults an enemy unit and makes contact, it is immediately removed, and the assaulted unit either suffers a single hit with a Penetration value of +8 (Without any other modifiers), or HE 2"}
     ]
   },
   {
@@ -2474,7 +2482,7 @@ const COVENANT_VEHICLES = [
     damageValue: "8+ (Medium Walker)",
     transportCapacity: 0,
     specialRules: [
-      "Slow"
+      "Slower"
     ]
   },
 	{
@@ -3062,8 +3070,7 @@ const BANISHED_UNITS = [
     weapons: [{ name: "Explosive Charge" }],
 	specialRules: [
 	
-		{ name: "Suicide Charge", description: "If this model successfully assaults and makes contact, remove it; target suffers either a single +8 Pen hit (no other modifiers) or HE (2\")." },
-		{ name: "Extra Selection", description: "Up to 3 Suicide Teams may be taken as a single choice in a slot that allows an AT Team." }
+		{ name: "Suicide Charge", description: "If this model successfully assaults and makes contact, remove it; target suffers either a single +8 Pen hit (no other modifiers) or HE (2\")." }
 	],
 	options: {
 	squadUpgrades: {
@@ -3357,7 +3364,7 @@ const BANISHED_VEHICLES = [
     damageValue: "8+ (Medium Walker)",
     transportCapacity: 0,
     specialRules: [
-      "Slow"
+      "Slower"
     ]
   },
   {
@@ -4362,10 +4369,9 @@ const FLOOD_UNITS = [
       "Tank Hunters",
       "Infiltrator",
 	  "Horror",
-      { name: "Suicide Charge", description: "If this model successfully assaults an enemy unit, it is immediately destroyed, and explosive biomass takes effect." },
-      { name: "Explosive Biomass", description: "If this model is destroyed (by shooting, assault, or other means), all units within 1\" suffer a HE (1\") hit. Being down does not halve hits for this attack." },
-      { name: "Spawn Infection Forms", description: "When this unit is destroyed, immediately replace the model with a 1D3 Inexperienced Infection Forms unit. Place them as close as possible to the position where the Carrier Form was destroyed, while remaining at least 1\" away from any other units. These Infection Forms lose all pins and use the same Order Die the Carrier Form unit had. If there is not enough space to place them all, place as many as possible. For scoring purposes, the Carrier Form and any Infection Forms spawned by this rule count as a single unit." },
-      { name: "Extra Selection", description: "You may take up to 3 Carrier Form Teams as a single choice in any platoon selector that allows an Anti-Tank Team. This does not prevent you from also taking a standard Anti-Tank Team." }
+      { name: "Suicide Charge", description: " If this model successfully assaults an enemy unit, it is immediately destroyed, and explosive biomass takes effect. Additionally, while this unit is on Ambush, if an enemy Infantry or Artillery unit ends a movement within 6\" and line of sight of it, instead of firing, you may immediately flip its Ambush order to Run and declare an assault against that enemy unit before it has a chance to fire. " },
+      { name: "Explosive Biomass", description: "If this model is destroyed, the enemy unit it is fighting in close quarters suffers a HE (1\") hit. Being Down does not halve hits for this attack." },
+      { name: "Spawn Infection Forms", description: "When this unit is destroyed, immediately replace the model with a 1D3 Inexperienced Infection Forms unit. Place them as close as possible to the position where the Carrier Form was destroyed, while remaining at least 1\" away from any other units. These Infection Forms lose all pins and use the same Order Die the Carrier Form unit had. If there is not enough space to place them all, place as many as possible. For scoring purposes, the Carrier Form and any Infection Forms spawned by this rule count as a single unit." }
     ]
   },
   {
@@ -4470,7 +4476,7 @@ const FLOOD_VEHICLES = [
     specialRules: [
       "Assault",
       "Fist",
-      "Slow",
+      "Slower",
       { name: "Synaptic Relay", description: "If at least one Flood Officer is alive, this unit extends that officer’s command bubble to Flood Infantry and Artillery within 6\" of it, but with the morale bonus halved. For normal morale checks, affected units use the highest officer’s morale bonus available (halved). For Snap To via this relay, only the activating officer’s halved morale bonus is used, even if another officer on the field has a higher bonus." }
     ]
   }
@@ -4534,10 +4540,17 @@ function applyVolatileBiomassSpecialRules(unit, specialRules) {
   return (specialRules || []).map(rule => {
     const name = typeof rule === "string" ? rule.split(":")[0].trim() : rule?.name;
 
+    if (name === "Suicide Charge") {
+      return {
+        name: "Suicide Charge",
+        description: "If this model successfully assaults an enemy unit, it is immediately destroyed, and Volatile Biomass takes effect. Additionally, while this unit is on Ambush, if an enemy Infantry or Artillery unit ends a movement within 6\" and line of sight of it, instead of firing, you may immediately flip its Ambush order to Run and declare an assault against that enemy unit before it has a chance to fire."
+      };
+    }
+
     if (name === "Explosive Biomass") {
       return {
         name: "Volatile Biomass",
-        description: "If this model is destroyed by shooting, assault, or any other means, all units within 1\" suffer a HE (2\") hit. Being Down does not halve hits for this attack. Flying aircrafts ignore this rule."
+        description: "If this model is destroyed, the enemy unit it is fighting in close quarters suffers a HE (2\") hit. Being Down does not halve hits for this attack."
       };
     }
 
