@@ -31,10 +31,13 @@ Flood presence corrupts and destabilizes synthetic minds, causing unpredictable 
 
 Flood Armoury
 Volatile Biomass
-A Carrier Form Team may take Volatile Biomass for +5pts.
-Increase the HE value of Explosive Biomass from HE (1") to HE (2"). Now it reaches up to 2".
+A Carrier Form Team may take Volatile Biomass for +5pts. If taken, increase the HE value of Explosive Biomass from HE (1") to HE (2").
 Burrowing Tendrils
 Flood Officer units that contain tendrils may take Burrowing Tendrils for +2pt per model. If taken, the unit gains the Infiltrator and Stealth special rules.
+
+
+
+
 
 
 
@@ -425,8 +428,8 @@ Cost
 	Weapons
 	Explosive Biomass
 	Special Rules
-	- Suicide Charge: If this model successfully assaults an enemy unit, it is immediately destroyed, and explosive biomass takes effect.
-- Explosive Biomass: If this model is destroyed (by shooting, assault, or other means), all units within 1" suffer a HE (1") hit. Being down does not halve hits for this attack.
+	- Suicide Charge: If this model successfully assaults an enemy unit, it is immediately destroyed, and explosive biomass takes effect. Additionally, while this unit is on Ambush, if an enemy Infantry or Artillery unit ends a movement within 6" and line of sight of it, instead of firing, you may immediately flip its Ambush order to Run and declare an assault against that enemy unit before it has a chance to fire. 
+- Explosive Biomass: If this model is destroyed, the enemy unit it is fighting in close quarters suffers a HE(1") hit. Being Down does not halve hits for this attack. 
 - Spawn Infection Forms: When this unit is destroyed, immediately replace the model with a 1D3 Inexperienced Infection Forms unit. Place them as close as possible to the position where the Carrier Form was destroyed, while remaining at least 1" away from any other units. These Infection Forms lose all pins and use the same Order Die the Carrier Form unit had. If there is not enough space to place them all, place as many as possible. For scoring purposes, the Carrier Form and any Infection Forms spawned by this rule count as a single unit. 
 - Tank Hunters  
 - Infiltrator  
@@ -444,8 +447,6 @@ Cost
 - Flood Infection
 - Horror
 	
-
-
 
 
 
@@ -642,8 +643,6 @@ Cost
 - Slow
 - Synaptic Relay: If at least one Flood Officer is alive, this unit extends that officer’s command bubble to Flood Infantry and Artillery within 6" of it, but with the morale bonus halved. For normal morale checks, affected units use the highest officer’s morale bonus available (halved). For Snap To via this relay, only the activating officer’s halved morale bonus is used, even if another officer on the field has a higher bonus.
 	
-
-
 
 
 

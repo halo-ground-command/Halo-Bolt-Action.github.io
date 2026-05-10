@@ -90,7 +90,7 @@ M301 Grenade Launcher
 Marine, ODST and Spartan Infantry units can take M301 Grenade Launchers. For every full 4 models in the unit, one model armed with an Assault Rifle, Battle Rifle, or Infantry Flamethrower may take an M301 Grenade Launcher for +22pts.
 When the unit shoots, a model with an M301 Grenade Launcher must choose whether to fire its normal weapon or its M301 Grenade Launcher. This weapon uses the same weapon profile as a Grenade Launcher.
 MJOLNIR Biofoam Systems
-Spartan units may take MJOLNIR Biofoam Systems for +2pts per model.  If so, they have a 5+ cover save in the open, and a 5+ cover save in close quarters.
+Spartan units may take MJOLNIR Biofoam Systems for +2pts per model.  If they do so, they have a 5+ cover save in the open, and a 5+ cover save in close quarters.
 In addition, while the unit is Down, these models improve their cover saves by +3 instead of the normal +2, to a maximum of 2+, as rolls of 1 always fail.
 
 

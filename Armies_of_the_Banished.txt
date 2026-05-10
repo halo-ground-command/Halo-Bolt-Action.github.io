@@ -479,7 +479,7 @@ Cost
 - The squad can be given anti-tank grenades for +2pts per Brute 
 - The squad can be given Energy Shield Modules for +3pts per Brute
 - The squad may be given Engineers for +1pt per Brute 
-- If Engineers are taken, up to 1 man may have a Ravager for +34pts – another man becomes the assistant
+- If Engineers are taken, up to 1 Brute may have a Ravager for +34pts – another Brute becomes the assistant
 - The NCO may be given a Gravity Hammer for +1pt (This model rolls 2 dice in close combat instead of 1) 
 - Replace Stubborn by Fanatics for +1pt per Brute
 	Special Rules
@@ -961,7 +961,7 @@ Grenade Launcher Team
 Cost
 	26pts (Inexperienced), 40pts (Regular), 54pts (Veteran)  
 	Composition
-	2 Grunts 
+	2 Jackal
 	Weapons
 	1 Brute Shot
 	Options

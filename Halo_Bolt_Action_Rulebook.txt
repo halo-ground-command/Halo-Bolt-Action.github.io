@@ -505,7 +505,7 @@ Prometheans and other advanced AI mechanical constructs, often the result of bio
 Engineers
 When an Engineer unit assaults a building, the defenders do not benefit from the defensive position bonus.
 Energy Shield
-Units equipped with advanced energy shielding gain additional protection in battle. When targeted by shooting attacks, units with this rule increase their "to wound" difficulty by +1 (e.g., a weapon that would normally wound on a 4+ now wounds on a 5+). In addition, units with this rule have a 5+ cover save in the open and add +1 to their other cover saves.
+Units equipped with advanced energy shielding gain additional protection in battle. When targeted by shooting attacks, units with this rule increase their "to wound" difficulty by +1 (e.g., a weapon that would normally wound on a 4+ now wounds on a 5+). In addition, units with this rule have a 5+ cover save in the open and add +1 to their soft/hard cover saves.
 Fanatics
 Fanatics refuse to retreat or surrender, choosing instead to fight to the bitter end. They ignore negative morale modifiers from pin markers when taking morale checks. Fanatics are not automatically routed when their pin markers equal or exceed their morale value. In close quarters, if a Fanatic infantry/artillery unit is defeated, the fight is treated as a draw, and another round of combat is immediately fought. This continues until the Fanatics either win or are wiped out.
 Fast
@@ -529,7 +529,7 @@ Gain an additional +1 to their cover saves against shooting attacks if they have
 Large Infantry
 Some models are significantly larger than standard soldiers. Units with the Large Infantry rule count as double when calculating transport capacity. Additionally, in close quarters the opponent never gains Defensive Position.
 Resilient
-This rule replaces Energy Shields and Shield Wall. Units with the Resilient rule are exceptionally tough. They have a damage value of 6+, a 5+ cover save in the open or in Close Quarters and add +2 to their other cover saves.
+This rule replaces Energy Shields and Shield Wall. Units with the Resilient rule have a damage value of 6+, a 5+ cover save in the open or in Close Quarters and add +2 to their soft/hard cover saves.
 Shield Wall
 When a unit with the Shield Wall rule is in open ground, it benefits from a base 6+ cover save. If the unit goes Down in the open, this save improves by +2, becoming a 4+ cover save. When the unit is in cover, Shield Wall improves the cover save by 1—soft cover provides a 4+ save (instead of 5+), and hard cover provides a 3+ save (instead of 4+). If the unit is both in cover and Down, apply the usual +2 cover save. Rolls of 1 always fail, regardless of modifiers.
 Shirkers
