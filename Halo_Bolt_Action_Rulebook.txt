@@ -202,7 +202,7 @@ Type - SMALL ARMS
 	Pen
 	Special Rules
 	Pistol/Boltshot
-	6"
+	12"
 	1
 	-
 	–
@@ -511,7 +511,7 @@ Fanatics refuse to retreat or surrender, choosing instead to fight to the bitter
 Fast
 Units with the Fast rule have a base movement of 8 inches, allowing them to Run up to 16 inches.
 Fieldcraft
-Units with Fieldcraft treat rough terrain as open ground for movement. When they assault a unit through rough ground, the defender loses Defensive Position.
+Units with Fieldcraft treat rough terrain as open ground for movement. When they assault a unit through rough ground, the defender loses Defensive Position if it’s granted by that terrain.
 Flight
 These units can Advance up to 12 inches and Run up to 18 inches, ignoring terrain restrictions during their movement. However, they cannot end their move in impassable terrain, nor in rough ground if a run order was issued instead. If a unit with the Flight rule is ambushed or fired upon while flying, it cannot benefit from soft/hard cover saves. Infantry units with this rule may opt to move on the ground instead, following the standard movement rules for infantry. Units that use Flight cannot pick up or carry objectives on a Run order.
 Flood Infection
@@ -978,7 +978,6 @@ Q: For Enhanced Weapon Systems, does a natural 6 always trigger the +1 Penetrati
 
 Q: When a Carrier Form spawns 1D3 Infection Forms, what is the spawned unit’s original starting size for Flood Infection?  A: Use the number of models shown in the original unit’s army list Composition. A Carrier Form Team is listed as 1 model, so any Infection Forms spawned by it have a Flood Infection cap of 1 model, even if 2–3 Infection Forms were placed. 
 Q: What happens if a Flood unit and its enemy destroy each other in the same round of close quarters? A: If both units are completely destroyed in the same round of close quarters, the combat is treated as a draw and both units are removed. The Flood unit does not resolve Flood Infection, as no surviving Flood unit remains to be replenished. 
-Q: If a unit is Down and is assaulted while it has a rule like Resilient or MJOLNIR Biofoam Injectors, does it receive the Down bonus to its cover save in close quarters? A: No. Being Down does not provide or improve cover saves in close quarters, even if a rule gives the unit a cover save in close quarters. 
-
-
+Q: If a unit is Down and is assaulted while it has a rule like Resilient or MJOLNIR Biofoam Injectors, does it receive the Down bonus to its cover save in close quarters? A: No. Being Down does not provide or improve cover saves in point-blank and close quarters, even if a rule gives the unit a cover save in close quarters. 
+Q: If a unit with Fast assaults through rough ground or across an obstacle, does Fast affect how far it can assault?  A: Yes. When an assault crosses rough ground or an obstacle, the unit still uses a Run order, but its assault move is reduced to its Advance move value. To determine this, measure the shortest possible route between the closest assaulting model and the closest visible model in the target unit, going around impassable terrain as normal. If that shortest route crosses rough ground or an obstacle, the assault counts as going through terrain. So a normal Infantry unit would usually assault 6", a Fast Infantry unit would assault 8", and a Slow Infantry unit would assault 4". The attacker cannot choose a longer route just to clip or avoid rough ground/obstacles.
  | Page

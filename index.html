@@ -435,6 +435,8 @@ window.unitSpecialDescriptions = {
   "Artillery": "Artillery are support team weapons and are usually Fixed. A gun model and its crew form a single unit; crew must remain within 1\" of the gun. Light/medium guns may Run only 6\" when manhandled; heavy/super-heavy guns, heavy howitzers, and guns reduced to 1 crewman cannot be moved by crew (they may rotate on an Advance order as normal for Fixed). Platform-mounted/rotating-platform guns may pivot freely on a Fire order (effectively 360° arc). If all crew are killed, the gun is abandoned and may be re-crewed. Artillery cannot assault, but can be assaulted; if defeated in close combat, both gun and crew are destroyed.",
   "Behind Enemy Lines": "Ignores the -1 penalty when performing Reserve/Outflank order tests.",
   "Berserker": "When performing an assault, models gain +1 Attack die during the first round of that close combat. Additionally, if an Order test is failed (excluding FUBAR) and an enemy Infantry/Artillery unit is within assault reach, this unit must Run (Assault) the nearest eligible target. Otherwise resolve the failed test as normal (Down).",
+  "Platoon Commander": "+2 Morale within 6\". Snap: after a successful order other than Down, may issue up to 2 orders to friendly units within 6\".",
+  "Company Commander": "+4 Morale within 12\". Snap: after a successful order other than Down, may issue up to 4 orders to friendly units within 12\".",
   "Composed Beings": "Ignore Horror's -1 morale effect, immune to Flood Infection and cannot benefit from medics.",
   "Counter-Assault Protocols": "If this unit is assaulted by enemy Infantry or Artillery while not down, the attacking unit halves its total number of attack dice, rounding up, during the first round of that close combat only.",
   "Engineers": "When assaulting a building, defenders lose Defensive Position.",
@@ -443,7 +445,7 @@ window.unitSpecialDescriptions = {
   "Fanatics": "Ignore pin modifiers on morale checks and are not routed by pins. If defeated in close quarters, fight again immediately until they win or are wiped out.",
   "Fast": "Move 8\"; Run 16\".",
   "Flak": "Autofires at FAO called aircraft in arc and range. However against on table aircraft just ignore minus 1 to hit vs flying. Pintle weapons count as having Flak.", 
-  "Fieldcraft": "Treat rough terrain as open ground for movement. When assaulting through rough ground, defenders lose Defensive Position.",
+  "Fieldcraft": "Treat rough terrain as open ground for movement. When assaulting through rough ground, defenders lose Defensive Position gained from that Rough Ground.",
   "Strikes First": "Counts as having Defensive Position bonus in close quarters when performing an assault. If the opponent also has Defensive Position, Strikes First or a rule cancels this rule, then fight simultaneously.",
   "Flight": "Advance 12\"; Run 18\"; ignore terrain for movement. Cannot end in impassable terrain (or in rough ground after a Run). If ambushed/fired upon while flying, no soft/hard cover saves. Cannot pick up or carry objectives on a Run order. Infantry may instead move on the ground using normal movement rules.",
   "Flood Infection": "Automatons and Composed Beings are immune to this rule. When winning vs Infantry or Artillery in CQ, immediately roll one D6 per enemy model removed during and after combat. Each roll equal to or above this flood unit’s damage value returns a slain model (up to starting size). If the flood unit has Energy Shields, it increases the requirement by +1.",
@@ -914,7 +916,7 @@ const UNSC_UNITS = [
       { name: "Battle Rifle" },
       { name: "Assault Rifle" }
     ],
-    specialRules: ["For Humanity’s Survival!"],
+    specialRules: ["For Humanity’s Survival!", "Platoon Commander"],
     options: {
       extraMenCost: { Inexperienced: 7, Regular: 10, Veteran: 13 }
     }
@@ -935,7 +937,7 @@ const UNSC_UNITS = [
       { name: "Battle Rifle" },
       { name: "Assault Rifle" }
     ],
-    specialRules: ["For Humanity’s Survival!"],
+    specialRules: ["For Humanity’s Survival!", "Company Commander"],
     options: {
       extraMenCost: { Inexperienced: 7, Regular: 10, Veteran: 13 }
     }
@@ -1906,7 +1908,7 @@ const COVENANT_UNITS = [
       { name: "Carbine" },
       { name: "Spiker" }
     ],
-    specialRules: ["For The Great Journey!"],
+    specialRules: ["For The Great Journey!", "Platoon Commander"],
     options: {
       extraMenCost: { Inexperienced: 7, Regular: 10, Veteran: 13 }
     }
@@ -1927,7 +1929,7 @@ const COVENANT_UNITS = [
       { name: "Carbine" },
       { name: "Spiker" }
     ],
-    specialRules: ["For The Great Journey!"],
+    specialRules: ["For The Great Journey!", "Company Commander"],
     options: {
       extraMenCost: { Inexperienced: 7, Regular: 10, Veteran: 13 }
     }
@@ -2794,7 +2796,7 @@ const BANISHED_UNITS = [
       { name: "Pulse Carbine" },
       { name: "Spiker" }
     ],
-    specialRules: ["Forged In Chains"],
+    specialRules: ["Forged In Chains", "Platoon Commander"],
     options: {
       extraMenCost: { Inexperienced: 7, Regular: 10, Veteran: 13 }
     }
@@ -2816,7 +2818,7 @@ const BANISHED_UNITS = [
       { name: "Pulse Carbine" },
       { name: "Spiker" }
     ],
-    specialRules: ["Forged In Chains"],
+    specialRules: ["Forged In Chains", "Company Commander"],
     options: {
       extraMenCost: { Inexperienced: 7, Regular: 10, Veteran: 13 }
     }
@@ -3629,6 +3631,7 @@ const FORERUNNER_UNITS = [
       { name: "Sentinel Beam" }
     ],
     specialRules: [
+	  "Platoon Commander",
       "Flight",
       "Composed Beings",
       "Energy Shield",
@@ -3649,6 +3652,7 @@ const FORERUNNER_UNITS = [
       { name: "Sentinel Beam" }
     ],
     specialRules: [
+	  "Company Commander",
       "Flight",
       "Composed Beings",
       "Energy Shield",
@@ -4139,6 +4143,7 @@ const FLOOD_UNITS = [
       { name: "Unarmed" }
     ],
     specialRules: [
+	  "Platoon Commander",
       { name: "Tendrils", description: "Models that replace 'men' in the unit." },
       "Flood Infection",
 	  "Horror",
@@ -4162,6 +4167,7 @@ const FLOOD_UNITS = [
       { name: "Unarmed" }
     ],
     specialRules: [
+	  "Company Commander",
       { name: "Tendrils", description: "Models that replace 'men' in the unit." },
       "Flood Infection",
 	  "Horror",
