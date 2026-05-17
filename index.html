@@ -357,6 +357,7 @@ const allWeaponProfiles = {
   "Shardstorm Launcher": 'Range 36", Shots 6, Pen –, Supercombine',
   "Multiple Launcher": 'Range 36–72", Shots 1, Pen HE, Team, Fixed, Indirect Fire, ML, HE (3")',
   "Splinter Turret": 'Range 48", Shots 3, Pen +1, Team, Fixed, HE (1")',
+  "Unarmed": 'No ranged weapon',
 
   // If you keep using "Explosive Charge" as a weapon label in squads
   "Explosive Charge": 'Range – , Shots – , Pen +8, Suicide Charge (special)',
@@ -2037,6 +2038,32 @@ const COVENANT_UNITS = [
     ncoReplacement: {
       options: ["Plasma Pistol", "Needler", "Plasma Rifle"],
       costs: { "Needler": 3, "Plasma Rifle": 5 }
+    }
+  }
+},
+{
+  name: "Grunt Cannon Fodder Mob",
+  type: "Infantry",
+  allowedVeterancy: ["Inexperienced"],
+  costs: { Inexperienced: 120 },
+  baseMen: 20,
+  maxMen: 20,
+  requiresArmyBonus: "Cannon Fodder",
+  weapons: [{ name: "Unarmed" }],
+  specialRules: [
+    "Please Don’t Shoot Me!: If an enemy Infantry or Artillery unit targets a friendly Infantry or Artillery unit, and any number of shooting attacks would pass through or within 1\" of this unit while it is not Down, that unit must target this unit instead, if able. This rule does not apply to Indirect Fire.",
+    { name: "Limited", description: "May only take 1 per platoon, and only 2 in total per army." }
+  ],
+  options: {
+    squadUpgrades: {
+      "Shirkers": { cost: -2, grantsRule: "Shirkers" }
+    },
+    weaponReplacements: {
+      "Plasma Pistols": { max: 19, cost: 4, replaces: "Unarmed", grants: "Plasma Pistol" }
+    },
+    ncoReplacement: {
+      options: ["Unarmed", "Plasma Pistol"],
+      costs: { "Plasma Pistol": 4 }
     }
   }
 },
@@ -4883,7 +4910,20 @@ function buildFreeCannonFodderUnit() {
 function syncArmyBonusEffects() {
   window.armyList = (window.armyList || []).filter(unit => !unit.lockedByArmyBonus);
 
+  // Remove Grunt Cannon Fodder Mobs if Cannon Fodder is not selected
+  if (window.currentFaction === "Covenant" && window.selectedArmyBonus !== "Cannon Fodder") {
+    window.armyList = (window.armyList || []).filter(unit => unit.name !== "Grunt Cannon Fodder Mob");
+  }
+
+  // If Cannon Fodder is selected, enforce max 2 Grunt Cannon Fodder Mobs
   if (window.currentFaction === "Covenant" && window.selectedArmyBonus === "Cannon Fodder") {
+    let mobCount = 0;
+    window.armyList = (window.armyList || []).filter(unit => {
+      if (unit.name !== "Grunt Cannon Fodder Mob") return true;
+      mobCount++;
+      return mobCount <= 2;
+    });
+
     const freeUnit = buildFreeCannonFodderUnit();
     if (freeUnit) window.armyList.unshift(freeUnit);
   }
@@ -4893,6 +4933,7 @@ function onArmyBonusChange() {
   const sel = document.getElementById("armyBonusSelect");
   window.selectedArmyBonus = sel ? sel.value : "";
   syncArmyBonusEffects();
+  populateUnitSelect();
   renderArmyList();
 }
 
@@ -6279,6 +6320,13 @@ function getUnitsForSelector(faction) {
   // Normal behavior for all factions
   let base = (window.UNIT_LISTS?.[faction] || []).concat(window.VEHICLE_LISTS?.[faction] || []);
 
+  // Covenant army-bonus locked units
+  if (faction === "Covenant") {
+    base = base.filter(unit =>
+      !unit.requiresArmyBonus || unit.requiresArmyBonus === window.selectedArmyBonus
+    );
+  }
+
   // If not Flood, return normal list
   if (faction !== "Flood") return base;
 
@@ -6458,6 +6506,18 @@ function addSelectedUnit() {
   let units = getUnitsForSelector(faction);
   let unit = units[idx];
   if (!unit) return;
+	if (unit.name === "Grunt Cannon Fodder Mob") {
+	  if (window.currentFaction !== "Covenant" || window.selectedArmyBonus !== "Cannon Fodder") {
+		alert("Grunt Cannon Fodder Mob may only be taken if Cannon Fodder is selected.");
+		return;
+	  }
+
+	  const existingMobs = (window.armyList || []).filter(u => u.name === "Grunt Cannon Fodder Mob").length;
+	  if (existingMobs >= 2) {
+		alert("You may only take up to 2 Grunt Cannon Fodder Mobs per army.");
+		return;
+	  }
+	}
 
   // Use value from dropdown, as set by updateUnitOptions above
   let dropdownVeterancy = document.getElementById("veterancySelect").value;

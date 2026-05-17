@@ -1745,4 +1745,101 @@ Cost
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+EXTRA
+INFANTRY SQUADS AND TEAMS
+Grunt Cannon Fodder Mob 
+Cost
+	120pts (Inexperienced)
+	Composition
+	1 NCO and 19 grunts
+	Weapons
+	Unarmed
+	Options
+	- Any number of models may have a Plasma Pistol for +4pts  per model
+- The entire squad may be Shirkers at -2pts per model
+	Special Rules
+	- Unlock: May only be taken if the Covenant army selected Cannon Fodder. 
+- Shirkers : If Shirkers are taken
+- Limited: May only take 1 per platoon, and only 2 in total per army. 
+- Please Don’t Shoot Me!: If an enemy Infantry or Artillery unit targets a friendly Infantry or Artillery unit, and any number of shooting attacks would pass through or within 1" of this unit while it is not down, that unit must target this unit instead, if able. This rule does not apply to Indirect Fire.
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  | Page
