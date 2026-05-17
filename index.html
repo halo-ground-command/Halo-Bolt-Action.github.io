@@ -282,9 +282,9 @@ const allWeaponProfiles = {
   "Rifle": 'Range 24", Shots 1, Pen –, –',
   "Sentinel Beam": 'Range 24", Shots 1, Pen –, –',
   "Shock Rifle": 'Range 24", Shots 1, Pen –, Overcharge',
-  "Shotgun": 'Range 18", Shots 1, Pen –, Assault',
-  "Heatwave": 'Range 18", Shots 1, Pen –, Assault',
-  "Scattershot": 'Range 18", Shots 1, Pen –, Assault',
+  "Shotgun": 'Range 6"/18", Shots 2/1, Pen –, Assault',
+  "Heatwave": 'Range 6"/18", Shots 2/1, Pen –, Assault',
+  "Scattershot": 'Range 6"/18", Shots 2/1, Pen –, Assault',
   "Assault Rifle": 'Range 18", Shots 2, Pen –, Assault',
   "Suppressor": 'Range 18", Shots 2, Pen –, Assault',
   "Spike Rifle": 'Range 18", Shots 2, Pen –, Assault, Cover Negation',
@@ -406,16 +406,16 @@ allWeaponProfiles["Volatile Biomass"] = 'Range –, Shots –, Pen HE, Suicide C
 
 // --- Weapon Special Rule Descriptions ---
 const weaponSpecialDescriptions = {
-  "Assault": "No -1 to hit when moving and shooting. Models with an Assault weapon gain Tough Fighters: Re-roll failed rolls in close combat vs infantry, artillery and walkers with the Assault vehicle special rule.",
+  "Assault": "No -1 to hit when moving and shooting. Models with an Assault weapon gain Tough Fighters: When fighting in close quarters against Infantry, Artillery, or Assault Walkers, a unit may re-roll a number of failed melee rolls up to the number of friendly models with Tough Fighters taking part in that fight.",
   "Battery Charge": "Has a -1 penalty to hit when shooting.",
-  "Cover Negation": "When this weapon hits an Infantry or Artillery unit that is in soft cover and not Down, any natural 6 rolled to wound worsens the target’s cover save by 1, for that wound only.",
+  "Cover Negation": "When this weapon hits an Infantry or Artillery unit that is in soft/hard cover and not Down, any natural 6 rolled to Wound worsens the target’s cover save by 1, for that wound only.",
   "Fixed": "Fixed weapons can only fire within a 45-degree arc. A Run order must be used to reposition them.",
   "Flamethrower": "Automatically hits units in buildings/fortifications, inflicting D6 hits and +1 pin per hit. Always targets top armor on vehicles, and ignores -1 for long range. Units hit must pass a morale test or be destroyed. Chance to run out of fuel after use.",
   "HE": "Uses templates (1–4). Hits multiple models, causes pins based on template size, and uses the template’s PEN value.",
   "Howitzer": "Fires either direct with no minimum range or Indirect Fire (minimum range applies; starts hitting at 6+, improves each turn targeting same unit unless moving). Switching spotter also resets accuracy progression.",
   "Indirect Fire": "Fires indirectly starting on 6+ to hit, improving against the same target each turn. Uses the listed minimum range, hits vehicles on top armor, and resets if the firer moves or changes spotter.",
   "Knockback": "After an ungarrisoned infantry unit takes at least 1 hit, roll D6: on 4+, it gains 1 pin and must move 3\" directly away. If this would move it into impassable terrain, a building, a table edge or another unit, it stops 1\" short.",
-  "Overcharge": "Before shooting, choose Overcharge: ignores Energy Shield or Shield Wall rule, can pin vehicles up to armor 9+, but imposes a -1 to-hit penalty. A weapon using Overcharge cannot also use Overheat during the same shooting attack.",
+  "Overcharge": "Before shooting, choose Overcharge: can pin vehicles up to damage value 9+, ignores Energy Shield's +1 to wound difficulty and its +1 bonus to cover saves but imposes a -1 to-hit penalty.",
   "Overheat": "Before shooting, choose which weapons to overheat; each overheated weapon gains +1 shot. After shooting, place 1 pin on the firing unit for each overheated weapon.",
   "MG": "Behaves exactly like a standard machine gun for all game rules and modifiers.",
   "ML": "Always 6+ to hit, after resolving, each other enemy unit within 6\" is hit on a 6+, firer gains 1 pin after firing; towed counts as Light Howitzer; smoke: place D3-1 extra smoke markers within 6\" of the first.",
@@ -434,11 +434,12 @@ window.unitSpecialDescriptions = {
   "Automaton": "Cannot receive Ambush orders, ignore Horror's -1 morale effect and immune to Flood Infection, cannot benefit from medics or 'You men, snap to action!' orders.",
   "Artillery": "Artillery are support team weapons and are usually Fixed. A gun model and its crew form a single unit; crew must remain within 1\" of the gun. Light/medium guns may Run only 6\" when manhandled; heavy/super-heavy guns, heavy howitzers, and guns reduced to 1 crewman cannot be moved by crew (they may rotate on an Advance order as normal for Fixed). Platform-mounted/rotating-platform guns may pivot freely on a Fire order (effectively 360° arc). If all crew are killed, the gun is abandoned and may be re-crewed. Artillery cannot assault, but can be assaulted; if defeated in close combat, both gun and crew are destroyed.",
   "Behind Enemy Lines": "Ignores the -1 penalty when performing Reserve/Outflank order tests.",
-  "Berserker": "When performing an assault, models gain +1 Attack die during the first round of that close combat. Additionally, if an Order test is failed (excluding FUBAR) and an enemy Infantry/Artillery unit is within assault reach, this unit must Run (Assault) the nearest eligible target. Otherwise resolve the failed test as normal (Down).",
+  "Berserker": "When performing an assault, models gain one extra Attack die during the first round of that close combat. Additionally, if an Order test is failed (excluding FUBAR) and an enemy Infantry/Artillery unit is within assault reach, this unit must Run (Assault) the nearest eligible target. Otherwise resolve the failed test as normal (Down).",
   "Platoon Commander": "+2 Morale within 6\". Snap: after a successful order other than Down, may issue up to 2 orders to friendly units within 6\".",
   "Company Commander": "+4 Morale within 12\". Snap: after a successful order other than Down, may issue up to 4 orders to friendly units within 12\".",
   "Composed Beings": "Ignore Horror's -1 morale effect, immune to Flood Infection and cannot benefit from medics.",
   "Counter-Assault Protocols": "If this unit is assaulted by enemy Infantry or Artillery while not down, the attacking unit halves its total number of attack dice, rounding up, during the first round of that close combat only.",
+  "Deacon": "Upgrade for the NCO. The Deacon follows the rules for a Platoon Commander, except his Morale bonus bubble is only +1, and his You men, snap to action! may only issue an order to 1 other friendly Grunt/Jackal unit. The Deacon counts as an Officer, but is not a Officer HQ and does not fulfil the requirement for a Platoon Commander.",
   "Engineers": "When assaulting a building, defenders lose Defensive Position.",
   "Energy Shield": "+1 harder to damage from shooting; 5+ cover in the open; +1 to other cover saves. Remember rolls of 1 always fail.",
   "Energy Shields": "+1 harder to damage from shooting; 5+ cover in the open; +1 to soft/hard cover saves. Remember rolls of 1 always fail.",
@@ -455,6 +456,7 @@ window.unitSpecialDescriptions = {
   "Infiltrator": "+1 cover if stationary (no Advance/Run orders) against shooting attacks. Can use special deployment rules if scenario allows.",
   "Knight Commander": "Embedded officer for a Knight unit. Counts as a weaker Platoon Commander (+1 Morale; Snap To affects only 1 other unit). While alive, the unit ignores losing its NCO.",
   "Large Infantry": "Counts double for transport capacity. When this unit assaults or is assaulted, opponent loses Defensive Position.",
+  "Pathfinder": "After both sides finish setup but before the first turn, if this unit is in the battlefield, it may make a Run move. It cannot assault and cannot be targeted by enemies in Ambush during this move.",
   "Resilient": "Replaces Energy Shields/Shield Wall; Damage Value 6+; 5+ cover in open or CQ; +2 to soft/hard cover saves. Remember rolls of 1 always fail.",
   "Shield Wall": "6+ cover save in open ground, improved by +2 if unit is Down (4+ total). Improves other existing cover by one step. Remember rolls of 1 always fail.",
   "Shirkers": "Pins count double. Must always test for orders.",
@@ -467,15 +469,11 @@ window.unitSpecialDescriptions = {
   "Tank Hunters": "In assaults, use full anti-tank damage rules and ignore Tank Fear. Add +1 to damage rolls vs vehicles.",
   "Team Weapon": "Crew-served weapon. Crew count as unarmed and do not fire personal ranged weapons while operating it. Needs at least 2 crew to fire at full effect; if only 1 crewman remains, the weapon can still fire but suffers -1 to hit. Squad-based team weapons also need their loader within 1\" or they suffer -1 to hit.",
   "Tooth and Claw": "Rolls 3 dice instead of 1 per model in close combat.",
-  "Tough Fighters": "Re-roll failed rolls in close combat vs infantry, artillery and walkers with the Assault vehicle special rule.",
+  "Tough Fighters": "When fighting in close quarters against Infantry, Artillery, or Assault Walkers, a unit may re-roll a number of failed melee rolls up to the number of friendly models with Tough Fighters taking part in that fight.",
   "VISR": "Can see through smoke and ignores Stealth’s -1 to-hit penalty.",
   "War Sermon": "When this unit receives its order die (except Down), pick 1 friendly Covenant Infantry or Artillery unit within 6\" and roll a D6 (Inexperienced -1, Veteran +1). On a 4+, remove 1 pin from that unit.",
   "Wide Formation": "Models may maintain up to 2\" coherency (instead of 1\").",
-  "Plasma Sword": "In close combat, Officer/NCO rolls 2 dice instead of 1.",
-  "Gravity Hammer": "In close combat, Officer/NCO rolls 2 dice instead of 1.",
   "Melee Weapon": "In close combat, Officer/NCO rolls 2 dice instead of 1.",
-  "Plasma Swords": "Every model makes 2 attacks in close quarters instead of 1.",
-  "Gravity Hammers": "Every model makes 2 attacks in close quarters instead of 1.",
   "Melee Weapons": "Every model makes 2 attacks in close quarters instead of 1.",
   "Attached Caste Leader": "Embedded leader model added to a squad. The unit counts as ONE unit (one order die, one pin pool). Special rules don’t share between leader and squad (except: cancels Shirkers; unit ignores -1 morale for NCO dead; tests use highest veterancy while squad models remain). Shooting: casualties must be taken from non-leader models until they’re gone (excess doesn’t spill onto leader); HE/templates & snipers can hit the leader (snipers may pick it out as NCO). Close quarters: attacker allocates attacks to leader vs squad; only attacks directed at leader can remove it. If all non-leader models are removed (casualties or rout), leader breaks off and becomes a separate 1-model unit."
 };
@@ -495,7 +493,7 @@ window.vehicleSpecialDescriptions = {
   "Nimble": "Evasion save improves by +1, from 5+ to 4+.",
   "One-Man Turret": "Must pass order test to Advance, fires main gun or rear MG (not both).",
   "Open-topped": "Pinned by small arms like a soft-skinned vehicle, automatically destroyed if damaged in assaults, and suffers +1 to damage rolls and damage table results when hit on top armor.",
-  "Recce": "May react with a movement when targeted, reverse with advance at full speed.",
+  "Recce": "May react with a movement when targeted. Additionally, advancing in reverse doesn't halve its movement distance.",
   "Reinforced Front Armour": "Front armor counts +1 higher.",
   "Slower": "Advance 6\", Run 12\".",
   "Slow Load": "Can only activate after another friendly unit; skip the first drawn dice if only Slow Load units remain.",
@@ -508,7 +506,7 @@ window.vehicleSpecialDescriptions = {
 
 // --- Armoury Special Rule Descriptions ---
 window.unitSpecialDescriptions["MJOLNIR Biofoam Systems"] =
-  "5+ cover save in the open and close quarters. While Down, improves cover saves by +3 instead of +2, to a max of 2+; rolls of 1 always fail.";
+  "5+ cover save in the open, 5+ cover save in close quarters, and +1 to soft/hard cover saves.";
 
 window.unitSpecialDescriptions["M301 Grenade Launcher"] =
   "Carried in addition to the model’s other weapon. When shooting, that model may fire either the M301 or its other weapon, not both.";
@@ -669,16 +667,16 @@ const armyRulesText = {
 Desperate Measures
 
 - Effect: 
-When a UNSC infantry or artillery unit is reduced to half or less of its initial starting strength (rounding up), the remaining models in that unit gain the Stubborn special rule. Units that already have Stubborn gain the Fanatics special rule instead. Units that already have Fanatics gain Energy Shields. If they already have Energy Shields, they gain Resilient instead.
+When a UNSC infantry or artillery unit is reduced to half or less of its initial starting strength (rounding up), the remaining models in that unit gain the Stubborn special rule. Units that already have Stubborn gain the Fanatics special rule instead. Units that already have Fanatics gain MJOLNIR Biofoam Systems. If they already have MJOLNIR Biofoam Systems, they gain Energy Shields instead.
 
 Reminder:
 Stubborn: Ignore pin modifiers on Morale checks, remember Morale checks are not Order tests.
 
 Fanatics: Ignore pin modifiers on Morale checks and are not routed by pins. If defeated in close quarters, fight again immediately until they win or are wiped out.
 
-Energy Shields: +1 harder to damage from shooting; 5+ cover save in the open; +1 to soft/hard cover saves. Remember rolls of 1 always fail.
+MJOLNIR Biofoam Systems: 5+ cover save in the open, 5+ cover save in close quarters, and +1 to soft/hard cover saves.
 
-Resilient: Replaces Energy Shields/Shield Wall. Damage Value 6+; 5+ cover save in the open and close quarters; +2 to soft/hard cover saves. Remember rolls of 1 always fail.
+Energy Shields: +1 harder to damage from shooting; 5+ cover save in the open; +1 to soft/hard cover saves. Remember rolls of 1 always fail.
 
 Experienced Commanders
 
@@ -825,7 +823,7 @@ const COVENANT_DOCTRINES = {
     specialRules: ["Stubborn", "Fieldcraft", "Berserker", "Strong"],
     upgrades: [
       { name: "Energy Shields", cost: 3, grantsRule: "Energy Shields" },
-      { name: "Gravity Hammer (NCO/Officer only)", costFlat: 1, grantsRule: "Gravity Hammer", ncoOnly: true }
+      { name: "Melee Weapon (NCO/Officer only)", costFlat: 1, grantsRule: "Melee Weapon", ncoOnly: true }
     ]
   },
   "Elite": {
@@ -835,7 +833,7 @@ const COVENANT_DOCTRINES = {
     specialRules: ["Behind Enemy Lines", "Fanatics", "Energy Shields", "Fast", "VISR", "Strong", "Strikes First"],
     upgrades: [
       { name: "Stealth", cost: 1, grantsRule: "Stealth" },
-      { name: "Plasma Sword (NCO/Officer only)", costFlat: 1, grantsRule: "Plasma Sword", ncoOnly: true }
+      { name: "Melee Weapon (NCO/Officer only)", costFlat: 1, grantsRule: "Melee Weapon", ncoOnly: true }
     ]
   }
 };
@@ -850,7 +848,7 @@ const BANISHED_DOCTRINES = {
     upgrades: [
       { name: "Energy Shields", cost: 3, grantsRule: "Energy Shields" },
 	  { name: "Fanatics (replace Stubborn)", cost: 1, grantsRule: "Fanatics", replacesRule: "Stubborn" },
-      { name: "Gravity Hammer (NCO/Officer only)", costFlat: 1, grantsRule: "Gravity Hammer", ncoOnly: true }
+      { name: "Melee Weapon (NCO/Officer only)", costFlat: 1, grantsRule: "Melee Weapon", ncoOnly: true }
     ]
   },
   "Elite": {
@@ -860,7 +858,7 @@ const BANISHED_DOCTRINES = {
     specialRules: ["Behind Enemy Lines", "Fanatics", "Energy Shields", "Fast", "VISR", "Strong", "Strikes First"],
     upgrades: [
       { name: "Stealth", cost: 1, grantsRule: "Stealth" },
-      { name: "Plasma Sword (NCO/Officer only)", costFlat: 1, grantsRule: "Plasma Sword", ncoOnly: true }
+      { name: "Melee Weapon (NCO/Officer only)", costFlat: 1, grantsRule: "Melee Weapon", ncoOnly: true }
     ]
   }
 };
@@ -1012,9 +1010,12 @@ const UNSC_UNITS = [
   specialRules: [],
   options: {
     extraMenCost: { Inexperienced: 8, Regular: 11, Veteran: 14 },
-    squadUpgrades: {
-      "Anti-Tank Grenades": { cost: 2, grantsRule: "Tank Hunters" }
-    },
+	squadUpgrades: {
+	  "Anti-Tank Grenades": { cost: 2, grantsRule: "Tank Hunters" },
+	  "Engineers": { cost: 1, grantsRule: "Engineers" },
+	  "Army Airborne": { cost: 2, grantsRule: ["Behind Enemy Lines", "Stubborn"] },
+	  "Recon Squad": { cost: 2, grantsRule: ["Pathfinder", "Fieldcraft"] }
+	},
     weaponReplacements: {
       "Assault Rifles": { max: 6, cost: 5, replaces: "DMR", grants: "Assault Rifle" },
       "Shotguns":       { max: 3, cost: 2, replaces: "DMR", grants: "Shotgun" },
@@ -1063,7 +1064,8 @@ const UNSC_UNITS = [
   options: {
     extraMenCost: { Regular: 17, Veteran: 20 },
     squadUpgrades: {
-      "Anti-Tank Grenades": { cost: 2, grantsRule: "Tank Hunters" }
+      "Anti-Tank Grenades": { cost: 2, grantsRule: "Tank Hunters" },
+	  "Engineers": { cost: 1, grantsRule: "Engineers" }
     },
     weaponReplacements: {
       "Battle Rifles":   { max: 6, cost: -3, replaces: "Assault Rifle", grants: "Battle Rifle" },
@@ -1091,13 +1093,14 @@ const UNSC_UNITS = [
     squadUpgrades: {
       "Anti-Tank Grenades": { cost: 2, grantsRule: "Tank Hunters" },
       "Jump-Jet Packs": { cost: 1, grantsRule: "Flight" },
+	  "Engineers": { cost: 1, grantsRule: "Engineers" },
 	  "Melee Weapon (NCO only)": { cost: 1, grantsRule: "Melee Weapon", perModel: false }
     },
     weaponReplacements: {
       "DMRs":           { max: 5, cost: -5, replaces: "Assault Rifle", grants: "DMR" },
       "Battle Rifles":  { max: 5, cost: -3, replaces: "Assault Rifle", grants: "Battle Rifle" },
       "Submachine Guns":{ max: 9, cost: -2, replaces: "Assault Rifle", grants: "Submachine Gun" },
-      "Shotguns":       { max: 5, cost: -4, replaces: "Assault Rifle", grants: "Shotgun" },
+      "Shotguns":       { max: 5, cost: -3, replaces: "Assault Rifle", grants: "Shotgun" },
       "LMG":            { max: 2, cost: 9,  replaces: "Assault Rifle", grants: "LMG" }
     },
     ncoReplacement: {
@@ -1127,6 +1130,7 @@ const UNSC_UNITS = [
       "Jump-Jet Packs": { cost: 1, grantsRule: "Flight" },
       "Stealth Modules": { cost: 1, grantsRule: "Stealth" },
       "Energy Shield Modules": { cost: 3, grantsRule: "Energy Shields" },
+	  "Engineers": { cost: 1, grantsRule: "Engineers" },
       "Melee Weapon (NCO only)": { cost: 1, grantsRule: "Melee Weapon", perModel: false }
     },
     weaponReplacements: {
@@ -1166,17 +1170,18 @@ const UNSC_UNITS = [
 	  name: "Militia Squad",
 	  type: "Infantry",
 	  allowedVeterancy: ["Inexperienced"],
-	  costs: { Inexperienced: 55 },
+	  costs: { Inexperienced: 65 },
 	  baseMen: 5,
 	  maxMen: 12,
 	  weapons: [
 		{ name: "Assault Rifle" }
 	  ],
-	  specialRules: ["Green", "Shirkers"],
+	  specialRules: ["Green"],
 	  options: {
-		extraMenCost: { Inexperienced: 11 },
+		extraMenCost: { Inexperienced: 13 },
 		squadUpgrades: {
-		  "Anti-Tank Grenades": { cost: 2, grantsRule: "Tank Hunters" }
+		  "Anti-Tank Grenades": { cost: 2, grantsRule: "Tank Hunters" },
+		  "Shirkers": { cost: -2, grantsRule: "Shirkers" }
 		},
 		weaponReplacements: {
 		  "Submachine Guns": {
@@ -1185,7 +1190,7 @@ const UNSC_UNITS = [
 			replaces: "Assault Rifle",
 			grants: "Submachine Gun"
 		  },
-		  "Shotguns":          { max: 4, cost: -3, replaces: "Assault Rifle", grants: "Shotgun" }
+		  "Shotguns": { max: 4, cost: -3, replaces: "Assault Rifle", grants: "Shotgun" }
 		},
 		ncoReplacement: {
 		  options: ["Assault Rifle", "Submachine Gun", "Shotgun"],
@@ -2012,10 +2017,22 @@ const COVENANT_UNITS = [
     extraMenCost: { Inexperienced: 8, Regular: 11, Veteran: 14 },
     squadUpgrades: {
       "Anti-Tank Grenades": { cost: 2, grantsRule: "Tank Hunters" },
-      "Shirkers": { cost: -2, grantsRule: "Shirkers" }
+      "Shirkers": { cost: -2, grantsRule: "Shirkers" },
+      "Engineers": { cost: 1, grantsRule: "Engineers" },
+
+      "Deacon (0-1 per army)": {
+        cost: 15,
+        perModel: false,
+        grantsRule: [
+          "Deacon",
+          "Limited: Only 1 Deacon may be taken per army"
+        ],
+        allowedVeterancy: ["Veteran"],
+        note: "Upgrade the NCO to a Deacon. Counts as an Officer, but does not fulfill Platoon Commander requirement."
+      }
     },
     weaponReplacements: {
-      "Needlers": { max: 5, cost: 3, replaces: "Plasma Pistol", grants: "Needler" } 
+      "Needlers": { max: 5, cost: 3, replaces: "Plasma Pistol", grants: "Needler" }
     },
     ncoReplacement: {
       options: ["Plasma Pistol", "Needler", "Plasma Rifle"],
@@ -2038,6 +2055,7 @@ const COVENANT_UNITS = [
       "Anti-Tank Grenades": { cost: 2, grantsRule: "Tank Hunters" },
       "Shirkers (If taken as Inexperienced or Regular only)": { cost: -2, grantsRule: "Shirkers", condition: "Unit is not taken as veteran" },
       "Defense Gauntlets": { cost: 1, grantsRule: "Shield Wall", condition: "All models have only Plasma Pistols, Plasma Rifles, and Needlers" },
+	  "Engineers": { cost: 1, grantsRule: "Engineers" },
       "Skirmishers": { cost: 2, grantsRule: ["Fast", "Fieldcraft"], condition: "Squad does not take Defense Gauntlets" }
     },
     weaponReplacements: {
@@ -2056,29 +2074,30 @@ const COVENANT_UNITS = [
   name: "Brute Squad",
   type: "Infantry",
   allowedVeterancy: ["Regular", "Veteran"],
-  costs: { Regular: 95, Veteran: 110 },
+  costs: { Regular: 100, Veteran: 115 },
   baseMen: 5,
   maxMen: 9,
   weapons: [{ name: "Spiker" }],
   specialRules: ["Stubborn", "Berserker", "Fieldcraft", "Strong"],
   options: {
-    extraMenCost: { Regular: 19, Veteran: 22 },
+    extraMenCost: { Regular: 20, Veteran: 23 },
     squadUpgrades: {
       "Anti-Tank Grenades": { cost: 2, grantsRule: "Tank Hunters" },
       "Energy Shield Modules": { cost: 3, grantsRule: "Energy Shields" },
 	  "Jump-Jet Packs": { cost: 1, grantsRule: "Flight" },
-      "Gravity Hammer (NCO only)": { cost: 1, grantsRule: "Gravity Hammer", perModel: false }
+	  "Engineers": { cost: 1, grantsRule: "Engineers" },
+      "Melee Weapon (NCO only)": { cost: 1, grantsRule: "Melee Weapon", perModel: false }
     },
     weaponReplacements: {
-      "Maulers":           { max: 4, cost: -5,  replaces: "Spiker", grants: "Mauler" },
-      "Covenant Carbines": { max: 4, cost: -3,  replaces: "Spiker", grants: "Covenant Carbine" },
-      "Plasma Rifles":     { max: 2, cost: 0,   replaces: "Spiker", grants: "Plasma Rifle" },
-      "Brute Shot":        { max: 1, cost: 21,  replaces: "Spiker", grants: "Brute Shot" },
-      "Plasma Repeater":   { max: 1, cost: 9,   replaces: "Spiker", grants: "Plasma Repeater" }
+      "Maulers":           { max: 4, cost: -6,  replaces: "Spiker", grants: "Mauler" },
+      "Covenant Carbines": { max: 4, cost: -4,  replaces: "Spiker", grants: "Covenant Carbine" },
+      "Plasma Rifles":     { max: 2, cost: -1,   replaces: "Spiker", grants: "Plasma Rifle" },
+      "Brute Shot":        { max: 1, cost: 20,  replaces: "Spiker", grants: "Brute Shot" },
+      "Plasma Repeater":   { max: 1, cost: 8,   replaces: "Spiker", grants: "Plasma Repeater" }
     },
     ncoReplacement: {
       options: ["Spiker", "Mauler", "Covenant Carbine", "Plasma Rifle"],
-      costs: { "Mauler": -5, "Covenant Carbine": -3, "Plasma Rifle": 0 }
+      costs: { "Mauler": -6, "Covenant Carbine": -4, "Plasma Rifle": -1 }
     }
   }
 },
@@ -2095,6 +2114,9 @@ const COVENANT_UNITS = [
   ],
   options: {
     extraMenCost: { Inexperienced: 10, Regular: 13, Veteran: 16 },
+	squadUpgrades: {
+    "Engineers": { cost: 1, grantsRule: "Engineers" }
+    },
     weaponReplacements: {
       "Needlers": { max: 4, cost: 3, replaces: "Plasma Pistol", grants: "Needler" }
     },
@@ -2119,7 +2141,7 @@ const COVENANT_UNITS = [
       "Anti-Tank Grenades": { cost: 2, grantsRule: "Tank Hunters" },
       "Jump-Jet Packs": { cost: 1, grantsRule: "Flight" },
       "Stealth Modules": { cost: 1, grantsRule: "Stealth" },
-      "Plasma Sword (NCO only)": { cost: 1, grantsRule: "Plasma Sword", perModel: false }
+      "Melee Weapon (NCO only)": { cost: 1, grantsRule: "Melee Weapon", perModel: false }
     },
     weaponReplacements: {
       "Needlers":           { max: 5, cost: -2,  replaces: "Plasma Rifle", grants: "Needler" },
@@ -2131,7 +2153,7 @@ const COVENANT_UNITS = [
       options: ["Plasma Rifle", "Needler", "Covenant Carbine", "Concussion Rifle", "Plasma Repeater"],
       costs: { "Needler": -2, "Covenant Carbine": -3, "Concussion Rifle": 21, "Plasma Repeater": 9 }
     }
-    // ncoExtraUpgrades could go here if needed for "Plasma Sword"
+    // ncoExtraUpgrades could go here if needed for "Melee Weapon"
   }
 },
   {
@@ -2143,12 +2165,13 @@ const COVENANT_UNITS = [
     maxMen: 4,
     weapons: [{ name: "Plasma Rifle" }],
     specialRules: ["Infiltrator", "For The Great Journey!",
-	{ name: "Limited", description: "Only 1 may be taken per army." }
+	{ name: "Limited", description: "Only 1 may be taken per platoon." }
 	],
     options: {
       squadUpgrades: {
         "Stealth Modules": { cost: 1, grantsRule: "Stealth" },
-        "Anti-Tank Grenades": { cost: 2, grantsRule: "Tank Hunters" }
+        "Anti-Tank Grenades": { cost: 2, grantsRule: "Tank Hunters" },
+		"Energy Shield Modules": { cost: 3, grantsRule: "Energy Shields" }
       }
     }
   },
@@ -2177,9 +2200,9 @@ const COVENANT_UNITS = [
     costs: { Veteran: 80 },
     baseMen: 4,
     maxMen: 6,
-    weapons: [{ name: "Plasma Sword" }],
+    weapons: [{ name: "Melee Weapon" }],
     specialRules: [
-      "Behind Enemy Lines", "Fanatics", "Tough Fighters", "Energy Shields", "Fast", "VISR", "Plasma Swords", "Strikes First"
+      "Behind Enemy Lines", "Fanatics", "Tough Fighters", "Energy Shields", "Fast", "VISR", "Melee Weapons", "Strikes First"
     ],
     options: {
       extraMenCost: { Veteran: 20 },
@@ -2351,7 +2374,7 @@ const COVENANT_UNITS = [
       "Anti-Tank Grenades": { cost: 2, grantsRule: "Tank Hunters" },
       "Jump-Jet Packs": { cost: 1, grantsRule: "Flight" },
       "Stealth Modules": { cost: 1, grantsRule: "Stealth" },
-      "Plasma Sword (NCO only)": { cost: 1, grantsRule: "Plasma Sword", perModel: false }
+      "Melee Weapon (NCO only)": { cost: 1, grantsRule: "Melee Weapon", perModel: false }
     },
     weaponReplacements: { },
     ncoReplacement: {
@@ -2374,7 +2397,7 @@ const COVENANT_UNITS = [
     squadUpgrades: {
       "Anti-Tank Grenades": { cost: 2, grantsRule: "Tank Hunters" },
       "Energy Shield Modules": { cost: 2, grantsRule: "Energy Shields" },
-      "Gravity Hammer (NCO only)": { cost: 1, grantsRule: "Gravity Hammer", perModel: false }
+      "Melee Weapon (NCO only)": { cost: 1, grantsRule: "Melee Weapon", perModel: false }
     },
     weaponReplacements: { },
     ncoReplacement: {
@@ -2904,6 +2927,7 @@ const BANISHED_UNITS = [
     extraMenCost: { Inexperienced: 8, Regular: 11, Veteran: 14 },
     squadUpgrades: {
       "Anti-Tank Grenades": { cost: 2, grantsRule: "Tank Hunters" },
+	  "Engineers": { cost: 1, grantsRule: "Engineers" },
       "Shirkers": { cost: -2, grantsRule: "Shirkers" }
     },
     weaponReplacements: {
@@ -2911,7 +2935,7 @@ const BANISHED_UNITS = [
     },
 	ncoReplacement: {
 	  options: ["Disruptor", "Needler", "Plasma Rifle", "Spiker"],
-	  costs: { "Needler": 3, "Plasma Rifle": 5, "Spiker": 5 }
+	  costs: { "Needler": 3, "Plasma Rifle": 5, "Spiker": 6 }
 	}
   }
 },
@@ -2930,6 +2954,7 @@ const BANISHED_UNITS = [
       "Anti-Tank Grenades": { cost: 2, grantsRule: "Tank Hunters" },
       "Shirkers (If taken as Inexperienced or Regular only)": { cost: -2, grantsRule: "Shirkers", condition: "Unit is not taken as veteran" },
       "Defense Gauntlets": { cost: 1, grantsRule: "Shield Wall", condition: "All models have only Plasma Pistols, Plasma Rifles, and Needlers" },
+	  "Engineers": { cost: 1, grantsRule: "Engineers" },
       "Skirmishers": { cost: 2, grantsRule: ["Fast", "Fieldcraft"], condition: "Squad does not take Defense Gauntlets" }
     },
     weaponReplacements: {
@@ -2948,33 +2973,33 @@ const BANISHED_UNITS = [
   name: "Brute Squad",
   type: "Infantry",
   allowedVeterancy: ["Regular", "Veteran"],
-  costs: { Regular: 95, Veteran: 110 },
+  costs: { Regular: 100, Veteran: 115 },
   baseMen: 5,
   maxMen: 9,
   weapons: [{ name: "Spiker" }],
   specialRules: ["Stubborn", "Berserker", "Fieldcraft", "Strong"],
   options: {
-    extraMenCost: { Regular: 19, Veteran: 22 },
+    extraMenCost: { Regular: 20, Veteran: 23 },
 	squadUpgrades: {
 	  "Anti-Tank Grenades": { cost: 2, grantsRule: "Tank Hunters" },
 	  "Energy Shield Modules": { cost: 3, grantsRule: "Energy Shields" },
 	  "Jump-Jet Packs": { cost: 1, grantsRule: "Flight" },
 	  "Fanatics (replace Stubborn)": { cost: 1, grantsRule: "Fanatics", replacesRule: "Stubborn" },
 	  "Engineers": { cost: 1, grantsRule: "Engineers" },
-	  "Gravity Hammer (NCO only)": { cost: 1, grantsRule: "Gravity Hammer", perModel: false }
+	  "Melee Weapon (NCO only)": { cost: 1, grantsRule: "Melee Weapon", perModel: false }
 	},
     weaponReplacements: {
-		"Manglers": { max: 4, cost: -4, replaces: "Spiker", grants: "Mangler" },
-		"Pulse Carbines": { max: 4, cost: -2, replaces: "Spiker", grants: "Pulse Carbine" },
-		"Plasma Rifles": { max: 2, cost: 0, replaces: "Spiker", grants: "Plasma Rifle" },
-		"Brute Shot": { max: 1, cost: 21, replaces: "Spiker", grants: "Brute Shot" },
-		"Plasma Repeater": { max: 1, cost: 9, replaces: "Spiker", grants: "Plasma Repeater" },
-		"Skewer": { max: 2, cost: 10, replaces: "Spiker", grants: "Skewer" },
-		"Ravager (requires Engineers)": { max: 1, cost: 34, replaces: "Spiker", grants: "Ravager" }
+		"Manglers": { max: 4, cost: -5, replaces: "Spiker", grants: "Mangler" },
+		"Pulse Carbines": { max: 4, cost: -3, replaces: "Spiker", grants: "Pulse Carbine" },
+		"Plasma Rifles": { max: 2, cost: -1, replaces: "Spiker", grants: "Plasma Rifle" },
+		"Brute Shot": { max: 1, cost: 20, replaces: "Spiker", grants: "Brute Shot" },
+		"Plasma Repeater": { max: 1, cost: 8, replaces: "Spiker", grants: "Plasma Repeater" },
+		"Skewer": { max: 2, cost: 9, replaces: "Spiker", grants: "Skewer" },
+		"Ravager (requires Engineers)": { max: 1, cost: 33, replaces: "Spiker", grants: "Ravager" }
     },
 	ncoReplacement: {
 	  options: ["Spiker", "Mangler", "Pulse Carbine", "Plasma Rifle", "Skewer"],
-	  costs: { "Mangler": -4, "Pulse Carbine": -2, "Plasma Rifle": 0, "Skewer": 10 }
+	  costs: { "Mangler": -5, "Pulse Carbine": -3, "Plasma Rifle": -1, "Skewer": 9 }
 	} 
   }
 },
@@ -3015,7 +3040,7 @@ const BANISHED_UNITS = [
       "Anti-Tank Grenades": { cost: 2, grantsRule: "Tank Hunters" },
       "Jump-Jet Packs": { cost: 1, grantsRule: "Flight" },
       "Stealth Modules": { cost: 1, grantsRule: "Stealth" },
-      "Plasma Sword (NCO only)": { cost: 1, grantsRule: "Plasma Sword", perModel: false }
+      "Melee Weapon (NCO only)": { cost: 1, grantsRule: "Melee Weapon", perModel: false }
     },
 	weaponReplacements: {
 	"Needlers": { max: 5, cost: -2, replaces: "Plasma Rifle", grants: "Needler" },
@@ -3027,7 +3052,7 @@ const BANISHED_UNITS = [
       options: ["Plasma Rifle", "Needler", "Pulse Carbine", "Concussion Rifle", "Plasma Repeater"],
       costs: { "Needler": -2, "Pulse Carbine": -2, "Concussion Rifle": 21, "Plasma Repeater": 9 }
     }
-    // ncoExtraUpgrades could go here if needed for "Plasma Sword"
+    // ncoExtraUpgrades could go here if needed for "Melee Weapon"
   }
 },
   {
@@ -3055,8 +3080,8 @@ const BANISHED_UNITS = [
     costs: { Veteran: 72 },
     baseMen: 4,
     maxMen: 6,
-    weapons: [{ name: "Gravity Hammer" }],
-    specialRules: ["Fanatics", "Berserker", "Tough Fighters", "Fieldcraft", "Strikes First"],
+    weapons: [{ name: "Melee Weapon" }],
+    specialRules: ["Fanatics", "Berserker", "Tough Fighters", "Fieldcraft", "Strikes First", "Melee Weapons"],
     options: {
       extraMenCost: { Veteran: 18 },
       squadUpgrades: {
@@ -3230,7 +3255,7 @@ const BANISHED_UNITS = [
     squadUpgrades: {
       "Anti-Tank Grenades": { cost: 2, grantsRule: "Tank Hunters" },
       "Stealth Modules": { cost: 1, grantsRule: "Stealth" },
-      "Plasma Sword (NCO only)": { cost: 1, grantsRule: "Plasma Sword", perModel: false }
+      "Melee Weapon (NCO only)": { cost: 1, grantsRule: "Melee Weapon", perModel: false }
     },
     weaponReplacements: { },
     ncoReplacement: {
@@ -3256,7 +3281,7 @@ const BANISHED_UNITS = [
       "Energy Shield Modules": { cost: 3, grantsRule: "Energy Shields" },
       "Fanatics (replace Stubborn)": { cost: 1, grantsRule: "Fanatics", replacesRule: "Stubborn" },
       "Engineers": { cost: 1, grantsRule: "Engineers" },
-      "Gravity Hammer (NCO only)": { cost: 1, grantsRule: "Gravity Hammer", perModel: false }
+      "Melee Weapon (NCO only)": { cost: 1, grantsRule: "Melee Weapon", perModel: false }
     },
     weaponReplacements: { },
     ncoReplacement: {
@@ -3821,6 +3846,9 @@ const FORERUNNER_UNITS = [
     ],
     options: {
       extraMenCost: { Regular: 23, Veteran: 26 },
+	  squadUpgrades: {
+		"Engineers": { cost: 1, grantsRule: "Engineers" }
+		},
       weaponReplacements: {
         "Light Rifles": { max: 5, cost: -5, replaces: "Suppressor", grants: "Light Rifle" },
         "Scattershots": { max: 5, cost: -3, replaces: "Suppressor", grants: "Scattershot" }
@@ -3835,7 +3863,7 @@ const FORERUNNER_UNITS = [
     name: "Promethean Knight Team",
     type: "Infantry",
     allowedVeterancy: ["Veteran"],
-    costs: { Veteran: 58 },
+    costs: { Veteran: 60 },
     baseMen: 2,
     maxMen: 5,
     weapons: [
@@ -3852,12 +3880,12 @@ const FORERUNNER_UNITS = [
       "Behind Enemy Lines",
       "Fieldcraft",
       "Large Infantry",
-      { name: "Melee Weapons", description: "Models do an extra melee attack." },
+      "Melee Weapons",
       { name: "Phase Step", description: "If unactivated, not carrying an objective, and shot from >6\" away (excluding prelim bombardment/artillery barrage/air-strike), it may teleport up to 6\" as a reaction (no test required). Must end within 6\" of start, farther from attacker, and not in impassable/buildings/off-table/within 1\" of any unit; ignores intervening terrain/models; doesn’t trigger Ambush. Then set die to Down (or just goes Down if no legal spot)." },
       { name: "Limited", description: "Only up to 2 Promethean Knight Teams may be taken per platoon." }
     ],
     options: {
-      extraMenCost: { Veteran: 29 },
+      extraMenCost: { Veteran: 30 },
       weaponReplacements: {
         "Light Rifles": { max: 5, cost: -4, replaces: "Suppressor", grants: "Light Rifle" },
         "Scattershots": { max: 5, cost: -3, replaces: "Suppressor", grants: "Scattershot" },
@@ -3949,7 +3977,7 @@ const FORERUNNER_UNITS = [
     options: {
       squadUpgrades: {
         "Knight Lancers (Veteran only)": {
-          cost: 4,
+          cost: 5,
           perModel: true,
           grantsRule: ["Resilient", "Fieldcraft", "Melee Weapons", "Large Infantry", "Tough Fighters"],
           replacesRule: ["Energy Shields", "Fast"]
@@ -4139,7 +4167,7 @@ const FLOOD_UNITS = [
     name: "Officer - Key Mind Node (Platoon commander)",
     type: "Infantry",
     allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
-    costs: { Inexperienced: 19, Regular: 28, Veteran: 37 },
+    costs: { Inexperienced: 17, Regular: 26, Veteran: 35 },
     baseMen: 1,
     maxMen: 4,
     weapons: [
@@ -4163,7 +4191,7 @@ const FLOOD_UNITS = [
     name: "Officer - Proto-Gravemind (Company commander)",
     type: "Infantry",
     allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
-    costs: { Inexperienced: 40, Regular: 58, Veteran: 76 },
+    costs: { Inexperienced: 38, Regular: 56, Veteran: 74 },
     baseMen: 1,
     maxMen: 4,
     weapons: [
@@ -4254,10 +4282,10 @@ const FLOOD_UNITS = [
       "Needlers": { max: 13, cost: -2, replaces: "Assault Rifle", grants: "Needler" },
 	  "SMGs": { max: 13, cost: -2, replaces: "Assault Rifle", grants: "SMG" },
       "Plasma Rifles": { max: 13, cost: 0, replaces: "Assault Rifle", grants: "Plasma Rifle" },
-      "Spikers": { max: 13, cost: 0, replaces: "Assault Rifle", grants: "Spiker" },
+      "Spikers": { max: 13, cost: 1, replaces: "Assault Rifle", grants: "Spiker" },
       "Shotguns": { max: 13, cost: -3, replaces: "Assault Rifle", grants: "Shotgun" },
-      "Battle Rifles": { max: 4, cost: -3, replaces: "Assault Rifle", grants: "Battle Rifle" },
-      "Covenant Carbines": { max: 4, cost: -3, replaces: "Assault Rifle", grants: "Covenant Carbine" }
+	"Battle Rifles": { max: 6, cost: -3, replaces: "Assault Rifle", grants: "Battle Rifle" },
+	"Covenant Carbines": { max: 6, cost: -3, replaces: "Assault Rifle", grants: "Covenant Carbine" }
     },
 
     // NCO selector (missing piece)
@@ -4276,7 +4304,7 @@ const FLOOD_UNITS = [
         "Needler": -2,
 		"SMG": -2,
         "Plasma Rifle": 0,
-        "Spiker": 0,
+        "Spiker": 1,
         "Shotgun": -3,
         "Battle Rifle": -3,
         "Covenant Carbine": -3
@@ -4285,10 +4313,7 @@ const FLOOD_UNITS = [
 
     squadUpgrades: {
       "Anti-Tank Grenades": { cost: 2, grantsRule: "Tank Hunters" },
-
-      // veteran-only is best enforced in UI/validation if your data format supports restrictions
       "Energy Shield Modules": { cost: 3, grantsRule: "Energy Shields" },
-
       "Melee Weapon (NCO)": { cost: 1, perModel: false, grantsRule: "Melee Weapon" }
     }
   }
@@ -4319,7 +4344,7 @@ const FLOOD_UNITS = [
     name: "Tank Form Pack",
     type: "Infantry",
     allowedVeterancy: ["Veteran"],
-    costs: { Veteran: 46 },
+    costs: { Veteran: 48 },
     baseMen: 2,
     maxMen: 5,
     weapons: [
@@ -4339,7 +4364,7 @@ const FLOOD_UNITS = [
       { name: "Limited", description: "Only 1 Tank Form Pack may be taken per platoon." }
     ],
     options: {
-      extraMenCost: { Veteran: 23 }
+      extraMenCost: { Veteran: 24 }
     }
   },
   {
@@ -4348,13 +4373,15 @@ const FLOOD_UNITS = [
     allowedVeterancy: ["Inexperienced"],
     costs: { Inexperienced: 70 },
     baseMen: 10,
-    maxMen: 15,
+    maxMen: 20,
     weapons: [
       { name: "Unarmed" }
     ],
     specialRules: [
       "Flood Infection",
 	  "Horror",
+	  "Fieldcraft",
+	  "Behind Enemy Lines",
       { name: "Assimilate", description: "If this unit wins an assault against a target affected by Flood Infection, you can replace each surviving Infection Form with an unarmed Combat Form. If so, the unit immediately becomes Regular, becomes an unarmed Combat Form unit and retains its current order die." },  
       { name: "Mindless Hunger", description: "This unit cannot pick up, carry or control objectives. It may still contest objectives." }	  
     ],
@@ -6322,6 +6349,8 @@ function selectFaction(faction) {
 	});
 
 	enforceOnePerArmySquadUpgrade("Sacred Relic");
+	enforceOnePerArmySquadUpgrade("Deacon (0-1 per army)");
+	enforceOnePerArmySquadUpgrade("Knight Commander (0-1 per army)");
 
 	populateUnitSelect();
 	renderArmyList();
@@ -6660,9 +6689,14 @@ function renderInfantryEditFields(unit, unitData) {
   // Squad Upgrades (checkboxes)
   if (unitData.options && unitData.options.squadUpgrades) {
     html += `<div style="margin-top:10px;"><b>Squad Upgrades:</b><br>`;
-    Object.entries(unitData.options.squadUpgrades).forEach(([label, upgrade]) => {
-      let checked = unit.squadUpgrades && unit.squadUpgrades[label] ? "checked" : "";
-      let disabled = "";
+	Object.entries(unitData.options.squadUpgrades).forEach(([label, upgrade]) => {
+	  let checked = unit.squadUpgrades && unit.squadUpgrades[label] ? "checked" : "";
+	  let disabled = "";
+
+	  if (upgrade.allowedVeterancy && !upgrade.allowedVeterancy.includes(unit.veterancy)) {
+		disabled = "disabled";
+		checked = "";
+	  }
 
       if (upgrade.restriction === "notWithDefenseGauntlets" && unit.squadUpgrades && unit.squadUpgrades["Defense Gauntlets"])
         disabled = "disabled";
@@ -6961,6 +6995,8 @@ function saveEdit() {
         unit.squadUpgrades[cb.dataset.upgrade] = cb.checked;
       });
 	  enforceOnePerArmySquadUpgrade("Sacred Relic");
+	  enforceOnePerArmySquadUpgrade("Deacon (0-1 per army)");
+	  enforceOnePerArmySquadUpgrade("Knight Commander (0-1 per army)");
     }
 
     // NCO Weapon
@@ -7860,6 +7896,8 @@ function loadList() {
 		// Enforce one-per-army upgrades after loading saved JSON lists.
 		// This catches old/corrupt lists where more than one unit had Sacred Relic.
 		enforceOnePerArmySquadUpgrade("Sacred Relic");
+		enforceOnePerArmySquadUpgrade("Deacon (0-1 per army)");
+		enforceOnePerArmySquadUpgrade("Knight Commander (0-1 per army)");
 
 		// Rebuild weapon tables after any loaded-list cleanup.
 		(window.armyList || []).forEach(unit => {

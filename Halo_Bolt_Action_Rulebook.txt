@@ -242,8 +242,8 @@ Type - SMALL ARMS
 	-
 	Overcharge
 	Shotgun/Heatwave/Scattershot
-	18"
-	1
+	6"/18"
+	2/1
 	-
 	Assault
 	Assault Rifle/Suppressor
@@ -450,7 +450,7 @@ Weapons with the Assault rule suffer no penalty to hit when moving and shooting.
 Battery Charge
 Weapons with this rule require to charge up powerful energy attacks. As a result, they suffer a -1 to hit modifier when shooting.
 Cover Negation
-When this weapon hits an Infantry or Artillery unit that is in soft cover and not Down, any natural 6 rolled to wound worsens the target’s cover save by 1, for that wound only. 
+When this weapon hits an Infantry or Artillery unit that is in soft/hard cover and not Down, any natural 6 rolled to wound worsens the target’s cover save by 1, for that wound only. 
 Fixed
 Fixed weapons can only fire within a 45-degree arc. A Run order must be used to reposition them.
 Flamethrower
@@ -466,7 +466,7 @@ After an ungarrisoned infantry unit takes at least one hit, roll a D6. On a 4+, 
 MG
 Weapons with the MG rule are treated as machine guns for all gameplay purposes. This includes interactions such as halved shots when mounted on vehicles and any rules or effects that specifically reference machine guns.
 Overcharge
-When a weapon with this rule shoots, declare that the weapon is overcharging. If so, shots ignore the target’s Energy Shields and Shield Wall rule and can pin vehicles up to armor 9+, even if they do not have the open-topped rule. However, overcharging applies a -1 to hit modifier. If you overcharge, you can’t Overheat.
+When a weapon with this rule shoots, declare that the weapon is overcharging. If so, shots from that weapon ignore the target’s Energy Shields’ +1 to wound difficulty and the +1 bonus to cover saves. They can also pin vehicles up to damage value 9+, even if they do not have the open-topped rule. However, overcharging applies a -1 to hit modifier. 
 Overheat
 Before shooting, choose which weapons in the unit are overheated. Each overheated weapon gains +1 shot for this attack. After resolving all shooting, place 1 pin marker on the firing unit for each weapon that was overheated. Weapons do not have to be overheated simultaneously, you may mix overheated and normal fire, even with the same weapon type. 
 Paired
@@ -551,7 +551,7 @@ If a tank hunter unit wins an assault and scores damage against a vehicle, the e
 Tooth and Claw
 Models with the Tooth and Claw special rule excel in hand-to-hand combat, rolling three base attack dice instead of one in close quarters.
 Tough Fighters
-Units with the Tough Fighters rule are skilled in close combat. When attacks from a model with this rule fail to hit/inflict damage during close quarters combat against infantry, artillery or assault walkers it may re-roll failed melee rolls.
+When fighting in close quarters against Infantry, Artillery, or Assault Walkers, a unit may re-roll a number of failed melee rolls up to the number of friendly models with Tough Fighters taking part in that fight. 
 VISR
 Units equipped with the Visual Intelligence System, Reconnaissance system have advanced sensors and targeting capabilities. Units with the VISR special rule can see through smoke, treating it as if it were not present when determining line of sight. Additionally, when targeting a unit with the Stealth rule, ignore the -1 to hit modifier from the Stealth rule.
 Wide Formation

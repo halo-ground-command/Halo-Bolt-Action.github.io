@@ -271,8 +271,9 @@ Cost
 	- Add up to 2 additional Soldiers for +23pts each (Regular) or +26pts each (Veteran)
 - Any model may replace Suppressor with Light Rifle for –5pts each
 - Any model may replace Suppressor with Scattershot for –3pts each
+- The squad can be given Engineers for +1pt per man
 	Special Rules
-	- Composed Beings
+	- Composed Beings                                - Engineers: If Engineers are taken
 - Energy Shields
 - Fanatics
 - VISR
@@ -340,17 +341,15 @@ Cost
 
 
 
-
-
 Promethean Knight Team
 Cost
-	58pts (Veteran)
+	60pts (Veteran)
 	Composition
 	1 NCO and 1 Knight
 	Weapons
 	Suppressors
 	Options
-	- Add up to 3 additional Knights for +29pts each (Veteran)
+	- Add up to 3 additional Knights for +30pts each (Veteran)
 - Any model may replace Suppressor with Light Rifle for –4pts each
 - Any model may replace Suppressor with Scattershot for –3pts each
 - One model may replace its Suppressor with an Incineration Cannon for +33pts
@@ -456,7 +455,7 @@ Cost
 	Weapons
 	Sniper has a Binary Rifle, spotter has a Boltshot
 	Options
-	- If taken as Veteran, the 2 soldiers can be upgraded to Knight Lancers, replacing the special rules Energy shields by Resilient and Fast by Fieldcraft. Additionally, the unit also gains the special rules Melee Weapons, Large infantry and Tough Fighters for +4pts per model.
+	- If taken as Veteran, the 2 soldiers can be upgraded to Knight Lancers, replacing the special rules Energy shields by Resilient and Fast by Fieldcraft. Additionally, the unit also gains the special rules Melee Weapons, Large infantry and Tough Fighters for +5pts per model.
 	Special Rules
 	- Team weapon
 - Sniper

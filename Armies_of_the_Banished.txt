@@ -46,14 +46,14 @@ Optional additional upgrades (Brute-only):
  – The squad may be given Energy Shields for +3pts per model. 
 
  –Replace Stubborn by Fanatics for +1pt per model.
-– The NCO/Officer may be given a Gravity Hammer for +1pt (This model rolls 2 dice in close combat instead of 1) 
+– The NCO/Officer may be given a Melee Weapon for +1pt (This model rolls 2 dice in close combat instead of 1) 
 ELITES
 Must be taken as Veteran.
 Gain the Behind Enemy Lines, Fanatics, Energy Shields, Fast, Strong, Strikes First and VISR special rules.
 Cost: +8pts per model.
 Optional additional upgrades (Elite-only):
  – The squad may be given Stealth for +1pts per model. 
-– The NCO/Officer may be given a Plasma Sword for +1pt (This model rolls 2 dice in close combat instead of 1) 
+– The NCO/Officer may be given a Melee Weapon for +1pt (This model rolls 2 dice in close combat instead of 1) 
 
 
 
@@ -89,6 +89,8 @@ Weapons with Shaped Charge do not gain +1 Penetration bonus for hitting this veh
 Trophy Plate Harness
 Veteran Banished Brute Infantry units may take Trophy Plate Harnesses for +1pt per model.
 Models with Trophy Plate Harnesses have a 6+ cover save in the open and a 6+ cover save in close quarters.
+
+
 
 
 
@@ -290,17 +292,16 @@ Cost
 	Options
 	- Add up to 7 additional Grunts for +8pts each (Inexperienced), +11pts each (Regular), or +14pts each (Veteran)  
 - The NCO and up to 5 additional Grunts may have Needlers instead of Plasma Pistols for +3pts each  
-- The NCO may have a Plasma Rifle/Spiker instead of Plasma Pistol for +5pts  
+- The NCO may have a Plasma Rifle instead of Plasma Pistol for +5pts  
+- The NCO may have a Spiker instead of Plasma Pistol for +6pts  
 - The squad can be given anti-tank grenades for +2pts per model 
 - The entire squad may be Shirkers at -2pts per model
+- The squad can be given Engineers for +1pt per man
 	Special Rules
 	- Tank Hunters: If anti-tank grenades are taken
 - Shirkers : If Shirkers are taken
+- Engineers: If Engineers is taken
 	
-
-
-
-
 
 
 
@@ -382,12 +383,14 @@ Cost
 - If all models only have Plasma Pistols/Disruptors, Plasma Rifles and Needlers, the squad may take Defense Gauntlets for +1pt per Jackal  
 - If the squad does not take Defense Gauntlets, it may be upgraded to Skirmishers for +2pts per Jackal  
 - If not taken as Veteran, the entire squad may be Shirkers at -2pts per model
+- The squad can be given Engineers for +1pt per man
 	Special Rules
 	- Tank Hunters: If anti-tank grenades are taken
 - Shield Wall: If Defense Gauntlets are taken
 - Fast: If Skirmishers are taken
 - Fieldcraft: If Skirmishers are taken
 - Shirkers : If Shirkers are taken
+- Engineers: If Engineers are taken
 	Skimmer Squad
 Cost
 	50pts (Inexperienced), 65pts (Regular), 80pts (Veteran)  
@@ -458,29 +461,27 @@ Cost
 
 
 
-
-
 Brute Squad
 Cost
-	95pts (Regular), 110pts (Veteran) 
+	100pts (Regular), 115pts (Veteran) 
 	Composition
 	1 NCO and 4 Brutes  
 	Weapons
 	Spikers
 	Options
-	- Add up to 4 additional Brutes for +19pts each (Regular) or +22pts each (Veteran)  
-- The NCO and up to 4 Brutes may have Manglers instead of Spikers for –4pts each  
-- The NCO and up to 4 Brutes may have Pulse Carbines instead of Spikers for –2pt each  
-- The NCO and up to 2 Brutes may have Plasma Rifles instead of Spikers for no additional cost  
-- Up to 1 Brute may have a Brute Shot for +21pts  
-- Up to 1 Brute may have a Plasma Repeater for +9pts 
-- The NCO and up to 2 Brutes may have a Skewer for +10pts
+	- Add up to 4 additional Brutes for +20pts each (Regular) or +23pts each (Veteran)  
+- The NCO and up to 4 Brutes may have Manglers instead of Spikers for –5pts each  
+- The NCO and up to 4 Brutes may have Pulse Carbines instead of Spikers for –3pt each  
+- The NCO and up to 2 Brutes may have Plasma Rifles instead of Spikers for –1pt each  
+- Up to 1 Brute may have a Brute Shot for +20pts  
+- Up to 1 Brute may have a Plasma Repeater for +8pts 
+- The NCO and up to 2 Brutes may have a Skewer for +9pts
 - The squad may be given Jump-Jet Packs for +1pt per Brute 
 - The squad can be given anti-tank grenades for +2pts per Brute 
 - The squad can be given Energy Shield Modules for +3pts per Brute
 - The squad may be given Engineers for +1pt per Brute 
-- If Engineers are taken, up to 1 Brute may have a Ravager for +34pts – another Brute becomes the assistant
-- The NCO may be given a Gravity Hammer for +1pt (This model rolls 2 dice in close combat instead of 1) 
+- If Engineers are taken, up to 1 Brute may have a Ravager for +33pts – another Brute becomes the assistant
+- The NCO may be given a Melee Weapon for +1pt (This model rolls 2 dice in close combat instead of 1) 
 - Replace Stubborn by Fanatics for +1pt per Brute
 	Special Rules
 	- Stubborn
@@ -491,7 +492,7 @@ Cost
 - Flight: If Jump-Jet Packs are taken  
 - Tank Hunters: If anti-tank grenades are taken
 - Engineers: If Engineers are taken
-- Gravity Hammer: If taken, the model rolls 2 dice in close combat instead of 1
+- Melee Weapon: If taken, the model rolls 2 dice in close combat instead of 1
 	
 
 
@@ -576,7 +577,7 @@ Cost
 - The squad may be given Jump-Jet Packs for +1pt per Elite
 - The squad may be given anti-tank grenades for +2pts per Elite  
 - The squad may be given Stealth Modules for +1pt per Elite  
-- The NCO may be given a Plasma Sword for +1pt (This model rolls 2 dice in close combat instead of 1) 
+- The NCO may be given a Melee Weapon for +1pt (This model rolls 2 dice in close combat instead of 1) 
 	Special Rules
 	- Behind Enemy Lines                              - Flight: If Jump-Jet Packs are taken  
 - Fanatics  
@@ -587,7 +588,7 @@ Cost
 - Strikes First
 - Stealth: If Stealth Modules are taken  
 - Tank Hunters: If anti-tank grenades are taken 
-- Plasma Sword: If taken, the model rolls 2 dice in close combat instead of 1
+- Melee Weapon: If taken, the model rolls 2 dice in close combat instead of 1
 	
 
 
@@ -668,7 +669,7 @@ Cost
 	Composition
 	1 NCO and 3 Brutes 
 	Weapons
-	Gravity Hammers
+	Melee weapons
 	Options
 	- Add up to 2 additional Brutes for +18pts each  
 - The squad may be given Energy Shield Modules for +3pts per Brute 
@@ -679,7 +680,7 @@ Cost
 - Tough Fighters
 - Fieldcraft
 - Strikes First
-- Gravity Hammers: All models roll 2 dice in close combat instead of 1 
+- Melee Weapons: All models roll 2 dice in close combat instead of 1 
 - Energy Shields: If Energy Shield Modules are taken
 - Tank Hunters: If anti-tank grenades are taken
 	Hunter Pack

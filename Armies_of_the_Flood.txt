@@ -129,9 +129,9 @@ HEADQUARTERS UNITS
 Officer
 Cost
 	- Platoon commander (Key Mind Node):  
-19pts (Inexperienced), 28pts (Regular), 37pts (Veteran) 
+17pts (Inexperienced), 26pts (Regular), 35pts (Veteran) 
 - Company commander (Proto-Gravemind):  
-40pts (Inexperienced), 58pts (Regular), 76pts (Veteran)
+38pts (Inexperienced), 56pts (Regular), 74pts (Veteran)
 	Team
 	1 officer and up to 3 further tendrils
 	Weapons
@@ -238,11 +238,11 @@ Cost
   – Needlers for -2pts each  
   – SMGs for -2pts each 
   – Plasma rifles for +0pts each  
-  – Spikers for +0pts each
+  – Spikers for +1pts each
   – Shotguns for -3pts each
-- The NCO and up to 4 combat forms may replace their Assault Rifles with Battle rifles/Covenant Carbines for -3pts each
+- The NCO and up to 6 combat forms may replace their Assault Rifles with Battle rifles/Covenant Carbines for -3pts each
 - The unit may be given Anti-Tank Grenades for +2pts per model
-- If taken as Veteran, the unit may be given Energy Shield modules for +3pts per model
+- The unit may be given Energy Shield modules for +3pts per model
 - The NCO may be given a Melee Weapon (2 attacks in close combat) for +1pt
 	Special Rules
 	- Tank Hunters: If anti-tank grenades are taken
@@ -325,13 +325,13 @@ Cost
 
 Tank Form Pack
 Cost
-	46pts (Veteran) 
+	48pts (Veteran) 
 	Composition
 	1 NCO and 1 Tank form
 	Weapons
 	Unarmed
 	Options
-	- Add up to 3 additional Tank Forms for +23pts each
+	- Add up to 3 additional Tank Forms for +24pts each
 	Special Rules
 	- Flood Infection
 - Tooth and Claw
@@ -352,10 +352,12 @@ Cost
 	Weapons
 	- Unarmed
 	Options
-	- Add up to 5 additional infection forms for +7pts each (Inexperienced). 
+	- Add up to 10 additional infection forms for +7pts each (Inexperienced). 
 	Special Rules
 	- Flood Infection
 - Horror
+- Fieldcraft
+- Behind Enemy Lines
 - Assimilate: If this unit wins an assault against a target affected by Flood Infection, you can replace each surviving Infection Form with an unarmed Combat Form. If so, the unit immediately becomes Regular, becomes an unarmed Combat Form unit (Uses their rules instead) and retains its current order die. 
 - Mindless Hunger: This unit cannot pick up, carry or control objectives. It may still contest objectives. 
 	
@@ -612,8 +614,6 @@ Cost
 
 
 
-
-
 VEHICLES
 WALKERS
 Juggernaut 
@@ -643,8 +643,6 @@ Cost
 - Slow
 - Synaptic Relay: If at least one Flood Officer is alive, this unit extends that officer’s command bubble to Flood Infantry and Artillery within 6" of it, but with the morale bonus halved. For normal morale checks, affected units use the highest officer’s morale bonus available (halved). For Snap To via this relay, only the activating officer’s halved morale bonus is used, even if another officer on the field has a higher bonus.
 	
-
-
 
 
 

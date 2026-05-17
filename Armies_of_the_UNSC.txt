@@ -3,7 +3,7 @@
 Army Special Rules
 Desperate Measures
 When humanity is pushed to the brink, its soldiers rally with unwavering determination.
-* Effect: When a UNSC infantry or artillery unit is reduced to half or less of its initial starting strength (rounding up), the remaining models in that unit gain the Stubborn special rule. Units that already have Stubborn gain the Fanatics special rule instead. Units that already have Fanatics gain Energy Shields. If they already have Energy Shields, they gain Resilient instead.
+* Effect: When a UNSC infantry or artillery unit is reduced to half or less of its initial starting strength (rounding up), the remaining models in that unit gain the Stubborn special rule. Units that already have Stubborn gain the Fanatics special rule instead. Units that already have Fanatics gain MJOLNIR Biofoam Systems. If they already have MJOLNIR Biofoam Systems, they gain Energy Shields instead.
 Experienced Commanders
 UNSC officers are trained to manage diverse forces and battlefield conditions effectively.
 * Effect: When a UNSC Officer uses the ‘You men, snap to action!’ ability, they may draw and assign one additional Order Die from the bag to a friendly unit within range, following the normal rules for that ability. This increases the number of units that can be activated by one.
@@ -13,8 +13,6 @@ Spartans inspire exceptional performance from allied troops.
 Battle-Net Intrusion
 UNSC commanders use linked battle-net systems and tactical AI support to exploit brief windows of advantage before the enemy can respond.
 * Effect: Once per game, at the start of any Game Turn, the UNSC player may choose one Order Die to draw from the dice bag instead of drawing randomly. If this Order Die is assigned to an Officer, it cannot be used to trigger You Men, Snap to Action! If more than one UNSC player wishes to use this rule at the same time, roll off. The winner uses this rule that turn, and the loser must wait until a future turn to use it.
-
-
 
 
 
@@ -90,16 +88,9 @@ M301 Grenade Launcher
 Marine, ODST and Spartan Infantry units can take M301 Grenade Launchers. For every full 4 models in the unit, one model armed with an Assault Rifle, Battle Rifle, or Infantry Flamethrower may take an M301 Grenade Launcher for +22pts.
 When the unit shoots, a model with an M301 Grenade Launcher must choose whether to fire its normal weapon or its M301 Grenade Launcher. This weapon uses the same weapon profile as a Grenade Launcher.
 MJOLNIR Biofoam Systems
-Spartan units may take MJOLNIR Biofoam Systems for +2pts per model.  If they do so, they have a 5+ cover save in the open, and a 5+ cover save in close quarters.
-In addition, while the unit is Down, these models improve their cover saves by +3 instead of the normal +2, to a maximum of 2+, as rolls of 1 always fail.
-
-
-
-
-
-
-
-
+Spartan units may take MJOLNIR Biofoam Systems for +2pts per model.  If they do so, they have a 5+ cover save in the open, a 5+ cover save in close quarters, and a +1 to soft/hard cover saves.
+Pathfinder
+Units on the battlefield with the Pathfinder special rule are allowed to make a Run move after both sides have finished set-up, but before the first turn of the game. During this move, the unit cannot assault enemy units, and cannot be targeted by enemies in Ambush.
 
 
 
@@ -270,8 +261,13 @@ Cost
 - The NCO and up to 3 men may have Shotguns instead of DMRs for +2pts each
 - Up to 1 man may have a Light Machine Gun for +14pts
 - The squad can be given anti-tank grenades for +2pts per man
+- The squad can be given Engineers for +1pt per man
+- The squad can become Army Airborne, gaining Behind enemy Lines and Stubborn for +2pts per man
+- One Trooper Infantry Squad per platoon may be upgraded to a Recon Squad, gaining the Pathfinder and Fieldcraft special rules for +2pts per model.
 	Special Rules
-	- Tank Hunters: If anti-tank grenades are taken
+	- Tank Hunters: If A-T grenades are taken - Pathfinder: If Recon Squad is taken
+- Fieldcraft: If Recon Squad is taken - Behind Enemy Lines: If Airborne is taken
+- Engineers: If Engineers is taken - Stubborn: If Airborne is taken
 	Engineer Squad
 Cost
 	80pts (Regular), 95pts (Veteran)
@@ -286,18 +282,9 @@ Cost
 - Up to 1 man may have a Flamethrower for +24pts – another man becomes the assistant
 - The squad can be given anti-tank grenades for +2pts per man
 	Special Rules
-	- Engineers
-- Tank Hunters: If anti-tank grenades are taken
+	- Engineers - Tank Hunters: If anti-tank grenades are taken
 - For Humanity’s Survival!
 	
-
-
-
-
-
-
-
-
 
 
 
@@ -367,9 +354,9 @@ Cost
 - The NCO and up to 4 men may have Submachine Guns instead of Assault Rifles for -2pts each
 - Up to 2 men may have a Light Machine Gun for +9pts 
 - The squad can be given anti-tank grenades for +2pts per man
+- The squad can be given Engineers for +1pt per man
 	Special Rules
-	- Stubborn
-- Tank Hunters: If anti-tank grenades are taken
+	- Stubborn - Tank Hunters: If A-TG are taken - Engineers: If Engineers is taken
 	ODST Squad
 Cost
 	105pts (Veteran)
@@ -387,11 +374,11 @@ Cost
 - The squad can be given anti-tank grenades for +2pts per man
 - The squad can be given Jump-Jet Packs for +1pt per man
 - The NCO may be given a Melee Weapon for +1pt (This model rolls 2 dice in close combat instead of 1) 
+- The squad can be given Engineers for +1pt per man
 	Special Rules
-	- Behind Enemy Lines                                              - Stubborn
-- VISR
-- Tank Hunters: If anti-tank grenades are taken
-- Flight: If Jump-Jet Packs are taken
+	- Flight: If Jump-Jet Packs are taken                      - Stubborn
+- Engineers: If Engineers are taken                        - VISR                                           
+- Tank Hunters: If anti-tank grenades are taken - Behind Enemy Lines
 	
 
 
@@ -467,15 +454,13 @@ Cost
 - The squad can be given Stealth Modules for +1pt per man
 - The squad can be given Energy Shield Modules for +3pts per man
 - The NCO may be given a Melee Weapon for +1pt (This model rolls 2 dice in close combat instead of 1) 
+- The squad can be given Engineers for +1pt per man
 	Special Rules
-	- Fanatics                                                                                 - Strong 
-- Fast                                                                                        - Strikes First
-- VISR
-- Behind Enemy Lines
-- Stealth: If Stealth Modules are taken
-- Tank Hunters: If anti-tank grenades are taken
-- Energy Shields: If Energy Shield Modules are taken
-- Flight: If Jump-Jet Packs are taken
+	- Fanatics                                                                               - Strong 
+- Engineers: If Engineers are taken                                   - Fast                                                  
+- Tank Hunters: If anti-tank grenades are taken             - VISR                                                       - Stealth: If Stealth Modules are taken                            - Strikes First                     
+- Energy Shields: If Energy Shield Modules are taken   - Behind Enemy Lines 
+- Flight: If Jump-Jet Packs are taken         
 - Melee Weapon: If taken, the model rolls 2 dice in close combat instead of 1
 	ONI Operative Team
 Cost
@@ -548,18 +533,19 @@ Cost
 
 Militia Squad
 Cost
-	55pts (Inexperienced)
+	65pts (Inexperienced)
 	Composition
 	1 NCO and 4 men  
 	Weapons
 	Assault Rifles
 	Options
-	- Add up to 7 additional men for +11pts each  
+	- Add up to 7 additional men for +13pts each  
 - The NCO and up to 4 men may have Submachine Guns instead of Assault Rifles for -2pts each  
 - The NCO and up to 4 men may have Shotguns instead of Assault Rifles for -3pts each
 - The squad can be given anti-tank grenades for +2pts per man 
+- The entire squad may be Shirkers at -2pts per model
 	Special Rules
-	- Green                           - Shirkers
+	- Shirkers : If Shirkers are taken                                             - Green
 - Tank Hunters: If anti-tank grenades are taken
 	Machine Gun Team 
 Cost
@@ -584,8 +570,7 @@ Cost
 	Options
 	- Replace rocket launcher with spartan laser for +15pts
 	Special Rules
-	- Team Weapon  
-- Shaped charge  
+	- Team Weapon   
 - For Humanity’s Survival!
 	
 
