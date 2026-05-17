@@ -4163,53 +4163,56 @@ const FORERUNNER_VEHICLES = [
 // --- FLOOD UNITS ---
 const FLOOD_UNITS = [
   // Headquarters Units
-  {
-    name: "Officer - Key Mind Node (Platoon commander)",
-    type: "Infantry",
-    allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
-    costs: { Inexperienced: 17, Regular: 26, Veteran: 35 },
-    baseMen: 1,
-    maxMen: 4,
-    weapons: [
-      { name: "Unarmed" }
-    ],
-    specialRules: [
-	  "Platoon Commander",
-      { name: "Tendrils", description: "Models that replace 'men' in the unit." },
-      "Flood Infection",
-	  "Horror",
-      "Slow",
-      "Wide Formation",
-	  "Tough Fighters",
-      { name: "Immobile", description: "If no tendrils are present, the unit cannot move." }
-    ],
-    options: {
-      extraMenCost: { Inexperienced: 5, Regular: 8, Veteran: 11 }
-    }
-  },
-  {
-    name: "Officer - Proto-Gravemind (Company commander)",
-    type: "Infantry",
-    allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
-    costs: { Inexperienced: 38, Regular: 56, Veteran: 74 },
-    baseMen: 1,
-    maxMen: 4,
-    weapons: [
-      { name: "Unarmed" }
-    ],
-    specialRules: [
-	  "Company Commander",
-      { name: "Tendrils", description: "Models that replace 'men' in the unit." },
-      "Flood Infection",
-	  "Horror",
-      "Slow",
-      "Wide Formation",
-      { name: "Immobile", description: "If no tendrils are present, the unit cannot move." }
-    ],
-    options: {
-      extraMenCost: { Inexperienced: 5, Regular: 8, Veteran: 11 }
-    }
-  },
+	{
+	  name: "Officer - Key Mind Node (Platoon commander)",
+	  type: "Infantry",
+	  allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
+	  costs: { Inexperienced: 17, Regular: 26, Veteran: 35 },
+	  baseMen: 1,
+	  maxMen: 4,
+	  weapons: [
+		{ name: "Unarmed" }
+	  ],
+	  specialRules: [
+		"Platoon Commander",
+		{ name: "Tendrils", description: "Models that replace 'men' in the unit. They are considered to have Tough Fighters and the Melee Weapons special rules." },
+		"Flood Infection",
+		"Horror",
+		"Slow",
+		"Wide Formation",
+		"Tough Fighters",
+		"Strong",
+		{ name: "Immobile", description: "If no tendrils are present, the unit cannot move." }
+	  ],
+	  options: {
+		extraMenCost: { Inexperienced: 5, Regular: 8, Veteran: 11 }
+	  }
+	},
+	{
+	  name: "Officer - Proto-Gravemind (Company commander)",
+	  type: "Infantry",
+	  allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
+	  costs: { Inexperienced: 38, Regular: 56, Veteran: 74 },
+	  baseMen: 1,
+	  maxMen: 4,
+	  weapons: [
+		{ name: "Unarmed" }
+	  ],
+	  specialRules: [
+		"Company Commander",
+		{ name: "Tendrils", description: "Models that replace 'men' in the unit. They are considered to have Tough Fighters and the Melee Weapons special rules." },
+		"Flood Infection",
+		"Horror",
+		"Slow",
+		"Wide Formation",
+		"Tough Fighters",
+		"Strong",
+		{ name: "Immobile", description: "If no tendrils are present, the unit cannot move." }
+	  ],
+	  options: {
+		extraMenCost: { Inexperienced: 5, Regular: 8, Veteran: 11 }
+	  }
+	},
   {
     name: "Forward Observer (Air force)",
     type: "Infantry",

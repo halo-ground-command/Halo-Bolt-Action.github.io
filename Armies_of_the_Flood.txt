@@ -139,13 +139,14 @@ Cost
 	Options
 	- The officer may be accompanied by up to 3 tendrils at a cost of +5pts per tendril (Inexperienced), +8pts per tendril (Regular), or +11pts per tendril (Veteran)
 	Special Rules
-	- Tendrils: Models that replace "men" in the unit.
+	- Tendrils: Models that replace "men" in the unit. They are considered to have Tough Fighters and the Melee Weapons special rules.
 - Flood Infection
 - Slow
 - Immobile: If no tendrils are present, the unit cannot move.
 - Wide Formation
 - Horror
 - Tough Fighters
+- Strong
 	Forward Observer
 Cost
 	Forward observer (air force or artillery)
@@ -161,10 +162,6 @@ Cost
 - Flood Infection
 - Horror
 	
-
-
-
-
 
 
 
