@@ -87,9 +87,8 @@ Cost
 - Forward Observer: Counts as an Air force or artillery forward observer.
 - Flight
 - Reconstruction Suite: If a friendly Infantry or Artillery model/unit with Composed Beings or Automaton is within 6" of the Watcher and takes damage from Small Arms fire, roll one die per point of damage; for each 6, ignore one point of damage.
+- Hardlight Screen: While this unit is not Down, friendly Infantry and Artillery units behind it may treat it as hard cover instead of soft cover.
 	
-
-
 
 
 
@@ -371,6 +370,107 @@ Cost
 - Knight Commander (If Knight commander is taken): Representing a First or Second Lieutenant who leads his men directly, this officer model follows the rules of a Platoon Commander, except that his morale bonus is only +1 and his ‘You men, snap to action!’ only affects 1 other unit instead of 2. The unit does not suffer from the effects of losing its NCO while the officer is alive.
 - Limited: Only up to 2 Promethean Knight teams may be taken per platoon. 
 	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Promethean Soldier Commando Squad
+Cost
+	96pts (Regular), 108pts (Veteran)
+	Composition
+	1 NCO and 3 soldiers
+	Weapons
+	Suppressors
+	Options
+	- Add up to 2 additional Soldiers for +24pts each (Regular) or +27pts each (Veteran)
+- Any model may replace Suppressor with Light Rifle for –5pts each
+- Any model may replace Suppressor with Scattershot for –3pts each
+- One model may replace Suppressor with Splinter Turret for 17pts 
+- The squad can be given Engineers for +1pt per man
+	Special Rules
+	- Composed Beings                                                       - Infiltrator      
+- Energy Shields                                                             - Counter-Assault Protocols
+- Fanatics                                                                         - Strong
+- VISR                                                                                - Behind Enemy Lines
+- Fast
+- Limited: Only 1 Commando squad may be taken per platoon.
+- Engineers: If Engineers are taken
+- Splinter Turret: Heavy weapon: Range 48", Shots 3, Pen +1, Team, Fixed, HE (1")
+	Grenade Launcher Team
+Cost
+	49pts (Regular), 63pts (Veteran) 
+	Composition
+	2 Soldiers
+	Weapons
+	1 Cindershot
+	Special Rules
+	- Team Weapon  
+- Composed Beings
+- Energy Shields
+- Fanatics
+- VISR
+- Behind Enemy Lines
+- Fast
+- Strong
+- Counter-Assault Protocols
+	
+
+
+
+
 
 
 

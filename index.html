@@ -411,18 +411,19 @@ const weaponSpecialDescriptions = {
   "Battery Charge": "Has a -1 penalty to hit when shooting.",
   "Cover Negation": "When this weapon hits an Infantry or Artillery unit that is in soft/hard cover and not Down, any natural 6 rolled to Wound worsens the target’s cover save by 1, for that wound only.",
   "Fixed": "Fixed weapons can only fire within a 45-degree arc. A Run order must be used to reposition them.",
-  "Flamethrower": "Automatically hits units in buildings/fortifications, inflicting D6 hits and +1 pin per hit. Always targets top armor on vehicles, and ignores -1 for long range. Units hit must pass a morale test or be destroyed. Chance to run out of fuel after use.",
-  "HE": "Uses templates (1–4). Hits multiple models, causes pins based on template size, and uses the template’s PEN value.",
+  "Flamethrower": "Roll 1 die to hit. If it hits, an infantry Flamethrower inflicts D6 hits, while a vehicle-mounted Flamethrower inflicts D6+1 hits. No cover saves, including Down saves. Target takes D3+1 Pins and must pass Morale or be destroyed/knocked out. Hits vehicles on top armour and ignores long/point-blank Pen modifiers. Fuel may run out after use. Against buildings, needs an opening and may set normal buildings on fire on 4+ even if it misses.",
+  "HE": "Choose HE or AT shot before firing if the weapon has both. HE must be used vs infantry/artillery. HE uses a template: place it to hit as many target models as possible without touching friends. Other enemy units touched are hit but take no pins. Multiple HE shots from one unit cause only one HE pin result.",
   "Howitzer": "Fires either direct with no minimum range or Indirect Fire (minimum range applies; starts hitting at 6+, improves each turn targeting same unit unless moving). Switching spotter also resets accuracy progression.",
-  "Indirect Fire": "Fires indirectly starting on 6+ to hit, improving against the same target each turn. Uses the listed minimum range, hits vehicles on top armor, and resets if the firer moves or changes spotter.",
+  "Indirect Fire": "Cannot fire within minimum range. Starts hitting on 6+, improving each turn against the same unmoved target if the firer does not move. Ignores normal to-hit modifiers. No cover saves; Down halves HE hits. Hits vehicles on top armour. Resets if target/firer moves, target changes, or spotter changes.",
   "Knockback": "After an ungarrisoned infantry unit takes at least 1 hit, roll D6: on 4+, it gains 1 pin and must move 3\" directly away. If this would move it into impassable terrain, a building, a table edge or another unit, it stops 1\" short.",
   "Overcharge": "Before shooting, choose Overcharge: can pin vehicles up to damage value 9+, ignores Energy Shield's +1 to wound difficulty and its +1 bonus to cover saves but imposes a -1 to-hit penalty.",
   "Overheat": "Before shooting, choose which weapons to overheat; each overheated weapon gains +1 shot. After shooting, place 1 pin on the firing unit for each overheated weapon.",
+  "One-Shot": "The weapons can only be fired once during the game (replace the model after firing). Models within a unit carrying one-shot weapons can split fire against different targets from the other models.",
   "MG": "Behaves exactly like a standard machine gun for all game rules and modifiers.",
-  "ML": "Always 6+ to hit, after resolving, each other enemy unit within 6\" is hit on a 6+, firer gains 1 pin after firing; towed counts as Light Howitzer; smoke: place D3-1 extra smoke markers within 6\" of the first.",
+  "ML": "Never ranges in better than 6+. After placing the original template, all enemy units within 6\" of it also become targets; roll 6+ separately for each. Cannot fire if friends are within 6\" of the original template. Firer takes 1 pin.",
   "Range Finder": "At targets within 6\", only provides +1 point-blank bonus (instead of +2).",
   "Paired": "Paired machine guns do not halve their shots when mounted on a vehicle.",
-  "Shaped Charge": "Ignores the -1 Penetration penalty at long range and does not gain the +1 Penetration bonus at point-blank range.",
+  "Shaped Charge": "Ignores the -1 Penetration penalty at long range and does not gain the +1 Penetration bonus at point-blank range. Against units in buildings, if fired at a visible wall, it counts as HE (2\").",
   "Sniper": "Grants unit the Sniper special rule.",
   "Supercombine": "Each natural roll of 6 to hit allows rolling an extra die to wound against the same target, even when using HE.",
   "Team": "Requires at least two models to fire without penalty. If only one operator remains, suffers -1 to hit.",
@@ -432,13 +433,13 @@ const weaponSpecialDescriptions = {
 
 // --- Unit Special Rule Descriptions ---
 window.unitSpecialDescriptions = {
-  "Automaton": "Cannot receive Ambush orders, ignore Horror's -1 morale effect and immune to Flood Infection, cannot benefit from medics or 'You men, snap to action!' orders.",
+  "Automaton": "Cannot receive Ambush orders, ignore Horror's -1 morale effects and immune to Flood Infection, cannot benefit from medics or 'You men, snap to action!' orders.",
   "Artillery": "Artillery are support team weapons and are usually Fixed. A gun model and its crew form a single unit; crew must remain within 1\" of the gun. Light/medium guns may Run only 6\" when manhandled; heavy/super-heavy guns, heavy howitzers, and guns reduced to 1 crewman cannot be moved by crew (they may rotate on an Advance order as normal for Fixed). Platform-mounted/rotating-platform guns may pivot freely on a Fire order (effectively 360° arc). If all crew are killed, the gun is abandoned and may be re-crewed. Artillery cannot assault, but can be assaulted; if defeated in close combat, both gun and crew are destroyed.",
   "Behind Enemy Lines": "Ignores the -1 penalty when performing Reserve/Outflank order tests.",
   "Berserker": "When performing an assault, models gain one extra Attack die during the first round of that close combat. Additionally, if an Order test is failed (excluding FUBAR) and an enemy Infantry/Artillery unit is within assault reach, this unit must Run (Assault) the nearest eligible target. Otherwise resolve the failed test as normal (Down).",
   "Platoon Commander": "+2 Morale within 6\". Snap: after a successful order other than Down, may issue up to 2 orders to friendly units within 6\".",
   "Company Commander": "+4 Morale within 12\". Snap: after a successful order other than Down, may issue up to 4 orders to friendly units within 12\".",
-  "Composed Beings": "Ignore Horror's -1 morale effect, immune to Flood Infection and cannot benefit from medics.",
+  "Composed Beings": "Ignore Horror's -1 morale effects, immune to Flood Infection and cannot benefit from medics.",
   "Counter-Assault Protocols": "If this unit is assaulted by enemy Infantry or Artillery while not down, the attacking unit halves its total number of attack dice, rounding up, during the first round of that close combat only.",
   "Deacon": "Upgrade for the NCO. The Deacon follows the rules for a Platoon Commander, except his Morale bonus bubble is only +1, and his You men, snap to action! may only issue an order to 1 other friendly Grunt/Jackal unit. The Deacon counts as an Officer, but is not a Officer HQ and does not fulfil the requirement for a Platoon Commander.",
   "Engineers": "When assaulting a building, defenders lose Defensive Position.",
@@ -453,9 +454,11 @@ window.unitSpecialDescriptions = {
   "Flood Infection": "Automatons and Composed Beings are immune to this rule. When winning vs Infantry or Artillery in CQ, immediately roll one D6 per enemy model removed during and after combat. Each roll equal to or above this flood unit’s damage value returns a slain model (up to starting size). If the flood unit has Energy Shields, it increases the requirement by +1.",
   "Green": "First casualty triggers a D6 roll: 1 = gain D6 pins and go Down, 6 = unit upgraded to Regular morale (9).",
   "Gun Shield": "Crew of a gun with a gun shield count as in soft cover vs small arms hits from within the gun’s front arc.",
-  "Horror": "When this unit assaults an enemy, that enemy suffers -1 Morale during the assault and must immediately morale test, on a fail it goes Down (Loses Defensive position bonus) and cannot react. Units with Horror are immune to this rule.",
+  "Horror": "Units with Horror are immune. Assaulting a Horror unit requires an Order test at -1 morale, even if unpinned. When this unit assaults, the target takes a Morale check at -1 before reacting; if failed, it goes Down (loses Defensive Position).",
+  "Infested Terrain": "Once per army, one unit with this rule deployed fully within terrain using Infiltrator may make that terrain Infested Terrain. It cannot be a road, objective marker, bunker, impassable terrain, or terrain containing an objective. At the end of an enemy non-Flood Infantry/Artillery unit’s activation, if it moved across/through/touching it or has a model inside/touching it, it gains 1 Pin. A unit can only gain 1 Pin per turn from this rule.",
   "Infiltrator": "+1 cover if stationary (no Advance/Run orders) against shooting attacks. Can use special deployment rules if scenario allows.",
   "Knight Commander": "Embedded officer for a Knight unit. Counts as a weaker Platoon Commander (+1 Morale; Snap To affects only 1 other unit). While alive, the unit ignores losing its NCO.",
+  "Hardlight Screen": "While this unit is not Down, friendly Infantry and Artillery units drawing cover from this unit may treat that cover as hard cover instead of soft cover. The line of fire should pass through or within 1\" of this unit. This rule does not improve cover for the unit itself.",
   "Large Infantry": "Counts double for transport capacity. When this unit assaults or is assaulted, opponent loses Defensive Position.",
   "Pathfinder": "After both sides finish setup but before the first turn, if this unit is in the battlefield, it may make a Run move. It cannot assault and cannot be targeted by enemies in Ambush during this move.",
   "Resilient": "Replaces Energy Shields/Shield Wall; Damage Value 6+; 5+ cover in open or CQ; +2 to soft/hard cover saves. Remember rolls of 1 always fail.",
@@ -493,8 +496,8 @@ window.vehicleSpecialDescriptions = {
   "Medical Vehicle": "Treats infantry/artillery within 6\" as having medic support.",
   "Nimble": "Evasion save improves by +1, from 5+ to 4+.",
   "One-Man Turret": "Must pass order test to Advance, fires main gun or rear MG (not both).",
-  "Open-topped": "Pinned by small arms like a soft-skinned vehicle, automatically destroyed if damaged in assaults, and suffers +1 to damage rolls and damage table results when hit on top armor.",
-  "Recce": "May react with a movement when targeted. Additionally, advancing in reverse doesn't halve its movement distance.",
+  "Open-topped": "Pinned normally, including by small arms. Destroyed if damaged in close quarters. If hit on top armour, add +1 to the damage roll and +1 to the damage table result.",
+  "Recce": "Can reverse at full Advance speed instead of half. If unactivated or on Ambush, may make an Escape move when shot at; resolve the shot after the move. May also Escape from assaults starting over 6\" away. Cannot Escape while towing or against barrages/air-strikes.",
   "Reinforced Front Armour": "Front armor counts +1 higher.",
   "Slower": "Advance 6\", Run 12\".",
   "Slow Load": "Can only activate after another friendly unit; skip the first drawn dice if only Slow Load units remain.",
@@ -626,7 +629,7 @@ const ARMOURY_DEFS = {
 	  label: "Burrowing Tendrils",
 	  cost: 2,
 	  costMode: "perModel",
-	  grantsRules: ["Infiltrator", "Stealth"],
+	  grantsRules: ["Infiltrator", "Stealth", "Infested Terrain"],
 	  appliesTo: (unit, unitData) =>
 		window.currentFaction === "Flood" &&
 		unit.type === "Infantry" &&
@@ -776,6 +779,11 @@ The unit goes Down (or follows FUBAR if applicable) as normal and does not telep
 
   * Passed (or if no Order test is required):
 The unit teleports up to 12", ignoring intervening units and terrain. It may not end in impassable terrain, inside a building, outside the battlefield, or within 1" of any unit. Teleporting does not trigger enemy Ambush during this movement. After teleporting, the unit resolves its assigned order (Fire, Ambush, Down, or Rally) as normal. 
+
+Counter-Assault Protocols
+
+- Effect:
+When a unit with the Counter-Assault Protocols special rule is assaulted by enemy Infantry or Artillery while not Down, the attacking unit halves its total number of attack dice, rounding up, during the first round of that close combat only.
 `,
 
   "Flood": `
@@ -3734,7 +3742,8 @@ const FORERUNNER_UNITS = [
       "Energy Shield",
       "Flight",
       { name: "Forward Observer", description: "Counts as an Air force forward observer." },
-      { name: "Reconstruction Suite", description: "If a friendly Infantry or Artillery model/unit with Composed Beings or Automaton is within 6\" of the Watcher and takes damage from Small Arms fire, roll one die per point of damage; for each 6, ignore one point of damage." }
+      { name: "Reconstruction Suite", description: "If a friendly Infantry or Artillery model/unit with Composed Beings or Automaton is within 6\" of the Watcher and takes damage from Small Arms fire, roll one die per point of damage; for each 6, ignore one point of damage." },
+      "Hardlight Screen"
     ],
     options: {
       extraMenCost: { Regular: 11, Veteran: 14 }
@@ -3757,7 +3766,8 @@ const FORERUNNER_UNITS = [
       "Energy Shield",
       "Flight",
       { name: "Forward Observer", description: "Counts as an Artillery forward observer." },
-      { name: "Reconstruction Suite", description: "If a friendly Infantry or Artillery model/unit with Composed Beings or Automaton is within 6\" of the Watcher and takes damage from Small Arms fire, roll one die per point of damage; for each 6, ignore one point of damage." }
+      { name: "Reconstruction Suite", description: "If a friendly Infantry or Artillery model/unit with Composed Beings or Automaton is within 6\" of the Watcher and takes damage from Small Arms fire, roll one die per point of damage; for each 6, ignore one point of damage." },
+      "Hardlight Screen"
     ],
     options: {
       extraMenCost: { Regular: 11, Veteran: 14 }
@@ -3887,6 +3897,45 @@ const FORERUNNER_UNITS = [
     }
   },
   {
+    name: "Promethean Soldier Commando Squad",
+    type: "Infantry",
+    allowedVeterancy: ["Regular", "Veteran"],
+    costs: { Regular: 96, Veteran: 108 },
+    baseMen: 4,
+    maxMen: 6,
+    weapons: [
+      { name: "Suppressor" }
+    ],
+    specialRules: [
+      "Composed Beings",
+      "Infiltrator",
+      "Counter-Assault Protocols",
+      "Energy Shields",
+      "Fanatics",
+      "VISR",
+      "Behind Enemy Lines",
+      "Strong",
+      "Fast",
+      { name: "Limited", description: "Only 1 Promethean Soldier Commando Squad may be taken per platoon." }
+    ],
+    options: {
+      extraMenCost: { Regular: 24, Veteran: 27 },
+      squadUpgrades: {
+        "Engineers": { cost: 1, grantsRule: "Engineers" }
+      },
+      weaponReplacements: {
+        "Light Rifles": { max: 5, cost: -5, replaces: "Suppressor", grants: "Light Rifle" },
+        "Scattershots": { max: 5, cost: -3, replaces: "Suppressor", grants: "Scattershot" },
+        "Splinter Turret": { max: 1, cost: 17, replaces: "Suppressor", grants: "Splinter Turret" }
+      },
+      ncoReplacement: {
+        options: ["Suppressor", "Light Rifle", "Scattershot"],
+        costs: { "Light Rifle": -5, "Scattershot": -3 }
+      }
+    }
+  },
+
+  {
     name: "Promethean Knight Team",
     type: "Infantry",
     allowedVeterancy: ["Veteran"],
@@ -3945,6 +3994,29 @@ const FORERUNNER_UNITS = [
   },
 
   // Teams
+  {
+    name: "Grenade Launcher Team",
+    type: "Team",
+    allowedVeterancy: ["Regular", "Veteran"],
+    costs: { Regular: 49, Veteran: 63 },
+    baseMen: 2,
+    maxMen: 2,
+    weapons: [
+      { name: "Cindershot" }
+    ],
+    specialRules: [
+      "Team Weapon",
+      "Composed Beings",
+      "Counter-Assault Protocols",
+      "Energy Shields",
+      "Fanatics",
+      "VISR",
+      "Behind Enemy Lines",
+      "Strong",
+      "Fast"
+    ]
+  },
+
   {
     name: "Anti Tank Team",
     type: "Team",
@@ -4202,7 +4274,7 @@ const FLOOD_UNITS = [
 	  ],
 	  specialRules: [
 		"Platoon Commander",
-		{ name: "Tendrils", description: "Models that replace 'men' in the unit. They are considered to have Tough Fighters and the Melee Weapons special rules." },
+		{ name: "Tendrils", description: "Models that replace 'men' in the unit. They are considered to have the Melee Weapons special rules." },
 		"Flood Infection",
 		"Horror",
 		"Slow",
@@ -4227,7 +4299,7 @@ const FLOOD_UNITS = [
 	  ],
 	  specialRules: [
 		"Company Commander",
-		{ name: "Tendrils", description: "Models that replace 'men' in the unit. They are considered to have Tough Fighters and the Melee Weapons special rules." },
+		{ name: "Tendrils", description: "Models that replace 'men' in the unit. They are considered to have the Melee Weapons special rules." },
 		"Flood Infection",
 		"Horror",
 		"Slow",
@@ -4437,7 +4509,7 @@ const FLOOD_UNITS = [
 	  "Horror",
       { name: "Suicide Charge", description: " If this model successfully assaults an enemy unit, it is immediately destroyed, and explosive biomass takes effect. Additionally, while this unit is on Ambush, if an enemy Infantry or Artillery unit ends a movement within 6\" and line of sight of it, instead of firing, you may immediately flip its Ambush order to Run and declare an assault against that enemy unit before it has a chance to fire. " },
       { name: "Explosive Biomass", description: "If this model is destroyed, the enemy unit it is fighting in close quarters suffers a HE (1\") hit. Being Down does not halve hits for this attack." },
-      { name: "Spawn Infection Forms", description: "When this unit is destroyed, immediately replace the model with a 1D3 Inexperienced Infection Forms unit. Place them as close as possible to the position where the Carrier Form was destroyed, while remaining at least 1\" away from any other units. These Infection Forms lose all pins and use the same Order Die the Carrier Form unit had. If there is not enough space to place them all, place as many as possible. For scoring purposes, the Carrier Form and any Infection Forms spawned by this rule count as a single unit." }
+      { name: "Spawn Infection Forms", description: "When this unit is destroyed, immediately replace the model with a 3 model Inexperienced Infection Forms unit. Place them as close as possible to the position where the Carrier Form was destroyed, while remaining at least 1\" away from any other units. These Infection Forms lose all pins and use the same Order Die the Carrier Form unit had. If there is not enough space to place them all, place as many as possible. For scoring purposes, the Carrier Form and any Infection Forms spawned by this rule count as a single unit." }
     ]
   },
   {

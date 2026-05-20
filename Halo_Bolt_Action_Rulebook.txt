@@ -74,9 +74,7 @@ Damage to Passengers
 If a landed Aircraft is destroyed, the standard transport destruction rules apply (D6 hits, and any survivors dismount at the wreck location).
 If a flying Aircraft is destroyed, each unit aboard suffers D3 pin markers, then the Aircraft crashes, and the standard transport destruction rules are applied. If the crash location is not suitable for the Aircraft model to physically land, the wreck is placed in the closest legal landing position.
 If a flying Aircraft becomes On Fire, resolve the fire effect as normal. Once resolved, all transported units must disembark immediately.
-If a flying Aircraft would flee for any reason or be destroyed due to accumulated pin markers while carrying passengers, it must immediately land in the nearest legal position. It is then considered abandoned and becomes a wreck. The crew is removed, and all transported units dismount safely without taking further damage as per the normal rules.
-
-
+If a flying Aircraft would be destroyed due to accumulated pin markers while carrying passengers, it must immediately land in the nearest legal position. It is then considered abandoned and becomes a wreck. The crew is removed, and all transported units dismount safely without taking further damage as per the normal rules. If the Aircraft retreats off the table, its passengers are also destroyed.
 Assaults
 Aircraft can’t initiate assaults, whether flying or landed. Flying Aircraft are immune to assault. Landed Aircraft may be assaulted using the standard rules for vehicles and transports.
 Aircraft Damage Rules
@@ -107,7 +105,7 @@ D6
 	3
 	On Fire: Add 2 pin markers. Roll a morale check. If passed, extinguish the fire and take a Down order and land. If failed and the Aircraft is landed, the crew abandons the Aircraft , and it is destroyed. If the Aircraft is flying, treat it like "Destroyed" below.
 	4, 5 or 6
-	Destroyed: The Aircraft is destroyed and becomes a wreck. If flying, all units within 6 inches horizontally take D3 pin markers from falling debris.
+	Destroyed: The Aircraft is destroyed and becomes a wreck. If flying, all non-flying units within 6 inches take D3 pin markers from falling debris.
 	Note: If the Aircraft takes full damage and you get an effect that requires the Aircraft to land while there is no legal landing position available, add +1 to the roll for determining full damage effects.
 Walkers
 Walkers are a distinct class of vehicles, combining the mobility and resilience of armored vehicles with the tactical versatility of infantry. Their unique locomotion allows them to navigate terrain and engage in close-quarters combat in ways conventional vehicles cannot.
@@ -454,7 +452,7 @@ When this weapon hits an Infantry or Artillery unit that is in soft/hard cover a
 Fixed
 Fixed weapons can only fire within a 45-degree arc. A Run order must be used to reposition them.
 Flamethrower
-Flamethrowers automatically hit units inside buildings or fortifications and cause D6 hits per attack. Each hit inflicts an additional +1 Pin Marker in addition to damage. Flamethrowers always strike the top armor of vehicles, ignoring the -1 penetration modifier for long range and the +1 penetration bonus for point-blank range. Units hit by a flamethrower must make an immediate morale check, with failure resulting in the unit being destroyed.
+Roll 1 die to hit. If it hits,  it inflicts multiple hits. Flamethrower allow no cover saves. The target suffers D3+1 Pin markers total, and must immediately take a Morale check; if failed, the unit is destroyed or the vehicle is knocked out. Against vehicles, Flamethrowers always hit top armour and ignore both the -1 Pen modifier for long range and the +1 Pen modifier for point-blank range. After firing, roll for fuel: on 1–2 the Flamethrower runs out and cannot be used again. Against buildings, a normal building catches fire on 4+ even if the attack misses.
 HE (High Explosive)
 Weapons with the HE rule can fire explosive rounds that deal area damage using templates (ranging from 1" to 4"). Units under the template take damage, and multiple hits may be inflicted. HE weapons also cause pin markers proportional to the template size.
 Howitzer
@@ -517,13 +515,12 @@ These units can Advance up to 12 inches and Run up to 18 inches, ignoring terrai
 Flood Infection
 Immediately after a unit with this rule defeats an enemy Infantry or Artillery unit in close quarters, roll one D6 for each enemy model removed during and after that combat. For each roll equal to or greater than the damage value of the Flood unit, one slain model may be immediately returned to the unit, up to its original starting size. If the unit has Energy Shields, increase the requirement by +1 for the purposes of this rule. This ability has no effect against Automatons and Composed Beings, who are immune due to their machine nature.
 Green
-Green units represent inexperienced troops who are unpredictable on the battlefield. These units are rated as Inexperienced with a morale value of 8.
-The first time a Green unit takes a casualty, roll a D6 (after resolving any morale checks from the attack):
+Green units represent inexperienced troops who are unpredictable on the battlefield. These units are rated as Inexperienced with a morale value of 8. The first time a Green unit takes a casualty, roll a D6 (after resolving any morale checks from the attack):
    * 1: The unit gains additional D6 pin markers and goes Down.
    * 2–5: The unit continues as normal with no additional effects.
    * 6: The unit is upgraded to Regular with a morale value of 9 for the rest of the battle.
 Horror
-When a unit is assaulted by a Horror unit, it suffers a -1 morale penalty during the assault and must immediately take a morale check. If the check fails, the unit goes Down and cannot perform any reactions. Units with the Horror rule themselves are immune to this rule.
+Units with Horror are immune to Horror. A unit declaring an assault against a Horror unit must take an Order test at -1, even if unpinned. When a Horror unit assaults an enemy, the target suffers -1 Morale during the assault  and must immediately take a Morale check before reacting; if failed, it goes Down.
 Infiltrator
 Gain an additional +1 to their cover saves against shooting attacks if they have no Advance or Run order dice on them. Infiltrators may also benefit from special deployment rules.
 Large Infantry
@@ -802,7 +799,7 @@ D6
 	3
 	On Fire: Add 2 pin markers. Roll a morale check. If passed, extinguish the fire and take a Down order and land. If failed and the Aircraft is landed, the crew abandons the Aircraft , and it is destroyed. If the Aircraft is flying, treat it like "Destroyed" below.
 	4, 5 or 6
-	Destroyed: The Aircraft is destroyed and becomes a wreck. If flying, all units within 6 inches horizontally take D3 pin markers from falling debris.
+	Destroyed: The Aircraft is destroyed and becomes a wreck. If flying, all non-flying units within 6 inches take D3 pin markers from falling debris.
 	Note: If the Aircraft takes full damage and you get an effect that requires the Aircraft to land while there is no legal landing position available, add +1 to the roll for determining full damage effects.
 
 

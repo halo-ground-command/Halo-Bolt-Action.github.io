@@ -263,7 +263,7 @@ Cost
 - The squad can be given anti-tank grenades for +2pts per man
 - The squad can be given Engineers for +1pt per man
 - The squad can become Army Airborne, gaining Behind enemy Lines and Stubborn for +2pts per man
-- One Trooper Infantry Squad per platoon may be upgraded to a Recon Squad, gaining the Pathfinder and Fieldcraft special rules for +2pts per model.
+- The squad may be upgraded to a Recon Squad, gaining the Pathfinder and Fieldcraft special rules for +2pts per model.
 	Special Rules
 	- Tank Hunters: If A-T grenades are taken - Pathfinder: If Recon Squad is taken
 - Fieldcraft: If Recon Squad is taken - Behind Enemy Lines: If Airborne is taken
