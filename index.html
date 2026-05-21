@@ -287,8 +287,8 @@ const allWeaponProfiles = {
   "Scattershot": 'Range 6"/18", Shots 2/1, Pen –, Assault',
   "Assault Rifle": 'Range 18", Shots 2, Pen –, Assault',
   "Suppressor": 'Range 18", Shots 2, Pen –, Assault',
-  "Spike Rifle": 'Range 18", Shots 2, Pen –, Assault, Cover Negation',
-  "Spiker": 'Range 18", Shots 2, Pen –, Assault, Cover Negation',
+  "Spike Rifle": 'Range 18", Shots 2, Pen –, Assault, Cover Piercing',
+  "Spiker": 'Range 18", Shots 2, Pen –, Assault, Cover Piercing',
   "Plasma Rifle": 'Range 18", Shots 2, Pen –, Overheat, Assault',
   "Battle Rifle": 'Range 24"/30", Shots 2/1, Pen –, –',
   "Covenant Carbine": 'Range 24"/30", Shots 2/1, Pen –, –',
@@ -409,7 +409,7 @@ allWeaponProfiles["Volatile Biomass"] = 'Range –, Shots –, Pen HE, Suicide C
 const weaponSpecialDescriptions = {
   "Assault": "No -1 to hit when moving and shooting. Models with an Assault weapon gain Tough Fighters: When fighting in close quarters against Infantry, Artillery, or Assault Walkers, a unit may re-roll a number of failed melee rolls up to the number of friendly models with Tough Fighters taking part in that fight.",
   "Battery Charge": "Has a -1 penalty to hit when shooting.",
-  "Cover Negation": "When this weapon hits an Infantry or Artillery unit that is in soft/hard cover and not Down, any natural 6 rolled to Wound worsens the target’s cover save by 1, for that wound only.",
+  "Cover Piercing": "When this weapon hits an Infantry or Artillery unit that is in soft/hard cover and not Down, any natural 6 rolled to Wound worsens the target’s cover save by 1, for that wound only.",
   "Fixed": "Fixed weapons can only fire within a 45-degree arc. A Run order must be used to reposition them.",
   "Flamethrower": "Roll 1 die to hit. If it hits, an infantry Flamethrower inflicts D6 hits, while a vehicle-mounted Flamethrower inflicts D6+1 hits. No cover saves, including Down saves. Target takes D3+1 Pins and must pass Morale or be destroyed/knocked out. Hits vehicles on top armour and ignores long/point-blank Pen modifiers. Fuel may run out after use. Against buildings, needs an opening and may set normal buildings on fire on 4+ even if it misses.",
   "HE": "Choose HE or AT shot before firing if the weapon has both. HE must be used vs infantry/artillery. HE uses a template: place it to hit as many target models as possible without touching friends. Other enemy units touched are hit but take no pins. Multiple HE shots from one unit cause only one HE pin result.",
@@ -479,7 +479,10 @@ window.unitSpecialDescriptions = {
   "Wide Formation": "Models may maintain up to 2\" coherency (instead of 1\").",
   "Melee Weapon": "In close combat, Officer/NCO rolls 2 dice instead of 1.",
   "Melee Weapons": "Every model makes 2 attacks in close quarters instead of 1.",
-  "Attached Caste Leader": "Embedded leader model added to a squad. The unit counts as ONE unit (one order die, one pin pool). Special rules don’t share between leader and squad (except: cancels Shirkers; unit ignores -1 morale for NCO dead; tests use highest veterancy while squad models remain). Shooting: casualties must be taken from non-leader models until they’re gone (excess doesn’t spill onto leader); HE/templates & snipers can hit the leader (snipers may pick it out as NCO). Close quarters: attacker allocates attacks to leader vs squad; only attacks directed at leader can remove it. If all non-leader models are removed (casualties or rout), leader breaks off and becomes a separate 1-model unit."
+  "Attached Caste Leader": "Embedded leader model added to a squad. The unit counts as ONE unit (one order die, one pin pool). Special rules don’t share between leader and squad (except: cancels Shirkers; unit ignores -1 morale for NCO dead; tests use highest veterancy while squad models remain). Shooting: casualties must be taken from non-leader models until they’re gone (excess doesn’t spill onto leader); HE/templates & snipers can hit the leader (snipers may pick it out as NCO). Close quarters: attacker allocates attacks to leader vs squad; only attacks directed at leader can remove it. If all non-leader models are removed (casualties or rout), leader breaks off and becomes a separate 1-model unit.",
+  "Flood Burster": "When successfully entering from Reserve, one unit per turn may deploy by eruption instead of from a table edge: place it legally in open ground more than 9\" from enemies, then give it a Down order. It cannot perform more actions this turn.", 
+  "Patient Predators": "If this unit is in cover from enemy shooting while it has an Ambush order, improve its Cover Save by +1. Remember rolls of 1 always fail.",
+  "Brood Sac": "If this unit is not Down, when a friendly Flood Infantry unit successfully enters from Reserve, it may deploy by eruption instead of from a table edge. Remove the Spawner; it counts as destroyed. Place the entering unit with at least one model within 1\" of the Spawner’s former position, outside any building and with all models in a legal position according to the rules. The unit goes Down and takes no further action. If it cannot be placed, it remains off-table and the Spawner is not removed."
 };
 
 
@@ -525,13 +528,19 @@ window.unitSpecialDescriptions["Trophy Plate Harness"] =
   "6+ cover save in the open and close quarters.";
 
 window.unitSpecialDescriptions["Reconstruction Matrix"] =
-  "After a successful Rally order, roll a D6. If the result is equal to or above this unit’s Damage Value, return one removed model, up to starting size. Energy Shields worsen the required result by +1, max 6+.";
-
+  "After a successful Rally order, roll 1D6 for each missing model. If one or more results equals/exceeds this unit’s DV, return 1 removed model, up to starting size. Energy Shields worsen the required result by +1, max 6+. Max 1 model returned per Rally.";
+  
 window.unitSpecialDescriptions["Custodian Command Node"] =
   "May be affected by You men, snap to action! despite having Automaton.";
 
+window.unitSpecialDescriptions["Hard-Light Calibration"] =
+  "Weapons fired by this unit gain the Cover Piercing weapon rule.";
+
 window.vehicleSpecialDescriptions["Scrap Armour Screens"] =
   "Shaped Charge weapons do not gain +1 Pen for side-arc hits against this vehicle.";
+  
+window.unitSpecialDescriptions["Flood Burster"] =
+  "When successfully entering from Reserve, one unit per turn with this rule may deploy via a Flood Burster instead of from a table edge: place it legally in open ground more than 9\" from enemies, then give it Down. It cannot perform further actions that turn.";  
 
 const ARMOURY_DEFS = {
   UNSC: [
@@ -637,31 +646,42 @@ const ARMOURY_DEFS = {
 	}
   ],
 
-  Forerunner: [
-    {
-      id: "reconstructionMatrix",
-      type: "ruleCheckbox",
-      label: "Reconstruction Matrix",
-      cost: 1,
-      costMode: "perModel",
-      grantsRules: ["Reconstruction Matrix"],
-      appliesTo: (unit, unitData) =>
-        window.currentFaction === "Forerunner" &&
-        hasRule(unit, unitData, "Composed Beings")
-    },
-    {
-      id: "custodianCommandNode",
-      type: "ruleCheckbox",
-      label: "Custodian Command Node",
-      cost: 1,
-      costMode: "perModel",
-      grantsRules: ["Custodian Command Node"],
-      appliesTo: (unit, unitData) =>
-        window.currentFaction === "Forerunner" &&
-        unit.type === "Infantry" &&
-        hasRule(unit, unitData, "Automaton")
-    }
-  ]
+Forerunner: [
+  {
+    id: "reconstructionMatrix",
+    type: "ruleCheckbox",
+    label: "Reconstruction Matrix",
+    cost: 1,
+    costMode: "perModel",
+    grantsRules: ["Reconstruction Matrix"],
+    appliesTo: (unit, unitData) =>
+      window.currentFaction === "Forerunner" &&
+      hasRule(unit, unitData, "Composed Beings")
+  },
+  {
+    id: "custodianCommandNode",
+    type: "ruleCheckbox",
+    label: "Custodian Command Node",
+    cost: 1,
+    costMode: "perModel",
+    grantsRules: ["Custodian Command Node"],
+    appliesTo: (unit, unitData) =>
+      window.currentFaction === "Forerunner" &&
+      unit.type === "Infantry" &&
+      hasRule(unit, unitData, "Automaton")
+  },
+  {
+    id: "hardLightCalibration",
+    type: "ruleCheckbox",
+    label: "Hard-Light Calibration",
+    cost: 1,
+    costMode: "perModel",
+    grantsRules: ["Hard-Light Calibration"],
+    appliesTo: (unit, unitData) =>
+      window.currentFaction === "Forerunner" &&
+      (unit.type === "Infantry" || unit.type === "Team")
+  }
+]
 };
 
 
@@ -4262,56 +4282,62 @@ const FORERUNNER_VEHICLES = [
 // --- FLOOD UNITS ---
 const FLOOD_UNITS = [
   // Headquarters Units
-	{
-	  name: "Officer - Key Mind Node (Platoon commander)",
-	  type: "Infantry",
-	  allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
-	  costs: { Inexperienced: 17, Regular: 26, Veteran: 35 },
-	  baseMen: 1,
-	  maxMen: 4,
-	  weapons: [
-		{ name: "Unarmed" }
-	  ],
-	  specialRules: [
-		"Platoon Commander",
-		{ name: "Tendrils", description: "Models that replace 'men' in the unit. They are considered to have the Melee Weapons special rules." },
-		"Flood Infection",
-		"Horror",
-		"Slow",
-		"Wide Formation",
-		"Tough Fighters",
-		"Strong",
-		{ name: "Immobile", description: "If no tendrils are present, the unit cannot move." }
-	  ],
-	  options: {
-		extraMenCost: { Inexperienced: 5, Regular: 8, Veteran: 11 }
-	  }
-	},
-	{
-	  name: "Officer - Proto-Gravemind (Company commander)",
-	  type: "Infantry",
-	  allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
-	  costs: { Inexperienced: 38, Regular: 56, Veteran: 74 },
-	  baseMen: 1,
-	  maxMen: 4,
-	  weapons: [
-		{ name: "Unarmed" }
-	  ],
-	  specialRules: [
-		"Company Commander",
-		{ name: "Tendrils", description: "Models that replace 'men' in the unit. They are considered to have the Melee Weapons special rules." },
-		"Flood Infection",
-		"Horror",
-		"Slow",
-		"Wide Formation",
-		"Tough Fighters",
-		"Strong",
-		{ name: "Immobile", description: "If no tendrils are present, the unit cannot move." }
-	  ],
-	  options: {
-		extraMenCost: { Inexperienced: 5, Regular: 8, Veteran: 11 }
-	  }
-	},
+{
+  name: "Officer - Key Mind Node (Platoon commander)",
+  type: "Infantry",
+  allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
+  costs: { Inexperienced: 17, Regular: 26, Veteran: 35 },
+  baseMen: 1,
+  maxMen: 4,
+  weapons: [
+    { name: "Unarmed" }
+  ],
+  specialRules: [
+    "Platoon Commander",
+    { name: "Tendrils", description: "Models that replace 'men' in the unit. They are considered to have the Melee Weapons special rules." },
+    "Flood Infection",
+    "Horror",
+    "Slow",
+    "Wide Formation",
+    "Tough Fighters",
+    "Strong",
+    { name: "Immobile", description: "If no tendrils are present, the unit cannot move." }
+  ],
+  options: {
+    extraMenCost: { Inexperienced: 5, Regular: 8, Veteran: 11 },
+    squadUpgrades: {
+      "Patient Predators": { cost: 1, grantsRule: "Patient Predators" }
+    }
+  }
+},
+{
+  name: "Officer - Proto-Gravemind (Company commander)",
+  type: "Infantry",
+  allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
+  costs: { Inexperienced: 38, Regular: 56, Veteran: 74 },
+  baseMen: 1,
+  maxMen: 4,
+  weapons: [
+    { name: "Unarmed" }
+  ],
+  specialRules: [
+    "Company Commander",
+    { name: "Tendrils", description: "Models that replace 'men' in the unit. They are considered to have the Melee Weapons special rules." },
+    "Flood Infection",
+    "Horror",
+    "Slow",
+    "Wide Formation",
+    "Tough Fighters",
+    "Strong",
+    { name: "Immobile", description: "If no tendrils are present, the unit cannot move." }
+  ],
+  options: {
+    extraMenCost: { Inexperienced: 5, Regular: 8, Veteran: 11 },
+    squadUpgrades: {
+      "Patient Predators": { cost: 1, grantsRule: "Patient Predators" }
+    }
+  }
+},
   {
     name: "Forward Observer (Air force)",
     type: "Infantry",
@@ -4369,79 +4395,99 @@ const FLOOD_UNITS = [
   costs: { Regular: 95, Veteran: 110 },
   baseMen: 5,
   maxMen: 14,
-  weapons: [{ name: "Assault Rifle" }],
+  weapons: [
+    { name: "Assault Rifle" }
+  ],
   specialRules: [
     "Flood Infection",
-	"Horror",
+    "Horror",
     "Fieldcraft"
-    // NOTE: Tank Hunters / Energy Shields should be granted by upgrades, not always-on
   ],
   options: {
     extraMenCost: { Regular: 19, Veteran: 22 },
-
-    // non-NCO replacements only
-    weaponReplacements: {
-      "Needlers": { max: 13, cost: -2, replaces: "Assault Rifle", grants: "Needler" },
-	  "SMGs": { max: 13, cost: -2, replaces: "Assault Rifle", grants: "SMG" },
-      "Plasma Rifles": { max: 13, cost: 0, replaces: "Assault Rifle", grants: "Plasma Rifle" },
-      "Spikers": { max: 13, cost: 1, replaces: "Assault Rifle", grants: "Spiker" },
-      "Shotguns": { max: 13, cost: -3, replaces: "Assault Rifle", grants: "Shotgun" },
-	"Battle Rifles": { max: 6, cost: -3, replaces: "Assault Rifle", grants: "Battle Rifle" },
-	"Covenant Carbines": { max: 6, cost: -3, replaces: "Assault Rifle", grants: "Covenant Carbine" }
-    },
-
-    // NCO selector (missing piece)
-    ncoReplacement: {
-      options: [
-        "Assault Rifle",
-        "Needler",
-		"SMG",
-        "Plasma Rifle",
-        "Spiker",
-        "Shotgun",
-        "Battle Rifle",
-        "Covenant Carbine"
-      ],
-      costs: {
-        "Needler": -2,
-		"SMG": -2,
-        "Plasma Rifle": 0,
-        "Spiker": 1,
-        "Shotgun": -3,
-        "Battle Rifle": -3,
-        "Covenant Carbine": -3
-      }
-    },
-
     squadUpgrades: {
       "Anti-Tank Grenades": { cost: 2, grantsRule: "Tank Hunters" },
       "Energy Shield Modules": { cost: 3, grantsRule: "Energy Shields" },
-      "Melee Weapon (NCO)": { cost: 1, perModel: false, grantsRule: "Melee Weapon" }
+      "Melee Weapon (NCO only)": { cost: 1, grantsRule: "Melee Weapon", perModel: false },
+      "Patient Predators": { cost: 1, grantsRule: "Patient Predators" }
+    },
+    weaponReplacements: {
+      "Needlers": {
+        max: 14,
+        cost: -2,
+        replaces: "Assault Rifle",
+        grants: "Needler"
+      },
+      "SMGs": {
+        max: 14,
+        cost: -2,
+        replaces: "Assault Rifle",
+        grants: "Submachine Gun"
+      },
+      "Plasma Rifles": {
+        max: 14,
+        cost: 0,
+        replaces: "Assault Rifle",
+        grants: "Plasma Rifle"
+      },
+      "Spikers": {
+        max: 14,
+        cost: 0,
+        replaces: "Assault Rifle",
+        grants: "Spiker"
+      },
+      "Shotguns": {
+        max: 14,
+        cost: -3,
+        replaces: "Assault Rifle",
+        grants: "Shotgun"
+      },
+      "Battle Rifles / Covenant Carbines": {
+        max: 5,
+        cost: -3,
+        replaces: "Assault Rifle",
+        grants: "Battle Rifle"
+      }
+    },
+    ncoReplacement: {
+      options: ["Assault Rifle", "Needler", "Submachine Gun", "Plasma Rifle", "Spiker", "Shotgun", "Battle Rifle"],
+      costs: {
+        "Needler": -2,
+        "Submachine Gun": -2,
+        "Plasma Rifle": 0,
+        "Spiker": 0,
+        "Shotgun": -3,
+        "Battle Rifle": -3
+      }
     }
   }
 },
-  {
-    name: "Stalker Form Swarm",
-    type: "Infantry",
-    allowedVeterancy: ["Veteran"],
-    costs: { Veteran: 80 },
-    baseMen: 5,
-    maxMen: 10,
-    weapons: [
-      { name: "Unarmed" }
-    ],
-    specialRules: [
-      "Flood Infection",
-	  "Horror",
-      "Fieldcraft",
-      "Fast",
-      "Infiltrator",
-      { name: "Limited", description: "Only 1 Stalker Form Swarm may be taken per platoon." }
-    ],
-    options: {
-      extraMenCost: { Veteran: 16 }
-    }
-  },
+{
+  name: "Stalker Form Swarm",
+  type: "Infantry",
+  allowedVeterancy: ["Veteran"],
+  costs: { Veteran: 80 },
+  baseMen: 5,
+  maxMen: 10,
+  weapons: [
+    { name: "Unarmed" }
+  ],
+  specialRules: [
+    "Flood Infection",
+    "Horror",
+    "Fieldcraft",
+    "Fast",
+    "Infiltrator",
+	{
+	  name: "Adaptive Mutation",
+	  description: "After a successful Rally order, choose Stalker Form or Ranged Form. Stalker Form uses the normal profile. Ranged Form gains one Heavy Machine Gun that may be fired by any model in the unit, becomes a Team Weapon unit, and cannot move. If its building catches fire, it is destroyed."
+	},
+    { name: "Limited", description: "Only 1 Stalker Form Swarm may be taken per platoon." }
+  ],
+  options: {
+    extraMenCost: { Veteran: 16 }
+  }
+},
   {
     name: "Tank Form Pack",
     type: "Infantry",
@@ -4469,109 +4515,153 @@ const FLOOD_UNITS = [
       extraMenCost: { Veteran: 24 }
     }
   },
-  {
-    name: "Infection Form Swarm",
-    type: "Infantry",
-    allowedVeterancy: ["Inexperienced"],
-    costs: { Inexperienced: 70 },
-    baseMen: 10,
-    maxMen: 20,
-    weapons: [
-      { name: "Unarmed" }
-    ],
-    specialRules: [
-      "Flood Infection",
-	  "Horror",
-	  "Fieldcraft",
-	  "Behind Enemy Lines",
-      { name: "Assimilate", description: "If this unit wins an assault against a target affected by Flood Infection, you can replace each surviving Infection Form with an unarmed Combat Form. If so, the unit immediately becomes Regular, becomes an unarmed Combat Form unit and retains its current order die." },  
-      { name: "Mindless Hunger", description: "This unit cannot pick up, carry or control objectives. It may still contest objectives." }	  
-    ],
-    options: {
-      extraMenCost: { Inexperienced: 7 }
-    }
-  },
-
-  // Teams
-  {
-    name: "Carrier Form Team",
-    type: "Team",
-    allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
-    costs: { Inexperienced: 14, Regular: 20, Veteran: 26 },
-    baseMen: 1,
-    maxMen: 1,
-    weapons: [
-      { name: "Explosive Biomass" }
-    ],
-    specialRules: [
-      "Tank Hunters",
-      "Infiltrator",
-	  "Horror",
-      { name: "Suicide Charge", description: " If this model successfully assaults an enemy unit, it is immediately destroyed, and explosive biomass takes effect. Additionally, while this unit is on Ambush, if an enemy Infantry or Artillery unit ends a movement within 6\" and line of sight of it, instead of firing, you may immediately flip its Ambush order to Run and declare an assault against that enemy unit before it has a chance to fire. " },
-      { name: "Explosive Biomass", description: "If this model is destroyed, the enemy unit it is fighting in close quarters suffers a HE (1\") hit. Being Down does not halve hits for this attack." },
-      { name: "Spawn Infection Forms", description: "When this unit is destroyed, immediately replace the model with a 3 model Inexperienced Infection Forms unit. Place them as close as possible to the position where the Carrier Form was destroyed, while remaining at least 1\" away from any other units. These Infection Forms lose all pins and use the same Order Die the Carrier Form unit had. If there is not enough space to place them all, place as many as possible. For scoring purposes, the Carrier Form and any Infection Forms spawned by this rule count as a single unit." }
-    ]
-  },
-  {
-    name: "Anti Tank Team",
-    type: "Team",
-    allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
-    costs: { Inexperienced: 50, Regular: 71, Veteran: 92 },
-    baseMen: 2,
-    maxMen: 2,
-    weapons: [
-      { name: "Rocket Launcher" }
-    ],
-    specialRules: [
-      "Team Weapon",
-	  "Horror",
-      "Flood Infection"
-    ]
-  },
-  {
-    name: "Sniper Team",
-    type: "Team",
-    allowedVeterancy: ["Regular", "Veteran"],
-    costs: { Regular: 53, Veteran: 68 },
-    baseMen: 2,
-    maxMen: 2,
-    weapons: [
-      { name: "Sniper Rifle" },
-      { name: "Pistol" }
-    ],
-    specialRules: [
-      "Team Weapon",
-      "Sniper",
-      "Infiltrator",
-	  "Horror",
-      "Flood Infection"
-    ]
-  },
-  {
-    name: "Grenade Launcher Team",
-    type: "Team",
-    allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
-    costs: { Inexperienced: 27, Regular: 41, Veteran: 55 },
-    baseMen: 2,
-    maxMen: 3,
-    weapons: [
-      { name: "Grenade Launcher" }
-    ],
-    specialRules: [
-      "Team Weapon",
-	  "Horror",
-      "Flood Infection"
-    ],
-    options: {
-      squadUpgrades: {
-        "Add Spotter (If unit is in a heavy weapons platoon)": {
-          cost: 10,
-          grantsRule: "Spotter",
-          perModel: false
-        }
-      }
+{
+  name: "Infection Form Swarm",
+  type: "Infantry",
+  allowedVeterancy: ["Inexperienced"],
+  costs: { Inexperienced: 70 },
+  baseMen: 10,
+  maxMen: 20,
+  weapons: [
+    { name: "Unarmed" }
+  ],
+  specialRules: [
+    "Flood Infection",
+    "Horror",
+    "Fieldcraft",
+    "Behind Enemy Lines",
+    { name: "Assimilate", description: "If this unit wins an assault against a target affected by Flood Infection, you can replace each surviving Infection Form with an unarmed Combat Form. If so, the unit immediately becomes Regular, becomes an unarmed Combat Form unit and retains its current order die." },
+    { name: "Mindless Hunger", description: "This unit cannot pick up, carry or control objectives. It may still contest objectives." }
+  ],
+  options: {
+    extraMenCost: { Inexperienced: 7 },
+    squadUpgrades: {
+      "Flood Burster": { cost: 1, grantsRule: "Flood Burster" }
     }
   }
+},
+
+  // Teams
+{
+  name: "Carrier Form Team",
+  type: "Team",
+  allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
+  costs: { Inexperienced: 14, Regular: 20, Veteran: 26 },
+  baseMen: 1,
+  maxMen: 1,
+  weapons: [
+    { name: "Explosive Biomass" }
+  ],
+  specialRules: [
+    "Tank Hunters",
+    "Infiltrator",
+    "Horror",
+    { name: "Suicide Charge", description: "If this model successfully assaults an enemy unit, it is immediately destroyed, and Explosive Biomass takes effect. Additionally, while this unit is on Ambush, if an enemy Infantry or Artillery unit ends a movement within 6\" and line of sight of it, instead of firing, you may immediately flip its Ambush order to Run and declare an assault against that enemy unit before it has a chance to fire." },
+    { name: "Explosive Biomass", description: "If this model is destroyed, the enemy unit it is fighting in close quarters suffers a HE (1\") hit. Being Down does not halve hits for this attack." },
+    { name: "Spawn Infection Forms", description: "When this unit is destroyed, immediately replace the model with a 3 model Inexperienced Infection Forms unit. Place them as close as possible to the position where the Carrier Form was destroyed, while remaining at least 1\" away from any other units. These Infection Forms lose all pins and use the same Order Die the Carrier Form unit had. If there is not enough space to place them all, place as many as possible. For scoring purposes, the Carrier Form and any Infection Forms spawned by this rule count as a single unit." },
+    { name: "Extra Selection", description: "You may take up to 3 Carrier Form Teams as a single choice in any platoon selector that allows an Anti-Tank Team. This does not prevent you from also taking a standard Anti-Tank Team." }
+  ],
+  options: {
+    squadUpgrades: {
+      "Patient Predators": { cost: 1, grantsRule: "Patient Predators" }
+    }
+  }
+},
+{
+  name: "Spawner Form",
+  type: "Infantry",
+  allowedVeterancy: ["Inexperienced"],
+  costs: { Inexperienced: 40 },
+  baseMen: 1,
+  maxMen: 1,
+  weapons: [
+    { name: "Unarmed" }
+  ],
+  specialRules: [
+    "Horror",
+    "Large Infantry",
+    "Resilient",
+    "Slow",
+    "Brood Sac",
+    { name: "Limited", description: "Only 1 Spawner Form may be taken per platoon." }
+  ],
+  options: {
+    squadUpgrades: {
+      "Patient Predators": { cost: 1, grantsRule: "Patient Predators" }
+    }
+  }
+},
+{
+  name: "Anti Tank Team",
+  type: "Team",
+  allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
+  costs: { Inexperienced: 50, Regular: 71, Veteran: 92 },
+  baseMen: 2,
+  maxMen: 2,
+  weapons: [
+    { name: "Rocket Launcher" }
+  ],
+  specialRules: [
+    "Team Weapon",
+    "Flood Infection",
+    "Horror"
+  ],
+  options: {
+    squadUpgrades: {
+      "Patient Predators": { cost: 1, grantsRule: "Patient Predators" }
+    }
+  }
+},
+{
+  name: "Sniper Team",
+  type: "Team",
+  allowedVeterancy: ["Regular", "Veteran"],
+  costs: { Regular: 53, Veteran: 68 },
+  baseMen: 2,
+  maxMen: 2,
+  weapons: [
+    { name: "Sniper Rifle" },
+    { name: "Pistol" }
+  ],
+  specialRules: [
+    "Team Weapon",
+    "Sniper",
+    "Infiltrator",
+    "Flood Infection",
+    "Horror"
+  ],
+  options: {
+    squadUpgrades: {
+      "Patient Predators": { cost: 1, grantsRule: "Patient Predators" }
+    }
+  }
+},
+{
+  name: "Grenade Launcher Team",
+  type: "Team",
+  allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
+  costs: { Inexperienced: 27, Regular: 41, Veteran: 55 },
+  baseMen: 2,
+  maxMen: 3,
+  weapons: [
+    { name: "Grenade Launcher" }
+  ],
+  specialRules: [
+    "Team Weapon",
+    "Flood Infection",
+    "Horror"
+  ],
+  options: {
+    squadUpgrades: {
+      "Add Spotter (If unit is in a heavy weapons platoon)": {
+        cost: 10,
+        grantsRule: "Spotter",
+        perModel: false
+      },
+      "Patient Predators": { cost: 1, grantsRule: "Patient Predators" }
+    }
+  }
+}
 ];
 
 
@@ -5861,11 +5951,47 @@ function applyArmouryWeaponProfileSwaps(unit, table) {
   return table;
 }
 
+function addWeaponSpecialRule(specialText, ruleName) {
+  const parts = String(specialText || "")
+    .split(",")
+    .map(s => s.trim())
+    .filter(s => s && s !== "–");
+
+  const alreadyHasRule = parts.some(part =>
+    part.replace(/\s*\(.+\)$/, "").trim() === ruleName
+  );
+
+  if (!alreadyHasRule) parts.push(ruleName);
+
+  return parts.length ? parts.join(", ") : ruleName;
+}
+
+function applyHardLightCalibrationWeaponRules(unit, table) {
+  if (!unit || !Array.isArray(table)) return table;
+
+  if (!unit.squadUpgrades?.["Hard-Light Calibration"]) return table;
+
+  return table.map(row => {
+    const base = getBaseWeaponName(row.label);
+
+    // Do not add it to non-ranged/melee entries.
+    if (["Unarmed", "Fist", "Fists", "Melee Weapon", "Melee Weapons"].includes(base)) {
+      return row;
+    }
+
+    return {
+      ...row,
+      special: addWeaponSpecialRule(row.special, "Cover Piercing")
+    };
+  });
+}
+
 const buildWeaponsTableBase = buildWeaponsTable;
 
 buildWeaponsTable = function(unit) {
   let table = buildWeaponsTableBase(unit);
   table = applyArmouryWeaponProfileSwaps(unit, table);
+  table = applyHardLightCalibrationWeaponRules(unit, table);
   return table;
 };
 

@@ -50,52 +50,20 @@ Infested Terrain: At the end of an enemy non-Flood Infantry or Artillery unit’
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Flood Burster
+Infection Form Swarms in your army may take Flood Burster for +1pt per model. This represents Bursters erupting from below and releasing Infection Forms into the battlefield.
+When this unit successfully enters from Reserve it may deploy via Flood Burster instead of entering from a table edge. Place the unit legally anywhere in open ground more than 9" from all enemy units, then give it a Down order. It cannot perform more actions that turn. If no legal position is available, the unit fails to enter from Reserve and remains off-table.
+Only one unit may deploy by eruption each turn, even if several units in your army have Flood Burster.
+Patient Predators
+The following units can take Patient Predators for +1pt per model:
+- Officer
+- Combat Form Squad
+- Carrier Form Team
+- Anti Tank Team
+- Grenade Launcher Team
+- Sniper Team
+- Spawner Form
+If a unit with this rule is deemed to be in cover from enemy shooting while it has an Ambush order, improve its Cover Save by +1. Remember rolls of 1 always fail.
 
 
 
@@ -238,15 +206,11 @@ Cost
 	Options
 	- Add up to 5 additional Stalker Forms for +16pts each.
 	Special Rules
-	- Flood Infection
-- Fieldcraft
-- Fast
-- Infiltrator
-- Horror
-- Limited: Only 1 Stalker Form Swarm may be taken per platoon.
+	- Flood Infection                                                                              - Fieldcraft
+- Fast                                                                                                  - Infiltrator
+- Horror                - Limited: Only 1 Stalker Form Swarm may be taken per platoon.
+- Adaptive Mutation: Each time this unit successfully receives a Rally order, it may choose to become either Stalker Form or Ranged Form. If Stalker Form is chosen, the unit uses its normal profile. If Ranged Form is chosen, the unit becomes a Team Weapon unit, gains one Heavy Machine Gun weapon profile for the unit that can be fired by any model, and cannot Advance, Run, Assault, or otherwise move while in this form. If the building it occupies catches fire, the unit is destroyed instead of abandoning the building. 
 	
-
-
 
 
 
@@ -399,8 +363,6 @@ Cost
 
 
 
-
-
 Carrier Form Team 
 Cost
 	14pts (Inexperienced), 20pts (Regular), 26pts (Veteran) 
@@ -489,8 +451,6 @@ Cost
 
 
 
-
-
 Sniper Team
 Cost
 	53pts (Regular), 68pts (Veteran)
@@ -518,6 +478,106 @@ Cost
 - Flood Infection
 - Horror
 	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Spawner Form
+Cost
+	40pts (Inexperienced) 
+	Composition
+	1 Spawner Form 
+	Weapons
+	Unarmed 
+	Special Rules
+	- Large Infantry                                                                   - Resilient 
+- Horror                                                                                - Slow
+- Limited: Only 1 Spawner Form may be taken per platoon. 
+- Brood Sac: If this unit is not Down, when a friendly Flood Infantry unit successfully enters from Reserve, it may deploy by eruption instead of entering from a table edge. Remove the Spawner Form from play; it counts as destroyed. Place the entering unit with at least one model within 1" of the Spawner’s former position, outside any building and with all models in a legal position according to the rules. The entering unit is then given a Down order instead of making its normal Advance or Run move from Reserve, and cannot take any further action that turn. If the entering unit cannot be placed legally, it fails to enter from Reserve and remains off-table. In this case, the Spawner Form is not removed.
+	
+
+
+
+
+
+
+
+
+
+
 
 
 

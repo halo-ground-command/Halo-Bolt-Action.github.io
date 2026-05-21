@@ -253,7 +253,7 @@ Type - SMALL ARMS
 	18"
 	2
 	-
-	Assault, Cover Negation
+	Assault, Cover Piercing
 	Plasma Rifle
 	18"
 	2
@@ -447,7 +447,7 @@ Assault
 Weapons with the Assault rule suffer no penalty to hit when moving and shooting. Additionally, infantry models armed with an Assault weapon count as having the Tough Fighters special rule, allowing them to re-roll failed rolls in close combat.
 Battery Charge
 Weapons with this rule require to charge up powerful energy attacks. As a result, they suffer a -1 to hit modifier when shooting.
-Cover Negation
+Cover Piercing
 When this weapon hits an Infantry or Artillery unit that is in soft/hard cover and not Down, any natural 6 rolled to wound worsens the target’s cover save by 1, for that wound only. 
 Fixed
 Fixed weapons can only fire within a 45-degree arc. A Run order must be used to reposition them.
