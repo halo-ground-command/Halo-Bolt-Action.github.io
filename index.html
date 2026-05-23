@@ -1263,28 +1263,36 @@ const UNSC_UNITS = [
       }
     }
   },
-  {
-    name: "Anti Tank Team",
-    type: "Team",
-    allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
-    costs: { Inexperienced: 49, Regular: 70, Veteran: 91 },
-    baseMen: 2,
-    maxMen: 2,
-    weapons: [
-      { name: "Rocket Launcher" }
-    ],
-    specialRules: ["Team Weapon", "For Humanity’s Survival!"],
-    options: {
-      squadUpgrades: {
-        "Spartan Laser": {
-          cost: 15,
-          grantsRule: "Spartan Laser",
-          perModel: false,
-          replacesWeapon: "Rocket Launcher"
-        }
+{
+  name: "Anti Tank Team",
+  type: "Team",
+  allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
+  costs: { Inexperienced: 49, Regular: 70, Veteran: 91 },
+  baseMen: 2,
+  maxMen: 2,
+  weapons: [
+    { name: "Rocket Launcher" }
+  ],
+  specialRules: ["Team Weapon", "For Humanity’s Survival!"],
+  options: {
+    squadUpgrades: {
+      "Spartan Laser": {
+        cost: 15,
+        grantsRule: "Spartan Laser",
+        perModel: false,
+        replacesWeapon: "Rocket Launcher",
+        conflictsWith: ["Hydra"]
+      },
+      "Hydra": {
+        cost: 0,
+        grantsRule: "Hydra",
+        perModel: false,
+        replacesWeapon: "Rocket Launcher",
+        conflictsWith: ["Spartan Laser"]
       }
     }
-  },
+  }
+},
   {
     name: "Sniper Team",
     type: "Team",
@@ -4072,38 +4080,38 @@ const FORERUNNER_UNITS = [
     ]
   },
 
-  {
-    name: "Anti Tank Team",
-    type: "Team",
-    allowedVeterancy: ["Regular", "Veteran"],
-    costs: { Regular: 84, Veteran: 105 },
-    baseMen: 2,
-    maxMen: 2,
-    weapons: [
-      { name: "Incineration Cannon" }
-    ],
-    specialRules: [
-      "Team Weapon",
-      "Counter-Assault Protocols",
-      "Composed Beings",
-      "Energy Shields",
-      "Fanatics",
-      "VISR",
-      "Behind Enemy Lines",
-	  "Strong",
-      "Fast"
-    ],
-    options: {
-      squadUpgrades: {
-        "Rocket Launcher": {
-          cost: 0,
-          grantsRule: "Rocket Launcher",
-          perModel: false,
-          replacesWeapon: "Incineration Cannon"
-        }
+{
+  name: "Anti Tank Team",
+  type: "Team",
+  allowedVeterancy: ["Regular", "Veteran"],
+  costs: { Regular: 84, Veteran: 105 },
+  baseMen: 2,
+  maxMen: 2,
+  weapons: [
+    { name: "Incineration Cannon" }
+  ],
+  specialRules: [
+    "Team Weapon",
+    "Counter-Assault Protocols",
+    "Composed Beings",
+    "Energy Shields",
+    "Fanatics",
+    "VISR",
+    "Behind Enemy Lines",
+    "Strong",
+    "Fast"
+  ],
+  options: {
+    squadUpgrades: {
+      "Hydra": {
+        cost: 0,
+        grantsRule: "Hydra",
+        perModel: false,
+        replacesWeapon: "Incineration Cannon"
       }
-    },
-  },
+    }
+  }
+},
   {
     name: "Sniper Team",
     type: "Team",
@@ -7029,7 +7037,13 @@ function renderInfantryEditFields(unit, unitData) {
 		disabled = "disabled";
 		checked = "";
 	  }
-
+		if (upgrade.conflictsWith && unit.squadUpgrades) {
+		  const conflicts = Array.isArray(upgrade.conflictsWith) ? upgrade.conflictsWith : [upgrade.conflictsWith];
+		  if (conflicts.some(conflict => unit.squadUpgrades[conflict])) {
+			disabled = "disabled";
+			checked = "";
+		  }
+		}
       if (upgrade.restriction === "notWithDefenseGauntlets" && unit.squadUpgrades && unit.squadUpgrades["Defense Gauntlets"])
         disabled = "disabled";
 
@@ -7354,16 +7368,34 @@ function saveEdit() {
       unit.men = Math.max(minMen, Math.min(maxMen, val));
     }
 
-    // Squad Upgrades
-    if (unitData.options && unitData.options.squadUpgrades) {
-      unit.squadUpgrades = {};
-      document.querySelectorAll(".editSquadUpgrade").forEach(cb => {
-        unit.squadUpgrades[cb.dataset.upgrade] = cb.checked;
-      });
+	// Squad Upgrades
+	if (unitData.options && unitData.options.squadUpgrades) {
+	  unit.squadUpgrades = {};
+	  document.querySelectorAll(".editSquadUpgrade").forEach(cb => {
+		unit.squadUpgrades[cb.dataset.upgrade] = cb.checked;
+	  });
+
+	  // Enforce conflicts between squad upgrades, e.g. Hydra vs Spartan Laser
+	  if (unit.squadUpgrades && unitData.options?.squadUpgrades) {
+		Object.entries(unitData.options.squadUpgrades).forEach(([label, upgrade]) => {
+		  if (!unit.squadUpgrades[label] || !upgrade.conflictsWith) return;
+
+		  const conflicts = Array.isArray(upgrade.conflictsWith)
+			? upgrade.conflictsWith
+			: [upgrade.conflictsWith];
+
+		  conflicts.forEach(conflict => {
+			if (unit.squadUpgrades[conflict]) {
+			  unit.squadUpgrades[conflict] = false;
+			}
+		  });
+		});
+	  }
+
 	  enforceOnePerArmySquadUpgrade("Sacred Relic");
 	  enforceOnePerArmySquadUpgrade("Deacon (0-1 per army)");
 	  enforceOnePerArmySquadUpgrade("Knight Commander (0-1 per army)");
-    }
+	}
 
     // NCO Weapon
     if (unitData.options && unitData.options.ncoReplacement) {
