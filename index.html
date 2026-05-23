@@ -319,7 +319,8 @@ const allWeaponProfiles = {
   "Rocket Launcher": 'Range 30", Shots 1, Pen +5, Team, Shaped Charge, Tracking, HE (1")',
   "Plasma Launcher": 'Range 30", Shots 1, Pen +5, Team, Shaped Charge, Tracking, HE (1")',
   "Fuel Rod Gun": 'Range 30", Shots 1, Pen +4, Team, Shaped Charge, HE (2")',
-  "Incineration Cannon": 'Range 30", Shots 1, Pen +4, Team, Shaped Charge, Overheat, HE (1")',
+  "Hydra": 'Range 30", Shots 1, Pen +4, Team, Shaped Charge, HE (2")',
+  "Incineration Cannon": 'Range 30", Shots 1, Pen +5, Team, Shaped Charge, Overheat, HE (1")',
   "Assault Cannon": 'Range 36", Shots 1, Pen +3, Overheat, Shaped Charge, HE (2")',
   "Light Automatic Cannon": 'Range 48", Shots 2, Pen +2, Team, Fixed, HE (1")',
   "Light Plasma Cannon": 'Range 48", Shots 2, Pen +2, Overheat, Team, Fixed, HE (1")',
@@ -330,6 +331,13 @@ const allWeaponProfiles = {
   "Medium Anti-Tank Weapon": 'Range 60", Shots 1, Pen +5, Team, Fixed, HE (1")',
   "Heavy Anti-Tank Weapon": 'Range 72", Shots 1, Pen +6, Team, Fixed, HE (2")',
   "Super-Heavy Anti-Tank Weapon": 'Range 84", Shots 1, Pen +7, Team, Fixed, HE (3")',
+
+  // COMBINED
+  "Rocket Launcher/Plasma Launcher": 'Range 30", Shots 1, Pen +5, Team, Shaped Charge, Tracking, HE (1")',
+  "Fuel Rod Gun/Hydra": 'Range 30", Shots 1, Pen +4, Team, Shaped Charge, HE (2")',
+  "Concussion Rifle/Cindershot": 'Range 30" (12–36"), Shots 1, Pen HE, Knockback, Howitzer, HE (1")',
+  "Brute Shot/Grenade Launcher": 'Range 30" (12–36"), Shots 1, Pen HE, Howitzer, HE (1")',
+  "Plasma Pistol/Disruptor": 'Range 12", Shots 1, Pen –, Overcharge, Overheat',
 
   // FLAMETHROWERS & ALIASES (base names live here; variants added below)
   "Flamethrower": 'Range 6", Shots 1, Pen +2, Team, Flamethrower',
@@ -412,7 +420,7 @@ const weaponSpecialDescriptions = {
   "Cover Piercing": "When this weapon hits an Infantry or Artillery unit that is in soft/hard cover and not Down, any natural 6 rolled to Wound worsens the target’s cover save by 1, for that wound only.",
   "Fixed": "Fixed weapons can only fire within a 45-degree arc. A Run order must be used to reposition them.",
   "Flamethrower": "Roll 1 die to hit. If it hits, an infantry Flamethrower inflicts D6 hits, while a vehicle-mounted Flamethrower inflicts D6+1 hits. No cover saves, including Down saves. Target takes D3+1 Pins and must pass Morale or be destroyed/knocked out. Hits vehicles on top armour and ignores long/point-blank Pen modifiers. Fuel may run out after use. Against buildings, needs an opening and may set normal buildings on fire on 4+ even if it misses.",
-  "HE": "Choose HE or AT shot before firing if the weapon has both. HE must be used vs infantry/artillery. HE uses a template: place it to hit as many target models as possible without touching friends. Other enemy units touched are hit but take no pins. Multiple HE shots from one unit cause only one HE pin result.",
+  "HE": "Choose HE or AT shot before firing if the weapon has both. HE must be used vs infantry/artillery. HE uses a template: place it to hit as many target models as possible without touching friends. Other enemy units touched are hit but take no pins. If a unit fires multiple HE shots at the same target, roll all hits first, then place one template for each HE hit and count the total number of unique models covered. A model can only be hit once by HE from the same firing unit, even if covered by more than one template. Multiple HE shots from one unit cause only one HE pin result.",
   "Howitzer": "Fires either direct with no minimum range or Indirect Fire (minimum range applies; starts hitting at 6+, improves each turn targeting same unit unless moving). Switching spotter also resets accuracy progression.",
   "Indirect Fire": "Cannot fire within minimum range. Starts hitting on 6+, improving each turn against the same unmoved target if the firer does not move. Ignores normal to-hit modifiers. No cover saves; Down halves HE hits. Hits vehicles on top armour. Resets if target/firer moves, target changes, or spotter changes.",
   "Knockback": "After an ungarrisoned infantry unit takes at least 1 hit, roll D6: on 4+, it gains 1 pin and must move 3\" directly away. If this would move it into impassable terrain, a building, a table edge or another unit, it stops 1\" short.",
@@ -426,7 +434,7 @@ const weaponSpecialDescriptions = {
   "Shaped Charge": "Ignores the -1 Penetration penalty at long range and does not gain the +1 Penetration bonus at point-blank range. Against units in buildings, if fired at a visible wall, it counts as HE (2\").",
   "Sniper": "Grants unit the Sniper special rule.",
   "Supercombine": "Each natural roll of 6 to hit allows rolling an extra die to wound against the same target, even when using HE.",
-  "Team": "Requires at least two models to fire without penalty. If only one operator remains, suffers -1 to hit.",
+  "Team": "Weapon with this rule requires at least 2 models to fire at full effect. If only 1 model remains, the weapon may still fire but suffers -1 to hit. For squad-based Team Weapons, a loader must be within 1\" of the weapon carrier; when the Team Weapon fires, the loader cannot fire their own weapon. If the loader is killed or is not within 1\", the Team Weapon suffers -1 to hit.",
   "Tracking": "Ignores the -1 to-hit penalty caused by pinning when issued a FIRE order."
 };
 
@@ -457,21 +465,21 @@ window.unitSpecialDescriptions = {
   "Horror": "Units with Horror are immune. Assaulting a Horror unit requires an Order test at -1 morale, even if unpinned. When this unit assaults, the target takes a Morale check at -1 before reacting; if failed, it goes Down (loses Defensive Position).",
   "Infested Terrain": "Once per army, one unit with this rule deployed fully within terrain using Infiltrator may make that terrain Infested Terrain. It cannot be a road, objective marker, bunker, impassable terrain, or terrain containing an objective. At the end of an enemy non-Flood Infantry/Artillery unit’s activation, if it moved across/through/touching it or has a model inside/touching it, it gains 1 Pin. A unit can only gain 1 Pin per turn from this rule.",
   "Infiltrator": "+1 cover if stationary (no Advance/Run orders) against shooting attacks. Can use special deployment rules if scenario allows.",
-  "Knight Commander": "Embedded officer for a Knight unit. Counts as a weaker Platoon Commander (+1 Morale; Snap To affects only 1 other unit). While alive, the unit ignores losing its NCO.",
+  "Knight Commander": "The added officer model is considered a Platoon Commander and this unit takes a Platoon Commander slot from a platoon. The Knight Commander remains part of this unit. While the Knight Commander is alive, the unit does not suffer the effects of losing its NCO.",
   "Hardlight Screen": "While this unit is not Down, friendly Infantry and Artillery units drawing cover from this unit may treat that cover as hard cover instead of soft cover. The line of fire should pass through or within 1\" of this unit. This rule does not improve cover for the unit itself.",
   "Large Infantry": "Counts double for transport capacity. When this unit assaults or is assaulted, opponent loses Defensive Position.",
   "Pathfinder": "After both sides finish setup but before the first turn, if this unit is in the battlefield, it may make a Run move. It cannot assault and cannot be targeted by enemies in Ambush during this move.",
   "Resilient": "Replaces Energy Shields/Shield Wall; Damage Value 6+; 5+ cover in open or CQ; +2 to soft/hard cover saves. Remember rolls of 1 always fail.",
   "Shield Wall": "6+ cover save in open ground, improved by +2 if unit is Down (4+ total). Improves other existing cover by one step. Remember rolls of 1 always fail.",
   "Shirkers": "Pins count double. Must always test for orders.",
-  "Sniper": "At full strength, one friendly Reg/Vet Indirect fire unit may draw LoS from this team as a Spotter; if reduced below 2, the survivor fires the sniper rifle at –1 to hit. Scoped shot (>12\"): +1 to hit, ignores cover, +1 damage vs Inf/Arty; if it causes damage, choose the unit leader as the casualty.",
+  "Sniper": "While the Sniper Team is at full strength, one friendly Regular/Veteran Indirect Fire unit may draw LoS from this team as a Spotter. When the sniper rifle is not using the scope, all models may fire their carried weapons normally. When firing, the sniper rifle may use its scope: targets within 12\" are automatically missed, +1 to hit, no cover saves, +1 damage vs Infantry/Artillery, and if it damages you may choose the target unit leader as the casualty. If only 1 model remains in the Sniper Team, that survivor may still fire the sniper rifle, scoped or unscoped, but suffers -1 to hit for being a one-man Team Weapon.",
   "Slow": "Move 4\", Run 8\".",
   "Stealth": "Extra -1 to hit penalty for enemies targeting this unit if it is Down.",
   "Strong": "Ignores Team and Fixed for weapons this unit carries. In close quarters, for every three friendly models involved in the fight, 1 model rolls an extra attack die.",
   "Stubborn": "Ignores pin modifiers on morale checks (but not order tests).",
   "Spotter": "Unarmed model with Infiltrator rule for an indirect-fire team. Acts separately, shares the team’s order die, counts as Down without a die, cannot attack/capture. Removed if the unit is destroyed. Reg/Vet indirect fire/howitzer units may target what any friendly spotter/FO can see.", 
   "Tank Hunters": "In assaults, use full anti-tank damage rules and ignore Tank Fear. Add +1 to damage rolls vs vehicles.",
-  "Team Weapon": "Crew-served weapon. Crew count as unarmed and do not fire personal ranged weapons while operating it. Needs at least 2 crew to fire at full effect; if only 1 crewman remains, the weapon can still fire but suffers -1 to hit. Squad-based team weapons also need their loader within 1\" or they suffer -1 to hit.",
+  "Team Weapon": "Crew-served unit weapon. Support weapon team crew count as unarmed and do not fire personal ranged weapons. A Team Weapon belongs to the unit. A Team Weapon needs at least 2 models to fire at full effect; if only 1 model remains, the weapon may still fire but suffers -1 to hit.",
   "Tooth and Claw": "Rolls 3 dice instead of 1 per model in close combat.",
   "Tough Fighters": "When fighting in close quarters against Infantry, Artillery, or Assault Walkers, a unit may re-roll a number of failed melee rolls up to the number of friendly models with Tough Fighters taking part in that fight.",
   "VISR": "Can see through smoke and ignores Stealth’s -1 to-hit penalty.",
@@ -489,6 +497,7 @@ window.unitSpecialDescriptions = {
 // --- Vehicle Special Rule Descriptions ---
 window.vehicleSpecialDescriptions = {
   "Agile": "Make one additional 90° pivot per move, or 1 pivot on a Fire order.",
+  "All-Terrain": "May enter and move through rough ground with an Advance order, but cannot Run through rough ground.",
   "Amphibious": "Advance half-speed over deep water. May fire, but hull-mounted weapons may be unusable.",
   "Armoured All Round": "Uses full armor value against all hits; no side, rear, or top armor modifiers apply.",
   "Assault": "May assault infantry and vehicles using walker assault rules. While Down, gains a 6+ cover save in the open (or +1 to existing cover).",
@@ -513,7 +522,7 @@ window.vehicleSpecialDescriptions = {
 
 // --- Armoury Special Rule Descriptions ---
 window.unitSpecialDescriptions["MJOLNIR Biofoam Systems"] =
-  "5+ cover save in the open, 5+ cover save in close quarters, and +1 to soft/hard cover saves.";
+  "5+ cover save in the open, 5+ cover save in close quarters, and +1 to soft/hard cover saves. If this unit also has Energy Shields, its cover save in the open becomes 4+ instead.";
 
 window.unitSpecialDescriptions["M301 Grenade Launcher"] =
   "Carried in addition to the model’s other weapon. When shooting, that model may fire either the M301 or its other weapon, not both.";
@@ -698,7 +707,7 @@ Stubborn: Ignore pin modifiers on Morale checks, remember Morale checks are not 
 
 Fanatics: Ignore pin modifiers on Morale checks and are not routed by pins. If defeated in close quarters, fight again immediately until they win or are wiped out.
 
-MJOLNIR Biofoam Systems: 5+ cover save in the open, 5+ cover save in close quarters, and +1 to soft/hard cover saves.
+MJOLNIR Biofoam Systems: 5+ cover save in the open, 5+ cover save in close quarters, and +1 to soft/hard cover saves. If this unit also has Energy Shields, its cover save in the open becomes 4+ instead.
 
 Energy Shields: +1 harder to damage from shooting; 5+ cover save in the open; +1 to soft/hard cover saves. Remember rolls of 1 always fail.
 
@@ -848,7 +857,7 @@ const COVENANT_DOCTRINES = {
   "Brute": {
     label: "Brute",
     allowedVeterancy: ["Regular", "Veteran"],
-    baseCostPerModel: 3,
+    baseCostPerModel: 4,
     specialRules: ["Stubborn", "Fieldcraft", "Berserker", "Strong"],
     upgrades: [
       { name: "Energy Shields", cost: 3, grantsRule: "Energy Shields" },
@@ -858,7 +867,7 @@ const COVENANT_DOCTRINES = {
   "Elite": {
     label: "Elite",
     allowedVeterancy: ["Veteran"],
-    baseCostPerModel: 8,
+    baseCostPerModel: 9,
     specialRules: ["Behind Enemy Lines", "Fanatics", "Energy Shields", "Fast", "VISR", "Strong", "Strikes First"],
     upgrades: [
       { name: "Stealth", cost: 1, grantsRule: "Stealth" },
@@ -872,7 +881,7 @@ const BANISHED_DOCTRINES = {
   "Brute": {
     label: "Brute",
     allowedVeterancy: ["Regular", "Veteran"],
-    baseCostPerModel: 3,
+    baseCostPerModel: 4,
     specialRules: ["Stubborn", "Fieldcraft", "Berserker", "Strong"],
     upgrades: [
       { name: "Energy Shields", cost: 3, grantsRule: "Energy Shields" },
@@ -883,7 +892,7 @@ const BANISHED_DOCTRINES = {
   "Elite": {
     label: "Elite",
     allowedVeterancy: ["Veteran"],
-    baseCostPerModel: 8,
+    baseCostPerModel: 9,
     specialRules: ["Behind Enemy Lines", "Fanatics", "Energy Shields", "Fast", "VISR", "Strong", "Strikes First"],
     upgrades: [
       { name: "Stealth", cost: 1, grantsRule: "Stealth" },
@@ -913,7 +922,7 @@ const UNSC_DOCTRINES = {
   "Spartan": {
     label: "Spartan",
     allowedVeterancy: ["Veteran"],
-    baseCostPerModel: 5,
+    baseCostPerModel: 6,
     specialRules: ["Fanatics", "Fast", "Behind Enemy Lines", "VISR", "Strong", "Strikes First"],
     upgrades: [
       { name: "Energy Shields", cost: 3, grantsRule: "Energy Shields" },
@@ -1108,7 +1117,7 @@ const UNSC_UNITS = [
     }
   }
 },
- {
+{
   name: "ODST Squad",
   type: "Infantry",
   allowedVeterancy: ["Veteran"],
@@ -1122,8 +1131,9 @@ const UNSC_UNITS = [
     squadUpgrades: {
       "Anti-Tank Grenades": { cost: 2, grantsRule: "Tank Hunters" },
       "Jump-Jet Packs": { cost: 1, grantsRule: "Flight" },
-	  "Engineers": { cost: 1, grantsRule: "Engineers" },
-	  "Melee Weapon (NCO only)": { cost: 1, grantsRule: "Melee Weapon", perModel: false }
+      "Engineers": { cost: 1, grantsRule: "Engineers" },
+      "Strong": { cost: 1, grantsRule: "Strong" },
+      "Melee Weapon (NCO only)": { cost: 1, grantsRule: "Melee Weapon", perModel: false }
     },
     weaponReplacements: {
       "DMRs":           { max: 5, cost: -5, replaces: "Assault Rifle", grants: "DMR" },
@@ -1147,13 +1157,13 @@ const UNSC_UNITS = [
   name: "Spartan Team",
   type: "Infantry",
   allowedVeterancy: ["Veteran"],
-  costs: { Veteran: 96 },
+  costs: { Veteran: 100 },
   baseMen: 4,
   maxMen: 6,
   weapons: [{ name: "Assault Rifle" }],
   specialRules: ["Fanatics", "Fast", "VISR", "Behind Enemy Lines", "Strong", "Strikes First"],
   options: {
-    extraMenCost: { Veteran: 24 },
+    extraMenCost: { Veteran: 25 },
     squadUpgrades: {
       "Anti-Tank Grenades": { cost: 2, grantsRule: "Tank Hunters" },
       "Jump-Jet Packs": { cost: 1, grantsRule: "Flight" },
@@ -1653,7 +1663,7 @@ const UNSC_VEHICLES = [
 	},
 
   // ARMOURED CARS
-  {
+{
     name: "M274 Mongoose",
     type: "Car",
     allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
@@ -1664,10 +1674,11 @@ const UNSC_VEHICLES = [
     damageValue: "6+ (Soft-skin)",
     specialRules: [
       "Agile",
-      "Recce"
+      "Recce",
+      "All-Terrain"
     ]
   },
-  {
+{
     name: "M12LRV Warthog",
     type: "Armoured Car",
     allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
@@ -1679,7 +1690,8 @@ const UNSC_VEHICLES = [
     specialRules: [
       "Recce",
       "Open-topped",
-      "Flak"
+      "Flak",
+      "All-Terrain"
     ]
   },
 {
@@ -1693,7 +1705,8 @@ const UNSC_VEHICLES = [
   damageValue: "7+ (Armoured Car)",
   specialRules: [
     "Recce",
-    "Open-topped"
+    "Open-topped",
+    "All-Terrain"
   ],
   options: {
     weaponUpgrades: {
@@ -1705,7 +1718,7 @@ const UNSC_VEHICLES = [
     }
   }
 },
-  {
+{
     name: "M12R Rocket Warthog",
     type: "Armoured Car",
     allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
@@ -1717,7 +1730,8 @@ const UNSC_VEHICLES = [
     specialRules: [
       "Recce",
       "Open-topped",
-      "Flak"
+      "Flak",
+      "All-Terrain"
     ]
   },
   {
@@ -1768,35 +1782,44 @@ const UNSC_VEHICLES = [
 	  "Nimble"
     ]
   },
-  {
-    name: "UH-144 Falcon",
-    type: "Aircraft",
-    allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
-    costs: { Inexperienced: 64, Regular: 80, Veteran: 96 },
-    weapons: [
-      { name: "Hull-mounted Forward-facing Light Autocannon" }
-    ],
-    damageValue: "7+ (Medium Aircraft)",
-    transportCapacity: 7,
-    specialRules: [
-      "Flak",
-      "Open-topped"
-    ],
-    options: {
-      weaponUpgrades: {
-        "2 Pintle-mounted MMGs": {
-          cost: 30,
-          addsWeapon: "2x Pintle-mounted MMGs"
-        },
-        "2 Pintle-mounted Grenade Launchers (replace both MMGs)": {
-          cost: 15,
-          replaces: ["2x Pintle-mounted MMGs"],
-          addsWeapon: "2x Pintle-mounted Grenade Launchers",
-          requires: ["2 Pintle-mounted MMGs"]
-        }
+{
+  name: "UH-144 Falcon",
+  type: "Aircraft",
+  allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
+  costs: { Inexperienced: 64, Regular: 80, Veteran: 96 },
+  weapons: [
+    { name: "Turret-mounted Light Autocannon (360° arc)" }
+  ],
+  damageValue: "7+ (Medium Aircraft)",
+  transportCapacity: 7,
+  specialRules: [
+    "Flak",
+    "Open-topped"
+  ],
+  options: {
+    weaponUpgrades: {
+      "Pintle-mounted MMGs (left and right arcs)": {
+        cost: 30,
+        addsWeapon: [
+          "Pintle-mounted MMG (left arc)",
+          "Pintle-mounted MMG (right arc)"
+        ]
+      },
+      "Pintle-mounted Grenade Launchers (replace both MMGs)": {
+        cost: 15,
+        replaces: [
+          "Pintle-mounted MMG (left arc)",
+          "Pintle-mounted MMG (right arc)"
+        ],
+        addsWeapon: [
+          "Pintle-mounted Grenade Launcher (left arc)",
+          "Pintle-mounted Grenade Launcher (right arc)"
+        ],
+        requires: ["Pintle-mounted MMGs (left and right arcs)"]
       }
     }
-  },
+  }
+},
   {
     name: "AV-22 Sparrowhawk",
     type: "Aircraft",
@@ -1897,7 +1920,7 @@ const UNSC_VEHICLES = [
 	},
 
   // TRANSPORTS AND TOWS
-  {
+{
     name: "M831 Troop Transport Warthog",
     type: "Armoured Car",
     allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
@@ -1907,7 +1930,8 @@ const UNSC_VEHICLES = [
     transportCapacity: 7,
     specialRules: [
       "Recce",
-      "Open-topped"
+      "Open-topped",
+      "All-Terrain"
     ]
   },
   {
@@ -2129,13 +2153,13 @@ const COVENANT_UNITS = [
   name: "Brute Squad",
   type: "Infantry",
   allowedVeterancy: ["Regular", "Veteran"],
-  costs: { Regular: 100, Veteran: 115 },
+  costs: { Regular: 105, Veteran: 120 },
   baseMen: 5,
   maxMen: 9,
   weapons: [{ name: "Spiker" }],
   specialRules: ["Stubborn", "Berserker", "Fieldcraft", "Strong"],
   options: {
-    extraMenCost: { Regular: 20, Veteran: 23 },
+    extraMenCost: { Regular: 21, Veteran: 24 },
     squadUpgrades: {
       "Anti-Tank Grenades": { cost: 2, grantsRule: "Tank Hunters" },
       "Energy Shield Modules": { cost: 3, grantsRule: "Energy Shields" },
@@ -2185,13 +2209,13 @@ const COVENANT_UNITS = [
   name: "Elite Squad",
   type: "Infantry",
   allowedVeterancy: ["Veteran"],
-  costs: { Veteran: 108 },
+  costs: { Veteran: 112 },
   baseMen: 4,
   maxMen: 6,
   weapons: [{ name: "Plasma Rifle" }],
   specialRules: ["Behind Enemy Lines", "Fanatics", "Energy Shields", "Fast", "VISR", "Strong", "Strikes First"],
   options: {
-    extraMenCost: { Veteran: 27 },
+    extraMenCost: { Veteran: 28 },
     squadUpgrades: {
       "Anti-Tank Grenades": { cost: 2, grantsRule: "Tank Hunters" },
       "Jump-Jet Packs": { cost: 1, grantsRule: "Flight" },
@@ -2586,10 +2610,14 @@ const COVENANT_VEHICLES = [
 	  ],
 	  options: {
 		weaponUpgrades: {
-		  "3 Pintle-mounted Medium Plasma MGs (left, right, rear arcs)": {
-			cost: 45,
-			addsWeapon: "Pintle-mounted Medium Plasma MG (left arc), Pintle-mounted Medium Plasma MG (right arc), Pintle-mounted Medium Plasma MG (rear arc)"
-		  }
+			"3 Pintle-mounted Medium Plasma MGs (left, right, rear arcs)": {
+			  cost: 45,
+			  addsWeapon: [
+				"Pintle-mounted Medium Plasma MG (left arc)",
+				"Pintle-mounted Medium Plasma MG (right arc)",
+				"Pintle-mounted Medium Plasma MG (rear arc)"
+			  ]
+			}
 		}
 	  }
 	},
@@ -2787,10 +2815,13 @@ const COVENANT_VEHICLES = [
           cost: 50,
           addsWeapon: "2x Turret-mounted Light Plasma Cannons"
         },
-        "2 Pintle-mounted Medium Plasma Machine Gun": {
-          cost: 30,
-          addsWeapon: "2x Pintle-mounted Medium Plasma Machine Gun"
-        },
+		"2 Pintle-mounted Medium Plasma MGs (left and right arcs)": {
+		  cost: 30,
+		  addsWeapon: [
+			"Pintle-mounted Medium Plasma MG (left arc)",
+			"Pintle-mounted Medium Plasma MG (right arc)"
+		  ]
+		},
         "Command Vehicle": {
           cost: 10,
           grantsRule: "Command Vehicle"
@@ -2870,7 +2901,7 @@ const BANISHED_UNITS = [
     baseMen: 1,
     maxMen: 4,
     weapons: [
-      { name: "Disruptor" },	  
+      { name: "Plasma Pistol/Disruptor" },	  
 	  { name: "Stalker Rifle" },
       { name: "Plasma Rifle" },
       { name: "Needler" },
@@ -2892,7 +2923,7 @@ const BANISHED_UNITS = [
     baseMen: 1,
     maxMen: 4,
     weapons: [
-      { name: "Disruptor" },	  
+      { name: "Plasma Pistol/Disruptor" },	  
 	  { name: "Stalker Rifle" },
       { name: "Plasma Rifle" },
       { name: "Needler" },
@@ -2912,7 +2943,7 @@ const BANISHED_UNITS = [
     baseMen: 1,
     maxMen: 3,
     weapons: [
-      { name: "Disruptor" },	  
+      { name: "Plasma Pistol/Disruptor" },	  
 	  { name: "Stalker Rifle" },
       { name: "Plasma Rifle" },
       { name: "Needler" },
@@ -2935,7 +2966,7 @@ const BANISHED_UNITS = [
     baseMen: 1,
     maxMen: 3,
     weapons: [
-      { name: "Disruptor" },	  
+      { name: "Plasma Pistol/Disruptor" },	  
 	  { name: "Stalker Rifle" },
       { name: "Plasma Rifle" },
       { name: "Needler" },
@@ -2955,7 +2986,7 @@ const BANISHED_UNITS = [
     baseMen: 1,
     maxMen: 3,
     weapons: [
-      { name: "Disruptor" },	  
+      { name: "Plasma Pistol/Disruptor" },	  
 	  { name: "Stalker Rifle" },
       { name: "Plasma Rifle" },
       { name: "Needler" },
@@ -2976,7 +3007,7 @@ const BANISHED_UNITS = [
   costs: { Inexperienced: 40, Regular: 55, Veteran: 70 },
   baseMen: 5,
   maxMen: 12,
-  weapons: [{ name: "Disruptor" }],
+  weapons: [{ name: "Plasma Pistol/Disruptor" }],
   specialRules: [],
   options: {
     extraMenCost: { Inexperienced: 8, Regular: 11, Veteran: 14 },
@@ -2986,10 +3017,10 @@ const BANISHED_UNITS = [
       "Shirkers": { cost: -2, grantsRule: "Shirkers" }
     },
     weaponReplacements: {
-      "Needlers": { max: 5, cost: 3, replaces: "Disruptor", grants: "Needler" } 
+      "Needlers": { max: 5, cost: 3, replaces: "Plasma Pistol/Disruptor", grants: "Needler" } 
     },
 	ncoReplacement: {
-	  options: ["Disruptor", "Needler", "Plasma Rifle", "Spiker"],
+	  options: ["Plasma Pistol/Disruptor", "Needler", "Plasma Rifle", "Spiker"],
 	  costs: { "Needler": 3, "Plasma Rifle": 5, "Spiker": 6 }
 	}
   }
@@ -3001,7 +3032,7 @@ const BANISHED_UNITS = [
   costs: { Inexperienced: 40, Regular: 55, Veteran: 70 },
   baseMen: 5,
   maxMen: 10,
-  weapons: [{ name: "Disruptor" }],
+  weapons: [{ name: "Plasma Pistol/Disruptor" }],
   specialRules: [],
   options: {
     extraMenCost: { Inexperienced: 8, Regular: 11, Veteran: 14 },
@@ -3013,13 +3044,13 @@ const BANISHED_UNITS = [
       "Skirmishers": { cost: 2, grantsRule: ["Fast", "Fieldcraft"], condition: "Squad does not take Defense Gauntlets" }
     },
     weaponReplacements: {
-      "Needlers":      { max: 4, cost: 3, replaces: "Disruptor", grants: "Needler" },
-      "Pulse Carbines":      { max: 4, cost: 3, replaces: "Disruptor", grants: "Pulse Carbine" },
-      "Stalker Rifles": { max: 4, cost: 0, replaces: "Disruptor", grants: "Stalker Rifle" },
-      "Plasma Rifles": { max: 4, cost: 5, replaces: "Disruptor", grants: "Plasma Rifle" }
+      "Needlers":      { max: 4, cost: 3, replaces: "Plasma Pistol/Disruptor", grants: "Needler" },
+      "Pulse Carbines":      { max: 4, cost: 3, replaces: "Plasma Pistol/Disruptor", grants: "Pulse Carbine" },
+      "Stalker Rifles": { max: 4, cost: 0, replaces: "Plasma Pistol/Disruptor", grants: "Stalker Rifle" },
+      "Plasma Rifles": { max: 4, cost: 5, replaces: "Plasma Pistol/Disruptor", grants: "Plasma Rifle" }
     },
     ncoReplacement: {
-      options: ["Disruptor", "Needler", "Pulse Carbine", "Stalker Rifle", "Plasma Rifle"],
+      options: ["Plasma Pistol/Disruptor", "Needler", "Pulse Carbine", "Stalker Rifle", "Plasma Rifle"],
       costs: { "Needler": 3, "Pulse Carbine": 3, "Stalker Rifle": 0, "Plasma Rifle": 5 }
     }
   }
@@ -3028,13 +3059,13 @@ const BANISHED_UNITS = [
   name: "Brute Squad",
   type: "Infantry",
   allowedVeterancy: ["Regular", "Veteran"],
-  costs: { Regular: 100, Veteran: 115 },
+  costs: { Regular: 105, Veteran: 120 },
   baseMen: 5,
   maxMen: 9,
   weapons: [{ name: "Spiker" }],
   specialRules: ["Stubborn", "Berserker", "Fieldcraft", "Strong"],
   options: {
-    extraMenCost: { Regular: 20, Veteran: 23 },
+    extraMenCost: { Regular: 21, Veteran: 24 },
 	squadUpgrades: {
 	  "Anti-Tank Grenades": { cost: 2, grantsRule: "Tank Hunters" },
 	  "Energy Shield Modules": { cost: 3, grantsRule: "Energy Shields" },
@@ -3065,17 +3096,17 @@ const BANISHED_UNITS = [
   costs: { Inexperienced: 50, Regular: 65, Veteran: 80 },
   baseMen: 5,
   maxMen: 10,
-  weapons: [{ name: "Disruptor" }],
+  weapons: [{ name: "Plasma Pistol/Disruptor" }],
   specialRules: ["Flight", "Infiltrator",
   { name: "Limited", description: "Only 1 Skimmer Squad may be taken per platoon." }
   ],
   options: {
     extraMenCost: { Inexperienced: 10, Regular: 13, Veteran: 16 },
     weaponReplacements: {
-      "Shock Rifle": { max: 9, cost: 1, replaces: "Disruptor", grants: "Shock Rifle" }
+      "Shock Rifle": { max: 9, cost: 1, replaces: "Plasma Pistol/Disruptor", grants: "Shock Rifle" }
     },
     ncoReplacement: {
-      options: ["Disruptor", "Shock Rifle"],
+      options: ["Plasma Pistol/Disruptor", "Shock Rifle"],
       costs: { "Shock Rifle": 1 }
     }
   }
@@ -3084,13 +3115,13 @@ const BANISHED_UNITS = [
   name: "Elite Squad",
   type: "Infantry",
   allowedVeterancy: ["Veteran"],
-  costs: { Veteran: 108 },
+  costs: { Veteran: 112 },
   baseMen: 4,
   maxMen: 6,
   weapons: [{ name: "Plasma Rifle" }],
   specialRules: ["Behind Enemy Lines", "Fanatics", "Energy Shields", "Fast", "VISR", "Strong", "Strikes First"],
   options: {
-    extraMenCost: { Veteran: 27 },
+    extraMenCost: { Veteran: 28 },
     squadUpgrades: {
       "Anti-Tank Grenades": { cost: 2, grantsRule: "Tank Hunters" },
       "Jump-Jet Packs": { cost: 1, grantsRule: "Flight" },
@@ -3208,15 +3239,15 @@ const BANISHED_UNITS = [
     costs: { Inexperienced: 49, Regular: 70, Veteran: 91 },
     baseMen: 2,
     maxMen: 2,
-    weapons: [{ name: "Fuel Rod Gun" }],
+    weapons: [{ name: "Fuel Rod Gun/Hydra" }],
     specialRules: ["Team Weapon", "Forged In Chains"],
     options: {
       squadUpgrades: {
-        "Plasma Launcher": {
+        "Rocket Launcher/Plasma Launcher": {
           cost: 0,
-          grantsRule: "Plasma Launcher",
+          grantsRule: "Rocket Launcher/Plasma Launcher",
           perModel: false,
-          replacesWeapon: "Fuel Rod Gun"
+          replacesWeapon: "Fuel Rod Gun/Hydra"
         }
       }
     }
@@ -3230,7 +3261,7 @@ const BANISHED_UNITS = [
     maxMen: 2,
     weapons: [
       { name: "Beam Rifle" },
-      { name: "Plasma Pistol" }
+      { name: "Plasma Pistol/Disruptor" }
     ],
     specialRules: ["Team Weapon", "Sniper", "Infiltrator", "Forged In Chains"]
   },
@@ -3241,15 +3272,15 @@ const BANISHED_UNITS = [
     costs: { Inexperienced: 26, Regular: 40, Veteran: 54 },
     baseMen: 2,
     maxMen: 3,
-    weapons: [{ name: "Brute Shot" }],
+    weapons: [{ name: "Brute Shot/Grenade Launcher" }],
     specialRules: ["Team Weapon", "Forged In Chains"],
     options: {
       squadUpgrades: {
-        "Concussion Rifle": {
+        "Concussion Rifle/Cindershot": {
           cost: 3,
-          grantsRule: "Concussion Rifle",
+          grantsRule: "Concussion Rifle/Cindershot",
           perModel: false,
-          replacesWeapon: "Brute Shot"
+          replacesWeapon: "Brute Shot/Grenade Launcher"
         },
         "Add Spotter (If unit is in a heavy weapons platoon)": {
           cost: 10,
@@ -3667,10 +3698,13 @@ const BANISHED_VEHICLES = [
           cost: 50,
           addsWeapon: "2x Turret-mounted Light Plasma Cannons"
         },
-        "2 Pintle-mounted Medium Plasma Machine Gun": {
-          cost: 30,
-          addsWeapon: "2x Pintle-mounted Medium Plasma Machine Gun"
-        },
+		"2 Pintle-mounted Medium Plasma MGs (left and right arcs)": {
+		  cost: 30,
+		  addsWeapon: [
+			"Pintle-mounted Medium Plasma MG (left arc)",
+			"Pintle-mounted Medium Plasma MG (right arc)"
+		  ]
+		},
         "Command Vehicle": {
           cost: 10,
           grantsRule: "Command Vehicle"
@@ -3885,7 +3919,7 @@ const FORERUNNER_UNITS = [
     name: "Promethean Soldier Squad",
     type: "Infantry",
     allowedVeterancy: ["Regular", "Veteran"],
-    costs: { Regular: 92, Veteran: 104 },
+    costs: { Regular: 96, Veteran: 108 },
     baseMen: 4,
     maxMen: 6,
     weapons: [
@@ -3902,7 +3936,7 @@ const FORERUNNER_UNITS = [
       "Fast"
     ],
     options: {
-      extraMenCost: { Regular: 23, Veteran: 26 },
+      extraMenCost: { Regular: 24, Veteran: 27 },
 	  squadUpgrades: {
 		"Engineers": { cost: 1, grantsRule: "Engineers" }
 		},
@@ -3920,7 +3954,7 @@ const FORERUNNER_UNITS = [
     name: "Promethean Soldier Commando Squad",
     type: "Infantry",
     allowedVeterancy: ["Regular", "Veteran"],
-    costs: { Regular: 96, Veteran: 108 },
+    costs: { Regular: 100, Veteran: 112 },
     baseMen: 4,
     maxMen: 6,
     weapons: [
@@ -3939,7 +3973,7 @@ const FORERUNNER_UNITS = [
       { name: "Limited", description: "Only 1 Promethean Soldier Commando Squad may be taken per platoon." }
     ],
     options: {
-      extraMenCost: { Regular: 24, Veteran: 27 },
+      extraMenCost: { Regular: 25, Veteran: 28 },
       squadUpgrades: {
         "Engineers": { cost: 1, grantsRule: "Engineers" }
       },
@@ -3955,11 +3989,11 @@ const FORERUNNER_UNITS = [
     }
   },
 
-  {
+{
     name: "Promethean Knight Team",
     type: "Infantry",
     allowedVeterancy: ["Veteran"],
-    costs: { Veteran: 60 },
+    costs: { Veteran: 62 },
     baseMen: 2,
     maxMen: 5,
     weapons: [
@@ -3967,7 +4001,7 @@ const FORERUNNER_UNITS = [
     ],
     specialRules: [
       "Composed Beings",
-	  "Counter-Assault Protocols",
+      "Counter-Assault Protocols",
       "Fanatics",
       "Resilient",
       "Strong",
@@ -3981,35 +4015,36 @@ const FORERUNNER_UNITS = [
       { name: "Limited", description: "Only up to 2 Promethean Knight Teams may be taken per platoon." }
     ],
     options: {
-      extraMenCost: { Veteran: 30 },
+      extraMenCost: { Veteran: 31 },
       weaponReplacements: {
         "Light Rifles": { max: 5, cost: -4, replaces: "Suppressor", grants: "Light Rifle" },
         "Scattershots": { max: 5, cost: -3, replaces: "Suppressor", grants: "Scattershot" },
-        "Incineration Cannon": { max: 1, cost: 33, replaces: "Suppressor", grants: "Incineration Cannon" }
+        "Incineration Cannon": { max: 1, cost: 41, replaces: "Suppressor", grants: "Incineration Cannon" }
       },
 		ncoReplacement: {
 		  options: ["Suppressor", "Light Rifle", "Scattershot", "Incineration Cannon"],
 		  costs: {
 			"Light Rifle": -4,
 			"Scattershot": -3,
-			"Incineration Cannon": 33
+			"Incineration Cannon": 41
 		  }
 		},
-		squadUpgrades: {
-		  "Knight Battlewagons": { cost: 2, grantsRule: ["Tank Hunters"] },
+      squadUpgrades: {
+        "Knight Battlewagons": { cost: 2, grantsRule: ["Tank Hunters"] },
 
-			"Knight Commander (0-1 per army)": {
-			  cost: 45,
-			  perModel: false,          // flat cost
-			  addMan: 1,                // +1 extra model (officer)
-			  ignoreExtraMenCost: true, // don't charge +30 for this extra model
-			  grantsRule: [
-				"Knight Commander",
-				"Limited: Only 1 Knight Commander may be taken per army"
-			  ],
-			  note: "Add a single officer model to this unit; does not fulfill Platoon Commander requirement."
-			}
-		}
+        "Knight Commander (Platoon Commander, 0-1 per army)": {
+          cost: 51,
+          perModel: false,
+          addMan: 1,
+          ignoreExtraMenCost: true,
+          grantsRule: [
+            "Platoon Commander",
+            "Knight Commander",
+            "Limited: Only 1 Knight Commander may be taken per army"
+          ],
+          note: "Add a single officer model to this unit. If taken, this unit takes a Platoon Commander slot from a platoon. The Knight Commander is considered a Platoon Commander, but remains part of this unit."
+        }
+      }
     }
   },
 
@@ -4018,7 +4053,7 @@ const FORERUNNER_UNITS = [
     name: "Grenade Launcher Team",
     type: "Team",
     allowedVeterancy: ["Regular", "Veteran"],
-    costs: { Regular: 49, Veteran: 63 },
+    costs: { Regular: 51, Veteran: 65 },
     baseMen: 2,
     maxMen: 2,
     weapons: [
@@ -4041,7 +4076,7 @@ const FORERUNNER_UNITS = [
     name: "Anti Tank Team",
     type: "Team",
     allowedVeterancy: ["Regular", "Veteran"],
-    costs: { Regular: 82, Veteran: 103 },
+    costs: { Regular: 84, Veteran: 105 },
     baseMen: 2,
     maxMen: 2,
     weapons: [
@@ -4073,7 +4108,7 @@ const FORERUNNER_UNITS = [
     name: "Sniper Team",
     type: "Team",
     allowedVeterancy: ["Regular", "Veteran"],
-    costs: { Regular: 64, Veteran: 79 },
+    costs: { Regular: 66, Veteran: 81 },
     baseMen: 2,
     maxMen: 2,
     weapons: [
@@ -4108,7 +4143,7 @@ const FORERUNNER_UNITS = [
     name: "Machine Gun Team",
     type: "Team",
     allowedVeterancy: ["Regular", "Veteran"],
-    costs: { Regular: 90, Veteran: 105 },
+    costs: { Regular: 94, Veteran: 109 },
     baseMen: 4,
     maxMen: 4,
     weapons: [
@@ -4154,69 +4189,80 @@ const FORERUNNER_VEHICLES = [
   },
 
   // TANKS
-  {
-    name: "Eradicator Sentinel",
-    type: "Tank",
-    allowedVeterancy: ["Regular", "Veteran"],
-    costs: { Regular: 100, Veteran: 120 },
-    weapons: [
-      { name: "Hull-mounted Forward-facing Heavy Plasma MG" }
-    ],
-    damageValue: "8+ (Medium Anti-Grav Tank)",
-    transportCapacity: 1,
-    specialRules: [
-      "Agile",
-      "Impulse Drive",
-      { name: "Adjunct Dock", description: "This vehicle can only transport 1 Officer model. While an Officer is aboard, this vehicle has the Open-Topped rule." }
-    ],
-    options: {
-      weaponUpgrades: {
-        "Right Hull-mounted Forward-facing Medium Plasma MG": {
-          cost: 10,
-          addsWeapon: "Hull-mounted Forward-facing Medium Plasma MG"
-        },
-        "Left Hull-mounted Forward-facing Medium Plasma MG": {
-          cost: 10,
-          addsWeapon: "Hull-mounted Forward-facing Medium Plasma MG"
-        },
-        "Right Hull-mounted Forward-facing Heavy Plasma MG": {
-          cost: 20,
-          addsWeapon: "Hull-mounted Forward-facing Heavy Plasma MG"
-        },
-        "Left Hull-mounted Forward-facing Heavy Plasma MG": {
-          cost: 20,
-          addsWeapon: "Hull-mounted Forward-facing Heavy Plasma MG"
-        },
-        "Right Hull-mounted Forward-facing Rocket Launcher": {
-          cost: 50,
-          addsWeapon: "Hull-mounted Forward-facing Rocket Launcher"
-        },
-        "Left Hull-mounted Forward-facing Rocket Launcher": {
-          cost: 50,
-          addsWeapon: "Hull-mounted Forward-facing Rocket Launcher"
-        },
-        "Right Hull-mounted Forward-facing Incineration Cannon": {
-          cost: 40,
-          addsWeapon: "Hull-mounted Forward-facing Incineration Cannon"
-        },
-        "Left Hull-mounted Forward-facing Incineration Cannon": {
-          cost: 40,
-          addsWeapon: "Hull-mounted Forward-facing Incineration Cannon"
-        },
-        "Right Hull-mounted Forward-facing Cindershot": {
-          cost: 25,
-          addsWeapon: "Hull-mounted Forward-facing Cindershot"
-        },
-        "Left Hull-mounted Forward-facing Cindershot": {
-          cost: 25,
-          addsWeapon: "Hull-mounted Forward-facing Cindershot"
-        }
+{
+  name: "Eradicator Sentinel",
+  type: "Tank",
+  allowedVeterancy: ["Regular", "Veteran"],
+  costs: { Regular: 100, Veteran: 120 },
+  weapons: [
+    { name: "Hull-mounted Forward-facing Heavy Plasma MG" }
+  ],
+  damageValue: "8+ (Medium Anti-Grav Tank)",
+  transportCapacity: 1,
+  specialRules: [
+    "Agile",
+    "Impulse Drive",
+    { name: "Adjunct Dock", description: "This vehicle can only transport 1 Officer model. While an Officer is aboard, this vehicle has the Open-Topped rule." }
+  ],
+  options: {
+    maxWeaponUpgrades: 2,
+    weaponUpgrades: {
+      "Right Hull-mounted Forward-facing Medium Plasma MG": {
+        cost: 10,
+        slot: "right",
+        addsWeapon: "Right Hull-mounted Forward-facing Medium Plasma MG"
       },
-      optionNotes: [
-        "May add up to 2 additional weapons in any combination from the list above."
-      ]
-    }
-  },
+      "Left Hull-mounted Forward-facing Medium Plasma MG": {
+        cost: 10,
+        slot: "left",
+        addsWeapon: "Left Hull-mounted Forward-facing Medium Plasma MG"
+      },
+      "Right Hull-mounted Forward-facing Heavy Plasma MG": {
+        cost: 20,
+        slot: "right",
+        addsWeapon: "Right Hull-mounted Forward-facing Heavy Plasma MG"
+      },
+      "Left Hull-mounted Forward-facing Heavy Plasma MG": {
+        cost: 20,
+        slot: "left",
+        addsWeapon: "Left Hull-mounted Forward-facing Heavy Plasma MG"
+      },
+      "Right Hull-mounted Forward-facing Rocket Launcher": {
+        cost: 50,
+        slot: "right",
+        addsWeapon: "Right Hull-mounted Forward-facing Rocket Launcher"
+      },
+      "Left Hull-mounted Forward-facing Rocket Launcher": {
+        cost: 50,
+        slot: "left",
+        addsWeapon: "Left Hull-mounted Forward-facing Rocket Launcher"
+      },
+      "Right Hull-mounted Forward-facing Incineration Cannon": {
+        cost: 40,
+        slot: "right",
+        addsWeapon: "Right Hull-mounted Forward-facing Incineration Cannon"
+      },
+      "Left Hull-mounted Forward-facing Incineration Cannon": {
+        cost: 40,
+        slot: "left",
+        addsWeapon: "Left Hull-mounted Forward-facing Incineration Cannon"
+      },
+      "Right Hull-mounted Forward-facing Cindershot": {
+        cost: 25,
+        slot: "right",
+        addsWeapon: "Right Hull-mounted Forward-facing Cindershot"
+      },
+      "Left Hull-mounted Forward-facing Cindershot": {
+        cost: 25,
+        slot: "left",
+        addsWeapon: "Left Hull-mounted Forward-facing Cindershot"
+      }
+    },
+    optionNotes: [
+      "May add up to 2 additional weapons in any combination from the list above. Only one weapon may be taken in the right slot and only one weapon may be taken in the left slot."
+    ]
+  }
+},
 
   // AIRCRAFT
   {
@@ -4409,7 +4455,8 @@ const FLOOD_UNITS = [
       "Anti-Tank Grenades": { cost: 2, grantsRule: "Tank Hunters" },
       "Energy Shield Modules": { cost: 3, grantsRule: "Energy Shields" },
       "Melee Weapon (NCO only)": { cost: 1, grantsRule: "Melee Weapon", perModel: false },
-      "Patient Predators": { cost: 1, grantsRule: "Patient Predators" }
+      "Patient Predators": { cost: 1, grantsRule: "Patient Predators" },
+      "Strong": { cost: 1, grantsRule: "Strong" }
     },
     weaponReplacements: {
       "Needlers": {
@@ -4442,22 +4489,22 @@ const FLOOD_UNITS = [
         replaces: "Assault Rifle",
         grants: "Shotgun"
       },
-      "Battle Rifles / Covenant Carbines": {
+      "Battle Rifles/Covenant Carbines": {
         max: 5,
         cost: -3,
         replaces: "Assault Rifle",
-        grants: "Battle Rifle"
+        grants: "Battle Rifle/Covenant Carbine"
       }
     },
     ncoReplacement: {
-      options: ["Assault Rifle", "Needler", "Submachine Gun", "Plasma Rifle", "Spiker", "Shotgun", "Battle Rifle"],
+      options: ["Assault Rifle", "Needler", "Submachine Gun", "Plasma Rifle", "Spiker", "Shotgun", "Battle Rifle/Covenant Carbine"],
       costs: {
         "Needler": -2,
         "Submachine Gun": -2,
         "Plasma Rifle": 0,
         "Spiker": 0,
         "Shotgun": -3,
-        "Battle Rifle": -3
+        "Battle Rifle/Covenant Carbine": -3
       }
     }
   }
@@ -4608,7 +4655,8 @@ const FLOOD_UNITS = [
   ],
   options: {
     squadUpgrades: {
-      "Patient Predators": { cost: 1, grantsRule: "Patient Predators" }
+      "Patient Predators": { cost: 1, grantsRule: "Patient Predators" },
+      "Strong": { cost: 1, grantsRule: "Strong" }
     }
   }
 },
@@ -4632,7 +4680,8 @@ const FLOOD_UNITS = [
   ],
   options: {
     squadUpgrades: {
-      "Patient Predators": { cost: 1, grantsRule: "Patient Predators" }
+      "Patient Predators": { cost: 1, grantsRule: "Patient Predators" },
+      "Strong": { cost: 1, grantsRule: "Strong" }
     }
   }
 },
@@ -4658,7 +4707,8 @@ const FLOOD_UNITS = [
         grantsRule: "Spotter",
         perModel: false
       },
-      "Patient Predators": { cost: 1, grantsRule: "Patient Predators" }
+      "Patient Predators": { cost: 1, grantsRule: "Patient Predators" },
+      "Strong": { cost: 1, grantsRule: "Strong" }
     }
   }
 }
@@ -6121,6 +6171,27 @@ function getUnitDisplaySpecialRules(unit, unitData) {
 // 6. LIVE COST PREVIEW & COST CALCULATION
 ////////////////////////////////////////////////////////////////////////////////
 
+function sanitizeVehicleUpgradeSelection(selectedSet, upgradesDef, maxWeaponUpgrades = Infinity) {
+  const result = [];
+  const usedSlots = new Set();
+  const max = Number.isFinite(Number(maxWeaponUpgrades)) ? Number(maxWeaponUpgrades) : Infinity;
+
+  selectedSet.forEach(label => {
+    const upg = upgradesDef?.[label];
+    if (!upg) return;
+
+    const slot = upg.slot || null;
+
+    if (slot && usedSlots.has(slot)) return;
+    if (result.length >= max) return;
+
+    result.push(label);
+    if (slot) usedSlots.add(slot);
+  });
+
+  return new Set(result);
+}
+
 // ── GLOBAL helper ── (single definition; previous duplicate removed)
 function addRequired(label, allUpgrades, upgradesDef) {
   const upg = upgradesDef?.[label];
@@ -7137,7 +7208,12 @@ function afterInfantryModalRender(unit, unitData) {
 // VEHICLE MODAL FIELDS, with live preview
 function renderVehicleUpgradeFields(unit, unitData) {
   const upgrades = unitData.options?.weaponUpgrades || {};
-  let currentSelected = new Set(unit.selectedUpgrades || []);
+  const maxWeaponUpgrades = unitData.options?.maxWeaponUpgrades ?? Infinity;
+  let currentSelected = sanitizeVehicleUpgradeSelection(
+    new Set(unit.selectedUpgrades || []),
+    upgrades,
+    maxWeaponUpgrades
+  );
   const canForceCV = canForceCommandVehicle(unit, unitData);
 
   function getRequired(set) {
@@ -7160,16 +7236,42 @@ function renderVehicleUpgradeFields(unit, unitData) {
     return required;
   }
 
+  function getUsedSlots(set) {
+    const slots = new Set();
+
+    set.forEach(label => {
+      const slot = upgrades?.[label]?.slot;
+      if (slot) slots.add(slot);
+    });
+
+    return slots;
+  }
+
   function renderCheckboxes(container, checkedSet) {
     let required = getRequired(checkedSet);
     let allChecked = new Set([...checkedSet, ...required]);
+    let usedSlots = getUsedSlots(allChecked);
+
+    const max = Number.isFinite(Number(maxWeaponUpgrades)) ? Number(maxWeaponUpgrades) : Infinity;
+    const maxReached = checkedSet.size >= max;
 
     container.innerHTML = "";
 
     Object.entries(upgrades).forEach(([label, upg]) => {
       const id = `upg-${Math.random().toString(36).substr(2, 6)}`;
-      let checked = allChecked.has(label) ? "checked" : "";
-      let disabled = required.has(label) ? "disabled" : "";
+
+      const isChecked = allChecked.has(label);
+      const isRequired = required.has(label);
+      const slot = upg.slot || null;
+      const slotAlreadyUsed = slot && usedSlots.has(slot) && !isChecked;
+
+      const shouldDisable =
+        isRequired ||
+        (!isChecked && maxReached) ||
+        slotAlreadyUsed;
+
+      let checked = isChecked ? "checked" : "";
+      let disabled = shouldDisable ? "disabled" : "";
 
       container.innerHTML += `
         <label>
@@ -7197,9 +7299,12 @@ function renderVehicleUpgradeFields(unit, unitData) {
 
     function refresh() {
       let checkedNow = Array.from(container.querySelectorAll('.editVehicleUpgrade:checked')).map(cb => cb.value);
-      let required = getRequired(new Set(checkedNow));
-      let finalChecked = new Set([...checkedNow, ...required]);
-      currentSelected = finalChecked;
+
+      currentSelected = sanitizeVehicleUpgradeSelection(
+        new Set(checkedNow),
+        upgrades,
+        maxWeaponUpgrades
+      );
 
       renderCheckboxes(container, currentSelected);
       attach();
@@ -7485,10 +7590,13 @@ function saveEdit() {
 
   // VEHICLES: weapon upgrades with forced logic
   if (unit.type !== "Infantry" && unit.type !== "Team") {
-    let upgrades = [];
-    document.querySelectorAll(".editVehicleUpgrade:checked").forEach(cb => upgrades.push(cb.value));
+	const vehicleUpgradesDef = unitData.options?.weaponUpgrades || {};
 
-    const vehicleUpgradesDef = unitData.options?.weaponUpgrades || {};
+	let upgrades = Array.from(sanitizeVehicleUpgradeSelection(
+	  new Set(Array.from(document.querySelectorAll(".editVehicleUpgrade:checked")).map(cb => cb.value)),
+	  vehicleUpgradesDef,
+	  unitData.options?.maxWeaponUpgrades
+	));
 
     let allUpgrades = new Set(upgrades);
     function addReq(upgLabel) {
@@ -7569,6 +7677,18 @@ function saveEdit() {
 // 9. RENDER ARMY LIST TO SCREEN
 ////////////////////////////////////////////////////////////////////////////////
 
+function getDisplayUnitName(unit) {
+  const baseName = unit?.name || "";
+
+  const hasKnightCommander =
+    baseName === "Promethean Knight Team" &&
+    Object.entries(unit?.squadUpgrades || {}).some(([label, picked]) =>
+      picked && String(label).startsWith("Knight Commander")
+    );
+
+  return hasKnightCommander ? `${baseName} (Platoon Commander)` : baseName;
+}
+
 function renderArmyList() {
   const listDiv = document.getElementById("armyList");
   listDiv.innerHTML = "";
@@ -7592,7 +7712,7 @@ function renderArmyList() {
     const card = document.createElement("div");
     card.className = "card";
     card.innerHTML = `
-      <h3>${unit.name} (${unit.veterancy}, ${unit.type})</h3>
+      <h3>${getDisplayUnitName(unit)} (${unit.veterancy}, ${unit.type})</h3>
       <div class="details">
         ${unit.men ? `<div><b>Men:</b> ${unit.men}</div>` : ""}
         ${showDamage ? `<div><b>Damage:</b> ${dmgText}</div>` : ""}
@@ -7724,7 +7844,7 @@ function renderUnitCard(pdf, unit, margin, width, y) {
   let yy = y + 22;
 
   pdf.setFont("helvetica", "bold").setFontSize(13.6).setTextColor(46, 71, 142);
-  pdf.text(`${unit.name} (${unit.veterancy}, ${unit.type})`, x, yy);
+  pdf.text(`${getDisplayUnitName(unit)} (${unit.veterancy}, ${unit.type})`, x, yy);
 
   yy += 15;
   pdf.setFont("helvetica", "normal").setFontSize(11.5).setTextColor(40, 40, 60);
