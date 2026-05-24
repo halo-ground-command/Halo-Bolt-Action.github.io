@@ -458,7 +458,7 @@ window.unitSpecialDescriptions = {
   "Flak": "Autofires at FAO called aircraft in arc and range. However against on table aircraft just ignore minus 1 to hit vs flying. Pintle weapons count as having Flak.", 
   "Fieldcraft": "Treat rough terrain as open ground for movement. When assaulting through rough ground, defenders lose Defensive Position gained from that Rough Ground.",
   "Strikes First": "Counts as having Defensive Position bonus in close quarters when performing an assault. If the opponent also has Defensive Position, Strikes First or a rule cancels this rule, then fight simultaneously.",
-  "Flight": "Advance 12\"; Run 18\"; ignore terrain for movement. Cannot end in impassable terrain (or in rough ground after a Run). If ambushed/fired upon while flying, no soft/hard cover saves. Cannot pick up or carry objectives on a Run order. Infantry may instead move on the ground using normal movement rules.",
+  "Flight": "Advance 12\"; Run 18\"; ignore terrain for movement. Cannot end in impassable terrain (or in rough ground after a Run). If ambushed while flying, no soft/hard cover saves. Cannot pick up or carry objectives on a Run order. Infantry may instead move on the ground using normal movement rules.",
   "Flood Infection": "Automatons and Composed Beings are immune to this rule. When winning vs Infantry or Artillery in CQ, immediately roll one D6 per enemy model removed during and after combat. Each roll equal to or above this flood unit’s damage value returns a slain model (up to starting size). If the flood unit has Energy Shields, it increases the requirement by +1.",
   "Green": "First casualty triggers a D6 roll: 1 = gain D6 pins and go Down, 6 = unit upgraded to Regular morale (9).",
   "Gun Shield": "Crew of a gun with a gun shield count as in soft cover vs small arms hits from within the gun’s front arc.",
@@ -490,7 +490,8 @@ window.unitSpecialDescriptions = {
   "Attached Caste Leader": "Embedded leader model added to a squad. The unit counts as ONE unit (one order die, one pin pool). Special rules don’t share between leader and squad (except: cancels Shirkers; unit ignores -1 morale for NCO dead; tests use highest veterancy while squad models remain). Shooting: casualties must be taken from non-leader models until they’re gone (excess doesn’t spill onto leader); HE/templates & snipers can hit the leader (snipers may pick it out as NCO). Close quarters: attacker allocates attacks to leader vs squad; only attacks directed at leader can remove it. If all non-leader models are removed (casualties or rout), leader breaks off and becomes a separate 1-model unit.",
   "Flood Burster": "When successfully entering from Reserve, one unit per turn may deploy by eruption instead of from a table edge: place it legally in open ground more than 9\" from enemies, then give it a Down order. It cannot perform more actions this turn.", 
   "Patient Predators": "If this unit is in cover from enemy shooting while it has an Ambush order, improve its Cover Save by +1. Remember rolls of 1 always fail.",
-  "Brood Sac": "If this unit is not Down, when a friendly Flood Infantry unit successfully enters from Reserve, it may deploy by eruption instead of from a table edge. Remove the Spawner; it counts as destroyed. Place the entering unit with at least one model within 1\" of the Spawner’s former position, outside any building and with all models in a legal position according to the rules. The unit goes Down and takes no further action. If it cannot be placed, it remains off-table and the Spawner is not removed."
+  "Brood Sac": "If this unit is not Down, when a friendly Flood Infantry unit successfully enters from Reserve, it may deploy by eruption instead of from a table edge. Remove the Spawner; it counts as destroyed. Place the entering unit with at least one model within 1\" of the Spawner’s former position, outside any building and with all models in a legal position according to the rules. The unit goes Down and takes no further action. If it cannot be placed, it remains off-table and the Spawner is not removed.",
+  "Medic": "If the medic’s own unit, or any friendly Infantry or Artillery unit with at least one model within 6\" of the medic model, suffers damage from Small Arms fire, roll one die for each point of damage before removing casualties. On a 6, that damage is ignored and no casualty is caused."
 };
 
 
@@ -992,7 +993,7 @@ const UNSC_UNITS = [
       { name: "Pistol" },
 	  { name: "Unarmed" }
     ],
-    specialRules: ["For Humanity’s Survival!"],
+    specialRules: ["For Humanity’s Survival!", "Medic"],
     options: {
       extraMenCost: { Regular: 8, Veteran: 11 }
     }
@@ -3804,7 +3805,7 @@ const FORERUNNER_UNITS = [
       "Energy Shield",
       "Flight",
       { name: "Forward Observer", description: "Counts as an Air force forward observer." },
-      { name: "Reconstruction Suite", description: "If a friendly Infantry or Artillery model/unit with Composed Beings or Automaton is within 6\" of the Watcher and takes damage from Small Arms fire, roll one die per point of damage; for each 6, ignore one point of damage." },
+      { name: "Reconstruction Suite", description: "If the Watcher’s own unit, or a friendly Infantry or Artillery unit with Composed Beings or Automaton and at least one model within 6\" of the Watcher model, suffers damage from Small Arms fire, roll one die for each point of damage before removing casualties. On each 6, one point of damage is ignored and no casualty is caused." },
       "Hardlight Screen"
     ],
     options: {
@@ -3828,7 +3829,7 @@ const FORERUNNER_UNITS = [
       "Energy Shield",
       "Flight",
       { name: "Forward Observer", description: "Counts as an Artillery forward observer." },
-      { name: "Reconstruction Suite", description: "If a friendly Infantry or Artillery model/unit with Composed Beings or Automaton is within 6\" of the Watcher and takes damage from Small Arms fire, roll one die per point of damage; for each 6, ignore one point of damage." },
+      { name: "Reconstruction Suite", description: "If the Watcher’s own unit, or a friendly Infantry or Artillery unit with Composed Beings or Automaton and at least one model within 6\" of the Watcher model, suffers damage from Small Arms fire, roll one die for each point of damage before removing casualties. On each 6, one point of damage is ignored and no casualty is caused." },
       "Hardlight Screen"
     ],
     options: {
@@ -4246,12 +4247,12 @@ const FORERUNNER_VEHICLES = [
         addsWeapon: "Left Hull-mounted Forward-facing Rocket Launcher"
       },
       "Right Hull-mounted Forward-facing Incineration Cannon": {
-        cost: 40,
+        cost: 50,
         slot: "right",
         addsWeapon: "Right Hull-mounted Forward-facing Incineration Cannon"
       },
       "Left Hull-mounted Forward-facing Incineration Cannon": {
-        cost: 40,
+        cost: 50,
         slot: "left",
         addsWeapon: "Left Hull-mounted Forward-facing Incineration Cannon"
       },
