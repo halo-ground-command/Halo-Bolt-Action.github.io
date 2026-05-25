@@ -411,6 +411,8 @@ allWeaponProfiles["Forward-facing Hull-mounted Flamethrower (Vehicle)"] = allWea
 // --- Armoury weapon aliases ---
 allWeaponProfiles["M301 Grenade Launcher"] = allWeaponProfiles["Grenade Launcher"];
 allWeaponProfiles["Volatile Biomass"] = 'Range –, Shots –, Pen HE, Suicide Charge, HE (2")';
+allWeaponProfiles["Plasma Sword"] = 'Range –, Shots –, Pen –, Plasma Sword';
+allWeaponProfiles["Gravity Hammer"] = 'Range –, Shots –, Pen –, Gravity Hammer';
 
 
 // --- Weapon Special Rule Descriptions ---
@@ -435,7 +437,9 @@ const weaponSpecialDescriptions = {
   "Sniper": "Grants unit the Sniper special rule.",
   "Supercombine": "Each natural roll of 6 to hit allows rolling an extra die to wound against the same target, even when using HE.",
   "Team": "Weapon with this rule requires at least 2 models to fire at full effect. If only 1 model remains, the weapon may still fire but suffers -1 to hit. For squad-based Team Weapons, a loader must be within 1\" of the weapon carrier; when the Team Weapon fires, the loader cannot fire their own weapon. If the loader is killed or is not within 1\", the Team Weapon suffers -1 to hit.",
-  "Tracking": "Ignores the -1 to-hit penalty caused by pinning when issued a FIRE order."
+  "Tracking": "Ignores the -1 to-hit penalty caused by pinning when issued a FIRE order.",
+  "Gravity Hammer": "A model with a Gravity Hammer gains Tough Fighters. While this unit is fighting in close quarters, the Gravity Hammer wielder gains +1 extra melee attack for every full 3 enemy models involved in the fight. If a unit containing a Gravity Hammer is assaulted while it is not Down, it counts as having Defensive Position.",
+  "Plasma Sword": "A model with a Plasma Sword gains Tough Fighters. When this model fights in close quarters, it may use the Plasma Sword. If it does, halve this model’s total number of attacks, rounding up, including any bonus attacks assigned to it. Attacks made with the Plasma Sword gain +1 to wound against Infantry and Artillery units. If these attacks cause at least one casualty, you may choose an enemy NCO, Officer, or unit leader in the target unit as one of the casualties caused by this model."
 };
 
 
@@ -448,7 +452,7 @@ window.unitSpecialDescriptions = {
   "Platoon Commander": "+2 Morale within 6\". Snap: after a successful order other than Down, may issue up to 2 orders to friendly units within 6\".",
   "Company Commander": "+4 Morale within 12\". Snap: after a successful order other than Down, may issue up to 4 orders to friendly units within 12\".",
   "Composed Beings": "Ignore Horror's -1 morale effects, immune to Flood Infection and cannot benefit from medics.",
-  "Counter-Assault Protocols": "If this unit is assaulted by enemy Infantry or Artillery while not down, the attacking unit halves its total number of attack dice, rounding up, during the first round of that close combat only.",
+  "Counter-Assault Protocols": "If this unit is assaulted by enemy Infantry or Artillery while not down, the attacking UNIT halves its total number of attack dice, rounding up, during the first round of that close combat only.",
   "Deacon": "Upgrade for the NCO. The Deacon follows the rules for a Platoon Commander, except his Morale bonus bubble is only +1, and his You men, snap to action! may only issue an order to 1 other friendly Grunt/Jackal unit. The Deacon counts as an Officer, but is not a Officer HQ and does not fulfil the requirement for a Platoon Commander.",
   "Engineers": "When assaulting a building, defenders lose Defensive Position.",
   "Energy Shield": "+1 harder to damage from shooting; 5+ cover in the open; +1 to other cover saves. Remember rolls of 1 always fail.",
@@ -485,8 +489,8 @@ window.unitSpecialDescriptions = {
   "VISR": "Can see through smoke and ignores Stealth’s -1 to-hit penalty.",
   "War Sermon": "When this unit receives its order die (except Down), pick 1 friendly Covenant Infantry or Artillery unit within 6\" and roll a D6 (Inexperienced -1, Veteran +1). On a 4+, remove 1 pin from that unit.",
   "Wide Formation": "Models may maintain up to 2\" coherency (instead of 1\").",
-  "Melee Weapon": "In close combat, Officer/NCO rolls 2 dice instead of 1.",
-  "Melee Weapons": "Every model makes 2 attacks in close quarters instead of 1.",
+  "Melee Weapon": "In close combat, Officer/NCO rolls 1 additional dice.",
+  "Melee Weapons": "Every model makes 2 base attacks in close quarters instead of 1.",
   "Attached Caste Leader": "Embedded leader model added to a squad. The unit counts as ONE unit (one order die, one pin pool). Special rules don’t share between leader and squad (except: cancels Shirkers; unit ignores -1 morale for NCO dead; tests use highest veterancy while squad models remain). Shooting: casualties must be taken from non-leader models until they’re gone (excess doesn’t spill onto leader); HE/templates & snipers can hit the leader (snipers may pick it out as NCO). Close quarters: attacker allocates attacks to leader vs squad; only attacks directed at leader can remove it. If all non-leader models are removed (casualties or rout), leader breaks off and becomes a separate 1-model unit.",
   "Flood Burster": "When successfully entering from Reserve, one unit per turn may deploy by eruption instead of from a table edge: place it legally in open ground more than 9\" from enemies, then give it a Down order. It cannot perform more actions this turn.", 
   "Patient Predators": "If this unit is in cover from enemy shooting while it has an Ambush order, improve its Cover Save by +1. Remember rolls of 1 always fail.",
@@ -4464,6 +4468,7 @@ const FLOOD_UNITS = [
       "Anti-Tank Grenades": { cost: 2, grantsRule: "Tank Hunters" },
       "Energy Shield Modules": { cost: 3, grantsRule: "Energy Shields" },
       "Melee Weapon (NCO only)": { cost: 1, grantsRule: "Melee Weapon", perModel: false },
+	  "Melee Weapons": { cost: 1, grantsRule: "Melee Weapons" },
       "Patient Predators": { cost: 1, grantsRule: "Patient Predators" },
       "Strong": { cost: 1, grantsRule: "Strong" }
     },
@@ -4499,7 +4504,7 @@ const FLOOD_UNITS = [
         grants: "Shotgun"
       },
       "Battle Rifles/Covenant Carbines": {
-        max: 5,
+        max: 6,
         cost: -3,
         replaces: "Assault Rifle",
         grants: "Battle Rifle/Covenant Carbine"
@@ -5031,6 +5036,162 @@ function injectM301Options(unit, unitData) {
   return unitData;
 }
 
+function isLeaderMeleeComboWeapon(weaponName) {
+  return [
+    "Plasma Rifle + Plasma Sword",
+    "Needler + Plasma Sword",
+    "Gravity Hammer"
+  ].includes(weaponName);
+}
+
+function isPlasmaSwordComboWeapon(weaponName) {
+  return weaponName === "Plasma Rifle + Plasma Sword" || weaponName === "Needler + Plasma Sword";
+}
+
+function getPlasmaSwordComboRangedWeapon(weaponName) {
+  if (weaponName === "Plasma Rifle + Plasma Sword") return "Plasma Rifle";
+  if (weaponName === "Needler + Plasma Sword") return "Needler";
+  return null;
+}
+
+function isLeaderStyleInfantryProfile(unit) {
+  const name = String(unit?.name || "");
+
+  return /Officer|Forward Observer|Medic|Chaplain|Bloodhandler|Attached Leader/i.test(name);
+}
+
+function clearIllegalLeaderMeleeSelections(unit, unitData) {
+  if (!unit) return;
+
+  unit.leaderMeleeUpgrade = "";
+
+  if (isPlasmaSwordComboWeapon(unit.ncoReplacement)) {
+    const baseWeapon = getPlasmaSwordComboRangedWeapon(unit.ncoReplacement);
+    const options = unitData?.options?.ncoReplacement?.options || [];
+
+    unit.ncoReplacement = options.includes(baseWeapon)
+      ? baseWeapon
+      : options[0] || undefined;
+  }
+
+  if (unit.ncoReplacement === "Gravity Hammer") {
+    const options = unitData?.options?.ncoReplacement?.options || [];
+    unit.ncoReplacement = options[0] || undefined;
+  }
+}
+
+function injectLeaderMeleeNcoOptions(unit, unitData) {
+  if (!unit || !unitData) return unitData;
+  if (unit.type !== "Infantry") return unitData;
+
+  const hasMeleeWeapon = leaderHasMeleeWeapon(unit, unitData);
+
+  // If the model no longer has Melee Weapon, remove any illegal sword/hammer choices.
+  if (!hasMeleeWeapon) {
+    clearIllegalLeaderMeleeSelections(unit, unitData);
+    return unitData;
+  }
+
+  unitData.options = unitData.options || {};
+
+  // Leader-style profiles, like Officers, should NOT get an NCO Weapon dropdown.
+  // They keep their normal "choose any weapon" display and use Leader Melee Upgrade instead.
+  if (!unitData.options.ncoReplacement && isLeaderStyleInfantryProfile(unit)) {
+    return unitData;
+  }
+
+  // If the unit does not already have an NCO weapon dropdown, create one
+  // from its normal ranged weapon and relevant replacement options.
+  // This is for squads like Spec Ops Team, not Officers.
+  if (!unitData.options.ncoReplacement) {
+    const options = [];
+    const costs = {};
+
+    const addBaseOption = (weaponName, cost = 0) => {
+      const base = getBaseWeaponName(weaponName);
+      if (!base) return;
+      if (base === "Unarmed") return;
+      if (base === "Melee Weapon" || base === "Melee Weapons") return;
+
+      if (!options.includes(base)) {
+        options.push(base);
+        costs[base] = cost;
+      }
+    };
+
+    (unitData.weapons || []).forEach(w => {
+      addBaseOption(w.name, 0);
+    });
+
+    Object.values(unitData.options.weaponReplacements || {}).forEach(repl => {
+      if (!repl?.grants) return;
+
+      const granted = getBaseWeaponName(repl.grants);
+
+      if (
+        granted === "Plasma Rifle" ||
+        granted === "Needler" ||
+        granted === "Spiker"
+      ) {
+        addBaseOption(granted, Number(repl.cost) || 0);
+      }
+    });
+
+    if (options.length > 0) {
+      unitData.options.ncoReplacement = {
+        options,
+        costs
+      };
+    } else {
+      return unitData;
+    }
+  }
+
+  const caste = getCurrentLeaderCaste(unit, unitData);
+  const discount = unitHasToughFightersSpecialRule(unit, unitData) ? 1 : 0;
+
+  unitData.options.ncoReplacement.options = unitData.options.ncoReplacement.options || [];
+  unitData.options.ncoReplacement.costs = unitData.options.ncoReplacement.costs || {};
+
+  const addNcoOption = (label, cost) => {
+    if (!unitData.options.ncoReplacement.options.includes(label)) {
+      unitData.options.ncoReplacement.options.push(label);
+    }
+    unitData.options.ncoReplacement.costs[label] = cost;
+  };
+
+  if (caste === "Elite") {
+    if (unitData.options.ncoReplacement.options.includes("Plasma Rifle")) {
+      const baseCost = Number(unitData.options.ncoReplacement.costs["Plasma Rifle"] || 0);
+      addNcoOption("Plasma Rifle + Plasma Sword", baseCost + 6 - discount);
+    }
+
+    if (unitData.options.ncoReplacement.options.includes("Needler")) {
+      const baseCost = Number(unitData.options.ncoReplacement.costs["Needler"] || 0);
+      addNcoOption("Needler + Plasma Sword", baseCost + 6 - discount);
+    }
+  }
+
+  if (caste === "Brute") {
+    const canTakeHammer =
+      unitData.options.ncoReplacement.options.includes("Spiker") ||
+      unitData.options.ncoReplacement.options.includes("Plasma Rifle");
+
+    if (canTakeHammer) {
+      addNcoOption("Gravity Hammer", 0 - discount);
+    }
+  }
+
+  // If the unit had an old saved NCO weapon from another doctrine,
+  // clear it so Brutes cannot keep Plasma Sword and Elites cannot keep Gravity Hammer.
+  const validNcoOptions = unitData.options.ncoReplacement.options || [];
+  if (unit.ncoReplacement && !validNcoOptions.includes(unit.ncoReplacement)) {
+    unit.ncoReplacement = validNcoOptions[0] || undefined;
+  }
+
+  return unitData;
+}
+
 // Army state and source data
 window.armyList = [];
 window.currentFaction = null;
@@ -5354,16 +5515,21 @@ function isElite(unit, unitData) {
 
   return (
     unit?.doctrine === "Elite" ||
-    name.includes("elite")
+    name.includes("elite") ||
+    name.includes("honor guard") ||
+    name.includes("honour guard")
   );
 }
 
 function isBrute(unit, unitData) {
-  const name = String(unit?.name || "").toLowerCase();
+  const name = String(unit?.name || "")
+    .toLowerCase()
+    .replace(/[’‘]/g, "'");
 
   return (
     unit?.doctrine === "Brute" ||
-    name.includes("brute")
+    name.includes("brute") ||
+    name.includes("atriox")
   );
 }
 
@@ -5617,6 +5783,210 @@ injectDoctrineOptions(COVENANT_UNITS, COVENANT_DOCTRINES, "For The Great Journey
 injectDoctrineOptions(BANISHED_UNITS, BANISHED_DOCTRINES, "Forged In Chains");
 // Now all eligible units will have the right doctrine block in their options!
 
+function ruleListHasRule(rules, ruleName) {
+  return (rules || []).some(r => getRuleName(r) === ruleName);
+}
+
+function unitHasToughFightersSpecialRule(unit, unitData) {
+  const rules = [
+    ...(Array.isArray(unitData?.specialRules) ? unitData.specialRules : []),
+    ...(Array.isArray(unit?.special) ? unit.special : [])
+  ];
+
+  return ruleListHasRule(rules, "Tough Fighters");
+}
+
+function upgradeGrantsMeleeWeapon(upgrade) {
+  if (!upgrade) return false;
+
+  const grants = [];
+
+  if (upgrade.grantsRule) {
+    Array.isArray(upgrade.grantsRule)
+      ? grants.push(...upgrade.grantsRule)
+      : grants.push(upgrade.grantsRule);
+  }
+
+  if (Array.isArray(upgrade.grantsRules)) {
+    grants.push(...upgrade.grantsRules);
+  }
+
+  return grants.some(r =>
+    getRuleName(r) === "Melee Weapon" ||
+    getRuleName(r) === "Melee Weapons"
+  );
+}
+
+function leaderHasMeleeWeapon(unit, unitData) {
+  if (!unit || !unitData) return false;
+  if (unit.type !== "Infantry") return false;
+
+  const baseRules = [
+    ...(Array.isArray(unitData?.specialRules) ? unitData.specialRules : []),
+    ...(Array.isArray(unit?.special) ? unit.special : [])
+  ];
+
+  if (
+    ruleListHasRule(baseRules, "Melee Weapon") ||
+    ruleListHasRule(baseRules, "Melee Weapons")
+  ) {
+    return true;
+  }
+
+  if (unitData?.options?.squadUpgrades) {
+    for (const [label, upgrade] of Object.entries(unitData.options.squadUpgrades)) {
+      const cb = document.querySelector(`.editSquadUpgrade[data-upgrade="${label}"]`);
+      const picked = cb ? cb.checked : !!unit?.squadUpgrades?.[label];
+
+      if (picked && upgradeGrantsMeleeWeapon(upgrade)) return true;
+    }
+  }
+
+  const doctrineName = document.getElementById("editDoctrineSelect")?.value || unit?.doctrine || "";
+  const doctrineSpec = getAllowedDoctrineChoicesForUnit(unit, unitData).find(dc => dc.name === doctrineName);
+
+  if (doctrineSpec?.extraUpgrades) {
+    for (const upgrade of doctrineSpec.extraUpgrades) {
+      const cb = document.querySelector(`.editDoctrineExtraUpgrade[data-upgrade="${upgrade.name}"]`);
+      const picked = cb ? cb.checked : !!unit?.extraDoctrineUpgrades?.[upgrade.name];
+
+      if (picked && upgradeGrantsMeleeWeapon(upgrade)) return true;
+    }
+  }
+
+  return false;
+}
+
+function isNoRangedWeaponLabel(label) {
+  const text = String(label || "");
+  const base = getBaseWeaponName(text);
+
+  return (
+    base === "Unarmed" ||
+    /melee weapon/i.test(text)
+  );
+}
+
+function getExplicitLeaderRangedWeapon(unit, unitData) {
+  if (unitData?.options?.ncoReplacement) {
+    return getSelectedNcoWeapon(unit, unitData);
+  }
+
+  if (Array.isArray(unitData?.weapons) && unitData.weapons.length === 1) {
+    return unitData.weapons[0].name;
+  }
+
+  return null;
+}
+
+function leaderCanChooseWeapon(unitData, weaponName) {
+  const check = w => getBaseWeaponName(w) === weaponName;
+
+  if ((unitData?.weapons || []).some(w => check(w.name))) return true;
+  if ((unitData?.options?.ncoReplacement?.options || []).some(opt => check(opt))) return true;
+
+  return false;
+}
+
+function formatSignedPts(value) {
+  const n = Number(value) || 0;
+  if (n === 0) return "0pts";
+  return `${n > 0 ? "+" : ""}${n}pts`;
+}
+
+function getLeaderMeleeUpgradeOptions(unit, unitData) {
+  if (!leaderHasMeleeWeapon(unit, unitData)) return [];
+
+  const caste = getCurrentLeaderCaste(unit, unitData);
+  const discount = unitHasToughFightersSpecialRule(unit, unitData) ? 1 : 0;
+  const currentWeapon = getExplicitLeaderRangedWeapon(unit, unitData);
+  const currentBase = getBaseWeaponName(currentWeapon);
+
+  const opts = [{ value: "", label: "— None —", cost: 0 }];
+
+  if (caste === "Elite") {
+    if (currentWeapon && isNoRangedWeaponLabel(currentWeapon)) {
+      const cost = 7 - discount;
+      opts.push({
+        value: "plasmaSwordNoRanged",
+        label: `Plasma Sword, no ranged weapon (${formatSignedPts(cost)})`,
+        cost
+      });
+    } else if (currentBase === "Plasma Rifle") {
+      const cost = 6 - discount;
+      opts.push({
+        value: "plasmaSwordPlasmaRifle",
+        label: `Plasma Rifle + Plasma Sword (${formatSignedPts(cost)})`,
+        cost
+      });
+    } else if (currentBase === "Needler") {
+      const cost = 6 - discount;
+      opts.push({
+        value: "plasmaSwordNeedler",
+        label: `Needler + Plasma Sword (${formatSignedPts(cost)})`,
+        cost
+      });
+    } else if (!currentWeapon) {
+      if (leaderCanChooseWeapon(unitData, "Plasma Rifle")) {
+        const cost = 6 - discount;
+        opts.push({
+          value: "plasmaSwordPlasmaRifle",
+          label: `Plasma Rifle + Plasma Sword (${formatSignedPts(cost)})`,
+          cost
+        });
+      }
+
+      if (leaderCanChooseWeapon(unitData, "Needler")) {
+        const cost = 6 - discount;
+        opts.push({
+          value: "plasmaSwordNeedler",
+          label: `Needler + Plasma Sword (${formatSignedPts(cost)})`,
+          cost
+        });
+      }
+    }
+  }
+
+  if (caste === "Brute") {
+    if (currentWeapon && isNoRangedWeaponLabel(currentWeapon)) {
+      const cost = 8 - discount;
+      opts.push({
+        value: "gravityHammerNoRanged",
+        label: `Gravity Hammer, no ranged weapon (${formatSignedPts(cost)})`,
+        cost
+      });
+    } else if (currentBase === "Spiker" || currentBase === "Plasma Rifle") {
+      const cost = 0 - discount;
+      opts.push({
+        value: "gravityHammerReplaceRanged",
+        label: `Replace ${currentBase} with Gravity Hammer (${formatSignedPts(cost)})`,
+        cost
+      });
+    } else if (!currentWeapon) {
+      if (leaderCanChooseWeapon(unitData, "Spiker") || leaderCanChooseWeapon(unitData, "Plasma Rifle")) {
+        const cost = 0 - discount;
+        opts.push({
+          value: "gravityHammerReplaceRanged",
+          label: `Replace Spiker/Plasma Rifle with Gravity Hammer (${formatSignedPts(cost)})`,
+          cost
+        });
+      }
+    }
+  }
+
+  return opts;
+}
+
+function getLeaderMeleeUpgradeCost(unit, unitData) {
+  if (unitData?.options?.ncoReplacement) return 0;
+
+  const value = document.getElementById("editLeaderMeleeUpgrade")?.value || unit?.leaderMeleeUpgrade || "";
+  if (!value) return 0;
+
+  const opt = getLeaderMeleeUpgradeOptions(unit, unitData).find(o => o.value === value);
+  return opt ? Number(opt.cost) || 0 : 0;
+}
+
 function getAllowedDoctrineChoicesForUnit(unit, unitData) {
   const allChoices = unitData?.options?.doctrine?.choices || [];
   const vet = unit?.veterancy;
@@ -5837,7 +6207,10 @@ function buildWeaponsTable(unit) {
 
     // Output all trooper rows
     Object.entries(weaponCounts).forEach(([weapon, count]) => {
-      let prof = parseWeaponProfile(allWeaponProfiles[getBaseWeaponName(weapon)] || "");
+      const baseWeapon = getBaseWeaponName(weapon);
+      if (baseWeapon === "Melee Weapon" || baseWeapon === "Melee Weapons") return;
+
+      let prof = parseWeaponProfile(allWeaponProfiles[baseWeapon] || "");
       table.push({
         qty: count,
         label: count > 1 ? `${count}x ${weapon}` : weapon,
@@ -5866,13 +6239,33 @@ function buildWeaponsTable(unit) {
 		label: "NCO: M301 Grenade Launcher",
 		...m301Prof
 	  });
-	} else {
-	  let ncoProf = parseWeaponProfile(allWeaponProfiles[getBaseWeaponName(ncoWeapon)] || "");
+	} else if (isPlasmaSwordComboWeapon(ncoWeapon)) {
+	  const baseWeapon = getPlasmaSwordComboRangedWeapon(ncoWeapon);
+
+	  let baseProf = parseWeaponProfile(allWeaponProfiles[getBaseWeaponName(baseWeapon)] || "");
 	  table.push({
 		qty: 1,
-		label: `NCO: ${ncoWeapon}`,
-		...ncoProf
+		label: `NCO: ${baseWeapon}`,
+		...baseProf
 	  });
+
+	  let swordProf = parseWeaponProfile(allWeaponProfiles["Plasma Sword"] || "");
+	  table.push({
+		qty: 1,
+		label: "NCO: Plasma Sword",
+		...swordProf
+	  });
+	} else {
+	  const baseNcoWeapon = getBaseWeaponName(ncoWeapon);
+
+	  if (baseNcoWeapon !== "Melee Weapon" && baseNcoWeapon !== "Melee Weapons") {
+		let ncoProf = parseWeaponProfile(allWeaponProfiles[baseNcoWeapon] || "");
+		table.push({
+		  qty: 1,
+		  label: `NCO: ${ncoWeapon}`,
+		  ...ncoProf
+		});
+	  }
 	}
 
     return table;
@@ -6047,10 +6440,117 @@ function applyHardLightCalibrationWeaponRules(unit, table) {
 
 const buildWeaponsTableBase = buildWeaponsTable;
 
+function stripLeaderWeaponPrefix(label) {
+  return String(label || "")
+    .replace(/^(NCO|Officer|Observer|Medic|Chaplain|Bloodhandler|Watcher):\s*/i, "")
+    .replace(/^\d+x\s*/i, "")
+    .trim();
+}
+
+function addLeaderWeaponRow(table, unit, weaponName) {
+  const prof = parseWeaponProfile(allWeaponProfiles[weaponName] || "");
+  const prefix = getLeaderWeaponPrefix(unit);
+
+  table.push({
+    qty: 1,
+    label: `${prefix}: ${weaponName}`,
+    ...prof
+  });
+}
+
+function decrementChooseAnyLeaderSlot(table) {
+  table.forEach(row => {
+    if (row.chooseAnyHeader || row.chooseAnyOption) {
+      row.qty = Math.max(0, (Number(row.qty) || 0) - 1);
+
+      if (row.chooseAnyHeader) {
+        row.label = `${row.qty}x`;
+      }
+    }
+  });
+
+  return table.filter(row => {
+    if ((row.chooseAnyHeader || row.chooseAnyOption) && Number(row.qty) <= 0) return false;
+    return true;
+  });
+}
+
+function removeLeaderRangedWeaponRow(table, unit, weaponNames) {
+  const prefix = getLeaderWeaponPrefix(unit);
+  const wanted = new Set(weaponNames.map(getBaseWeaponName));
+
+  const idx = table.findIndex(row => {
+    const label = String(row.label || "");
+    if (!label.startsWith(prefix + ":")) return false;
+
+    const stripped = stripLeaderWeaponPrefix(label);
+    return wanted.has(getBaseWeaponName(stripped));
+  });
+
+  if (idx >= 0) {
+    table.splice(idx, 1);
+    return true;
+  }
+
+  return false;
+}
+
+function applyLeaderMeleeUpgradeToWeaponsTable(unit, table) {
+  if (!unit || !Array.isArray(table) || !unit.leaderMeleeUpgrade) return table;
+
+  const unitData = getUnitData(unit);
+  if (!unitData) return table;
+  if (unitData.options?.ncoReplacement) return table;
+  if (isLeaderMeleeComboWeapon(unit?.ncoReplacement)) return table;
+  if (!leaderHasMeleeWeapon(unit, unitData)) return table;
+
+  let out = table.map(row => ({ ...row }));
+
+  switch (unit.leaderMeleeUpgrade) {
+    case "plasmaSwordNoRanged":
+      addLeaderWeaponRow(out, unit, "Plasma Sword");
+      break;
+
+    case "plasmaSwordPlasmaRifle":
+      if (!unitData.options?.ncoReplacement) {
+        out = decrementChooseAnyLeaderSlot(out);
+        addLeaderWeaponRow(out, unit, "Plasma Rifle");
+      }
+      addLeaderWeaponRow(out, unit, "Plasma Sword");
+      break;
+
+    case "plasmaSwordNeedler":
+      if (!unitData.options?.ncoReplacement) {
+        out = decrementChooseAnyLeaderSlot(out);
+        addLeaderWeaponRow(out, unit, "Needler");
+      }
+      addLeaderWeaponRow(out, unit, "Plasma Sword");
+      break;
+
+    case "gravityHammerReplaceRanged": {
+      const removed = removeLeaderRangedWeaponRow(out, unit, ["Spiker", "Plasma Rifle"]);
+
+      if (!removed && !unitData.options?.ncoReplacement) {
+        out = decrementChooseAnyLeaderSlot(out);
+      }
+
+      addLeaderWeaponRow(out, unit, "Gravity Hammer");
+      break;
+    }
+
+    case "gravityHammerNoRanged":
+      addLeaderWeaponRow(out, unit, "Gravity Hammer");
+      break;
+  }
+
+  return out;
+}
+
 buildWeaponsTable = function(unit) {
   let table = buildWeaponsTableBase(unit);
   table = applyArmouryWeaponProfileSwaps(unit, table);
   table = applyHardLightCalibrationWeaponRules(unit, table);
+  table = applyLeaderMeleeUpgradeToWeaponsTable(unit, table);
   return table;
 };
 
@@ -6099,7 +6599,10 @@ function getUnitData(unit) {
     // Flood borrowed units use source unit data, but armoury upgrades are still checked
     // against window.currentFaction, so Banished/UNSC/Covenant/Forerunner armoury
     // will not appear in Flood armies.
-    return injectM301Options(unit, applyArmouryToUnitData(unit, rawUnitData));
+    return injectLeaderMeleeNcoOptions(
+  unit,
+  injectM301Options(unit, applyArmouryToUnitData(unit, rawUnitData))
+);
   }
 
   // --- Normal behavior ---
@@ -6109,7 +6612,10 @@ function getUnitData(unit) {
 
   rawUnitData = list.find(u => u.name === unit.name && u.type === unit.type) || null;
 
-  return injectM301Options(unit, applyArmouryToUnitData(unit, rawUnitData));
+return injectLeaderMeleeNcoOptions(
+  unit,
+  injectM301Options(unit, applyArmouryToUnitData(unit, rawUnitData))
+);
 }
 
 function unitHasDoctrine(unitData) {
@@ -6274,6 +6780,228 @@ function getSelectedNcoWeapon(unit, unitData) {
     unitData?.options?.ncoReplacement?.options?.[0] ||
     unitData?.weapons?.[0]?.name ||
     null;
+}
+
+function getCleanRuleName(rule) {
+  if (!rule) return "";
+  if (typeof getRuleName === "function") return getRuleName(rule);
+  if (typeof rule === "string") return rule;
+  if (typeof rule === "object" && rule.name) return rule.name;
+  return "";
+}
+
+function ruleListHasRule(rules, ruleName) {
+  return (rules || []).some(r => getCleanRuleName(r) === ruleName);
+}
+
+function unitHasToughFightersSpecialRule(unit, unitData) {
+  const rules = [
+    ...(Array.isArray(unitData?.specialRules) ? unitData.specialRules : []),
+    ...(Array.isArray(unit?.special) ? unit.special : [])
+  ];
+
+  return ruleListHasRule(rules, "Tough Fighters");
+}
+
+function upgradeGrantsMeleeWeapon(upgrade) {
+  if (!upgrade) return false;
+
+  const grants = [];
+
+  if (upgrade.grantsRule) {
+    Array.isArray(upgrade.grantsRule)
+      ? grants.push(...upgrade.grantsRule)
+      : grants.push(upgrade.grantsRule);
+  }
+
+  if (Array.isArray(upgrade.grantsRules)) {
+    grants.push(...upgrade.grantsRules);
+  }
+
+  return grants.some(r => {
+    const name = getCleanRuleName(r);
+    return name === "Melee Weapon" || name === "Melee Weapons";
+  });
+}
+
+function getCurrentLeaderCaste(unit, unitData) {
+  const doctrine = String(unit?.doctrine || "");
+  const name = String(unit?.name || "").toLowerCase();
+
+  if (doctrine === "Elite") return "Elite";
+  if (doctrine === "Brute") return "Brute";
+
+  // If the unit has a doctrine selector but no doctrine is currently chosen,
+  // do not guess from helper functions or stale DOM.
+  if (unitData?.options?.doctrine) return "";
+
+  if (typeof isElite === "function" && isElite(unit, unitData)) return "Elite";
+  if (typeof isBrute === "function" && isBrute(unit, unitData)) return "Brute";
+
+  if (name.includes("elite") || name.includes("honor guard") || name.includes("honour guard")) return "Elite";
+  if (name.includes("brute") || name.includes("atriox")) return "Brute";
+
+  return "";
+}
+
+function leaderHasMeleeWeapon(unit, unitData) {
+  if (!unit || !unitData) return false;
+  if (unit.type !== "Infantry") return false;
+
+  const baseRules = [
+    ...(Array.isArray(unitData?.specialRules) ? unitData.specialRules : []),
+    ...(Array.isArray(unit?.special) ? unit.special : [])
+  ];
+
+  if (
+    ruleListHasRule(baseRules, "Melee Weapon") ||
+    ruleListHasRule(baseRules, "Melee Weapons")
+  ) {
+    return true;
+  }
+
+  if (unitData?.options?.squadUpgrades) {
+    for (const [label, upgrade] of Object.entries(unitData.options.squadUpgrades)) {
+      const cb = document.querySelector(`.editSquadUpgrade[data-upgrade="${label}"]`);
+      const picked = cb ? cb.checked : !!unit?.squadUpgrades?.[label];
+
+      if (picked && upgradeGrantsMeleeWeapon(upgrade)) return true;
+    }
+  }
+
+  const doctrineName = document.getElementById("editDoctrineSelect")?.value || unit?.doctrine || "";
+  const doctrineSpec = getAllowedDoctrineChoicesForUnit(unit, unitData).find(dc => dc.name === doctrineName);
+
+  if (doctrineSpec?.extraUpgrades) {
+    for (const upgrade of doctrineSpec.extraUpgrades) {
+      const cb = document.querySelector(`.editDoctrineExtraUpgrade[data-upgrade="${upgrade.name}"]`);
+      const picked = cb ? cb.checked : !!unit?.extraDoctrineUpgrades?.[upgrade.name];
+
+      if (picked && upgradeGrantsMeleeWeapon(upgrade)) return true;
+    }
+  }
+
+  return false;
+}
+
+function isNoRangedWeaponLabel(label) {
+  const text = String(label || "");
+  const base = getBaseWeaponName(text);
+
+  return (
+    base === "Unarmed" ||
+    /melee weapon/i.test(text)
+  );
+}
+
+function getExplicitLeaderRangedWeapon(unit, unitData) {
+  if (unitData?.options?.ncoReplacement) {
+    return getSelectedNcoWeapon(unit, unitData);
+  }
+
+  if (Array.isArray(unitData?.weapons) && unitData.weapons.length === 1) {
+    return unitData.weapons[0].name;
+  }
+
+  return null;
+}
+
+function leaderCanChooseWeapon(unitData, weaponName) {
+  const check = w => getBaseWeaponName(w) === weaponName;
+
+  if ((unitData?.weapons || []).some(w => check(w.name))) return true;
+  if ((unitData?.options?.ncoReplacement?.options || []).some(opt => check(opt))) return true;
+
+  return false;
+}
+
+function formatSignedPts(value) {
+  const n = Number(value) || 0;
+  if (n === 0) return "0pts";
+  return `${n > 0 ? "+" : ""}${n}pts`;
+}
+
+function getLeaderMeleeUpgradeOptions(unit, unitData) {
+  if (!leaderHasMeleeWeapon(unit, unitData)) return [];
+
+  const caste = getCurrentLeaderCaste(unit, unitData);
+  const discount = unitHasToughFightersSpecialRule(unit, unitData) ? 1 : 0;
+  const currentWeapon = getExplicitLeaderRangedWeapon(unit, unitData);
+  const currentBase = getBaseWeaponName(currentWeapon);
+
+  const opts = [{ value: "", label: "— None —", cost: 0 }];
+
+  if (caste === "Elite") {
+    if (currentWeapon && isNoRangedWeaponLabel(currentWeapon)) {
+      const cost = 7 - discount;
+      opts.push({
+        value: "plasmaSwordNoRanged",
+        label: `Plasma Sword (${formatSignedPts(cost)})`,
+        cost
+      });
+    } else if (currentBase === "Plasma Rifle") {
+      const cost = 6 - discount;
+      opts.push({
+        value: "plasmaSwordPlasmaRifle",
+        label: `Plasma Rifle + Plasma Sword (${formatSignedPts(cost)})`,
+        cost
+      });
+    } else if (currentBase === "Needler") {
+      const cost = 6 - discount;
+      opts.push({
+        value: "plasmaSwordNeedler",
+        label: `Needler + Plasma Sword (${formatSignedPts(cost)})`,
+        cost
+      });
+    } else if (!currentWeapon) {
+      if (leaderCanChooseWeapon(unitData, "Plasma Rifle")) {
+        const cost = 6 - discount;
+        opts.push({
+          value: "plasmaSwordPlasmaRifle",
+          label: `Plasma Rifle + Plasma Sword (${formatSignedPts(cost)})`,
+          cost
+        });
+      }
+
+      if (leaderCanChooseWeapon(unitData, "Needler")) {
+        const cost = 6 - discount;
+        opts.push({
+          value: "plasmaSwordNeedler",
+          label: `Needler + Plasma Sword (${formatSignedPts(cost)})`,
+          cost
+        });
+      }
+    }
+  }
+
+  if (caste === "Brute") {
+    if (currentWeapon && isNoRangedWeaponLabel(currentWeapon)) {
+      const cost = 8 - discount;
+      opts.push({
+        value: "gravityHammerNoRanged",
+        label: `Gravity Hammer (${formatSignedPts(cost)})`,
+        cost
+      });
+    } else if (currentBase === "Spiker" || currentBase === "Plasma Rifle") {
+      const cost = 0 - discount;
+      opts.push({
+        value: "gravityHammerReplaceRanged",
+        label: `Replace ${currentBase} with Gravity Hammer (${formatSignedPts(cost)})`,
+        cost
+      });
+    } else if (!currentWeapon) {
+      if (leaderCanChooseWeapon(unitData, "Spiker") || leaderCanChooseWeapon(unitData, "Plasma Rifle")) {
+        const cost = 0 - discount;
+        opts.push({
+          value: "gravityHammerReplaceRanged",
+          label: `Replace Spiker/Plasma Rifle with Gravity Hammer (${formatSignedPts(cost)})`,
+          cost
+        });
+      }
+    }
+  }
+
+  return opts;
 }
 
 function getReplaceableWeaponSlots(unit, unitData, totalMen = null) {
@@ -6587,7 +7315,8 @@ function updateLiveUnitCost() {
   }
 
   // --- Total up! ---
-  let cost = baseCost + extraCost + squadUpgradesCost + weaponReplCost + ncoCost + doctrineCost + extraDoctrineCost;
+  let leaderMeleeCost = getLeaderMeleeUpgradeCost(unit, unitData);
+  let cost = baseCost + extraCost + squadUpgradesCost + weaponReplCost + ncoCost + doctrineCost + extraDoctrineCost + leaderMeleeCost;
 
   // Show preview
   let prevDiv = document.getElementById("modalCostPreview");
@@ -6671,9 +7400,8 @@ function selectFaction(faction) {
 	(window.armyList || []).forEach(unit => {
 	  const unitData = getUnitData(unit);
 
-	  purgeIllegalArmourySquadUpgrades(unit, unitData);
+	  purgeIllegalArmourySquadUpgrades(unit, unitData);	  
 	  purgeIllegalM301Selections(unit);
-
 	  unit.weaponsTable = buildWeaponsTable(unit);
 	});
 
@@ -6819,7 +7547,6 @@ function addSelectedUnit() {
     squadUpgrades: unit.options?.squadUpgrades ? {} : undefined,
     weaponReplacements: unit.options?.weaponReplacements ? {} : undefined,
     ncoReplacement: unit.options?.ncoReplacement ? undefined : undefined,
-    doctrine: unit.options?.doctrine ? undefined : undefined,
     extraDoctrineUpgrades: unit.options?.doctrine ? {} : undefined,
 	armoury: {},
     special: Array.isArray(unit.specialRules) ? [...unit.specialRules] : (unit.specialRules ? [unit.specialRules] : []),
@@ -6998,6 +7725,8 @@ function captureInfantryModalStateToUnit() {
   document.querySelectorAll(".editDoctrineExtraUpgrade").forEach(cb => {
     unit.extraDoctrineUpgrades[cb.dataset.upgrade] = cb.checked;
   });
+
+const leaderMeleeSelect = document.getElementById("editLeaderMeleeUpgrade");
   
 	const refreshedUnitData = getUnitData(unit);
 	purgeIllegalArmourySquadUpgrades(unit, refreshedUnitData);
@@ -7007,6 +7736,19 @@ function rerenderCurrentEditModal() {
   if (editIdx == null) return;
   captureInfantryModalStateToUnit();
   editUnit(editIdx);
+}
+
+function onDoctrineSelectChanged(select) {
+  const unit = window.currentEditUnit;
+  if (unit) {
+    unit.doctrine = select?.value || null;
+
+    // Doctrine changed, so old Elite/Brute-only NCO weapon selections may now be illegal.
+    unit.ncoReplacement = undefined;
+    unit.leaderMeleeUpgrade = "";
+  }
+
+  rerenderCurrentEditModal();
 }
 
 // Render Infantry/Team Modal Fields (dynamic doctrine upgrades)
@@ -7053,7 +7795,7 @@ function renderInfantryEditFields(unit, unitData) {
         disabled = "disabled";
 
       html += `<label>
-        <input type="checkbox" class="editSquadUpgrade" data-upgrade="${label}" ${checked} ${disabled} onchange="syncInfantryEditorState()">
+        <input type="checkbox" class="editSquadUpgrade" data-upgrade="${label}" ${checked} ${disabled} onchange="/Melee Weapon/i.test(this.dataset.upgrade) ? rerenderCurrentEditModal() : syncInfantryEditorState()">
         ${label} (${Number(upgrade.cost) >= 0 ? "+" : "-"}${Math.abs(Number(upgrade.cost))} pts${upgrade.perModel === false ? " flat" : " per model"}) ${upgrade.grantsRule ? "– Grants: " + upgrade.grantsRule : ""}
       </label><br>`;
     });
@@ -7083,18 +7825,39 @@ function renderInfantryEditFields(unit, unitData) {
   if (unitData.options && unitData.options.ncoReplacement) {
     const currNCO = unit.ncoReplacement || unitData.options.ncoReplacement.options[0];
     html += `<label style="margin-top:10px;display:block;">NCO Weapon:
-      <select id="editNcoReplacement" onchange="syncInfantryEditorState()">`;
+      <select id="editNcoReplacement" onchange="rerenderCurrentEditModal()">`;
     unitData.options.ncoReplacement.options.forEach(opt => {
       html += `<option value="${opt}"${currNCO === opt ? " selected" : ""}>${opt}</option>`;
     });
     html += `</select></label>`;
   }
-  
+  // Leader Melee Weapon Upgrade
+  // Only used for leaders/officers that do NOT have an NCO Weapon dropdown.
+  const leaderMeleeOptions = !unitData.options?.ncoReplacement
+    ? getLeaderMeleeUpgradeOptions(unit, unitData)
+    : [];
+
+  if (leaderMeleeOptions.length > 1) {
+    const validValues = leaderMeleeOptions.map(o => o.value);
+    const currentLeaderMelee = validValues.includes(unit.leaderMeleeUpgrade) ? unit.leaderMeleeUpgrade : "";
+
+    html += `
+      <label style="margin-top:10px;display:block;">Leader Melee Upgrade:
+        <select id="editLeaderMeleeUpgrade" onchange="syncInfantryEditorState()">
+          ${leaderMeleeOptions.map(opt => `
+            <option value="${opt.value}"${currentLeaderMelee === opt.value ? " selected" : ""}>
+              ${opt.label}
+            </option>
+          `).join("")}
+        </select>
+      </label>
+    `;
+  }  
   // Doctrine (dropdown, dynamic extra upgrades box)
   if (unitData.options && unitData.options.doctrine) {
     html += `
       <div style="margin-top:10px;"><b>${unitData.options.doctrine.label}:</b><br>
-        <select id="editDoctrineSelect" onchange="rerenderCurrentEditModal()">
+        <select id="editDoctrineSelect" onchange="onDoctrineSelectChanged(this)">
                     <option value="">— None (${unitData.options.doctrine.defaultLabel || "Default"}) —</option>
 		${getAllowedDoctrineChoicesForUnit(unit, unitData).map(choice => `
 		  <option value="${choice.name}"${unit.doctrine === choice.name ? " selected" : ""}>
@@ -7190,8 +7953,6 @@ function afterInfantryModalRender(unit, unitData) {
         cb.addEventListener("change", updateLiveUnitCost);
       });
     }
-
-    doctrineSelect.addEventListener("change", rerenderCurrentEditModal);
 
     renderDoctrineExtras();
   }
@@ -7402,8 +8163,27 @@ function saveEdit() {
     if (unitData.options && unitData.options.ncoReplacement) {
       const ncoReplacement = document.getElementById("editNcoReplacement")?.value;
       if (ncoReplacement) unit.ncoReplacement = ncoReplacement;
-    }
 
+      // NCO dropdown handles Plasma Sword / Gravity Hammer combos for this unit.
+      unit.leaderMeleeUpgrade = "";
+    }
+    // Leader Melee Upgrade
+    // Only used for leaders/officers that do NOT have an NCO Weapon dropdown.
+    if (!unitData.options?.ncoReplacement) {
+      const leaderMeleeSelect = document.getElementById("editLeaderMeleeUpgrade");
+      if (leaderMeleeSelect) {
+        unit.leaderMeleeUpgrade = leaderMeleeSelect.value || "";
+      } else {
+        unit.leaderMeleeUpgrade = "";
+      }
+
+      const validLeaderMeleeValues = getLeaderMeleeUpgradeOptions(unit, unitData).map(o => o.value);
+      if (!validLeaderMeleeValues.includes(unit.leaderMeleeUpgrade)) {
+        unit.leaderMeleeUpgrade = "";
+      }
+    } else {
+      unit.leaderMeleeUpgrade = "";
+    }
     // Doctrine & doctrine extra upgrades
     if (unitData.options && unitData.options.doctrine) {
 		const doctrineSelect = document.getElementById("editDoctrineSelect");
@@ -7465,6 +8245,12 @@ function saveEdit() {
 	// This prevents stale armoury options like MJOLNIR, Sacred Relic, or Trophy Plate Harness.
 	unitData = getUnitData(unit);
 	purgeIllegalArmourySquadUpgrades(unit, unitData);
+
+  if (!leaderHasMeleeWeapon(unit, unitData)) {
+    clearIllegalLeaderMeleeSelections(unit, unitData);
+  }
+
+  unitData = getUnitData(unit);
 	
     // Remove conditional armoury upgrades that are no longer legal.
     if (unit.squadUpgrades?.["Burrowing Tendrils"] && unit.men < 2) {
@@ -7615,8 +8401,8 @@ function saveEdit() {
 	// FINALIZE SPECIAL RULES and add doctrine display rules if applicable
 	unit.special = specialRules;
 	if (unitData.options && unitData.options.doctrine) addDoctrineSpecialRules(unit);
-
-    unit.cost = baseCost + extraCost + squadUpgradesCost + weaponReplCost + ncoCost + doctrineCost + extraDoctrineCost;
+    let leaderMeleeCost = getLeaderMeleeUpgradeCost(unit, unitData);
+    unit.cost = baseCost + extraCost + squadUpgradesCost + weaponReplCost + ncoCost + doctrineCost + extraDoctrineCost + leaderMeleeCost;
 
     if (isNaN(unit.cost) || unit.cost < 0) unit.cost = 0;
   }
