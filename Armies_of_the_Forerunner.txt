@@ -1,4 +1,4 @@
-﻿Armies of the Forerunnerv3.2
+﻿Armies of the Forerunnerv3.3
 
 Army Special Rules
 Enhanced Weapon Systems
@@ -22,8 +22,8 @@ Phase relays enable instantaneous redeployment.
 
 
 Counter-Assault Protocols
-Forged by centuries of war against the Flood, these combat routines allow Promethean units to read the momentum of an incoming assault and cut it apart before it reaches full force. 
-* Effect: When a unit with the Counter-Assault Protocols special rule is assaulted by enemy Infantry or Artillery while not Down, the attacking unit halves its total number of attack dice, rounding up, during the first round of that close combat only. 
+Forged by centuries of war against the Flood, these combat routines allow Promethean units to read the momentum of an incoming assault and cut it apart before it reaches full force.
+* Effect: When a unit with the Counter-Assault Protocols special rule is assaulted by enemy Infantry or Artillery while it has not yet been given an order this turn, or while it is on Ambush, it may react with a Fire order as normal. Treat this unit as being on Ambush when determining whether it can react to the assault. If any attacking models survive and complete the assault, the assaulting unit halves its total number of attack dice, rounding up, during the first round of that close quarters combat only.
 Forerunner Armoury
 Reconstruction Matrix
 Forerunner units with Composed Beings may take a Reconstruction Matrix for +1pt per model.
@@ -35,12 +35,6 @@ This unit may be affected by You men, snap to action! as if it did not have the 
 Hard-Light Calibration
 Forerunner Infantry units may take Hard-Light Calibration for +1pt per model.
 Weapons fired by a unit with this upgrade gain the Cover Piercing weapon rule.
-
-
-
-
-
-
 
 
 
@@ -79,7 +73,7 @@ Cost
 - Energy Shield
 - Forward Observer: Counts as an Air force or artillery forward observer.
 - Flight
-- Reconstruction Suite: If a friendly Infantry or Artillery model/unit with Composed Beings or Automaton is within 6" of the Watcher and takes damage from Small Arms fire, roll one die per point of damage; for each 6, ignore one point of damage.
+- Reconstruction Suite: If the Watcher’s own unit, or a friendly Infantry or Artillery unit with Composed Beings or Automaton and at least one model within 6" of the Watcher model, suffers damage from Small Arms fire, roll one die per point of damage before removing casualties. Each 6 ignores one point of damage.
 - Hardlight Screen: While this unit is not Down, friendly Infantry and Artillery units behind it may treat it as hard cover instead of soft cover.
 	
 
@@ -246,7 +240,7 @@ Cost
 	- Add up to 5 additional men for +21pts each (Regular), or +24pts each (Veteran) 
 - The NCO and up to 7 models may replace Suppressor with Light Rifle for –5pts each 
 - The NCO may replace Suppressor with Boltshot for –7pts
-- The NCO may be given a Melee Weapon for +1pt (This model rolls 2 dice in close combat instead of 1) 
+- The NCO may be given a Melee Weapon for +1pt
 	Special Rules
 	- Energy Shields
 - VISR
@@ -254,13 +248,13 @@ Cost
 - Stubborn
 	Promethean Soldier Squad
 Cost
-	92pts (Regular), 104pts (Veteran)
+	96pts (Regular), 108pts (Veteran)
 	Composition
 	1 NCO and 3 soldiers
 	Weapons
 	Suppressors
 	Options
-	- Add up to 2 additional Soldiers for +23pts each (Regular) or +26pts each (Veteran)
+	- Add up to 2 additional Soldiers for +24pts each (Regular) or +27pts each (Veteran)
 - Any model may replace Suppressor with Light Rifle for –5pts each
 - Any model may replace Suppressor with Scattershot for –3pts each
 - The squad can be given Engineers for +1pt per man
@@ -333,20 +327,22 @@ Cost
 
 
 
+
+
 Promethean Knight Team
 Cost
-	60pts (Veteran)
+	62pts (Veteran)
 	Composition
 	1 NCO and 1 Knight
 	Weapons
 	Suppressors
 	Options
-	- Add up to 3 additional Knights for +30pts each (Veteran)
+	- Add up to 3 additional Knights for +31pts each (Veteran)
 - Any model may replace Suppressor with Light Rifle for –4pts each
 - Any model may replace Suppressor with Scattershot for –3pts each
-- One model may replace its Suppressor with an Incineration Cannon for +33pts
+- One model may replace its Suppressor with an Incineration Cannon for +41pts
 - The unit may be upgraded to Knight Battlewagons, gaining Tank Hunters for +2pts per model
-- Knight Commander (Second Lieutenant, 0–1 per army): Add a single officer model to this unit for +45pts; note that this is just the addition of a single officer model, not an entire Officer HQ, and does not fulfil the requirement for a Platoon Commander to lead the platoon. Limited to 1 per army.
+- Knight Commander (Platoon Commander, 0–1 per army): Add a single officer model to this unit for +51pts. If taken, this unit takes a Platoon Commander slot from a platoon. The Knight Commander is considered a Platoon Commander, but remains part of this unit. Limited to 1 per army.
 	Special Rules
 	- Composed Beings
 - Counter-Assault Protocols
@@ -360,7 +356,7 @@ Cost
 - Fieldcraft
 - Large Infantry
 - Phase Step: If this unit has not yet activated, it isn’t carrying an objective and is targeted by shooting from more than 6" away (not Preliminary Bombardment, artillery barrage, or air-strike), it may immediately react by teleporting up to 6". No order test is required. If you do so, place the unit within 6" of its starting position, ending farther from the attacking unit than before and not in impassable terrain, inside a building, outside the battlefield or within 1" of any unit. You may ignore intervening models and terrain while moving. This reaction does not trigger enemy Ambush. After teleporting, set the unit’s die to Down. If no legal placement exists, the unit goes down instead.
-- Knight Commander (If Knight commander is taken): Representing a First or Second Lieutenant who leads his men directly, this officer model follows the rules of a Platoon Commander, except that his morale bonus is only +1 and his ‘You men, snap to action!’ only affects 1 other unit instead of 2. The unit does not suffer from the effects of losing its NCO while the officer is alive.
+- Knight Commander (If Knight commander is taken): The added officer model is considered a Platoon Commander and this unit takes a Platoon Commander slot from a platoon. The Knight Commander remains part of this unit. While the Knight Commander is alive, the unit does not suffer the effects of losing its NCO.
 - Limited: Only up to 2 Promethean Knight teams may be taken per platoon. 
 	
 
@@ -422,7 +418,7 @@ Cost
 
 Promethean Soldier Commando Squad
 Cost
-	96pts (Regular), 108pts (Veteran)
+	100pts (Regular), 112pts (Veteran)
 	Composition
 	1 NCO and 3 soldiers
 	Weapons
@@ -431,7 +427,7 @@ Cost
 	- Add up to 2 additional Soldiers for +24pts each (Regular) or +27pts each (Veteran)
 - Any model may replace Suppressor with Light Rifle for –5pts each
 - Any model may replace Suppressor with Scattershot for –3pts each
-- One model may replace Suppressor with Splinter Turret for 17pts 
+- One soldier may replace Suppressor with Splinter Turret for 17pts 
 - The squad can be given Engineers for +1pt per man
 	Special Rules
 	- Composed Beings                                                       - Infiltrator      
@@ -444,7 +440,7 @@ Cost
 - Splinter Turret: Heavy weapon: Range 48", Shots 3, Pen +1, Team, Fixed, HE (1")
 	Grenade Launcher Team
 Cost
-	49pts (Regular), 63pts (Veteran) 
+	51pts (Regular), 65pts (Veteran) 
 	Composition
 	2 Soldiers
 	Weapons
@@ -523,13 +519,13 @@ Cost
 
 Anti Tank Team
 Cost
-	82pts (Regular), 103pts (Veteran) 
+	84pts (Regular), 105pts (Veteran) 
 	Composition
 	2 Soldiers
 	Weapons
 	1 Incineration Cannon
 	Options
-	- Replace Incineration Cannon with Rocket launcher for no additional cost
+	- Replace Incineration Cannon with Hydra for no additional cost
 	Special Rules
 	- Team Weapon  
 - Composed Beings
@@ -542,7 +538,7 @@ Cost
 - Counter-Assault Protocols
 	Sniper Team
 Cost
-	64pts (Regular), 79pts (Veteran)
+	66pts (Regular), 81pts (Veteran)
 	Composition
 	2 Soldiers
 	Weapons
@@ -621,7 +617,7 @@ Cost
 
 Machine Gun Team 
 Cost
-	90pts (Regular), 105pts (Veteran)   
+	94pts (Regular), 109pts (Veteran)   
 	Composition
 	4 soldiers 
 	Weapons
@@ -735,7 +731,7 @@ Cost
 Hull-mounted forward-facing Medium Plasma MG for +10pts
 Hull-mounted forward-facing Heavy Plasma MG for +20pts
 Hull-mounted forward-facing Rocket Launcher for +50pts
-Hull-mounted forward-facing Incineration Cannon for +40pts
+Hull-mounted forward-facing Incineration Cannon for +50pts
 Hull-mounted forward-facing Cindershot for +25pts
 	Special Rules
 	- Agile  

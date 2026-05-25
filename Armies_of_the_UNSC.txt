@@ -1,4 +1,4 @@
-﻿Armies of the UNSC v3.2
+﻿Armies of the UNSC v3.3
 
 Army Special Rules
 Desperate Measures
@@ -52,11 +52,11 @@ Optional additional upgrades (ODST-only):
 SPARTANS
 Must be taken as Veteran.
 Gain the Fanatics, Fast, Behind Enemy Lines, Strong,  Strikes First and VISR special rules.
-Cost: +5pts per model.
+Cost: +6pts per model.
 Optional additional upgrades (Spartan-only):
  – The squad can be given Energy Shields for +3pts per model.
  – The squad can be given Stealth for +1pt per model.
-– The NCO/Officer may be given a Melee Weapon for +1pt (This model rolls 2 dice in close combat instead of 1) 
+– The NCO/Officer may be given a Melee Weapon for +1pt (This model rolls 1 additional dice in close combat)
 
 
 
@@ -88,7 +88,7 @@ M301 Grenade Launcher
 Marine, ODST and Spartan Infantry units can take M301 Grenade Launchers. For every full 4 models in the unit, one model armed with an Assault Rifle, Battle Rifle, or Infantry Flamethrower may take an M301 Grenade Launcher for +22pts.
 When the unit shoots, a model with an M301 Grenade Launcher must choose whether to fire its normal weapon or its M301 Grenade Launcher. This weapon uses the same weapon profile as a Grenade Launcher.
 MJOLNIR Biofoam Systems
-Spartan units may take MJOLNIR Biofoam Systems for +2pts per model.  If they do so, they have a 5+ cover save in the open, a 5+ cover save in close quarters, and a +1 to soft/hard cover saves.
+Spartan units may take MJOLNIR Biofoam Systems for +2pts per model.  If they do so, they have a 5+ cover save in the open, a 5+ cover save in close quarters, and a +1 to soft/hard cover saves. If this unit also has energy shields, its cover save in the open becomes 4+ instead.
 Pathfinder
 Units on the battlefield with the Pathfinder special rule are allowed to make a Run move after both sides have finished set-up, but before the first turn of the game. During this move, the unit cannot assault enemy units, and cannot be targeted by enemies in Ambush.
 
@@ -101,28 +101,13 @@ Units on the battlefield with the Pathfinder special rule are allowed to make a 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+All-Terrain
+Wheeled vehicles with this rule may enter and move through rough ground with an Advance order, but may still not Run through rough ground. The following wheeled vehicles are considered to have this rule:
+- M274 Mongoose
+- M12LRV Warthog
+- M12G1 Gauss Warthog
+- M12R Rocket Warthog
+- M831 Troop Transport Warthog
 
 
 
@@ -373,7 +358,8 @@ Cost
 - Up to 5 men may have Shotguns instead of Assault Rifles for -3pts each
 - The squad can be given anti-tank grenades for +2pts per man
 - The squad can be given Jump-Jet Packs for +1pt per man
-- The NCO may be given a Melee Weapon for +1pt (This model rolls 2 dice in close combat instead of 1) 
+- The NCO may be given a Melee Weapon for +1pt
+- The squad can be given Strong for +1pt per man 
 - The squad can be given Engineers for +1pt per man
 	Special Rules
 	- Flight: If Jump-Jet Packs are taken                      - Stubborn
@@ -437,13 +423,13 @@ Cost
 
 Spartan Team
 Cost
-	96pts (Veteran)
+	100pts (Veteran)
 	Composition
 	1 NCO and 3 men
 	Weapons
 	Assault Rifles
 	Options
-	- Add up to 2 additional men for +24pts each
+	- Add up to 2 additional men for +25pts each
 - The NCO and up to 5 men may have Battle Rifles instead of Assault Rifles for -3pts each
 - The NCO and up to 4 men may have Shotguns instead of Assault Rifles for -3pts each
 - The NCO and up to 4 men may have DMRs instead of Assault Rifles for -5pts each
@@ -453,7 +439,7 @@ Cost
 - The squad can be given Jump-Jet Packs for +1pt per man
 - The squad can be given Stealth Modules for +1pt per man
 - The squad can be given Energy Shield Modules for +3pts per man
-- The NCO may be given a Melee Weapon for +1pt (This model rolls 2 dice in close combat instead of 1) 
+- The NCO may be given a Melee Weapon for +1pt 
 - The squad can be given Engineers for +1pt per man
 	Special Rules
 	- Fanatics                                                                               - Strong 
@@ -476,6 +462,8 @@ Cost
 - Limited: Only 1 ONI Operative Team may be taken per platoon.
 - Tank Hunters: If anti-tank grenades are taken
 	
+
+
 
 
 
@@ -568,7 +556,7 @@ Cost
 	Weapons
 	1 Rocket Launcher  
 	Options
-	- Replace rocket launcher with spartan laser for +15pts
+	- Replace rocket launcher with a spartan laser for +15pts or a Hydra at no cost.
 	Special Rules
 	- Team Weapon   
 - For Humanity’s Survival!
@@ -1238,7 +1226,7 @@ Cost
 Cost
 	64pts (Inexperienced), 80pts (Regular), 96pts (Veteran)  
 	Weapons
-	Hull-mounted Forward-facing Light Autocannon  
+	Turret-mounted Light Autocannon  
 	Damage Value
 	7+ (Medium Aircraft)  
 	Options

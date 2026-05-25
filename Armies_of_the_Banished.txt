@@ -1,4 +1,4 @@
-﻿Armies of the Banishedv3.2
+﻿Armies of the Banishedv3.3
 
 Army Special Rules
 Brotherhood of Chaos
@@ -41,7 +41,7 @@ Default. No Bonuses.
 BRUTES
 Must be taken as Regular or Veteran.
 Gain the Stubborn, Strong, Fieldcraft and Berserker special rules.
-Cost: +3pts per model.
+Cost: +4pts per model.
 Optional additional upgrades (Brute-only):
  – The squad may be given Energy Shields for +3pts per model. 
 
@@ -50,7 +50,7 @@ Optional additional upgrades (Brute-only):
 ELITES
 Must be taken as Veteran.
 Gain the Behind Enemy Lines, Fanatics, Energy Shields, Fast, Strong, Strikes First and VISR special rules.
-Cost: +8pts per model.
+Cost: +9pts per model.
 Optional additional upgrades (Elite-only):
  – The squad may be given Stealth for +1pts per model. 
 – The NCO/Officer may be given a Melee Weapon for +1pt (This model rolls 2 dice in close combat instead of 1) 
@@ -89,82 +89,20 @@ Weapons with Shaped Charge do not gain +1 Penetration bonus for hitting this veh
 Trophy Plate Harness
 Veteran Banished Brute Infantry units may take Trophy Plate Harnesses for +1pt per model.
 Models with Trophy Plate Harnesses have a 6+ cover save in the open and a 6+ cover save in close quarters.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Melee Weapon Upgrades
+NCO/Officer models may upgrade a Melee Weapon into a special melee weapon. The model must have a Melee Weapon. Teams and Artillery units cannot take these upgrades. A model that takes one of these upgrades keeps the +1 melee attack from having a Melee Weapon.
+Plasma Sword
+An Elite NCO or Officer with a Melee Weapon may take a Plasma Sword using one of the following options:
+* If the model has no ranged weapon, it may take a Plasma Sword for +7pts.
+* If the model is armed with a Plasma Rifle or Needler, it may add a Plasma Sword for +6pts.
+If the unit already has the Tough Fighters special rule, reduce the cost of this upgrade by 1pt.
+A model with a Plasma Sword gains Tough Fighters. When this model fights in close quarters, it may use the Plasma Sword. If it does, halve this model’s total number of attacks, rounding up, including any bonus attacks assigned to it. Attacks made with the Plasma Sword gain +1 to wound against Infantry and Artillery units. If these attacks cause at least one casualty, you may choose an enemy NCO, Officer, or unit leader in the target unit as one of the casualties caused by this model.
+Gravity Hammer
+A Brute NCO or Officer with a Melee Weapon may take a Gravity Hammer using one of the following options:
+* If the model has a Spiker or Plasma Rifle, it may replace that ranged weapon with a Gravity Hammer for no additional cost.
+* If the model has no ranged weapon, it may take a Gravity Hammer for +8pts.
+If the unit already has the Tough Fighters special rule, reduce the points cost of this upgrade by 1pt.
+A model with a Gravity Hammer gains Tough Fighters. In addition, while this unit is fighting in close quarters, the Gravity Hammer wielder gains +1 extra melee attack for every full 3 enemy models involved in the fight. If a unit containing a Gravity Hammer is assaulted while it is not Down, it counts as having Defensive Position.
 
 
 
@@ -463,7 +401,7 @@ Cost
 
 Brute Squad
 Cost
-	100pts (Regular), 115pts (Veteran) 
+	105pts (Regular), 120pts (Veteran) 
 	Composition
 	1 NCO and 4 Brutes  
 	Weapons
@@ -563,13 +501,13 @@ Cost
 
 Elite Squad
 Cost
-	108pts (Veteran) 
+	112pts (Veteran) 
 	Composition
 	1 NCO and 3 Elites  
 	Weapons
 	Plasma Rifles
 	Options
-	- Add up to 2 additional Elites for +27pts each  
+	- Add up to 2 additional Elites for +28pts each  
 - The NCO and up to 5 Elites may have or Needlers instead of Plasma Rifles for –2pts each 
 - The NCO and up to 5 Elites may have Pulse Carbines instead of Plasma Rifles for –2pts each  
 - The NCO and up to 2 Elites may have a Concussion Rifle for +21pts 
@@ -788,21 +726,17 @@ Cost
 - Energy Shields  
 - Limited: Only 1 Huragok may be taken per army 
 - Utility Construct: Huragoks do not use up an infantry slot when building your platoon.
+	Flamethrower Team
+Cost
+	60pts (Regular), 75pts (Veteran)  
+	Composition
+	2 Grunts
+	Weapons
+	1 Ravager
+	Special Rules
+	- Team weapon                                          - Flamethrower  
+- Forged In Chains
 	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -877,9 +811,9 @@ Cost
 	Composition
 	2 Grunts 
 	Weapons
-	1 Fuel Rod Gun
+	1 Fuel Rod Gun/Hydra
 	Options
-	- Replace Fuel Rod Gun with Plasma/Rocket launcher for no additional cost
+	- Replace Fuel Rod Gun/Hydra with Plasma/Rocket launcher for no additional cost
 	Special Rules
 	- Team Weapon  
 - Shaped charge  
@@ -964,9 +898,9 @@ Cost
 	Composition
 	2 Jackal
 	Weapons
-	1 Brute Shot
+	1 Brute Shot/Grenade Launcher
 	Options
-	- May replace the Brute Shot with a Concussion Rifle for +3pts  
+	- May replace the Brute Shot/GL with a Concussion Rifle for +3pts  
 - May add a spotter for +10pts (If unit is in a heavy weapons platoon)
 	Special Rules
 	- Team Weapon

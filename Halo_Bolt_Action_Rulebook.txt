@@ -1,4 +1,4 @@
-﻿Halo: Bolt Action Rulebook V3.2
+﻿Halo: Bolt Action Rulebook V3.3
 Introduction
 Welcome to Halo: Bolt Action, where the tactical depth of Bolt Action meets the epic universe of Halo. Command forces from the UNSC or Covenant in fast-paced tabletop battles, using infantry, vehicles, and air support to outmaneuver and defeat your opponent.
 Tabletop simulator mod here
@@ -346,7 +346,7 @@ Type - HEAVY WEAPONS
 	1
 	+5
 	Team, Shaped Charge, Tracking, HE (1")
-	Fuel Rod Gun
+	Fuel Rod Gun/Hydra
 	30"
 	1
 	+4
@@ -354,7 +354,7 @@ Type - HEAVY WEAPONS
 	Incineration Cannon
 	30"
 	1
-	+4
+	+5
 	Team, Shaped Charge, Overheat, HE (1")
 	Assault Cannon
 	36"
@@ -479,15 +479,11 @@ Team
 Weapons with the Team rule require at least two models to operate effectively. If only one operator remains, the weapon suffers a -1 to hit modifier due to the increased workload.
 Tracking
 Weapons with the Tracking rule are highly advanced and accurate. When issuing a FIRE order, ignore the -1 to hit penalty caused by the unit being pinned. All other modifiers apply as normal.
-Medics
+Other
 SELF-DEFENCE
 Ignore this rule from the Bolt Action rulebook when playing with a medic unit.
-
-
-
-
-
-
+Grenade Launcher Teams
+For platoon selection purposes, Grenade Launcher Teams count as Light/Mortar Teams. They also use the smoke diameter of light mortars.
 Unit Special Rules
 The following unit special rules apply to various units as described in the army lists. These rules represent specific skills, abilities, or unique characteristics of particular unit types.
 Automaton
@@ -511,7 +507,7 @@ Units with the Fast rule have a base movement of 8 inches, allowing them to Run 
 Fieldcraft
 Units with Fieldcraft treat rough terrain as open ground for movement. When they assault a unit through rough ground, the defender loses Defensive Position if it’s granted by that terrain.
 Flight
-These units can Advance up to 12 inches and Run up to 18 inches, ignoring terrain restrictions during their movement. However, they cannot end their move in impassable terrain, nor in rough ground if a run order was issued instead. If a unit with the Flight rule is ambushed or fired upon while flying, it cannot benefit from soft/hard cover saves. Infantry units with this rule may opt to move on the ground instead, following the standard movement rules for infantry. Units that use Flight cannot pick up or carry objectives on a Run order.
+These units can Advance up to 12 inches and Run up to 18 inches, ignoring terrain restrictions during their movement. However, they cannot end their move in impassable terrain, nor in rough ground if a run order was issued instead. If a unit with the Flight rule is ambushed while flying, it cannot benefit from soft/hard cover saves. Infantry units with this rule may opt to move on the ground instead, following the standard movement rules for infantry. Units that use Flight cannot pick up or carry objectives on a Run order.
 Flood Infection
 Immediately after a unit with this rule defeats an enemy Infantry or Artillery unit in close quarters, roll one D6 for each enemy model removed during and after that combat. For each roll equal to or greater than the damage value of the Flood unit, one slain model may be immediately returned to the unit, up to its original starting size. If the unit has Energy Shields, increase the requirement by +1 for the purposes of this rule. This ability has no effect against Automatons and Composed Beings, who are immune due to their machine nature.
 Green
@@ -525,6 +521,8 @@ Infiltrator
 Gain an additional +1 to their cover saves against shooting attacks if they have no Advance or Run order dice on them. Infiltrators may also benefit from special deployment rules.
 Large Infantry
 Some models are significantly larger than standard soldiers. Units with the Large Infantry rule count as double when calculating transport capacity. Additionally, in close quarters the opponent never gains Defensive Position.
+Melee Weapons
+Models do 2 base attacks in melee instead of 1. 
 Resilient
 This rule replaces Energy Shields and Shield Wall. Units with the Resilient rule have a damage value of 6+, a 5+ cover save in the open or in Close Quarters and add +2 to their soft/hard cover saves.
 Shield Wall
@@ -532,7 +530,7 @@ When a unit with the Shield Wall rule is in open ground, it benefits from a base
 Shirkers
 Shirkers are unwilling or unmotivated soldiers who perform poorly under pressure. For all morale checks, order tests, and routing calculations, pin markers count as double for units with this rule (e.g., 1 pin marker counts as -2, 2 pin markers count as -4, etc.). Additionally, Shirkers must always take an order test when issued an order, even if they are not pinned.
 Sniper
-While at full strength (e.g., 2 models), one friendly Regular or Veteran Indirect Fire unit (including Howitzers) may draw line of sight from this team as if the team were its Spotter. If the sniper is killed, the remaining model may fire the sniper rifle at –1 to hit, and the unit suffers the usual –1 Morale for losing its leader. When the sniper is not using the scope, both models may fire their personal weapons and fully participate in assaults. When firing on a Fire or Ambush order, you may declare a scope shot, if the target is within 12", the shot automatically misses; otherwise the shot is +1 to hit, ignores cover, and is +1 to damage against Infantry or Artillery units, and if it causes damage you may choose the unit leader as the casualty.
+While at full strength, one friendly Regular or Veteran Indirect Fire (Or Howitzer) unit may draw line of sight from this team as if the team were its Spotter. When the sniper is not using the scope, all surviving models may fire their carried weapons. When firing, you may declare a scoped shot: if the target is within 12", the shot automatically misses; otherwise it gains +1 to hit, ignores cover, gains +1 damage against Infantry or Artillery, and if it is damaged you may choose the unit leader as the casualty. If only 1 model remains, that model may still fire the sniper rifle, scoped or unscoped, but suffers -1 to hit for being a one-man Team Weapon.
 Slow
 Units with the Slow rule have reduced mobility compared to standard infantry. Their base movement is limited to 4 inches, and they can Run up to 8 inches.
 Stealth

@@ -1,4 +1,4 @@
-﻿Armies of the Floodv3.2
+﻿Armies of the Floodv3.3
 
 Army Special Rules
 Living Nightmare
@@ -182,20 +182,19 @@ Cost
 	Options
 	- Add up to 9 additional combat forms for +19pts each (Regular) or +22pts each (Veteran)  
 - The NCO and up to 13 combat forms may replace their Assault Rifles with:
-  – Needlers for -2pts each  
-  – SMGs for -2pts each 
-  – Plasma rifles for +0pts each  
-  – Spikers for +1pts each
+  – Needlers for -2pts each    – SMGs for -2pts each 
+  – Plasma rifles for +0pts each   – Spikers for +1pts each
   – Shotguns for -3pts each
 - The NCO and up to 6 combat forms may replace their Assault Rifles with Battle rifles/Covenant Carbines for -3pts each
 - The unit may be given Anti-Tank Grenades for +2pts per model
 - The unit may be given Energy Shield modules for +3pts per model
-- The NCO may be given a Melee Weapon (2 attacks in close combat) for +1pt
+- The NCO may be given a Melee Weapon for +1pt
+- The unit may be given Melee Weapons for +1pt per model
+- The squad can be given Strong for +1pt per man
 	Special Rules
-	- Tank Hunters: If anti-tank grenades are taken
-- Energy Shields: If energy shield modules are taken
-- Flood Infection                                                                      - Horror
-- Fieldcraft
+	- Tank Hunters: If anti-tank grenades are taken                    - Horror
+- Energy Shields: If energy shield modules are taken          - Fieldcraft
+- Flood Infection
 	Stalker Form Swarm
 Cost
 	80pts (Veteran) 
@@ -385,13 +384,13 @@ Cost
 	2 combat forms
 	Weapons
 	1 Rocket Launcher
+	Options
+	- The squad can be given Strong for +1pt per man
 	Special Rules
 	- Team Weapon  
 - Flood Infection
 - Horror
 	
-
-
 
 
 
@@ -458,6 +457,8 @@ Cost
 	2 Combat forms
 	Weapons
 	Sniper has a Sniper Rifle, spotter has a Pistol
+	Options
+	- The squad can be given Strong for +1pt per man
 	Special Rules
 	- Team weapon
 - Sniper
@@ -473,13 +474,12 @@ Cost
 	1 Grenade launcher
 	Options
 	- May add a spotter for +10pts (If unit is in a heavy weapons platoon)
+- The squad can be given Strong for +1pt per man
 	Special Rules
 	- Team Weapon
 - Flood Infection
 - Horror
 	
-
-
 
 
 
