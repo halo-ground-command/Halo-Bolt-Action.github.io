@@ -134,13 +134,13 @@ Cost
 INFANTRY SQUADS AND TEAMS
 Sentinel Swarm
 Cost
-	40pts (Inexperienced), 55pts (Regular) 
+	35pts (Inexperienced), 50pts (Regular) 
 	Composition
 	1 NCO and 4 Sentinels
 	Weapons
 	Sentinel Beams
 	Options
-	- Add up to 6 additional Sentinels for +8pts each (Inexperienced), or +11pts each (Regular) 
+	- Add up to 6 additional Sentinels for +7pts each (Inexperienced), or +10pts each (Regular) 
 - The unit may be given Energy Shield modules for +3pts per model
 	Special Rules
 	- Automaton
@@ -148,13 +148,13 @@ Cost
 - Flight
 	Crawler Swarm
 Cost
-	49pts (Inexperienced), 64pts (Regular) 
+	45pts (Inexperienced), 60pts (Regular) 
 	Composition
 	1 NCO and 4 Crawlers
 	Weapons
 	Boltshot
 	Options
-	- Add up to 6 additional Crawlers for +10pts each (inexperienced), or +13pts each (regular) 
+	- Add up to 6 additional Crawlers for +9pts each (inexperienced), or +12pts each (regular) 
 - The NCO and up to 8 additional Crawlers may have Suppressors instead of Boltshots  for +7pts each
 - The NCO and up to 8 additional Crawlers may have Light rifles instead of Boltshots  for +2pts each
 	Special Rules
