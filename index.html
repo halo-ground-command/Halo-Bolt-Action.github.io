@@ -439,7 +439,7 @@ const weaponSpecialDescriptions = {
   "Team": "Weapon with this rule requires at least 2 models to fire at full effect. If only 1 model remains, the weapon may still fire but suffers -1 to hit. For squad-based Team Weapons, a loader must be within 1\" of the weapon carrier; when the Team Weapon fires, the loader cannot fire their own weapon. If the loader is killed or is not within 1\", the Team Weapon suffers -1 to hit.",
   "Tracking": "Ignores the -1 to-hit penalty caused by pinning when issued a FIRE order.",
   "Gravity Hammer": "A model with a Gravity Hammer gains Tough Fighters. While this unit is fighting in close quarters, the Gravity Hammer wielder gains +1 extra melee attack for every full 3 enemy models involved in the fight. If a unit containing a Gravity Hammer is assaulted in open ground while it is not Down, it counts as having Defensive Position.",
-  "Plasma Sword": "A model with a Plasma Sword gains Tough Fighters. When this model fights in close quarters, it may use the Plasma Sword. If it does, halve this model’s total number of attacks, rounding up, including any bonus attacks assigned to it. Attacks made with the Plasma Sword gain +1 to wound against Infantry and Artillery units. If these attacks cause at least one casualty, you may choose an enemy NCO, Officer, or unit leader in the target unit as one of the casualties caused by this model."
+  "Plasma Sword": "A model with a Plasma Sword gains Tough Fighters. When this model fights in close quarters, it may use the Plasma Sword. If it does, reduce this model’s number of total attacks by 1. Attacks made with the Plasma Sword gain +1 to wound against Infantry and Artillery units. If these attacks cause at least one casualty, you may choose an enemy NCO, Officer, or unit leader in the target unit as one of the casualties caused by this model."
 };
 
 
@@ -5163,12 +5163,12 @@ function injectLeaderMeleeNcoOptions(unit, unitData) {
   if (caste === "Elite") {
     if (unitData.options.ncoReplacement.options.includes("Plasma Rifle")) {
       const baseCost = Number(unitData.options.ncoReplacement.costs["Plasma Rifle"] || 0);
-      addNcoOption("Plasma Rifle + Plasma Sword", baseCost + 6 - discount);
+      addNcoOption("Plasma Rifle + Plasma Sword", baseCost + 5 - discount);
     }
 
     if (unitData.options.ncoReplacement.options.includes("Needler")) {
       const baseCost = Number(unitData.options.ncoReplacement.costs["Needler"] || 0);
-      addNcoOption("Needler + Plasma Sword", baseCost + 6 - discount);
+      addNcoOption("Needler + Plasma Sword", baseCost + 5 - discount);
     }
   }
 
@@ -5783,117 +5783,6 @@ injectDoctrineOptions(COVENANT_UNITS, COVENANT_DOCTRINES, "For The Great Journey
 injectDoctrineOptions(BANISHED_UNITS, BANISHED_DOCTRINES, "Forged In Chains");
 // Now all eligible units will have the right doctrine block in their options!
 
-function ruleListHasRule(rules, ruleName) {
-  return (rules || []).some(r => getRuleName(r) === ruleName);
-}
-
-function unitHasToughFightersSpecialRule(unit, unitData) {
-  const rules = [
-    ...(Array.isArray(unitData?.specialRules) ? unitData.specialRules : []),
-    ...(Array.isArray(unit?.special) ? unit.special : [])
-  ];
-
-  return ruleListHasRule(rules, "Tough Fighters");
-}
-
-function upgradeGrantsMeleeWeapon(upgrade) {
-  if (!upgrade) return false;
-
-  const grants = [];
-
-  if (upgrade.grantsRule) {
-    Array.isArray(upgrade.grantsRule)
-      ? grants.push(...upgrade.grantsRule)
-      : grants.push(upgrade.grantsRule);
-  }
-
-  if (Array.isArray(upgrade.grantsRules)) {
-    grants.push(...upgrade.grantsRules);
-  }
-
-  return grants.some(r =>
-    getRuleName(r) === "Melee Weapon" ||
-    getRuleName(r) === "Melee Weapons"
-  );
-}
-
-function leaderHasMeleeWeapon(unit, unitData) {
-  if (!unit || !unitData) return false;
-  if (unit.type !== "Infantry") return false;
-
-  const baseRules = [
-    ...(Array.isArray(unitData?.specialRules) ? unitData.specialRules : []),
-    ...(Array.isArray(unit?.special) ? unit.special : [])
-  ];
-
-  if (
-    ruleListHasRule(baseRules, "Melee Weapon") ||
-    ruleListHasRule(baseRules, "Melee Weapons")
-  ) {
-    return true;
-  }
-
-  if (unitData?.options?.squadUpgrades) {
-    for (const [label, upgrade] of Object.entries(unitData.options.squadUpgrades)) {
-      const cb = document.querySelector(`.editSquadUpgrade[data-upgrade="${label}"]`);
-      const picked = cb ? cb.checked : !!unit?.squadUpgrades?.[label];
-
-      if (picked && upgradeGrantsMeleeWeapon(upgrade)) return true;
-    }
-  }
-
-  const doctrineName = document.getElementById("editDoctrineSelect")?.value || unit?.doctrine || "";
-  const doctrineSpec = getAllowedDoctrineChoicesForUnit(unit, unitData).find(dc => dc.name === doctrineName);
-
-  if (doctrineSpec?.extraUpgrades) {
-    for (const upgrade of doctrineSpec.extraUpgrades) {
-      const cb = document.querySelector(`.editDoctrineExtraUpgrade[data-upgrade="${upgrade.name}"]`);
-      const picked = cb ? cb.checked : !!unit?.extraDoctrineUpgrades?.[upgrade.name];
-
-      if (picked && upgradeGrantsMeleeWeapon(upgrade)) return true;
-    }
-  }
-
-  return false;
-}
-
-function isNoRangedWeaponLabel(label) {
-  const text = String(label || "");
-  const base = getBaseWeaponName(text);
-
-  return (
-    base === "Unarmed" ||
-    /melee weapon/i.test(text)
-  );
-}
-
-function getExplicitLeaderRangedWeapon(unit, unitData) {
-  if (unitData?.options?.ncoReplacement) {
-    return getSelectedNcoWeapon(unit, unitData);
-  }
-
-  if (Array.isArray(unitData?.weapons) && unitData.weapons.length === 1) {
-    return unitData.weapons[0].name;
-  }
-
-  return null;
-}
-
-function leaderCanChooseWeapon(unitData, weaponName) {
-  const check = w => getBaseWeaponName(w) === weaponName;
-
-  if ((unitData?.weapons || []).some(w => check(w.name))) return true;
-  if ((unitData?.options?.ncoReplacement?.options || []).some(opt => check(opt))) return true;
-
-  return false;
-}
-
-function formatSignedPts(value) {
-  const n = Number(value) || 0;
-  if (n === 0) return "0pts";
-  return `${n > 0 ? "+" : ""}${n}pts`;
-}
-
 function getLeaderMeleeUpgradeOptions(unit, unitData) {
   if (!leaderHasMeleeWeapon(unit, unitData)) return [];
 
@@ -5906,21 +5795,21 @@ function getLeaderMeleeUpgradeOptions(unit, unitData) {
 
   if (caste === "Elite") {
     if (currentWeapon && isNoRangedWeaponLabel(currentWeapon)) {
-      const cost = 7 - discount;
+      const cost = 6 - discount;
       opts.push({
         value: "plasmaSwordNoRanged",
         label: `Plasma Sword, no ranged weapon (${formatSignedPts(cost)})`,
         cost
       });
     } else if (currentBase === "Plasma Rifle") {
-      const cost = 6 - discount;
+      const cost = 5 - discount;
       opts.push({
         value: "plasmaSwordPlasmaRifle",
         label: `Plasma Rifle + Plasma Sword (${formatSignedPts(cost)})`,
         cost
       });
     } else if (currentBase === "Needler") {
-      const cost = 6 - discount;
+      const cost = 5 - discount;
       opts.push({
         value: "plasmaSwordNeedler",
         label: `Needler + Plasma Sword (${formatSignedPts(cost)})`,
@@ -5928,7 +5817,7 @@ function getLeaderMeleeUpgradeOptions(unit, unitData) {
       });
     } else if (!currentWeapon) {
       if (leaderCanChooseWeapon(unitData, "Plasma Rifle")) {
-        const cost = 6 - discount;
+        const cost = 5 - discount;
         opts.push({
           value: "plasmaSwordPlasmaRifle",
           label: `Plasma Rifle + Plasma Sword (${formatSignedPts(cost)})`,
@@ -5937,7 +5826,7 @@ function getLeaderMeleeUpgradeOptions(unit, unitData) {
       }
 
       if (leaderCanChooseWeapon(unitData, "Needler")) {
-        const cost = 6 - discount;
+        const cost = 5 - discount;
         opts.push({
           value: "plasmaSwordNeedler",
           label: `Needler + Plasma Sword (${formatSignedPts(cost)})`,
@@ -6921,89 +6810,6 @@ function formatSignedPts(value) {
   return `${n > 0 ? "+" : ""}${n}pts`;
 }
 
-function getLeaderMeleeUpgradeOptions(unit, unitData) {
-  if (!leaderHasMeleeWeapon(unit, unitData)) return [];
-
-  const caste = getCurrentLeaderCaste(unit, unitData);
-  const discount = unitHasToughFightersSpecialRule(unit, unitData) ? 1 : 0;
-  const currentWeapon = getExplicitLeaderRangedWeapon(unit, unitData);
-  const currentBase = getBaseWeaponName(currentWeapon);
-
-  const opts = [{ value: "", label: "— None —", cost: 0 }];
-
-  if (caste === "Elite") {
-    if (currentWeapon && isNoRangedWeaponLabel(currentWeapon)) {
-      const cost = 7 - discount;
-      opts.push({
-        value: "plasmaSwordNoRanged",
-        label: `Plasma Sword (${formatSignedPts(cost)})`,
-        cost
-      });
-    } else if (currentBase === "Plasma Rifle") {
-      const cost = 6 - discount;
-      opts.push({
-        value: "plasmaSwordPlasmaRifle",
-        label: `Plasma Rifle + Plasma Sword (${formatSignedPts(cost)})`,
-        cost
-      });
-    } else if (currentBase === "Needler") {
-      const cost = 6 - discount;
-      opts.push({
-        value: "plasmaSwordNeedler",
-        label: `Needler + Plasma Sword (${formatSignedPts(cost)})`,
-        cost
-      });
-    } else if (!currentWeapon) {
-      if (leaderCanChooseWeapon(unitData, "Plasma Rifle")) {
-        const cost = 6 - discount;
-        opts.push({
-          value: "plasmaSwordPlasmaRifle",
-          label: `Plasma Rifle + Plasma Sword (${formatSignedPts(cost)})`,
-          cost
-        });
-      }
-
-      if (leaderCanChooseWeapon(unitData, "Needler")) {
-        const cost = 6 - discount;
-        opts.push({
-          value: "plasmaSwordNeedler",
-          label: `Needler + Plasma Sword (${formatSignedPts(cost)})`,
-          cost
-        });
-      }
-    }
-  }
-
-  if (caste === "Brute") {
-    if (currentWeapon && isNoRangedWeaponLabel(currentWeapon)) {
-      const cost = 8 - discount;
-      opts.push({
-        value: "gravityHammerNoRanged",
-        label: `Gravity Hammer (${formatSignedPts(cost)})`,
-        cost
-      });
-    } else if (currentBase === "Spiker" || currentBase === "Plasma Rifle") {
-      const cost = 0 - discount;
-      opts.push({
-        value: "gravityHammerReplaceRanged",
-        label: `Replace ${currentBase} with Gravity Hammer (${formatSignedPts(cost)})`,
-        cost
-      });
-    } else if (!currentWeapon) {
-      if (leaderCanChooseWeapon(unitData, "Spiker") || leaderCanChooseWeapon(unitData, "Plasma Rifle")) {
-        const cost = 0 - discount;
-        opts.push({
-          value: "gravityHammerReplaceRanged",
-          label: `Replace Spiker/Plasma Rifle with Gravity Hammer (${formatSignedPts(cost)})`,
-          cost
-        });
-      }
-    }
-  }
-
-  return opts;
-}
-
 function getReplaceableWeaponSlots(unit, unitData, totalMen = null) {
   const men = totalMen ?? getEditorTotalMen(unit, unitData);
 
@@ -7727,9 +7533,14 @@ function captureInfantryModalStateToUnit() {
   });
 
 const leaderMeleeSelect = document.getElementById("editLeaderMeleeUpgrade");
-  
-	const refreshedUnitData = getUnitData(unit);
-	purgeIllegalArmourySquadUpgrades(unit, refreshedUnitData);
+if (leaderMeleeSelect) {
+  unit.leaderMeleeUpgrade = leaderMeleeSelect.value || "";
+} else {
+  unit.leaderMeleeUpgrade = "";
+}
+
+const refreshedUnitData = getUnitData(unit);
+purgeIllegalArmourySquadUpgrades(unit, refreshedUnitData);
 }
 
 function rerenderCurrentEditModal() {
@@ -7942,7 +7753,7 @@ function afterInfantryModalRender(unit, unitData) {
           let label = upg.name;
           if (upg.costPerModel > 0) label += ` (+${upg.costPerModel} pts/model)`;
           if (upg.costFlat > 0) label += ` (+${upg.costFlat} pts flat)`;
-          html += `<label><input type="checkbox" class="editDoctrineExtraUpgrade" data-upgrade="${upg.name}" ${checked} onchange="updateLiveUnitCost()"> ${label}</label><br>`;
+          html += `<label><input type="checkbox" class="editDoctrineExtraUpgrade" data-upgrade="${upg.name}" ${checked} onchange="/Melee Weapon/i.test(this.dataset.upgrade) ? rerenderCurrentEditModal() : updateLiveUnitCost()"> ${label}</label><br>`;
         });
         html += `</div>`;
       }
