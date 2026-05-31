@@ -310,6 +310,7 @@ const allWeaponProfiles = {
   "Medium Machine Gun": 'Range 36", Shots 6, Pen –, Team, Fixed',
 
   // HEAVY WEAPONS
+  "Heavy Sniper Rifle": 'Range 36", Shots 1, Pen +1, Sniper, Team',
   "Heavy Machine Gun": 'Range 48", Shots 6, Pen +1, Team, Fixed',
   "HMG": 'Range 48", Shots 6, Pen +1, Team, Fixed',
   "Heavy Plasma MG": 'Range 48", Shots 6, Pen +1, Team, Fixed, MG, Overheat',
@@ -558,18 +559,18 @@ window.unitSpecialDescriptions["Flood Burster"] =
 
 const ARMOURY_DEFS = {
   UNSC: [
-    {
-      id: "mjolnirBiofoam",
-      type: "ruleCheckbox",
-      label: "MJOLNIR Biofoam Systems",
-      cost: 2,
-      costMode: "perModel",
-      grantsRules: ["MJOLNIR Biofoam Systems"],
-      appliesTo: (unit, unitData) =>
-        window.currentFaction === "UNSC" &&
-        unit.type === "Infantry" &&
-        isSpartan(unit, unitData)
-    }
+	{
+	  id: "mjolnirBiofoam",
+	  type: "ruleCheckbox",
+	  label: "MJOLNIR Biofoam Systems",
+	  cost: 2,
+	  costMode: "perModel",
+	  grantsRules: ["MJOLNIR Biofoam Systems"],
+	  appliesTo: (unit, unitData) =>
+		window.currentFaction === "UNSC" &&
+		["Infantry", "Team", "Artillery"].includes(unit.type) &&
+		isSpartan(unit, unitData)
+	}
   ],
 
   Covenant: [
@@ -1298,19 +1299,29 @@ const UNSC_UNITS = [
     }
   }
 },
-  {
-    name: "Sniper Team",
-    type: "Team",
-    allowedVeterancy: ["Regular", "Veteran"],
-    costs: { Regular: 52, Veteran: 67 },
-    baseMen: 2,
-    maxMen: 2,
-    weapons: [
-      { name: "Sniper Rifle" },
-      { name: "Pistol" }
-    ],
-    specialRules: ["Team Weapon", "Sniper", "Infiltrator", "For Humanity’s Survival!"]
-  },
+{
+  name: "Sniper Team",
+  type: "Team",
+  allowedVeterancy: ["Regular", "Veteran"],
+  costs: { Regular: 52, Veteran: 67 },
+  baseMen: 2,
+  maxMen: 2,
+  weapons: [
+    { name: "Sniper Rifle" },
+    { name: "Pistol" }
+  ],
+  specialRules: ["Team Weapon", "Sniper", "Infiltrator", "For Humanity’s Survival!"],
+  options: {
+    squadUpgrades: {
+      "Anti-Materiel Rounds": {
+        cost: 15,
+        perModel: false,
+        grantsRule: "Heavy Sniper Rifle",
+        replacesWeapon: "Sniper Rifle"
+      }
+    }
+  }
+},
   {
     name: "Flamethrower Team",
     type: "Team",
@@ -5968,17 +5979,22 @@ function buildWeaponsTable(unit) {
     unitData.baseMen === 2 &&
     unitData.maxMen === 2;
 
-  if (isSniperTeam) {
-    unitData.weapons.forEach(w => {
-      let prof = parseWeaponProfile(allWeaponProfiles[getBaseWeaponName(w.name)] || "");
-      table.push({
-        qty: 1,
-        label: `${w.name}`,
-        ...prof
-      });
-    });
-    return table;
-  }
+	if (isSniperTeam) {
+	  const weaponsToShow = Array.isArray(unit.weapons) && unit.weapons.length
+		? unit.weapons
+		: unitData.weapons;
+
+	  weaponsToShow.forEach(w => {
+		let prof = parseWeaponProfile(allWeaponProfiles[getBaseWeaponName(w.name)] || "");
+		table.push({
+		  qty: 1,
+		  label: `${w.name}`,
+		  ...prof
+		});
+	  });
+
+	  return table;
+	}
 
 	// 2. Choose-any infantry, including officers with optional M301 carriers
 	if (isChooseAnyWeaponUnit(unit, unitData)) {

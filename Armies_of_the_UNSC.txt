@@ -623,6 +623,8 @@ Cost
 	2 men  
 	Weapons
 	Sniper has a sniper rifle and a pistol, spotter has a pistol 
+	Options
+	- The unit may be equipped with Anti-Materiel Rounds for +15pts. If this upgrade is taken, the Sniper Rifle becomes a Heavy Sniper Rifle and gains Pen +1.
 	Special Rules
 	- Team weapon
 - Sniper
@@ -652,10 +654,6 @@ Cost
 	- Team Weapon
 - For Humanity’s Survival!
 	
-
-
-
-
 
 
 
@@ -754,6 +752,8 @@ Cost
 	- Reinforced Front Armour
 - Slow Load
 	
+
+
 
 
 
