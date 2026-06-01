@@ -267,13 +267,13 @@ Cost
 
 Tank Form Pack
 Cost
-	48pts (Veteran) 
+	46pts (Veteran) 
 	Composition
 	1 NCO and 1 Tank form
 	Weapons
 	Unarmed
 	Options
-	- Add up to 3 additional Tank Forms for +24pts each
+	- Add up to 4 additional Tank Forms for +23pts each
 	Special Rules
 	- Flood Infection
 - Tooth and Claw
