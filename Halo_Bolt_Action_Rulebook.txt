@@ -63,7 +63,7 @@ When a flying Aircraft targets a ground unit, the target only receives cover if 
 When a ground unit targets a flying Aircraft, the Aircraft does not receive cover from any intervening units or terrain. Ground units may freely fire at a flying Aircraft even if friendly or enemy models are directly in the line of fire. This does not prevent the attack and does not risk friendly fire.
 Landed Aircraft follow normal vehicle rules for line of sight. They can be seen as normal, may block line of sight to other units, and can provide or benefit from soft and hard cover.
 Shooting
-Flying Aircraft may fire all of their weapons when issued an Advance or Fire order. They do not gain point-blank bonuses when firing, and units firing at them do not benefit from point-blank bonuses either.
+Flying Aircraft may fire all of their weapons when issued an Advance or Fire order. They do not gain point-blank bonuses when firing, and units firing at them do not benefit from point-blank bonuses either, but hit the top side.
 If an Aircraft is flying, enemy units suffer a -1 penalty to hit it unless they have the Flak special rule. AT Guns do not gain the +1 to Hit vehicles vs flying aircraft. Aircraft are treated as having the same armor value on all facings; attacks do not gain bonuses for hitting side, rear, or top armor. Flying Aircraft have a special 5+ Evasion save that negates damage but not Pin markers, similar to cover saves. 
 Once landed, Aircraft may only fire pintle-mounted weapons unless stated otherwise in their profile.
 Command Aircraft
@@ -873,7 +873,7 @@ Flying Aircraft
 
                   * Cannot embark/disembark units. (Unless flight)
 
-                  * Do not gain or grant Point Blank bonus. AT guns do not have +1 to hit on a FIRE against aircrafts either.
+                  * Do not gain or grant Point Blank bonus. AT guns do not have +1 to hit on a FIRE against aircrafts either. Can shoot at vehicle top sides.
 
 Landed Aircraft
                      * Land on a down order within 9, until a run or advance order is given.
