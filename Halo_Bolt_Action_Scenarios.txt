@@ -1,4 +1,4 @@
-﻿Halo: Bolt Action - Scenarios v1.3
+﻿Halo: Bolt Action - Scenarios v1.5
 
 Introduction
 This supplement is designed to expand your Halo: Bolt Action games with a variety of mission types and victory conditions, inspired by classic Halo multiplayer modes and story campaigns.
@@ -487,6 +487,89 @@ Covenant/Banished (Defender)
                                                                                                       * +1 VP for each enemy unit destroyed.
 
 If the core is not stabilized, and the Covenant/Banished score at least 2 more Victory Points, they win a clear victory. Otherwise, the result is a draw.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+FREE-FOR-ALL/3 TEAMS
+This mission is played as a 3-player or 3-team free-for-all.
+Place one objective marker, terrain piece, or building at the centre of the table.
+  
+
+Deployment
+There are three deployment edges: Red, Yellow, and Blue.
+Each player/team rolls one D6. The winner chooses one deployment edge. The remaining players/teams roll again, and the winner chooses one of the remaining edges. The last player takes the final edge.
+Before the game begins, each player/team declares which units are Infiltrating, inside transports, in First Wave, in Reserve, or Outflanking.
+
+
+Infiltrators
+Infiltrators follow the normal Infiltrator rules, but must deploy more than 12" from the central objective.
+First Wave, Reserves, and Outflanking
+At least 50% of each player/team’s units must be assigned to First Wave. The rest may begin Infiltrating, in Reserve, or Outflanking.
+First Wave units enter from their own deployment edge on Turn 1 with an Advance or Run order, and do not take an Order test to arrive.
+Reserve units follow the normal Reserve rules. From Turn 2 onward, they may enter from their controlling player/team’s own deployment edge.
+Units that are Outflanking may only arrive from Turn 3 onward.
+On Turns 3 and 4, Outflanking units may only enter from their controlling player/team’s own deployment edge, or from a table edge that does not belong to any player/team.
+From Turn 5 onward, Outflanking units may enter from any table edge.
+Objective Limits
+Until Turn 2, no unit may end its movement within 12" of the central objective.
+From Turn 2 onward, units may move within 12" of the objective normally.
+Blue Edge Balance Rule
+If the Blue deployment edge gives a clear advantage due to terrain or table layout, the Blue player/team must deploy D3 First Wave units before the other players deploy their First Wave units, so that the other players can react accordingly.
+Controlling the Objective
+A unit captures the objective if it ends its activation within 3" of it and there are no enemy units within 3" of the objective.
+Vehicles cannot capture the objective, but they can contest it.
+Once captured, the objective remains controlled by that player/team until another player/team captures it.
+
+
+
+
 
 
 

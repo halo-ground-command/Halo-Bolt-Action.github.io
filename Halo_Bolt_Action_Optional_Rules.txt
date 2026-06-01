@@ -1,4 +1,4 @@
-﻿Halo: Bolt Action - Optional Rules v1.4
+﻿Halo: Bolt Action - Optional Rules v1.5
 
 Introduction
 This supplement contains optional rules modules for Halo: Bolt Action, designed primarily for narrative play but usable in any game if both players agree.
@@ -30,10 +30,10 @@ A force built using this method must include:
 ● Any number of Infantry and Artillery units.
 If a unit has a restriction per platoon of any type, change platoon to Platoon commander. Company commanders and other HQ units are limited to 1 per army.
 Vehicles
-If a force includes any Vehicles:
+If a force includes any Combat Vehicles:
 ● It must include at least 1 Command Vehicle.
-● For each Command Vehicle in the force, you must also include at least 1 other Vehicle without the Command Vehicle special rule.
-● For every Command Vehicle you take, you may take 4 additional Vehicles.
+● You must also include at least 1 other Vehicle.
+● For every Command Vehicle and 1 other Vehicle you take, you may take 0–3 additional Vehicles. 
 ● If none of the vehicles in the force have the Command Vehicle special rule, and none may purchase it from their profile options, one non-Aircraft vehicle may be given the Command Vehicle special rule for +10 pts, even if its profile entry does not normally allow it.
 
 HERO RESOURCES
