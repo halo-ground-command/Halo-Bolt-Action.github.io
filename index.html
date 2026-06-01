@@ -123,10 +123,26 @@ button:not(.active):hover { background: #2e50b7; }
   box-shadow: 0 2px 18px #0008;
   padding: 24px 18px 20px 18px;
   min-width: 210px;
+  width: 260px;
+  max-width: 260px;
+  flex: 0 0 260px;
   color: #e0e6f0;
   display: flex;
   flex-direction: column;
   gap: 12px;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+#summaryBlock {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+#summaryBlock div {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 .sticky-sidebar button {
   margin: 0 0 5px 0;
@@ -204,6 +220,7 @@ button:not(.active):hover { background: #2e50b7; }
     min-width: 180px;
     width: 94vw;
     max-width: 380px;
+    flex: none;
   }
   .main-content { width: 100%; }
 }
@@ -1947,6 +1964,7 @@ const UNSC_VEHICLES = [
 {
     name: "M831 Troop Transport Warthog",
     type: "Armoured Car",
+	forceOrgSlot: "transport",
     allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
     costs: { Inexperienced: 40, Regular: 50, Veteran: 60 },
     weapons: [],
@@ -1961,6 +1979,7 @@ const UNSC_VEHICLES = [
   {
     name: "Mastodon",
     type: "Armoured Car",
+	forceOrgSlot: "transport",
     allowedVeterancy: ["Regular", "Veteran"],
     costs: { Regular: 70, Veteran: 84 },
     weapons: [
@@ -2876,6 +2895,7 @@ const COVENANT_VEHICLES = [
   {
     name: "Ruwaa-pattern Troop Carrier “Shadow”",
     type: "Car",
+	forceOrgSlot: "transport",
     allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
     costs: { Inexperienced: 32, Regular: 40, Veteran: 48 },
     weapons: [],
@@ -2897,6 +2917,7 @@ const COVENANT_VEHICLES = [
 	{
 	  name: "Yado'kef-pattern Assault Carapace",
 	  type: "Pod",
+	  forceOrgSlot: "transport",
 	  allowedVeterancy: ["Regular"],
 	  costs: { Regular: 50 },
 	  weapons: [],
@@ -3741,6 +3762,7 @@ const BANISHED_VEHICLES = [
 	{
 	name: "Qavardu Workshop war-skiff",
 	type: "Car",
+	forceOrgSlot: "transport",
 	allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
 	costs: { Inexperienced: 52, Regular: 65, Veteran: 78 },
 	weapons: [ { name: "Turret-mounted Medium Plasma MG" } ],
@@ -3750,6 +3772,7 @@ const BANISHED_VEHICLES = [
 	{
 	name: "Eklon'Dal Workshop Warrior Carriage",
 	type: "Car",
+	forceOrgSlot: "transport",
 	allowedVeterancy: ["Regular", "Veteran"],
 	costs: { Regular: 125, Veteran: 150 },
 	weapons: [ { name: "Casement-mounted Forward-facing Light Anti-Tank Weapon" } ],
@@ -5254,16 +5277,292 @@ function updateArmyBonusUI() {
   sel.value = window.selectedArmyBonus || "";
 }
 
+function unitRuleNames(unit, unitData = null) {
+  const rules = [
+    ...(Array.isArray(unit?.special) ? unit.special : []),
+    ...(Array.isArray(unit?.specialRules) ? unit.specialRules : []),
+    ...(Array.isArray(unitData?.specialRules) ? unitData.specialRules : [])
+  ];
+
+  return rules.map(r => getRuleName(r)).filter(Boolean);
+}
+
+function unitHasRuleName(unit, ruleName, unitData = null) {
+  return unitRuleNames(unit, unitData).includes(ruleName);
+}
+
+function unitHasPickedUpgradeContaining(unit, text) {
+  return Object.entries(unit?.squadUpgrades || {}).some(([label, picked]) =>
+    picked && String(label).toLowerCase().includes(String(text).toLowerCase())
+  );
+}
+
+function getForceOrgSlot(unit, unitData = getUnitData(unit)) {
+  return String(unit?.forceOrgSlot || unitData?.forceOrgSlot || "").toLowerCase();
+}
+
+function isGruntDeaconForValidation(unit) {
+  const unitData = getUnitData(unit);
+
+  return (
+    unitHasPickedUpgradeContaining(unit, "Deacon") ||
+    unitHasRuleName(unit, "Deacon", unitData) ||
+    String(unit?.name || "").toLowerCase().includes("deacon")
+  );
+}
+
+function isPlatoonCommanderForValidation(unit) {
+  const unitData = getUnitData(unit);
+  if (!unit || !unitData) return false;
+
+  // Grunt Deacon follows some officer rules, but does NOT fill the Platoon Commander slot.
+  if (isGruntDeaconForValidation(unit)) return false;
+
+  // Knight Commander upgrade fills the Platoon Commander slot.
+  if (unitHasPickedUpgradeContaining(unit, "Knight Commander")) return true;
+
+  // Optional manual override.
+  const slot = getForceOrgSlot(unit, unitData);
+  if (
+    slot === "platooncommander" ||
+    slot === "platoon_commander" ||
+    slot === "platoon-commander"
+  ) {
+    return true;
+  }
+
+  // Main rule-based check.
+  return unitHasRuleName(unit, "Platoon Commander", unitData);
+}
+
+function isSupportOrExtraHQForValidation(unit) {
+  const unitData = getUnitData(unit);
+  const name = String(unit?.name || "").toLowerCase();
+
+  return (
+    unitHasRuleName(unit, "HQ Choice", unitData) ||
+    unitHasRuleName(unit, "Company Commander", unitData) ||
+    unitHasRuleName(unit, "Medic", unitData) ||
+    unitHasRuleName(unit, "Forward Observer", unitData) ||
+    unitHasRuleName(unit, "Chaplain", unitData) ||
+    unitHasRuleName(unit, "Bloodhandler", unitData) ||
+    unitHasRuleName(unit, "Watcher", unitData) ||
+    name.includes("company commander") ||
+    name.includes("medic") ||
+    name.includes("forward observer") ||
+    name.includes("observer") ||
+    name.includes("chaplain") ||
+    name.includes("bloodhandler") ||
+    name.includes("watcher") ||
+    name.includes("attached leader")
+  );
+}
+
+function isRequiredInfantryForValidation(unit) {
+  const unitData = getUnitData(unit);
+  if (!unit || !unitData) return false;
+
+  // Platoon Commanders do not count as one of their own required Infantry units.
+  if (isPlatoonCommanderForValidation(unit)) return false;
+
+  // Medics, Company Commanders, Forward Observers, HQ Choice units, etc.
+  // do not count toward required Infantry, even if their type is Infantry.
+  if (isSupportOrExtraHQForValidation(unit)) return false;
+
+  const slot = getForceOrgSlot(unit, unitData);
+
+  // Optional manual override.
+  // Keep this after the exclusions above.
+  if (slot) return slot === "infantry";
+
+  // Only real Infantry squads count.
+  // Teams and Artillery do not count.
+  return unit.type === "Infantry";
+}
+
+function isTransportForValidation(unit) {
+  const unitData = getUnitData(unit);
+  const slot = getForceOrgSlot(unit, unitData);
+
+  return slot === "transport";
+}
+
+function isRiflePlatoonUnitForTransportLimit(unit) {
+  const unitData = getUnitData(unit);
+  if (!unit || !unitData) return false;
+
+  // Transport-category vehicles do not unlock more transports.
+  if (isTransportForValidation(unit)) return false;
+
+  // Support / extra HQ units do not unlock transports.
+  if (isSupportOrExtraHQForValidation(unit)) return false;
+
+  // Platoon Commander does count as a Rifle Platoon unit.
+  if (isPlatoonCommanderForValidation(unit)) return true;
+
+  const slot = getForceOrgSlot(unit, unitData);
+
+  // Optional manual override.
+  if (
+    slot === "infantry" ||
+    slot === "team" ||
+    slot === "artillery"
+  ) {
+    return true;
+  }
+
+  // Normal Rifle Platoon units.
+  // If you do NOT want Teams to unlock transports, remove "Team" here.
+  return ["Infantry", "Team", "Artillery"].includes(unit.type);
+}
+
+function isCombatVehicleForValidation(unit) {
+  if (!unit) return false;
+
+  // Infantry, Teams, and Artillery are not Combat Vehicles.
+  if (["Infantry", "Team", "Artillery"].includes(unit.type)) return false;
+
+  // Transport-category vehicles are handled by the transport limit instead.
+  if (isTransportForValidation(unit)) return false;
+
+  return true;
+}
+
+function isCommandVehicleForValidation(unit) {
+  const unitData = getUnitData(unit);
+
+  // Transport-category vehicles cannot count as Command Vehicles.
+  if (isTransportForValidation(unit)) return false;
+
+  return (
+    !!unit?.forcedCommandVehicle ||
+    unit?.selectedUpgrades?.includes("Command Vehicle") ||
+    unitHasRuleName(unit, "Command Vehicle", unitData)
+  );
+}
+
+function getArmyValidation() {
+  const units = window.armyList || [];
+
+  const platoonCommanders = units.filter(isPlatoonCommanderForValidation);
+  const infantryUnits = units.filter(isRequiredInfantryForValidation);
+
+  const transports = units.filter(isTransportForValidation);
+  const riflePlatoonUnits = units.filter(isRiflePlatoonUnitForTransportLimit);
+
+  const combatVehicles = units.filter(isCombatVehicleForValidation);
+  const commandVehicles = combatVehicles.filter(isCommandVehicleForValidation);
+
+  const issues = [];
+  const ok = [];
+
+  const platoonCommanderCount = platoonCommanders.length;
+
+  // Minimum list always needs at least 1 Platoon Commander.
+  // It also needs 2 Infantry units per Platoon Commander.
+  // If there are 0 commanders, still show the minimum requirement of 2 Infantry.
+  const requiredInfantry = Math.max(1, platoonCommanderCount) * 2;
+
+  // Core Rifle Platoon requirements.
+  if (platoonCommanderCount < 1) {
+    issues.push(`Missing Platoon Commander. Current: ${platoonCommanderCount}`);
+  } else {
+    ok.push(`Platoon Commander. Current: ${platoonCommanderCount}`);
+  }
+
+  if (infantryUnits.length < requiredInfantry) {
+    issues.push(`Needs ${requiredInfantry} Infantry units. Current: ${infantryUnits.length}`);
+  } else {
+    ok.push(`Infantry units. Current: ${infantryUnits.length}`);
+  }
+
+  // Transport limit:
+  // 1 transport-category vehicle may be taken for each valid Rifle Platoon unit.
+  if (transports.length > riflePlatoonUnits.length) {
+    issues.push(`Too many Transports. Current: ${transports.length}, Max: ${riflePlatoonUnits.length}`);
+  } else if (transports.length > 0) {
+    ok.push(`Transports. Current: ${transports.length}/${riflePlatoonUnits.length}`);
+  }
+
+  // Armoured Platoon / Combat Vehicle requirements.
+  // Official-style logic:
+  // Each Armoured Platoon needs 2–5 Combat Vehicles total.
+  // Each Armoured Platoon needs at least 1 Command Vehicle.
+  //
+  // Extra Command Vehicles do not automatically create extra platoons.
+  // A second Armoured Platoon only exists if there are at least 4 Combat Vehicles total:
+  // 2 vehicles for the first platoon, and 2 vehicles for the second.
+  if (combatVehicles.length > 0) {
+    const commandVehicleCount = commandVehicles.length;
+    const combatVehicleCount = combatVehicles.length;
+
+    const requiredCommandVehicles = Math.ceil(combatVehicleCount / 5);
+    const maxPossiblePlatoonsByVehicleCount = Math.floor(combatVehicleCount / 2);
+    const usableArmouredPlatoons = Math.min(commandVehicleCount, maxPossiblePlatoonsByVehicleCount);
+    const maxCombatVehicles = usableArmouredPlatoons * 5;
+
+    if (commandVehicleCount < requiredCommandVehicles) {
+      if (requiredCommandVehicles === 1) {
+        issues.push(`Armoured platoon needs 1 Command Vehicle. Current: ${commandVehicleCount}`);
+      } else {
+        issues.push(`Needs ${requiredCommandVehicles} Command Vehicles. Current: ${commandVehicleCount}`);
+      }
+    } else {
+      ok.push(`Command Vehicles. Current: ${commandVehicleCount}`);
+    }
+
+    if (combatVehicleCount < 2) {
+      issues.push(`Armoured platoon needs 2 Combat Vehicles. Current: ${combatVehicleCount}`);
+    }
+
+    if (
+      commandVehicleCount >= requiredCommandVehicles &&
+      combatVehicleCount >= 2
+    ) {
+      ok.push(`Combat Vehicles. Current: ${combatVehicleCount}/${maxCombatVehicles}`);
+    }
+  }
+
+  return {
+    valid: issues.length === 0,
+    issues,
+    ok,
+    platoonCommanders,
+    infantryUnits,
+    transports,
+    riflePlatoonUnits,
+    combatVehicles,
+    commandVehicles
+  };
+}
+
 function renderSummaryBlock() {
   const block = document.getElementById("summaryBlock");
   if (!block) return;
 
+  const validation = getArmyValidation();
+
+  let html = "";
+
   if (window.currentFaction === "Covenant") {
-    block.innerHTML = `<div><b>Caste System:</b> ${window.selectedArmyBonus || "None"}</div>`;
-    return;
+    html += `<div><b>Caste System:</b> ${window.selectedArmyBonus || "None"}</div>`;
   }
 
-  block.innerHTML = "";
+  html += `<div style="margin-top:16px;"><b>List Validation (Simplified):</b></div>`;
+
+  validation.issues.forEach(issue => {
+    html += `<div style="margin-top:6px;color:#ff9a9a;">❌ ${issue}</div>`;
+  });
+
+  validation.ok.forEach(msg => {
+    html += `<div style="margin-top:6px;color:#7affb7;">✅ ${msg}</div>`;
+  });
+
+  if (validation.valid) {
+    html += `<div style="margin-top:10px;color:#7affb7;font-weight:700;">List structure looks legal.</div>`;
+  }
+
+  block.innerHTML = html;
 }
 
 function getCovenantGruntTemplate() {
@@ -6462,15 +6761,18 @@ buildWeaponsTable = function(unit) {
 function canForceCommandVehicle(unit, unitData) {
   if (!unit || !unitData) return false;
 
-  // only vehicles
-  if (unit.type === "Infantry" || unit.type === "Team") return false;
+  // Only vehicles.
+  if (unit.type === "Infantry" || unit.type === "Team" || unit.type === "Artillery") return false;
 
-  // aircraft may only be Command Vehicles if their profile already has it
-  // or if they can buy it normally
+  // Transport-category vehicles cannot be Command Vehicles in this ruleset.
+  const slot = String(unit?.forceOrgSlot || unitData?.forceOrgSlot || "").toLowerCase();
+  if (slot === "transport") return false;
+
+  // Aircraft may not be forced Command Vehicles.
   if (unit.type === "Aircraft") return false;
 
   const hasBuiltIn = Array.isArray(unitData.specialRules) &&
-    unitData.specialRules.some(r => (typeof r === "string" ? r === "Command Vehicle" : r?.name === "Command Vehicle"));
+    unitData.specialRules.some(r => getRuleName(r) === "Command Vehicle");
 
   const canBuyNormally = !!unitData.options?.weaponUpgrades?.["Command Vehicle"];
 
@@ -7810,7 +8112,12 @@ function afterInfantryModalRender(unit, unitData) {
 
 // VEHICLE MODAL FIELDS, with live preview
 function renderVehicleUpgradeFields(unit, unitData) {
-  const upgrades = unitData.options?.weaponUpgrades || {};
+  const rawUpgrades = unitData.options?.weaponUpgrades || {};
+	const isTransportVehicle = String(unit?.forceOrgSlot || unitData?.forceOrgSlot || "").toLowerCase() === "transport";
+
+	const upgrades = isTransportVehicle
+	  ? Object.fromEntries(Object.entries(rawUpgrades).filter(([label]) => label !== "Command Vehicle"))
+	  : rawUpgrades;
   const maxWeaponUpgrades = unitData.options?.maxWeaponUpgrades ?? Infinity;
   let currentSelected = sanitizeVehicleUpgradeSelection(
     new Set(unit.selectedUpgrades || []),
@@ -8789,6 +9096,18 @@ function renderArmySpecialRulesPage(pdf, rulesText, margin, width, faction, sele
 }
 
 function exportPdf() {
+  const validation = getArmyValidation();
+
+  if (!validation.valid) {
+    const proceed = confirm(
+      "This list may be illegal:\n\n" +
+      validation.issues.map(i => "- " + i).join("\n") +
+      "\n\nExport anyway?"
+    );
+
+    if (!proceed) return;
+  }
+
   const { jsPDF } = window.jspdf;
   const pdf = new jsPDF({ unit: "pt", format: "a4" });
 
