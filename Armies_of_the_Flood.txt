@@ -30,30 +30,10 @@ Flood presence corrupts and destabilizes synthetic minds, causing unpredictable 
 
 
 Flood Armoury
-Volatile Biomass
-A Carrier Form Team may take Volatile Biomass for +5pts. If taken, increase the HE value of Explosive Biomass from HE (1") to HE (2").
 Burrowing Tendrils
 Flood Officer units that contain tendrils may take Burrowing Tendrils for +2pt per model. If taken, the unit gains the Infiltrator and Stealth special rules.
 Additionally, once per army, when one unit with this rule is deployed fully within an eligible terrain piece using Infiltrator deployment, that terrain piece may become Infested Terrain for the rest of the game. This terrain piece cannot be a road, objective marker, bunker, impassable terrain, or a building/terrain piece containing an objective.
 Infested Terrain: At the end of an enemy non-Flood Infantry or Artillery unit’s activation, if that unit moved across, through, or into contact with Infested Terrain during that activation, or has at least one model inside or touching Infested Terrain, that unit gains 1 Pin marker. A unit can only gain 1 Pin per turn from Infested Terrain. 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Flood Burster
-Infection Form Swarms in your army may take Flood Burster for +1pt per model. This represents Bursters erupting from below and releasing Infection Forms into the battlefield.
-When this unit successfully enters from Reserve it may deploy via Flood Burster instead of entering from a table edge. Place the unit legally anywhere in open ground more than 9" from all enemy units, then give it a Down order. It cannot perform more actions that turn. If no legal position is available, the unit fails to enter from Reserve and remains off-table.
-Only one unit may deploy by eruption each turn, even if several units in your army have Flood Burster.
 Patient Predators
 The following units can take Patient Predators for +1pt per model:
 - Officer
@@ -64,14 +44,16 @@ The following units can take Patient Predators for +1pt per model:
 - Sniper Team
 - Spawner Form
 If a unit with this rule is deemed to be in cover from enemy shooting while it has an Ambush order, improve its Cover Save by +1. Remember rolls of 1 always fail.
-
-
-
-
-
-
-
-
+Spore Cloud
+Flood Infantry and Artillery units may take Spore Cloud for +1pt per model. 
+When this unit is destroyed, place one 3" smoke marker anywhere within 6" of the last model removed. This smoke marker follows the normal Smoke rules, with the following exception:
+When a unit with Flood Infection wins Close Quarters against an enemy unit within 3" of a Spore Cloud marker, it may re-roll one failed Flood Infection die.
+Flood Burster
+Infection Form Swarms in your army may take Flood Burster for +1pt per model. This represents Bursters erupting from below and releasing Infection Forms into the battlefield.
+When this unit successfully enters from Reserve it may deploy via Flood Burster instead of entering from a table edge. Place the unit legally anywhere in open ground more than 9" from all enemy units, then give it a Down order. It cannot perform more actions that turn. If no legal position is available, the unit fails to enter from Reserve and remains off-table.
+Only one unit may deploy by eruption each turn, even if several units in your army have Flood Burster.
+Volatile Biomass
+A Carrier Form Team may take Volatile Biomass for +5pts. If taken, increase the HE value of Explosive Biomass from HE (1") to HE (2").
 
 
 INFANTRY

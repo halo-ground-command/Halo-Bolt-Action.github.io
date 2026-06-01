@@ -513,7 +513,8 @@ window.unitSpecialDescriptions = {
   "Flood Burster": "When successfully entering from Reserve, one unit per turn may deploy by eruption instead of from a table edge: place it legally in open ground more than 9\" from enemies, then give it a Down order. It cannot perform more actions this turn.", 
   "Patient Predators": "If this unit is in cover from enemy shooting while it has an Ambush order, improve its Cover Save by +1. Remember rolls of 1 always fail.",
   "Brood Sac": "If this unit is not Down, when a friendly Flood Infantry unit successfully enters from Reserve, it may deploy by eruption instead of from a table edge. Remove the Spawner; it counts as destroyed. Place the entering unit with at least one model within 1\" of the Spawner’s former position, outside any building and with all models in a legal position according to the rules. The unit goes Down and takes no further action. If it cannot be placed, it remains off-table and the Spawner is not removed.",
-  "Medic": "If the medic’s own unit, or any friendly Infantry or Artillery unit with at least one model within 6\" of the medic model, suffers damage from Small Arms fire, roll one die for each point of damage before removing casualties. On a 6, that damage is ignored and no casualty is caused."
+  "Medic": "If the medic’s own unit, or any friendly Infantry or Artillery unit with at least one model within 6\" of the medic model, suffers damage from Small Arms fire, roll one die for each point of damage before removing casualties. On a 6, that damage is ignored and no casualty is caused.",
+  "Spore Cloud": "When this unit is destroyed, place one 3\" smoke marker anywhere within 6\" of the last model removed. This smoke marker follows the normal Smoke rules. When a unit with Flood Infection wins Close Quarters against an enemy unit within 3\" of a Spore Cloud marker, it may re-roll one failed Flood Infection die."
 };
 
 
@@ -664,6 +665,16 @@ const ARMOURY_DEFS = {
         window.currentFaction === "Flood" &&
         unit.name === "Carrier Form Team"
     },
+	{
+	  label: "Spore Cloud",
+	  type: "ruleCheckbox",
+	  cost: 1,
+	  appliesTo: (unit, unitData) => {
+		const type = String(unit?.type || unitData?.type || "");
+		return ["Infantry", "Team", "Artillery"].includes(type);
+	  },
+	  grantsRules: ["Spore Cloud"]
+	},	
 	{
 	  id: "burrowingTendrils",
 	  type: "ruleCheckbox",
@@ -5347,6 +5358,7 @@ function isSupportOrExtraHQForValidation(unit) {
     unitHasRuleName(unit, "Chaplain", unitData) ||
     unitHasRuleName(unit, "Bloodhandler", unitData) ||
     unitHasRuleName(unit, "Watcher", unitData) ||
+    unitHasRuleName(unit, "Utility Construct", unitData) ||
     name.includes("company commander") ||
     name.includes("medic") ||
     name.includes("forward observer") ||
@@ -5354,7 +5366,8 @@ function isSupportOrExtraHQForValidation(unit) {
     name.includes("chaplain") ||
     name.includes("bloodhandler") ||
     name.includes("watcher") ||
-    name.includes("attached leader")
+    name.includes("attached leader") ||
+    name.includes("huragok")
   );
 }
 
@@ -5441,6 +5454,254 @@ function isCommandVehicleForValidation(unit) {
   );
 }
 
+function getJackalDefenseGauntletForbiddenWeapons(unit, unitData) {
+  if (!unit || !unitData) return [];
+  if (unit.name !== "Jackal Squad") return [];
+
+  if (window.currentFaction === "Covenant") {
+    return ["Carbine", "Needle Rifle"];
+  }
+
+  if (window.currentFaction === "Banished") {
+    return ["Pulse Carbine", "Stalker Rifle"];
+  }
+
+  return [];
+}
+
+function isJackalDefenseGauntletForbiddenWeapon(unit, unitData, weaponName) {
+  const forbidden = getJackalDefenseGauntletForbiddenWeapons(unit, unitData);
+  if (!forbidden.length) return false;
+
+  const base = getBaseWeaponName(weaponName);
+  const raw = String(weaponName || "").toLowerCase();
+
+  return forbidden.some(name =>
+    base === name || raw.includes(name.toLowerCase())
+  );
+}
+
+function jackalHasForbiddenDefenseGauntletWeapon(unit, unitData, useEditor = true) {
+  if (!unit || !unitData) return false;
+  if (unit.name !== "Jackal Squad") return false;
+
+  const forbidden = getJackalDefenseGauntletForbiddenWeapons(unit, unitData);
+  if (!forbidden.length) return false;
+
+  // Check NCO weapon.
+  let ncoWeapon = "";
+  if (useEditor) {
+    ncoWeapon = document.getElementById("editNcoReplacement")?.value || "";
+  }
+
+  ncoWeapon =
+    ncoWeapon ||
+    unit.ncoReplacement ||
+    unitData.options?.ncoReplacement?.options?.[0] ||
+    "";
+
+  if (isJackalDefenseGauntletForbiddenWeapon(unit, unitData, ncoWeapon)) {
+    return true;
+  }
+
+  // Check currently edited weapon replacement inputs.
+  const editorInputs = useEditor
+    ? Array.from(document.querySelectorAll(".editWeaponReplacement"))
+    : [];
+
+  if (editorInputs.length) {
+    return editorInputs.some(input => {
+      const qty = parseInt(input.value, 10) || 0;
+      if (qty <= 0) return false;
+
+      const label = input.dataset.label;
+      const spec = unitData.options?.weaponReplacements?.[label];
+      const granted = spec?.grants || label;
+
+      return (
+        isJackalDefenseGauntletForbiddenWeapon(unit, unitData, granted) ||
+        isJackalDefenseGauntletForbiddenWeapon(unit, unitData, label)
+      );
+    });
+  }
+
+  // Check saved weapon replacements.
+  return Object.entries(unit.weaponReplacements || {}).some(([label, qty]) => {
+    if ((Number(qty) || 0) <= 0) return false;
+
+    const spec = unitData.options?.weaponReplacements?.[label];
+    const granted = spec?.grants || label;
+
+    return (
+      isJackalDefenseGauntletForbiddenWeapon(unit, unitData, granted) ||
+      isJackalDefenseGauntletForbiddenWeapon(unit, unitData, label)
+    );
+  });
+}
+
+function getRuleTextForValidation(rule) {
+  if (!rule) return "";
+  if (typeof rule === "string") return rule;
+  if (rule.name) return rule.description ? `${rule.name}: ${rule.description}` : rule.name;
+  return "";
+}
+
+function unitRuleTextsForValidation(unit, unitData = getUnitData(unit)) {
+  return [
+    ...(Array.isArray(unit?.special) ? unit.special : []),
+    ...(Array.isArray(unit?.specialRules) ? unit.specialRules : []),
+    ...(Array.isArray(unitData?.specialRules) ? unitData.specialRules : [])
+  ].map(getRuleTextForValidation).filter(Boolean);
+}
+
+function isKnightCommanderForValidation(unit) {
+  return (
+    unitHasPickedUpgradeContaining(unit, "Knight Commander") ||
+    unitHasRuleName(unit, "Knight Commander", getUnitData(unit)) ||
+    String(unit?.name || "").toLowerCase().includes("knight commander")
+  );
+}
+
+function isMedicSlotForValidation(unit) {
+  const unitData = getUnitData(unit);
+  const name = String(unit?.name || "").toLowerCase();
+
+  return (
+    unitHasRuleName(unit, "Medic", unitData) ||
+    name.includes("medic")
+  );
+}
+
+function isObserverSlotForValidation(unit) {
+  const unitData = getUnitData(unit);
+  const name = String(unit?.name || "").toLowerCase();
+
+  return (
+    unitHasRuleName(unit, "Forward Observer", unitData) ||
+    unitHasRuleName(unit, "Watcher", unitData) ||
+    name.includes("forward observer") ||
+    name.includes("observer") ||
+    name.includes("watcher")
+  );
+}
+
+function isSpiritualHQSlotForValidation(unit) {
+  const unitData = getUnitData(unit);
+  const name = String(unit?.name || "").toLowerCase();
+
+  return (
+    unitHasRuleName(unit, "Chaplain", unitData) ||
+    unitHasRuleName(unit, "Bloodhandler", unitData) ||
+    name.includes("chaplain") ||
+    name.includes("bloodhandler")
+  );
+}
+
+function isCompanyCommanderForValidation(unit) {
+  const unitData = getUnitData(unit);
+  const name = String(unit?.name || "").toLowerCase();
+
+  return (
+    unitHasRuleName(unit, "Company Commander", unitData) ||
+    name.includes("company commander")
+  );
+}
+
+function pushMaxIssue(issues, label, current, max, suffix) {
+  if (current > max) {
+    issues.push(`Too many ${label}. Current: ${current}, Max: ${max}${suffix ? " " + suffix : ""}`);
+  }
+}
+
+function getLimitedRulesForUnit(unit) {
+  const texts = unitRuleTextsForValidation(unit);
+  return texts.filter(text => /^Limited\b/i.test(text) || /\bLimited:/i.test(text));
+}
+
+function getLimitedArmyMax(text) {
+  const s = String(text || "");
+
+  const totalMatch = s.match(/only\s+(?:up to\s+)?(\d+)\s+in total per army/i);
+  if (totalMatch) return Number(totalMatch[1]);
+
+  const armyMatch = s.match(/only\s+(?:up to\s+)?(\d+).*per army/i);
+  if (armyMatch) return Number(armyMatch[1]);
+
+  return null;
+}
+
+function getLimitedPerPlatoonMax(text) {
+  const s = String(text || "");
+
+  const platoonMatch = s.match(/only\s+(?:up to\s+)?(\d+).*per platoon/i);
+  if (platoonMatch) return Number(platoonMatch[1]);
+
+  // Fallback for wording like "Limited: may only be taken once per platoon"
+  if (/per platoon/i.test(s)) return 1;
+
+  return null;
+}
+
+function isUpgradeLimitHandledSeparately(text) {
+  const s = String(text || "");
+
+  // These are upgrades inside a unit, not limits on the unit itself.
+  // They are checked separately by isKnightCommanderForValidation()
+  // and isGruntDeaconForValidation().
+  return /Knight Commander/i.test(s) || /Deacon/i.test(s);
+}
+
+function addLimitedRuleValidation(issues, units, platoonCommanderCount) {
+  const grouped = new Map();
+
+  units.forEach(unit => {
+    const limitedRules = getLimitedRulesForUnit(unit)
+      .filter(ruleText => !isUpgradeLimitHandledSeparately(ruleText));
+
+    if (!limitedRules.length) return;
+
+    const key = unit.name || "Unknown Unit";
+
+    if (!grouped.has(key)) {
+      grouped.set(key, {
+        name: key,
+        count: 0,
+        armyMax: null,
+        perPlatoonMax: null
+      });
+    }
+
+    const entry = grouped.get(key);
+    entry.count += 1;
+
+    limitedRules.forEach(ruleText => {
+      const armyMax = getLimitedArmyMax(ruleText);
+      if (armyMax !== null) {
+        entry.armyMax = entry.armyMax === null ? armyMax : Math.min(entry.armyMax, armyMax);
+      }
+
+      const perPlatoonMax = getLimitedPerPlatoonMax(ruleText);
+      if (perPlatoonMax !== null) {
+        entry.perPlatoonMax =
+          entry.perPlatoonMax === null
+            ? perPlatoonMax
+            : Math.min(entry.perPlatoonMax, perPlatoonMax);
+      }
+    });
+  });
+
+  grouped.forEach(entry => {
+    if (entry.armyMax !== null) {
+      pushMaxIssue(issues, entry.name, entry.count, entry.armyMax, "per army");
+    }
+
+    if (entry.perPlatoonMax !== null && platoonCommanderCount > 0) {
+      const maxAllowed = entry.perPlatoonMax * platoonCommanderCount;
+      pushMaxIssue(issues, entry.name, entry.count, maxAllowed, "per Platoon Commander");
+    }
+  });
+}
+
 function getArmyValidation() {
   const units = window.armyList || [];
 
@@ -5522,6 +5783,31 @@ function getArmyValidation() {
       ok.push(`Combat Vehicles. Current: ${combatVehicleCount}/${maxCombatVehicles}`);
     }
   }
+
+  // Narrative-flexible unit and force-org limits.
+  // These are NOT hard-enforced; they only mark the list as illegal.
+
+  const deaconCount = units.filter(isGruntDeaconForValidation).length;
+  pushMaxIssue(issues, "Deacons", deaconCount, 1, "per army");
+
+  const knightCommanderCount = units.filter(isKnightCommanderForValidation).length;
+  pushMaxIssue(issues, "Knight Commanders", knightCommanderCount, 1, "per army");
+
+  if (platoonCommanderCount > 0) {
+    const medicCount = units.filter(isMedicSlotForValidation).length;
+    pushMaxIssue(issues, "Medics", medicCount, platoonCommanderCount, "per Platoon Commander");
+
+    const observerCount = units.filter(isObserverSlotForValidation).length;
+    pushMaxIssue(issues, "Forward Observers / Watchers", observerCount, platoonCommanderCount, "per Platoon Commander");
+
+    const spiritualHQCount = units.filter(isSpiritualHQSlotForValidation).length;
+    pushMaxIssue(issues, "Chaplains / Bloodhandlers", spiritualHQCount, platoonCommanderCount, "per Platoon Commander");
+  }
+
+  const companyCommanderCount = units.filter(isCompanyCommanderForValidation).length;
+  pushMaxIssue(issues, "Company Commanders", companyCommanderCount, 1, "per army");
+
+  addLimitedRuleValidation(issues, units, platoonCommanderCount);
 
   return {
     valid: issues.length === 0,
@@ -5607,18 +5893,13 @@ function syncArmyBonusEffects() {
     window.armyList = (window.armyList || []).filter(unit => unit.name !== "Grunt Cannon Fodder Mob");
   }
 
-  // If Cannon Fodder is selected, enforce max 2 Grunt Cannon Fodder Mobs
-  if (window.currentFaction === "Covenant" && window.selectedArmyBonus === "Cannon Fodder") {
-    let mobCount = 0;
-    window.armyList = (window.armyList || []).filter(unit => {
-      if (unit.name !== "Grunt Cannon Fodder Mob") return true;
-      mobCount++;
-      return mobCount <= 2;
-    });
-
-    const freeUnit = buildFreeCannonFodderUnit();
-    if (freeUnit) window.armyList.unshift(freeUnit);
-  }
+	// If Cannon Fodder is selected, add the free locked Grunt unit.
+	// Do not delete extra Grunt Cannon Fodder Mobs here;
+	// validation will mark excess mobs as illegal instead.
+	if (window.currentFaction === "Covenant" && window.selectedArmyBonus === "Cannon Fodder") {
+	  const freeUnit = buildFreeCannonFodderUnit();
+	  if (freeUnit) window.armyList.unshift(freeUnit);
+	}
 }
 
 function onArmyBonusChange() {
@@ -7150,13 +7431,41 @@ function syncConditionalArmouryCheckboxes(unit, unitData) {
       men >= 2;
 
     if (!legal) {
-      // If the Officer has no tendrils, the upgrade is not legal.
       burrowing.checked = false;
       burrowing.disabled = true;
     } else {
-      // If the Officer has tendrils, allow the player to choose it.
-      // This does NOT automatically tick it again.
       burrowing.disabled = false;
+    }
+  }
+
+  // Jackal Defense Gauntlets:
+  // Covenant: blocked by Carbines / Needle Rifles.
+  // Banished: blocked by Pulse Carbines / Stalker Rifles.
+  const defenseGauntlets = document.querySelector('.editSquadUpgrade[data-upgrade="Defense Gauntlets"]');
+  const skirmishers = document.querySelector('.editSquadUpgrade[data-upgrade="Skirmishers"]');
+
+  if (unit?.name === "Jackal Squad" && defenseGauntlets) {
+    const hasForbiddenWeapon = jackalHasForbiddenDefenseGauntletWeapon(unit, unitData, true);
+
+    if (hasForbiddenWeapon) {
+      defenseGauntlets.checked = false;
+      defenseGauntlets.disabled = true;
+    } else {
+      defenseGauntlets.disabled = !!(skirmishers && skirmishers.checked);
+    }
+
+    if (skirmishers) {
+      if (defenseGauntlets.checked) {
+        skirmishers.checked = false;
+        skirmishers.disabled = true;
+      } else {
+        skirmishers.disabled = false;
+      }
+
+      if (skirmishers.checked) {
+        defenseGauntlets.checked = false;
+        defenseGauntlets.disabled = true;
+      }
     }
   }
 }
@@ -7530,8 +7839,6 @@ function selectFaction(faction) {
 	});
 
 	enforceOnePerArmySquadUpgrade("Sacred Relic");
-	enforceOnePerArmySquadUpgrade("Deacon (0-1 per army)");
-	enforceOnePerArmySquadUpgrade("Knight Commander (0-1 per army)");
 
 	populateUnitSelect();
 	renderArmyList();
@@ -7639,12 +7946,6 @@ function addSelectedUnit() {
 	if (unit.name === "Grunt Cannon Fodder Mob") {
 	  if (window.currentFaction !== "Covenant" || window.selectedArmyBonus !== "Cannon Fodder") {
 		alert("Grunt Cannon Fodder Mob may only be taken if Cannon Fodder is selected.");
-		return;
-	  }
-
-	  const existingMobs = (window.armyList || []).filter(u => u.name === "Grunt Cannon Fodder Mob").length;
-	  if (existingMobs >= 2) {
-		alert("You may only take up to 2 Grunt Cannon Fodder Mobs per army.");
 		return;
 	  }
 	}
@@ -7777,35 +8078,7 @@ function editUnit(idx) {
   // After-modal logic for Infantry and Team units
   if (unit.type === "Infantry" || unit.type === "Team") {
     afterInfantryModalRender(unit, unitData);
-
-    if (unit.name === "Jackal Squad") {
-      setTimeout(() => {
-        const dg = document.querySelector('input[data-upgrade="Defense Gauntlets"]');
-        const sk = document.querySelector('input[data-upgrade="Skirmishers"]');
-
-        function updateJackalUpgrades() {
-          if (!dg || !sk) return;
-          if (dg.checked) {
-            sk.checked = false;
-            sk.disabled = true;
-          } else {
-            sk.disabled = false;
-          }
-          if (sk.checked) {
-            dg.checked = false;
-            dg.disabled = true;
-          } else {
-            dg.disabled = false;
-          }
-        }
-
-        if (dg && sk) {
-          dg.addEventListener("change", updateJackalUpgrades);
-          sk.addEventListener("change", updateJackalUpgrades);
-          updateJackalUpgrades();
-        }
-      }, 0);
-    }
+    
   }
 }
 
@@ -8289,8 +8562,7 @@ function saveEdit() {
 	  }
 
 	  enforceOnePerArmySquadUpgrade("Sacred Relic");
-	  enforceOnePerArmySquadUpgrade("Deacon (0-1 per army)");
-	  enforceOnePerArmySquadUpgrade("Knight Commander (0-1 per army)");
+
 	}
 
     // NCO Weapon
@@ -8391,7 +8663,7 @@ function saveEdit() {
       unit.squadUpgrades["Burrowing Tendrils"] = false;
     }
 	
-    // Weapon Replacements (after final men count is known)
+        // Weapon Replacements (after final men count is known)
     if (unitData.options && unitData.options.weaponReplacements) {
       clampWeaponReplacementInputs(unit, unitData);
 
@@ -8400,7 +8672,16 @@ function saveEdit() {
         const n = parseInt(document.querySelector(`.editWeaponReplacement[data-label="${label}"]`)?.value, 10) || 0;
         unit.weaponReplacements[label] = n;
       });
-	  purgeIllegalM301Selections(unit);
+      purgeIllegalM301Selections(unit);
+    }
+
+    // Enforce Jackal Defense Gauntlet weapon restrictions.
+    // If forbidden weapons are present, Defense Gauntlets are removed rather than warned.
+    if (
+      unit.squadUpgrades?.["Defense Gauntlets"] &&
+      jackalHasForbiddenDefenseGauntletWeapon(unit, unitData, false)
+    ) {
+      unit.squadUpgrades["Defense Gauntlets"] = false;
     }
 
     // WEAPONS (robust swaps from squad upgrades)
@@ -9242,8 +9523,7 @@ function loadList() {
 		// Enforce one-per-army upgrades after loading saved JSON lists.
 		// This catches old/corrupt lists where more than one unit had Sacred Relic.
 		enforceOnePerArmySquadUpgrade("Sacred Relic");
-		enforceOnePerArmySquadUpgrade("Deacon (0-1 per army)");
-		enforceOnePerArmySquadUpgrade("Knight Commander (0-1 per army)");
+
 
 		// Rebuild weapon tables after any loaded-list cleanup.
 		(window.armyList || []).forEach(unit => {
