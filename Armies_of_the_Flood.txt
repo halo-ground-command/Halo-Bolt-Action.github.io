@@ -47,7 +47,7 @@ If a unit with this rule is deemed to be in cover from enemy shooting while it h
 Spore Cloud
 Flood Infantry and Artillery units may take Spore Cloud for +1pt per model. 
 When this unit is destroyed, place one 3" smoke marker anywhere within 6" of the last model removed. This smoke marker follows the normal Smoke rules, with the following exception:
-When a unit with Flood Infection wins Close Quarters against an enemy unit within 3" of a Spore Cloud marker, it may re-roll one failed Flood Infection die.
+When a unit with Flood Infection wins Close Quarters, it may roll one additional Flood Infection die if either unit in that combat is within 3" of a Spore Cloud marker.
 Flood Burster
 Infection Form Swarms in your army may take Flood Burster for +1pt per model. This represents Bursters erupting from below and releasing Infection Forms into the battlefield.
 When this unit successfully enters from Reserve it may deploy via Flood Burster instead of entering from a table edge. Place the unit legally anywhere in open ground more than 9" from all enemy units, then give it a Down order. It cannot perform more actions that turn. If no legal position is available, the unit fails to enter from Reserve and remains off-table.
