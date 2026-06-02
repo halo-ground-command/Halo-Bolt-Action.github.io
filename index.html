@@ -551,6 +551,9 @@ window.unitSpecialDescriptions["MJOLNIR Biofoam Systems"] =
 window.unitSpecialDescriptions["M301 Grenade Launcher"] =
   "Carried in addition to the model’s other weapon. When shooting, that model may fire either the M301 or its other weapon, not both.";
 
+window.unitSpecialDescriptions["XM20P Grenades"] =
+  "When a weapon with XM20P Grenades hits a unit with Energy Shields, ignore the +1 to wound difficulty granted by Energy Shields for that weapon’s attack. All other effects of Energy Shields still apply.";
+
 window.unitSpecialDescriptions["Sacred Relic"] =
   "A designated non-Officer/NCO Elite model carries the relic. Friendly Covenant Infantry and Artillery within 12\" and LoS of that model may re-roll failed Morale checks.";
 
@@ -588,7 +591,16 @@ const ARMOURY_DEFS = {
 		window.currentFaction === "UNSC" &&
 		["Infantry", "Team", "Artillery"].includes(unit.type) &&
 		isSpartan(unit, unitData)
-	}
+	},
+    {
+      id: "xm20pGrenades",
+      type: "ruleCheckbox",
+      label: "XM20P Grenades",
+      cost: 5,
+      costMode: "flat",
+      grantsRules: ["XM20P Grenades"],
+      appliesTo: canTakeXM20PGrenades
+    }
   ],
 
   Covenant: [
@@ -5454,6 +5466,85 @@ function isCommandVehicleForValidation(unit) {
   );
 }
 
+function hasRawRuleForXM20P(unit, ruleName) {
+  const rules = [
+    ...(Array.isArray(unit?.special) ? unit.special : []),
+    ...(Array.isArray(unit?.specialRules) ? unit.specialRules : [])
+  ];
+
+  return rules.some(rule => getRuleName(rule) === ruleName);
+}
+
+function isUNSCPlatoonCommanderForXM20P(unit) {
+  const name = String(unit?.name || "").toLowerCase();
+
+  // IMPORTANT:
+  // Do not call getUnitData() here.
+  // This is used inside armoury appliesTo checks, so it must avoid recursion.
+  return (
+    window.currentFaction === "UNSC" &&
+    (
+      name.includes("platoon commander") ||
+      hasRawRuleForXM20P(unit, "Platoon Commander")
+    )
+  );
+}
+
+function isXM20PUnit(unit) {
+  return !!unit?.squadUpgrades?.["XM20P Grenades"];
+}
+
+function getXM20PAllowedCount() {
+  return (window.armyList || []).filter(isUNSCPlatoonCommanderForXM20P).length;
+}
+
+function getXM20PSelectedCount(exceptUnit = null) {
+  return (window.armyList || []).filter(unit =>
+    unit !== exceptUnit &&
+    isXM20PUnit(unit)
+  ).length;
+}
+
+function canTakeXM20PGrenades(unit, unitData) {
+  if (window.currentFaction !== "UNSC") return false;
+  if (!unit || !unitData) return false;
+  if (unit.name !== "Grenade Launcher Team") return false;
+
+  // Keep showing it on the unit that already has it, so it can be unticked.
+  if (unit.squadUpgrades?.["XM20P Grenades"]) return true;
+
+  const allowed = getXM20PAllowedCount();
+  const alreadyTaken = getXM20PSelectedCount(unit);
+
+  return alreadyTaken < allowed;
+}
+
+function enforceXM20PGrenadeLimit() {
+  if (window.currentFaction !== "UNSC") return;
+
+  const maxAllowed = getXM20PAllowedCount();
+  let kept = 0;
+
+  (window.armyList || []).forEach(unit => {
+    if (!unit?.squadUpgrades?.["XM20P Grenades"]) return;
+
+    const legalUnit = unit.name === "Grenade Launcher Team";
+
+    if (legalUnit && kept < maxAllowed) {
+      kept++;
+      return;
+    }
+
+    const costToRemove = getSquadUpgradeCostForUnit(unit, "XM20P Grenades");
+
+    unit.squadUpgrades["XM20P Grenades"] = false;
+    unit.cost = Math.max(0, (Number(unit.cost) || 0) - costToRemove);
+
+    removeSpecialRuleByName(unit, "XM20P Grenades");
+    unit.weaponsTable = buildWeaponsTable(unit);
+  });
+}
+
 function getJackalDefenseGauntletForbiddenWeapons(unit, unitData) {
   if (!unit || !unitData) return [];
   if (unit.name !== "Jackal Squad") return [];
@@ -7839,6 +7930,7 @@ function selectFaction(faction) {
 	});
 
 	enforceOnePerArmySquadUpgrade("Sacred Relic");
+	enforceXM20PGrenadeLimit();
 
 	populateUnitSelect();
 	renderArmyList();
@@ -8031,6 +8123,7 @@ function addSelectedUnit() {
 
 function removeUnit(idx) {
   window.armyList.splice(idx, 1);
+  enforceXM20PGrenadeLimit();
   renderArmyList();
 }
 
@@ -8562,6 +8655,7 @@ function saveEdit() {
 	  }
 
 	  enforceOnePerArmySquadUpgrade("Sacred Relic");
+	  enforceXM20PGrenadeLimit();
 
 	}
 
@@ -9523,6 +9617,7 @@ function loadList() {
 		// Enforce one-per-army upgrades after loading saved JSON lists.
 		// This catches old/corrupt lists where more than one unit had Sacred Relic.
 		enforceOnePerArmySquadUpgrade("Sacred Relic");
+		enforceXM20PGrenadeLimit();
 
 
 		// Rebuild weapon tables after any loaded-list cleanup.

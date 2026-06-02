@@ -108,22 +108,9 @@ Wheeled vehicles with this rule may enter and move through rough ground with an 
 - M12G1 Gauss Warthog
 - M12R Rocket Warthog
 - M831 Troop Transport Warthog
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+XM20P Grenades
+One UNSC Grenade Launcher Team per platoon may upgrade its Grenade Launcher weapon to XM20P Grenades for +5pts.
+When a weapon with XM20P Grenades hits a unit with Energy Shields, ignore the +1 to wound difficulty granted by Energy Shields for that weapon’s attack. All other effects of Energy Shields still apply.
 
 
 
