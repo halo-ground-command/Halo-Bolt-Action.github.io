@@ -1,0 +1,770 @@
+﻿Halo: Bolt Action Cheat Sheet V1.2
+
+
+Turn Sequence
+1. ORDER PHASE 
+1. Draw an order die from the dice bag and hand it to the appropriate player. 
+2. The player chooses one of their units and gives it an order. Place the order die next to the unit to show that it has received an order. Once a unit has been given an order it cannot be given another order that turn. 
+3. If necessary, the player takes an order test to determine if the unit follows the order. 
+4. The player executes the unit’s resulting action. 
+5. Back to A. Once all eligible units have received an order, the orders phase ends – move to the turn end phase. 
+2. TURN END PHASE 
+1. Return all order dice to the bag, except for those units wishing to retain an Ambush or Down order. 
+Orders
+A “full strength” infantry squad (maximum size of at least 10 men) may reroll failed order tests if no casualties have been taken. Order tests are not required for Down orders. Rally order tests ignore pins. Units retaining a Down order at the end of the turn lose all pin markers. Units with an Ambush order at the end of turn may choose to Fire on a 4+ before die is returned to the bag. On a 1-3 die returns to the bag normally. 
+ORDER
+	SUMMARY OF ACTION
+	1 FIRE
+	Fire at full effect without moving.
+	2 ADVANCE
+	Move and then fire. 
+	3 RUN
+	Move at double speed without firing; or assaulting 
+	4 AMBUSH
+	No move or fire but wait for opportunity fire 
+	5 RALLY
+	No move or fire but lose all pin markers. 
+	6 DOWN
+	No move or fire but gain cover save bonus. 
+	
+
+Officer Bonuses
+RANK
+	MORALE BONUS
+	EXTRA ORDER
+	RANGE
+	Platoon Comm. 
+	+2
+	2
+	6” 
+	Company Comm. 
+	+4
+	4
+	12” 
+	You Men, Snap To Action!
+A Company Commander can issue orders to Platoon Commanders, but not other Company Commanders. Platoon Commanders cannot issue to Company or other Platoon Commanders. Commanders abilities work to and from units in soft-skinned or open-topped transports. Cannot chain multiple Snap to Action, and cannot use in reserve or first wave. Command vehicles can issue 1 order to a friendly non-command vehicle within 12. Measure morale bonus and snap to from the officer model.
+Fubar
+If an order test result is two sixes, roll a D6 and consult the table below. 
+D6 ROLL 
+	EFFECT 
+	1, 2 or 3 
+	Friendly Fire: The unit does not move and opens fire against a friendly unit. Place a Fire order by the unit. The opposing player controls the firing unit as if it was one of their own, except that the chosen “friendly” target must have an enemy unit within 12”. If no such target is available the unit does not fire and Panics instead, as below.
+	4, 5 or 6 
+	Panic: The unit executes a Run order and must move as fast as possible towards the closest table edge. Can enter a building if it would get the unit closer to the table edge, but cannot assault any unit. If it moves into contact with the edge, it flees the battle and counts as destroyed. If no enemy are visible, or if the unit can no longer move for some reason, it goes Down instead. 
+	Incredible courage!
+If an order test result is two ones, the order is automatically successful and the unit loses all pin markers.
+Movement
+UNIT TYPE 
+	ADVANCE 
+	RUN 
+	Infantry 
+	6” 
+	12” 
+	Tracked & Half-Tracks 
+	9” (2 x 90° Pivots) 
+	18” (1 x 90° Pivot) 
+	Wheeled Vehicles 
+	12” (2 x 90° Pivots) 
+	24” (1 x 90° Pivot) 
+	Walkers
+	9” (2 x 90° Pivots) 
+	18” (1 x 90° Pivot) 
+	Anti-grav Vehicles
+	9” (4 x 90° Pivots) 
+	18” (2 x 90° Pivot) 
+	Aircraft
+	24” 
+	48”
+	REVERSE MOVES
+Vehicles can only reverse on an Advance, ½ their move distance. Vehicles cannot move forward and reverse in the same activation.
+Recce vehicles can reverse backwards up to their Advance as if moving forward.
+Terrain Effects Chart
+Terrain Type
+	Open 
+	Rough 
+	Obstacle
+	Building
+	Road
+	Infantry 
+	OK
+	No Run
+	No Run
+	OK
+	OK
+	Artillery
+	OK
+	No*
+	No
+	No*
+	OK
+	Wheeled Vehicles 
+	OK
+	No
+	No
+	No
+	X2
+	Tracked Vehicles 
+	OK
+	No Run
+	OK*
+	No (!)
+	OK
+	Walkers
+	OK
+	OK
+	OK
+	No (!)
+	X2
+	Anti-grav Vehicles
+	OK
+	No Run
+	OK*
+	No (!)
+	X2
+	Aircraft
+	OK
+	OK/
+	OK/
+	OK/
+	OK
+	OK*: The unit can cross this kind of terrain without hindrance unless it has been designated as an anti-tank obstacle.
+No*: The unit cannot enter or move within this kind of terrain, but it can be deployed within the terrain at the start of the game. In this case, it cannot move once deployed.
+No (!): The unit cannot enter or move within this kind of terrain, except that heavy and super-heavy vehicles may move through and demolish some buildings in some situations.
+OK/: The unit can move through this type of terrain without hindrance. It may end its movement here, provided it can remain stable and avoid falling. However, Aircraft cannot land in this type of terrain unless players agree to.
+Troop Quality & Morale
+TROOP QUALITY
+	MORALE 
+	DAMAGE VALUE
+	Note:
+Minimum morale value after modifiers is 2, and maximum is 11.
+
+
+
+
+	Inexperienced
+	8
+	3+
+	Regular
+	9
+	4+
+	Veteran
+	10
+	5+
+	Shooting Sequence
+1. Declare target
+2. Target reacts (e.g. can go Down) 
+3. Measure range and open fire 
+4. Roll to hit 
+5. Roll to damage 
+6. Target rolls Cover Saves 
+7. Target takes casualties 
+8. Target checks morale if casualties equal half the unit or more
+Note: Reactions do not require order tests nor remove pins.
+Modifiers
+Note: Basic to hit roll needed is 4+
+TO HIT MODIFIERS
+	Point-blank range [Within 6”] (Not with flying Aircraft)
+	+2
+	Fire on the move (Not if Weapon with Assault)
+	-1
+	Firer is pinned (Not on a FIRE if Weapon with Tracking)
+	-1
+	Firer is inexperienced 
+	-1
+	FIRE order with AT Weapon vs Vehicles (Not vs Flying aircraft)
+	+1
+	Target is down and has Stealth (Not if VISR)
+	-1
+	Target is a flying aircraft (Not if FLAK)
+	-1
+	
+
+COVER SAVES
+	Soft cover
+	5+
+	Hard cover
+	4+
+	Down (Only Infantry/Artillery)
+	5+ (or +2 save modifier)
+	Point blank
+	Above, but Ignores Down!
+	Flying Aircraft
+	5+ Evasion save
+	
+
+PEN MODIFIERS FOR HEAVY WEAPONS VS ARMOURED VEHICLE
+	Vehicle’s side or top armour (Except Aircraft and Walkers)
+	+1
+	Vehicle’s rear armour (Except Aircraft and Walkers)
+	+2
+	Point-blank (Except F.Aircraft, Flamethrower, HE & Shape Charge)
+	+1
+	Long range (Except Flamethrower, HE & Shape Charge)
+	-1
+	HE Shots
+DIAMETER
+	PEN
+	PINS
+	HITS AGAINST UNITS IN BUILDINGS
+	1”
+	+1
+	D2
+	D3
+	2”
+	+2
+	D2
+	D6
+	3”
+	+3
+	D3
+	2D6
+	4”
+	+4
+	D3
+	3D6
+	Note: HE against units in buildings does not use the normal template; instead, roll the “Hits Against Units in Buildings” value against the targeted unit, even if this generates more hits than there are models in that unit. If several units are in the same building section/floor, only the targeted unit is hit; do not split hits between units. 
+If one HE attack scores 10+ hits before halving for Down, the building collapses; in a large building, only the affected building section collapses. All Infantry and Artillery units inside that building/building section are destroyed, and it is replaced with rubble. Bunkers are different: units inside bunkers have a 2+ cover save, and bunkers only collapse from 12+ HE hits. See Attacking Units In Buildings Summary for a comparison.
+Close Quarters Sequence
+1. Declare target.
+2. Measure move distance.
+3. Target reacts.
+4. Move assaulting models.
+5. Fight 1st round of close quarters.
+6. If there is a draw, immediately fight further rounds.
+7. Loser is destroyed.
+8. Winner regroups D6”.
+Note: The assaulting unit must move in the shortest route possible, and if the closest assault path crosses rough ground or an obstacle, the assault move is made at Advance speed instead. If the assault starts more than 6” away, the target may react with defensive fire if eligible; if it starts within 6”, only units already on Ambush may react.
+DEFENSIVE POSITION: In assaults, the defender gains Defensive Position if the attacker crosses rough ground/an obstacle, attacks over an obstacle, or assaults a unit in a building. The defender fights first unless it is Down, the combat involves an Assault Walker, or another rule cancels it, such as Strikes First.
+
+
+Tank Fear: Any unit assaulting a fully enclosed armoured (7+ or higher) vehicle must pass a Tank Fear Order test at -3.
+
+
+Infantry vs Vehicles: Infantry models roll to hit: stationary/Down/immobilised/unactivated vehicles are hit on 4+. Advancing vehicles are hit on 6+. Vehicles with a Run order cannot be assaulted unless immobilised/forced Down. 
+Count total hits and make one damage roll: D6 + number of hits vs front armour. Soft-skins and open-topped armoured vehicles are destroyed if damaged in this way; enclosed armoured vehicles roll on the damage table instead. Any damage caused is always superficial. If immobilized, must pass Morale Check or be destroyed.
+
+
+Flying Aircraft cannot assault and are immune to assault. Landed Aircraft can be assaulted like normal vehicles. Fully enclosed Tracked, Anti-Grav vehicles and Walkers without Assault follow Tank Assault rules:
+Tank Assault vs Infantry / Artillery Sequence
+1. Declare target.
+2. Measure assault path.
+3. Target reacts.
+4. Move the vehicle into contact / through the target.
+5. If the target is Infantry, it takes a Morale check.
+6. If it fails, the Infantry is destroyed.
+7. If it passes, move affected models just enough to be more than 1” from the vehicle and the unit survives.
+8. If the target is Artillery, the gun is destroyed automatically.
+
+
+Tank Assault vs Vehicle Sequence
+1. Declare target.
+2. Target vehicle reacts.
+3. If the assaulting tank survives and reaches contact, resolve the ram.
+4. Each vehicle rolls D6.
+5. If a vehicle is armoured, add its Damage Value number to the roll: +7, +8, +9, +10, or +11.
+6. Highest total wins. If tied, both vehicles count as losers.
+7. A losing soft-skin is destroyed.
+8. A losing armoured vehicle takes damage:
+* If the loser’s Damage Value is higher than its opponent’s, roll superficial damage.
+* If the loser’s Damage Value is equal to or lower than its opponent’s, roll full damage.
+* Ramming never causes massive damage.
+9. The winner may also suffer damage:
+* If the winner’s Damage Value is higher than the loser’s, it takes no damage.
+* If the winner’s Damage Value is equal to or lower than the loser’s, it suffers superficial damage.
+10. Any surviving vehicles immediately halt, are marked Down, and each surviving vehicle takes 1 extra Pin.
+
+
+An Assault Walker does not resolve the assault as a ram. Instead, it makes 2 base attacks +1 per Fist, with each attack rolling directly to damage as D6 + Walker Pen against the target’s front armour. If the target survives, it takes 1 Pin +1 additional Pin per Fist possessed by the Assault Walker, and the Assault Walker then regroups D6".
+Attacking Units In Buildings Summary
+TYPE OF ATTACK  
+	RANGE AND LOS 
+	COVER SAVE 
+	SPECIAL 
+	Small arms 
+	To an opening 
+	4+ (2+ if Bunker) 
+	- 
+	Heavy weapons 
+	To a wall 
+	4+ (2+ if Bunker) 
+	Shaped Charge count as HE (2”) 
+	HE weapons 
+	To a wall 
+	None (2+ if Bunker)
+	10+ hits (12+ if Bunker) = collapse! 
+	Flamethrowers
+	To an opening 
+	None 
+	4+ = Building On Fire! (except Bunker)
+	Close Quarters 
+	To an opening 
+	- 
+	Defensive Position 
+	Infantry / Artillery vs Assault Walker
+1. Declare target and measure assault path.
+2. Target reacts if eligible. 
+3. Move assaulting infantry / walker into contact. Assault Walkers may assault ground-floor building occupants by ending within 1" of a building opening.
+4. Combat is resolved simultaneously. No Defensive Position or Strikes First applies.
+5. Assault Walker rolls 2 base attacks +1 per Fist. Each attack rolls directly to damage using Walker Pen: See Assault Walker Melee Penetration Table.
+6. Infantry / Artillery rolls to hit the walker:
+* Walker has Run or Advance order: hit on 6+.
+* Walker is Down, Immobilized, Unactivated, or any other order: hit on 4+.
+7. Count Infantry / Artillery hits, then make one damage roll: D6 + number of hits vs the walker’s DV.
+8. If the walker is damaged, roll superficial vehicle damage, or destroy it outright if DV 6+ or Open-topped. If the result is Immobilized, the walker must pass Morale Check or be destroyed.
+9. If Infantry / Artillery causes no damage and suffers casualties, it loses and is destroyed. Artillery also loses the gun.
+10. If neither side causes damage/casualties, immediately fight another round.
+11. If the walker is damaged but survives, Infantry may fall back D6" or continue fighting.
+
+
+Assault Walker vs Assault Walker
+1. Declare target and measure assault path.
+2. Target reacts if eligible.
+3. Move the assaulting walker into contact.
+4. Combat is resolved simultaneously. No Defensive Position applies.
+5. Each Assault Walker rolls 2 base attacks +1 per Fist.
+6. Each attack rolls directly to damage using Walker Pen:  See Assault Walker Melee Penetration Table.
+7. All damage is resolved at the same time.
+8. If one or both walkers are destroyed or routed, resolve the result immediately.
+9. If neither walker is destroyed/routed, each walker receives 1 Pin +1 additional Pin for each Fist possessed by its opponent.
+10. Combat immediately continues until one or both walkers are destroyed or forced to rout.
+
+
+Assault Walker Melee Penetration Table
+WALKER CLASS
+	PEN
+	Note:
+2 base attacks + one attack per fist.
+
+
+Assault Walkers may halve their attacks, rounding up, to gain an extra +1 Pen for those attacks.
+	Scout Walker 
+	+1
+	Light Walker 
+	+2
+	Medium Walker 
+	+3
+	Heavy Walker 
+	+4
+	Super-Heavy Walker 
+	+5
+	
+
+
+
+
+
+Smoke Table
+WEAPONS
+	DIAMETER
+	Light Mortar
+Others
+	3”
+	Medium Mortar
+Light Howitzer  
+	4”
+	Heavy Mortar
+Medium Howitzer 
+	5”
+	Heavy Howitzer 
+	6”
+	Smoke
+Weapons with Howitzer or Indirect Fire may fire smoke instead of HE. Resolve the shot using Indirect Fire rules: first shot hits on 6+; if it misses, no smoke is placed. Smoke is considered dense terrain and provides soft cover. At the start of each turn, roll for each smoke marker:
+* 1 = removed
+* 2–3 = moves D6" in one random direction 
+* 4+ = stays in place
+Indirect Fire
+Cannot shoot targets within minimum range. The firer must see the target unless using a Spotter or Forward Observer, but can shoot over friendly units. A Spotter/Observer can only spot for one Indirect Fire weapon per turn; changing Spotter/Observer resets ranging-in. Indirect shots use the ranging-in number instead of normal to-hit modifiers: first shot hits on 6+; if the firer keeps firing at the same target, the firer does not move, and the target does not move, this improves each turn: 6+ → 5+ → 4+ → 3+ → 2+. Once a hit is scored, further shots at that target hit on 2+, as long as ranging-in is not reset. Ranging-in resets if the firer receives any order other than Fire, changes target, uses a different Spotter/Observer, or the target moves. Units hit by Indirect Fire receive no cover saves, but Down units halve HE hits, rounding up. Against vehicles, Indirect Fire hits top armour; if the vehicle is Open-topped, add +1 to the damage roll. Weapons cannot fire indirectly while on Ambush.
+
+
+Against buildings: Declare a target unit in the building and measure range/minimum range to the building. If the building has only a ground floor, the target unit is hit normally. If it has multiple floors, roll from the top floor downward: on 4+, the shell explodes on that floor; on 1–3, it passes through and you roll for the floor below. If it reaches the ground floor, it explodes there automatically. The unit on the floor where the shell explodes is hit, which may not be the original target unit. If that floor is empty, no unit is hit, but HE 3" or 4" may still roll hits for building collapse.
+Howitzer
+A Howitzer may fire either directly or as Indirect Fire. When firing directly, it uses normal line of sight and has no minimum range. When firing indirectly, use the weapon’s listed indirect range/minimum range and follow the Indirect Fire rules.
+Multiple Launcher
+Fires as a Heavy Mortar, but never ranges in better than 6+. Pick the first target and place the original template; enemy units within 6" of the original template also become targets. If any friendly unit is within 6" of the original template, the shot is wasted and cannot be fired. After targets are determined, any target within minimum range is missed automatically. Roll to hit each remaining target separately on 6+, even if the original target misses. The firing unit takes 1 Pin after firing, whether it hits or misses. 
+Against buildings: If firing at a unit in a building or an empty building, measure the 6" additional-target range from the building itself. Only one rocket can hit each building, even if it contains multiple enemy units on different floors. Resolve one indirect Heavy Mortar shot against each target building. The weapon cannot fire if any potential target building contains friendly units.
+Smoke: When firing smoke, pick a target point. If it hits, place the first smoke marker, then place D3-1 additional smoke markers within 6" of the first point. If it misses, nothing happens.
+
+
+ROLL 1 D6 FOR FULL OR SUPERFICIAL DAMAGE / MASSIVE DAMAGE (PEN BY 3+): Roll 2 full results instead.
+Note: Open-topped vehicles hit on top armour add +1 to the damage result roll. Vehicles carrying flamethrowers also add +1 to the damage result roll against them.
+	Damage Results On Armoured Vehicles (DV7+ or higher)
+SUP.
+	FULL
+	EFFECT
+	1
+	1
+	Crew Stunned: Add +1 Pin. The vehicle immediately goes Down: take an order die from the bag if it has not acted, or flip its current order die to Down. Further Crew Stunned results in the same turn only add another Pin.
+	2 
+	- 
+	Steering Compromised: Add +1 Pin. The vehicle makes one fewer pivot whenever it moves for the rest of the game. A second result means it can no longer pivot at all. Further results count as Immobilised.
+	3 
+	- 
+	Turret Jam: Add +1 Pin. Randomly choose one turret if needed. That turret is locked facing the arc of the closest visible enemy, or the front arc if none are visible. It may only fire into that arc for the rest of the game. If the vehicle has no turret, treat this result as Steering Compromised.
+	4
+	-
+	Engine Damage: Add +1 Pin. The vehicle gains Slow for the rest of the game. If it was Fast, it loses Fast instead. If it was already Slow, its speed is halved. Further Engine Damage counts as Immobilised.
+	5 
+	2 
+	Immobilized: Add +1 Pin. The vehicle cannot move for the rest of the game. If it has already acted this turn, flip its order die to Down. A further Immobilised result knocks it out.
+	6
+	3
+	On Fire: Add +1 Pin, then immediately take a Morale check. If passed, the fire goes out and the vehicle goes Down. If failed, the crew abandons the vehicle and it is Knocked Out.
+	-
+	4+
+	Knocked Out: The vehicle is destroyed and becomes a wreck. Leave the model on the table and mark it as destroyed. Wrecks count as impassable terrain.
+	Damage Results On Armoured Aircrafts (DV7+ or higher)
+SUP.
+	FULL
+	EFFECT
+	1 - 3
+	1
+	Crew Shaken: Add +1 Pin. 
+On Superficial Damage, take a Morale check. If failed while flying, the Aircraft must land immediately in the nearest legal position and go Down. If failed while landed, it cannot act further this turn and goes Down. 
+On Full Damage, the Aircraft lands and goes Down automatically if flying, or cannot act further this turn if already landed by going Down.
+	4 - 5 
+	- 
+	Engine Damage: The Aircraft’s speed is halved for the rest of the game. If this result occurs again, add +1 Pin and the Aircraft must land/go Down. 
+	6
+	- 
+	System Malfunction: The Aircraft must immediately land within 9" in the nearest legal position, gains +2 Pins, and goes Down. If already landed, treat this result as On Fire from the Full Damage table instead. 
+	-
+	2
+	Targeting Failure: Add +1 Pin. The Aircraft suffers -1 to hit with all shooting for the rest of the game. 
+	-
+	3
+	On Fire: Add +2 Pins, then take a Morale check. If passed, the fire is extinguished and the Aircraft lands/goes Down. If failed while landed, the crew abandons it and it is destroyed. If failed while flying, treat as Destroyed. 
+	-
+	4+
+	Destroyed: The Aircraft is destroyed and becomes a wreck. If it was flying, all non-flying units within 6" take D3 Pins from falling debris. 
+	Note: If Superficial Damage would require a flying Aircraft to land and there is no legal landing position, roll on the Full Damage table instead. If Full Damage result requires the Aircraft to land and there is no legal landing position, add +1 to the Full Damage result. 
+	Vehicle Damage Quick Notes                                                                                  Pin Reminder 
+• Roll to damage: D6 + Pen + modifiers vs the vehicle’s Damage Value.                  -Soft-skinned (6+) and Open-topped vehicles can be 
+• Natural 1 always fails.                                                                                              pinned by small arms.
+• Equal to DV = Superficial Damage.                                                                         -If a unit/vehicle’s Pins equal or exceed its Morale, it is
+• Higher than DV = Full Damage.                                                                               destroyed/abandoned. 
+• Higher by 3+ = Massive Damage: roll 2 Full Damage results.                                 -Veteran fully enclosed armoured vehicles only take
+• Soft-skinned vehicles are destroyed if damaged.                                                     Pins from Heavy Weapon hits that are capable of
+• Open-topped armoured vehicles are destroyed if damaged in close quarters.        damaging them.
+• Open-topped vehicles hit on top armour add +1 to the damage roll and result.
+• Vehicles carrying flamethrowers add +1 to the damage result.
+	Terrain Types
+Agree terrain before the game: Before deployment, players should agree what each terrain piece counts as: open ground, rough ground, obstacle, building, road, impassable, dense terrain, soft cover, or hard cover. A terrain piece may have multiple types.
+
+
+Rough Ground: Area terrain such as ruins, woods, rubble, swamp, rocks, craters, etc.  Infantry Runs are reduced to their advance.
+Obstacles: Terrain such as walls, fences, hedges, barricades, pipes, etc. Infantry Runs are reduced to their advance.
+Dense: Units can normally see into and out of dense terrain, but not through it. Flying Aircraft ignore it.
+Roads: Road movement only matters if the unit moves entirely along the road/track. Leaving the road at any point means no road movement bonus. 
+Impassable: Vehicle Wrecks, Deep Water, Some Buildings, etc. Cannot be entered or crossed unless a rule specifically allows it. 
+Tall: Terrain such multi-storey buildings, towers, cliffs, or very high walls. It blocks line of sight similarly to dense terrain, unless both the observer and the target are Flying Aircraft. 
+Buildings: Can include domestic houses, and industrial buildings, as well as military installations such as bunkers. Buildings use their own rules:
+
+
+Buildings
+Building properties should be agreed before the game: number of floors, openings, access points, whether flat roofs/balconies can be occupied, and whether the terrain counts as a normal building, bunker, ruin, or large building. Ruins are usually treated as dense terrain and rough ground, and do not follow building rules. A normal intact building is treated by floor; large buildings should be divided into roughly house-sized connected sections. A flat roof accessible from inside counts as the uppermost floor. Balconies/roof edges should be agreed before the game, usually counting as part of the floor they are attached to. Buildings may hold 1 unit max per each floor/section.
+
+
+To enter a building, Infantry must Advance or Run, all models must get within 1" of the building, and at least one model must reach an opening. If it enters, place the unit on the ground floor and its activation ends; it cannot shoot, or move further that turn. Infantry and Artillery may deploy inside a building if it is fully within their deployment zone, but Artillery deployed this way cannot move.
+
+
+An Advance order for a unit already inside a building lets it leave, move one floor, or move into one adjoining section, and it may shoot. A Run order lets it leave, move up/down two floors, move through up to two adjoining sections, assault an adjoining floor/section, or assault out of the building. A unit must be on the ground floor to leave or assault out of a building.
+
+
+Units cannot normally enter a building with a regroup move, except that Infantry assaulting a unit in a building may enter with its regroup move if it wins, taking the defeated unit’s place. Units cannot move into base contact with an occupied building except when assaulting it; otherwise keep more than 1" away.
+
+
+Units inside buildings shoot from openings. Measure range and LoS from the opening used; each normal-sized opening allows up to two models to fire. A unit can fire at different targets on different sides of the building, but all shots from the same building’s side must target the same enemy unit. If the unit is on a flat roof or large terrace, up to six models may fire from each side. Declare all targets before resolving any shooting.
+
+
+Fixed weapons inside buildings must choose which opening they fire from. They fire only from that opening until the unit makes an Advance or Run action to redeploy to another opening. If redeployed with Advance, they may fire with the normal -1 to hit for moving. If a Fixed weapon is on Ambush, it fires from its chosen opening and uses that opening’s arc; it cannot change opening as part of the Ambush shot. Artillery deployed inside a building is more restricted: it chooses one opening during deployment and cannot change position or arc during the game.
+
+
+Plunging Fire: If troops on an upper floor fire at an armoured target within 12", any Heavy weapon hits strike the vehicle’s top armour. 
+Units cannot shoot enemies from one floor to another, or from one building section to another unless a clear opening/LoS between those sections was agreed. Units cannot shoot enemies inside a building if another floor of that same building contains friendly troops. Close Quarters attacks into buildings must be made through an opening; units outside may only assault enemies on the ground floor. Units inside may assault the floor immediately above/below or an adjoining connected section; no reaction fire is allowed. A unit on the ground floor may also assault out of the building through an opening; resolve this as a normal assault.
+Tanks Assaulting Buildings
+Only Heavy and Super-heavy vehicles without the assault rule may assault wooden or brick buildings. They cannot assault bunkers, pillboxes, concrete fortifications, tank traps, or similarly solid structures.
+
+
+Resolve the assault like a ram:
+The tank rolls D6 + its Damage Value. 
+The building rolls its random Damage Value: 
+* Wooden building = 2D6
+* Brick building = 3D6
+
+
+If the building scores higher, the tank fails to demolish it and takes damage as from a vehicle ram. If the building is wooden, this can only cause superficial damage. Place the tank in front of the building.
+
+
+If the result is a tie, the tank suffers superficial damage and the building is destroyed. If the tank scores higher, the building collapses like an HE collapse. All Infantry and Artillery units inside are destroyed, the building is replaced with rubble, and the tank stops inside the rubble with a Down order. Any tank that survives assaulting a building takes +1 Pin.
+
+
+Order Tests & Morale Checks
+Unpinned units follow orders automatically unless a rule says otherwise. Pinned units must roll 2D6 equal to or under their modified Morale to act. Each Pin gives -1 Morale. If passed, remove 1 Pin and carry out the order. If failed, keep all Pins and the unit goes Down instead. Down orders never require an Order Test. Rally tests ignore Pin modifiers and, if passed, remove all Pins. 
+* Double 1 = automatic success and remove all Pins. 
+* Double 6 = FUBAR.
+
+
+If a vehicle fails an Order Test and there is a visible enemy in its front arc, it must reverse if able, then go Down. The reverse must be straight backwards with no pivot, moving as far as possible: normal vehicles reverse at half Advance speed and Recce vehicles at full Advance speed. If the straight reverse path is blocked, move the vehicle by the shortest legal route needed to get around the obstruction while still moving away from the enemy; it cannot move closer to the visible enemy unless there is no other legal route. If it reverses off the table, it is destroyed. If there is no visible enemy in its front arc, it simply goes Down.
+
+
+Morale Checks also roll 2D6 equal to or under modified Morale. Passing a Morale Check does not normally remove Pins unless a rule says so. Failing usually destroys the unit unless another rule indicates a different effect.
+
+
+If a unit’s Pins ever equal or exceed its Morale value, it is destroyed. For vehicles, this represents the crew abandoning the vehicle. 
+
+
+Pins From Shooting
+If a firing unit scores one or more normal shooting hits with small arms or non-HE weapons, the target takes 1 Pin total. If the target is hit by HE, use the HE table Pins value instead. If several HE shots from the same firing unit hit the same target, they count as one combined HE shot for Pins: roll only one HE Pin result, using the largest HE size that hit. Other enemy units clipped by an HE template may suffer damage, but do not take Pins:
+
+
+HE Splash: After a HE shot hits, place the template to cover as many models in the target unit as possible without touching friendly models. Enemy models from other units touched by the template are also hit and may suffer damage, but only the declared target takes Pins and only the declared target may react by Going Down.
+Aircraft Rules Summary
+Aircraft normally start in Reserve and enter with an Advance or Run order. When flying, aircraft move 24" on Advance or 48" on Run, may pivot freely, ignore terrain and units for movement. Flying Aircraft do not block LoS or provide cover.
+
+
+Flying Aircraft do not gain point-blank bonuses, and units do not gain point-blank bonuses against them. Units suffer -1 to hit against Flying Aircraft unless they have Flak. Flying Aircraft have a 5+ Evasion save against damage, but does not negate Pins.
+
+
+A Flying Aircraft lands by receiving a Down order, landing within 9" in an allowed position. If it fails an Order test while flying, it does not land; it simply loses its activation and remains flying. Once landed, it follows normal vehicle rules. Aircrafts do not reverse on failed order tests.
+
+
+If a Flying Aircraft is destroyed while carrying passengers, transported units suffer D3 Pins, then resolve transport destruction as normal. If a Flying Aircraft would be destroyed due to accumulated Pins while carrying passengers, it lands in the nearest allowed position, becomes a wreck, and passengers dismount safely as normal. Passengers can only mount/dismount while an aircraft is landed, following the normal rules.
+
+
+Line of Sight & Cover
+A model must be able to see the target’s main body/head/torso/hull; seeing only weapons, banners, antennas, tails, or other small parts is not enough. A unit normally declares one enemy unit as its target, and only models with LoS and range may fire. One-Shot weapons may choose a different target.
+
+
+A target is in cover unless enough of the firing unit has a clear shot. If at least 50% of the firing models can clearly see at least 50% of the target unit in the open, the target is not in cover. Otherwise, the target is in cover. For vehicles, check whether 50% or more of the entire vehicle is obscured, not just the facing being targeted.
+
+
+Infantry and Artillery can always see and shoot through models in their own unit. You cannot shoot through other friendly units or draw a line of fire within 1" vertically/horizontally of another friendly model, unless the weapon cannot possibly damage that friendly unit. Indirect Fire may shoot over friendly units. Enemy Infantry and Artillery do not block LoS, but shooting through them can give the target soft cover.
+
+
+Vehicles and terrain can block LoS. Armoured vehicles and solid terrain usually give hard cover; soft-skinned vehicles, Infantry, Artillery, smoke, woods, and similar terrain usually give soft cover.
+
+
+Shooting from cover: If a unit is directly behind/touching an obstacle, or is at the edge of dense terrain, it may shoot out without giving the target cover from that same obstacle/terrain. If the unit is not directly at the obstacle/edge, and its shots pass through the terrain or across the obstacle, the target may receive cover as normal. If a unit fires from deeper inside dense terrain, its own terrain affects its shots.
+
+
+Dense terrain: Units can normally see into and out of dense terrain, but not through it. A unit inside dense terrain is visible and usually counts as in cover. If more than 50% of the target unit is inside dense terrain, it counts as in cover. 
+
+
+Flying Aircraft: Flying Aircraft do not block LoS and do not provide cover. Flying Aircraft ignore normal intervening models and terrain for LoS to and from ground units. However, Tall terrain still blocks LoS unless both the observer and the target are Flying Aircraft.
+When a Flying Aircraft shoots a ground unit, the ground unit only receives soft/hard cover if the LoS crosses an intervening terrain piece or unit within 3" of the ground target. At least 50% of the target unit should be protected by that nearby element to claim cover.
+When a ground unit shoots a Flying Aircraft, the Aircraft never receives cover from terrain or intervening models. It still receives its normal 5+ Evasion save.
+
+
+If LoS/cover is unclear, treat the target as in cover but worsen the save by 1: hard cover becomes 5+, soft cover becomes 6+.
+
+
+Optional pre-game rule: Players may agree that some non-Tall terrain within 3" of the ground target blocks LoS to/from Flying Aircraft instead of only granting cover, such as very large hedges, high walls, or dense terrain.
+
+
+Reserves / Outflank
+Before deployment, declare which units are in Reserve, which units are mounted in transports, and which Reserve units are Outflanking. Units in Reserve are not deployed on the table. 
+
+
+From the turn the scenario allows them to arrive, Reserve units may enter with an Advance or Run order. They must take an Order test to enter, normally at -1. If the test is passed, move onto the table from the allowed table edge, measuring movement from the edge. If the test is failed, the unit remains off-table and does not act. A unit entering from Reserve cannot assault on the turn it enters.
+
+
+If a Reserve transport carries passengers, only the transport takes the Order test to enter. If the transport fails to enter, the passengers also remain off-table. If a unit remains in Reserve until the end of the game, it normally counts as destroyed.
+
+
+Outflank: During deployment, declare which Reserve units are Outflanking. Outflankers still count as Reserve units. This rule changes a bit compared to normal Bolt Action:
+Outflankers arrive later than normal Reserves. On Turns 1–2, they cannot enter and must be given Down. From Turn 3 onward, they may attempt to enter with an Advance or Run order.
+On Turns 3–4, an Outflanker may enter from either your own long table edge or your left/right short table edge. However, it cannot enter from any point inside the enemy Deployment Zone Edge.
+From Turn 5 onward, an Outflanker may enter from any board edge at any legal point.
+
+
+Transports
+A vehicle counts as a Transport if it is from the Transport & Tows section. Some combat vehicles may have transport capacity too.
+
+
+Mounting: Infantry may board a stationary transport by being given an Advance or Run order. All models in the unit must be able to move within 1" of the vehicle; if they do, the unit boards and is removed from the table. A unit cannot board with a regroup move. A vehicle boarded this turn cannot later Advance or Run.
+
+
+Units Aboard: Passengers that stay aboard may be given Down, which has no effect, or Rally, which works normally. Passengers cannot shoot while transported. If passengers FUBAR while aboard, they simply go Down instead of rolling on the FUBAR table. Whenever the vehicle takes Pins, each unit aboard takes the same number of Pins.
+
+
+Dismounting: The dismounting unit must be given an Advance or Run order. A Run dismount cannot be used to assault or to mount another transport. If the transport Runs, passengers cannot voluntarily dismount that turn unless forced to do so.
+
+
+Damage to Passengers: If a transport suffers Immobilised or On Fire, passengers are forced to dismount after resolving the damage result. If a transport is destroyed by damage, each unit aboard suffers D6 small-arms hits with no saves allowed; these hits cause no extra Pins. Survivors are then forced to dismount. If a transport routs from accumulated Pins while on the table, passengers are forced to dismount safely, suffer no damage, and go/remain Down. If a transport/tow is destroyed because it retreats off the table (For example due to a FUBAR), or because it fails to come in from Reserves, transported units are destroyed with it.
+
+
+Assaulting Loaded Transports: If a loaded transport is assaulted by Infantry, the vehicle may react with defensive fire if eligible. If the assault is not stopped, all passengers automatically dismount. If multiple units are aboard, all dismount, but the largest unit fights the assault; if tied, the attacker chooses. The dismounted unit does not gain Defensive Position unless the transport itself would have had it.
+
+
+
+
+
+
+Spotters / Observers
+Spotters can provide LoS for Indirect Fire weapons. A Spotter/Observer can only spot for one Indirect Fire weapon per turn.
+
+
+Spotters have Infiltrator. A Spotter can spot from a soft-skinned or open-topped transport, like an F. Observer. Observers/Spotters inside buildings measure LoS/range from openings as normal.
+
+
+Once per game, Forward Observers models can call artillery barrages or air strikes with a Fire order, not from Ambush. If mounted in a transport, they cannot call a strike.
+
+
+Forward Artillery Observer
+Once per game, when the observer receives a Fire order, place an aiming point anywhere within the observer’s LoS and choose Artillery Barrage or Smoke Barrage. At the start of each following turn, before drawing order dice, roll on the chosen table, even if the observer has been killed. Once the barrage arrives, stop rolling.
+
+
+Artillery Barrage Table 
+D6
+	EFFECT
+	1
+	Miscalculation: Move the aiming point 3D6" in a random direction, then immediately resolve Fire for Effect. 
+	2-3
+	Delay / Correction: Nothing happens. Leave the token in place. If the observer is still on the table, the controlling player may move the token up to 12", even out of LoS. Roll again next turn. 
+	4-6
+	Fire for Effect: All units, friend and enemy, within D6+6" of the aiming point are affected. Roll separately for each unit. Infantry/Artillery may choose to go Down before their roll. On 1–5, the unit is not hit but takes D3 Pins. On 6, the unit suffers an Indirect Fire Heavy Howitzer (HE4") hit, including its additional Pins. 
+	
+
+Smoke Barrage Table 
+D6
+	EFFECT
+	1
+	Miscalculation: Move the aiming point 3D6" in a random direction, then immediately resolve Smoke Screen Deployed . 
+	2-3
+	Delay / Correction: Nothing happens. Leave the token in place. If the observer is still on the table, the controlling player may move the token up to 12", even out of LoS. Roll again next turn. 
+	4-6
+	Smoke Screen Deployed: Place a 6" radius smoke area centred on the aiming point. It counts as soft cover and dense terrain.  
+	
+
+Forward Air Observer
+Once per game, when the Air Observer receives a Fire order, nominate one enemy unit within the observer’s LoS as the target for an air-strike. At the start of the next turn, before drawing order dice, roll on the Air-Strike Table, even if the observer or the nominated target has been destroyed. When the aircraft arrives, place the aircraft/token, resolve eligible Flak fire first, then resolve the Warplane Attack if it is not aborted.
+
+
+Air-Strike Table  
+D6
+	EFFECT
+	1
+	Rookie Pilot: Opponent chooses a new target within 12" of the original target; it may be friendly or enemy. Resolve the attack against the new target. If no alternative target is within 12", instead the plane does a fly-by and the original target takes D3 additional Pins. 
+	2-3
+	Empty Skies: Nothing happens. If possible, the controlling player may change the nominated target to another enemy unit within the observer’s LoS. Roll again next turn. 
+	4-6
+	Here It Comes!: Place the aircraft/token 18" from the target and resolve the warplane attack. If the target has already been destroyed, the attack is wasted. 
+	Resolving a Warplane Attack
+1. Place the aircraft/token 18" from the target.
+2. Resolve Flak fire first.
+3. If Flak scores 3+ total hits, the attack is aborted and the aircraft/token is removed.
+4. If not aborted, the target and every unit within 6" of the target and 6" of the aircraft/token centre takes D3 Pins.
+5. Roll on the Warplane Type Table against the target.
+
+
+Warplane Type Table 
+D6
+	EFFECT
+	1-2
+	Strafing Fighter: Target takes +1 Pin, then suffers 2D6 hits at Pen +2. Infantry/Artillery may go Down before rolling hits. Cover only applies from terrain the unit is inside or obstacles it is touching, if between the aircraft and target. Armoured targets are hit on top armour.  
+	3-4
+	Fighter-Bomber: Target suffers an Indirect Fire Medium Howitzer (HE3") hit, including additional Pins. Infantry/Artillery may go Down before the template is placed. Armoured targets are hit on top armour. 
+	5-6
+	Ground-Attack Aircraft: Target suffers an Indirect Fire Heavy Howitzer (HE4") hit, including additional Pins. Infantry/Artillery may go Down before the template is placed. Armored targets are hit on top armour. 
+	
+
+Flak vs Air-Strikes
+All units with Flak in range and arc of the aircraft/token may fire, even if they already acted. Flak fire does not require an order. Units on Ambush keep Ambush after firing Flak.
+Friendly Flak must test to hold fire if in range and arc: Inexperienced 4+, Regular 3+, Veteran 2+. If failed, they fire at the aircraft as if it were enemy. If a Rookie Pilot attacks its own side, friendly Flak automatically fails this test.
+Flak weapons hit on 5+ if not pinned, or 6+ if pinned, ignoring all other modifiers. Do not roll damage. Count total Flak hits instead; HE Flak hits multiply as if hitting a unit in a building. If the aircraft suffers 3+ total hits, the air-strike is stopped.
+
+
+Weapon Special Rules
+Halo: Bolt Action does not change the behaviour of existing Bolt Action weapon special rules; it only adds new rules. However, these rare interactions are worth remembering:
+Pintle-mounted Weapons: If a fully enclosed armoured vehicle fires a pintle-mounted weapon at a ground target, it counts as Open-topped until the end of the turn. If it fires a pintle-mounted weapon at an Aircraft, it does not count as Open-topped. Pintle-mounted machine guns have Flak, and when firing at Aircraft they do not halve their shots.
+Limited Ammunition: Models with limited-use weapons may choose not to fire them when the unit shoots.
+Flamethrowers: Roll 1 die to hit. If a Flamethrower hits, it becomes D6 hits, or D6+1 hits for a vehicle-mounted Flamethrower. Hits from Flamethrowers allow no cover saves. Against vehicles, Flamethrowers always hit top armour and ignore both the -1 Pen modifier for long range and the +1 Pen modifier for point-blank range. 
+A unit hit by one or more Flamethrowers from the same firing unit takes one Flamethrower Pin result, not one per Flamethrower: D3+1 Pins. The firing unit also takes 1 Pin after firing, whether it hits or misses, regardless of how many Flamethrowers it fired.
+After the attack is resolved, any unit hit by a Flamethrower must take one Morale check, even if no casualties were caused. If failed, the unit is destroyed; vehicles are knocked out. If other effects would also cause a Morale check, only take one Morale check total.
+Fuel: After firing an infantry Flamethrower, roll a D6; on 1–2 it runs out of fuel and the user becomes unarmed. After firing a vehicle Flamethrower, roll a D6 for each one fired; on 1–2 that weapon cannot be used again.
+Against buildings: Flamethrowers need an opening. Units in buildings receive no cover save against Flamethrowers. If fired at troops in a normal building, the building catches fire on 4+ even if the attack misses. Bunkers cannot be set on fire.
+Buildings On Fire
+A burning building becomes impassable on all floors. Surviving Infantry units inside immediately abandon the building through ground-floor openings as if forced to dismount from a vehicle, then go/remain Down. Artillery units inside are destroyed. 
+
+
+HE 
+Weapons with both Pen and HE must choose which type of shot they are firing before rolling. If such a unit goes into Ambush, mark whether it has loaded Pen or HE; if not marked, it counts as Pen. Against infantry/artillery HE must be used..
+
+
+When an HE shot hits, place the template over or between models in the target unit, covering as many target models as possible without touching friendly models. Fully and partially covered models are hit. Enemy models from other units touched by the template are also hit, but only the declared target may react by Going Down and only the declared target takes HE Pins.
+
+
+If the target Goes Down, roll to hit and count hits normally, then halve the number of hits, rounding up. Cover saves are then taken as normal unless another rule says otherwise. Casualties may be removed from anywhere in the unit, not only from models under the template.
+
+
+Multiple HE Shots
+If a firing unit fires multiple HE shots at the same target, roll to hit with all shots, then place a template for each hit. Templates do not need to touch each other. A model covered by multiple templates only suffers one hit. The target unit suffers only one HE Pin result, using the largest HE size that hit.
+
+
+Ambush
+A unit in ambush may fire when an enemy unit becomes a valid target: for example, when the enemy moves into LoS, crosses LoS during movement, finishes movement in LoS, starts an assault, dismounts, enters/exits a building, or any other movement. The Ambush player chooses the point during the enemy action where the shot is taken, replacing the order with a Fire order.
+
+
+If the target is moving, resolve the Ambush shot at the chosen point in its move. The moving unit cannot react by Going Down against Ambush fire. If it survives and is still able to move, it completes its movement/action normally. If the target was only visible at the end of its move, the Ambush may be resolved after the movement is completed, before the moving unit continues with any later part of its action, such as shooting after an Advance. 
+
+
+A unit on Ambush cannot fire indirectly. Fixed weapons on Ambush must fire from their current arc/opening and cannot redeploy as part of the Ambush shot.
+
+
+Ambush Pins: Pins from Ambush fire apply immediately. If the target survives and continues its action, those Pins affect the rest of that action; for example, an Advancing unit pinned by Ambush suffers the pin penalty when it shoots.
+
+
+Ambush vs Buildings: A unit on Ambush may fire at an enemy unit that enters a building if, after entering, the target is visible through an opening on the occupied floor/building section. The Ambush unit does not need to have seen the enemy’s movement outside the building. A Fixed weapon choosing a firing opening does not make the whole unit only targetable through that opening; if another opening on the same occupied floor/section is visible, the unit can still be targeted through it.
+
+
+A unit that is itself on Ambush and is shot at may choose to go Down as normal, but it loses its Ambush order and becomes Down.
+
+
+NCO / Officer Casualties
+If a unit loses its NCO/unit leader, it suffers a permanent -1 Morale penalty for the rest of the game. This affects Order Tests and Morale Checks. If an Officer unit loses its actual Officer model, the unit also counts as having lost its Officer’s special abilities, including its Morale Bonus and You Men, Snap To Action!.
+
+
+Unit Special Rules
+Halo: Bolt Action keeps most standard Bolt Action unit special rules unchanged. However, some existing Bolt Action rules have been modified for this system. When one of the following rules appears in a unit profile, use the Halo: Bolt Action version instead of the standard Bolt Action wording:
+
+
+*  Fanatics
+*  Fieldcraft
+*  Sniper
+*  Tank Hunters
+*  Tough Fighters
+*  Medic’s Self-Defence rule
+
+
+All other unit special rules either work as written in Bolt Action, or are new Halo: Bolt Action rules defined in the relevant army list PDF.
+
+
+Infiltrators
+Infiltrators may be deployed before Turn 1. Choose which eligible Infiltrator units will use Infiltrator deployment, place their order dice in the bag, then draw dice one at a time. When one of your dice is drawn, deploy one of your Infiltrator units.
+When deployed as Infiltrators, units may be placed anywhere on the table, but must be more than 12" from any already deployed enemy unit, including enemy Infiltrators that have already been placed. Infiltrators may deploy inside buildings, including upper floors, if allowed by the scenario/building rules, but must still obey the normal more than 12" distance restriction from enemy units. Once all Infiltrators have been deployed, return their order dice to the bag before Turn 1 begins.
+
+
+Vehicle Special Rules
+Halo: Bolt Action keeps most standard Bolt Action vehicle special rules unchanged. However, Flak has been modified for this system to allow units to ignore the -1 to hit against flying aircraft. When the Flak rule appears in a vehicle profile, use the Halo: Bolt Action version in addition to the standard Bolt Action one.
+
+
+*  Flak
+
+
+All other vehicle special rules either work as written in Bolt Action, or are new Halo: Bolt Action rules defined in the relevant army list PDF.
+
+
+Recce 
+Recce vehicles reverse at full Advance speed instead of half speed, including when reversing after a failed Order test with an enemy in their front arc. Some Recce vehicles may reverse at Run speed if specified in their unit entry.
+
+
+Escape Reaction: A Recce vehicle that has not acted this turn, or is on Ambush, may react to enemy shooting with an Escape move. The vehicle may move at Advance or Run speed, forward or reverse. It must try to end out of LoS of the attacker; if that is impossible, it must try to gain/improve its cover save; if that is also impossible, it must end farther away from the attacker. It cannot use this move to assault.
+
+
+After the Escape move, mark the vehicle with an Advance or Run order, replacing its Ambush order if it had one. If it escaped at Advance speed, it still cannot fire as part of the reaction. Resolve the enemy shot normally; if the vehicle moved out of LoS or range, the shot automatically misses.
+
+
+Assault Escape: If an enemy more than 6" away declares an assault against a Recce vehicle that has not acted yet, the Recce vehicle may either fire as a normal reaction or make an Escape move. In this case, it only needs to try to increase the distance from the attacker. If the assaulting unit is now out of range, it simply moves as far as possible toward the Recce vehicle. If the assault still reaches, resolve the assault normally; assaulting Infantry hit on 6+, even if the Recce vehicle escaped at Run speed.
+
+
+Recce vehicles cannot make Escape moves while towing, or against artillery barrages or air-strikes. They may leave the table with an Escape move only in scenarios where units are allowed to voluntarily leave the table.
