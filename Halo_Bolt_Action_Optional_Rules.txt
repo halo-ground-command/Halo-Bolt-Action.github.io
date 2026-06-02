@@ -26,15 +26,15 @@ Use this optional rule if both players want a simpler force-building method than
 Core Requirements
 A force built using this method must include:
  ● At least 1 Platoon Commander.
-● At least 2 Infantry units for each Platoon Commander unit taken.
+● At least 2 Infantry units for each Platoon Commander unit taken. Up to 1 transport and tow per unit.
 ● Any number of Infantry and Artillery units.
-If a unit has a restriction per platoon of any type, change platoon to Platoon commander. Company commanders and other HQ units are limited to 1 per army.
+If a unit has a restriction per platoon of any type, change platoon to Platoon commander. Company commanders are limited to 1 per army, while other HQ units are 1 per platoon.
 Vehicles
 If a force includes any Combat Vehicles:
 ● It must include at least 1 Command Vehicle.
 ● You must also include at least 1 other Vehicle.
 ● For every Command Vehicle and 1 other Vehicle you take, you may take 0–3 additional Vehicles. 
-● If none of the vehicles in the force have the Command Vehicle special rule, and none may purchase it from their profile options, one non-Aircraft vehicle may be given the Command Vehicle special rule for +10 pts, even if its profile entry does not normally allow it.
+● If none of the vehicles in the platoon have the Command Vehicle special rule, and none may purchase it from their profile options, one non-Aircraft vehicle may be given the Command Vehicle special rule for +10 pts, even if its profile entry does not normally allow it.
 
 HERO RESOURCES
 Each Hero’s profile lists their starting pools. Heroes may have different amounts of each resource, and each Hero has a unique ability powered by Edge. Unless a rule says otherwise, spent points are deducted from the Hero’s pool for the rest of the game.
