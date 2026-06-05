@@ -480,7 +480,7 @@ window.unitSpecialDescriptions = {
   "Flak": "Autofires at FAO called aircraft in arc and range. However against on table aircraft just ignore minus 1 to hit vs flying. Pintle weapons count as having Flak.", 
   "Fieldcraft": "Treat rough terrain as open ground for movement. When assaulting through rough ground, defenders lose Defensive Position gained from that Rough Ground.",
   "Strikes First": "Counts as having Defensive Position bonus in close quarters when performing an assault. If the opponent also has Defensive Position, Strikes First or a rule cancels this rule, then fight simultaneously.",
-  "Flight": "Advance 12\"; Run 18\"; ignore terrain for movement. Cannot end in impassable terrain (or in rough ground after a Run). If ambushed while flying, no soft/hard cover saves. Cannot pick up or carry objectives on a Run order. Infantry may instead move on the ground using normal movement rules.",
+  "Flight": "Advance 12\"; Run 18\"; ignore terrain for movement. Cannot end in impassable terrain (or in rough ground after a Run). If ambushed while flying, no soft/hard cover saves. Cannot pick up or carry objectives on a Run order. Infantry may instead move on the ground using normal movement rules, using other unit rules that affect movement they may have.",
   "Flood Infection": "Automatons and Composed Beings are immune to this rule. When winning vs Infantry or Artillery in CQ, immediately roll one D6 per enemy model removed during and after combat. Each roll equal to or above this flood unit’s damage value returns a slain model (up to starting size). If the flood unit has Energy Shields, it increases the requirement by +1.",
   "Green": "First casualty triggers a D6 roll: 1 = gain D6 pins and go Down, 6 = unit upgraded to Regular morale (9).",
   "Gun Shield": "Crew of a gun with a gun shield count as in soft cover vs small arms hits from within the gun’s front arc.",
@@ -536,7 +536,7 @@ window.vehicleSpecialDescriptions = {
   "Recce": "Can reverse at full Advance speed instead of half. If unactivated or on Ambush, may make an Escape move when shot at; resolve the shot after the move. May also Escape from assaults starting over 6\" away. Cannot Escape while towing or against barrages/air-strikes.",
   "Reinforced Front Armour": "Front armor counts +1 higher.",
   "Slower": "Advance 6\", Run 12\".",
-  "Slow Load": "Can only activate after another friendly unit; skip the first drawn dice if only Slow Load units remain.",
+  "Slow Load": "Can only activate after another friendly unit has already activated in the turn; skip the first drawn dice and return it to the bag if only Slow Load units remain.",
   "Turn on the Spot": "Free pivoting during moves.",
   "Turret Rear-Mounted Machine Gun": "Rear MG fires opposite direction of main turret weapon.",
   "Unreliable": "Gains an extra pin marker when hit.",
@@ -962,7 +962,8 @@ const UNSC_DOCTRINES = {
     baseCostPerModel: 2,
     specialRules: ["Stubborn", "Behind Enemy Lines", "VISR"],
     upgrades: [
-	{ name: "Strong", cost: 1, grantsRule: "Strong" }
+	{ name: "Strong", cost: 1, grantsRule: "Strong" },
+	{ name: "Fieldcraft", cost: 1, grantsRule: "Fieldcraft" }
 	]
   },
   "Spartan": {
@@ -1179,6 +1180,7 @@ const UNSC_UNITS = [
       "Jump-Jet Packs": { cost: 1, grantsRule: "Flight" },
       "Engineers": { cost: 1, grantsRule: "Engineers" },
       "Strong": { cost: 1, grantsRule: "Strong" },
+	  "Fieldcraft": { cost: 1, grantsRule: "Fieldcraft" },
       "Melee Weapon (NCO only)": { cost: 1, grantsRule: "Melee Weapon", perModel: false }
     },
     weaponReplacements: {
