@@ -372,6 +372,8 @@ const allWeaponProfiles = {
   "Light Howitzer": 'Range 48" (30–60"), Shots 1, Pen HE, Team, Fixed, Howitzer, HE (2")',
   "Medium Howitzer": 'Range 60" (36–72"), Shots 1, Pen HE, Team, Fixed, Howitzer, HE (3")',
   "Heavy Howitzer": 'Range 72" (42–84"), Shots 1, Pen HE, Team, Fixed, Howitzer, HE (4")',
+  "Medium Mortar": 'Range 12–60", Shots 1, Pen HE, Team, Fixed, Indirect Fire, HE (2")',
+  "Heavy Mortar": 'Range 12–72", Shots 1, Pen HE, Team, Fixed, Indirect Fire, HE (3")',
 
   // AUTOCANNONS & VARIANTS (for completeness)
   "Light Autocannon": 'Range 48", Shots 2, Pen +2, Team, Fixed, HE (1")',
@@ -383,6 +385,7 @@ const allWeaponProfiles = {
   "Shardstorm Launcher": 'Range 36", Shots 6, Pen –, Supercombine',
   "Multiple Launcher": 'Range 36–72", Shots 1, Pen HE, Team, Fixed, Indirect Fire, ML, HE (3")',
   "Splinter Turret": 'Range 48", Shots 3, Pen +1, Team, Fixed, HE (1")',
+  "Scrap cannon": 'Range 48", Shots 3, Pen +1, Team, Fixed, HE (1")',
   "Unarmed": 'No ranged weapon',
 
   // If you keep using "Explosive Charge" as a weapon label in squads
@@ -1397,6 +1400,32 @@ const UNSC_UNITS = [
       }
     }
   },
+{
+  name: "Mortar Team",
+  type: "Team",
+  allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
+  costs: { Inexperienced: 36, Regular: 45, Veteran: 54 },
+  baseMen: 3,
+  maxMen: 4,
+  weapons: [{ name: "Medium Mortar" }],
+  specialRules: ["Team Weapon", "Fixed", "For Humanity’s Survival!"],
+  options: {
+    squadUpgrades: {
+      "Upgrade to Heavy Mortar": {
+        cost: 15,
+        grantsRule: "Heavy Mortar",
+        addMan: 1,
+        perModel: false,
+        replacesWeapon: "Medium Mortar"
+      },
+      "Spotter": {
+        cost: 10,
+        grantsRule: "Spotter",
+        perModel: false
+      }
+    }
+  }
+},
   {
     name: "M41 LAAG Defensive Mount",
     type: "Team",
@@ -2468,6 +2497,32 @@ const COVENANT_UNITS = [
       }
     }
   },
+{
+  name: "Mortar Team",
+  type: "Team",
+  allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
+  costs: { Inexperienced: 36, Regular: 45, Veteran: 54 },
+  baseMen: 3,
+  maxMen: 4,
+  weapons: [{ name: "Medium Mortar" }],
+  specialRules: ["Team Weapon", "Fixed", "For The Great Journey!"],
+  options: {
+    squadUpgrades: {
+      "Upgrade to Heavy Mortar": {
+        cost: 15,
+        grantsRule: "Heavy Mortar",
+        addMan: 1,
+        perModel: false,
+        replacesWeapon: "Medium Mortar"
+      },
+      "Spotter": {
+        cost: 10,
+        grantsRule: "Spotter",
+        perModel: false
+      }
+    }
+  }
+},
    {
     name: "Type-26 Anti-Infantry Stationary Gun",
     type: "Team",
@@ -3281,27 +3336,36 @@ const BANISHED_UNITS = [
   },
 
   // Teams
-  {
-    name: "Machine Gun Team",
-    type: "Team",
-    allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
-    costs: { Inexperienced: 35, Regular: 50, Veteran: 65 },
-    baseMen: 3,
-    maxMen: 4,
-    weapons: [{ name: "Medium Plasma Machine Gun" }],
-    specialRules: ["Team Weapon", "Forged In Chains"],
-    options: {
-      squadUpgrades: {
-        "Upgrade to Heavy Plasma MG": {
-          cost: 20,
-          grantsRule: "Heavy Plasma MG",
-          addMan: 1,
-          perModel: false,
-          replacesWeapon: "Medium Plasma Machine Gun"
-        }
+{
+  name: "Machine Gun Team",
+  type: "Team",
+  allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
+  costs: { Inexperienced: 35, Regular: 50, Veteran: 65 },
+  baseMen: 3,
+  maxMen: 4,
+  weapons: [{ name: "Medium Plasma Machine Gun" }],
+  specialRules: ["Team Weapon", "Forged In Chains"],
+  options: {
+    squadUpgrades: {
+      "Upgrade to Heavy Plasma MG": {
+        cost: 20,
+        grantsRule: "Heavy Plasma MG",
+        addMan: 1,
+        perModel: false,
+        replacesWeapon: "Medium Plasma Machine Gun",
+        conflictsWith: "Upgrade to Scrap cannon"
+      },
+      "Upgrade to Scrap cannon": {
+        cost: 20,
+        grantsRule: "Scrap cannon",
+        addMan: 1,
+        perModel: false,
+        replacesWeapon: "Medium Plasma Machine Gun",
+        conflictsWith: "Upgrade to Heavy Plasma MG"
       }
     }
-  },
+  }
+},
   {
     name: "Anti Tank Team",
     type: "Team",
@@ -3360,6 +3424,32 @@ const BANISHED_UNITS = [
       }
     }
   },
+{
+  name: "Mortar Team",
+  type: "Team",
+  allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
+  costs: { Inexperienced: 36, Regular: 45, Veteran: 54 },
+  baseMen: 3,
+  maxMen: 4,
+  weapons: [{ name: "Medium Mortar" }],
+  specialRules: ["Team Weapon", "Fixed", "Forged In Chains"],
+  options: {
+    squadUpgrades: {
+      "Upgrade to Heavy Mortar": {
+        cost: 15,
+        grantsRule: "Heavy Mortar",
+        addMan: 1,
+        perModel: false,
+        replacesWeapon: "Medium Mortar"
+      },
+      "Spotter": {
+        cost: 10,
+        grantsRule: "Spotter",
+        perModel: false
+      }
+    }
+  }
+},
   {
     name: "Type-26 Anti-Infantry Stationary Gun",
     type: "Team",
