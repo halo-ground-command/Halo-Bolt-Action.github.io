@@ -261,8 +261,20 @@ button:not(.active):hover { background: #2e50b7; }
       <button class="back-btn" onclick="goBackToFaction()">← Back</button>
       <button class="save-btn" onclick="saveList()">💾 Save List</button>
       <button class="save-btn" onclick="loadList()">📂 Load List</button>
-      <button class="pdf-btn" onclick="exportPdf()">Export as PDF</button>
-      <div id="summaryBlock" style="margin-top:22px;font-size:1.09em;"></div>
+		<button class="pdf-btn" onclick="exportPdf()">Export as PDF</button>
+
+		<label style="display:block;margin-top:14px;font-size:0.98em;color:#dde;line-height:1.25;">
+		  <input
+			type="checkbox"
+			id="simplifiedValidationToggle"
+			checked
+			onchange="setSimplifiedValidationEnabled(this.checked)"
+			style="margin-right:6px;"
+		  >
+		  Use Simplified List Validation
+		</label>
+
+		<div id="summaryBlock" style="margin-top:22px;font-size:1.09em;"></div>
     </div>
   </div>
 
@@ -1560,7 +1572,7 @@ const UNSC_VEHICLES = [
 	  name: "M850 Grizzly",
 	  type: "Tank",
 	  allowedVeterancy: ["Regular", "Veteran"],
-	  costs: { Regular: 395, Veteran: 475 },
+	  costs: { Regular: 390, Veteran: 468 },
 	  weapons: [
 		{ name: "Turret-mounted twin-linked Heavy Anti-Tank Weapon" },
 		{ name: "Turret-mounted twin-linked Heavy Anti-Tank Weapon" },
@@ -5885,6 +5897,23 @@ function addLimitedRuleValidation(issues, units, platoonCommanderCount) {
   });
 }
 
+function isSimplifiedValidationEnabled() {
+  const stored = localStorage.getItem("haloSimplifiedValidationEnabled");
+  return stored === null ? true : stored === "true";
+}
+
+function setSimplifiedValidationEnabled(enabled) {
+  localStorage.setItem("haloSimplifiedValidationEnabled", enabled ? "true" : "false");
+  syncSimplifiedValidationToggle();
+  renderSummaryBlock();
+}
+
+function syncSimplifiedValidationToggle() {
+  const toggle = document.getElementById("simplifiedValidationToggle");
+  if (!toggle) return;
+  toggle.checked = isSimplifiedValidationEnabled();
+}
+
 function getArmyValidation() {
   const units = window.armyList || [];
 
@@ -6009,13 +6038,18 @@ function renderSummaryBlock() {
   const block = document.getElementById("summaryBlock");
   if (!block) return;
 
-  const validation = getArmyValidation();
-
   let html = "";
 
   if (window.currentFaction === "Covenant") {
     html += `<div><b>Caste System:</b> ${window.selectedArmyBonus || "None"}</div>`;
   }
+
+    if (!isSimplifiedValidationEnabled()) {
+    block.innerHTML = html;
+    return;
+  }
+
+  const validation = getArmyValidation();
 
   html += `<div style="margin-top:16px;"><b>List Validation (Simplified):</b></div>`;
 
@@ -8009,6 +8043,7 @@ function selectFaction(faction) {
   document.getElementById("factionSelectRow").style.display = "none";
   document.getElementById("sidebar").style.display = "";
   document.getElementById("backBtn").style.display = "";
+  syncSimplifiedValidationToggle();
 
 	updateArmyBonusUI();
 	syncArmyBonusEffects();
@@ -9563,16 +9598,18 @@ function renderArmySpecialRulesPage(pdf, rulesText, margin, width, faction, sele
 }
 
 function exportPdf() {
-  const validation = getArmyValidation();
+  if (isSimplifiedValidationEnabled()) {
+    const validation = getArmyValidation();
 
-  if (!validation.valid) {
-    const proceed = confirm(
-      "This list may be illegal:\n\n" +
-      validation.issues.map(i => "- " + i).join("\n") +
-      "\n\nExport anyway?"
-    );
+    if (!validation.valid) {
+      const proceed = confirm(
+        "This list may be illegal:\n\n" +
+        validation.issues.map(i => "- " + i).join("\n") +
+        "\n\nExport anyway?"
+      );
 
-    if (!proceed) return;
+      if (!proceed) return;
+    }
   }
 
   const { jsPDF } = window.jspdf;
@@ -9702,6 +9739,7 @@ function loadList() {
         document.getElementById("factionSelectRow").style.display = "none";
         document.getElementById("sidebar").style.display = "";
         document.getElementById("backBtn").style.display = "";
+		syncSimplifiedValidationToggle();
 
 		updateArmyBonusUI();
 		syncArmyBonusEffects();
@@ -9737,7 +9775,7 @@ function loadList() {
 
 // Single, non-duplicated handler (previous duplicates removed)
 document.getElementById("unitSelect").addEventListener("change", updateUnitOptions);
-
+syncSimplifiedValidationToggle();
 </script>
 </body>
 </html>
