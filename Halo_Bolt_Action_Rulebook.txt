@@ -263,12 +263,12 @@ Type - SMALL ARMS
 	24"/30"
 	2/1
 	-
-	–
+	Range Finder
 	Pulse Carbine
 	24"/30"
 	2/1
 	-
-	Overheat, Tracking
+	Overheat, Tracking, Range Finder
 	DMR/Stalker Rifle/Light Rifle
 	30"
 	1
@@ -337,7 +337,7 @@ Type - HEAVY WEAPONS
 	+2
 	–
 	Spartan Laser
-	30"
+	36"
 	1
 	+7
 	Team, Battery Charge, Shaped Charge
@@ -470,7 +470,7 @@ Before shooting, choose which weapons in the unit are overheated. Each overheate
 Paired
 Paired machineguns do not halve their shoots.
 Range Finder
-Weapons with the Range Finder rule are optimized for long-distance engagements and fare poorly at close range. As a result, if the target is within 6 inches, the shooter suffers a -1 to hit penalty (reducing the usual point-blank bonus to +1 instead of +2).
+When a unit is given a Fire order, up to one Range Finder weapon in range of the target may choose not to fire; if it does so, one other model in the same unit firing a Small Arms weapon receives +1 to hit for that shooting attack only. If the Range Finder weapon could have fired multiple shots at the target, this bonus may be given to one Heavy weapon instead. 
 Sniper
 Units equipped with this weapon count as having the Sniper special rule.
 Supercombine
@@ -494,6 +494,8 @@ Berserker
 When this unit performs an assault, each model in the unit rolls 1 additional attack die during the first round of that close combat. Additionally, If a Berserker unit fails an Order test (excluding FUBAR) and there is an enemy Infantry or Artillery unit within assault reach (i.e., eligible to be assaulted under the core rules), it must immediately take a Run (Assault) order against the nearest eligible unit. If no such unit is within assault reach, resolve the failed test as normal (the unit goes Down).
 
 
+
+
 Composed Beings
 Prometheans and other advanced AI mechanical constructs, often the result of biological entities being transformed into machines, exhibit unwavering focus and resilience on the battlefield. These units are not affected by Horror's -1 morale and cannot benefit from medics.
 Engineers
@@ -507,7 +509,7 @@ Units with the Fast rule have a base movement of 8 inches, allowing them to Run 
 Fieldcraft
 Units with Fieldcraft treat rough terrain as open ground for movement. When they assault a unit through rough ground, the defender loses Defensive Position if it’s granted by that terrain.
 Flight
-These units can Advance up to 12 inches and Run up to 18 inches, ignoring terrain restrictions during their movement. However, they cannot end their move in impassable terrain, nor in rough ground if a run order was issued instead. If a unit with the Flight rule is ambushed while flying, it cannot benefit from soft/hard cover saves. Infantry units with this rule may opt to move on the ground instead, following the standard movement rules for infantry. Units that use Flight cannot pick up or carry objectives on a Run order.
+These units can Advance up to 12 inches and Run up to 18 inches, ignoring terrain restrictions during their movement. However, they cannot end their move in impassable terrain, nor in rough ground if a run order was issued instead. If a unit with the Flight rule is ambushed while flying, it cannot benefit from soft/hard cover saves. Infantry units with this rule may opt to move on the ground instead, following the standard movement rules for infantry and other rules the unit has. Units that use Flight cannot pick up or carry objectives on a Run order.
 Flood Infection
 Immediately after a unit with this rule defeats an enemy Infantry or Artillery unit in close quarters, roll one D6 for each enemy model removed during and after that combat. For each roll equal to or greater than the damage value of the Flood unit, one slain model may be immediately returned to the unit, up to its original starting size. If the unit has Energy Shields, increase the requirement by +1 for the purposes of this rule. This ability has no effect against Automatons and Composed Beings, who are immune due to their machine nature.
 Green
@@ -687,7 +689,7 @@ Criteria
 	-1
 	Firer is inexperienced  
 	-1
-	Point-blank range (Not VS flying Aircraft) and (Range Finder = -1)
+	Point-blank range (Not VS flying Aircraft)
 	+2
 	FIRE order with AT Gun vs Vehicles (Not vs Flying aircraft)
 	+1
