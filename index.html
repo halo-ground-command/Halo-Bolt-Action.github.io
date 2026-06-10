@@ -500,7 +500,7 @@ window.unitSpecialDescriptions = {
   "Green": "First casualty triggers a D6 roll: 1 = gain D6 pins and go Down, 6 = unit upgraded to Regular morale (9).",
   "Gun Shield": "Crew of a gun with a gun shield count as in soft cover vs small arms hits from within the gun’s front arc.",
   "Horror": "Units with Horror are immune to Horror. Assaulting a Horror unit requires an Order test at -1 morale, even if unpinned. When this unit assaults, the target takes a Morale check at -1 before reacting; if failed, it goes Down (loses Defensive Position).",
-  "Infested Terrain": "Once per army, one unit with this rule deployed fully within terrain using Infiltrator may make that terrain Infested Terrain. It cannot be a road, objective marker, bunker, impassable terrain, or terrain containing an objective. At the end of an enemy non-Flood Infantry/Artillery unit’s activation, if it moved across/through/touching it or has a model inside/touching it, it gains 1 Pin. A unit can only gain 1 Pin per turn from this rule.",
+  "Infested Terrain": "Once per army, one unit with this rule fully within a terrain may make that terrain Infested Terrain. It cannot be a road, objective marker, bunker, impassable terrain, or terrain containing an objective. At the end of an enemy non-Flood Infantry/Artillery unit’s activation, if it moved across/through/touching it or has a model inside/touching it, it gains 1 Pin. A unit can only gain 1 Pin per turn from this rule.",
   "Infiltrator": "+1 cover if stationary (no Advance/Run orders) against shooting attacks. Can use special deployment rules if scenario allows.",
   "Knight Commander": "The added officer model is considered a Platoon Commander and this unit takes a Platoon Commander slot from a platoon. The Knight Commander remains part of this unit. While the Knight Commander is alive, the unit does not suffer the effects of losing its NCO.",
   "Hardlight Screen": "While this unit is not Down, friendly Infantry and Artillery units drawing cover from this unit may treat that cover as hard cover instead of soft cover. The line of fire should pass through or within 1\" of this unit. This rule does not improve cover for the unit itself.",
@@ -4669,17 +4669,24 @@ const FLOOD_UNITS = [
         cost: -3,
         replaces: "Assault Rifle",
         grants: "Battle Rifle/Covenant Carbine"
+      },
+      "Unarmed": {
+        max: 6,
+        cost: -8,
+        replaces: "Assault Rifle",
+        grants: "Unarmed"
       }
     },
     ncoReplacement: {
-      options: ["Assault Rifle", "Needler", "Submachine Gun", "Plasma Rifle", "Spiker", "Shotgun", "Battle Rifle/Covenant Carbine"],
+      options: ["Assault Rifle", "Needler", "Submachine Gun", "Plasma Rifle", "Spiker", "Shotgun", "Battle Rifle/Covenant Carbine", "Unarmed"],
       costs: {
         "Needler": -2,
         "Submachine Gun": -2,
         "Plasma Rifle": 0,
         "Spiker": 0,
         "Shotgun": -3,
-        "Battle Rifle/Covenant Carbine": -3
+        "Battle Rifle/Covenant Carbine": -3,
+		"Unarmed": -8,
       }
     }
   }
@@ -4753,7 +4760,7 @@ const FLOOD_UNITS = [
     "Fieldcraft",
     "Behind Enemy Lines",
     { name: "Assimilate", description: "If this unit wins an assault against a target affected by Flood Infection, you can replace each surviving Infection Form with an unarmed Combat Form. If so, the unit immediately becomes Regular, becomes an unarmed Combat Form unit and retains its current order die." },
-    { name: "Mindless Hunger", description: "This unit cannot pick up, carry or control objectives. It may still contest objectives." }
+    { name: "Mindless Hunger", description: "This unit cannot pick up, carry, score or control objectives. It may still contest objectives." }
   ],
   options: {
     extraMenCost: { Inexperienced: 7 },
