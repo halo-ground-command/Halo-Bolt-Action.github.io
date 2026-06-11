@@ -463,6 +463,7 @@ const weaponSpecialDescriptions = {
   "Overheat": "Before shooting, choose which weapons to overheat; each overheated weapon gains +1 shot. After shooting, place 1 pin on the firing unit for each overheated weapon.",
   "One-Shot": "The weapons can only be fired once during the game (replace the model after firing). Models within a unit carrying one-shot weapons can split fire against different targets from the other models.",
   "MG": "Behaves exactly like a standard machine gun for all game rules and modifiers.",
+  "Linked": "All shots from this weapon must target the same enemy unit.",
   "ML": "Never ranges in better than 6+. After placing the original template, all enemy units within 6\" of it also become targets; roll 6+ separately for each. Cannot fire if friends are within 6\" of the original template. Firer takes 1 pin.",
   "Range Finder": "When a unit is given a Fire order, up to one Range Finder weapon in range (And LOS) of the target may choose not to fire; if it does so, one other model in the same unit firing a Small Arms weapon receives +1 to hit for that shooting attack. If the Range Finder weapon could have fired multiple shots at the target, this bonus may be given to one Heavy weapon instead.",
   "Paired": "Paired machine guns do not halve their shots when mounted on a vehicle.",
@@ -492,7 +493,7 @@ window.unitSpecialDescriptions = {
   "Energy Shields": "+1 harder to damage from shooting; 5+ cover in the open; +1 to soft/hard cover saves. Remember rolls of 1 always fail.",
   "Fanatics": "Ignore pin modifiers on morale checks and are not routed by pins. If defeated in close quarters, fight again immediately until they win or are wiped out.",
   "Fast": "Move 8\"; Run 16\".",
-  "Flak": "Autofires at FAO called aircraft in arc and range. However against on table aircraft just ignore minus 1 to hit vs flying. Pintle weapons count as having Flak.", 
+  "Flak": "Autofires at FAO called aircraft in arc and range (5+). However against on table aircraft just ignore minus 1 to hit vs flying. Remember: Pintle mounted weapons count as having Flak too.", 
   "Fieldcraft": "Treat rough terrain as open ground for movement. When assaulting through rough ground, defenders lose Defensive Position gained from that Rough Ground.",
   "Strikes First": "Counts as having Defensive Position bonus in close quarters when performing an assault. If the opponent also has Defensive Position, Strikes First or a rule cancels this rule, then fight simultaneously.",
   "Flight": "Advance 12\"; Run 18\"; ignore terrain for movement. Cannot end in impassable terrain (or in rough ground after a Run). If ambushed while flying, no soft/hard cover saves. Cannot pick up or carry objectives on a Run order. Infantry may instead move on the ground using normal movement rules, using other unit rules that affect movement they may have.",
@@ -1536,9 +1537,10 @@ const UNSC_VEHICLES = [
     ],
     damageValue: "8+ (Light Tank)",
     transportCapacity: 8,
-    specialRules: [
-      "Reactive Disembarkation: If the Scorpion is targeted by any attack (regardless of weapon type), any infantry riding as passengers must immediately disembark before any dice are rolled. The attacker must be in range of the tank. Disembarking units are immediately placed within 1\" of the vehicle and automatically count as having gone Down or remain Down if already Down."
-    ],
+	specialRules: [
+	  "Reactive Disembarkation: If the Scorpion is targeted by any attack (regardless of weapon type), any infantry riding as passengers must immediately disembark before any dice are rolled. The attacker must be in range of the tank. Disembarking units are immediately placed within 1\" of the vehicle and automatically count as having gone Down or remain Down if already Down.",
+	  "Improved HE: Instead of HE (1\"), the Medium Anti-Tank Weapon has HE (2\")."
+	],
     options: {
       weaponUpgrades: {
         "Pintle-mounted MMG (forward arc)": {
@@ -7147,6 +7149,42 @@ function applyHardLightCalibrationWeaponRules(unit, table) {
   });
 }
 
+function isLinkedWeaponLabel(label) {
+  return /\blinked\b/i.test(String(label || ""));
+}
+
+function stripLeadingWeaponCountOnly(label) {
+  return String(label || "")
+    .replace(/^\s*\d+\s*x\s*/i, "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function multiplyShotsValue(shots, multiplier) {
+  const n = Number(String(shots || "").trim());
+  if (!Number.isFinite(n) || n <= 0) return shots;
+  return String(n * multiplier);
+}
+
+function applyLinkedWeaponBatteryAggregation(table) {
+  if (!Array.isArray(table)) return table;
+
+  return table.map(row => {
+    if (!row || !isLinkedWeaponLabel(row.label)) return row;
+
+    const qty = Number(row.qty) || 1;
+    if (qty <= 1) return row;
+
+    return {
+      ...row,
+      qty: 1,
+      label: stripLeadingWeaponCountOnly(row.label),
+      shots: multiplyShotsValue(row.shots, qty),
+      special: addWeaponSpecialRule(row.special, "Linked")
+    };
+  });
+}
+
 const buildWeaponsTableBase = buildWeaponsTable;
 
 function stripLeaderWeaponPrefix(label) {
@@ -7255,11 +7293,41 @@ function applyLeaderMeleeUpgradeToWeaponsTable(unit, table) {
   return out;
 }
 
+function applyM808BScorpionImprovedHE(unit, table) {
+  if (!unit || !Array.isArray(table) || unit.name !== "M808B Scorpion") return table;
+
+  return table.map(row => {
+    const label = String(row.label || "");
+    const base = getBaseWeaponName(label);
+
+    const isMainGun =
+      base === "Medium Anti-Tank Weapon" ||
+      /\bMedium Anti-Tank Weapon\b/i.test(label);
+
+    if (!isMainGun) return row;
+
+    let special = String(row.special || "");
+
+    if (/HE\s*\(1"\)/i.test(special)) {
+      special = special.replace(/HE\s*\(1"\)/gi, 'HE (2")');
+    } else if (!/HE\s*\(2"\)/i.test(special)) {
+      special = special ? `${special}, HE (2")` : 'HE (2")';
+    }
+
+    return {
+      ...row,
+      special
+    };
+  });
+}
+
 buildWeaponsTable = function(unit) {
   let table = buildWeaponsTableBase(unit);
   table = applyArmouryWeaponProfileSwaps(unit, table);
   table = applyHardLightCalibrationWeaponRules(unit, table);
   table = applyLeaderMeleeUpgradeToWeaponsTable(unit, table);
+  table = applyM808BScorpionImprovedHE(unit, table);
+  table = applyLinkedWeaponBatteryAggregation(table);
   return table;
 };
 
