@@ -1,4 +1,4 @@
-﻿Armies of the Floodv3.3
+﻿Armies of the Floodv3.4
 
 Army Special Rules
 Living Nightmare
@@ -32,7 +32,7 @@ Flood presence corrupts and destabilizes synthetic minds, causing unpredictable 
 Flood Armoury
 Burrowing Tendrils
 Flood Officer units that contain tendrils may take Burrowing Tendrils for +2pt per model. If taken, the unit gains the Infiltrator and Stealth special rules.
-Additionally, once per army, when one unit with this rule is deployed fully within an eligible terrain piece using Infiltrator deployment, that terrain piece may become Infested Terrain for the rest of the game. This terrain piece cannot be a road, objective marker, bunker, impassable terrain, or a building/terrain piece containing an objective.
+Additionally, once per army, at any point during the game, if one friendly unit with this rule is wholly within an eligible terrain piece, that terrain piece may become Infested Terrain for the rest of the game. This terrain piece cannot be a road, objective marker, bunker, impassable terrain, or a building/terrain piece containing an objective. 
 Infested Terrain: At the end of an enemy non-Flood Infantry or Artillery unit’s activation, if that unit moved across, through, or into contact with Infested Terrain during that activation, or has at least one model inside or touching Infested Terrain, that unit gains 1 Pin marker. A unit can only gain 1 Pin per turn from Infested Terrain. 
 Patient Predators
 The following units can take Patient Predators for +1pt per model:
@@ -167,16 +167,17 @@ Cost
   – Needlers for -2pts each    – SMGs for -2pts each 
   – Plasma rifles for +0pts each   – Spikers for +1pts each
   – Shotguns for -3pts each
-- The NCO and up to 6 combat forms may replace their Assault Rifles with Battle rifles/Covenant Carbines for -3pts each
+- The NCO and up to 6 combat forms may replace their Assault Rifles with 
+  – Battle rifles/Covenant Carbines for -3pts each
+  – Unarmed for -8pts each
 - The unit may be given Anti-Tank Grenades for +2pts per model
 - The unit may be given Energy Shield modules for +3pts per model
-- The NCO may be given a Melee Weapon for +1pt
-- The unit may be given Melee Weapons for +1pt per model
-- The squad can be given Strong for +1pt per man
+- The NCO may be given a Melee Weapon special rule for +1pt
+- The unit may be given Melee Weapons special rule for +1pt per model
+- The squad can be given Strong for +1pt per model
 	Special Rules
-	- Tank Hunters: If anti-tank grenades are taken                    - Horror
-- Energy Shields: If energy shield modules are taken          - Fieldcraft
-- Flood Infection
+	- Tank Hunters: If anti-tank grenades are taken                    - Horror - Fieldcraft
+- Energy Shields: If energy shield modules are taken         - Flood Infection
 	Stalker Form Swarm
 Cost
 	80pts (Veteran) 
@@ -283,7 +284,7 @@ Cost
 - Fieldcraft
 - Behind Enemy Lines
 - Assimilate: If this unit wins an assault against a target affected by Flood Infection, you can replace each surviving Infection Form with an unarmed Combat Form. If so, the unit immediately becomes Regular, becomes an unarmed Combat Form unit (Uses their rules instead) and retains its current order die. 
-- Mindless Hunger: This unit cannot pick up, carry or control objectives. It may still contest objectives. 
+- Mindless Hunger: This unit cannot pick up, carry, score or control objectives. It may still contest objectives. 
 	
 
 

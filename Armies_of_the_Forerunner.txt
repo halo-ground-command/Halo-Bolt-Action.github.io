@@ -1,4 +1,4 @@
-﻿Armies of the Forerunnerv3.3
+﻿Armies of the Forerunnerv3.4
 
 Army Special Rules
 Enhanced Weapon Systems
@@ -834,6 +834,99 @@ Cost
 - Titanic Aircraft: When rolling on the Aircraft Damage chart against this unit, reduce the result by 1 (to a minimum of 1).
 - Gravitic Beam:  When this unit is given a successful Fire order, it may activate its gravitic beam. If it does, each other unit within 6" of this unit receives D3 pins.
 	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+LEGENDS
+AIRCRAFTS
+Phaeton Eos
+Cost
+	80pts (Regular), 96pts (Veteran) 
+	Weapons
+	None 
+	Damage Value
+	7+ (Medium Aircraft)  
+	Special Rules
+	- Nimble
+- Phase Blink: Once per turn, when you fail an Evasion save for this vehicle, you may re-roll that save.
+- Shield Pylon Deployment: When this vehicle is given a Fire or Advance order, it may place up to two Shield Pylon Sentinels within 12" instead of firing, removing any previously placed by this vehicle. Shield Pylon Sentinels count as obstacles only for enemy units. Friendly units ignore them for movement, but can gain hard cover from them. Enemy units never receive cover from them.
+	
+
+
+
+
+
+
 
 
 

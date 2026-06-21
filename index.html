@@ -909,6 +909,62 @@ Once per turn, just before activating a Flood unit, select one unactivated enemy
   * 1-3: The enemy immediately receives 2 Pin markers.
   * 4-5: The enemy suffers -1 to hit for the rest of the turn.
   * 6: The enemy must take a morale check. If failed, roll on the FUBAR table; if passed, no effect.
+`,
+  "Insurrection": `
+Prepared Uprising
+
+- Effect:
+Any Insurrectionist Infantry unit that is set up on the table before Turn 1 may start the game already in Ambush. If you decide to do so, place one of your order dice next to that unit as if it had been ordered to Ambush before drawing the first order die of Turn 1.
+
+In addition, during Turn 1 of the game, all Insurrectionist Infantry units count as having the Fieldcraft special rule.
+
+Additionally, you may deploy one Infantry unit from your army list as if it had the Infiltrator special rule. This only affects deployment, the unit does not actually gain the Infiltrator special rule during the battle.
+
+Ambush Drills
+
+- Effect:
+When an Insurrectionist Infantry unit is given an Advance order without using Flight, it may choose to go Down instead of firing. If it does so, resolve the unit’s Advance movement as normal, then replace its Advance order die with a Down order die. The unit may not fire, and its activation is complete.
+
+Concealed Firing Positions
+
+- Effect:
+Insurrectionist Infantry and Artillery units improve their Cover Save by +1 while they have an Ambush order, as long as they are already in cover.
+
+Hidden Sentries
+
+- Effect:
+Enemy units using the Infiltrator special rule cannot deploy within 24" of any Insurrectionist unit that was set up on the table before them, instead of the usual 12". If this prevents an enemy Infiltrator unit from being legally deployed, that unit must be deployed as if it did not have Infiltrator instead.
+
+Local Area Control
+
+- Effect:
+When an Insurrectionist Infantry unit attempts to enter the battlefield by Reserves or Outflanking, it gains +1 to its Morale value for the Order test made to come onto the table.
+`,
+  "Swords of Sanghelios": `
+Sangheili Command
+
+- Effect:
+Swords of Sanghelios Infantry and Artillery units that are within 6" of at least one friendly Elite unit and are not within an Officer’s morale bubble gain a +1 Morale bonus.
+
+Disciplined Under Fire
+
+- Effect:
+Each time a Veteran Swords of Sanghelios unit would gain 2 or more Pin markers from HE or another source, reduce the number of Pin markers gained by 1.
+
+Rite of Challenge
+
+- Effect:
+When an Elite Infantry unit that includes at least one model with a Melee Weapon is given a Run order to assault an enemy unit, it counts as having the Fieldcraft special rule for that action.
+
+Honour in Victory
+
+- Effect:
+When a Swords of Sanghelios Infantry unit wins a Close Quarters combat, do not roll a D6 for its Regroup move. Instead, that unit may make a Regroup move of up to 6".
+
+War-Chants of Sanghelios
+
+- Effect:
+At the start of every Game Turn, roll a D6 for each enemy Infantry and Artillery unit on the table that has no Pin markers. On a 5+, that unit immediately receives 1 Pin marker. Do not roll for units embarked inside transports.
 `
 };
 
@@ -4475,6 +4531,19 @@ const FORERUNNER_VEHICLES = [
       { name: "Phase Blink", description: "Once per turn, when you fail an Evasion save for this vehicle, you may re-roll that save." }
     ]
   },
+  {
+    name: "Phaeton Eos",
+    type: "Aircraft",
+    allowedVeterancy: ["Regular", "Veteran"],
+    costs: { Regular: 80, Veteran: 96 },
+    weapons: [],
+    damageValue: "7+ (Medium Aircraft)",
+    specialRules: [
+      "Nimble",
+      { name: "Phase Blink", description: "Once per turn, when you fail an Evasion save for this vehicle, you may re-roll that save." },
+      { name: "Shield Pylon Deployment", description: "When this vehicle is given a Fire or Advance order, it may place up to two Shield Pylon Sentinels within 12\" instead of firing, removing any previously placed by this vehicle. Shield Pylon Sentinels count as obstacles only for enemy units. Friendly units ignore them for movement, but can gain hard cover from them. Enemy units never receive cover from them." }
+    ]
+  },
 	{
 	  name: "Retriever Sentinel",
 	  type: "Aircraft",
@@ -5367,13 +5436,39 @@ window.armyList = [];
 window.currentFaction = null;
 window.selectedArmyBonus = "";
 
+const UNSC_ARMY_BONUSES = [
+  { value: "", label: "Army: UNSC" },
+  { value: "Insurrection", label: "Army: Insurrection" }
+];
+
 const COVENANT_ARMY_BONUSES = [
   { value: "", label: "Caste System: None" },
   { value: "Commanding Presence", label: "Caste System: Commanding Presence" },
   { value: "Cannon Fodder", label: "Caste System: Cannon Fodder" },
   { value: "Wall of Deflection", label: "Caste System: Wall of Deflection" },
-  { value: "Fury Unleashed", label: "Caste System: Fury Unleashed" }
+  { value: "Fury Unleashed", label: "Caste System: Fury Unleashed" },
+  { value: "Swords of Sanghelios", label: "Army: Swords of Sanghelios" }
 ];
+
+function getEffectiveArmyName() {
+  if (window.currentFaction === "UNSC" && window.selectedArmyBonus === "Insurrection") {
+    return "Insurrection";
+  }
+
+  if (window.currentFaction === "Covenant" && window.selectedArmyBonus === "Swords of Sanghelios") {
+    return "Swords of Sanghelios";
+  }
+
+  return window.currentFaction;
+}
+
+function isInsurrectionArmy() {
+  return window.currentFaction === "UNSC" && window.selectedArmyBonus === "Insurrection";
+}
+
+function isSwordsArmy() {
+  return window.currentFaction === "Covenant" && window.selectedArmyBonus === "Swords of Sanghelios";
+}
 window.UNIT_LISTS = {
   UNSC: UNSC_UNITS,
   Covenant: COVENANT_UNITS,
@@ -5394,21 +5489,32 @@ function updateArmyBonusUI() {
   const sel = document.getElementById("armyBonusSelect");
   if (!sel) return;
 
-  if (window.currentFaction !== "Covenant") {
+  let options = [];
+
+  if (window.currentFaction === "UNSC") {
+    options = UNSC_ARMY_BONUSES;
+  } else if (window.currentFaction === "Covenant") {
+    options = COVENANT_ARMY_BONUSES;
+  } else {
     sel.style.display = "none";
     sel.innerHTML = "";
+    window.selectedArmyBonus = "";
     return;
   }
 
   sel.style.display = "";
   sel.innerHTML = "";
 
-  COVENANT_ARMY_BONUSES.forEach(optData => {
+  options.forEach(optData => {
     const opt = document.createElement("option");
     opt.value = optData.value;
     opt.textContent = optData.label;
     sel.appendChild(opt);
   });
+
+  if (!options.some(o => o.value === window.selectedArmyBonus)) {
+    window.selectedArmyBonus = "";
+  }
 
   sel.value = window.selectedArmyBonus || "";
 }
@@ -6049,9 +6155,18 @@ function renderSummaryBlock() {
 
   let html = "";
 
-  if (window.currentFaction === "Covenant") {
-    html += `<div><b>Caste System:</b> ${window.selectedArmyBonus || "None"}</div>`;
-  }
+	if (window.currentFaction === "UNSC") {
+	  html += `<div><b>Faction:</b> ${getEffectiveArmyName()}</div>`;
+	}
+
+	if (window.currentFaction === "Covenant") {
+	  if (isSwordsArmy()) {
+		html += `<div><b>Faction:</b> Swords of Sanghelios</div>`;
+	  } else {
+		html += `<div><b>Faction:</b> Covenant</div>`;
+		html += `<div><b>Caste System:</b> ${window.selectedArmyBonus || "None"}</div>`;
+	  }
+	}
 
     if (!isSimplifiedValidationEnabled()) {
     block.innerHTML = html;
@@ -6129,8 +6244,19 @@ function syncArmyBonusEffects() {
 }
 
 function onArmyBonusChange() {
+  const beforeArmy = getEffectiveArmyName();
+
   const sel = document.getElementById("armyBonusSelect");
   window.selectedArmyBonus = sel ? sel.value : "";
+
+  const afterArmy = getEffectiveArmyName();
+
+  // If switching between base army and alternate army, clear the list.
+  // This avoids illegal old units/upgrades staying in the list.
+  if (beforeArmy !== afterArmy) {
+    window.armyList = [];
+  }
+
   syncArmyBonusEffects();
   populateUnitSelect();
   renderArmyList();
@@ -6698,6 +6824,9 @@ function getAllowedDoctrineChoicesForUnit(unit, unitData) {
   const vet = unit?.veterancy;
 
   return allChoices.filter(choice => {
+    if (isInsurrectionArmy() && choice.name === "Spartan") return false;
+    if (isSwordsArmy() && choice.name === "Brute") return false;
+
     if (!Array.isArray(choice.allowedVeterancy) || choice.allowedVeterancy.length === 0) return true;
     return choice.allowedVeterancy.includes(vet);
   });
@@ -8052,7 +8181,22 @@ function getUnitsForSelector(faction) {
   // Normal behavior for all factions
   let base = (window.UNIT_LISTS?.[faction] || []).concat(window.VEHICLE_LISTS?.[faction] || []);
 
-  // Covenant army-bonus locked units
+  // Insurrection restriction: no Spartan units.
+  if (isInsurrectionArmy()) {
+    base = base.filter(unit =>
+      !String(unit.name || "").toLowerCase().includes("spartan")
+    );
+  }
+
+  // Swords of Sanghelios restriction: no Brute units.
+  if (isSwordsArmy()) {
+    base = base.filter(unit =>
+      !String(unit.name || "").toLowerCase().includes("brute")
+    );
+  }
+
+  // Covenant army-bonus locked units.
+  // Swords of Sanghelios uses Covenant as its base list, but should not unlock Caste System units.
   if (faction === "Covenant") {
     base = base.filter(unit =>
       !unit.requiresArmyBonus || unit.requiresArmyBonus === window.selectedArmyBonus
@@ -9304,7 +9448,8 @@ function renderPdfHeader(pdf, margin, width, y) {
   pdf.setFontSize(14);
   pdf.setFont("helvetica", "bold");
   pdf.setTextColor(56, 148, 255);
-  pdf.text(`Faction: ${window.currentFaction || "-"}`, margin, y);
+  const effectiveArmyName = getEffectiveArmyName();
+  pdf.text(`Faction: ${effectiveArmyName || "-"}`, margin, y);
   pdf.setTextColor(0, 0, 0);
 
   let total = (window.armyList || []).reduce((sum, u) => sum + (Number(u.cost) || 0), 0);
@@ -9717,18 +9862,20 @@ function exportPdf() {
   }
 
   // Army Special Rules page
-  if (window.currentFaction && armyRulesText && armyRulesText[window.currentFaction]) {
-    renderArmySpecialRulesPage(
-      pdf,
-      armyRulesText[window.currentFaction],
-      margin,
-      width,
-      window.currentFaction,
-      window.selectedArmyBonus
-    );
-  }
+  const effectiveArmyName = getEffectiveArmyName();
 
-	const factionSlug = (window.currentFaction || "unknown")
+	if (effectiveArmyName && armyRulesText && armyRulesText[effectiveArmyName]) {
+	  renderArmySpecialRulesPage(
+		pdf,
+		armyRulesText[effectiveArmyName],
+		margin,
+		width,
+		effectiveArmyName,
+		window.selectedArmyBonus
+	  );
+	}
+
+	const factionSlug = (getEffectiveArmyName() || "unknown")
 	  .toLowerCase()
 	  .replace(/\s+/g, "_");
 
@@ -9754,7 +9901,7 @@ function saveList() {
   const url = URL.createObjectURL(blob);
   const a = document.createElement("a");
   a.href = url;
-  const factionSlug = (window.currentFaction || "unknown")
+  const factionSlug = (getEffectiveArmyName() || "unknown")
   .toLowerCase()
   .replace(/\s+/g, "_");
 

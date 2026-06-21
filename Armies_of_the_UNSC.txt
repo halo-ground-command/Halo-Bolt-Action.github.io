@@ -1,4 +1,4 @@
-﻿Armies of the UNSC v3.3
+﻿Armies of the UNSC v3.4
 
 Army Special Rules
 Desperate Measures
@@ -35,8 +35,7 @@ Gain the Stubborn, Behind Enemy Lines, and VISR special rules.
 Cost: +2pts per model.
 Optional additional upgrades (ODST-only):
  – The squad can be given Strong for +1pt per model.
-
-
+ – The squad can be given Fieldcraft for +1pt per model.
 
 
 
@@ -338,7 +337,7 @@ Cost
 	Assault Rifles
 	Options
 	- Add up to 5 additional men for +21pts each
-- The NCO and up to 5 men may have DMRs instead of Assault Rifles for -5pts each
+- The NCO and up to 5 men may have DMRs instead of Assault Rifles for -5pts
 - The NCO and up to 5 men may have Battle Rifles instead of Assault Rifles for -3pts each
 - The NCO and up to 9 men may have Submachine Guns instead of Assault Rifles for -2pts each
 - Up to 2 men may have a Light Machine Gun for +9pts
@@ -347,6 +346,7 @@ Cost
 - The squad can be given Jump-Jet Packs for +1pt per man
 - The NCO may be given a Melee Weapon for +1pt
 - The squad can be given Strong for +1pt per man 
+- The squad can be given Fieldcraft for +1pt per man 
 - The squad can be given Engineers for +1pt per man
 	Special Rules
 	- Flight: If Jump-Jet Packs are taken                      - Stubborn
@@ -721,6 +721,7 @@ Cost
 - Gain the Reinforced Front Armour rule for +15pts
 	Special Rules
 	- Reactive Disembarkation: If the Scorpion is targeted by any attack any passengers must immediately disembark before any dice are rolled. The attacker must be in range of the tank. Disembarking units are immediately placed within 1" of the vehicle and automatically count as having gone Down.
+- Improved HE: Instead of HE (1") the medium anti-tank weapon has HE (2")
 	M808S Scorpion
 Cost
 	168pts (Inexperienced), 210pts (Regular), 252pts (Veteran)
@@ -730,7 +731,7 @@ Cost
 	9+ (Medium Tank)  
 	M850 Grizzly
 Cost
-	395 pts (Regular), 475 pts (Veteran)
+	390pts (Regular), 468pts (Veteran)
 	Weapons
 	2 turret-mounted twin-linked Heavy Anti-Tank Weapons with coaxial paired MMG
 	Damage Value
@@ -739,8 +740,6 @@ Cost
 	- Reinforced Front Armour
 - Slow Load
 	
-
-
 
 
 
@@ -1629,5 +1628,83 @@ Cost
 	Special Rules
 	- Reactive Disembarkation: If the Tarantula is targeted by any attack any passengers must immediately disembark before any dice are rolled. The attacker must be in range of the tank. Disembarking units are immediately placed within 1" of the vehicle and automatically count as having gone Down.
 	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+EXTRA
+INFANTRY SQUADS AND TEAMS
+Mortar Team
+Cost
+	36pts (Inexperienced), 45pts (Regular), 54pts (Veteran)
+	Composition
+	3 Men
+	Weapons
+	1 Medium Mortar
+	Options
+	- Upgrade the Medium Mortar to a Heavy Mortar for +15pts, gaining 1 extra man.  
+- Add a Spotter for +10pts. 
+	Special Rules
+	- Team Weapon
+- For Humanity’s Survival!
+- Fixed 
+	
+
+
+
+
+
+
 
  | Page

@@ -1,4 +1,4 @@
-﻿Armies of the Banishedv3.3
+﻿Armies of the Banishedv3.4
 
 Army Special Rules
 Brotherhood of Chaos
@@ -609,7 +609,7 @@ Cost
 	Composition
 	1 NCO and 3 Brutes 
 	Weapons
-	Melee weapons
+	Melee weapons (Unarmed)
 	Options
 	- Add up to 2 additional Brutes for +18pts each  
 - The squad may be given Energy Shield Modules for +3pts per Brute 
@@ -803,10 +803,13 @@ Cost
 	1 Medium Plasma Machine Gun 
 	Options
 	- Upgrade the Medium Plasma MG to a Heavy Plasma MG for +20pts, gaining 1 extra Grunt
+or
+- Upgrade the Medium Plasma MG to a Scrap cannon for +20pts, gaining 1 extra Grunt
 	Special Rules
 	- Team Weapon  
 - Fixed  
 - Forged In Chains
+- Scrap cannon: Heavy weapon: Range 48", Shots 3, Pen +1, Team, Fixed, HE (1")
 	Anti Tank Team
 Cost
 	49pts (Inexperienced), 70pts (Regular), 91pts (Veteran)
@@ -833,10 +836,6 @@ Cost
 - Infiltrator
 - Forged In Chains
 	
-
-
-
-
 
 
 
@@ -1679,6 +1678,22 @@ Cost
 	1 fuel rod gun on a rotating platform
 	Special Rules
 	- Flak
+	EXTRA
+INFANTRY SQUADS AND TEAMS
+Mortar Team
+Cost
+	36pts (Inexperienced), 45pts (Regular), 54pts (Veteran)
+	Composition
+	3 Jackal/Grunts
+	Weapons
+	1 Medium Mortar
+	Options
+	- Upgrade the Medium Mortar to a Heavy Mortar for +15pts, gaining 1 extra man.  
+- Add a Spotter for +10pts. 
+	Special Rules
+	- Team Weapon
+- Forged In Chains
+- Fixed 
 	
 
 
