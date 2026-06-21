@@ -1,0 +1,25 @@
+﻿Armies of the Insurrectionv1.0
+
+Use the UNSC army list, replacing the UNSC Army Special Rules with the rules below.
+Army Special Rules
+Prepared Uprising
+Insurrectionist cells hide weapons, scout routes, and prepare firing positions long before the battle begins.
+* Effect: Any Insurrectionist Infantry unit that is set up on the table before Turn 1 may start the game already in Ambush. If you decide to do so, place one of your order dice next to that unit as if it had been ordered to Ambush before drawing the first order die of Turn 1.
+* In addition, during Turn 1 of the game, all Insurrectionist Infantry units count as having the Fieldcraft special rule.
+* Additionally, you may deploy one Infantry unit from your army list as if it had the Infiltrator special rule. This only affects deployment, the unit does not actually gain the Infiltrator special rule during the battle.
+Ambush Drills 
+Insurrectionist fighters are trained to move carefully, keep low, and use every piece of cover while advancing under fire. 
+* Effect: When an Insurrectionist Infantry unit is given an Advance order without using Flight, it may choose to go Down instead of firing. If it does so, resolve the unit’s Advance movement as normal, then replace its Advance order die with a Down order die. The unit may not fire, and its activation is complete.
+Army Restrictions
+* An Insurrectionist army cannot include Spartans.
+* Units with For Humanities Survival! may still be upgraded as Troopers, Marines or ODSTS as normal.
+Concealed Firing Positions
+Insurrectionist fighters survive against better-equipped armies by fighting from concealed zones.
+* Effect: Insurrectionist Infantry and Artillery units improve their Cover Save by +1 while they have an Ambush order, as long as they are already in cover. 
+Hidden Sentries
+Insurrectionist territory is protected by lookouts, informants, hidden cameras, tripwires, false routes, and local warning networks.
+* Effect: Enemy units using the Infiltrator special rule cannot deploy within 24" of any Insurrectionist unit that was set up on the table before them, instead of the usual 12". If this prevents an enemy Infiltrator unit from being legally deployed, that unit must be deployed as if it did not have Infiltrator instead. 
+Local Area Control
+Insurrectionists know the back roads, service tunnels, settlements, and terrain of the battlefield better than any regular army.
+* Effect: When an Insurrectionist Infantry unit attempts to enter the battlefield by Reserves/Outflanking, it gains +1 to its Morale value for the Order test made to come onto the table. 
+ | Page
