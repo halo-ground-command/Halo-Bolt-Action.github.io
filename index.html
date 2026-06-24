@@ -507,7 +507,7 @@ window.unitSpecialDescriptions = {
   "Hardlight Screen": "While this unit is not Down, friendly Infantry and Artillery units drawing cover from this unit may treat that cover as hard cover instead of soft cover. The line of fire should pass through or within 1\" of this unit. This rule does not improve cover for the unit itself.",
   "Large Infantry": "Counts double for transport capacity. When this unit assaults or is assaulted, opponent loses Defensive Position.",
   "Pathfinder": "After both sides finish setup but before the first turn, if this unit is in the battlefield, it may make a Run move. It cannot assault and cannot be targeted by enemies in Ambush during this move.",
-  "Resilient": "Replaces Energy Shields/Shield Wall; Damage Value 6+; 5+ cover in open or CQ; +2 to soft/hard cover saves. Remember rolls of 1 always fail.",
+  "Resilient": "DV 6+; 5+ cover in open or CQ; +2 to soft/hard cover saves. Remember rolls of 1 always fail.",
   "Shield Wall": "6+ cover save in open ground, improved by +2 if unit is Down (4+). Improves other existing cover by 1. Remember rolls of 1 always fail.",
   "Shirkers": "Pins count double. Must always test for orders.",
   "Sniper": "While the Sniper Team is at full strength, one friendly Regular/Veteran Indirect Fire unit may draw LoS from this team as a Spotter. When the sniper rifle is not using the scope, all models may fire their carried weapons normally. When firing, the sniper rifle may use its scope: targets within 12\" are automatically missed, +1 to hit, no cover saves, +1 damage vs Infantry/Artillery, and if it damages you may choose the target unit leader as the casualty. If only 1 model remains in the Sniper Team, that survivor may still fire the sniper rifle, scoped or unscoped, but suffers -1 to hit for being a one-man Team Weapon.",
@@ -519,7 +519,7 @@ window.unitSpecialDescriptions = {
   "Tank Hunters": "In assaults, use full anti-tank damage rules and ignore Tank Fear. Add +1 to damage rolls vs vehicles.",
   "Team Weapon": "Crew-served unit weapon. Support weapon team crew count as unarmed and do not fire personal ranged weapons. A Team Weapon belongs to the unit. A Team Weapon needs at least 2 models to fire at full effect; if only 1 model remains, the weapon may still fire but suffers -1 to hit.",
   "Tooth and Claw": "Rolls 3 dice instead of 1 per model in close combat.",
-  "Tough Fighters": "When fighting in close quarters against Infantry, Artillery, or Assault Walkers, a unit may re-roll a number of failed melee rolls up to the number of friendly models with Tough Fighters taking part in that fight.",
+  "Tough Fighters": "In close quarters against Infantry, Artillery, or Assault Walkers, a unit may re-roll a number of failed melee rolls up to the number of friendly models with Tough Fighters taking part in that fight.",
   "VISR": "Can see through smoke and ignores Stealth’s -1 to-hit penalty.",
   "War Sermon": "When this unit receives its order die (except Down), pick 1 friendly Covenant Infantry or Artillery unit within 6\" and roll a D6 (Inexperienced -1, Veteran +1). On a 4+, remove 1 pin from that unit.",
   "Wide Formation": "Models may maintain up to 2\" coherency (instead of 1\").",
@@ -2305,10 +2305,10 @@ const COVENANT_UNITS = [
       "Skirmishers": { cost: 2, grantsRule: ["Fast", "Fieldcraft"], condition: "Squad does not take Defense Gauntlets" }
     },
     weaponReplacements: {
-      "Needlers":      { max: 4, cost: 3, replaces: "Plasma Pistol", grants: "Needler" },
-      "Carbines":      { max: 4, cost: 2, replaces: "Plasma Pistol", grants: "Carbine" },
-      "Needle Rifles": { max: 4, cost: 1, replaces: "Plasma Pistol", grants: "Needle Rifle" },
-      "Plasma Rifles": { max: 4, cost: 5, replaces: "Plasma Pistol", grants: "Plasma Rifle" }
+      "Needlers":      { max: 5, cost: 3, replaces: "Plasma Pistol", grants: "Needler" },
+      "Carbines":      { max: 5, cost: 2, replaces: "Plasma Pistol", grants: "Carbine" },
+      "Needle Rifles": { max: 5, cost: 1, replaces: "Plasma Pistol", grants: "Needle Rifle" },
+      "Plasma Rifles": { max: 5, cost: 5, replaces: "Plasma Pistol", grants: "Plasma Rifle" }
     },
     ncoReplacement: {
       options: ["Plasma Pistol", "Needler", "Carbine", "Needle Rifle", "Plasma Rifle"],
@@ -2425,18 +2425,18 @@ const COVENANT_UNITS = [
     name: "Hunter Pack",
     type: "Infantry",
     allowedVeterancy: ["Regular", "Veteran"],
-    costs: { Regular: 100, Veteran: 106 },
+    costs: { Regular: 110, Veteran: 116 },
     baseMen: 2,
     maxMen: 4,
     weapons: [{ name: "Assault Cannon" }],
     specialRules: [
       "Resilient", "Tough Fighters", "Tooth and Claw", "Stubborn", "Horror", "Large Infantry", "Wide Formation",
       { name: "Carapace", description: "When resolving shooting attacks that originate from more than 6\" away, treat this unit as having DV 7+. It still receives pins from small-arms fire, but ignores any small-arms damage. Attacks from 6\" or less ignore this rule." },
-      { name: "Bonded Fury", description: "If this unit takes a casualty, the remaining models in the unit gain the Berserker special rule." },
+      { name: "Bonded Fury", description: "If this unit takes a casualty, the remaining models in the unit gain the Berserker special rule (+1 attack per model on first round when they assault, and on failed order test it assaults closest enemy infantry unit)." },
       { name: "Limited", description: "Only 1 Hunter Pack may be taken per army." }
     ],
     options: {
-      extraMenCost: { Regular: 50, Veteran: 53 }
+      extraMenCost: { Regular: 55, Veteran: 58 }
     }
   },
   {
@@ -3239,10 +3239,10 @@ const BANISHED_UNITS = [
       "Skirmishers": { cost: 2, grantsRule: ["Fast", "Fieldcraft"], condition: "Squad does not take Defense Gauntlets" }
     },
     weaponReplacements: {
-      "Needlers":      { max: 4, cost: 3, replaces: "Plasma Pistol/Disruptor", grants: "Needler" },
-      "Pulse Carbines":      { max: 4, cost: 3, replaces: "Plasma Pistol/Disruptor", grants: "Pulse Carbine" },
-      "Stalker Rifles": { max: 4, cost: 0, replaces: "Plasma Pistol/Disruptor", grants: "Stalker Rifle" },
-      "Plasma Rifles": { max: 4, cost: 5, replaces: "Plasma Pistol/Disruptor", grants: "Plasma Rifle" }
+      "Needlers":      { max: 5, cost: 3, replaces: "Plasma Pistol/Disruptor", grants: "Needler" },
+      "Pulse Carbines":      { max: 5, cost: 3, replaces: "Plasma Pistol/Disruptor", grants: "Pulse Carbine" },
+      "Stalker Rifles": { max: 5, cost: 0, replaces: "Plasma Pistol/Disruptor", grants: "Stalker Rifle" },
+      "Plasma Rifles": { max: 5, cost: 5, replaces: "Plasma Pistol/Disruptor", grants: "Plasma Rifle" }
     },
     ncoReplacement: {
       options: ["Plasma Pistol/Disruptor", "Needler", "Pulse Carbine", "Stalker Rifle", "Plasma Rifle"],
@@ -3340,18 +3340,18 @@ const BANISHED_UNITS = [
     name: "Hunter Pack",
     type: "Infantry",
     allowedVeterancy: ["Regular", "Veteran"],
-    costs: { Regular: 100, Veteran: 106 },
+    costs: { Regular: 110, Veteran: 116 },
     baseMen: 2,
     maxMen: 4,
     weapons: [{ name: "Assault Cannon" }],
     specialRules: [
       "Resilient", "Tough Fighters", "Tooth and Claw", "Stubborn", "Horror", "Large Infantry", "Wide Formation",
       { name: "Carapace", description: "When resolving shooting attacks that originate from more than 6\" away, treat this unit as having DV 7+. It still receives pins from small-arms fire, but ignores any small-arms damage. Attacks from 6\" or less ignore this rule." },
-      { name: "Bonded Fury", description: "If this unit takes a casualty, the remaining models in the unit gain the Berserker special rule." },
+      { name: "Bonded Fury", description: "If this unit takes a casualty, the remaining models in the unit gain the Berserker special rule (+1 attack per model on first round when they assault, and on failed order test it assaults closest enemy infantry unit)." },
       { name: "Limited", description: "Only 1 Hunter Pack may be taken per army." }
     ],
     options: {
-      extraMenCost: { Regular: 50, Veteran: 53 }
+      extraMenCost: { Regular: 55, Veteran: 58 }
     }
   },
   {
