@@ -755,14 +755,13 @@ Forerunner: [
 ]
 };
 
-
 // --- Army Rules ---
 const armyRulesText = {
   "UNSC": `
 Desperate Measures
 
 - Effect: 
-When a UNSC infantry or artillery unit is reduced to half or less of its initial starting strength (rounding up), the remaining models in that unit gain the Stubborn special rule. Units that already have Stubborn gain the Fanatics special rule instead. Units that already have Fanatics gain MJOLNIR Biofoam Systems. If they already have MJOLNIR Biofoam Systems, they gain Energy Shields instead.
+When a UNSC Infantry or Artillery unit is reduced to half or less of its initial starting strength (rounding up), the remaining models in that unit gain the Stubborn special rule. Units that already have Stubborn gain the Fanatics special rule instead. Units that already have Fanatics gain MJOLNIR Biofoam Systems. If they already have MJOLNIR Biofoam Systems, they gain Energy Shields instead.
 
 Reminder:
 Stubborn: Ignore pin modifiers on Morale checks, remember Morale checks are not Order tests.
@@ -788,62 +787,59 @@ Battle-Net Intrusion
 - Effect: 
 Once per game, at the start of any Game Turn, the UNSC player may choose one Order Die to draw from the dice bag instead of drawing randomly. If this Order Die is assigned to an Officer, it cannot be used to trigger You Men, Snap to Action! If more than one UNSC player wishes to use this rule at the same time, roll off. The winner uses this rule that turn, and the loser must wait until a future turn to use it.
 `,
+
   "Covenant": `
 Caste System
 
 - Effect: 
 When creating a Covenant army, you may select one bonus from the following list:
 
-  * Commanding Presence: Covenant infantry and artillery units that are within 6" of at least one Elite unit and not within an officer’s morale bubble gain a +1 Morale bonus.
+  * Commanding Presence: Covenant Infantry and Artillery units that are within 6" of at least one Elite unit and not within an Officer’s morale bubble gain a +1 Morale bonus.
   
-  * Cannon Fodder: Your army gets a free basic inexperienced Grunt squad unit.
+  * Cannon Fodder: Your army gets a free basic Inexperienced Grunt squad unit.
   
   * Wall of Deflection: Friendly units with Shield Wall or Resilient provide hard cover instead of soft cover to other friendly units when the line of fire passes through them.
   
-  * Fury Unleashed: Covenant infantry units that fail their Run/Assault order test when within 9" of a Brute unit may re-roll the failed order test.
-
-Honor in Death
-
-- Effect: 
-Once per turn, when a friendly Covenant unit is destroyed, one friendly Regular or Veteran Covenant Infantry or Artillery unit may immediately remove up to 2 Pin markers. 
+  * Fury Unleashed: Covenant Infantry units that fail their Run/Assault order test when within 9" of a Brute unit may re-roll the failed order test.
 
 Zealotry
 
 - Effect: 
 Regular or Veteran Covenant units ignore the Morale penalty from 1 Pin when taking Advance or Run order tests, if they are not benefiting from a friendly morale bonus bubble.
 
+Orbital Superiority
+
+- Effect:
+Once per game, when a friendly Covenant Forward Observer resolves an Artillery Barrage or Air Strike, you may roll two D6 instead of one on the Artillery Barrage Table or Air Strike Table and choose which result to apply.
+
 Faithful When Supervised
 
 - Effect: 
 Covenant Infantry and Artillery units with Shirkers lose that rule while they are positioned within the morale bubble of a friendly Covenant Officer. If they exit the bubble or the Officer is lost, they regain Shirkers until within range of another valid Officer. If a unit exits the Officer’s morale bubble as part of a Snap to Action activation, it cannot regain Shirkers until the Officer and all units activated through that Snap have completed their orders.
 `,
+
   "Banished": `
 Brotherhood of Chaos
 
-- Effect: 
-Once per turn, when a Banished infantry unit is destroyed, you may choose one friendly infantry or artillery unit that has not yet activated this turn and roll a die:
+- Effect:
+Once per turn, when a friendly Banished Infantry unit wins a Close Quarters combat, you may choose one friendly Banished Infantry or Artillery unit that has not activated this turn. Draw one of your order dice from the bag and issue that unit an order as normal. If the chosen unit is pinned, it must still take an Order test as usual.
 
-  * On a 4+, the chosen unit activates next. Instead of drawing a random die, draw one of your dice from the bag and issue an order as normal. If pinned, an order test is still needed, as usual.
-  
-  * If the chosen unit is also within 6" of an officer (or an officer itself), activate on a 3+ instead.
-  
-  * If you roll below the requirement, nothing happens instead.
+Ruthless Push
 
-Atriox's Law
-
-- Effect: 
-Units with the Berserker special rule can ignore the compulsory Run behavior caused by failing an Order test while they are within the morale bubble of a Banished Officer. The suppression ends immediately if the unit exits the bubble or if the officer is removed from play.
+- Effect:
+When a Banished Regular or Veteran Infantry unit with one or more pin markers performs an Advance order, any models armed with small arms may ignore the -1 to hit penalty for moving and shooting during that activation.
 
 Blood Price
 
 - Effect:
 When a friendly Banished Infantry or Artillery unit fails an Order test while within 6" of a friendly Banished Officer or Bloodhandler (including FUBAR), you may choose to remove one model from the unit and then re-roll the Order test. The second result stands as normal. This rule only applies to Infantry or Artillery units of three or more models.
 
-Ruthless Push
+Atriox's Law
 
 - Effect:
-When a Banished Regular or Veteran Infantry unit with one or more pin markers performs an Advance order, any models armed with small arms may ignore the -1 to hit penalty for moving and shooting during that activation.
+Units with the Berserker special rule can ignore the compulsory Run behavior caused by failing an Order test while they are within the morale bubble of a Banished Officer. The suppression ends immediately if the unit exits the bubble or if the officer is removed from play.
 `,
+
   "Forerunner": `
 Enhanced Weapon Systems
 
@@ -869,12 +865,7 @@ Each time a Forerunner Officer successfully uses You men, snap to action!, you m
 The unit goes Down (or follows FUBAR if applicable) as normal and does not teleport.
 
   * Passed (or if no Order test is required):
-The unit teleports up to 12", ignoring intervening units and terrain. It may not end in impassable terrain, inside a building, outside the battlefield, or within 1" of any unit. Teleporting does not trigger enemy Ambush during this movement. After teleporting, the unit resolves its assigned order (Fire, Ambush, Down, or Rally) as normal. 
-
-Counter-Assault Protocols
-
-- Effect:
-When a unit with the Counter-Assault Protocols special rule is assaulted by enemy Infantry or Artillery while it has not yet been given an order this turn, or while it is on Ambush, it may react with a Fire order as normal. Treat this unit as being on Ambush when determining whether it can react to the assault. If any attacking models survive and complete the assault, the assaulting unit halves its total number of attack dice, rounding up, during the first round of that close quarters combat only.
+The unit teleports up to 12", ignoring intervening units and terrain. It may not end in impassable terrain, inside a building, outside the battlefield, or within 1" of any unit. Teleporting does not trigger enemy Ambush during this movement. After teleporting, the unit resolves its assigned order (Fire, Ambush, Down, or Rally) as normal.
 `,
 
   "Flood": `
@@ -886,20 +877,15 @@ All Flood Infantry and Artillery units have the Fanatics special rule, and autom
 Reminder:
 Fanatics: Ignore pin modifiers on Morale checks and are not routed by pins. If defeated in close quarters, fight again immediately until they win or are wiped out.
 
-Corrupted Arsenal
+Hivemind Coordination
 
 - Effect:
-The Flood may include vehicles from other factions' army lists. These vehicles must always be Inexperienced.
+Flood Infantry and Artillery units do not suffer the -1 morale penalty for losing their NCO.
 
 Predatory Ambush
 
 - Effect:
 When a Flood Infantry unit ends the turn on Ambush and chooses to attempt the normal end-of-turn Fire action, roll a D6 as usual. On a 4+, the unit may either fire normally or, instead of firing, declare an Assault against a visible enemy Infantry or Artillery unit within assault range. On a 3 or less, the unit does nothing and its Ambush die is returned to the bag as normal.
-
-Hivemind Coordination
-
-- Effect:
-Flood Infantry and Artillery units do not suffer the -1 morale penalty for losing their NCO.
 
 Logic Plague
 
@@ -908,8 +894,9 @@ Once per turn, just before activating a Flood unit, select one unactivated enemy
 
   * 1-3: The enemy immediately receives 2 Pin markers.
   * 4-5: The enemy suffers -1 to hit for the rest of the turn.
-  * 6: The enemy must take a morale check. If failed, roll on the FUBAR table; if passed, no effect.
+  * 6: The enemy must take a Morale check. If failed, roll on the FUBAR table; if passed, no effect.
 `,
+
   "Insurrection": `
 Prepared Uprising
 
@@ -920,26 +907,28 @@ In addition, during Turn 1 of the game, all Insurrectionist Infantry units count
 
 Additionally, you may deploy one Infantry unit from your army list as if it had the Infiltrator special rule. This only affects deployment, the unit does not actually gain the Infiltrator special rule during the battle.
 
-Ambush Drills
+Hidden Sentries
 
 - Effect:
-When an Insurrectionist Infantry unit is given an Advance order without using Flight, it may choose to go Down instead of firing. If it does so, resolve the unit’s Advance movement as normal, then replace its Advance order die with a Down order die. The unit may not fire, and its activation is complete.
+Enemy units using the Infiltrator special rule cannot deploy within 24" of any Insurrectionist unit that was set up on the table before them, instead of the usual 12". If this prevents an enemy Infiltrator unit from being legally deployed, that unit must be deployed as if it did not have Infiltrator instead.
 
 Concealed Firing Positions
 
 - Effect:
 Insurrectionist Infantry and Artillery units improve their Cover Save by +1 while they have an Ambush order, as long as they are already in cover.
 
-Hidden Sentries
+Ambush Drills
 
 - Effect:
-Enemy units using the Infiltrator special rule cannot deploy within 24" of any Insurrectionist unit that was set up on the table before them, instead of the usual 12". If this prevents an enemy Infiltrator unit from being legally deployed, that unit must be deployed as if it did not have Infiltrator instead.
+When an Insurrectionist Infantry unit is given an Advance order without using Flight, it may choose to go Down instead of firing. If it does so, resolve the unit’s Advance movement as normal, then replace its Advance order die with a Down order die. The unit may not fire, and its activation is complete.
+
 
 Local Area Control
 
 - Effect:
 When an Insurrectionist Infantry unit attempts to enter the battlefield by Reserves or Outflanking, it gains +1 to its Morale value for the Order test made to come onto the table.
 `,
+
   "Swords of Sanghelios": `
 Sangheili Command
 
@@ -955,11 +944,6 @@ Rite of Challenge
 
 - Effect:
 When an Elite Infantry unit that includes at least one model with a Melee Weapon is given a Run order to assault an enemy unit, it counts as having the Fieldcraft special rule for that action.
-
-Honour in Victory
-
-- Effect:
-When a Swords of Sanghelios Infantry unit wins a Close Quarters combat, do not roll a D6 for its Regroup move. Instead, that unit may make a Regroup move of up to 6".
 
 War-Chants of Sanghelios
 
@@ -9727,6 +9711,26 @@ function renderWeaponSpecialRulesPage(pdf, armyList, margin = 55) {
   });
 }
 
+const COVENANT_CASTE_BONUS_TEXT = {
+  "": "None: No Caste System bonus selected.",
+
+  "Commanding Presence":
+    "Commanding Presence: Covenant Infantry and Artillery units that are within 6\" of at least one Elite unit and not within an Officer’s morale bubble gain a +1 Morale bonus.",
+
+  "Cannon Fodder":
+    "Cannon Fodder: Your army gets a free basic Inexperienced Grunt squad unit.",
+
+  "Wall of Deflection":
+    "Wall of Deflection: Friendly units with Shield Wall or Resilient provide hard cover instead of soft cover to other friendly units when the line of fire passes through them.",
+
+  "Fury Unleashed":
+    "Fury Unleashed: Covenant Infantry units that fail their Run/Assault order test when within 9\" of a Brute unit may re-roll the failed order test."
+};
+
+function getCovenantCasteBonusText(selectedBonus) {
+  return COVENANT_CASTE_BONUS_TEXT[selectedBonus || ""] || String(selectedBonus || "None");
+}
+
 function renderArmySpecialRulesPage(pdf, rulesText, margin, width, faction, selectedBonus) {
   pdf.addPage();
   let y = 64;
@@ -9745,14 +9749,32 @@ function renderArmySpecialRulesPage(pdf, rulesText, margin, width, faction, sele
     y += 15;
 
     pdf.setFont("helvetica", "normal");
-    pdf.text(selectedBonus || "None", margin + 12, y);
-    y += 18;
+    pdf.setFontSize(12);
+    pdf.setTextColor(0, 0, 0);
+
+    const casteText = getCovenantCasteBonusText(selectedBonus);
+    const casteWrapped = pdf.splitTextToSize(casteText, width - 24);
+
+    casteWrapped.forEach(line => {
+      pdf.text(line, margin + 12, y);
+      y += 15;
+    });
+
+    y += 8;
   }
 
-  const ruleSections = String(rulesText || "")
+  let ruleSections = String(rulesText || "")
     .split(/\n(?=[A-Z][A-Za-z0-9 '’\-]+(\n|- Effect:))/)
     .map(s => s.trim())
     .filter(Boolean);
+
+  if (faction === "Covenant") {
+    ruleSections = ruleSections.filter(section => {
+      const headerMatch = section.match(/^([A-Za-z0-9 '’\-]+)(?:\n|- Effect:)/);
+      const header = headerMatch ? headerMatch[1].trim() : "";
+      return header !== "Caste System";
+    });
+  }
 
   pdf.setFontSize(12);
 
