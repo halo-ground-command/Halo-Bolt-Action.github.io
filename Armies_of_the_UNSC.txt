@@ -89,9 +89,7 @@ When the unit shoots, a model with an M301 Grenade Launcher must choose whether 
 MJOLNIR Biofoam Systems
 Spartan units may take MJOLNIR Biofoam Systems for +2pts per model.  If they do so, they have a 5+ cover save in the open, a 5+ cover save in close quarters, and a +1 to soft/hard cover saves. If this unit also has energy shields, its cover save in the open becomes 4+ instead.
 Pathfinder
-Units on the battlefield with the Pathfinder special rule are allowed to make a Run move after both sides have finished set-up, but before the first turn of the game. During this move, the unit cannot assault enemy units, and cannot be targeted by enemies in Ambush.
-
-
+Units on the battlefield with the Pathfinder special rule that did not deploy using the Infiltrator special rule are allowed to make a Run move after both sides have finished set-up, but before the first turn of the game. During this move, the unit cannot assault enemy units and cannot be targeted by enemies in Ambush. 
 
 
 
