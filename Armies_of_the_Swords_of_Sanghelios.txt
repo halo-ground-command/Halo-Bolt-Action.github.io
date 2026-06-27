@@ -22,9 +22,6 @@ Army Restrictions
 Rite of Challenge 
 Sangheili warriors prize honourable close combat, but only those who bear the proper weapons can truly answer such a challenge. 
 * Effect: When an Elite Infantry unit that includes at least one model with a Melee Weapon is given a Run order to assault an enemy unit, it counts as having the Fieldcraft special rule for that action. 
-Honour in Victory 
-The Swords of Sanghelios no longer fight for the false promises of the Great Journey. Instead, they draw strength from decisive deeds, proven warriors, and the honour of victory. 
-* Effect: When a Swords of Sanghelios Infantry unit wins a Close Quarters combat, do not roll a D6 for its Regroup move. Instead, that unit may make a Regroup move of up to 6". 
 War-Chants of Sanghelios 
 The Swords of Sanghelios advance beneath ancient battle-chants, open-channel challenges, and rolling war-cries.  
 * Effect: At the start of every Game Turn, roll a D6 for each enemy Infantry and Artillery unit on the table that has no Pin markers. On a 5+, that unit immediately receives 1 Pin marker. Do not roll for units embarked inside transports.
