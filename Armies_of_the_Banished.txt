@@ -2,28 +2,19 @@
 
 Army Special Rules
 Brotherhood of Chaos
-The Banished ranks are composed of fierce but unruly factions, constantly vying for dominance.
-* Effect: Once per turn, when a Banished infantry unit is destroyed, you may choose one friendly infantry or artillery unit that has not yet activated this turn and roll a die:
-   * On a 4+, the chosen unit activates next. Instead of drawing a random die, draw one of your dice from the bag and issue an order as normal. If pinned, an order test is still needed, as usual.
-   * If the chosen unit is within 6″ of an officer (Or an officer itself), activate on a 3+ instead.
-   * If you roll below the requirement, nothing happens instead.
-Atriox’s Law
-Though prone to bloodlust, Banished warriors will restrain themselves in the presence of a commanding Brute.
-* Effect: Units with the Berserker special rule can ignore the compulsory Run behavior caused by failing an Order test while they are within the morale bubble of an Officer. The suppression ends immediately if the unit exits the bubble or if the officer is removed from play.
-
-
+The Banished ranks are composed of fierce but unruly factions, each warband eager to strike first and claim the spoils before its rivals.
+* Effect: Once per turn, when a Banished Infantry unit enters the battlefield from Reserve or Outflanking, it may enter with a Run order and still fire its Small Arms after moving. If it does so, those weapons suffer a -1 to hit penalty, even if they have Assault. 
+Trophy Takers 
+Banished Brutes tear armour, trophies, and wargear from the defeated, wearing each victory as proof of dominance. 
+* Effect: When a Banished Brute unit wins a Close Quarters combat, it gains Trophy Plate Harness for the rest of the battle. If it already has Trophy Plate Harness, improve its Trophy Plate Harness save to 5+ in the open and in close quarters for the rest of the battle. 
 
 
 Blood Price
 Banished leaders do not inspire loyalty—they enforce obedience through fear and brutality.
 * Effect: When a friendly Banished Infantry or Artillery unit fails an Order test while within 6″ of a friendly Banished Officer or Bloodhandler (including FUBAR), you may choose to remove one model from the unit and then re-roll the Order test. The second result stands as normal. This rule only applies to Infantry or Artillery units of three or more models.
-Ruthless Push
-Banished warbands press the attack through sheer brutality, even under heavy fire.
-* Effect: When a Banished Regular or Veteran Infantry unit with one or more pin markers performs an Advance order, any models armed with small arms may ignore the -1 to hit penalty for moving and shooting during that activation.
-
-
-
-
+Atriox’s Law
+Though prone to bloodlust, Banished warriors will restrain themselves in the presence of a commanding Brute.
+* Effect: Units with the Berserker special rule can ignore the compulsory Run behavior caused by failing an Order test while they are within the morale bubble of an Officer. The suppression ends immediately if the unit exits the bubble or if the officer is removed from play.
 
 
 
@@ -54,8 +45,6 @@ Cost: +9pts per model.
 Optional additional upgrades (Elite-only):
  – The squad may be given Stealth for +1pts per model. 
 – The NCO/Officer may be given a Melee Weapon for +1pt (This model rolls 2 dice in close combat instead of 1) 
-
-
 
 
 
@@ -314,7 +303,7 @@ Cost
 	Plasma Pistol/Disruptor
 	Options
 	- Add up to 5 additional Jackals for +8pts each (Inexperienced), +11pts each (Regular), or +14pts each (Veteran)  
-- The NCO and up to 4 Jackals may replace their Plasma Pistols with:
+- The NCO and up to 5 Jackals may replace their Plasma Pistols with:
   – Needlers for +3pts each  
   – Pulse Carbines for +3pts each  
   – Stalker Rifles for +0pts each
@@ -625,13 +614,13 @@ Cost
 - Tank Hunters: If anti-tank grenades are taken
 	Hunter Pack
 Cost
-	100pts (Regular), 106pts (Veteran) 
+	110pts (Regular), 116pts (Veteran) 
 	Composition
 	2 Hunters
 	Weapons
 	Assault Cannons 
 	Options
-	- Add up to 2 additional Hunters for +50pts each (Regular) or +53pts each (Veteran) 
+	- Add up to 2 additional Hunters for +55pts each (Regular) or +58pts each (Veteran) 
 	Special Rules
 	- Resilient   
 - Tough Fighters  
