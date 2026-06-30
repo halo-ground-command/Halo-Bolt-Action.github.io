@@ -741,74 +741,72 @@ Cost
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 TANK DESTROYERS
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 SP42 Cobra
 Cost
-	140 pts (Regular), 168 pts (Veteran) 
+	145 pts (Regular), 174 pts (Veteran) 
 	Weapons
 	2 Turret-mounted Twin-linked Light Anti-Tank Weapons
 	Damage Value
 	7+ (Armoured Car) 
 	Special Rules
-	- Versatile: Can fire as a single Medium Howitzer on a Fire order instead
+	- Versatile: Can fire as a single Heavy Anti-Tank Weapon on a Fire order instead. If this attack targets a unit inside a building or a building, it counts as HE (3") instead
 	WALKERS
 HRUNTING Mark III (S) Cyclops
 Cost

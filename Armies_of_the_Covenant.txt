@@ -985,16 +985,14 @@ Cost
 - Shardstorm Launcher: Range 36", Shots 6, Pen –, Team, Supercombine, Fixed
 	Type-30 Light Excavation/Anti-Fortification Platform "Locust" 
 Cost
-	112pts (Inexperienced), 140pts (Regular), 168pts (Veteran) 
+	116pts (Inexperienced), 145pts (Regular), 174pts (Veteran) 
 	Weapons
 	Turret-mounted Medium Anti-Tank Weapon
 	Damage Value
 	8+ (Medium Walker)  
 	Special Rules
-	- Slow
+	- Slow - Excavation Beam: When targeting a unit inside a building or a building, the attack counts as HE (3") instead.
 	SELF-PROPELLED ARTILLERY
-
-
 
 
 
@@ -1494,6 +1492,8 @@ Cost
 
 
 	
+
+
 
 
 

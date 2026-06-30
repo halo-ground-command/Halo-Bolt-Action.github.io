@@ -357,10 +357,10 @@ const allWeaponProfiles = {
   "Heavy Automatic Cannon": 'Range 72", Shots 2, Pen +3, Team, Fixed, HE (1")',
   "Heavy Autocannon": 'Range 72", Shots 2, Pen +3, Team, Fixed, HE (1")',
   "Fuel Rod Autocannon": 'Range 72", Shots 2, Pen +3, Team, Fixed, Tracking, HE (1")',
-  "Light Anti-Tank Weapon": 'Range 48", Shots 1, Pen +4, Team, Fixed, HE (1")',
-  "Medium Anti-Tank Weapon": 'Range 60", Shots 1, Pen +5, Team, Fixed, HE (1")',
-  "Heavy Anti-Tank Weapon": 'Range 72", Shots 1, Pen +6, Team, Fixed, HE (2")',
-  "Super-Heavy Anti-Tank Weapon": 'Range 84", Shots 1, Pen +7, Team, Fixed, HE (3")',
+  "Light Anti-Tank Weapon": 'Range 48", Shots 1, Pen +4, Team, Fixed, HE (1"), AT Gun',
+  "Medium Anti-Tank Weapon": 'Range 60", Shots 1, Pen +5, Team, Fixed, HE (1"), AT Gun',
+  "Heavy Anti-Tank Weapon": 'Range 72", Shots 1, Pen +6, Team, Fixed, HE (2"), AT Gun',
+  "Super-Heavy Anti-Tank Weapon": 'Range 84", Shots 1, Pen +7, Team, Fixed, HE (3"), AT Gun',
 
   // COMBINED
   "Rocket Launcher/Plasma Launcher": 'Range 30", Shots 1, Pen +5, Team, Shaped Charge, Tracking, HE (1")',
@@ -450,6 +450,7 @@ allWeaponProfiles["Gravity Hammer"] = 'Range –, Shots –, Pen –, Gravity Ha
 
 // --- Weapon Special Rule Descriptions ---
 const weaponSpecialDescriptions = {
+  "AT Gun": "All anti-tank guns, from light to super-heavy, including vehicle-mounted anti-tank guns, gain +1 to hit vehicles (Not vs flying aircraft) when firing with a Fire order, including Ambush and reaction fire.",
   "Assault": "No -1 to hit when moving and shooting. Models with an Assault weapon gain Tough Fighters: When fighting in close quarters against Infantry, Artillery, or Assault Walkers, a unit may re-roll a number of failed melee rolls up to the number of friendly models with Tough Fighters taking part in that fight.",
   "Battery Charge": "Has a -1 penalty to hit when shooting.",
   "Cover Piercing": "When this weapon hits an Infantry or Artillery unit that is in soft/hard cover and not Down, any natural 6 rolled to Wound worsens the target’s cover save by 1, for that wound only.",
@@ -498,7 +499,7 @@ window.unitSpecialDescriptions = {
   "Strikes First": "When this unit assaults, it fights first as if it had Defensive Position. If the assaulted unit also has Defensive Position, Strikes First, or a rule that cancels either, both sides fight simultaneously instead.",
   "Flight": "Advance 12\"; Run 18\"; ignore terrain for movement. Cannot end in impassable terrain (or in rough ground after a Run). If ambushed while flying, no soft/hard cover saves. Cannot pick up or carry objectives on a Run order. Infantry may instead move on the ground using normal movement rules, using other unit rules that affect movement they may have.",
   "Flood Infection": "Automatons and Composed Beings are immune to this rule. When winning vs Infantry or Artillery in CQ, immediately roll one D6 per enemy model removed during and after combat. Each roll equal to or above this flood unit’s damage value returns a slain model (up to starting size). If the flood unit has Energy Shields, it increases the requirement by +1.",
-  "Green": "First casualty triggers a D6 roll: 1 = gain D6 pins and go Down, 6 = unit upgraded to Regular morale (9).",
+  "Green": "First casualty triggers a D6 roll: 1 = gain D6 pins and go Down, 6 = unit upgraded to Regular (morale 9 and DV 4+).",
   "Gun Shield": "Crew of a gun with a gun shield count as in soft cover vs small arms hits from within the gun’s front arc.",
   "Horror": "Units with Horror are immune to Horror. Assaulting a Horror unit requires an Order test at -1 morale, even if unpinned. When this unit assaults, the target takes a Morale check at -1 before reacting; if failed, it goes Down (loses Defensive Position).",
   "Infested Terrain": "Once per army, one unit with this rule fully within a terrain may make that terrain Infested Terrain. It cannot be a road, objective marker, bunker, impassable terrain, or terrain containing an objective. At the end of an enemy non-Flood Infantry/Artillery unit’s activation, if it moved across/through/touching it or has a model inside/touching it, it gains 1 Pin. A unit can only gain 1 Pin per turn from this rule.",
@@ -1654,20 +1655,20 @@ const UNSC_VEHICLES = [
 	},
 
   // TANK DESTROYERS
-  {
-    name: "SP42 Cobra",
-    type: "Armoured Car",
-    allowedVeterancy: ["Regular", "Veteran"],
-    costs: { Regular: 140, Veteran: 168 },
-    weapons: [
-      { name: "Turret-mounted Twin-linked Light Anti-Tank Weapon" },
-      { name: "Turret-mounted Twin-linked Light Anti-Tank Weapon" }
-    ],
-    damageValue: "7+ (Armoured Car)",
-    specialRules: [
-      "Versatile: Can fire as a single Medium Howitzer on a Fire order instead: Range 60\" (36–72\"), Shots 1, Pen HE, Team, Fixed, Howitzer, HE (3\")."
-    ],
-  },
+	{
+	  name: "SP42 Cobra",
+	  type: "Armoured Car",
+	  allowedVeterancy: ["Regular", "Veteran"],
+	  costs: { Regular: 145, Veteran: 174 },
+	  weapons: [
+		{ name: "Turret-mounted Twin-linked Light Anti-Tank Weapon" },
+		{ name: "Turret-mounted Twin-linked Light Anti-Tank Weapon" }
+	  ],
+	  damageValue: "7+ (Armoured Car)",
+	  specialRules: [
+		'Versatile: Can fire as a single Heavy Anti-Tank Weapon on a Fire order instead: Range 72", Shots 1, Pen +6, Team, Fixed, HE (2"), AT Gun. If this attack targets a unit inside a building or a building, it counts as HE (3") instead.'
+	  ]
+	},
 
   // WALKERS
 {
@@ -2758,20 +2759,21 @@ const COVENANT_VEHICLES = [
 		}
 	  }
   },
-  {
-    name: 'Type-30 "Locust"',
-    type: "Walker",
-    allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
-    costs: { Inexperienced: 112, Regular: 140, Veteran: 168 },
-    weapons: [
-      { name: "Turret-mounted Medium Anti-Tank Weapon" }
-    ],
-    damageValue: "8+ (Medium Walker)",
-    transportCapacity: 0,
-    specialRules: [
-      "Slower"
-    ]
-  },
+	{
+	  name: 'Type-30 "Locust"',
+	  type: "Walker",
+	  allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
+	  costs: { Inexperienced: 116, Regular: 145, Veteran: 174 },
+	  weapons: [
+		{ name: "Turret-mounted Medium Anti-Tank Weapon" }
+	  ],
+	  damageValue: "8+ (Medium Walker)",
+	  transportCapacity: 0,
+	  specialRules: [
+		"Slower",
+		'Excavation Beam: When targeting a unit inside a building or a building, the attack counts as HE (3") instead.'
+	  ]
+	},
 	{
 	  name: "Deutoros-pattern Scarab",
 	  type: "Walker",
@@ -3686,20 +3688,21 @@ const BANISHED_VEHICLES = [
 		}
 	  }
   },
-  {
-    name: 'Type-30 "Locust"',
-    type: "Walker",
-    allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
-    costs: { Inexperienced: 112, Regular: 140, Veteran: 168 },
-    weapons: [
-      { name: "Turret-mounted Medium Anti-Tank Weapon" }
-    ],
-    damageValue: "8+ (Medium Walker)",
-    transportCapacity: 0,
-    specialRules: [
-      "Slower"
-    ]
-  },
+	{
+	  name: 'Type-30 "Locust"',
+	  type: "Walker",
+	  allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
+	  costs: { Inexperienced: 116, Regular: 145, Veteran: 174 },
+	  weapons: [
+		{ name: "Turret-mounted Medium Anti-Tank Weapon" }
+	  ],
+	  damageValue: "8+ (Medium Walker)",
+	  transportCapacity: 0,
+	  specialRules: [
+		"Slower",
+		'Excavation Beam: When targeting a unit inside a building or a building, the attack counts as HE (3") instead.'
+	  ]
+	},
   {
 	name: "Dovotaa Workshop Sky Protector \"Reaver\"",
 	type: "Walker",
