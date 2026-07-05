@@ -4487,23 +4487,23 @@ const FORERUNNER_VEHICLES = [
 },
 
   // AIRCRAFT
-  {
-    name: "Enforcer Sentinel",
-    type: "Aircraft",
-    allowedVeterancy: ["Regular", "Veteran"],
-    costs: { Regular: 135, Veteran: 162 },
-    weapons: [
-      { name: "Hull-mounted Forward-facing Paired Heavy Machine Gun" },
-      { name: "Hull-mounted Forward-facing Rocket Launcher" }
-    ],
-    damageValue: "7+ (Medium Aircraft)",
-    specialRules: [
-      "Flak",
-      "Open-topped",
-      { name: "Hard-Light Pavise", description: "Shooting attacks that hit the Front arc cause pin markers only if they penetrate (i.e., the damage roll equals or exceeds DV); otherwise ignore pins." },
-      { name: "Gravitic Grapplers", description: "If this aircraft makes an Advance and its movement path crosses one or more enemy non-Aircraft vehicles, then after moving you may forgo all shooting to target one of those vehicles. Roll a D6: On a 1–3, nothing happens. On a 4+ the target is hit. The target suffers D2 pin markers, then resolve one Top-Armour damage roll at +2 Pen." }
-    ]
-  },
+	{
+	  name: "Enforcer Sentinel",
+	  type: "Aircraft",
+	  allowedVeterancy: ["Regular", "Veteran"],
+	  costs: { Regular: 135, Veteran: 162 },
+	  weapons: [
+		{ name: "Hull-mounted Forward-facing Paired Heavy Machine Gun" },
+		{ name: "Hull-mounted Forward-facing Rocket Launcher" }
+	  ],
+	  damageValue: "7+ (Medium Aircraft)",
+	  specialRules: [
+		"Flak",
+		"Open-topped",
+		{ name: "Hard-Light Pavise", description: "Shooting attacks that hit the Front arc cause pin markers only if they penetrate (i.e., the damage roll equals or exceeds DV); otherwise ignore pins." },
+		{ name: "Gravitic Grapplers", description: "After Advancing across one or more enemy non-Aircraft vehicles, this aircraft may forgo all shooting to target one of them. Both vehicles roll D6 + their own DV. If the Enforcer's total is higher, the target rolls for Full Damage; if tied, it rolls for Superficial Damage. If lower, the Grapplers are destroyed, the Enforcer suffers D3 Pins, and this ability cannot be used again." }
+	  ]
+	},
   {
     name: "Z-1800 Phaeton",
     type: "Aircraft",
@@ -9345,6 +9345,23 @@ function getDisplayUnitName(unit) {
   const baseName = unit?.name || "";
   const upgrades = unit?.squadUpgrades || {};
 
+  const hasUpgradeStartingWith = (text) =>
+    Object.entries(upgrades).some(([label, picked]) =>
+      picked && String(label).startsWith(text)
+    );
+
+  // ============================================================
+  // COVENANT / BANISHED UNIT VARIANTS
+  // ============================================================
+
+  // Grunt Squad with Deacon
+  if (
+    baseName === "Grunt Squad" &&
+    hasUpgradeStartingWith("Deacon")
+  ) {
+    return "Grunt Deacon Squad";
+  }
+
   // Jackal Skirmishers
   if (
     baseName === "Jackal Squad" &&
@@ -9353,7 +9370,28 @@ function getDisplayUnitName(unit) {
     return "Skirmisher Squad";
   }
 
-  // UNSC Trooper variants
+  // Suicide Anti-Tank Team upgraded to Grunt Rider
+  if (
+    baseName === "Suicide Anti-Tank Team" &&
+    upgrades["Grunt Rider"]
+  ) {
+    return "Suicide Grunt Rider Anti-Tank Team";
+  }
+
+  // Explicit Brute / Elite units.
+  // Do not apply this to doctrine-based units.
+  if (baseName === "Atriox’s Chosen") {
+    return "Atriox’s Chosen Brute Squad";
+  }
+
+  if (baseName === "Honor Guard") {
+    return "Elite Honor Guard";
+  }
+
+  // ============================================================
+  // UNSC TROOPER VARIANTS
+  // ============================================================
+
   if (baseName === "Trooper Infantry Squad") {
     const isAirborne = !!upgrades["Army Airborne"];
     const isRecon = !!upgrades["Recon Squad"];
@@ -9371,16 +9409,19 @@ function getDisplayUnitName(unit) {
     }
   }
 
-  // Promethean Knight Commander
+  // ============================================================
+  // FORERUNNER COMMANDER VARIANT
+  // ============================================================
+
   const hasKnightCommander =
     baseName === "Promethean Knight Team" &&
-    Object.entries(upgrades).some(([label, picked]) =>
-      picked && String(label).startsWith("Knight Commander")
-    );
+    hasUpgradeStartingWith("Knight Commander");
 
-  return hasKnightCommander
-    ? `${baseName} (Platoon Commander)`
-    : baseName;
+  if (hasKnightCommander) {
+    return `${baseName} (Platoon Commander)`;
+  }
+
+  return baseName;
 }
 
 function renderArmyList() {
