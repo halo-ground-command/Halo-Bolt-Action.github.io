@@ -9343,14 +9343,44 @@ function saveEdit() {
 
 function getDisplayUnitName(unit) {
   const baseName = unit?.name || "";
+  const upgrades = unit?.squadUpgrades || {};
 
+  // Jackal Skirmishers
+  if (
+    baseName === "Jackal Squad" &&
+    upgrades["Skirmishers"]
+  ) {
+    return "Skirmisher Squad";
+  }
+
+  // UNSC Trooper variants
+  if (baseName === "Trooper Infantry Squad") {
+    const isAirborne = !!upgrades["Army Airborne"];
+    const isRecon = !!upgrades["Recon Squad"];
+
+    if (isAirborne && isRecon) {
+      return "Airborne Recon Squad";
+    }
+
+    if (isAirborne) {
+      return "Airborne Squad";
+    }
+
+    if (isRecon) {
+      return "Recon Squad";
+    }
+  }
+
+  // Promethean Knight Commander
   const hasKnightCommander =
     baseName === "Promethean Knight Team" &&
-    Object.entries(unit?.squadUpgrades || {}).some(([label, picked]) =>
+    Object.entries(upgrades).some(([label, picked]) =>
       picked && String(label).startsWith("Knight Commander")
     );
 
-  return hasKnightCommander ? `${baseName} (Platoon Commander)` : baseName;
+  return hasKnightCommander
+    ? `${baseName} (Platoon Commander)`
+    : baseName;
 }
 
 function renderArmyList() {
