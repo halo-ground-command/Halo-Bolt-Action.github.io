@@ -1657,7 +1657,7 @@ const UNSC_VEHICLES = [
   name: "Elephant",
   type: "Tank",
   allowedVeterancy: ["Regular", "Veteran"],
-  costs: { Regular: 116, Veteran: 139 },
+  costs: { Regular: 111, Veteran: 133 },
   weapons: [
     { name: "Turret-mounted Paired Heavy Machine Gun" }
   ],
@@ -1665,7 +1665,12 @@ const UNSC_VEHICLES = [
   transportCapacity: 16,
   specialRules: [
     "Slower",
-    "Command Vehicle"
+    "Command Vehicle",
+    "Open-topped",
+    {
+      name: "Recovery Platform",
+      description: "Once per game, when this vehicle is given a Fire order, it may forgo all shooting and select one friendly non-flying vehicle within 6\". Remove one status effect caused by the Vehicle Damage Table from that vehicle."
+    }
   ],
   options: {
     weaponUpgrades: {
