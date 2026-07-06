@@ -1653,6 +1653,48 @@ const UNSC_VEHICLES = [
 		}
 	  }
 	},
+{
+  name: "Elephant",
+  type: "Tank",
+  allowedVeterancy: ["Regular", "Veteran"],
+  costs: { Regular: 116, Veteran: 139 },
+  weapons: [
+    { name: "Turret-mounted Paired Heavy Machine Gun" }
+  ],
+  damageValue: "8+ (Light Tank)",
+  transportCapacity: 16,
+  specialRules: [
+    "Slower",
+    "Command Vehicle"
+  ],
+  options: {
+    weaponUpgrades: {
+      "Turret-mounted Light Anti-Tank Weapon (replace Paired HMG)": {
+        cost: 20,
+        replaces: ["Turret-mounted Paired Heavy Machine Gun"],
+        addsWeapon: "Turret-mounted Light Anti-Tank Weapon",
+        slot: "mainTurret"
+      },
+      "Turret-mounted Rocket Launcher (replace Paired HMG)": {
+        cost: 25,
+        replaces: ["Turret-mounted Paired Heavy Machine Gun"],
+        addsWeapon: "Turret-mounted Rocket Launcher",
+        slot: "mainTurret"
+      },
+      "Pintle-mounted MMGs (left and right arcs)": {
+        cost: 30,
+        addsWeapon: [
+          "Pintle-mounted MMG (left arc)",
+          "Pintle-mounted MMG (right arc)"
+        ]
+      },
+      "Medical Vehicle": {
+        cost: 10,
+        grantsRule: "Medical Vehicle"
+      }
+    }
+  }
+},
 
   // TANK DESTROYERS
 	{
