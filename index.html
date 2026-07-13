@@ -466,7 +466,7 @@ const weaponSpecialDescriptions = {
   "MG": "Behaves exactly like a standard machine gun for all game rules and modifiers.",
   "Linked": "All shots from this weapon must target the same enemy unit.",
   "ML": "Never ranges in better than 6+. After placing the original template, all enemy units within 6\" of it also become targets; roll 6+ separately for each. Cannot fire if friends are within 6\" of the original template. Firer takes 1 pin.",
-  "Range Finder": "When a unit is given a Fire order, up to one Range Finder weapon in range (And LOS) of the target may choose not to fire; if it does so, one other model in the same unit firing a Small Arms weapon receives +1 to hit for that shooting attack. If the Range Finder weapon could have fired multiple shots at the target, this bonus may be given to one Heavy weapon instead.",
+  "Range Finder": "When a unit is given a Fire order, up to one model with a Range Finder weapon that could otherwise fire at the target may choose not to fire. If it does so, one other model in the same unit firing a Small Arms weapon receives +1 to hit for that shooting attack only. If the Range Finder weapon could have fired multiple shots at the target, this bonus may be given to one model firing a Heavy weapon instead. This bonus has no effect on Indirect Fire.",
   "Paired": "Paired machine guns do not halve their shots when mounted on a vehicle.",
   "Shaped Charge": "Ignores the -1 Penetration penalty at long range and does not gain the +1 Penetration bonus at point-blank range. Against units in buildings, if fired at a visible wall, it counts as HE (2\").",
   "Sniper": "Grants unit the Sniper special rule.",
@@ -1269,28 +1269,103 @@ const UNSC_UNITS = [
   baseMen: 4,
   maxMen: 6,
   weapons: [{ name: "Assault Rifle" }],
-  specialRules: ["Fanatics", "Fast", "VISR", "Behind Enemy Lines", "Strong", "Strikes First"],
+  specialRules: [
+    "Fanatics",
+    "Fast",
+    "VISR",
+    "Behind Enemy Lines",
+    "Strong",
+    "Strikes First"
+  ],
   options: {
     extraMenCost: { Veteran: 25 },
+
     squadUpgrades: {
-      "Anti-Tank Grenades": { cost: 2, grantsRule: "Tank Hunters" },
-      "Jump-Jet Packs": { cost: 1, grantsRule: "Flight" },
-      "Stealth Modules": { cost: 1, grantsRule: "Stealth" },
-      "Energy Shield Modules": { cost: 3, grantsRule: "Energy Shields" },
-	  "Engineers": { cost: 1, grantsRule: "Engineers" },
-      "Melee Weapon (NCO only)": { cost: 1, grantsRule: "Melee Weapon", perModel: false }
+      "Anti-Tank Grenades": {
+        cost: 2,
+        grantsRule: "Tank Hunters"
+      },
+      "Jump-Jet Packs": {
+        cost: 1,
+        grantsRule: "Flight"
+      },
+      "Stealth Modules": {
+        cost: 1,
+        grantsRule: "Stealth"
+      },
+      "Energy Shield Modules": {
+        cost: 3,
+        grantsRule: "Energy Shields"
+      },
+      "Engineers": {
+        cost: 1,
+        grantsRule: "Engineers"
+      },
+      "Melee Weapons": {
+        cost: 2,
+        grantsRule: "Melee Weapons",
+        perModel: true
+      },
+      "Melee Weapon (NCO only)": {
+        cost: 1,
+        grantsRule: "Melee Weapon",
+        perModel: false
+      }
     },
+
     weaponReplacements: {
-      "Battle Rifles":     { max: 5, cost: -3, replaces: "Assault Rifle", grants: "Battle Rifle" },
-      "Shotguns":          { max: 4, cost: -3, replaces: "Assault Rifle", grants: "Shotgun" },
-      "DMRs":              { max: 4, cost: -5, replaces: "Assault Rifle", grants: "DMR" },
-      "Grenade Launcher":  { max: 2, cost: 17, replaces: "Assault Rifle", grants: "Grenade Launcher" },
-      "LMG":               { max: 2, cost: 9,  replaces: "Assault Rifle", grants: "LMG" },
-      "Anti-Tank Rifle":   { max: 2, cost: 10, replaces: "Assault Rifle", grants: "Anti-Tank Rifle" }
+      "Battle Rifles": {
+        max: 5,
+        cost: -3,
+        replaces: "Assault Rifle",
+        grants: "Battle Rifle"
+      },
+      "Shotguns": {
+        max: 4,
+        cost: -3,
+        replaces: "Assault Rifle",
+        grants: "Shotgun"
+      },
+      "DMRs": {
+        max: 4,
+        cost: -5,
+        replaces: "Assault Rifle",
+        grants: "DMR"
+      },
+      "Grenade Launcher": {
+        max: 2,
+        cost: 17,
+        replaces: "Assault Rifle",
+        grants: "Grenade Launcher"
+      },
+      "LMG": {
+        max: 2,
+        cost: 9,
+        replaces: "Assault Rifle",
+        grants: "LMG"
+      },
+      "Anti-Tank Rifle": {
+        max: 2,
+        cost: 10,
+        replaces: "Assault Rifle",
+        grants: "Anti-Tank Rifle"
+      }
     },
+
     ncoReplacement: {
-      options: ["Assault Rifle", "Battle Rifle", "Shotgun", "DMR", "Anti-Tank Rifle"],
-      costs: { "Battle Rifle": -3, "Shotgun": -3, "DMR": -5, "Anti-Tank Rifle": 10 }
+      options: [
+        "Assault Rifle",
+        "Battle Rifle",
+        "Shotgun",
+        "DMR",
+        "Anti-Tank Rifle"
+      ],
+      costs: {
+        "Battle Rifle": -3,
+        "Shotgun": -3,
+        "DMR": -5,
+        "Anti-Tank Rifle": 10
+      }
     }
   }
 },
@@ -4735,18 +4810,17 @@ const FLOOD_UNITS = [
     extraMenCost: { Regular: 19, Veteran: 22 },
     squadUpgrades: {
       "Anti-Tank Grenades": { cost: 2, grantsRule: "Tank Hunters" },
-      "Energy Shield Modules": { cost: 3, grantsRule: "Energy Shields" },
       "Melee Weapon (NCO only)": { cost: 1, grantsRule: "Melee Weapon", perModel: false },
-	  "Melee Weapons": { cost: 1, grantsRule: "Melee Weapons" },
+      "Melee Weapons": { cost: 1, grantsRule: "Melee Weapons" },
       "Patient Predators": { cost: 1, grantsRule: "Patient Predators" },
       "Strong": { cost: 1, grantsRule: "Strong" }
     },
     weaponReplacements: {
-      "Needlers": {
+      "Shotguns": {
         max: 14,
-        cost: -2,
+        cost: -3,
         replaces: "Assault Rifle",
-        grants: "Needler"
+        grants: "Shotgun"
       },
       "SMGs": {
         max: 14,
@@ -4754,29 +4828,17 @@ const FLOOD_UNITS = [
         replaces: "Assault Rifle",
         grants: "Submachine Gun"
       },
-      "Plasma Rifles": {
-        max: 14,
-        cost: 0,
-        replaces: "Assault Rifle",
-        grants: "Plasma Rifle"
-      },
-      "Spikers": {
-        max: 14,
-        cost: 0,
-        replaces: "Assault Rifle",
-        grants: "Spiker"
-      },
-      "Shotguns": {
-        max: 14,
-        cost: -3,
-        replaces: "Assault Rifle",
-        grants: "Shotgun"
-      },
-      "Battle Rifles/Covenant Carbines": {
+      "Battle Rifles": {
         max: 6,
         cost: -3,
         replaces: "Assault Rifle",
-        grants: "Battle Rifle/Covenant Carbine"
+        grants: "Battle Rifle"
+      },
+      "Plasma Pistols": {
+        max: 6,
+        cost: -5,
+        replaces: "Assault Rifle",
+        grants: "Plasma Pistol"
       },
       "Unarmed": {
         max: 6,
@@ -4786,15 +4848,133 @@ const FLOOD_UNITS = [
       }
     },
     ncoReplacement: {
-      options: ["Assault Rifle", "Needler", "Submachine Gun", "Plasma Rifle", "Spiker", "Shotgun", "Battle Rifle/Covenant Carbine", "Unarmed"],
+      options: ["Assault Rifle", "Shotgun", "Submachine Gun", "Battle Rifle", "Plasma Pistol", "Unarmed"],
+      costs: {
+        "Shotgun": -3,
+        "Submachine Gun": -2,
+        "Battle Rifle": -3,
+        "Plasma Pistol": -5,
+        "Unarmed": -8
+      }
+    }
+  }
+},
+{
+  name: "Elite Combat Form Squad",
+  type: "Infantry",
+  allowedVeterancy: ["Regular", "Veteran"],
+  costs: { Regular: 105, Veteran: 120 },
+  baseMen: 5,
+  maxMen: 7,
+  weapons: [
+    { name: "Plasma Rifle" }
+  ],
+  specialRules: [
+    "Flood Infection",
+    "Horror",
+    "Fieldcraft",
+    "Strong",
+    "Fast",
+    { name: "Limited", description: "Only 1 Elite Combat Form Squad may be taken per platoon." }
+  ],
+  options: {
+    extraMenCost: { Regular: 21, Veteran: 24 },
+    squadUpgrades: {
+      "Anti-Tank Grenades": { cost: 2, grantsRule: "Tank Hunters" },
+      "Melee Weapon (NCO only)": { cost: 1, grantsRule: "Melee Weapon", perModel: false },
+      "Melee Weapons": { cost: 1, grantsRule: "Melee Weapons" },
+      "Patient Predators": { cost: 1, grantsRule: "Patient Predators" },
+      "Energy Shield Modules": { cost: 3, grantsRule: "Energy Shields" }
+    },
+    weaponReplacements: {
+      "Needlers": {
+        max: 5,
+        cost: -2,
+        replaces: "Plasma Rifle",
+        grants: "Needler"
+      },
+      "Covenant Carbines": {
+        max: 7,
+        cost: -3,
+        replaces: "Plasma Rifle",
+        grants: "Covenant Carbine"
+      }
+    },
+    ncoReplacement: {
+      options: ["Plasma Rifle", "Needler", "Covenant Carbine"],
       costs: {
         "Needler": -2,
-        "Submachine Gun": -2,
-        "Plasma Rifle": 0,
-        "Spiker": 0,
-        "Shotgun": -3,
-        "Battle Rifle/Covenant Carbine": -3,
-		"Unarmed": -8,
+        "Covenant Carbine": -3
+      }
+    }
+  }
+},
+{
+  name: "Brute Combat Form Squad",
+  type: "Infantry",
+  allowedVeterancy: ["Regular", "Veteran"],
+  costs: { Regular: 110, Veteran: 125 },
+  baseMen: 5,
+  maxMen: 9,
+  weapons: [
+    { name: "Spiker" }
+  ],
+  specialRules: [
+    "Flood Infection",
+    "Horror",
+    "Fieldcraft",
+    "Berserker",
+    "Strong",
+    { name: "Limited", description: "Only 1 Brute Combat Form Squad may be taken per platoon." }
+  ],
+  options: {
+    extraMenCost: { Regular: 22, Veteran: 25 },
+    squadUpgrades: {
+      "Anti-Tank Grenades": { cost: 2, grantsRule: "Tank Hunters" },
+      "Melee Weapon (NCO only)": { cost: 1, grantsRule: "Melee Weapon", perModel: false },
+      "Melee Weapons": { cost: 1, grantsRule: "Melee Weapons" },
+      "Patient Predators": { cost: 1, grantsRule: "Patient Predators" }
+    },
+    weaponReplacements: {
+      "Plasma Rifles": {
+        max: 5,
+        cost: -1,
+        replaces: "Spiker",
+        grants: "Plasma Rifle"
+      },
+      "Manglers": {
+        max: 5,
+        cost: -5,
+        replaces: "Spiker",
+        grants: "Mangler"
+      },
+      "Maulers": {
+        max: 5,
+        cost: -6,
+        replaces: "Spiker",
+        grants: "Mauler"
+      },
+      "Covenant Carbines": {
+        max: 7,
+        cost: -4,
+        replaces: "Spiker",
+        grants: "Covenant Carbine"
+      },
+      "Unarmed": {
+        max: 5,
+        cost: -9,
+        replaces: "Spiker",
+        grants: "Unarmed"
+      }
+    },
+    ncoReplacement: {
+      options: ["Spiker", "Plasma Rifle", "Mangler", "Mauler", "Covenant Carbine", "Unarmed"],
+      costs: {
+        "Plasma Rifle": -1,
+        "Mangler": -5,
+        "Mauler": -6,
+        "Covenant Carbine": -4,
+        "Unarmed": -9
       }
     }
   }
@@ -4895,8 +5075,7 @@ const FLOOD_UNITS = [
     "Horror",
     { name: "Suicide Charge", description: "If this model successfully assaults an enemy unit, it is immediately destroyed, and Explosive Biomass takes effect. Additionally, while this unit is on Ambush, if an enemy Infantry or Artillery unit ends a movement within 6\" and line of sight of it, instead of firing, you may immediately flip its Ambush order to Run and declare an assault against that enemy unit before it has a chance to fire." },
     { name: "Explosive Biomass", description: "If this model is destroyed, the enemy unit it is fighting in close quarters suffers a HE (1\") hit. Being Down does not halve hits for this attack." },
-    { name: "Spawn Infection Forms", description: "When this unit is destroyed, immediately replace the model with a 3 model Inexperienced Infection Forms unit. Place them as close as possible to the position where the Carrier Form was destroyed, while remaining at least 1\" away from any other units. These Infection Forms lose all pins and use the same Order Die the Carrier Form unit had. If there is not enough space to place them all, place as many as possible. For scoring purposes, the Carrier Form and any Infection Forms spawned by this rule count as a single unit." },
-    { name: "Extra Selection", description: "You may take up to 3 Carrier Form Teams as a single choice in any platoon selector that allows an Anti-Tank Team. This does not prevent you from also taking a standard Anti-Tank Team." }
+    { name: "Spawn Infection Forms", description: "When this unit is destroyed, immediately replace the model with a 3 model Inexperienced Infection Forms unit. Place them as close as possible to the position where the Carrier Form was destroyed, while remaining at least 1\" away from any other units. These Infection Forms lose all pins and use the same Order Die the Carrier Form unit had. If there is not enough space to place them all, place as many as possible. For scoring purposes, the Carrier Form and any Infection Forms spawned by this rule count as a single unit." }
   ],
   options: {
     squadUpgrades: {
