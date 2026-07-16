@@ -520,7 +520,7 @@ window.unitSpecialDescriptions = {
   "Tank Hunters": "In assaults, use full anti-tank damage rules and ignore Tank Fear. Add +1 to damage rolls vs vehicles.",
   "Team Weapon": "Crew-served unit weapon. Support weapon team crew count as unarmed and do not fire personal ranged weapons. A Team Weapon belongs to the unit. A Team Weapon needs at least 2 models to fire at full effect; if only 1 model remains, the weapon may still fire but suffers -1 to hit.",
   "Tooth and Claw": "Rolls 3 dice instead of 1 per model in close combat.",
-  "Toughened": "5+ cover save against shooting attacks in the open; improves soft/hard cover saves by +1",
+  "Hardened": "5+ cover save against shooting attacks in the open; improves soft/hard cover saves by +1",
   "Tough Fighters": "In close quarters against Infantry, Artillery, or Assault Walkers, a unit may re-roll a number of failed melee rolls up to the number of friendly models with Tough Fighters taking part in that fight.",
   "VISR": "Can see through smoke and ignores Stealth’s -1 to-hit penalty.",
   "War Sermon": "When this unit receives its order die (except Down), pick 1 friendly Covenant Infantry or Artillery unit within 6\" and roll a D6 (Inexperienced -1, Veteran +1). On a 4+, remove 1 pin from that unit.",
@@ -1128,7 +1128,7 @@ const COVENANT_DOCTRINES = {
     label: "Brute",
     allowedVeterancy: ["Regular", "Veteran"],
     baseCostPerModel: 5,
-    specialRules: ["Toughened", "Stubborn", "Fieldcraft", "Berserker", "Strong"],
+    specialRules: ["Hardened", "Stubborn", "Fieldcraft", "Berserker", "Strong"],
     upgrades: [
       { name: "Energy Shields", cost: 3, grantsRule: "Energy Shields" },
       { name: "Melee Weapon (NCO/Officer only)", costFlat: 1, grantsRule: "Melee Weapon", ncoOnly: true }
@@ -1138,7 +1138,7 @@ const COVENANT_DOCTRINES = {
     label: "Elite",
     allowedVeterancy: ["Veteran"],
     baseCostPerModel: 10,
-    specialRules: ["Behind Enemy Lines", "Fanatics", "Toughened", "Energy Shields", "Fast", "VISR", "Strong", "Strikes First"],
+    specialRules: ["Behind Enemy Lines", "Fanatics", "Hardened", "Energy Shields", "Fast", "VISR", "Strong", "Strikes First"],
     upgrades: [
       { name: "Stealth", cost: 1, grantsRule: "Stealth" },
       { name: "Melee Weapon (NCO/Officer only)", costFlat: 1, grantsRule: "Melee Weapon", ncoOnly: true }
@@ -1152,7 +1152,7 @@ const BANISHED_DOCTRINES = {
     label: "Brute",
     allowedVeterancy: ["Regular", "Veteran"],
     baseCostPerModel: 5,
-    specialRules: ["Toughened", "Stubborn", "Fieldcraft", "Berserker", "Strong"],
+    specialRules: ["Hardened", "Stubborn", "Fieldcraft", "Berserker", "Strong"],
     upgrades: [
       { name: "Energy Shields", cost: 3, grantsRule: "Energy Shields" },
 	  { name: "Fanatics (replace Stubborn)", cost: 1, grantsRule: "Fanatics", replacesRule: "Stubborn" },
@@ -1163,7 +1163,7 @@ const BANISHED_DOCTRINES = {
     label: "Elite",
     allowedVeterancy: ["Veteran"],
     baseCostPerModel: 10,
-    specialRules: ["Behind Enemy Lines", "Fanatics", "Toughened", "Energy Shields", "Fast", "VISR", "Strong", "Strikes First"],
+    specialRules: ["Behind Enemy Lines", "Fanatics", "Hardened", "Energy Shields", "Fast", "VISR", "Strong", "Strikes First"],
     upgrades: [
       { name: "Stealth", cost: 1, grantsRule: "Stealth" },
       { name: "Melee Weapon (NCO/Officer only)", costFlat: 1, grantsRule: "Melee Weapon", ncoOnly: true }
@@ -1194,7 +1194,7 @@ const UNSC_DOCTRINES = {
     label: "Spartan",
     allowedVeterancy: ["Veteran"],
     baseCostPerModel: 7,
-    specialRules: ["Toughened", "Fanatics", "Fast", "Behind Enemy Lines", "VISR", "Strong", "Strikes First"],
+    specialRules: ["Hardened", "Fanatics", "Fast", "Behind Enemy Lines", "VISR", "Strong", "Strikes First"],
     upgrades: [
       { name: "Energy Shields", cost: 3, grantsRule: "Energy Shields" },
       { name: "Stealth", cost: 1, grantsRule: "Stealth" },
@@ -1434,7 +1434,7 @@ const UNSC_UNITS = [
   maxMen: 6,
   weapons: [{ name: "Assault Rifle" }],
   specialRules: [
-    "Toughened",
+    "Hardened",
     "Fanatics",
     "Fast",
     "VISR",
@@ -2609,7 +2609,7 @@ const COVENANT_UNITS = [
   baseMen: 5,
   maxMen: 9,
   weapons: [{ name: "Spiker" }],
-  specialRules: ["Toughened", "Stubborn", "Berserker", "Fieldcraft", "Strong"],
+  specialRules: ["Hardened", "Stubborn", "Berserker", "Fieldcraft", "Strong"],
   options: {
     extraMenCost: { Regular: 22, Veteran: 25 },
     squadUpgrades: {
@@ -2665,7 +2665,7 @@ const COVENANT_UNITS = [
   baseMen: 4,
   maxMen: 6,
   weapons: [{ name: "Plasma Rifle" }],
-  specialRules: ["Behind Enemy Lines", "Fanatics", "Toughened", "Energy Shields", "Fast", "VISR", "Strong", "Strikes First"],
+  specialRules: ["Behind Enemy Lines", "Fanatics", "Hardened", "Energy Shields", "Fast", "VISR", "Strong", "Strikes First"],
   options: {
     extraMenCost: { Veteran: 29 },
     squadUpgrades: {
@@ -2733,7 +2733,7 @@ const COVENANT_UNITS = [
     maxMen: 6,
     weapons: [{ name: "Melee Weapon" }],
     specialRules: [
-      "Behind Enemy Lines", "Fanatics", "Tough Fighters", "Energy Shields", "Toughened", "Fast", "VISR", "Melee Weapons", "Strikes First"
+      "Behind Enemy Lines", "Fanatics", "Tough Fighters", "Energy Shields", "Hardened", "Fast", "VISR", "Melee Weapons", "Strikes First"
     ],
     options: {
       extraMenCost: { Veteran: 21 },
@@ -2925,7 +2925,7 @@ const COVENANT_UNITS = [
   baseMen: 1,
   maxMen: 1,
   weapons: [{ name: "Plasma Rifle" }],
-  specialRules: ["Behind Enemy Lines", "Fanatics", "Toughened", "Strong", "Strikes First", "Energy Shields", "Fast", "VISR", "Attached Caste Leader"],
+  specialRules: ["Behind Enemy Lines", "Fanatics", "Hardened", "Strong", "Strikes First", "Energy Shields", "Fast", "VISR", "Attached Caste Leader"],
   options: {
     squadUpgrades: {
       "Anti-Tank Grenades": { cost: 2, grantsRule: "Tank Hunters" },
@@ -2949,7 +2949,7 @@ const COVENANT_UNITS = [
   baseMen: 1,
   maxMen: 1,
   weapons: [{ name: "Spiker" }],
-  specialRules: ["Toughened", "Stubborn", "Berserker", "Fieldcraft", "Strong", "Attached Caste Leader"],
+  specialRules: ["Hardened", "Stubborn", "Berserker", "Fieldcraft", "Strong", "Attached Caste Leader"],
   options: {
     squadUpgrades: {
       "Anti-Tank Grenades": { cost: 2, grantsRule: "Tank Hunters" },
@@ -3546,7 +3546,7 @@ const BANISHED_UNITS = [
   baseMen: 5,
   maxMen: 9,
   weapons: [{ name: "Spiker" }],
-  specialRules: ["Toughened", "Stubborn", "Berserker", "Fieldcraft", "Strong"],
+  specialRules: ["Hardened", "Stubborn", "Berserker", "Fieldcraft", "Strong"],
   options: {
     extraMenCost: { Regular: 22, Veteran: 25 },
 	squadUpgrades: {
@@ -3602,7 +3602,7 @@ const BANISHED_UNITS = [
   baseMen: 4,
   maxMen: 6,
   weapons: [{ name: "Plasma Rifle" }],
-  specialRules: ["Behind Enemy Lines", "Fanatics", "Toughened", "Energy Shields", "Fast", "VISR", "Strong", "Strikes First"],
+  specialRules: ["Behind Enemy Lines", "Fanatics", "Hardened", "Energy Shields", "Fast", "VISR", "Strong", "Strikes First"],
   options: {
     extraMenCost: { Veteran: 29 },
     squadUpgrades: {
@@ -3650,7 +3650,7 @@ const BANISHED_UNITS = [
     baseMen: 4,
     maxMen: 6,
     weapons: [{ name: "Melee Weapon" }],
-    specialRules: ["Fanatics", "Toughened", "Berserker", "Tough Fighters", "Fieldcraft", "Strikes First", "Melee Weapons"],
+    specialRules: ["Fanatics", "Hardened", "Berserker", "Tough Fighters", "Fieldcraft", "Strikes First", "Melee Weapons"],
     options: {
       extraMenCost: { Veteran: 19 },
       squadUpgrades: {
@@ -3854,7 +3854,7 @@ const BANISHED_UNITS = [
   baseMen: 1,
   maxMen: 1,
   weapons: [{ name: "Plasma Rifle" }],
-  specialRules: ["Behind Enemy Lines", "Fanatics", "Toughened", "Strong", "Strikes First", "Energy Shields", "Fast", "VISR", "Attached Caste Leader"],
+  specialRules: ["Behind Enemy Lines", "Fanatics", "Hardened", "Strong", "Strikes First", "Energy Shields", "Fast", "VISR", "Attached Caste Leader"],
   options: {
     squadUpgrades: {
       "Anti-Tank Grenades": { cost: 2, grantsRule: "Tank Hunters" },
@@ -3877,7 +3877,7 @@ const BANISHED_UNITS = [
   baseMen: 1,
   maxMen: 1,
   weapons: [{ name: "Spiker" }],
-  specialRules: ["Toughened", "Stubborn", "Berserker", "Fieldcraft", "Strong", "Attached Caste Leader"],
+  specialRules: ["Hardened", "Stubborn", "Berserker", "Fieldcraft", "Strong", "Attached Caste Leader"],
   options: {
     squadUpgrades: {
       "Anti-Tank Grenades": { cost: 2, grantsRule: "Tank Hunters" },
@@ -4420,7 +4420,7 @@ const FORERUNNER_UNITS = [
     ],
     specialRules: [
       "Energy Shields",
-	  "Toughened",
+	  "Hardened",
       "VISR",
       "Stealth",
       "Stubborn"
@@ -4453,7 +4453,7 @@ const FORERUNNER_UNITS = [
       "Composed Beings",
 	  "Counter-Assault Protocols",
       "Energy Shields",
-	  "Toughened",
+	  "Hardened",
       "Fanatics",
       "VISR",
       "Behind Enemy Lines",
@@ -4490,7 +4490,7 @@ const FORERUNNER_UNITS = [
       "Infiltrator",
       "Counter-Assault Protocols",
       "Energy Shields",
-	  "Toughened",
+	  "Hardened",
       "Fanatics",
       "VISR",
       "Behind Enemy Lines",
@@ -4590,7 +4590,7 @@ const FORERUNNER_UNITS = [
       "Composed Beings",
       "Counter-Assault Protocols",
       "Energy Shields",
-	  "Toughened",
+	  "Hardened",
       "Fanatics",
       "VISR",
       "Behind Enemy Lines",
@@ -4614,7 +4614,7 @@ const FORERUNNER_UNITS = [
     "Counter-Assault Protocols",
     "Composed Beings",
     "Energy Shields",
-	"Toughened",
+	"Hardened",
     "Fanatics",
     "VISR",
     "Behind Enemy Lines",
@@ -4650,7 +4650,7 @@ const FORERUNNER_UNITS = [
       "Composed Beings",
 	  "Counter-Assault Protocols",
       "Energy Shields",
-	  "Toughened",
+	  "Hardened",
       "Fanatics",
       "VISR",
       "Behind Enemy Lines",
@@ -4663,7 +4663,7 @@ const FORERUNNER_UNITS = [
 		  cost: 4,
 		  perModel: true,
 		  grantsRule: ["Resilient", "Fieldcraft", "Melee Weapons", "Large Infantry", "Tough Fighters"],
-		  replacesRule: ["Energy Shields", "Toughened", "Fast"]
+		  replacesRule: ["Energy Shields", "Hardened", "Fast"]
 		}
       }
     }
@@ -4683,7 +4683,7 @@ const FORERUNNER_UNITS = [
       "Composed Beings",
 	  "Counter-Assault Protocols",
       "Energy Shields",
-	  "Toughened",
+	  "Hardened",
       "Fanatics",
       "VISR",
       "Behind Enemy Lines",
@@ -4895,7 +4895,7 @@ const FLOOD_UNITS = [
     "Wide Formation",
     "Tough Fighters",
     "Strong",
-	"Toughened",
+	"Hardened",
     { name: "Immobile", description: "If no tendrils are present, the unit cannot move." }
   ],
   options: {
@@ -4924,7 +4924,7 @@ const FLOOD_UNITS = [
     "Wide Formation",
     "Tough Fighters",
     "Strong",
-	"Toughened",
+	"Hardened",
     { name: "Immobile", description: "If no tendrils are present, the unit cannot move." }
   ],
   options: {
@@ -5118,7 +5118,7 @@ const FLOOD_UNITS = [
     "Fieldcraft",
     "Berserker",
     "Strong",
-	"Toughened",
+	"Hardened",
     { name: "Limited", description: "Only 1 Brute Combat Form Squad may be taken per platoon." }
   ],
   options: {
