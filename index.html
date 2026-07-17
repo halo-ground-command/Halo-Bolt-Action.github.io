@@ -598,21 +598,20 @@ window.vehicleSpecialDescriptions["Shielded Hull"] =
   
 window.unitSpecialDescriptions["Flood Burster"] =
   "When successfully entering from Reserve, one unit per turn with this rule may deploy via a Flood Burster instead of from a table edge: place it legally in open ground more than 9\" from enemies, then give it Down. It cannot perform further actions that turn.";  
-
 const ARMOURY_DEFS = {
   UNSC: [
-{
-  id: "mjolnirSystems",
-  type: "ruleCheckbox",
-  label: "MJOLNIR Systems",
-  cost: 2,
-  costMode: "perModel",
-  grantsRules: ["MJOLNIR Systems"],
-  appliesTo: (unit, unitData) =>
-    window.currentFaction === "UNSC" &&
-    ["Infantry", "Team", "Artillery"].includes(unit.type) &&
-    isSpartan(unit, unitData)
-},
+    {
+      id: "mjolnirSystems",
+      type: "ruleCheckbox",
+      label: "MJOLNIR Systems",
+      cost: 2,
+      costMode: "perModel",
+      grantsRules: ["MJOLNIR Systems"],
+      appliesTo: (unit, unitData) =>
+        window.currentFaction === "UNSC" &&
+        ["Infantry", "Team", "Artillery"].includes(unit.type) &&
+        isSpartan(unit, unitData)
+    },
     {
       id: "xm20pGrenades",
       type: "ruleCheckbox",
@@ -624,82 +623,49 @@ const ARMOURY_DEFS = {
     }
   ],
 
-  Covenant: [
-	{
-	  id: "sacredRelic",
-	  type: "ruleCheckbox",
-	  label: "Sacred Relic",
-	  cost: 15,
-	  costMode: "flat",
-	  grantsRules: ["Sacred Relic"],
-	  appliesTo: (unit, unitData) =>
-		window.currentFaction === "Covenant" &&
-		unit.veterancy === "Veteran" &&
-		isElite(unit, unitData) &&
-		hasNonOfficerOrNcoModel(unit, unitData) &&
-		(
-		  !armyHasSquadUpgrade("Sacred Relic", unit) ||
-		  unit.squadUpgrades?.["Sacred Relic"]
-		)
-	},
-    {
-      id: "plasmaCapacitorCells",
-      type: "ruleCheckbox",
-      label: "Plasma Capacitor Cells",
-      cost: 1,
-      costMode: "perModel",
-      grantsRules: ["Plasma Capacitor Cells"],
-      appliesTo: (unit, unitData) =>
-        window.currentFaction === "Covenant" &&
-        unit.type === "Infantry" &&
-        ["Veteran"].includes(unit.veterancy)
-    },
-    {
-      id: "covenantWraithShieldedHull",
-      type: "vehicleRuleCheckbox",
-      label: "Shielded Hull",
-      cost: 25,
-      costMode: "flat",
-      grantsRules: ["Shielded Hull"],
-      appliesTo: (unit, unitData) =>
-        window.currentFaction === "Covenant" &&
-        String(unit.name || "").includes("Wraith")
-    },
-    {
-      id: "covenantPhantomShieldedHull",
-      type: "vehicleRuleCheckbox",
-      label: "Shielded Hull",
-      cost: 20,
-      costMode: "flat",
-      grantsRules: ["Shielded Hull"],
-      appliesTo: (unit, unitData) =>
-        window.currentFaction === "Covenant" &&
-        unit.name === "Type-52 Phantom"
-    },
-    {
-      id: "covenantGhostShieldedHull",
-      type: "vehicleRuleCheckbox",
-      label: "Shielded Hull",
-      cost: 10,
-      costMode: "flat",
-      grantsRules: ["Shielded Hull"],
-      appliesTo: (unit, unitData) =>
-        window.currentFaction === "Covenant" &&
-        String(unit.name || "").includes("Ghost")
-    },
-    {
-      id: "swordsBansheeShieldedHull",
-      type: "vehicleRuleCheckbox",
-      label: "Shielded Hull",
-      cost: 10,
-      costMode: "flat",
-      grantsRules: ["Shielded Hull"],
-      appliesTo: (unit, unitData) =>
-        typeof isSwordsArmy === "function" &&
-        isSwordsArmy() &&
-        unit.name === "Type-26 Banshee"
-    }
-  ],
+Covenant: [
+  {
+    id: "sacredRelic",
+    type: "ruleCheckbox",
+    label: "Sacred Relic",
+    cost: 15,
+    costMode: "flat",
+    grantsRules: ["Sacred Relic"],
+    appliesTo: (unit, unitData) =>
+      window.currentFaction === "Covenant" &&
+      unit.veterancy === "Veteran" &&
+      isElite(unit, unitData) &&
+      hasNonOfficerOrNcoModel(unit, unitData) &&
+      (
+        !armyHasSquadUpgrade("Sacred Relic", unit) ||
+        unit.squadUpgrades?.["Sacred Relic"]
+      )
+  },
+  {
+    id: "swordsBansheeShieldedHull",
+    type: "vehicleRuleCheckbox",
+    label: "Shielded Hull",
+    cost: 10,
+    costMode: "flat",
+    grantsRules: ["Shielded Hull"],
+    appliesTo: (unit, unitData) =>
+      typeof isSwordsArmy === "function" &&
+      isSwordsArmy() &&
+      unit.name === "Type-26 Banshee"
+  },
+  {
+    id: "plasmaCapacitorCells",
+    type: "ruleCheckbox",
+    label: "Plasma Capacitor Cells",
+    cost: 1,
+    costMode: "perModel",
+    grantsRules: ["Plasma Capacitor Cells"],
+    appliesTo: (unit, unitData) =>
+      window.currentFaction === "Covenant" &&
+      unit.type === "Infantry" &&
+      ["Veteran"].includes(unit.veterancy)
+  }
+],
 
   Banished: [
     {
@@ -722,66 +688,11 @@ const ARMOURY_DEFS = {
       cost: 1,
       costMode: "perModel",
       grantsRules: ["Trophy Plate Harness"],
-		appliesTo: (unit, unitData) =>
-		  window.currentFaction === "Banished" &&
-		  unit.veterancy === "Veteran" &&
-		  unit.type === "Infantry" &&
-		  isBrute(unit, unitData)
-    },
-    {
-      id: "banishedWraithShieldedHull",
-      type: "vehicleRuleCheckbox",
-      label: "Shielded Hull",
-      cost: 25,
-      costMode: "flat",
-      grantsRules: ["Shielded Hull"],
       appliesTo: (unit, unitData) =>
         window.currentFaction === "Banished" &&
-        String(unit.name || "").includes("Wraith")
-    },
-    {
-      id: "banishedPhantomShieldedHull",
-      type: "vehicleRuleCheckbox",
-      label: "Shielded Hull",
-      cost: 20,
-      costMode: "flat",
-      grantsRules: ["Shielded Hull"],
-      appliesTo: (unit, unitData) =>
-        window.currentFaction === "Banished" &&
-        unit.name === "Type-52 Phantom"
-    },
-    {
-      id: "banishedGhostShieldedHull",
-      type: "vehicleRuleCheckbox",
-      label: "Shielded Hull",
-      cost: 10,
-      costMode: "flat",
-      grantsRules: ["Shielded Hull"],
-      appliesTo: (unit, unitData) =>
-        window.currentFaction === "Banished" &&
-        String(unit.name || "").includes("Ghost")
-    },
-    {
-      id: "banishedBlisterbackShieldedHull",
-      type: "vehicleRuleCheckbox",
-      label: "Shielded Hull",
-      cost: 15,
-      costMode: "flat",
-      grantsRules: ["Shielded Hull"],
-      appliesTo: (unit, unitData) =>
-        window.currentFaction === "Banished" &&
-        unit.name === "Gydrozka Workshop Blisterback"
-    },
-    {
-      id: "banishedShroudShieldedHull",
-      type: "vehicleRuleCheckbox",
-      label: "Shielded Hull",
-      cost: 15,
-      costMode: "flat",
-      grantsRules: ["Shielded Hull"],
-      appliesTo: (unit, unitData) =>
-        window.currentFaction === "Banished" &&
-        unit.name === "Klavbrig Workshop Shroud"
+        unit.veterancy === "Veteran" &&
+        unit.type === "Infantry" &&
+        isBrute(unit, unitData)
     }
   ],
 
@@ -798,126 +709,68 @@ const ARMOURY_DEFS = {
         window.currentFaction === "Flood" &&
         unit.name === "Carrier Form Team"
     },
-	{
-	  label: "Spore Cloud",
-	  type: "ruleCheckbox",
-	  cost: 1,
-	  appliesTo: (unit, unitData) => {
-		const type = String(unit?.type || unitData?.type || "");
-		return ["Infantry", "Team", "Artillery"].includes(type);
-	  },
-	  grantsRules: ["Spore Cloud"]
-	},	
-	{
-	  id: "burrowingTendrils",
-	  type: "ruleCheckbox",
-	  label: "Burrowing Tendrils",
-	  cost: 2,
-	  costMode: "perModel",
-	  grantsRules: ["Infiltrator", "Stealth", "Infested Terrain"],
-	  appliesTo: (unit, unitData) =>
-		window.currentFaction === "Flood" &&
-		unit.type === "Infantry" &&
-		String(unit.name || "").includes("Officer")
-	},
-{
-  id: "floodBorrowedWraithShieldedHull",
-  type: "vehicleRuleCheckbox",
-  label: "Shielded Hull",
-  cost: 25,
-  costMode: "flat",
-  grantsRules: ["Shielded Hull"],
-  appliesTo: (unit, unitData) =>
-    window.currentFaction === "Flood" &&
-    unit.isFloodBorrowed &&
-    String(unit.name || "").includes("Wraith")
-},
-{
-  id: "floodBorrowedPhantomShieldedHull",
-  type: "vehicleRuleCheckbox",
-  label: "Shielded Hull",
-  cost: 20,
-  costMode: "flat",
-  grantsRules: ["Shielded Hull"],
-  appliesTo: (unit, unitData) =>
-    window.currentFaction === "Flood" &&
-    unit.isFloodBorrowed &&
-    String(unit.name || "").includes("Phantom")
-},
-{
-  id: "floodBorrowedGhostShieldedHull",
-  type: "vehicleRuleCheckbox",
-  label: "Shielded Hull",
-  cost: 10,
-  costMode: "flat",
-  grantsRules: ["Shielded Hull"],
-  appliesTo: (unit, unitData) =>
-    window.currentFaction === "Flood" &&
-    unit.isFloodBorrowed &&
-    String(unit.name || "").includes("Ghost")
-},
-{
-  id: "floodBorrowedBlisterbackShieldedHull",
-  type: "vehicleRuleCheckbox",
-  label: "Shielded Hull",
-  cost: 15,
-  costMode: "flat",
-  grantsRules: ["Shielded Hull"],
-  appliesTo: (unit, unitData) =>
-    window.currentFaction === "Flood" &&
-    unit.isFloodBorrowed &&
-    String(unit.name || "").includes("Blisterback")
-},
-{
-  id: "floodBorrowedShroudShieldedHull",
-  type: "vehicleRuleCheckbox",
-  label: "Shielded Hull",
-  cost: 15,
-  costMode: "flat",
-  grantsRules: ["Shielded Hull"],
-  appliesTo: (unit, unitData) =>
-    window.currentFaction === "Flood" &&
-    unit.isFloodBorrowed &&
-    String(unit.name || "").includes("Shroud")
-}
+    {
+      id: "sporeCloud",
+      label: "Spore Cloud",
+      type: "ruleCheckbox",
+      cost: 1,
+      costMode: "perModel",
+      grantsRules: ["Spore Cloud"],
+      appliesTo: (unit, unitData) => {
+        const type = String(unit?.type || unitData?.type || "");
+        return ["Infantry", "Team", "Artillery"].includes(type);
+      }
+    },
+    {
+      id: "burrowingTendrils",
+      type: "ruleCheckbox",
+      label: "Burrowing Tendrils",
+      cost: 2,
+      costMode: "perModel",
+      grantsRules: ["Infiltrator", "Stealth", "Infested Terrain"],
+      appliesTo: (unit, unitData) =>
+        window.currentFaction === "Flood" &&
+        unit.type === "Infantry" &&
+        String(unit.name || "").includes("Officer")
+    }
   ],
 
-Forerunner: [
-  {
-    id: "reconstructionMatrix",
-    type: "ruleCheckbox",
-    label: "Reconstruction Matrix",
-    cost: 1,
-    costMode: "perModel",
-    grantsRules: ["Reconstruction Matrix"],
-    appliesTo: (unit, unitData) =>
-      window.currentFaction === "Forerunner" &&
-      hasRule(unit, unitData, "Composed Beings")
-  },
-  {
-    id: "custodianCommandNode",
-    type: "ruleCheckbox",
-    label: "Custodian Command Node",
-    cost: 1,
-    costMode: "perModel",
-    grantsRules: ["Custodian Command Node"],
-    appliesTo: (unit, unitData) =>
-      window.currentFaction === "Forerunner" &&
-      unit.type === "Infantry" &&
-      hasRule(unit, unitData, "Automaton")
-  },
-  {
-    id: "hardLightCalibration",
-    type: "ruleCheckbox",
-    label: "Hard-Light Calibration",
-    cost: 1,
-    costMode: "perModel",
-    grantsRules: ["Hard-Light Calibration"],
-    appliesTo: (unit, unitData) =>
-      window.currentFaction === "Forerunner" &&
-      (unit.type === "Infantry" || unit.type === "Team")
-  }
-]
+  Forerunner: [
+    {
+      id: "reconstructionMatrix",
+      type: "ruleCheckbox",
+      label: "Reconstruction Matrix",
+      cost: 1,
+      costMode: "perModel",
+      grantsRules: ["Reconstruction Matrix"],
+      appliesTo: (unit, unitData) =>
+        window.currentFaction === "Forerunner" &&
+        hasRule(unit, unitData, "Composed Beings")
+    },
+    {
+      id: "custodianCommandNode",
+      type: "ruleCheckbox",
+      label: "Custodian Command Node",
+      cost: 1,
+      costMode: "perModel",
+      grantsRules: ["Custodian Command Node"],
+      appliesTo: (unit, unitData) =>
+        window.currentFaction === "Forerunner" &&
+        unit.type === "Infantry" &&
+        hasRule(unit, unitData, "Automaton")
+    },
+    {
+      id: "hardLightCalibration",
+      type: "ruleCheckbox",
+      label: "Hard-Light Calibration",
+      cost: 1,
+      costMode: "perModel",
+      grantsRules: ["Hard-Light Calibration"],
+      appliesTo: (unit, unitData) =>
+        window.currentFaction === "Forerunner" &&
+        (unit.type === "Infantry" || unit.type === "Team")
+    }
+  ]
 };
 
 // --- Army Rules ---
@@ -2971,56 +2824,64 @@ const COVENANT_UNITS = [
 // --- COVENANT VEHICLES (Tank Example) ---
 const COVENANT_VEHICLES = [
   // TANKS
-	{
-	  name: "Zurdo-pattern Wraith",
-	  type: "Tank",
-	  allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
-	  costs: { Inexperienced: 144, Regular: 180, Veteran: 216 },
-	  weapons: [
-		{ name: "Casement-mounted Forward-facing Medium Anti-Tank Weapon" }
-	  ],
-	  damageValue: "9+ (Medium Anti-Grav Tank)",
-	  transportCapacity: 0,
-	  options: {
-		weaponUpgrades: {
-		  "Pintle-mounted Medium Plasma MG (forward arc)": {
-			cost: 15,
-			replaces: null,
-			addsWeapon: "Pintle-mounted Medium Plasma MG (forward arc)"
-		  }
-		}
-	  },
-	  specialRules: [
-		"Weak Sides",
-		"Heavy Thrusters: This vehicle only doubles its movement on roads when given a Run order.",
-		"Versatile: The medium anti-tank Weapon can also fire as a medium howitzer: Range 60\" (36–72\"), Shots 1, Pen HE, Team, Fixed, Howitzer, HE (3\")."
-	  ]
-	},
-	{
-	  name: "Muz-pattern Wraith",
-	  type: "Tank",
-	  allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
-	  costs: { Inexperienced: 192, Regular: 240, Veteran: 288 },
-	  weapons: [
-		{ name: "Casement-mounted Forward-facing Heavy Anti-Tank Weapon" },
-		{ name: "Forward-facing Hull-mounted Paired Heavy Plasma MG" }
-	  ],
-	  damageValue: "9+ (Medium Anti-Grav Tank)",
-	  transportCapacity: 0,
-	  options: {
-		weaponUpgrades: {
-		  "Pintle-mounted Medium Plasma MG (forward arc)": {
-			cost: 15,
-			replaces: null,
-			addsWeapon: "Pintle-mounted Medium Plasma MG (forward arc)"
-		  }
-		}
-	  },
-	  specialRules: [
-	    "Heavy Thrusters: This vehicle only doubles its movement on roads when given a Run order.",
-		"Versatile: The heavy anti-tank Weapon can also fire as a medium howitzer: Range 60\" (36–72\"), Shots 1, Pen HE, Team, Fixed, Howitzer, HE (3\")."
-	  ]
-	},
+{
+  name: "Zurdo-pattern Wraith",
+  type: "Tank",
+  allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
+  costs: { Inexperienced: 144, Regular: 180, Veteran: 216 },
+  weapons: [
+    { name: "Casement-mounted Forward-facing Medium Anti-Tank Weapon" }
+  ],
+  damageValue: "9+ (Medium Anti-Grav Tank)",
+  transportCapacity: 0,
+  options: {
+    weaponUpgrades: {
+      "Pintle-mounted Medium Plasma MG (forward arc)": {
+        cost: 15,
+        replaces: null,
+        addsWeapon: "Pintle-mounted Medium Plasma MG (forward arc)"
+      },
+      "Shielded Hull": {
+        cost: 25,
+        grantsRule: "Shielded Hull"
+      }
+    }
+  },
+  specialRules: [
+    "Weak Sides",
+    "Heavy Thrusters: This vehicle only doubles its movement on roads when given a Run order.",
+    "Versatile: The medium anti-tank Weapon can also fire as a medium howitzer: Range 60\" (36–72\"), Shots 1, Pen HE, Team, Fixed, Howitzer, HE (3\")."
+  ]
+},
+{
+  name: "Muz-pattern Wraith",
+  type: "Tank",
+  allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
+  costs: { Inexperienced: 192, Regular: 240, Veteran: 288 },
+  weapons: [
+    { name: "Casement-mounted Forward-facing Heavy Anti-Tank Weapon" },
+    { name: "Forward-facing Hull-mounted Paired Heavy Plasma MG" }
+  ],
+  damageValue: "9+ (Medium Anti-Grav Tank)",
+  transportCapacity: 0,
+  options: {
+    weaponUpgrades: {
+      "Pintle-mounted Medium Plasma MG (forward arc)": {
+        cost: 15,
+        replaces: null,
+        addsWeapon: "Pintle-mounted Medium Plasma MG (forward arc)"
+      },
+      "Shielded Hull": {
+        cost: 25,
+        grantsRule: "Shielded Hull"
+      }
+    }
+  },
+  specialRules: [
+    "Heavy Thrusters: This vehicle only doubles its movement on roads when given a Run order.",
+    "Versatile: The heavy anti-tank Weapon can also fire as a medium howitzer: Range 60\" (36–72\"), Shots 1, Pen HE, Team, Fixed, Howitzer, HE (3\")."
+  ]
+},
 
   // WALKERS
 {
@@ -3120,51 +2981,63 @@ const COVENANT_VEHICLES = [
 	},
 
   // ANTI-AIRCRAFT VEHICLES
-  {
-    name: "Ogab'd-pattern Anti-Aircraft Wraith",
-    type: "Tank",
-    allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
-    costs: { Inexperienced: 160, Regular: 200, Veteran: 240 },
-    weapons: [
-      { name: "Twin-linked Casement-mounted Forward-facing Fuel Rod Autocannon" },
-      { name: "Twin-linked Casement-mounted Forward-facing Fuel Rod Autocannon" }
-    ],
-    damageValue: "9+ (Heavy Anti-Grav Tank)",
-    transportCapacity: 0,
-    options: {
-      weaponUpgrades: {
-        "Pintle-mounted Medium Plasma MG (forward arc)": {
-          cost: 15,
-          replaces: null,
-          addsWeapon: "Pintle-mounted Medium Plasma MG (forward arc)"
-        }
+{
+  name: "Ogab'd-pattern Anti-Aircraft Wraith",
+  type: "Tank",
+  allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
+  costs: { Inexperienced: 160, Regular: 200, Veteran: 240 },
+  weapons: [
+    { name: "Twin-linked Casement-mounted Forward-facing Fuel Rod Autocannon" },
+    { name: "Twin-linked Casement-mounted Forward-facing Fuel Rod Autocannon" }
+  ],
+  damageValue: "9+ (Heavy Anti-Grav Tank)",
+  transportCapacity: 0,
+  options: {
+    weaponUpgrades: {
+      "Pintle-mounted Medium Plasma MG (forward arc)": {
+        cost: 15,
+        replaces: null,
+        addsWeapon: "Pintle-mounted Medium Plasma MG (forward arc)"
+      },
+      "Shielded Hull": {
+        cost: 25,
+        grantsRule: "Shielded Hull"
       }
-    },
-    specialRules: [
-      "Weak Sides",
-	  "Heavy Thrusters: This vehicle only doubles its movement on roads when given a Run order.",
-      "Flak"
-    ]
+    }
   },
+  specialRules: [
+    "Weak Sides",
+    "Flak",
+    "Heavy Thrusters: This vehicle only doubles its movement on roads when given a Run order."
+  ]
+},
 
   // ARMOURED CARS
-  {
-    name: "Type-32 Rapid Attack Vehicle “Ghost”",
-    type: "Car",
-    allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
-    costs: { Inexperienced: 44, Regular: 55, Veteran: 66 },
-    weapons: [
-      { name: "Hull-mounted Forward-facing Paired Heavy Plasma MG" }
-    ],
-    damageValue: "6+ (Soft-skin Anti-Grav)",
-    transportCapacity: 0,
-    specialRules: [
-      "Recce",
-      "Agile",
-	  "Faster",
-      "Frontal Armour: This vehicle cannot be damaged by small arms hits from the frontal arc, but will still be pinned as normal."
-    ]
-  },
+{
+  name: "Type-32 Rapid Attack Vehicle “Ghost”",
+  type: "Car",
+  allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
+  costs: { Inexperienced: 44, Regular: 55, Veteran: 66 },
+  weapons: [
+    { name: "Hull-mounted Forward-facing Paired Heavy Plasma MG" }
+  ],
+  damageValue: "6+ (Soft-skin Anti-Grav)",
+  transportCapacity: 0,
+  specialRules: [
+    "Recce",
+    "Agile",
+    "Faster",
+    "Frontal Armour: This vehicle cannot be damaged by small arms hits from the frontal arc, but will still be pinned as normal."
+  ],
+  options: {
+    weaponUpgrades: {
+      "Shielded Hull": {
+        cost: 10,
+        grantsRule: "Shielded Hull"
+      }
+    }
+  }
+},
   {
     name: "Type-29 AGC \"Spectre\"",
     type: "Car",
@@ -3246,23 +3119,31 @@ const COVENANT_VEHICLES = [
 	  "Nimble"
     ]
   },
-  {
-    name: "Type-52 \"Vampire\"",
-    type: "Aircraft",
-    allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
-    costs: { Inexperienced: 100, Regular: 125, Veteran: 150 },
-    weapons: [
-      { name: "Turret-mounted Light Plasma Cannon" },
-      { name: "Turret-mounted Medium Plasma MG (left arc)" },
-      { name: "Turret-mounted Medium Plasma MG (right arc)" }
-    ],
-    damageValue: "7+ (Medium Aircraft)",
-    transportCapacity: 0,
-    specialRules: [
-      "Flak",
-      "Stasis Cannon: After an Advance or Fire order, the Vampire may target one non-activated enemy aircraft within 12\" and line of sight. That aircraft must immediately take a Morale test.\nIf passed: no effect.\nIf failed: the targeted aircraft gains 1 pin and it cannot make an Advance or Run order this turn, unless the Vampire is destroyed beforehand."
-    ]
-  },
+{
+  name: 'Type-52 "Vampire"',
+  type: "Aircraft",
+  allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
+  costs: { Inexperienced: 100, Regular: 125, Veteran: 150 },
+  weapons: [
+    { name: "Turret-mounted Light Plasma Cannon" },
+    { name: "Turret-mounted Medium Plasma MG (front arc)" },
+    { name: "Turret-mounted Medium Plasma MG (right arc)" }
+  ],
+  damageValue: "7+ (Medium Aircraft)",
+  transportCapacity: 0,
+  specialRules: [
+    "Flak",
+    "Stasis Cannon: After an Advance or Fire order, the Vampire may target one non-activated enemy aircraft within 12\" and line of sight. That aircraft must immediately take a Morale test.\nIf passed: no effect.\nIf failed: the targeted aircraft gains 1 pin and it cannot make an Advance or Run order this turn, unless the Vampire is destroyed beforehand."
+  ],
+  options: {
+    weaponUpgrades: {
+      "Shielded Hull": {
+        cost: 15,
+        grantsRule: "Shielded Hull"
+      }
+    }
+  }
+},
   {
     name: "Type-25 Spirit",
     type: "Aircraft",
@@ -3277,39 +3158,43 @@ const COVENANT_VEHICLES = [
       "Flak"
     ]
   },
-  {
-    name: "Type-52 Phantom",
-    type: "Aircraft",
-    allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
-    costs: { Inexperienced: 108, Regular: 135, Veteran: 162 },
-    weapons: [
-      { name: "Turret-mounted Light Plasma Cannon" }
-    ],
-    damageValue: "8+ (Heavy Aircraft)",
-    transportCapacity: 16,
-    specialRules: [
-      "Flak"
-    ],
-    options: {
-      weaponUpgrades: {
-        "2 Turret-mounted Light Plasma Cannons": {
-          cost: 50,
-          addsWeapon: "2x Turret-mounted Light Plasma Cannons"
-        },
-		"2 Pintle-mounted Medium Plasma MGs (left and right arcs)": {
-		  cost: 30,
-		  addsWeapon: [
-			"Pintle-mounted Medium Plasma MG (left arc)",
-			"Pintle-mounted Medium Plasma MG (right arc)"
-		  ]
-		},
-        "Command Vehicle": {
-          cost: 10,
-          grantsRule: "Command Vehicle"
-        }
+{
+  name: "Type-52 Phantom",
+  type: "Aircraft",
+  allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
+  costs: { Inexperienced: 108, Regular: 135, Veteran: 162 },
+  weapons: [
+    { name: "Turret-mounted Light Plasma Cannon" }
+  ],
+  damageValue: "8+ (Heavy Aircraft)",
+  transportCapacity: 16,
+  specialRules: [
+    "Flak"
+  ],
+  options: {
+    weaponUpgrades: {
+      "2 Turret-mounted Light Plasma Cannons": {
+        cost: 50,
+        addsWeapon: "2x Turret-mounted Light Plasma Cannons"
+      },
+      "2 Pintle-mounted Medium Plasma MGs (left and right arcs)": {
+        cost: 30,
+        addsWeapon: [
+          "Pintle-mounted Medium Plasma MG (left arc)",
+          "Pintle-mounted Medium Plasma MG (right arc)"
+        ]
+      },
+      "Command Vehicle": {
+        cost: 10,
+        grantsRule: "Command Vehicle"
+      },
+      "Shielded Hull": {
+        cost: 20,
+        grantsRule: "Shielded Hull"
       }
     }
-  },
+  }
+},
 	{
 	  name: "Covenant Air Artillery",
 	  type: "Aircraft",
@@ -3902,56 +3787,64 @@ const BANISHED_UNITS = [
 // --- BANISHED VEHICLES (Tank Example) ---
 const BANISHED_VEHICLES = [
   // TANKS
-	{
-	  name: "Zurdo-pattern Wraith",
-	  type: "Tank",
-	  allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
-	  costs: { Inexperienced: 144, Regular: 180, Veteran: 216 },
-	  weapons: [
-		{ name: "Casement-mounted Forward-facing Medium Anti-Tank Weapon" }
-	  ],
-	  damageValue: "9+ (Medium Anti-Grav Tank)",
-	  transportCapacity: 0,
-	  options: {
-		weaponUpgrades: {
-		  "Pintle-mounted Medium Plasma MG (forward arc)": {
-			cost: 15,
-			replaces: null,
-			addsWeapon: "Pintle-mounted Medium Plasma MG (forward arc)"
-		  }
-		}
-	  },
-	  specialRules: [
-		"Weak Sides",
-		"Heavy Thrusters: This vehicle only doubles its movement on roads when given a Run order.",
-		"Versatile: The medium anti-tank Weapon can also fire as a medium howitzer: Range 60\" (36–72\"), Shots 1, Pen HE, Team, Fixed, Howitzer, HE (3\")."
-	  ]
-	},
-	{
-	  name: "Muz-pattern Wraith",
-	  type: "Tank",
-	  allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
-	  costs: { Inexperienced: 192, Regular: 240, Veteran: 288 },
-	  weapons: [
-		{ name: "Casement-mounted Forward-facing Heavy Anti-Tank Weapon" },
-		{ name: "Forward-facing Hull-mounted Paired Heavy Plasma MG" }
-	  ],
-	  damageValue: "9+ (Medium Anti-Grav Tank)",
-	  transportCapacity: 0,
-	  options: {
-		weaponUpgrades: {
-		  "Pintle-mounted Medium Plasma MG (forward arc)": {
-			cost: 15,
-			replaces: null,
-			addsWeapon: "Pintle-mounted Medium Plasma MG (forward arc)"
-		  }
-		}
-	  },
-	  specialRules: [
-	    "Heavy Thrusters: This vehicle only doubles its movement on roads when given a Run order.",
-		"Versatile: The heavy anti-tank Weapon can also fire as a medium howitzer: Range 60\" (36–72\"), Shots 1, Pen HE, Team, Fixed, Howitzer, HE (3\")."
-	  ]
-	},
+{
+  name: "Zurdo-pattern Wraith",
+  type: "Tank",
+  allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
+  costs: { Inexperienced: 144, Regular: 180, Veteran: 216 },
+  weapons: [
+    { name: "Casement-mounted Forward-facing Medium Anti-Tank Weapon" }
+  ],
+  damageValue: "9+ (Medium Anti-Grav Tank)",
+  transportCapacity: 0,
+  options: {
+    weaponUpgrades: {
+      "Pintle-mounted Medium Plasma MG (forward arc)": {
+        cost: 15,
+        replaces: null,
+        addsWeapon: "Pintle-mounted Medium Plasma MG (forward arc)"
+      },
+      "Shielded Hull": {
+        cost: 25,
+        grantsRule: "Shielded Hull"
+      }
+    }
+  },
+  specialRules: [
+    "Weak Sides",
+    "Heavy Thrusters: This vehicle only doubles its movement on roads when given a Run order.",
+    "Versatile: The medium anti-tank Weapon can also fire as a medium howitzer: Range 60\" (36–72\"), Shots 1, Pen HE, Team, Fixed, Howitzer, HE (3\")."
+  ]
+},
+{
+  name: "Muz-pattern Wraith",
+  type: "Tank",
+  allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
+  costs: { Inexperienced: 192, Regular: 240, Veteran: 288 },
+  weapons: [
+    { name: "Casement-mounted Forward-facing Heavy Anti-Tank Weapon" },
+    { name: "Forward-facing Hull-mounted Paired Heavy Plasma MG" }
+  ],
+  damageValue: "9+ (Medium Anti-Grav Tank)",
+  transportCapacity: 0,
+  options: {
+    weaponUpgrades: {
+      "Pintle-mounted Medium Plasma MG (forward arc)": {
+        cost: 15,
+        replaces: null,
+        addsWeapon: "Pintle-mounted Medium Plasma MG (forward arc)"
+      },
+      "Shielded Hull": {
+        cost: 25,
+        grantsRule: "Shielded Hull"
+      }
+    }
+  },
+  specialRules: [
+    "Heavy Thrusters: This vehicle only doubles its movement on roads when given a Run order.",
+    "Versatile: The heavy anti-tank Weapon can also fire as a medium howitzer: Range 60\" (36–72\"), Shots 1, Pen HE, Team, Fixed, Howitzer, HE (3\")."
+  ]
+},
 
   // WALKERS
 {
@@ -4051,51 +3944,63 @@ const BANISHED_VEHICLES = [
 	},
 
   // ANTI-AIRCRAFT VEHICLES
-  {
-    name: "Ogab'd-pattern Anti-Aircraft Wraith",
-    type: "Tank",
-    allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
-    costs: { Inexperienced: 160, Regular: 200, Veteran: 240 },
-    weapons: [
-      { name: "Twin-linked Casement-mounted Forward-facing Fuel Rod Autocannon" },
-      { name: "Twin-linked Casement-mounted Forward-facing Fuel Rod Autocannon" }
-    ],
-    damageValue: "9+ (Heavy Anti-Grav Tank)",
-    transportCapacity: 0,
-    options: {
-      weaponUpgrades: {
-        "Pintle-mounted Medium Plasma MG (forward arc)": {
-          cost: 15,
-          replaces: null,
-          addsWeapon: "Pintle-mounted Medium Plasma MG (forward arc)"
-        }
+{
+  name: "Ogab'd-pattern Anti-Aircraft Wraith",
+  type: "Tank",
+  allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
+  costs: { Inexperienced: 160, Regular: 200, Veteran: 240 },
+  weapons: [
+    { name: "Twin-linked Casement-mounted Forward-facing Fuel Rod Autocannon" },
+    { name: "Twin-linked Casement-mounted Forward-facing Fuel Rod Autocannon" }
+  ],
+  damageValue: "9+ (Heavy Anti-Grav Tank)",
+  transportCapacity: 0,
+  options: {
+    weaponUpgrades: {
+      "Pintle-mounted Medium Plasma MG (forward arc)": {
+        cost: 15,
+        replaces: null,
+        addsWeapon: "Pintle-mounted Medium Plasma MG (forward arc)"
+      },
+      "Shielded Hull": {
+        cost: 25,
+        grantsRule: "Shielded Hull"
       }
-    },
-    specialRules: [
-      "Weak Sides",
-	  "Heavy Thrusters: This vehicle only doubles its movement on roads when given a Run order.",
-      "Flak"
-    ]
+    }
   },
+  specialRules: [
+    "Weak Sides",
+    "Flak",
+    "Heavy Thrusters: This vehicle only doubles its movement on roads when given a Run order."
+  ]
+},
 
   // ARMOURED CARS
-  {
-    name: "Type-32 Rapid Attack Vehicle “Ghost”",
-    type: "Car",
-    allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
-    costs: { Inexperienced: 44, Regular: 55, Veteran: 66 },
-    weapons: [
-      { name: "Hull-mounted Forward-facing Paired Heavy Plasma MG" }
-    ],
-    damageValue: "6+ (Soft-skin Anti-Grav)",
-    transportCapacity: 0,
-    specialRules: [
-      "Recce",
-      "Agile",
-	  "Faster",
-      "Frontal Armour: This vehicle cannot be damaged by small arms hits from the frontal arc, but will still be pinned as normal."
-    ]
-  },
+{
+  name: "Type-32 Rapid Attack Vehicle “Ghost”",
+  type: "Car",
+  allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
+  costs: { Inexperienced: 44, Regular: 55, Veteran: 66 },
+  weapons: [
+    { name: "Hull-mounted Forward-facing Paired Heavy Plasma MG" }
+  ],
+  damageValue: "6+ (Soft-skin Anti-Grav)",
+  transportCapacity: 0,
+  specialRules: [
+    "Recce",
+    "Agile",
+    "Faster",
+    "Frontal Armour: This vehicle cannot be damaged by small arms hits from the frontal arc, but will still be pinned as normal."
+  ],
+  options: {
+    weaponUpgrades: {
+      "Shielded Hull": {
+        cost: 10,
+        grantsRule: "Shielded Hull"
+      }
+    }
+  }
+},
   {
     name: "Type-52 ISV \"Prowler\"",
     type: "Car",
@@ -4164,28 +4069,54 @@ const BANISHED_VEHICLES = [
 	  "Nimble"
     ]
   },
-	{
-	name: "Gydrozka Workshop Blisterback",
-	type: "Aircraft",
-	allowedVeterancy: ["Regular", "Veteran"],
-	costs: { Regular: 110, Veteran: 132 },
-	weapons: [ { name: "Turret-mounted Paired Heavy Plasma MG" }, { name: "Turret-mounted Multiple Launcher" } ],
-	damageValue: "7+ (Medium Aircraft)", transportCapacity: 0,
-	specialRules: [ "Flak", "Multiple Launcher: Can only be used while the aircraft is landed." ]
-	},
- {
-	name: "Klavbrig Workshop Shroud",
-	type: "Aircraft",
-	allowedVeterancy: ["Regular", "Veteran"],
-	costs: { Regular: 80, Veteran: 96 },
-	weapons: [],
-	damageValue: "7+ (Medium Aircraft)", transportCapacity: 2,
-	specialRules: [
-	"Unreliable", "Command Vehicle", { name: "Limited", description: "Only 1 Shroud per army." },
-	{ name: "Cloaking Field", description: "Friendly non-Aircraft within 12\" gain Stealth while within range." },
-	{ name: "Point Defense", description: "Friendly units within 6\" that would be hit by a Shaped Charge may roll a die for each hit; on 4+, cancel that hit (no pins from a cancelled hit)." }
-	]
- },
+{
+  name: "Gydrozka Workshop Blisterback",
+  type: "Aircraft",
+  allowedVeterancy: ["Regular", "Veteran"],
+  costs: { Regular: 110, Veteran: 132 },
+  weapons: [
+    { name: "Turret-mounted Paired Heavy Plasma MG" },
+    { name: "Turret-mounted Multiple Launcher" }
+  ],
+  damageValue: "7+ (Medium Aircraft)",
+  transportCapacity: 0,
+  specialRules: [
+    "Flak",
+    "Multiple Launcher: Can only be used while the aircraft is landed."
+  ],
+  options: {
+    weaponUpgrades: {
+      "Shielded Hull": {
+        cost: 15,
+        grantsRule: "Shielded Hull"
+      }
+    }
+  }
+},
+{
+  name: "Klavbrig Workshop Shroud",
+  type: "Aircraft",
+  allowedVeterancy: ["Regular", "Veteran"],
+  costs: { Regular: 80, Veteran: 96 },
+  weapons: [],
+  damageValue: "7+ (Medium Aircraft)",
+  transportCapacity: 2,
+  specialRules: [
+    "Unreliable",
+    "Command Vehicle",
+    { name: "Limited", description: "Only 1 Shroud per army." },
+    { name: "Cloaking Field", description: "Friendly non-Aircraft within 12\" gain Stealth while within range." },
+    { name: "Point Defense", description: "Friendly units within 6\" that would be hit by a Shaped Charge may roll a die for each hit; on 4+, cancel that hit (no pins from a cancelled hit)." }
+  ],
+  options: {
+    weaponUpgrades: {
+      "Shielded Hull": {
+        cost: 15,
+        grantsRule: "Shielded Hull"
+      }
+    }
+  }
+},
   {
     name: "Type-25 Spirit",
     type: "Aircraft",
@@ -4200,39 +4131,43 @@ const BANISHED_VEHICLES = [
       "Flak"
     ]
   },
-  {
-    name: "Type-52 Phantom",
-    type: "Aircraft",
-    allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
-    costs: { Inexperienced: 108, Regular: 135, Veteran: 162 },
-    weapons: [
-      { name: "Turret-mounted Light Plasma Cannon" }
-    ],
-    damageValue: "8+ (Heavy Aircraft)",
-    transportCapacity: 16,
-    specialRules: [
-      "Flak"
-    ],
-    options: {
-      weaponUpgrades: {
-        "2 Turret-mounted Light Plasma Cannons": {
-          cost: 50,
-          addsWeapon: "2x Turret-mounted Light Plasma Cannons"
-        },
-		"2 Pintle-mounted Medium Plasma MGs (left and right arcs)": {
-		  cost: 30,
-		  addsWeapon: [
-			"Pintle-mounted Medium Plasma MG (left arc)",
-			"Pintle-mounted Medium Plasma MG (right arc)"
-		  ]
-		},
-        "Command Vehicle": {
-          cost: 10,
-          grantsRule: "Command Vehicle"
-        }
+{
+  name: "Type-52 Phantom",
+  type: "Aircraft",
+  allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
+  costs: { Inexperienced: 108, Regular: 135, Veteran: 162 },
+  weapons: [
+    { name: "Turret-mounted Light Plasma Cannon" }
+  ],
+  damageValue: "8+ (Heavy Aircraft)",
+  transportCapacity: 16,
+  specialRules: [
+    "Flak"
+  ],
+  options: {
+    weaponUpgrades: {
+      "2 Turret-mounted Light Plasma Cannons": {
+        cost: 50,
+        addsWeapon: "2x Turret-mounted Light Plasma Cannons"
+      },
+      "2 Pintle-mounted Medium Plasma MGs (left and right arcs)": {
+        cost: 30,
+        addsWeapon: [
+          "Pintle-mounted Medium Plasma MG (left arc)",
+          "Pintle-mounted Medium Plasma MG (right arc)"
+        ]
+      },
+      "Command Vehicle": {
+        cost: 10,
+        grantsRule: "Command Vehicle"
+      },
+      "Shielded Hull": {
+        cost: 20,
+        grantsRule: "Shielded Hull"
       }
     }
-  },
+  }
+},
 
   // TRANSPORTS AND TOWS
 	{
