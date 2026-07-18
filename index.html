@@ -803,7 +803,7 @@ Friendly UNSC units may re-roll failed Morale checks if at least one model in th
 Battle-Net Intrusion
 
 - Effect: 
-Once per game, at the start of any Game Turn, the UNSC player may choose one Order Die to draw from the dice bag instead of drawing randomly. If this Order Die is assigned to an Officer, it cannot be used to trigger You Men, Snap to Action! If more than one UNSC player wishes to use this rule at the same time, roll off. The winner uses this rule that turn, and the loser must wait until a future turn to use it.
+Once per game, at the start of any Game Turn, the UNSC player may choose one Order Die to draw from the dice bag instead of drawing randomly. If this Order Die is assigned to an Officer, it cannot be used to trigger You Men, Snap to Action! If more than one player wishes to use a rule that allows them to choose or draw an Order Die before the first random Order Die draw of the turn, roll off. The winner uses their rule that turn, and the other player must wait until a future turn to use theirs.
 `,
 
   "Covenant": `
@@ -818,7 +818,7 @@ When creating a Covenant army, you may select one bonus from the following list:
   
   * Wall of Deflection: Friendly units with Shield Wall or Resilient provide hard cover instead of soft cover to other friendly units when the line of fire passes through them.
   
-  * Fury Unleashed: Covenant Infantry units that fail their Run/Assault order test when within 9" of a Brute unit may re-roll the failed order test.
+  * Fury Unleashed: Covenant Infantry units that fail their Assault order test when within 9" of a Brute unit may re-roll the failed order test.
 
 Zealotry
 
@@ -1735,7 +1735,7 @@ const UNSC_VEHICLES = [
 	  specialRules: [
 		"Weak Sides",
 		"Faster",
-		{ name: "Stealth Hull", description: "While this vehicle is in cover, ranged attacks against it suffer an additional -1 to hit, provided it has not been assigned an Advance or Run order." }
+		{ name: "Stealth Hull", description: "If this vehicle has not been assigned an Advance or Run order this turn and is in cover, ranged attacks against it suffer an additional -1 to hit." }
 	  ],
 	  options: {
 		weaponUpgrades: {
@@ -3120,13 +3120,13 @@ const COVENANT_VEHICLES = [
     ]
   },
 {
-  name: 'Type-52 "Vampire"',
+  name: 'Type-29 "Vampire"',
   type: "Aircraft",
   allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
   costs: { Inexperienced: 100, Regular: 125, Veteran: 150 },
   weapons: [
     { name: "Turret-mounted Light Plasma Cannon" },
-    { name: "Turret-mounted Medium Plasma MG (front arc)" },
+    { name: "Turret-mounted Medium Plasma MG (left arc)" },
     { name: "Turret-mounted Medium Plasma MG (right arc)" }
   ],
   damageValue: "7+ (Medium Aircraft)",
@@ -3544,24 +3544,31 @@ const BANISHED_UNITS = [
       }
     }
   },
-  {
-    name: "Suicide Anti-Tank Team",
-    type: "Team",
-    allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
-    costs: { Inexperienced: 14, Regular: 20, Veteran: 26 },
-    baseMen: 1,
-    maxMen: 1,
-    weapons: [{ name: "Explosive Charge" }],
-	specialRules: [
-	
-		{ name: "Suicide Charge", description: "If this model successfully assaults and makes contact, remove it; target suffers either a single +8 Pen hit (no other modifiers) or HE (2\")." }
-	],
-	options: {
-	squadUpgrades: {
-		"Grunt Rider": { cost: 3, grantsRule: ["Stubborn", "Fieldcraft", "Berserker"] }
-		}
-	}
-  },
+{
+  name: "Suicide Anti-Tank Team",
+  type: "Team",
+  allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
+  costs: { Inexperienced: 14, Regular: 20, Veteran: 26 },
+  baseMen: 1,
+  maxMen: 1,
+  weapons: [{ name: "Explosive Charge" }],
+  specialRules: [
+    {
+      name: "Suicide Charge",
+      description: "If this model successfully assaults an enemy unit and makes contact, it is immediately removed. The assaulted unit suffers either a single hit with a Penetration value of +8, with no other Penetration modifiers, or HE (2\")."
+    },
+    "Tank Hunters",
+    "Infiltrator",
+  ],
+  options: {
+    squadUpgrades: {
+      "Grunt Rider": {
+        cost: 4,
+        grantsRule: ["Stubborn", "Hardened", "Fieldcraft", "Berserker"]
+      }
+    }
+  }
+},
   {
     name: "Huragok",
     type: "Infantry",
@@ -10268,7 +10275,7 @@ const COVENANT_CASTE_BONUS_TEXT = {
     "Wall of Deflection: Friendly units with Shield Wall or Resilient provide hard cover instead of soft cover to other friendly units when the line of fire passes through them.",
 
   "Fury Unleashed":
-    "Fury Unleashed: Covenant Infantry units that fail their Run/Assault order test when within 9\" of a Brute unit may re-roll the failed order test."
+    "Fury Unleashed: Covenant Infantry units that fail their Assault order test when within 9\" of a Brute unit may re-roll the failed order test."
 };
 
 function getCovenantCasteBonusText(selectedBonus) {
