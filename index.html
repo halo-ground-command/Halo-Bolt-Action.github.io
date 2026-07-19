@@ -251,6 +251,7 @@ button:not(.active):hover { background: #2e50b7; }
 		  <select id="unitSelect"></select>
 		  <select id="veterancySelect"></select>
 		  <select id="armyBonusSelect" style="display:none;" onchange="onArmyBonusChange()"></select>
+		  <select id="leaderSelect" style="display:none;" onchange="onLeaderChange()"></select>
 		  <button onclick="addSelectedUnit()">Add</button>
 		  <!-- PDF button REMOVED here -->
 		</div>
@@ -973,6 +974,876 @@ At the start of every Game Turn, roll a D6 for each enemy Infantry and Artillery
 `
 };
 
+function countUnits(units, predicate) {
+  return (units || []).filter(predicate).length;
+}
+
+function unitNameIncludes(unit, text) {
+  return String(unit?.name || "").toLowerCase().includes(String(text).toLowerCase());
+}
+
+function isInfantryUnit(unit) {
+  return ["Infantry", "Team"].includes(unit?.type);
+}
+
+function isArtilleryUnit(unit) {
+  return unit?.type === "Artillery";
+}
+
+function isVehicleUnit(unit) {
+  return unit && !["Infantry", "Team", "Artillery"].includes(unit.type);
+}
+
+function isNonFlyingVehicle(unit) {
+  const name = String(unit?.name || "").toLowerCase();
+  const type = String(unit?.type || "").toLowerCase();
+
+  return isVehicleUnit(unit) &&
+    type !== "aircraft" &&
+    !name.includes("banshee") &&
+    !name.includes("phantom") &&
+    !name.includes("falcon") &&
+    !name.includes("pelican") &&
+    !name.includes("aircraft");
+}
+
+function hasTransportCapacity(unit) {
+  const unitData = getUnitData(unit);
+  return Number(
+    unit?.transportCapacity ??
+    unitData?.transportCapacity ??
+    unit?.transport ??
+    unitData?.transport ??
+    0
+  ) > 0;
+}
+
+function hasDVAtLeast(unit, value) {
+  const unitData = getUnitData(unit);
+
+  const dvText = String(
+    unit?.damageValue ??
+    unitData?.damageValue ??
+    unit?.DV ??
+    unitData?.DV ??
+    unit?.armor ??
+    unitData?.armor ??
+    ""
+  );
+
+  const match = dvText.match(/(\d+)\+/);
+  return match ? Number(match[1]) >= value : false;
+}
+
+function isMarineInfantry(unit) {
+  return isInfantryUnit(unit) &&
+    (
+      unit.doctrine === "Marine" ||
+      unitNameIncludes(unit, "marine")
+    );
+}
+
+function isODSTInfantry(unit) {
+  return isInfantryUnit(unit) &&
+    (
+      unit.doctrine === "ODST" ||
+      unitNameIncludes(unit, "odst")
+    );
+}
+
+function isSpartanUnitForLeader(unit) {
+  return isInfantryUnit(unit) &&
+    (
+      unit?.doctrine === "Spartan" ||
+      unitNameIncludes(unit, "spartan")
+    );
+}
+
+function isEliteInfantryForLeader(unit) {
+  return isInfantryUnit(unit) &&
+    (
+      unit?.doctrine === "Elite" ||
+      unitNameIncludes(unit, "elite") ||
+      unitNameIncludes(unit, "honor guard") ||
+      unitNameIncludes(unit, "honour guard")
+    );
+}
+
+function isBruteInfantryForLeader(unit) {
+  return isInfantryUnit(unit) &&
+    (
+      unit?.doctrine === "Brute" ||
+      unitNameIncludes(unit, "brute") ||
+      unitNameIncludes(unit, "atriox")
+    );
+}
+
+function unitLeaderSearchText(unit) {
+  return [
+    unit?.name,
+    unit?.doctrine,
+    unit?.caste,
+    unit?.armyBonusSource,
+    JSON.stringify(unit?.special || []),
+    JSON.stringify(unit?.specialRules || []),
+    JSON.stringify(unit?.squadUpgrades || {}),
+    JSON.stringify(unit?.extraDoctrineUpgrades || {})
+  ].join(" ").toLowerCase();
+}
+
+function hasGruntOrGruntJackalCaste(unit) {
+  const text = unitLeaderSearchText(unit);
+
+  return (
+    text.includes("grunt") ||
+    text.includes("grunt/jackal") ||
+    text.includes("for the great journey! [grunt/jackal]")
+  );
+}
+
+function isGruntInfantryForLeader(unit) {
+  return isInfantryUnit(unit) && hasGruntOrGruntJackalCaste(unit);
+}
+
+function isJackalInfantryForLeader(unit) {
+  return isInfantryUnit(unit) && unitNameIncludes(unit, "jackal");
+}
+
+function isForerunnerComposedInfantry(unit) {
+  const unitData = getUnitData(unit);
+
+  return isInfantryUnit(unit) &&
+    (
+      unitHasRuleName(unit, "Composed Beings", unitData) ||
+      unitNameIncludes(unit, "warrior-servant") ||
+      unitNameIncludes(unit, "promethean")
+    );
+}
+
+function isForerunnerAutomatonInfantry(unit) {
+  const unitData = getUnitData(unit);
+
+  return isInfantryUnit(unit) &&
+    (
+      unitHasRuleName(unit, "Automaton", unitData) ||
+      unitNameIncludes(unit, "sentinel") ||
+      unitNameIncludes(unit, "crawler")
+    );
+}
+
+function unitHasFlamethrower(unit) {
+  const text = JSON.stringify(unit || {}).toLowerCase();
+  return text.includes("flamethrower");
+}
+
+function getSelectedLeaderId() {
+  const leader = typeof getSelectedLeaderDef === "function"
+    ? getSelectedLeaderDef()
+    : null;
+
+  return leader?.id || "";
+}
+
+function getRuleDisplayName(rule) {
+  if (!rule) return "";
+
+  if (typeof rule === "string") {
+    return rule.split(":")[0].trim();
+  }
+
+  if (typeof rule === "object" && rule.name) {
+    return String(rule.name).trim();
+  }
+
+  return "";
+}
+
+function ruleToPlainText(rule) {
+  if (!rule) return "";
+
+  if (typeof rule === "string") {
+    return rule;
+  }
+
+  if (typeof rule === "object" && rule.name) {
+    return rule.name + (rule.description ? ": " + rule.description : "");
+  }
+
+  return "";
+}
+
+function replaceRuleByName(rules, ruleName, replacementRule) {
+  let replaced = false;
+
+  const updated = (rules || []).map(rule => {
+    const name = getRuleDisplayName(rule);
+
+    if (name === ruleName) {
+      replaced = true;
+      return replacementRule;
+    }
+
+    return rule;
+  });
+
+  if (!replaced) {
+    updated.push(replacementRule);
+  }
+
+  return updated;
+}
+
+function applyLeaderRuleModifiers(unit, rules) {
+  const leaderId = getSelectedLeaderId();
+  let finalRules = Array.isArray(rules) ? rules.slice() : [];
+
+  if (leaderId === "colony" && unitNameIncludes(unit, "Hunter Pack")) {
+    finalRules = replaceRuleByName(finalRules, "Carapace", {
+      name: "Carapace",
+      description: "When resolving shooting attacks that originate from more than 6\" away, treat this unit as having DV 8+ instead of DV 7+. It still receives pins from small-arms fire, but ignores any small-arms damage. Attacks from 6\" or less ignore this rule."
+    });
+
+	finalRules = replaceRuleByName(finalRules, "Limited", {
+	  name: "Limited",
+	  description: "Only up to 2 Hunter Pack units may be taken per army."
+	});
+  }
+
+  if (leaderId === "yapyap" && unitNameIncludes(unit, "Grunt Cannon Fodder Mob")) {
+    finalRules = replaceRuleByName(finalRules, "Limited", {
+      name: "Limited",
+      description: "May only take up to 2 per platoon, and only 3 in total per army."
+    });
+  }
+
+  return finalRules;
+}
+
+function getDisplaySpecialRules(unit) {
+  const baseRules = Array.isArray(unit?.special)
+    ? unit.special
+    : Array.isArray(unit?.specialRules)
+      ? unit.specialRules
+      : [];
+
+  return applyLeaderRuleModifiers(unit, baseRules);
+}
+
+const LEADER_DEFS = {
+  UNSC: [
+    {
+      id: "cutter",
+      name: "Captain James Cutter",
+      cost: 50,
+      ruleName: "Feet First into Hell",
+      ruleText: `ODST units and vehicles carrying only ODST units using Outflanking may attempt to enter the battlefield one turn earlier than normal. Treat the current turn as being one turn later when determining which table edges they may enter from. All other Outflanking rules apply as normal.
+
+For example, on Turn 2, they enter as if it were Turn 3. On Turn 4, they enter as if it were Turn 5.`,
+      validate: units => {
+        const issues = [];
+
+        const odstInfantry = countUnits(units, isODSTInfantry);
+        const hasODSTPlatoonCommander = units.some(u =>
+          isODSTInfantry(u) && isPlatoonCommanderForValidation(u)
+        );
+
+        if (odstInfantry < 4) {
+          issues.push(`Captain James Cutter requires at least 4 ODST Infantry units. Current: ${odstInfantry}`);
+        }
+
+        if (!hasODSTPlatoonCommander) {
+          issues.push("Captain James Cutter requires an ODST Platoon Commander.");
+        }
+
+        return issues;
+      }
+    },
+    {
+      id: "forge",
+      name: "Sergeant John Forge",
+      cost: 25,
+      ruleName: "Armoured Breakthrough",
+      ruleText: `Trooper and Marine Infantry units may re-roll failed Order tests made to mount or dismount a Vehicle. In addition, if a vehicle carrying one or more friendly Trooper or Marine Infantry units is destroyed, those Infantry units suffer D3 hits instead of the standard D6 hits.`,
+      validate: units => {
+        const issues = [];
+
+        const trooperOrMarineInfantry = countUnits(units, u =>
+          isInfantryUnit(u) &&
+          (
+            !u.doctrine ||
+            u.doctrine === "Trooper" ||
+            u.doctrine === "Marine" ||
+            unitNameIncludes(u, "marine")
+          )
+        );
+
+        const hasCommander = units.some(u =>
+          isPlatoonCommanderForValidation(u) &&
+          (
+            u.doctrine === "Trooper" ||
+            u.doctrine === "Marine" ||
+            unitNameIncludes(u, "marine") ||
+            unitNameIncludes(u, "platoon commander")
+          )
+        );
+
+        const transports = units.filter(u => isNonFlyingVehicle(u) && hasTransportCapacity(u));
+        const hasDV8Transport = transports.some(u => hasDVAtLeast(u, 8));
+
+        if (trooperOrMarineInfantry < 4) {
+          issues.push(`Sergeant John Forge requires at least 4 Trooper or Marine Infantry units. Current: ${trooperOrMarineInfantry}`);
+        }
+
+        if (!hasCommander) {
+          issues.push("Sergeant John Forge requires a Trooper Platoon Commander or Marine Platoon Commander.");
+        }
+
+        if (transports.length < 2) {
+          issues.push(`Sergeant John Forge requires at least 2 non-flying Vehicles with transport capacity. Current: ${transports.length}`);
+        }
+
+        if (!hasDV8Transport) {
+          issues.push("Sergeant John Forge requires at least one transport Vehicle with Damage Value 8+ or higher.");
+        }
+
+        return issues;
+      }
+    },
+    {
+      id: "johnson",
+      name: "Sergeant Major Avery Johnson",
+      cost: 25,
+      ruleName: "Hold the Line!",
+      ruleText: `Once per game, when a friendly Marine Infantry unit fails an Order test, you may use this rule: Remove all Pins from that unit and treat the Order test as passed instead.`,
+      validate: units => {
+        const issues = [];
+
+        const marineInfantry = countUnits(units, isMarineInfantry);
+        const hasMarineCommander = units.some(u =>
+          isMarineInfantry(u) && isPlatoonCommanderForValidation(u)
+        );
+
+        if (marineInfantry < 4) {
+          issues.push(`Sergeant Major Avery Johnson requires at least 4 Marine Infantry units. Current: ${marineInfantry}`);
+        }
+
+        if (!hasMarineCommander) {
+          issues.push("Sergeant Major Avery Johnson requires a Marine Platoon Commander.");
+        }
+
+        return issues;
+      }
+    },
+    {
+      id: "jerome",
+      name: "Commander Jerome-092",
+      cost: 100,
+      ruleName: "MJOLNIR Mobility",
+      ruleText: `When a Spartan unit is given a Run order that is not an assault, it treats rough ground and obstacles as open ground for that movement.`,
+      validate: units => {
+        const issues = [];
+
+        const spartans = units.filter(isSpartanUnitForLeader);
+        const marineInfantry = countUnits(units, isMarineInfantry);
+        const hasSpartanCompanyCommander = units.some(u =>
+          isSpartanUnitForLeader(u) && isCompanyCommanderForValidation(u)
+        );
+
+        const extraSpartans = Math.max(0, spartans.length - 2);
+
+        if (spartans.length < 2) {
+          issues.push(`Commander Jerome-092 requires at least 2 Spartan units. Current: ${spartans.length}`);
+        }
+
+        if (!hasSpartanCompanyCommander) {
+          issues.push("Commander Jerome-092 requires a Spartan Company Commander.");
+        }
+
+        if (marineInfantry < extraSpartans) {
+          issues.push(`Commander Jerome-092 requires 1 Marine Infantry unit for each Spartan unit beyond the first 2. Required Marines: ${extraSpartans}, Current: ${marineInfantry}`);
+        }
+
+        return issues;
+      }
+    }
+  ],
+
+  Covenant: [
+{
+  id: "regret",
+  name: "Prophet of Regret",
+  cost: 50,
+  ruleName: "Divine Mandate",
+  ruleText: `Twice per game, at the start of a turn, choose one friendly Covenant Platoon Commander. Until the end of that turn, that Officer counts as a Company Commander.`,
+  validate: units => {
+    const issues = [];
+
+    const covenantInfantry = countUnits(units, isInfantryUnit);
+    const hasEliteCommander = units.some(u =>
+      isEliteInfantryForLeader(u) && isPlatoonCommanderForValidation(u)
+    );
+    const hasGrunt = units.some(isGruntInfantryForLeader);
+    const hasJackal = units.some(isJackalInfantryForLeader);
+
+    if (covenantInfantry < 3) {
+      issues.push(`Prophet of Regret requires at least 3 Covenant Infantry units. Current: ${covenantInfantry}`);
+    }
+
+    if (!hasEliteCommander) {
+      issues.push("Prophet of Regret requires an Elite Platoon Commander.");
+    }
+
+    if (!hasGrunt) {
+      issues.push("Prophet of Regret requires one Grunt Infantry unit.");
+    }
+
+    if (!hasJackal) {
+      issues.push("Prophet of Regret requires one Jackal Infantry unit.");
+    }
+
+    return issues;
+  }
+},
+    {
+      id: "ripa",
+      name: "Ripa 'Moramee",
+      cost: 50,
+      ruleName: "No Time to Brace",
+      ruleText: `Enemy Infantry and Artillery units assaulted by friendly Elite Infantry units do not gain Defensive Position from rough ground or obstacles. Units inside buildings, bunkers, or fortifications still gain Defensive Position as normal.`,
+      validate: units => {
+        const issues = [];
+
+        const eliteInfantry = countUnits(units, isEliteInfantryForLeader);
+        const hasEliteCommander = units.some(u =>
+          isEliteInfantryForLeader(u) && isPlatoonCommanderForValidation(u)
+        );
+        const bruteUnits = countUnits(units, isBruteInfantryForLeader);
+
+        if (eliteInfantry < 4) {
+          issues.push(`Ripa 'Moramee requires at least 4 Elite Infantry units. Current: ${eliteInfantry}`);
+        }
+
+        if (!hasEliteCommander) {
+          issues.push("Ripa 'Moramee requires an Elite Platoon Commander.");
+        }
+
+        if (bruteUnits > 0) {
+          issues.push(`Ripa 'Moramee may not include Brute units. Current: ${bruteUnits}`);
+        }
+
+        return issues;
+      }
+    },
+    {
+      id: "tartarus",
+      name: "Tartarus",
+      cost: 25,
+      ruleName: "Brutal Display",
+      ruleText: `When a friendly Brute Infantry unit wins in Close Quarters, after the regroup move, choose one enemy Infantry or Artillery unit within 6" and line of sight of that Brute unit. The chosen enemy unit receives 1 Pin.`,
+      validate: units => {
+        const issues = [];
+
+        const bruteInfantry = countUnits(units, isBruteInfantryForLeader);
+        const hasBruteCommander = units.some(u =>
+          isBruteInfantryForLeader(u) && isPlatoonCommanderForValidation(u)
+        );
+        const eliteUnits = countUnits(units, isEliteInfantryForLeader);
+
+        if (bruteInfantry < 4) {
+          issues.push(`Tartarus requires at least 4 Brute Infantry units. Current: ${bruteInfantry}`);
+        }
+
+        if (!hasBruteCommander) {
+          issues.push("Tartarus requires a Brute Platoon Commander.");
+        }
+
+        if (eliteUnits > 0) {
+          issues.push(`Tartarus may not include Elite units. Current: ${eliteUnits}`);
+        }
+
+        return issues;
+      }
+    },
+    {
+      id: "yapyap",
+      name: "Yapyap the Destroyer",
+      cost: 100,
+      ruleName: "Strength in Numbers",
+      ruleText: `Grunt Infantry units may re-roll failed Order tests while they are within 6" of another friendly Grunt Infantry unit that has 8 or more models.
+
+In addition, an army led by Yapyap the Destroyer may include one additional Grunt Cannon Fodder Mob unit beyond the normal limits (up to 2 per platoon, and 3 in total per army).`,
+      validate: units => {
+        const issues = [];
+
+        const gruntInfantry = countUnits(units, isGruntInfantryForLeader);
+        const hasGruntCommander = units.some(u =>
+          isGruntInfantryForLeader(u) && isCompanyCommanderForValidation(u)
+        );
+        const hasDeacon = units.some(isGruntDeaconForValidation);
+
+        const invalidInfantryArtillery = units.filter(u =>
+          (isInfantryUnit(u) || isArtilleryUnit(u)) &&
+          !isGruntInfantryForLeader(u) &&
+          !unitNameIncludes(u, "grunt")
+        );
+
+        if (window.selectedArmyBonus !== "Cannon Fodder") {
+          issues.push("Yapyap the Destroyer requires the Cannon Fodder Caste System bonus.");
+        }
+
+        if (gruntInfantry < 4) {
+          issues.push(`Yapyap the Destroyer requires at least 4 Grunt Infantry units. Current: ${gruntInfantry}`);
+        }
+
+        if (!hasGruntCommander) {
+          issues.push("Yapyap the Destroyer requires a Grunt Company Commander.");
+        }
+
+        if (!hasDeacon) {
+          issues.push("Yapyap the Destroyer requires one Grunt Infantry unit to include a Deacon.");
+        }
+
+        if (invalidInfantryArtillery.length > 0) {
+          issues.push(`Yapyap the Destroyer requires all Infantry and Artillery units to be Grunt units or upgraded as Grunts. Invalid units: ${invalidInfantryArtillery.length}`);
+        }
+
+        return issues;
+      }
+    }
+  ],
+
+  Banished: [
+    {
+      id: "atriox",
+      name: "Atriox",
+      cost: 50,
+      ruleName: "Calculated Command",
+      ruleText: `Once per game, when a friendly Banished Infantry or Artillery unit is given a Down order as a reaction, you may use this rule. Choose one other friendly Banished Infantry or Artillery unit that currently has a Down order die assigned to it. Move that Down order die to the reacting unit instead.
+
+The reacting unit is treated as having gone Down as normal. The other unit no longer has an order die assigned and may be activated later in the turn as normal.`,
+      validate: units => {
+        const issues = [];
+
+        const infantry = countUnits(units, isInfantryUnit);
+        const hasBruteCommander = units.some(u =>
+          isBruteInfantryForLeader(u) && isPlatoonCommanderForValidation(u)
+        );
+        const hasOther = units.some(u =>
+          isGruntInfantryForLeader(u) ||
+          isJackalInfantryForLeader(u) ||
+          isEliteInfantryForLeader(u)
+        );
+
+        if (infantry < 4) {
+          issues.push(`Atriox requires at least 4 Banished Infantry units. Current: ${infantry}`);
+        }
+
+        if (!hasBruteCommander) {
+          issues.push("Atriox requires a Brute Platoon Commander.");
+        }
+
+        if (!hasOther) {
+          issues.push("Atriox requires at least one Grunt, Jackal, or Elite Infantry unit.");
+        }
+
+        return issues;
+      }
+    },
+    {
+      id: "colony",
+      name: "Colony",
+      cost: 75,
+      ruleName: "Ironclad Hunters",
+      ruleText: `Hunter Pack units improve their Carapace rule. When resolving shooting attacks that originate from more than 6" away, treat those Hunter Pack units as having DV 8+ instead of DV 7+.
+
+In addition, an army led by Colony may include up to two Hunter Pack units per army instead of the usual limit of one.`,
+      validate: units => {
+        const issues = [];
+
+        const hunterPack4 = units.some(u =>
+          unitNameIncludes(u, "hunter pack") &&
+          Number(u.men || 0) >= 4
+        );
+
+        const skitterers = countUnits(units, u => unitNameIncludes(u, "skitterer"));
+
+        if (!hunterPack4) {
+          issues.push("Colony requires one Hunter Pack unit of 4 Hunters.");
+        }
+
+        if (skitterers < 2) {
+          issues.push(`Colony requires at least 2 Skitterers. Current: ${skitterers}`);
+        }
+
+        return issues;
+      }
+    },
+    {
+      id: "jega",
+      name: "Jega 'Rdomnai",
+      cost: 25,
+      ruleName: "Trophy Assassins",
+      ruleText: `The Trophy Takers army rule also affects friendly Banished Elite Infantry units.
+
+When a friendly Banished Elite Infantry unit wins a Close Quarters combat for the first time, it gains Trophy Plate Harness for the rest of the battle.`,
+      validate: units => {
+        const issues = [];
+
+        const elites = countUnits(units, isEliteInfantryForLeader);
+        const brutes = countUnits(units, isBruteInfantryForLeader);
+        const hasEliteCommander = units.some(u =>
+          isEliteInfantryForLeader(u) && isPlatoonCommanderForValidation(u)
+        );
+
+        if (elites < 3) {
+          issues.push(`Jega 'Rdomnai requires at least 3 Elite Infantry units. Current: ${elites}`);
+        }
+
+        if (!hasEliteCommander) {
+          issues.push("Jega 'Rdomnai requires an Elite Platoon Commander.");
+        }
+
+        if (brutes > elites) {
+          issues.push(`Jega 'Rdomnai may include no more Brute Infantry units than Elite Infantry units. Brutes: ${brutes}, Elites: ${elites}`);
+        }
+
+        return issues;
+      }
+    },
+    {
+      id: "decimus",
+      name: "Decimus",
+      cost: 25,
+      ruleName: "Unrelenting Advance",
+      ruleText: `Once per game, when a friendly Brute Infantry unit is given a Run order that is not an assault, you may use this rule.
+
+After completing its movement, that unit may fire its weapons. If it does so, those weapons suffer a -1 to hit penalty, even if they have Assault.`,
+      validate: units => {
+        const issues = [];
+
+        const brutes = countUnits(units, isBruteInfantryForLeader);
+        const elites = countUnits(units, isEliteInfantryForLeader);
+        const hasBruteCommander = units.some(u =>
+          isBruteInfantryForLeader(u) && isPlatoonCommanderForValidation(u)
+        );
+
+        if (brutes < 4) {
+          issues.push(`Decimus requires at least 4 Brute Infantry units. Current: ${brutes}`);
+        }
+
+        if (!hasBruteCommander) {
+          issues.push("Decimus requires a Brute Platoon Commander.");
+        }
+
+        if (elites > brutes) {
+          issues.push(`Decimus may not include more Elite Infantry units than Brute Infantry units. Elites: ${elites}, Brutes: ${brutes}`);
+        }
+
+        return issues;
+      }
+    }
+  ],
+
+  Flood: [
+    {
+      id: "gravemind",
+      name: "The Gravemind",
+      cost: 50,
+      ruleName: "Coordinated Infestation",
+      ruleText: `Friendly Flood Officers double the range of their Morale bonus and You men, snap to action! ability when affecting friendly Flood Infantry or Artillery units.
+
+A Flood Platoon Commander therefore has a 12" Morale bonus range and a 12" range for You men, snap to action!.
+
+A Flood Company Commander therefore has a 24" Morale bonus range and a 24" range for You men, snap to action!.`,
+      validate: units => {
+        const issues = [];
+
+        const hasCompanyCommander = units.some(isCompanyCommanderForValidation);
+
+        const specialForms = countUnits(units, u =>
+          unitNameIncludes(u, "tank form pack") ||
+          unitNameIncludes(u, "spawner form") ||
+          unitNameIncludes(u, "stalker form swarm")
+        );
+
+        if (!hasCompanyCommander) {
+          issues.push("The Gravemind requires a Flood Company Commander.");
+        }
+
+        if (specialForms < 2) {
+          issues.push(`The Gravemind requires at least 2 units chosen from Tank Form Pack, Spawner Form, or Stalker Form Swarm. Current: ${specialForms}`);
+        }
+
+        return issues;
+      }
+    },
+    {
+      id: "feralOutbreak",
+      name: "Feral Outbreak",
+      cost: 100,
+      ruleName: "Ravenous Surge",
+      ruleText: `Once per game, at the beginning of a turn before any Order Dice are drawn, choose any number of friendly Flood Infantry units that do not already have an Order Die assigned. For each chosen unit, take one of your Order Dice from the bag and assign it to that unit as a Run order.
+
+Chosen units do not take Order tests and do not remove Pins. Each unit must move as directly as possible toward the closest enemy Infantry or Artillery unit. If that enemy is within assault range and line of sight, the Flood unit must assault it instead.
+
+If several eligible enemy units are equally close, or it is not clear which is closest, the opposing player chooses the target. Units activated this way count as activated for the turn.`,
+      validate: units => {
+        const issues = [];
+
+        const hasCompanyCommander = units.some(isCompanyCommanderForValidation);
+
+        const forbidden = units.filter(u =>
+          unitNameIncludes(u, "stalker form swarm") ||
+          unitNameIncludes(u, "tank form pack") ||
+          unitNameIncludes(u, "spawner form") ||
+          unitNameIncludes(u, "juggernaut") ||
+          unitNameIncludes(u, "abomination")
+        );
+
+        if (hasCompanyCommander) {
+          issues.push("Feral Outbreak cannot include a Flood Company Commander.");
+        }
+
+        if (forbidden.length > 0) {
+          issues.push(`Feral Outbreak may not include Stalker Form Swarm, Tank Form Pack, Spawner Form, Juggernaut, or Abomination. Current forbidden units: ${forbidden.length}`);
+        }
+
+        return issues;
+      }
+    }
+  ],
+
+  Forerunner: [
+    {
+      id: "didact",
+      name: "The Didact",
+      cost: 100,
+      ruleName: "Warden of the Mantle",
+      ruleText: `Once per game, when using the Warden of Balance army rule, you may use this rule. Instead of selecting one friendly Forerunner Infantry or Artillery unit, all friendly Forerunner Infantry units with Composed Beings gain +1 to hit when shooting until the end of that turn.`,
+      validate: units => {
+        const issues = [];
+
+        const composedInfantry = countUnits(units, isForerunnerComposedInfantry);
+        const hasKnightPlatoonCommander = units.some(isKnightCommanderForValidation);
+        const hasRequiredUnit = units.some(u =>
+          unitNameIncludes(u, "warrior-servant") ||
+          unitNameIncludes(u, "promethean soldier")
+        );
+
+        if (composedInfantry < 4) {
+          issues.push(`The Didact requires at least 4 Forerunner Infantry units with Composed Beings. Current: ${composedInfantry}`);
+        }
+
+        if (!hasKnightPlatoonCommander) {
+          issues.push("The Didact requires a Forerunner Knight Platoon Commander.");
+        }
+
+        if (!hasRequiredUnit) {
+          issues.push("The Didact requires at least one Warrior-Servant or Promethean Soldier Infantry unit.");
+        }
+
+        return issues;
+      }
+    },
+    {
+      id: "guiltySpark",
+      name: "343 Guilty Spark",
+      cost: 25,
+      ruleName: "Containment Protocols",
+      ruleText: `Friendly Forerunner Automaton Infantry units may be given Ambush orders.
+
+At the beginning of each turn, choose one friendly Forerunner Infantry unit. Until the end of that turn, any enemy Infantry or Artillery unit that ends its movement or activation within 6" of that unit receives 1 Pin.
+
+A unit may only receive 1 Pin per turn from this rule.`,
+      validate: units => {
+        const issues = [];
+
+        const hasKnightCommander = units.some(isKnightCommanderForValidation);
+        const hasMonitorCompanyCommander = units.some(u =>
+          isCompanyCommanderForValidation(u) &&
+          (
+            unitNameIncludes(u, "monitor") ||
+            unitNameIncludes(u, "company commander")
+          )
+        );
+
+        const automatonInfantry = countUnits(units, isForerunnerAutomatonInfantry);
+
+        if (hasKnightCommander) {
+          issues.push("343 Guilty Spark cannot include a Knight Commander.");
+        }
+
+        if (!hasMonitorCompanyCommander) {
+          issues.push("343 Guilty Spark requires a Monitor Company Commander.");
+        }
+
+        if (automatonInfantry < 3) {
+          issues.push(`343 Guilty Spark requires at least 3 Automaton Infantry units. Current: ${automatonInfantry}`);
+        }
+
+        return issues;
+      }
+    }
+  ],
+
+  Insurrection: [
+    {
+      id: "kinsano",
+      name: "Kinsano",
+      cost: 25,
+      ruleName: "Incendiary Warfare",
+      ruleText: `Friendly Insurrectionist units armed with Flamethrowers do not receive the usual 1 Pin marker for firing a Flamethrower.
+
+In addition, when a friendly Insurrectionist Flamethrower rolls to see if it runs out of fuel, it only runs out on a 1 instead of a 1 or 2.
+
+This affects both infantry flamethrowers and vehicle-mounted flamethrowers.`,
+      validate: units => {
+        const issues = [];
+
+        const infantry = countUnits(units, isInfantryUnit);
+        const flamethrowerUnits = countUnits(units, unitHasFlamethrower);
+
+        if (infantry < 4) {
+          issues.push(`Kinsano requires at least 4 Insurrectionist Infantry units. Current: ${infantry}`);
+        }
+
+        if (flamethrowerUnits < 2) {
+          issues.push(`Kinsano requires at least 2 units armed with Flamethrowers. Current: ${flamethrowerUnits}`);
+        }
+
+        return issues;
+      }
+    }
+  ],
+
+  "Swords of Sanghelios": [
+    {
+      id: "thelVadam",
+      name: "Thel 'Vadam",
+      cost: 50,
+      ruleName: "United by Honour",
+      ruleText: `Friendly Swords of Sanghelios Infantry and Artillery units may benefit from Sangheili Command while within 12" of a friendly Elite Infantry unit, instead of 6".`,
+      validate: units => {
+        const issues = [];
+
+        const elites = countUnits(units, isEliteInfantryForLeader);
+        const hasEliteCompanyCommander = units.some(u =>
+          isEliteInfantryForLeader(u) && isCompanyCommanderForValidation(u)
+        );
+
+        if (elites < 3) {
+          issues.push(`Thel 'Vadam requires at least 3 Elite Infantry units. Current: ${elites}`);
+        }
+
+        if (!hasEliteCompanyCommander) {
+          issues.push("Thel 'Vadam requires an Elite Company Commander.");
+        }
+
+        return issues;
+      }
+    }
+  ]
+};
 
 // --- Army Doctrines ---
 const COVENANT_DOCTRINES = {
@@ -5787,6 +6658,7 @@ function injectLeaderMeleeNcoOptions(unit, unitData) {
 window.armyList = [];
 window.currentFaction = null;
 window.selectedArmyBonus = "";
+window.selectedLeader = "";
 
 const UNSC_ARMY_BONUSES = [
   { value: "", label: "Army: UNSC" },
@@ -5801,6 +6673,34 @@ const COVENANT_ARMY_BONUSES = [
   { value: "Fury Unleashed", label: "Caste System: Fury Unleashed" },
   { value: "Swords of Sanghelios", label: "Army: Swords of Sanghelios" }
 ];
+
+function getSelectedLeaderDef() {
+  const armyName = getEffectiveArmyName();
+  if (!armyName || !window.selectedLeader) return null;
+
+  const leaders = LEADER_DEFS[armyName] || [];
+  return leaders.find(l => l.id === window.selectedLeader) || null;
+}
+
+function getSelectedLeaderCost() {
+  const leader = getSelectedLeaderDef();
+  return leader ? Number(leader.cost || 0) : 0;
+}
+
+function getArmyTotal() {
+  const unitsTotal = (window.armyList || []).reduce(
+    (sum, u) => sum + (Number(u.cost) || 0),
+    0
+  );
+
+  return unitsTotal + getSelectedLeaderCost();
+}
+
+function onLeaderChange() {
+  const sel = document.getElementById("leaderSelect");
+  window.selectedLeader = sel ? sel.value : "";
+  renderArmyList();
+}
 
 function getEffectiveArmyName() {
   if (window.currentFaction === "UNSC" && window.selectedArmyBonus === "Insurrection") {
@@ -5869,6 +6769,42 @@ function updateArmyBonusUI() {
   }
 
   sel.value = window.selectedArmyBonus || "";
+}
+
+function updateLeaderUI() {
+  const sel = document.getElementById("leaderSelect");
+  if (!sel) return;
+
+  const armyName = getEffectiveArmyName();
+  const leaders = LEADER_DEFS[armyName] || [];
+
+  if (!armyName || leaders.length === 0) {
+    sel.style.display = "none";
+    sel.innerHTML = "";
+    window.selectedLeader = "";
+    return;
+  }
+
+  sel.style.display = "";
+  sel.innerHTML = "";
+
+  const none = document.createElement("option");
+  none.value = "";
+  none.textContent = "Leader: None";
+  sel.appendChild(none);
+
+  leaders.forEach(leader => {
+    const opt = document.createElement("option");
+    opt.value = leader.id;
+    opt.textContent = `Leader: ${leader.name} (${leader.cost}pts)`;
+    sel.appendChild(opt);
+  });
+
+  if (!leaders.some(l => l.id === window.selectedLeader)) {
+    window.selectedLeader = "";
+  }
+
+  sel.value = window.selectedLeader || "";
 }
 
 function unitRuleNames(unit, unitData = null) {
@@ -6276,7 +7212,7 @@ function pushMaxIssue(issues, label, current, max, suffix) {
 }
 
 function getLimitedRulesForUnit(unit) {
-  const texts = unitRuleTextsForValidation(unit);
+  const texts = getDisplaySpecialRules(unit).map(ruleToPlainText);
   return texts.filter(text => /^Limited\b/i.test(text) || /\bLimited:/i.test(text));
 }
 
@@ -6501,26 +7437,83 @@ function getArmyValidation() {
   };
 }
 
+function getLeaderPdfRulesText() {
+  const leader = getSelectedLeaderDef();
+  if (!leader) return "";
+
+  return `
+
+Leader Rule - ${leader.name}
+
+${leader.ruleName}
+
+- Effect:
+${leader.ruleText}
+`;
+}
+
+function getLeaderValidation() {
+  const leader = getSelectedLeaderDef();
+
+  if (!leader) {
+    return {
+      selected: false,
+      valid: true,
+      issues: [],
+      ok: []
+    };
+  }
+
+  const issues = typeof leader.validate === "function"
+    ? leader.validate(window.armyList || [])
+    : [];
+
+  return {
+    selected: true,
+    leader,
+    valid: issues.length === 0,
+    issues,
+    ok: issues.length === 0 ? [`${leader.name} requirements met.`] : []
+  };
+}
+
 function renderSummaryBlock() {
   const block = document.getElementById("summaryBlock");
   if (!block) return;
 
   let html = "";
 
-	if (window.currentFaction === "UNSC") {
-	  html += `<div><b>Faction:</b> ${getEffectiveArmyName()}</div>`;
-	}
+  if (window.currentFaction === "UNSC") {
+    html += `<div><b>Faction:</b> ${getEffectiveArmyName()}</div>`;
+  }
 
-	if (window.currentFaction === "Covenant") {
-	  if (isSwordsArmy()) {
-		html += `<div><b>Faction:</b> Swords of Sanghelios</div>`;
-	  } else {
-		html += `<div><b>Faction:</b> Covenant</div>`;
-		html += `<div><b>Caste System:</b> ${window.selectedArmyBonus || "None"}</div>`;
-	  }
-	}
+  if (window.currentFaction === "Covenant") {
+    if (isSwordsArmy()) {
+      html += `<div><b>Faction:</b> Swords of Sanghelios</div>`;
+    } else {
+      html += `<div><b>Faction:</b> Covenant</div>`;
+      html += `<div><b>Caste System:</b> ${window.selectedArmyBonus || "None"}</div>`;
+    }
+  }
 
-    if (!isSimplifiedValidationEnabled()) {
+  const leaderValidation = getLeaderValidation();
+
+  if (leaderValidation.selected) {
+    html += `<div style="margin-top:16px;"><b>Leader:</b> ${leaderValidation.leader.name} (${leaderValidation.leader.cost}pts)</div>`;
+    html += `<div style="margin-top:8px;"><b>Leader Validation:</b></div>`;
+
+    leaderValidation.issues.forEach(issue => {
+      html += `<div style="margin-top:6px;color:#ff9a9a;">❌ ${issue}</div>`;
+    });
+
+    leaderValidation.ok.forEach(msg => {
+      html += `<div style="margin-top:6px;color:#7affb7;">✅ ${msg}</div>`;
+    });
+  }
+
+  // Important: Leader Validation is above this return.
+  // So it still appears even if simplified validation is disabled.
+  if (!isSimplifiedValidationEnabled()) {
     block.innerHTML = html;
     return;
   }
@@ -6603,13 +7596,15 @@ function onArmyBonusChange() {
 
   const afterArmy = getEffectiveArmyName();
 
-  // If switching between base army and alternate army, clear the list.
-  // This avoids illegal old units/upgrades staying in the list.
+  // If switching between base army and alternate army, clear the list and leader.
+  // Example: UNSC -> Insurrection, Covenant -> Swords of Sanghelios.
   if (beforeArmy !== afterArmy) {
     window.armyList = [];
+    window.selectedLeader = "";
   }
 
   syncArmyBonusEffects();
+  updateLeaderUI();
   populateUnitSelect();
   renderArmyList();
 }
@@ -8600,9 +9595,10 @@ function getUnitsForSelector(faction) {
 function selectFaction(faction) {
   console.log("selectFaction called with faction =", faction);
 
-  window.currentFaction = faction;
-  window.armyList = [];
-  window.selectedArmyBonus = "";
+	window.currentFaction = faction;
+	window.armyList = [];
+	window.selectedArmyBonus = "";
+	window.selectedLeader = "";
 
   // UI updates
   document.getElementById("btnUNSC").classList.toggle("active", faction === "UNSC");
@@ -8618,6 +9614,7 @@ function selectFaction(faction) {
   syncSimplifiedValidationToggle();
 
 	updateArmyBonusUI();
+	updateLeaderUI();
 	syncArmyBonusEffects();
 
 	(window.armyList || []).forEach(unit => {
@@ -9930,7 +10927,7 @@ function renderArmyList() {
         <div><b>Special Rules:</b>
           <ul style="margin:6px 0 0 16px;padding:0;">
             ${
-              (unit.special || []).map(ruleText => {
+              getDisplaySpecialRules(unit).map(ruleText => {
                 const text = typeof ruleText === "string"
                   ? ruleText
                   : ruleText?.name
@@ -9965,8 +10962,8 @@ function renderArmyList() {
     listDiv.appendChild(card);
   });
   renderSummaryBlock();
-  const total = (window.armyList || []).reduce((sum, u) => sum + (Number(u.cost) || 0), 0);
-  document.getElementById("totalPointsDiv").innerHTML = `<b>Total Points: ${total}</b>`;
+	const total = getArmyTotal();
+	document.getElementById("totalPointsDiv").innerHTML = `<b>Total Points: ${total}</b>`;
 }
 
 
@@ -9987,7 +10984,7 @@ function renderPdfHeader(pdf, margin, width, y) {
   pdf.text(`Faction: ${effectiveArmyName || "-"}`, margin, y);
   pdf.setTextColor(0, 0, 0);
 
-  let total = (window.armyList || []).reduce((sum, u) => sum + (Number(u.cost) || 0), 0);
+  let total = getArmyTotal();
   pdf.setFont("helvetica", "normal");
   pdf.setFontSize(13);
   pdf.text(`Total Points: ${total}`, margin + 290, y);
@@ -10024,12 +11021,11 @@ function renderUnitCard(pdf, unit, margin, width, y) {
   const hasTP = typeof unit.transportCapacity === "number" && unit.transportCapacity > 0;
   const weapons = unit.weaponsTable;
 
-  let raw = Array.isArray(unit.special) ? unit.special : (unit.special ? [unit.special] : []);
-  raw = raw.map(r =>
-    typeof r === "string"
-      ? r
-      : (r?.name ? r.name + (r.description ? ": " + r.description : "") : "")
-  );
+	  let raw = getDisplaySpecialRules(unit).map(r =>
+	  typeof r === "string"
+		? r
+		: (r?.name ? r.name + (r.description ? ": " + r.description : "") : "")
+	);
 
   const seen = new Set(), specialArr = [];
   raw.forEach(entry => {
@@ -10426,7 +11422,7 @@ function exportPdf() {
   }
 
   // Total block
-  let total = (window.armyList || []).reduce((sum, u) => sum + (Number(u.cost) || 0), 0);
+  let total = getArmyTotal();
   y = renderTotalBlock(pdf, margin, width, y, total);
 
   // Special Weapon Rules
@@ -10438,24 +11434,23 @@ function exportPdf() {
   const effectiveArmyName = getEffectiveArmyName();
 
 	if (effectiveArmyName && armyRulesText && armyRulesText[effectiveArmyName]) {
+	  let rulesForPdf = armyRulesText[effectiveArmyName] || "";
+	  rulesForPdf += getLeaderPdfRulesText();
+
 	  renderArmySpecialRulesPage(
 		pdf,
-		armyRulesText[effectiveArmyName],
+		rulesForPdf,
 		margin,
 		width,
 		effectiveArmyName,
 		window.selectedArmyBonus
 	  );
 	}
-
 	const factionSlug = (getEffectiveArmyName() || "unknown")
 	  .toLowerCase()
 	  .replace(/\s+/g, "_");
 
-	const totalPoints = (window.armyList || []).reduce(
-	  (sum, u) => sum + (Number(u.cost) || 0),
-	  0
-	);
+const totalPoints = getArmyTotal();
 
 	pdf.save(`halo_bolt_action_${factionSlug}_${totalPoints}pts_army_list.pdf`);
 }
@@ -10468,7 +11463,8 @@ function saveList() {
 	const data = {
 	  armyList: window.armyList,
 	  currentFaction: window.currentFaction,
-	  selectedArmyBonus: window.selectedArmyBonus
+	  selectedArmyBonus: window.selectedArmyBonus,
+	  selectedLeader: window.selectedLeader || ""
 	};
   const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
   const url = URL.createObjectURL(blob);
@@ -10478,10 +11474,7 @@ function saveList() {
   .toLowerCase()
   .replace(/\s+/g, "_");
 
-	const totalPoints = (window.armyList || []).reduce(
-	  (sum, u) => sum + (Number(u.cost) || 0),
-	  0
-	);
+const totalPoints = getArmyTotal();
 
 	a.download = `halo_bolt_action_${factionSlug}_${totalPoints}pts_army_list.json`;
   document.body.appendChild(a);
@@ -10520,9 +11513,10 @@ function loadList() {
           return;
         }
 
-		window.armyList = data.armyList;
-		window.currentFaction = data.currentFaction;
-		window.selectedArmyBonus = data.selectedArmyBonus || "";
+	window.armyList = data.armyList;
+	window.currentFaction = data.currentFaction;
+	window.selectedArmyBonus = data.selectedArmyBonus || "";
+	window.selectedLeader = data.selectedLeader || "";
 
         document.getElementById("btnUNSC").classList.toggle("active", data.currentFaction === "UNSC");
         document.getElementById("btnCovenant").classList.toggle("active", data.currentFaction === "Covenant");
@@ -10537,6 +11531,7 @@ function loadList() {
 		syncSimplifiedValidationToggle();
 
 		updateArmyBonusUI();
+		updateLeaderUI();
 		syncArmyBonusEffects();
 
 		// Enforce one-per-army upgrades after loading saved JSON lists.
