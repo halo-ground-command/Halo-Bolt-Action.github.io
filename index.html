@@ -2060,6 +2060,29 @@ const UNSC_UNITS = [
     }
   }
 },
+{
+  name: "Breacher Squad",
+  type: "Infantry",
+  allowedVeterancy: ["Regular", "Veteran"],
+  costs: { Regular: 80, Veteran: 95 },
+  baseMen: 5,
+  maxMen: 10,
+  weapons: [{ name: "Submachine Gun" }],
+  specialRules: ["Shield Wall", "Stubborn"],
+  options: {
+    extraMenCost: { Regular: 16, Veteran: 19 },
+    squadUpgrades: {
+      "Engineers": { cost: 1, grantsRule: "Engineers" }
+    },
+    weaponReplacements: {
+      "Pistols": { max: 5, cost: -5, replaces: "Submachine Gun", grants: "Pistol" }
+    },
+    ncoReplacement: {
+      options: ["Submachine Gun", "Pistol"],
+      costs: { "Pistol": -5 }
+    }
+  }
+},
  {
   name: "Engineer Squad",
   type: "Infantry",
