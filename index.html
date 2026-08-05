@@ -518,7 +518,7 @@ window.unitSpecialDescriptions = {
   "Strong": "Ignores Team and Fixed for weapons this unit carries. In close quarters, for every three friendly models involved in the fight, 1 model rolls an extra attack die.",
   "Stubborn": "Ignores pin modifiers on morale checks (but not order tests).",
   "Spotter": "Unarmed model with Infiltrator rule for an indirect-fire team. Acts separately, shares the team’s order die, counts as Down without a die, cannot attack/capture. Removed if the unit is destroyed. Reg/Vet indirect fire/howitzer units may target what any friendly spotter/FO can see.", 
-  "Tank Hunters": "In assaults, use full anti-tank damage rules and ignore Tank Fear. Add +1 to damage rolls vs vehicles.",
+  "Tank Hunters": "In assaults, use full anti-tank damage rules and ignore Tank Fear. Add +1 to damage rolls vs vehicles in CQ.",
   "Team Weapon": "Crew-served unit weapon. Support weapon team crew count as unarmed and do not fire personal ranged weapons. A Team Weapon belongs to the unit. A Team Weapon needs at least 2 models to fire at full effect; if only 1 model remains, the weapon may still fire but suffers -1 to hit.",
   "Tooth and Claw": "Rolls 3 dice instead of 1 per model in close combat.",
   "Hardened": "5+ cover save against shooting attacks in the open; improves soft/hard cover saves by +1",
@@ -1467,9 +1467,9 @@ For example, on Turn 2, they enter as if it were Turn 3. On Turn 4, they enter a
     {
       id: "yapyap",
       name: "Yapyap the Destroyer",
-      cost: 100,
+      cost: 75,
       ruleName: "Strength in Numbers",
-      ruleText: `Grunt Infantry units may re-roll failed Order tests while they are within 6" of another friendly Grunt Infantry unit that has 8 or more models.
+      ruleText: `Grunt Infantry units may re-roll failed Order tests while they are within 6" of another friendly Grunt Infantry unit that has 7 or more models.
 
 In addition, an army led by Yapyap the Destroyer may include one additional Grunt Cannon Fodder Mob unit beyond the normal limits (up to 2 per platoon, and 3 in total per army).`,
       validate: units => {
@@ -1680,7 +1680,7 @@ A Flood Company Commander therefore has a 24" Morale bonus range and a 24" range
     {
       id: "feralOutbreak",
       name: "Feral Outbreak",
-      cost: 100,
+      cost: 75,
       ruleName: "Ravenous Surge",
       ruleText: `Once per game, at the beginning of a turn before any Order Dice are drawn, choose any number of friendly Flood Infantry units that do not already have an Order Die assigned. For each chosen unit, take one of your Order Dice from the bag and assign it to that unit as a Run order.
 
