@@ -2470,59 +2470,59 @@ const UNSC_UNITS = [
     }
   }
 },
-  {
-    name: "M41 LAAG Defensive Mount",
-    type: "Team",
-    allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
-    costs: { Inexperienced: 50, Regular: 65, Veteran: 80 },
-    baseMen: 4,
-    maxMen: 4,
-    weapons: [
-      { name: "Heavy Machine Gun on a rotating platform" }
-    ],
-    specialRules: ["Artillery", "Flak", "Gun Shield", "For Humanity’s Survival!"]
-  },
-  {
-    name: "M71 Anti-Aircraft Gun (Scythe)",
-    type: "Team",
-    allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
-    costs: { Inexperienced: 35, Regular: 50, Veteran: 65 },
-    baseMen: 4,
-    maxMen: 4,
-    weapons: [
-      { name: "Heavy Autocannon on a rotating platform" }
-    ],
-    specialRules: [
-      "Artillery",
-      "Flak",
-      "Static: Once deployed, this unit cannot be moved by its crew.",
-      "For Humanity’s Survival!"
-    ]
-  },
-  {
-    name: "M68 Gauss Cannon",
-    type: "Team",
-    allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
-    costs: { Inexperienced: 35, Regular: 50, Veteran: 65 },
-    baseMen: 3,
-    maxMen: 3,
-    weapons: [
-      { name: "Light Anti-Tank Weapon on a rotating platform" }
-    ],
-    specialRules: ["Artillery", "Gun Shield", "For Humanity’s Survival!"]
-  },
-  {
-    name: "M79 Anti-Air Rocket Launcher",
-    type: "Team",
-    allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
-    costs: { Inexperienced: 50, Regular: 65, Veteran: 80 },
-    baseMen: 3,
-    maxMen: 3,
-    weapons: [
-      { name: "Rocket Launcher on a rotating platform" }
-    ],
-    specialRules: ["Artillery", "Flak", "For Humanity’s Survival!"]
-  },
+{
+  name: "M41 LAAG Defensive Mount",
+  type: "Team",
+  allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
+  costs: { Inexperienced: 55, Regular: 70, Veteran: 85 },
+  baseMen: 4,
+  maxMen: 4,
+  weapons: [
+    { name: "Heavy Machine Gun on a rotating platform" }
+  ],
+  specialRules: ["Artillery", "Flak", "Gun Shield", "For Humanity’s Survival!"]
+},
+{
+  name: "M71 Anti-Aircraft Gun (Scythe)",
+  type: "Team",
+  allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
+  costs: { Inexperienced: 35, Regular: 50, Veteran: 65 },
+  baseMen: 4,
+  maxMen: 4,
+  weapons: [
+    { name: "Heavy Autocannon on a rotating platform" }
+  ],
+  specialRules: [
+    "Artillery",
+    "Flak",
+    "Static: Once deployed, this unit cannot be moved by its crew.",
+    "For Humanity’s Survival!"
+  ]
+},
+{
+  name: "M79 Anti-Air Rocket Launcher",
+  type: "Team",
+  allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
+  costs: { Inexperienced: 55, Regular: 70, Veteran: 85 },
+  baseMen: 4,
+  maxMen: 4,
+  weapons: [
+    { name: "Rocket Launcher on a rotating platform" }
+  ],
+  specialRules: ["Artillery", "Flak", "For Humanity’s Survival!"]
+},
+{
+  name: "M68 Gauss Cannon",
+  type: "Team",
+  allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
+  costs: { Inexperienced: 35, Regular: 50, Veteran: 65 },
+  baseMen: 3,
+  maxMen: 3,
+  weapons: [
+    { name: "Light Anti-Tank Weapon on a rotating platform" }
+  ],
+  specialRules: ["Artillery", "Gun Shield", "For Humanity’s Survival!"]
+},
   
   //Leaders
 	{
@@ -3625,42 +3625,78 @@ const COVENANT_UNITS = [
     }
   }
 },
-   {
-    name: "Type-26 Anti-Infantry Stationary Gun",
-    type: "Team",
-    allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
-    costs: { Inexperienced: 50, Regular: 65, Veteran: 80 },
-    baseMen: 4,
-    maxMen: 4,
-    weapons: [
-      { name: "Heavy Plasma Machine Gun on a rotating platform" }
-    ],
-    specialRules: ["Artillery", "Flak", "Gun Shield", "For The Great Journey!"]
-  },
-  {
-    name: "Type-29 Anti-Infantry Stationary Gun",
-    type: "Team",
-    allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
-    costs: { Inexperienced: 35, Regular: 50, Veteran: 65 },
-    baseMen: 4,
-    maxMen: 4,
-    weapons: [
-      { name: "Light Plasma Cannon on a rotating platform" }
-    ],
-    specialRules: ["Artillery", "Flak", "For The Great Journey!"]
-  },
-  {
-    name: "Rizsheda-pattern Fuel Rod Shade Turret",
-    type: "Team",
-    allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
-    costs: { Inexperienced: 50, Regular: 65, Veteran: 80 },
-    baseMen: 3,
-    maxMen: 3,
-    weapons: [
-      { name: "Fuel Rod Gun on a rotating platform" }
-    ],
-    specialRules: ["Artillery", "Flak", "For The Great Journey!"]
-  },
+{
+  name: "Type-27 Anti-Infantry Stationary Gun",
+  type: "Team",
+  allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
+  costs: { Inexperienced: 35, Regular: 50, Veteran: 65 },
+  baseMen: 3,
+  maxMen: 3,
+  weapons: [
+    { name: "Light Plasma Cannon on a rotating platform" }
+  ],
+  specialRules: [
+    "Artillery",
+    "Flak",
+    "Gun Shield",
+    "Portable Platform: This unit may still be moved by its crew even if only one crewman remains.",
+    "For The Great Journey!"
+  ]
+},
+{
+  name: "Type-29 Anti-Infantry Stationary Gun",
+  type: "Team",
+  allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
+  costs: { Inexperienced: 25, Regular: 40, Veteran: 55 },
+  baseMen: 3,
+  maxMen: 3,
+  weapons: [
+    { name: "Light Plasma Cannon on a rotating platform" }
+  ],
+  specialRules: ["Artillery", "Flak", "For The Great Journey!"]
+},
+{
+  name: "Type-26 Anti-Infantry Stationary Gun",
+  type: "Team",
+  allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
+  costs: { Inexperienced: 50, Regular: 65, Veteran: 80 },
+  baseMen: 4,
+  maxMen: 4,
+  weapons: [
+    { name: "Heavy Plasma Machine Gun on a rotating platform" }
+  ],
+  specialRules: ["Artillery", "Flak", "For The Great Journey!"],
+  options: {
+    squadUpgrades: {
+      "Gun Shield": {
+        cost: 5,
+        grantsRule: "Gun Shield",
+        perModel: false
+      }
+    }
+  }
+},
+{
+  name: "Type-26 Fuel Rod Shade Turret",
+  type: "Team",
+  allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
+  costs: { Inexperienced: 55, Regular: 70, Veteran: 85 },
+  baseMen: 4,
+  maxMen: 4,
+  weapons: [
+    { name: "Fuel Rod Gun on a rotating platform" }
+  ],
+  specialRules: ["Artillery", "Flak", "For The Great Journey!"],
+  options: {
+    squadUpgrades: {
+      "Gun Shield": {
+        cost: 5,
+        grantsRule: "Gun Shield",
+        perModel: false
+      }
+    }
+  }
+},
   
   //LEADERS
   
@@ -4592,42 +4628,78 @@ const BANISHED_UNITS = [
     }
   }
 },
-  {
-    name: "Type-26 Anti-Infantry Stationary Gun",
-    type: "Team",
-    allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
-    costs: { Inexperienced: 50, Regular: 65, Veteran: 80 },
-    baseMen: 4,
-    maxMen: 4,
-    weapons: [
-      { name: "Heavy Plasma Machine Gun on a rotating platform" }
-    ],
-    specialRules: ["Artillery", "Flak", "Gun Shield", "Forged In Chains"]
-  },
-  {
-    name: "Type-29 Anti-Infantry Stationary Gun",
-    type: "Team",
-    allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
-    costs: { Inexperienced: 35, Regular: 50, Veteran: 65 },
-    baseMen: 4,
-    maxMen: 4,
-    weapons: [
-      { name: "Light Plasma Cannon on a rotating platform" }
-    ],
-    specialRules: ["Artillery", "Flak", "Forged In Chains"]
-  },
-  {
-    name: "Rizsheda-pattern Fuel Rod Shade Turret",
-    type: "Team",
-    allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
-    costs: { Inexperienced: 50, Regular: 65, Veteran: 80 },
-    baseMen: 3,
-    maxMen: 3,
-    weapons: [
-      { name: "Fuel Rod Gun on a rotating platform" }
-    ],
-    specialRules: ["Artillery", "Flak", "Forged In Chains"]
-  }, 
+{
+  name: "Type-27 Anti-Infantry Stationary Gun",
+  type: "Team",
+  allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
+  costs: { Inexperienced: 35, Regular: 50, Veteran: 65 },
+  baseMen: 3,
+  maxMen: 3,
+  weapons: [
+    { name: "Light Plasma Cannon on a rotating platform" }
+  ],
+  specialRules: [
+    "Artillery",
+    "Flak",
+    "Gun Shield",
+    "Portable Platform: This unit may still be moved by its crew even if only one crewman remains.",
+    "Forged In Chains"
+  ]
+},
+{
+  name: "Type-29 Anti-Infantry Stationary Gun",
+  type: "Team",
+  allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
+  costs: { Inexperienced: 25, Regular: 40, Veteran: 55 },
+  baseMen: 3,
+  maxMen: 3,
+  weapons: [
+    { name: "Light Plasma Cannon on a rotating platform" }
+  ],
+  specialRules: ["Artillery", "Flak", "Forged In Chains"]
+},
+{
+  name: "Type-26 Anti-Infantry Stationary Gun",
+  type: "Team",
+  allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
+  costs: { Inexperienced: 50, Regular: 65, Veteran: 80 },
+  baseMen: 4,
+  maxMen: 4,
+  weapons: [
+    { name: "Heavy Plasma Machine Gun on a rotating platform" }
+  ],
+  specialRules: ["Artillery", "Flak", "Forged In Chains"],
+  options: {
+    squadUpgrades: {
+      "Gun Shield": {
+        cost: 5,
+        grantsRule: "Gun Shield",
+        perModel: false
+      }
+    }
+  }
+},
+{
+  name: "Type-26 Fuel Rod Shade Turret",
+  type: "Team",
+  allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
+  costs: { Inexperienced: 55, Regular: 70, Veteran: 85 },
+  baseMen: 4,
+  maxMen: 4,
+  weapons: [
+    { name: "Fuel Rod Gun on a rotating platform" }
+  ],
+  specialRules: ["Artillery", "Flak", "Forged In Chains"],
+  options: {
+    squadUpgrades: {
+      "Gun Shield": {
+        cost: 5,
+        grantsRule: "Gun Shield",
+        perModel: false
+      }
+    }
+  }
+},
  
   //leaders
 {
