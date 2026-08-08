@@ -1,4 +1,4 @@
-﻿Halo: Bolt Action - Optional Rules v1.5
+﻿Halo: Bolt Action - Optional Rules v1.6
 
 Introduction
 This supplement contains optional rules modules for Halo: Bolt Action, designed primarily for narrative play but usable in any game if both players agree.
@@ -289,14 +289,14 @@ ATTACHED CASTE LEADER PROFILES
 UNSC
 Attached Spartan
 Cost
-	24pts (Veteran)
+	26pts (Veteran)
 	Composition
 	1 Spartan
 	Weapons
 	Assault Rifle
 	Options
 	- Replace Assault Rifle with Battle Rifle for -3pts
-- Replace Assault Rifle with Shotgun for -4pts
+- Replace Assault Rifle with Shotgun for -3pts
 - Replace Assault Rifle with DMR for -5pts
 - May take Jump-Jet Pack for +1pt
 - May take Stealth Module for +1pt
@@ -304,7 +304,7 @@ Cost
 - May take Anti-tank grenades for +2pts
 - May take a Melee Weapon for +1pt (this model rolls 2 dice in close combat instead of 1)
 	Special Rules
-	- Fanatics                                                                                 
+	- Fanatics         - Hardened                                                                        
 - Fast                                                                                        
 - VISR
 - Behind Enemy Lines
@@ -386,7 +386,7 @@ Cost
 Covenant
 Attached Elite
 Cost
-	27pts (Veteran)
+	29pts (Veteran)
 	Composition
 	1 Elite
 	Weapons
@@ -397,9 +397,9 @@ Cost
 - May take Jump-Jet Pack for +1pt
 - May take Stealth Module for +1pt
 - May take Anti-tank grenades for +2pts
-- May take a Plasma Sword for +1pt (this model rolls 2 dice in close combat instead of 1)
+- May take a Melee Weapon for +1pt (this model rolls 2 dice in close combat instead of 1)
 	Special Rules
-	- Behind Enemy Lines                                                                
+	- Behind Enemy Lines         - Hardened                                                                  
 - Fanatics    
 - Strong      
 - Strikes First                                                                          
@@ -409,7 +409,7 @@ Cost
 - Stealth: If Stealth Modules are taken  
 - Flight: If Jump-Jet Packs are taken  
 - Tank Hunters: If anti-tank grenades are taken 
-- Plasma Sword: If taken, the model rolls 2 dice in close combat instead of 1
+- Melee Weapon: If taken, the model rolls 2 dice in close combat instead of 1
 	
 
 
@@ -485,26 +485,26 @@ Cost
 Covenant
 Attached Brute
 Cost
-	22pts (Veteran)
+	25pts (Veteran)
 	Composition
 	1 Brute
 	Weapons
 	Spiker
 	Options
-	- Replace Spiker with Mauler for -5pts
-- Replace Spiker with Covenant Carbine for -3pts
-- May replace Spiker with Plasma Rifle for +0pts
+	- Replace Spiker with Mauler for -6pts
+- Replace Spiker with Covenant Carbine for -4pts
+- May replace Spiker with Plasma Rifle for -1pts
 - May take Anti-tank grenades for +2pts
 - May take Energy Shield Module for +3pts
-- May take a Gravity Hammer for +1pt (this model rolls 2 dice in close combat instead of 1)
+- May take a Melee Weapon for +1pt (this model rolls 2 dice in close combat instead of 1)
 	Special Rules
-	- Stubborn
+	- Stubborn          - Hardened  
 - Berserker
 - Fieldcraft
 - Strong
 - Energy Shields: If Energy Shield Modules are taken
 - Tank Hunters: If anti-tank grenades are taken
-- Gravity Hammer: If taken, the model rolls 2 dice in close combat instead of 1
+- Melee Weapon: If taken, the model rolls 2 dice in close combat instead of 1
 	
 
 
@@ -586,7 +586,7 @@ Cost
 Banished
 Attached Elite
 Cost
-	27pts (Veteran)
+	29pts (Veteran)
 	Composition
 	1 Elite
 	Weapons
@@ -596,9 +596,9 @@ Cost
 - Replace Plasma Rifle with Pulse Carbine for -2pts
 - May take Stealth Module for +1pt
 - May take Anti-tank grenades for +2pts
-- May take a Plasma Sword for +1pt (this model rolls 2 dice in close combat instead of 1)
+- May take a Melee Weapon for +1pt (this model rolls 2 dice in close combat instead of 1)
 	Special Rules
-	- Behind Enemy Lines  
+	- Behind Enemy Lines           - Hardened  
 - Fanatics  
 - Energy Shields  
 - Fast  
@@ -607,7 +607,7 @@ Cost
 - Strikes First
 - Stealth: If Stealth Modules are taken  
 - Tank Hunters: If anti-tank grenades are taken 
-- Plasma Sword: If taken, the model rolls 2 dice in close combat instead of 1
+- Melee Weapon: If taken, the model rolls 2 dice in close combat instead of 1
 	
 
 
@@ -687,22 +687,22 @@ Cost
 Banished
 Attached Brute
 Cost
-	22pts (Veteran)
+	25pts (Veteran)
 	Composition
 	1 Brute
 	Weapons
 	Spiker
 	Options
-	- Replace Spiker with Mangler for -4pts
-- Replace Spiker with Pulse Carbine for -2pts
-- May replace Spiker with Plasma Rifle for +0pts
+	- Replace Spiker with Mangler for -5pts
+- Replace Spiker with Pulse Carbine for -3pts
+- May replace Spiker with Plasma Rifle for -1pts
 - May take Anti-tank grenades for +2pts
 - May take Jump-Jet Pack for +1pt
 - May take Energy Shield Module for +3pts
-- May take a Gravity Hammer for +1pt (this model rolls 2 dice in close combat instead of 1)
+- May take a Melee Weapon for +1pt (this model rolls 2 dice in close combat instead of 1)
 - May replace Stubborn with Fanatics for +1pt
 	Special Rules
-	- Stubborn
+	- Stubborn          - Hardened  
 - Berserker
 - Fieldcraft
 - Strong
@@ -710,7 +710,7 @@ Cost
 - Flight: If Jump-Jet Packs are taken  
 - Tank Hunters: If anti-tank grenades are taken
 - Engineers: If Engineers are taken
-- Gravity Hammer: If taken, the model rolls 2 dice in close combat instead of 1
+- Melee Weapon: If taken, the model rolls 2 dice in close combat instead of 1
 	
 
 
