@@ -3109,15 +3109,15 @@ const UNSC_VEHICLES = [
 	},
 
   // TRANSPORTS AND TOWS
-{
+  {
     name: "M831 Troop Transport Warthog",
     type: "Armoured Car",
-	forceOrgSlot: "transport",
+    forceOrgSlot: "transport",
     allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
     costs: { Inexperienced: 40, Regular: 50, Veteran: 60 },
     weapons: [],
     damageValue: "7+ (Armoured Car)",
-    transportCapacity: 7,
+    transportCapacity: 8,
     specialRules: [
       "Recce",
       "Open-topped",
@@ -3125,17 +3125,30 @@ const UNSC_VEHICLES = [
     ]
   },
   {
-    name: "Mastodon",
+    name: "M88 Bison",
     type: "Armoured Car",
-	forceOrgSlot: "transport",
-    allowedVeterancy: ["Regular", "Veteran"],
-    costs: { Regular: 70, Veteran: 84 },
-    weapons: [
-      { name: "Turret-mounted Medium Machine Gun" }
-    ],
+    forceOrgSlot: "transport",
+    allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
+    costs: { Inexperienced: 45, Regular: 55, Veteran: 65 },
+    weapons: [],
     damageValue: "7+ (Armoured Car)",
     transportCapacity: 15,
     specialRules: []
+  },
+  {
+    name: "M650 Mastodon",
+    type: "Tank",
+    forceOrgSlot: "transport",
+    allowedVeterancy: ["Regular", "Veteran"],
+    costs: { Regular: 120, Veteran: 145 },
+    weapons: [
+      { name: "Turret-mounted Heavy Machine Gun" }
+    ],
+    damageValue: "8+ (Light Tank)",
+    transportCapacity: 12,
+    specialRules: [
+      "Reinforced Front Armour"
+    ]
   }
 ];
 
