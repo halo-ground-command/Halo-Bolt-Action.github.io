@@ -3875,35 +3875,36 @@ const COVENANT_VEHICLES = [
     'Excavation Beam: When targeting a unit inside a building or a building, the attack counts as HE (3") instead.'
   ]
 },
-	{
-	  name: "Deutoros-pattern Scarab",
-	  type: "Walker",
-	  allowedVeterancy: ["Regular", "Veteran"],
-	  costs: { Regular: 435, Veteran: 520 },
-	  weapons: [
-		{ name: "Hull-mounted Forward-facing Super-Heavy Anti-Tank Weapon" },
-		{ name: "Turret-mounted Heavy Automatic Cannon" }
-	  ],
-	  damageValue: "10+ (Super-heavy Walker)",
-	  transportCapacity: 20,
-	  specialRules: [
-		"Flak",
-		"Titanic Walker: When rolling on the Vehicle Damage chart against this unit, reduce the result by 1 (to a minimum of 1).",
-		"Towering Strider: For movement purposes, this walker treats all terrain and units as open ground, except tall terrain and other Titanic Walkers."
-	  ],
-	  options: {
-		weaponUpgrades: {
-			"3 Pintle-mounted Medium Plasma MGs (left, right, rear arcs)": {
-			  cost: 45,
-			  addsWeapon: [
-				"Pintle-mounted Medium Plasma MG (left arc)",
-				"Pintle-mounted Medium Plasma MG (right arc)",
-				"Pintle-mounted Medium Plasma MG (rear arc)"
-			  ]
-			}
-		}
-	  }
-	},
+{
+  name: "Deutoros-pattern Scarab",
+  type: "Walker",
+  allowedVeterancy: ["Regular", "Veteran"],
+  costs: { Regular: 435, Veteran: 520 },
+  weapons: [
+    { name: "Hull-mounted Forward-facing Super-Heavy Anti-Tank Weapon" },
+    { name: "Turret-mounted Heavy Automatic Cannon[object Object],[object Object],[object Object],[object Object]" }
+  ],
+  damageValue: "10+ (Super-heavy Walker)",
+  transportCapacity: 20,
+  specialRules: [
+    "Flak",
+    "Excavation Beam: When targeting a building or a unit inside a building, the Super-Heavy Anti-Tank Weapon counts as HE (4\") instead.",
+    "Titanic Walker: When rolling on the Vehicle Damage chart against this unit, reduce the result by 1 (to a minimum of 1).",
+    "Towering Strider: For movement purposes, this walker treats all terrain and units as open ground, except tall terrain and other Titanic Walkers."
+  ],
+  options: {
+    weaponUpgrades: {
+      "3 Pintle-mounted Medium Plasma MGs (left, right, rear arcs)": {
+        cost: 45,
+        addsWeapon: [
+          "Pintle-mounted Medium Plasma MG (left arc)",
+          "Pintle-mounted Medium Plasma MG (right arc)",
+          "Pintle-mounted Medium Plasma MG (rear arc)"
+        ]
+      }
+    }
+  }
+},
 	{
 	  name: "Gorgon",
 	  type: "Walker",
@@ -4907,23 +4908,24 @@ const BANISHED_VEHICLES = [
 	damageValue: "7+ (Light Walker)", transportCapacity: 0,
 	specialRules: [ "Assault", "Fist", "Open-topped", "Siege Fists: +1 Penetration to melee attacks." ]
 	},
-	{
-	  name: "Barukaza Workshop Scarab",
-	  type: "Walker",
-	  allowedVeterancy: ["Regular", "Veteran"],
-	  costs: { Regular: 445, Veteran: 535 },
-	  weapons: [
-		{ name: "Hull-mounted Forward-facing Super-Heavy Anti-Tank Weapon" },
-		{ name: "Turret-mounted Rocket Launcher" }
-	  ],
-	  damageValue: "10+ (Super-heavy Walker)",
-	  transportCapacity: 20,
-	  specialRules: [
-		"Flak",
-		"Titanic Walker: When rolling on the Vehicle Damage chart against this unit, reduce the result by 1 (to a minimum of 1).",
-		"Towering Strider: For movement purposes, this walker treats all terrain and units as open ground, except tall terrain and other Titanic Walkers."
-	  ]
-	},
+{
+  name: "Barukaza Workshop Scarab",
+  type: "Walker",
+  allowedVeterancy: ["Regular", "Veteran"],
+  costs: { Regular: 445, Veteran: 535 },
+  weapons: [
+    { name: "Hull-mounted Forward-facing Super-Heavy Anti-Tank Weapon" },
+    { name: "Turret-mounted Rocket Launcher" }
+  ],
+  damageValue: "10+ (Super-heavy Walker)",
+  transportCapacity: 20,
+  specialRules: [
+    "Flak",
+    "Excavation Beam: When targeting a building or a unit inside a building, the Super-Heavy Anti-Tank Weapon counts as HE (4\") instead.",
+    "Titanic Walker: When rolling on the Vehicle Damage chart against this unit, reduce the result by 1 (to a minimum of 1).",
+    "Towering Strider: For movement purposes, this walker treats all terrain and units as open ground, except tall terrain and other Titanic Walkers."
+  ]
+},
 
   // ANTI-AIRCRAFT VEHICLES
 {
