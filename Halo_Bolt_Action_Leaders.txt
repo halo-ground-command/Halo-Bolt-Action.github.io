@@ -1,0 +1,417 @@
+﻿Halo: Bolt Action - Leaders v1.0
+
+Introduction
+The standard Halo: Bolt Action army lists allow players to freely combine units to create their own forces. Leaders provide an optional way to build an army around a specific command style, military doctrine, or battlefield strategy inspired by the Halo Wars series.
+A Leader does not represent an additional model or unit on the battlefield. Instead, it represents the commander, strategist, command hierarchy, or wider force doctrine behind the army. Selecting a Leader gives the army access to a unique Leader Rule that reinforces that style of warfare.
+Each Leader has its own requirements, restrictions, and points cost. These may require the army to include certain units, limit access to others, or follow a specific theme. In return, eligible units gain the Leader Rule.
+The points cost of a Leader is paid as part of the army list. A Leader does not add an Order Die.
+Leaders are entirely optional. Both players should agree before the game whether Leaders may be used or not.
+An army may only select one Leader.
+Leaders do not replace Army Rules. An army using a Leader still belongs to its normal faction and uses that faction’s Army Rules as normal.
+Players are also encouraged to create their own Leaders for casual or campaign play.
+
+
+
+
+Leader Format 
+Each Leader is presented using the following format:
+Name
+The name or title of the Leader.
+Points Cost
+The number of points required to select this Leader.
+Background
+A short description of the Leader’s command style or battlefield doctrine.
+Requirements
+The units, restrictions, or conditions the army must follow in order to select this Leader.
+Leader Rule
+The special rule granted by the Leader. This may also include changes to unit availability or force organisation where appropriate.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+UNSC Leaders
+Captain James Cutter
+Points Cost
+50pts
+Captain Cutter favours disciplined, coordinated operations supported by rapid deployment assets and elite strike teams. Under his command, ODST units are deployed aggressively to seize key positions, disrupt enemy movements, and open the way for the main UNSC assault.
+Requirements
+* The army must be a UNSC army.
+* The army must include at least four ODST Infantry units.
+* One of those ODST Infantry units must be an ODST Platoon Commander.
+Leader Rule
+Feet First into Hell: ODST units and vehicles carrying only ODST units using Outflanking may attempt to enter the battlefield one turn earlier than normal. Treat the current turn as being one turn later when determining which table edges they may enter from. All other Outflanking rules apply as normal.
+For example, on Turn 2, they enter as if it were Turn 3. On Turn 4, they enter as if it were Turn 5.
+
+
+
+
+
+
+
+
+
+
+Sergeant John Forge
+Points Cost
+25pts
+Sergeant Forge leads from the front, favouring aggressive mechanised pushes, armoured support, and close cooperation between infantry and vehicles. His forces are trained to advance under fire, dismount quickly, and keep fighting even when their transports are destroyed around them.
+Requirements
+* The army must be a UNSC army.
+* The army must include at least four Trooper or Marine Infantry units.
+* One of those Infantry units must be a Trooper Platoon Commander or Marine Platoon Commander.
+* The army must include at least two non-flying Vehicles with transport capacity.
+* At least one of those Vehicles must have a Damage Value of 8+ or higher.
+Leader Rule
+Armoured Breakthrough: Trooper and Marine Infantry units may re-roll failed Order tests made to mount or dismount a Vehicle. In addition, if a vehicle carrying one or more friendly Trooper or Marine Infantry units is destroyed, those Infantry units suffer D3 hits instead of the standard D6 hits.
+
+
+
+
+Sergeant Major Avery Johnson
+Points Cost
+25pts
+Sergeant Major Avery Johnson is one of the UNSC’s most legendary Marine leaders, known for his courage, battlefield charisma, and refusal to back down in the face of impossible odds. Forces fighting under Johnson’s command are driven forward by sheer grit, discipline, and the belief that no position is lost until the last Marine stops firing.
+Requirements
+* The army must be a UNSC army.
+* The army must include at least four Marine Infantry units.
+* One of those Marine Infantry units must be a Marine Platoon Commander.
+Leader Rule
+Hold the Line!: Once per game, when a friendly Marine Infantry unit fails an Order test, you may use this rule: Remove all Pins from that unit and treat the Order test as passed instead.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Commander Jerome-092
+Points Cost
+100pts
+Jerome-092 leads Spartan operations with discipline, precision, and overwhelming battlefield presence. Forces operating under his command rely on elite infantry, aggressive manoeuvre, and the superior mobility of MJOLNIR armour to strike where the enemy is weakest.
+Requirements
+* The army must be a UNSC army.
+* The army must include at least two Spartan units.
+* One of those Spartan units must be a Spartan Company Commander.
+* For each Spartan unit beyond the first two, the army must also include one Marine Infantry unit.
+Leader Rule
+MJOLNIR Mobility: When a Spartan unit is given a Run order that is not an assault, it treats rough ground and obstacles as open ground for that movement. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Covenant Leaders
+Prophet of Regret
+Points Cost
+50pts
+The Prophet of Regret commands through religious authority, divine mandate, and the strict hierarchy of the Covenant. Forces acting under his command are driven forward by zeal, obedience, and the promise of glory in the name of the Great Journey.
+Requirements
+* The army must be a Covenant army.
+* The army must include at least three Covenant Infantry units.
+* One of those must be an Elite Platoon Commander.
+* One of those must be a Grunt Infantry unit.
+* One of those must be a Jackal Infantry unit.
+Leader Rule
+Divine Mandate: Twice per game, at the start of a turn, choose one friendly Covenant Platoon Commander. Until the end of that turn, that Officer counts as a Company Commander.
+
+
+
+
+
+
+
+
+
+
+
+
+Ripa 'Moramee
+Points Cost
+50pts
+Ripa 'Moramee, the Arbiter, leads through fear, speed, and brutal personal authority. Under his command, Elite warriors are unleashed as shock troops, striking quickly and decisively to break the enemy’s line before they can properly brace for the assault.
+Requirements
+* The army must be a Covenant army.
+* The army must include at least four Elite Infantry units.
+* One of those Elite Infantry units must be an Elite Platoon Commander.
+* The army may not include Brute units.
+Leader Rule
+No Time to Brace: Enemy Infantry and Artillery units assaulted by friendly Elite Infantry units do not gain Defensive Position from rough ground or obstacles. Units inside buildings, bunkers, or fortifications still gain Defensive Position as normal.
+
+
+
+
+
+
+
+
+Tartarus
+Points Cost
+25pts
+Tartarus leads the Jiralhanae with savage authority, driving his packs into battle through intimidation, dominance, and the promise of brutal victory. Covenant forces under his command rely on Brute shock assaults to crush resistance at close range.
+Requirements
+* The army must be a Covenant army.
+* The army must include at least four Brute Infantry units.
+* One of those Brute Infantry units must be a Brute Platoon Commander.
+* The army may not include Elite units.
+Leader Rule
+Brutal Display: When a friendly Brute Infantry unit wins in Close Quarters, after the regroup move, choose one enemy Infantry or Artillery unit within 6" and line of sight of that Brute unit. The chosen enemy unit receives 1 Pin.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Yapyap the Destroyer
+Points Cost
+100pts
+Yapyap’s followers surge into battle in vast, chaotic mobs, relying on numbers, noise, and sheer stubborn belief in their own uprising. Individually unreliable, they become far more dangerous when clustered together under the direction of their leaders and Deacons.
+Requirements
+* The army must be a Covenant army.
+* The Covenant army must have selected Cannon Fodder as its Caste System bonus.
+* The army must include at least four Grunt Infantry units.
+* One of those Grunt Infantry units must be a Grunt Company Commander.
+* One Grunt Infantry unit must include a Deacon.
+* All Infantry and Artillery units in the army must either be Grunt units or be upgraded as Grunts.
+Leader Rule
+Strength in Numbers: Grunt Infantry units may re-roll failed Order tests while they are within 6" of another friendly Grunt Infantry unit that has 8 or more models.
+In addition, an army led by Yapyap the Destroyer may include one additional Grunt Cannon Fodder Mob unit beyond the normal limits (Up to 2 per platoon, and 3 in total per army).
+
+
+Banished Leaders
+Atriox
+Points Cost
+50pts
+Atriox leads through strength, patience, and brutal battlefield calculation. Unlike many warlords, he does not waste lives needlessly, instead forcing the enemy to overcommit before striking where they are weakest. Armies under Atriox’s command are aggressive, but disciplined enough to exploit openings and recover from enemy pressure.
+Requirements
+* The army must be a Banished army.
+* The army must include at least four Banished Infantry units.
+* One of those Infantry units must be a Brute Platoon Commander.
+* The army must include at least one Grunt, Jackal, or Elite Infantry unit.
+Leader Rule
+Calculated Command: Once per game, when a friendly Banished Infantry or Artillery unit is given a Down order as a reaction, you may use this rule. Choose one other friendly Banished Infantry or Artillery unit that currently has a Down order die assigned to it. Move that Down order die to the reacting unit instead.
+The reacting unit is treated as having gone Down as normal. The other unit no longer has an order die assigned and may be activated later in the turn as normal.
+Colony
+Points Cost
+75pts
+Colony directs the Lekgolo with a collective intelligence, using coordinated Hunter pairs and Skitterer support as an armoured spearhead. Under Colony’s control, Lekgolo formations advance with terrifying discipline, shrugging off punishment as they crush the enemy line.
+Requirements
+* The army must be a Banished army.
+* The army must include one Hunter Pack unit of 4 Hunters.
+* The army must include at least two Skitterers.
+Leader Rule
+Ironclad Hunters: Hunter Pack units improve their Carapace rule. When resolving shooting attacks that originate from more than 6" away, treat those Hunter Pack units as having DV 8+ instead of DV 7+.
+In addition, an army led by Colony may include up to two Hunter Pack units per army instead of the usual limit of one.
+
+
+
+
+
+
+
+
+
+
+Jega 'Rdomnai
+Points Cost
+25pts
+Jega 'Rdomnai leads through terror, silence, and ritualised brutality. Under his command, Banished Elites fight not only to kill, but to claim proof of their victories. Their trophies become symbols of dominance, marking them as assassins and executioners within the Banished warhost.
+Requirements
+* The army must be a Banished army.
+* The army must include at least three Elite Infantry units.
+* One of those Elite Infantry units must be an Elite Platoon Commander.
+* The army must include no more Brute Infantry units than Elite Infantry units.
+Leader Rule
+Trophy Assassins: The Trophy Takers army rule also affects friendly Banished Elite Infantry units.
+When a friendly Banished Elite Infantry unit wins a Close Quarters combat for the first time, it gains Trophy Plate Harness for the rest of the battle.
+
+
+
+
+
+
+
+
+
+
+
+
+Decimus
+Points Cost
+25pts
+Decimus leads through overwhelming force, aggression, and raw physical dominance. Under his command, Banished Brutes advance with brutal confidence, closing the distance under fire while unleashing volleys of weapons before crashing into the enemy line.
+Requirements
+* The army must be a Banished army.
+* The army must include at least four Brute Infantry units.
+* One of those Brute Infantry units must be a Brute Platoon Commander.
+* The army may not include more Elite Infantry units than Brute Infantry units.
+Leader Rule
+Unrelenting Advance: Once per game, when a friendly Brute Infantry unit is given a Run order that is not an assault, you may use this rule.
+After completing its movement, that unit may fire its weapons. If it does so, those weapons suffer a -1 to hit penalty, even if they have Assault.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Flood Leaders
+The Gravemind
+Points Cost
+50pts
+The Gravemind does not command through shouted orders or battlefield signals, but through the shared consciousness of the Flood itself. Under its influence, scattered infection forms move with terrifying coordination, reacting as one mind across the battlefield and overwhelming the enemy through perfect predatory instinct.
+Requirements
+* The army must be a Flood army.
+* The army must include a Flood Company Commander.
+* The army must include at least two units chosen from the following list:
+   * Tank Form Pack
+   * Spawner Form
+   * Stalker Form Swarm
+Leader Rule
+Coordinated Infestation: Friendly Flood Officers double the range of their Morale bonus and You men, snap to action! ability when affecting friendly Flood Infantry or Artillery units.
+A Flood Platoon Commander therefore has a 12" Morale bonus range and a 12" range for You men, snap to action!.
+A Flood Company Commander therefore has a 24" Morale bonus range and a 24" range for You men, snap to action!.
+
+
+Feral Outbreak
+Points Cost
+100pts
+Without higher intelligence, the swarm acts on instinct, surging toward the nearest prey with relentless hunger. 
+Requirements
+* The army must be a Flood army.
+* The army cannot include a Flood Company Commander.
+* The army may not include any of the following units:
+   * Stalker Form Swarm
+   * Tank Form Pack
+   * Spawner Form
+   * Juggernaut
+   * Abomination
+Leader Rule
+Ravenous Surge: Once per game, at the beginning of a turn before any Order Dice are drawn, choose any number of friendly Flood Infantry units that do not already have an Order Die assigned. For each chosen unit, take one of your Order Dice from the bag and assign it to that unit as a Run order.
+Chosen units do not take Order tests and do not remove Pins. Each unit must move as directly as possible toward the closest enemy Infantry or Artillery unit. If that enemy is within assault range and line of sight, the Flood unit must assault it instead.
+If several eligible enemy units are equally close, or it is not clear which is closest, the opposing player chooses the target. Units activated this way count as activated for the turn.
+Forerunner Leaders
+The Didact
+Points Cost
+100pts
+The Didact commands as a supreme Forerunner warlord, directing Promethean forces with ancient military precision and overwhelming authority. Under his command, Forerunner armies punish enemy overextension with sudden, devastating coordination.
+Requirements
+* The army must be a Forerunner army.
+* The army must include at least four Forerunner Infantry units with Composed Beings.
+* The army must include a Forerunner Knight Platoon Commander.
+* The army must include at least one Warrior-Servant or Promethean Soldier Infantry unit.
+Leader Rule
+Warden of the Mantle: Once per game, when using the Warden of Balance army rule, you may use this rule. Instead of selecting one friendly Forerunner Infantry or Artillery unit, all friendly Forerunner Infantry units with Composed Beings gain +1 to hit when shooting until the end of that turn.
+
+
+
+
+
+
+
+
+343 Guilty Spark
+Points Cost
+25pts
+343 Guilty Spark commands through containment protocols, automated security routines, and the defensive systems of the Forerunner installations. Under his direction, Forerunner forces create exclusion zones that punish enemy movement and restrict hostile advances.
+Requirements
+* The army must be a Forerunner army.
+* The army cannot include a Knight Commander.
+* The army must include a Monitor Company Commander.
+* The army must include at least three Automaton Infantry units.
+Leader Rule
+Containment Protocols: Friendly Forerunner Automaton Infantry units may be given Ambush orders.
+At the beginning of each turn, choose one friendly Forerunner Infantry unit. Until the end of that turn, any enemy Infantry or Artillery unit that ends its movement or activation within 6" of that unit receives 1 Pin.
+A unit may only receive 1 Pin per turn from this rule.
+
+
+
+
+Swords of Sanghelios Leaders
+Thel 'Vadam
+Points Cost
+50pts
+Thel 'Vadam leads the Swords of Sanghelios through honour, discipline, and unity of purpose. Under his command, Sangheili warriors and their allies fight as a renewed Covenant of choice rather than obedience, holding the line through loyalty instead of fear.
+Requirements
+* The army must be a Swords of Sanghelios army.
+* The army must include at least three Elite Infantry units.
+* One of those Elite Infantry units must be an Elite Company Commander.
+Leader Rule
+United by Honour: Friendly Swords of Sanghelios Infantry and Artillery units may benefit from Sangheili Command while within 12" of a friendly Elite Infantry unit, instead of 6".
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Insurrectionist Leaders
+Kinsano
+Points Cost
+25pts
+Morgan Kinsano leads with fire, speed, and uncompromising aggression. Her forces favour close-range assaults, incendiary weapons, and scorched-earth tactics, using flame to break enemy positions and force stronger armies out of cover.
+Requirements
+* The army must be an Insurrectionist army.
+* The army must include at least four Insurrectionist Infantry units.
+* The army must include at least two units armed with Flamethrowers.
+Leader Rule
+Incendiary Warfare: Friendly Insurrectionist units armed with Flamethrowers do not receive the usual 1 Pin marker for firing a Flamethrower.
+In addition, when a friendly Insurrectionist Flamethrower rolls to see if it runs out of fuel, it only runs out on a 1 instead of a 1 or 2.
+This affects both infantry flamethrowers and vehicle-mounted flamethrowers.
+
+
+
+
+ | Page
