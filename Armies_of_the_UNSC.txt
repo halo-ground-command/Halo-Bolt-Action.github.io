@@ -1,4 +1,4 @@
-﻿Armies of the UNSC v3.4
+﻿Armies of the UNSC v3.5
 
 Army Special Rules
 Desperate Measures
@@ -12,9 +12,7 @@ Spartans inspire exceptional performance from allied troops.
 * Effect: Friendly UNSC units may re-roll failed Morale checks if at least one model in the unit has line of sight to a friendly Spartan model that is not Down.
 Battle-Net Intrusion
 UNSC commanders use linked battle-net systems and tactical AI support to exploit brief windows of advantage before the enemy can respond.
-* Effect: Once per game, at the start of any Game Turn, the UNSC player may choose one Order Die to draw from the dice bag instead of drawing randomly. If this Order Die is assigned to an Officer, it cannot be used to trigger You Men, Snap to Action! If more than one UNSC player wishes to use this rule at the same time, roll off. The winner uses this rule that turn, and the loser must wait until a future turn to use it.
-
-
+* Effect: Once per game, at the start of any Game Turn, the UNSC player may choose one Order Die to draw from the dice bag instead of drawing randomly. If this Order Die is assigned to an Officer, it cannot be used to trigger You Men, Snap to Action! If more than one player wishes to use a rule that allows them to choose or draw an Order Die before the first random Order Die draw of the turn, roll off. The winner uses their rule that turn, and the other player must wait until a future turn to use theirs. 
 
 
 
@@ -50,8 +48,8 @@ Optional additional upgrades (ODST-only):
 
 SPARTANS
 Must be taken as Veteran.
-Gain the Fanatics, Fast, Behind Enemy Lines, Strong,  Strikes First and VISR special rules.
-Cost: +6pts per model.
+Gain the Hardened, Fanatics, Fast, Behind Enemy Lines, Strong,  Strikes First and VISR special rules.
+Cost: +7pts per model.
 Optional additional upgrades (Spartan-only):
  – The squad can be given Energy Shields for +3pts per model.
  – The squad can be given Stealth for +1pt per model.
@@ -86,16 +84,11 @@ UNSC Armoury
 M301 Grenade Launcher
 Marine, ODST and Spartan Infantry units can take M301 Grenade Launchers. For every full 4 models in the unit, one model armed with an Assault Rifle, Battle Rifle, or Infantry Flamethrower may take an M301 Grenade Launcher for +22pts.
 When the unit shoots, a model with an M301 Grenade Launcher must choose whether to fire its normal weapon or its M301 Grenade Launcher. This weapon uses the same weapon profile as a Grenade Launcher.
-MJOLNIR Biofoam Systems
-Spartan units may take MJOLNIR Biofoam Systems for +2pts per model.  If they do so, they have a 5+ cover save in the open, a 5+ cover save in close quarters, and a +1 to soft/hard cover saves. If this unit also has energy shields, its cover save in the open becomes 4+ instead.
+MJOLNIR Systems
+Spartan units may take MJOLNIR Systems for +2pts per model. Models with MJOLNIR Systems have a 5+ cover save in Close Quarters and add +1 to their soft/hard cover saves.
+In addition, each time this unit suffers damage, roll one D6 for each point of damage before removing casualties. On a 6, that damage is ignored and no casualty is caused. This does not stack with the medic rule.
 Pathfinder
 Units on the battlefield with the Pathfinder special rule that did not deploy using the Infiltrator special rule are allowed to make a Run move after both sides have finished set-up, but before the first turn of the game. During this move, the unit cannot assault enemy units and cannot be targeted by enemies in Ambush. 
-
-
-
-
-
-
 
 
 All-Terrain
@@ -107,7 +100,11 @@ Wheeled vehicles with this rule may enter and move through rough ground with an 
 - M831 Troop Transport Warthog
 XM20P Grenades
 One UNSC Grenade Launcher Team per platoon may upgrade its Grenade Launcher weapon to XM20P Grenades for +5pts.
-When a weapon with XM20P Grenades hits a unit with Energy Shields, ignore the +1 to wound difficulty granted by Energy Shields for that weapon’s attack. All other effects of Energy Shields still apply.
+When a weapon with XM20P Grenades hits a unit with Energy Shields or Shielded Hull, ignore the rule.
+
+
+
+
 
 
 
@@ -408,13 +405,13 @@ Cost
 
 Spartan Team
 Cost
-	100pts (Veteran)
+	104pts (Veteran)
 	Composition
 	1 NCO and 3 men
 	Weapons
 	Assault Rifles
 	Options
-	- Add up to 2 additional men for +25pts each
+	- Add up to 2 additional men for +26pts each
 - The NCO and up to 5 men may have Battle Rifles instead of Assault Rifles for -3pts each
 - The NCO and up to 4 men may have Shotguns instead of Assault Rifles for -3pts each
 - The NCO and up to 4 men may have DMRs instead of Assault Rifles for -5pts each
@@ -425,13 +422,14 @@ Cost
 - The squad can be given Stealth Modules for +1pt per man
 - The squad can be given Energy Shield Modules for +3pts per man
 - The NCO may be given a Melee Weapon for +1pt 
+- The unit may be given Melee Weapons special rule for +2pt per model
 - The squad can be given Engineers for +1pt per man
 	Special Rules
 	- Fanatics                                                                               - Strong 
 - Engineers: If Engineers are taken                                   - Fast                                                  
 - Tank Hunters: If anti-tank grenades are taken             - VISR                                                       - Stealth: If Stealth Modules are taken                            - Strikes First                     
 - Energy Shields: If Energy Shield Modules are taken   - Behind Enemy Lines 
-- Flight: If Jump-Jet Packs are taken         
+- Flight: If Jump-Jet Packs are taken                                 - Hardened
 - Melee Weapon: If taken, the model rolls 2 dice in close combat instead of 1
 	ONI Operative Team
 Cost
@@ -447,8 +445,6 @@ Cost
 - Limited: Only 1 ONI Operative Team may be taken per platoon.
 - Tank Hunters: If anti-tank grenades are taken
 	
-
-
 
 
 
@@ -824,22 +820,22 @@ Cost
 - Open-topped
 	HRUNTING/YGGDRASIL Mk IX ADS "Mantis"
 Cost
-	160pts (Regular), 192pts (Veteran)
+	180pts (Regular), 216pts (Veteran)
 	Weapons
 	Turret-mounted Heavy Machine Gun and Rocket Launcher
 	Damage Value
 	8+ (Medium Walker)
 	Special Rules
-	- Assault
+	- Assault - Shielded Hull 
 	Colossus
 Cost
-	250pts (Regular), 300pts (Veteran)
+	275pts (Regular), 330pts (Veteran)
 	Weapons
 	Turret-mounted Heavy Anti-Tank Weapon and Light Autocannon
 	Damage Value
 	9+ (Heavy Walker)
 	Special Rules
-	- Slow
+	- Slow - Shielded Hull 
 	
 
 
@@ -1212,7 +1208,7 @@ Cost
 	Damage Value
 	7+ (Medium Aircraft)  
 	Options
-	- Add 2 pintle-mounted MMGs, 1 MMG covering the front arc, and 1 MMG covering the right arc for +30pts
+	- Add 2 pintle-mounted MMGs, 1 MMG covering the left arc, and 1 MMG covering the right arc for +30pts
 - Replace the 2 pintle-mounted MMGs with 2 pintle-mounted Grenade Launchers for +15pts  
 	Transport 
 	Up to 7 men
@@ -1393,15 +1389,15 @@ Cost
 	Damage Value
 	7+ (Armoured Car)
 	Transport 
-	Up to 7 men
+	Up to 8 men
 	Special Rules
 	- Recce
 - Open-topped
-	Mastodon
+	M88 Bison
 Cost
-	70pts (Regular), 84pts (Veteran)
+	45pts (Inexperienced), 55pts (Regular), 65pts (Veteran) 
 	Weapons
-	Turret-mounted Medium Machine Gun
+	None
 	Damage Value
 	7+ (Armoured Car)
 	Transport 
@@ -1409,8 +1405,18 @@ Cost
 	Special Rules
 	
 
-	ARTILLERY
-FIELD ARTILLERY
+	M650 Mastodon
+Cost
+	120pts (Regular), 145pts (Veteran) 
+	Weapons
+	Turret-mounted Heavy Machine Gun 
+	Damage Value
+	8+ (Light Tank) 
+	Transport 
+	Up to 12 men
+	Special Rules
+	- Reinforced Front Armour
+	
 
 
 
@@ -1476,21 +1482,11 @@ FIELD ARTILLERY
 
 
 
-
-
-
-
-
-
-
-
-
-
-
+ARTILLERY
 ANTI-AIRCRAFT GUNS
 M41 LAAG Defensive Mount
 Cost
-	50pts (Inexperienced), 65pts (Regular), 80pts (Veteran)
+	55pts (Inexperienced), 70pts (Regular), 85pts (Veteran)
 	Team
 	4 men
 	Weapons
@@ -1508,6 +1504,15 @@ Cost
 	Special Rules
 	- Flak                                                                                     For Humanity’s Survival!
 - Static: Once deployed, this unit cannot be moved by its crew.
+	M79 Anti-Air Rocket Launcher
+Cost
+	55pts (Inexperienced), 70pts (Regular), 85pts (Veteran)
+	Team
+	4 men
+	Weapons
+	1 rocket launcher on a rotating platform
+	Special Rules
+	- Flak                                                                                     For Humanity’s Survival!
 	ANTI-TANK GUNS
 M68 Gauss Cannon 
 Cost
@@ -1518,18 +1523,7 @@ Cost
 	1 light anti-tank weapon on a rotating platform
 	Special Rules
 	- Gun Shield                                                                               For Humanity’s Survival!
-	M79 Anti-Air Rocket Launcher
-Cost
-	50pts (Inexperienced), 65pts (Regular), 80pts (Veteran)
-	Team
-	3 men
-	Weapons
-	1 rocket launcher on a rotating platform
-	Special Rules
-	- Flak                                                                                     For Humanity’s Survival!
 	
-
-
 
 
 
@@ -1597,10 +1591,88 @@ Cost
 	Options
 	- Add turret-mounted MMG for +15pts  
 	Special Rules
-	- Stealth Hull: While this vehicle is in cover, ranged attacks against it suffer an additional -1 to hit, provided it has not been assigned an Advance or Run order.
+	- Stealth Hull: If this vehicle has not been assigned an Advance or Run order this turn and is in cover, ranged attacks against it suffer an additional -1 to hit. 
 - Weak Sides
 - Faster
-	ARMOURED CARS
+	Elephant
+Cost
+	111pts (Regular), 133pts (Veteran) 
+	Weapons
+	Turret-mounted Paired Heavy Machine Gun 
+	Damage Value
+	8+ (Light Tank)  
+	Transport
+	Up to 16 men 
+	Options
+	- Replace the Turret-mounted Paired Heavy Machine Gun with a Turret-mounted Light Anti-Tank Weapon for +20pts 
+- Replace the Turret-mounted Paired Heavy Machine Gun with a Turret-mounted Rocket Launcher for +25pts   
+- Add 2 pintle-mounted MMGs, 1 MMG covering the left arc, and 1 MMG covering the right arc for +30pts
+- Upgrade to a Medical Vehicle for +10pts 
+	Special Rules
+	- Slower 
+- Command Vehicle  
+- Open-Topped 
+- Medical Vehicle: If upgraded 
+- Recovery Platform: Once per game, when this vehicle is given a Fire order, it may forgo all shooting and select one friendly non-flying  vehicle within 6". Remove one effect caused by the Vehicle Damage Table from that vehicle. 
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ARMOURED CARS
 M35 Cougar
 Cost
 	100pts (Regular), 120pts (Veteran)
@@ -1623,63 +1695,7 @@ Cost
 	Up to 8 men 
 	Special Rules
 	- Reactive Disembarkation: If the Tarantula is targeted by any attack any passengers must immediately disembark before any dice are rolled. The attacker must be in range of the tank. Disembarking units are immediately placed within 1" of the vehicle and automatically count as having gone Down.
-	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-EXTRA
+	EXTRA
 INFANTRY SQUADS AND TEAMS
 Mortar Team
 Cost
@@ -1702,5 +1718,70 @@ Cost
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Breacher Squad 
+Cost
+	80pts (Regular), 95pts (Veteran)
+	Composition
+	1 NCO and 4 Men
+	Weapons
+	SMGs 
+	Options
+	- Add up to 5 additional Breachers for +16pts each (Regular), or +19pts each (Veteran)   
+- The NCO and up to 5 Breachers may replace their SMGs with Pistols for -5pts each 
+- The squad can be given Engineers for +1pt per man 
+	Special Rules
+	- Shield Wall 
+- Stubborn 
+- Engineers: If Engineers are taken 
+	
 
  | Page

@@ -1,4 +1,4 @@
-﻿Armies of the Banishedv3.4
+﻿Armies of the Banishedv3.5
 
 Army Special Rules
 Brotherhood of Chaos
@@ -6,14 +6,14 @@ The Banished ranks are composed of fierce but unruly factions, each warband eage
 * Effect: Once per turn, when a Banished Infantry unit enters the battlefield from Reserve or Outflanking, it may enter with a Run order and still fire its Small Arms after moving. If it does so, those weapons suffer a -1 to hit penalty, even if they have Assault. 
 Trophy Takers 
 Banished Brutes tear armour, trophies, and wargear from the defeated, wearing each victory as proof of dominance. 
-* Effect: When a Banished Brute unit wins a Close Quarters combat, it gains Trophy Plate Harness for the rest of the battle. If it already has Trophy Plate Harness, improve its Trophy Plate Harness save to 5+ in the open and in close quarters for the rest of the battle. 
+* Effect: When a Banished Brute unit wins a Close Quarters combat for the first time, it gains Trophy Plate Harness for the rest of the battle. If it already has Trophy Plate Harness, improve its Trophy Plate Harness save to 5+ for the rest of the battle. 
 
 
 Blood Price
 Banished leaders do not inspire loyalty—they enforce obedience through fear and brutality.
 * Effect: When a friendly Banished Infantry or Artillery unit fails an Order test while within 6″ of a friendly Banished Officer or Bloodhandler (including FUBAR), you may choose to remove one model from the unit and then re-roll the Order test. The second result stands as normal. This rule only applies to Infantry or Artillery units of three or more models.
 Atriox’s Law
-Though prone to bloodlust, Banished warriors will restrain themselves in the presence of a commanding Brute.
+Though prone to bloodlust, Banished warriors will restrain themselves in the presence of a commanding officer.
 * Effect: Units with the Berserker special rule can ignore the compulsory Run behavior caused by failing an Order test while they are within the morale bubble of an Officer. The suppression ends immediately if the unit exits the bubble or if the officer is removed from play.
 
 
@@ -31,8 +31,8 @@ GRUNTS/JACKALS
 Default. No Bonuses.
 BRUTES
 Must be taken as Regular or Veteran.
-Gain the Stubborn, Strong, Fieldcraft and Berserker special rules.
-Cost: +4pts per model.
+Gain the Hardened, Stubborn, Strong, Fieldcraft and Berserker special rules.
+Cost: +5pts per model.
 Optional additional upgrades (Brute-only):
  – The squad may be given Energy Shields for +3pts per model. 
 
@@ -40,11 +40,11 @@ Optional additional upgrades (Brute-only):
 – The NCO/Officer may be given a Melee Weapon for +1pt (This model rolls 2 dice in close combat instead of 1) 
 ELITES
 Must be taken as Veteran.
-Gain the Behind Enemy Lines, Fanatics, Energy Shields, Fast, Strong, Strikes First and VISR special rules.
-Cost: +9pts per model.
+Gain the Hardened, Behind Enemy Lines, Fanatics, Energy Shields, Fast, Strong, Strikes First and VISR special rules.
+Cost: +10pts per model.
 Optional additional upgrades (Elite-only):
  – The squad may be given Stealth for +1pts per model. 
-– The NCO/Officer may be given a Melee Weapon for +1pt (This model rolls 2 dice in close combat instead of 1) 
+– The NCO/Officer may be given a Melee Weapon for +1pt (This model rolls 1 additional dice in close combat) 
 
 
 
@@ -77,7 +77,7 @@ Banished armoured vehicles with Damage Value 7+ or higher may take Scrap Armour 
 Weapons with Shaped Charge do not gain +1 Penetration bonus for hitting this vehicle in the side arc.
 Trophy Plate Harness
 Veteran Banished Brute Infantry units may take Trophy Plate Harnesses for +1pt per model.
-Models with Trophy Plate Harnesses have a 6+ cover save in the open and a 6+ cover save in close quarters.
+Models with Trophy Plate Harnesses have a 6+ cover save in Close Quarters.
 Melee Weapon Upgrades
 NCO/Officer models may upgrade a Melee Weapon into a special melee weapon. The model must have a Melee Weapon. Teams and Artillery units cannot take these upgrades. A model that takes one of these upgrades keeps the +1 melee attack from having a Melee Weapon.
 Plasma Sword
@@ -392,13 +392,13 @@ Cost
 
 Brute Squad
 Cost
-	105pts (Regular), 120pts (Veteran) 
+	110pts (Regular), 125pts (Veteran) 
 	Composition
 	1 NCO and 4 Brutes  
 	Weapons
 	Spikers
 	Options
-	- Add up to 4 additional Brutes for +20pts each (Regular) or +23pts each (Veteran)  
+	- Add up to 4 additional Brutes for +22pts each (Regular) or +25pts each (Veteran)  
 - The NCO and up to 4 Brutes may have Manglers instead of Spikers for –5pts each  
 - The NCO and up to 4 Brutes may have Pulse Carbines instead of Spikers for –3pt each  
 - The NCO and up to 2 Brutes may have Plasma Rifles instead of Spikers for –1pt each  
@@ -414,6 +414,7 @@ Cost
 - Replace Stubborn by Fanatics for +1pt per Brute
 	Special Rules
 	- Stubborn
+- Hardened
 - Berserker
 - Fieldcraft
 - Strong
@@ -492,13 +493,13 @@ Cost
 
 Elite Squad
 Cost
-	112pts (Veteran) 
+	116pts (Veteran) 
 	Composition
 	1 NCO and 3 Elites  
 	Weapons
 	Plasma Rifles
 	Options
-	- Add up to 2 additional Elites for +28pts each  
+	- Add up to 2 additional Elites for +29pts each  
 - The NCO and up to 5 Elites may have or Needlers instead of Plasma Rifles for –2pts each 
 - The NCO and up to 5 Elites may have Pulse Carbines instead of Plasma Rifles for –2pts each  
 - The NCO and up to 2 Elites may have a Concussion Rifle for +21pts 
@@ -509,7 +510,7 @@ Cost
 - The NCO may be given a Melee Weapon for +1pt (This model rolls 2 dice in close combat instead of 1) 
 	Special Rules
 	- Behind Enemy Lines                              - Flight: If Jump-Jet Packs are taken  
-- Fanatics  
+- Fanatics                                                    - Hardened
 - Energy Shields  
 - Fast  
 - VISR  
@@ -594,17 +595,17 @@ Cost
 
 Atriox’s Chosen  
 Cost
-	72pts (Veteran)  
+	76pts (Veteran)  
 	Composition
 	1 NCO and 3 Brutes 
 	Weapons
 	Melee weapons (Unarmed)
 	Options
-	- Add up to 2 additional Brutes for +18pts each  
+	- Add up to 2 additional Brutes for +19pts each  
 - The squad may be given Energy Shield Modules for +3pts per Brute 
 - The squad may be given anti-tank grenades for +2pts per Brute 
 	Special Rules
-	- Fanatics 
+	- Fanatics                               - Hardened
 - Berserker
 - Tough Fighters
 - Fieldcraft
@@ -614,13 +615,13 @@ Cost
 - Tank Hunters: If anti-tank grenades are taken
 	Hunter Pack
 Cost
-	110pts (Regular), 116pts (Veteran) 
+	112pts (Regular), 118pts (Veteran) 
 	Composition
 	2 Hunters
 	Weapons
 	Assault Cannons 
 	Options
-	- Add up to 2 additional Hunters for +55pts each (Regular) or +58pts each (Veteran) 
+	- Add up to 2 additional Hunters for +56pts each (Regular) or +59pts each (Veteran) 
 	Special Rules
 	- Resilient   
 - Tough Fighters  
@@ -698,7 +699,7 @@ Cost
 	Weapons
 	Explosive Charge 
 	Options
-	- This unit can be upgraded to a Grunt Rider for 3+pts, gaining Stubborn, Fieldcraft and Berserker.
+	- This unit can be upgraded to a Grunt Rider for +4pts, gaining Stubborn, Hardened, Fieldcraft and Berserker.
 	Special Rules
 	- Suicide Charge: If this model successfully assaults an enemy unit and makes contact, it is immediately removed, and the assaulted unit either suffers a single hit with a Penetration value of +8 (Without any other modifiers), or HE (2").  
 - Tank Hunters  
@@ -942,26 +943,8 @@ Cost
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+May take Shielded Hull for +25pts. 
+May take Shielded Hull for +25pts. 
 
 
 
@@ -981,7 +964,7 @@ Cost
 WALKERS
 Pnap-pattern Goblin 
 Cost
-	110pts (Regular), 132pts (Veteran)
+	125pts (Regular), 150pts (Veteran)
 	Weapons
 	Forward-facing Hull-mounted Needle Cannon and Shardstorm Launcher, 2 Fists
 	Damage Value
@@ -989,7 +972,7 @@ Cost
 	Options
 	- Replace Needle Cannon with a Light Anti-Tank Weapon for +10pts
 	Special Rules
-	- Assault  
+	- Assault   - Shielded Hull 
 - Fist  
 - Agile  
 - Recce  
@@ -999,13 +982,13 @@ Cost
 - Shardstorm Launcher: Range 36", Shots 6, Pen –, Team, Supercombine, Fixed
 	Type-30 Light Excavation/Anti-Fortification Platform "Locust" 
 Cost
-	116pts (Inexperienced), 145pts (Regular), 174pts (Veteran) 
+	132pts (Inexperienced), 165pts (Regular), 198pts (Veteran) 
 	Weapons
 	Turret-mounted Medium Anti-Tank Weapon
 	Damage Value
 	8+ (Medium Walker)  
 	Special Rules
-	- Slow - Excavation Beam: When targeting a unit inside a building or a building, the attack counts as HE (3") instead.    
+	- Slow - Excavation Beam: When targeting a unit inside a building or a building, the attack counts as HE (3") instead.    - Shielded Hull 
 	Dovotaa Workshop Sky Protector "Reaver" 
 Cost
 	124pts (Inexperienced), 155pts (Regular), 186pts (Veteran) 
@@ -1106,7 +1089,8 @@ Cost
 	Damage Value
 	9+ (Heavy Anti-Grav Tank)
 	Options
-	- Add pintle-mounted Medium Plasma MG covering the forward arc for +15pts  
+	- Add pintle-mounted Medium Plasma MG covering the forward arc for +15pts 
+May take Shielded Hull for +25pts.  
 	Special Rules
 	- Weak Sides  
 - Flak  
@@ -1212,10 +1196,7 @@ Cost
 
 
 
-
-
-
-
+May take Shielded Hull for +10pts. 
 
 
 
@@ -1335,6 +1316,7 @@ Cost
 
 
 
+May take Shielded Hull for +20pts. 
 
 
 
@@ -1401,7 +1383,7 @@ Cost
 	Special Rules
 	- Flak
 - Command Vehicle (If Command Vehicle is taken)
-	
+	May take Shielded Hull for +15pts. 
 
 
 
@@ -1434,9 +1416,7 @@ Cost
 
 
 
-
-
-
+May take Shielded Hull for +20pts. 
 
 
 
@@ -1577,27 +1557,25 @@ Cost
 - Titanic Walker: When rolling on the Vehicle Damage chart against this unit, reduce the result by 1 (to a minimum of 1).
 - Towering Strider: For movement purposes, this walker treats all terrain and units as open ground, except tall terrain and other Titanic Walkers.
 	ARTILLERY
-FIELD ARTILLERY
 ANTI-AIRCRAFT GUNS
-Type-26 Anti-Infantry Stationary Gun
-Cost
-	50pts (Inexperienced), 65pts (Regular), 80pts (Veteran)
-	Team
-	4 men
-	Weapons
-	1 heavy plasma machine gun on a rotating platform
-	Special Rules
-	- Flak
-- Gun Shield
-	Type-29 Anti-Infantry Stationary Gun
+Type-27 Anti-Infantry Stationary Gun
 Cost
 	35pts (Inexperienced), 50pts (Regular), 65pts (Veteran)
 	Team
-	4 men
+	3 men
 	Weapons
 	1 Light Plasma Cannon on a rotating platform
 	Special Rules
-	- Flak
+	- Flak - Gun Shield - Portable Platform: This unit may still be moved by its crew even if only one crewman remains.  - Forged In Chains
+	Type-29 Anti-Infantry Stationary Gun
+Cost
+	25pts (Inexperienced), 40pts (Regular), 55pts (Veteran)
+	Team
+	3 men
+	Weapons
+	1 Light Plasma Cannon on a rotating platform
+	Special Rules
+	- Flak - Forged In Chains
 	
 
 
@@ -1656,19 +1634,32 @@ Cost
 
 
 
-
-
-ANTI-TANK GUNS
-Rizsheda-pattern fuel rod Shade turret
+Type-26 Anti-Infantry Stationary Gun
 Cost
 	50pts (Inexperienced), 65pts (Regular), 80pts (Veteran)
 	Team
-	3 men
+	4 men
+	Weapons
+	1 heavy plasma machine gun on a rotating platform
+	Options
+	- Add a gun shield for +5 points
+	Special Rules
+	- Flak - Forged In Chains
+	Type-26 Fuel Rod Shade Turret 
+Cost
+	55pts (Inexperienced), 70pts (Regular), 85pts (Veteran)
+	Team
+	4 men
 	Weapons
 	1 fuel rod gun on a rotating platform
+	Options
+	- Add a gun shield for +5 points
 	Special Rules
-	- Flak
-	EXTRA
+	- Flak - Forged In Chains
+	
+
+ANTI-TANK GUNS
+EXTRA
 INFANTRY SQUADS AND TEAMS
 Mortar Team
 Cost

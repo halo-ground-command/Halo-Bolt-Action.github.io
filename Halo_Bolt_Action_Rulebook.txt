@@ -1,4 +1,4 @@
-﻿Halo: Bolt Action Rulebook V3.4
+﻿Halo: Bolt Action Rulebook V3.5
 Introduction
 Welcome to Halo: Bolt Action, where the tactical depth of Bolt Action meets the epic universe of Halo. Command forces from the UNSC or Covenant in fast-paced tabletop battles, using infantry, vehicles, and air support to outmaneuver and defeat your opponent.
 Tabletop simulator mod here
@@ -13,9 +13,9 @@ Anti-Grav        7
 Damage Value Chart        7
 Weapons table        8
 Weapons special rules        10
-Units special rules        12
+Units special rules        11
 Vehicles special rules        15
-Other rules        17
+Other rules        16
 Rules summary        18
 
 
@@ -241,7 +241,7 @@ Type - SMALL ARMS
 	-
 	Overcharge
 	Shotgun/Heatwave/Scattershot
-	6"/18"
+	6"/12"
 	2/1
 	-
 	Assault
@@ -443,7 +443,6 @@ Type - HEAVY WEAPONS
 	HE
 	Team, Fixed, Howitzer, HE (4")
 	Weapon Special Rules
-The following special rules are used to represent the different types of weapons, as indicated on the Weapons Table.
 Assault
 Weapons with the Assault rule suffer no penalty to hit when moving and shooting. Additionally, infantry models armed with an Assault weapon count as having the Tough Fighters special rule, allowing them to re-roll failed rolls in close combat.
 Battery Charge
@@ -451,7 +450,7 @@ Weapons with this rule require to charge up powerful energy attacks. As a result
 Cover Piercing
 When this weapon hits an Infantry or Artillery unit that is in soft/hard cover and not Down, any natural 6 rolled to wound worsens the target’s cover save by 1, for that wound only. 
 Fixed
-Fixed weapons can only fire within a 45-degree arc. A Run order must be used to reposition them.
+Fixed weapons can only fire within a 90-degree arc. A Run order must be used to reposition them. Same rule as in core Rulebook.
 Flamethrower
 Roll 1 die to hit. If it hits,  it inflicts multiple hits. Flamethrower allow no cover saves. The target suffers D3+1 Pin markers total, and must immediately take a Morale check; if failed, the unit is destroyed or the vehicle is knocked out. Against vehicles, Flamethrowers always hit top armour and ignore both the -1 Pen modifier for long range and the +1 Pen modifier for point-blank range. After firing, roll for fuel: on 1–2 the Flamethrower runs out and cannot be used again. Against buildings, a normal building catches fire on 4+ even if the attack misses.
 HE (High Explosive)
@@ -465,13 +464,13 @@ After an ungarrisoned infantry unit takes at least one hit, roll a D6. On a 4+, 
 MG
 Weapons with the MG rule are treated as machine guns for all gameplay purposes. This includes interactions such as halved shots when mounted on vehicles and any rules or effects that specifically reference machine guns.
 Overcharge
-When a weapon with this rule shoots, declare that the weapon is overcharging. If so, shots from that weapon ignore the target’s Energy Shields’ +1 to wound difficulty and the +1 bonus to cover saves. They can also pin vehicles up to damage value 9+, even if they do not have the open-topped rule. However, overcharging applies a -1 to hit modifier. 
+When a weapon with this rule shoots, declare that the weapon is overcharging. If so, shots from that weapon ignore the target’s Energy Shields’ +1 to wound difficulty. They can also pin vehicles up to damage value 9+, even if they do not have the open-topped rule. However, overcharging applies a -1 to hit modifier. 
 Overheat
 Before shooting, choose which weapons in the unit are overheated. Each overheated weapon gains +1 shot for this attack. After resolving all shooting, place 1 pin marker on the firing unit for each weapon that was overheated. Weapons do not have to be overheated simultaneously, you may mix overheated and normal fire, even with the same weapon type. 
 Paired
 Paired machineguns do not halve their shoots.
 Range Finder
-When a unit is given a Fire order, up to one Range Finder weapon in range of the target may choose not to fire; if it does so, one other model in the same unit firing a Small Arms weapon receives +1 to hit for that shooting attack only. If the Range Finder weapon could have fired multiple shots at the target, this bonus may be given to one Heavy weapon instead. 
+When a unit is given a Fire order, up to one model with a Range Finder weapon that could otherwise fire at the target may choose not to fire. If it does so, one other model in the same unit firing a Small Arms weapon receives +1 to hit for that shooting attack only. If the Range Finder weapon could have fired multiple shots at the target, this bonus may be given to one model firing a Heavy weapon instead. This bonus has no effect on Indirect Fire. 
 Sniper
 Units equipped with this weapon count as having the Sniper special rule.
 Supercombine
@@ -481,23 +480,18 @@ Weapons with the Team rule require at least two models to operate effectively. I
 Tracking
 Weapons with the Tracking rule are highly advanced and accurate. When issuing a FIRE order, ignore the -1 to hit penalty caused by the unit being pinned. All other modifiers apply as normal.
 Unit Special Rules
-The following unit special rules apply to various units as described in the army lists. These rules represent specific skills, abilities, or unique characteristics of particular unit types.
 Automaton
 Automatons possess basic decision-making capabilities but lack the quick reactions and judgment of human soldiers. Units with this rule cannot be issued Ambush orders and are not affected by Horror’s -1 morale. Automatons cannot benefit from medics or the YOU MEN, SNAP TO ACTION! rule.
 Behind Enemy Lines
 Units with the Behind Enemy Lines special rule are highly trained in infiltration and surprise tactics. When entering the battlefield using Reserves or the Outflank deployment, these units ignore the -1 modifier to the order test for coming onto the table.
 Berserker
 When this unit performs an assault, each model in the unit rolls 1 additional attack die during the first round of that close combat. Additionally, If a Berserker unit fails an Order test (excluding FUBAR) and there is an enemy Infantry or Artillery unit within assault reach (i.e., eligible to be assaulted under the core rules), it must immediately take a Run (Assault) order against the nearest eligible unit. If no such unit is within assault reach, resolve the failed test as normal (the unit goes Down).
-
-
-
-
 Composed Beings
 Prometheans and other advanced AI mechanical constructs, often the result of biological entities being transformed into machines, exhibit unwavering focus and resilience on the battlefield. These units are not affected by Horror's -1 morale and cannot benefit from medics.
 Engineers
 When an Engineer unit assaults a building, the defenders lose the defensive position bonus.
 Energy Shield
-Units equipped with advanced energy shielding gain additional protection in battle. When targeted by shooting attacks, units with this rule increase their "to wound" difficulty by +1 (e.g., a weapon that would normally wound on a 4+ now wounds on a 5+). In addition, units with this rule have a 5+ cover save in the open and add +1 to their soft/hard cover saves.
+Units equipped with advanced energy shielding gain additional protection in battle. When targeted by shooting attacks, units with this rule increase their “to wound” difficulty by +1. For example, a weapon that would normally wound on a 4+ now wounds on a 5+. 
 Fanatics
 Fanatics refuse to retreat or surrender, choosing instead to fight to the bitter end. They ignore negative morale modifiers from pin markers when taking morale checks. Fanatics are not automatically routed when their pin markers equal or exceed their morale value. In close quarters, if a Fanatic infantry/artillery unit is defeated, the fight is treated as a draw, and another round of combat is immediately fought. This continues until the Fanatics either win or are wiped out.
 Fast
@@ -522,7 +516,7 @@ Some models are significantly larger than standard soldiers. Units with the Larg
 Melee Weapons
 Models do 2 base attacks in melee instead of 1. 
 Resilient
-This rule replaces Energy Shields and Shield Wall. Units with the Resilient rule have a damage value of 6+, a 5+ cover save in the open or in Close Quarters and add +2 to their soft/hard cover saves.
+This rule replaces Energy Shields, Shield Wall, and Hardened.  Units with the Resilient rule have a damage value of 6+, a 5+ cover save in the open or in Close Quarters and add +2 to their soft/hard cover saves.
 Shield Wall
 When a unit with the Shield Wall rule is in open ground, it benefits from a base 6+ cover save. If the unit goes Down in the open, this save improves by +2, becoming a 4+ cover save. When the unit is in cover, Shield Wall improves the cover save by 1—soft cover provides a 4+ save (instead of 5+), and hard cover provides a 3+ save (instead of 4+). If the unit is both in cover and Down, apply the usual +2 cover save. Rolls of 1 always fail, regardless of modifiers.
 Shirkers
@@ -543,6 +537,8 @@ Tank Hunters
 If a tank hunter unit wins an assault and scores damage against a vehicle, the effect is resolved on the Damage Results Table rather than the Superficial Damage Table. In addition, these troops don’t suffer from the Tank Fear rule when assaulting fully enclosed armoured vehicles, and their rolls to damage vehicles have a +1.
 Tooth and Claw
 Models with the Tooth and Claw special rule excel in hand-to-hand combat, rolling three base attack dice instead of one in close quarters.
+Hardened 
+Units with Hardened are protected by heavy armour, reinforced bodies, thick hides, dense biomass, or other forms of physical durability. When a unit with this rule is in open ground, it benefits from a base 5+ cover save against shooting attacks. When the unit is in cover, it improves its soft or hard cover save by +1.
 Tough Fighters
 When fighting in close quarters against Infantry, Artillery, or Assault Walkers, a unit may re-roll a number of failed melee rolls up to the number of friendly models with Tough Fighters taking part in that fight. 
 VISR
@@ -550,7 +546,6 @@ Units equipped with the Visual Intelligence System, Reconnaissance system have a
 Wide Formation
 Models in a unit with this rule may keep up to 2" coherency between models instead of 1", reducing vulnerability to blasts while maintaining mutual support.
 Vehicle Special Rules
-The following special rules apply to various vehicles, providing unique traits and abilities for gameplay.
 Agile
 A vehicle with this rule may make an additional 90-degree pivot during its movement and is capable of pivoting 90-degrees on a Fire order.
 Armoured All Round
@@ -575,10 +570,34 @@ Recce
 Reconnaissance vehicles can perform special escape reactions when shot at, moving with an Advance or Run order to avoid damage. They may also reverse at full Advance speed. Specific rules for their escape reactions apply during shooting and assaults, as detailed in the main rules.
 Reinforced Front Armour
 Vehicles with this rule count their front armor as 1 higher than their listed value against all shots hitting the front arc.
+Shielded Hull 
+When resolving a shooting attack against this vehicle, if this vehicle had no Pin markers when the attack was declared, reduce the Penetration value of each hit by 1, to a minimum of 0. If this vehicle had one or more Pin markers when the attack was declared, this rule has no effect. 
 Slow
 Vehicles with this rule are less mobile, moving only 6" with an Advance order and 12" with a Run order.
 Weak Sides
 Vehicles with this rule have vulnerable side armor. Attacks against the sides count as hitting the rear, gaining a +2 penetration modifier instead of +1.
+
+
+Demolition Charges
+Any Infantry unit may place a Demolition Charge once per game by taking a Fire order instead of shooting.
+Place a marker, approximately 25mm in diameter, in base contact with one model in that unit. Once placed, if the unit that placed the charge is assaulted by an enemy unit or destroyed in any way, remove the marker.
+To trigger the charge, the unit that placed it must be given a Run order in a subsequent turn and move at least 3" away from the marker. This Run order cannot be used to assault an enemy unit. After the Run move is complete, the Demolition Charge immediately explodes, with the 3" HE template centred on the marker.
+If the marker is placed in contact with a building, when it explodes, treat it as a direct hit by a 3" HE weapon against the building and any unit inside, instead of using the template.
+If the marker is placed in contact with a vehicle, and it explodes before the vehicle moves away, treat it as a direct hit by a 3" HE weapon against that vehicle, instead of using the template.
+Weapon
+	Range
+	Shots
+	Pen
+	Special Rules
+	Demolition Charge
+	—
+	1
+	HE
+	HE (3"), One-Shot
+	
+
+
+
 Pre-measuring 
 By default, Bolt Action does not allow players to measure distances before making a decision. A player must declare their intention first, such as moving a unit in a chosen direction or firing at a declared target, and only then measure the distance or range.
 In Halo: Bolt Action, players may ignore this restriction if both sides agree before the game begins. However, it is recommended that the no pre-measuring rule still be used for scoped Sniper shots and Indirect Fire attacks, as range and minimum range are especially important for those weapons.
@@ -586,12 +605,10 @@ Empty Transport Proximity
 Ignore the empty transport proximity rule from the Bolt Action rulebook. Empty transports and tows are not destroyed merely for being closer to enemy units than friendly units. They are only destroyed, routed, or removed from play as normal.
 SELF-DEFENCE 
 Ignore the Self-Defence rule from the Bolt Action rulebook when playing with a Medic unit or any other unit that would normally have it. The conventions of war do not apply here. 
-
-
-
-
 Grenade Launcher Teams  
 For platoon selection purposes, Grenade Launcher Teams count as Light Mortar Teams. They also use the smoke diameter of light mortars.
+
+
 Outflanking 
 Outflanking represents units using dropships, drop pods, tunnels, teleportation, stealth routes, or other insertion methods to attack from unexpected directions. Because of this, Outflanking works slightly differently from normal Bolt Action.
 During deployment, declare which Reserve units are Outflanking. Outflankers still count as Reserve units.
@@ -1002,4 +1019,17 @@ Q: When a Carrier Form spawns 1D3 Infection Forms, what is the spawned unit’s 
 Q: What happens if a Flood unit and its enemy destroy each other in the same round of close quarters? A: If both units are completely destroyed in the same round of close quarters, the combat is treated as a draw and both units are removed. The Flood unit does not resolve Flood Infection, as no surviving Flood unit remains to be replenished. 
 Q: If a unit is Down and is assaulted while it has a rule like Resilient or MJOLNIR Biofoam Injectors, does it receive the Down bonus to its cover save in close quarters? A: No. Being Down does not provide or improve cover saves in point-blank and close quarters, even if a rule gives the unit a cover save in close quarters. 
 Q: If a unit with Fast assaults through rough ground or across an obstacle, does Fast affect how far it can assault?  A: Yes. When an assault crosses rough ground or an obstacle, the unit still uses a Run order, but its assault move is reduced to its Advance move value. To determine this, measure the shortest possible route between the closest assaulting model and the closest visible model in the target unit, going around impassable terrain as normal. If that shortest route crosses rough ground or an obstacle, the assault counts as going through terrain. So a normal Infantry unit would usually assault 6", a Fast Infantry unit would assault 8", and a Slow Infantry unit would assault 4". The attacker cannot choose a longer route just to clip or avoid rough ground/obstacles.
+Q: Are there recommended base sizes for Halo: Bolt Action units? A: Yes, but these are recommendations rather than strict requirements. Infantry models should use at least 25mm bases, following the normal Bolt Action approach, but Halo has many larger models, so larger bases may be used where needed.
+As a general guide:
+                                                         * Basic Infantry such as Humans, Jackals, Crawlers, and Grunts: 25mm–28mm
+                                                         * Larger Infantry such as Spartans, Elites, and Promethean Soldiers: 28mm–32mm
+Note: Spartans may fit just fine on 25mm bases, but 28mm may be better to represent them. However, 25mm on Spartans should be fine.
+                                                         * Brutes: 32mm–40mm
+                                                         * Weapon teams such as MMG/HMG teams: use a base large enough to contain the model and weapon. Alternatively, use a 60mm–80mm base containing all crew models and the weapon.
+                                                         * Very large Infantry such as Hunters, Flood Tank Forms, and Promethean Knights: 50mm-60mm
+Bases should generally be kept as small as practical for the model and pose. 
+Some Halo miniature ranges, such as Halo: Flashpoint models, are larger than the usual Skirmish miniature scale. In those cases, these recommended base sizes may not be big enough. Use the smallest reasonable base that safely fits the miniature.
+Vehicles do not require bases. They are measured from the hull, not from the base. A vehicle may be mounted on a base for stability or appearance, but the base should be a reasonable size for the model. Larger bases are understandable for flying Aircraft, especially when needed for stability, but they should still remain within reason.
+
+
  | Page

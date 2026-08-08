@@ -1,26 +1,24 @@
-﻿Armies of the Floodv3.4
+﻿Armies of the Floodv3.5
 
 Army Special Rules
 Living Nightmare
 All Flood embody terror and relentless aggression.
 * Effect: All Flood Infantry and Artillery units have the Fanatics special rule, and automatically pass any Morale Checks.
-Corrupted Arsenal
-The Flood assimilate their enemies' equipment and vehicles, turning them against their creators.
-* Effect: The Flood may include vehicles from other factions' army lists. These vehicles must always be inexperienced.
-Predatory Ambush
-The Flood can fall into an unnatural, corpse-like stillness, only to erupt in a sudden burst of violence when prey strays too close.
-* Effect: When a Flood Infantry unit ends the turn on Ambush and chooses to attempt the normal end-of-turn Fire action, roll a D6 as usual. On a 4+, the unit may either fire normally or, instead of firing, declare an Assault against a visible enemy Infantry or Artillery unit within assault range. On a 3 or less, the unit does nothing and its Ambush die is returned to the bag as normal.
 Hivemind Coordination
 The Flood’s collective consciousness ensures cohesion even when individual leaders fall.
 * Effect: Flood Infantry and Artillery units do not suffer the –1 morale penalty for losing their NCO.
+Predatory Ambush
+The Flood can fall into an unnatural, corpse-like stillness, only to erupt in a sudden burst of violence when prey strays too close.
+* Effect: When a Flood Infantry unit ends the turn on Ambush and chooses to attempt the normal end-of-turn Fire action, roll a D6 as usual. On a 4+, the unit may either fire normally or, instead of firing, declare an Assault against a visible enemy Infantry or Artillery unit within assault range. On a 3 or less, the unit does nothing and its Ambush die is returned to the bag as normal.
 Logic Plague
 Flood presence corrupts and destabilizes synthetic minds, causing unpredictable malfunctions.
 * Effect: Once per turn, just before activating a Flood unit, select one unactivated enemy Automaton or Composed Being within 6" of any friendly Flood unit and roll a D6:
    * 1-3: The enemy immediately receives 2 Pin markers.
    * 4-5: The enemy suffers –1 to hit for the rest of the turn.
    * 6: The enemy must take a morale check. If failed, roll on the FUBAR table; if passed, no effect.
-
-
+Corrupted Arsenal
+The Flood assimilate their enemies' equipment and vehicles, turning them against their creators.
+* Effect: The Flood may include vehicles from other factions' army lists. These vehicles must always be inexperienced.
 
 
 
@@ -37,7 +35,7 @@ Infested Terrain: At the end of an enemy non-Flood Infantry or Artillery unit’
 Patient Predators
 The following units can take Patient Predators for +1pt per model:
 - Officer
-- Combat Form Squad
+- Combat Form Squads
 - Carrier Form Team
 - Anti Tank Team
 - Grenade Launcher Team
@@ -78,7 +76,7 @@ Cost
 - Wide Formation
 - Horror
 - Tough Fighters
-- Strong
+- Strong                                                                       - Hardened
 	Forward Observer
 Cost
 	Forward observer (air force or artillery)
@@ -163,21 +161,107 @@ Cost
 	Assault Rifles
 	Options
 	- Add up to 9 additional combat forms for +19pts each (Regular) or +22pts each (Veteran)  
-- The NCO and up to 13 combat forms may replace their Assault Rifles with:
-  – Needlers for -2pts each    – SMGs for -2pts each 
-  – Plasma rifles for +0pts each   – Spikers for +1pts each
-  – Shotguns for -3pts each
-- The NCO and up to 6 combat forms may replace their Assault Rifles with 
-  – Battle rifles/Covenant Carbines for -3pts each
-  – Unarmed for -8pts each
+- The NCO and up to 13 combat forms may replace their Assault Rifles with  Shotguns for -3pts each / with SMGs for -2pts each 
+- The NCO and up to 6 combat forms may replace their Assault Rifles with Battle rifles for -3pts each / with Plasma Pistols for -5pts each / with Unarmed for -8pts each 
 - The unit may be given Anti-Tank Grenades for +2pts per model
-- The unit may be given Energy Shield modules for +3pts per model
 - The NCO may be given a Melee Weapon special rule for +1pt
 - The unit may be given Melee Weapons special rule for +1pt per model
 - The squad can be given Strong for +1pt per model
 	Special Rules
-	- Tank Hunters: If anti-tank grenades are taken                    - Horror - Fieldcraft
-- Energy Shields: If energy shield modules are taken         - Flood Infection
+	- Tank Hunters: If anti-tank grenades are taken - Fieldcraft - Horror - Flood Infecti.                                                                                     
+	Elite Combat Form Squad
+Cost
+	105pts (Regular), 120pts (Veteran) 
+	Composition
+	1 NCO and 4 Combat forms
+	Weapons
+	Plasma Rifles
+	Options
+	- Add up to 3 additional combat forms for +21pts each (Regular) or +24pts each (Veteran)  
+- The NCO and up to 4 combat forms may replace their Plasma Rifles with  Needlers for -2pts each
+- The NCO and up to 6 combat forms may replace their Plasma Rifles with Covenant Carbines for -3pts each
+- The NCO and up to 4 combat forms may replace their Plasma Rifles with  Unarmed for -8pts each
+- The unit may be given Anti-Tank Grenades for +2pts per model
+- The NCO may be given a Melee Weapon special rule for +1pt
+- The unit may be given Melee Weapons special rule for +1pt per model
+- The squad can be given Energy Shield Modules for +3pts per man
+	Special Rules
+	- Tank Hunters: If anti-tank grenades are taken - Fieldcraft - Horror - Flood Infection  - Limited: Only 1 ECFS may be taken per platoon. -  Strong -  Fast                                                                                  
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Brute Combat Form Squad
+Cost
+	115pts (Regular), 130pts (Veteran) 
+	Composition
+	1 NCO and 4 Combat forms
+	Weapons
+	Spikers
+	Options
+	- Add up to 5 additional combat forms for +23pts each (Regular) or +26pts each (Veteran)  
+- The NCO and up to 4 combat forms may replace their Spikers with Plasma Rifles for -1pts each / with Manglers for -5pts each / with Maulers for -6pts each
+- The NCO and up to 6 combat forms may replace their Spikers  with  Covenant Carbines for -4pts each
+- The NCO and up to 4 combat forms may replace their Spikers with Unarmed for -9pts each
+- The unit may be given Anti-Tank Grenades for +2pts per model
+- The NCO may be given a Melee Weapon special rule for +1pt
+- The unit may be given Melee Weapons special rule for +1pt per model
+	Special Rules
+	- Tank Hunters: If anti-tank grenades are taken - Horror - Fieldcraft  - Berserker
+- Limited: Only 1 BCFS may be taken per platoon. - Flood Infection - Strong 
+ - Hardened                 
 	Stalker Form Swarm
 Cost
 	80pts (Veteran) 
@@ -248,15 +332,19 @@ Cost
 
 
 
+
+
+
+
 Tank Form Pack
 Cost
-	46pts (Veteran) 
+	48pts (Veteran) 
 	Composition
 	1 NCO and 1 Tank form
 	Weapons
 	Unarmed
 	Options
-	- Add up to 4 additional Tank Forms for +23pts each
+	- Add up to 4 additional Tank Forms for +24pts each
 	Special Rules
 	- Flood Infection
 - Tooth and Claw
@@ -286,6 +374,8 @@ Cost
 - Assimilate: If this unit wins an assault against a target affected by Flood Infection, you can replace each surviving Infection Form with an unarmed Combat Form. If so, the unit immediately becomes Regular, becomes an unarmed Combat Form unit (Uses their rules instead) and retains its current order die. 
 - Mindless Hunger: This unit cannot pick up, carry, score or control objectives. It may still contest objectives. 
 	
+
+
 
 
 

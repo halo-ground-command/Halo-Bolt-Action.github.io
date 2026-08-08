@@ -1,4 +1,4 @@
-﻿Armies of the Forerunnerv3.4
+﻿Armies of the Forerunnerv3.5
 
 Army Special Rules
 Enhanced Weapon Systems
@@ -21,20 +21,44 @@ Phase relays enable instantaneous redeployment.
 
 
 
-Counter-Assault Protocols
-Forged by centuries of war against the Flood, these combat routines allow Promethean units to read the momentum of an incoming assault and cut it apart before it reaches full force.
-* Effect: When a unit with the Counter-Assault Protocols special rule is assaulted by enemy Infantry or Artillery while it has not yet been given an order this turn, or while it is on Ambush, it may react with a Fire order as normal. Treat this unit as being on Ambush when determining whether it can react to the assault. If any attacking models survive and complete the assault, the assaulting unit halves its total number of attack dice, rounding up, during the first round of that close quarters combat only.
 Forerunner Armoury
 Reconstruction Matrix
 Forerunner units with Composed Beings may take a Reconstruction Matrix for +1pt per model.
 After this unit successfully receives a Rally order, roll one D6 for each model this unit is currently missing. If at least one result is equal to or greater than the unit’s Damage Value, one previously removed model from this unit may be returned, up to its original starting size. If the unit has Energy Shields, increase the required result by +1, to a maximum of 6+.
 A unit may return a maximum of 1 model per Rally order. The returned model must be placed in unit coherency and more than 1" from enemy units. If it cannot be placed, it is not returned.
+Counter-Assault Protocols
+When a unit with the Counter-Assault Protocols special rule is assaulted by enemy Infantry or Artillery while it has not yet been given an order this turn, or while it is on Ambush, it may react with a Fire order as normal. Treat this unit as being on Ambush when determining whether it can react to the assault.
+If any attacking models survive and complete the assault, the assaulting unit halves its total number of attack dice, rounding up, during the first round of that close quarters combat only.
 Custodian Command Node
 Forerunner Automaton Infantry units may take a Custodian Command Node for +1pt per model.
 This unit may be affected by You men, snap to action! as if it did not have the Automaton special rule.
 Hard-Light Calibration
 Forerunner Infantry units may take Hard-Light Calibration for +1pt per model.
 Weapons fired by a unit with this upgrade gain the Cover Piercing weapon rule.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -231,13 +255,13 @@ Cost
 
 Warrior-Servant Squad
 Cost
-	105pts (Regular), 120pts (Veteran) 
+	110pts (Regular), 125pts (Veteran) 
 	Composition
 	1 NCO and 4 men
 	Weapons
 	Suppressors 
 	Options
-	- Add up to 5 additional men for +21pts each (Regular), or +24pts each (Veteran) 
+	- Add up to 5 additional men for +22pts each (Regular), or +25pts each (Veteran) 
 - The NCO and up to 7 models may replace Suppressor with Light Rifle for –5pts each 
 - The NCO may replace Suppressor with Boltshot for –7pts
 - The NCO may be given a Melee Weapon for +1pt
@@ -246,21 +270,22 @@ Cost
 - VISR
 - Stealth
 - Stubborn
+- Hardened
 	Promethean Soldier Squad
 Cost
-	96pts (Regular), 108pts (Veteran)
+	100pts (Regular), 112pts (Veteran)
 	Composition
 	1 NCO and 3 soldiers
 	Weapons
 	Suppressors
 	Options
-	- Add up to 2 additional Soldiers for +24pts each (Regular) or +27pts each (Veteran)
+	- Add up to 2 additional Soldiers for +25pts each (Regular) or +28pts each (Veteran)
 - Any model may replace Suppressor with Light Rifle for –5pts each
 - Any model may replace Suppressor with Scattershot for –3pts each
 - The squad can be given Engineers for +1pt per man
 	Special Rules
 	- Composed Beings                                - Engineers: If Engineers are taken
-- Energy Shields
+- Energy Shields                                     - Hardened
 - Fanatics
 - VISR
 - Behind Enemy Lines
@@ -331,18 +356,18 @@ Cost
 
 Promethean Knight Team
 Cost
-	62pts (Veteran)
+	64pts (Veteran)
 	Composition
 	1 NCO and 1 Knight
 	Weapons
 	Suppressors
 	Options
-	- Add up to 3 additional Knights for +31pts each (Veteran)
+	- Add up to 3 additional Knights for +32pts each (Veteran)
 - Any model may replace Suppressor with Light Rifle for –4pts each
 - Any model may replace Suppressor with Scattershot for –3pts each
 - One model may replace its Suppressor with an Incineration Cannon for +41pts
 - The unit may be upgraded to Knight Battlewagons, gaining Tank Hunters for +2pts per model
-- Knight Commander (Platoon Commander, 0–1 per army): Add a single officer model to this unit for +51pts. If taken, this unit takes a Platoon Commander slot from a platoon. The Knight Commander is considered a Platoon Commander, but remains part of this unit. Limited to 1 per army.
+- Knight Commander (Platoon Commander, 0–1 per army): Add a single officer model to this unit for +52pts. If taken, this unit takes a Platoon Commander slot from a platoon. The Knight Commander is considered a Platoon Commander, but remains part of this unit. Limited to 1 per army.
 	Special Rules
 	- Composed Beings
 - Counter-Assault Protocols
@@ -418,13 +443,13 @@ Cost
 
 Promethean Soldier Commando Squad
 Cost
-	100pts (Regular), 112pts (Veteran)
+	104pts (Regular), 116pts (Veteran)
 	Composition
 	1 NCO and 3 soldiers
 	Weapons
 	Suppressors
 	Options
-	- Add up to 2 additional Soldiers for +24pts each (Regular) or +27pts each (Veteran)
+	- Add up to 2 additional Soldiers for +26pts each (Regular) or +29pts each (Veteran)
 - Any model may replace Suppressor with Light Rifle for –5pts each
 - Any model may replace Suppressor with Scattershot for –3pts each
 - One soldier may replace Suppressor with Splinter Turret for 17pts 
@@ -433,14 +458,14 @@ Cost
 	- Composed Beings                                                       - Infiltrator      
 - Energy Shields                                                             - Counter-Assault Protocols
 - Fanatics                                                                         - Strong
-- VISR                                                                                - Behind Enemy Lines
-- Fast
+- VISR                                                                               - Behind Enemy Lines
+- Fast                                                                                - Hardened
 - Limited: Only 1 Commando squad may be taken per platoon.
 - Engineers: If Engineers are taken
 - Splinter Turret: Heavy weapon: Range 48", Shots 3, Pen +1, Team, Fixed, HE (1")
 	Grenade Launcher Team
 Cost
-	51pts (Regular), 65pts (Veteran) 
+	53pts (Regular), 67pts (Veteran) 
 	Composition
 	2 Soldiers
 	Weapons
@@ -449,6 +474,7 @@ Cost
 	- Team Weapon  
 - Composed Beings
 - Energy Shields
+- Hardened
 - Fanatics
 - VISR
 - Behind Enemy Lines
@@ -513,13 +539,9 @@ Cost
 
 
 
-
-
-
-
 Anti Tank Team
 Cost
-	84pts (Regular), 105pts (Veteran) 
+	86pts (Regular), 107pts (Veteran) 
 	Composition
 	2 Soldiers
 	Weapons
@@ -529,7 +551,7 @@ Cost
 	Special Rules
 	- Team Weapon  
 - Composed Beings
-- Energy Shields
+- Energy Shields                             - Hardened
 - Fanatics
 - VISR
 - Behind Enemy Lines
@@ -538,19 +560,19 @@ Cost
 - Counter-Assault Protocols
 	Sniper Team
 Cost
-	66pts (Regular), 81pts (Veteran)
+	68pts (Regular), 83pts (Veteran)
 	Composition
 	2 Soldiers
 	Weapons
 	Sniper has a Binary Rifle, spotter has a Boltshot
 	Options
-	- If taken as Veteran, the 2 soldiers can be upgraded to Knight Lancers, replacing the special rules Energy shields by Resilient and Fast by Fieldcraft. Additionally, the unit also gains the special rules Melee Weapons, Large infantry and Tough Fighters for +5pts per model.
+	- If taken as Veteran, the 2 soldiers can be upgraded to Knight Lancers, replacing the special rules Hardened and Energy shields by Resilient and Fast by Fieldcraft. Additionally, the unit also gains the special rules Melee Weapons, Large infantry and Tough Fighters for +4pts per model.
 	Special Rules
 	- Team weapon
 - Sniper
 - Infiltrator
 - Composed Beings
-- Energy Shields
+- Energy Shields                    - Hardened
 - Fanatics
 - VISR
 - Behind Enemy Lines
@@ -617,13 +639,13 @@ Cost
 
 Machine Gun Team 
 Cost
-	94pts (Regular), 109pts (Veteran)   
+	98pts (Regular), 113pts (Veteran)   
 	Composition
 	4 soldiers 
 	Weapons
 	Splinter Turret
 	Special Rules
-	- Team Weapon  
+	- Team Weapon                          - Hardened
 - Fixed  
 - Composed Beings
 - Energy Shields
@@ -650,9 +672,8 @@ Cost
 - Recce  
 - Open-topped  
 - Command Vehicle  
+- Shielded Hull 
 	
-
-
 
 
 
@@ -719,7 +740,7 @@ Cost
 TANKS
 Eradicator Sentinel 
 Cost
-	100pts (Regular), 120pts (Veteran)
+	120pts (Regular), 144pts (Veteran)
 	Weapons
 	Hull-mounted forward-facing Heavy Plasma MG
 	Damage Value
@@ -737,6 +758,7 @@ Hull-mounted forward-facing Cindershot for +25pts
 	- Agile  
 - Impulse Drive
 - Adjunct Dock: This vehicle can only transport 1 Officer model. While an Officer is aboard, this vehicle has the Open-Topped rule.
+- Shielded Hull 
 	AIRCRAFTS
 Enforcer Sentinel 
 Cost
@@ -746,13 +768,10 @@ Cost
 	Damage Value
 	7+ (Medium Aircraft)  
 	Special Rules
-	- Flak
-- Open-Topped
+	- Flak - Open-Topped
 - Hard-Light Pavise: Shooting attacks that hit the Front arc cause pin markers only if they penetrate (i.e., the damage roll equals or exceeds DV); otherwise ignore pins. 
-- Gravitic Grapplers: If this aircraft makes an Advance and its movement path crosses one or more enemy non-Aircraft vehicles, then after moving you may forgo all shooting to target one of those vehicles. Roll a D6: On a 1–3, nothing happens. But on a 4+ the target is hit. The target suffers D2 pin markers, then resolve one Top-Armour damage roll at +2 Pen
+- Gravitic Grapplers: If this aircraft Advances across one or more enemy non-Aircraft vehicles, after moving it may forgo all shooting to target one of them. Both vehicles roll a D6 and add their own Damage Value to the result. If the Enforcer's total is higher, the target rolls on the target's Damage Table for Full Damage; if tied, the target rolls for Superficial Damage. If the Enforcer's total is lower, its Gravitic Grapplers are destroyed, it suffers D3 Pins, and this ability cannot be used again. 
 	
-
-
 
 
 
@@ -810,7 +829,7 @@ Cost
 
 Z-1800 Phaeton
 Cost
-	170pts (Regular), 204pts (Veteran) 
+	185pts (Regular), 222pts (Veteran) 
 	Weapons
 	2 Turret-mounted Twin-linked Light Plasma Cannons, Hull-mounted Forward-facing Rocket Launcher  
 	Damage Value
@@ -819,10 +838,11 @@ Cost
 	- Flak
 - Nimble
 - Phase Blink: Once per turn, when you fail an Evasion save for this vehicle, you may re-roll that save.
+- Shielded Hull 
 	TITANIC AIRCRAFT
 Retriever Sentinel 
 Cost
-	315pts (Regular), 380pts (Veteran) 
+	340pts (Regular), 408pts (Veteran) 
 	Weapons
 	Hull-mounted Forward-facing Super-Heavy Anti-Tank Weapon 
 	Damage Value
@@ -833,9 +853,8 @@ Cost
 	- Flak
 - Titanic Aircraft: When rolling on the Aircraft Damage chart against this unit, reduce the result by 1 (to a minimum of 1).
 - Gravitic Beam:  When this unit is given a successful Fire order, it may activate its gravitic beam. If it does, each other unit within 6" of this unit receives D3 pins.
+- Shielded Hull 
 	
-
-
 
 
 
@@ -911,7 +930,7 @@ LEGENDS
 AIRCRAFTS
 Phaeton Eos
 Cost
-	80pts (Regular), 96pts (Veteran) 
+	95pts (Regular), 114pts (Veteran) 
 	Weapons
 	None 
 	Damage Value
@@ -920,6 +939,7 @@ Cost
 	- Nimble
 - Phase Blink: Once per turn, when you fail an Evasion save for this vehicle, you may re-roll that save.
 - Shield Pylon Deployment: When this vehicle is given a Fire or Advance order, it may place up to two Shield Pylon Sentinels within 12" instead of firing, removing any previously placed by this vehicle. Shield Pylon Sentinels count as obstacles only for enemy units. Friendly units ignore them for movement, but can gain hard cover from them. Enemy units never receive cover from them.
+- Shielded Hull 
 	
 
 
