@@ -3248,7 +3248,11 @@ const COVENANT_UNITS = [
   options: {
     extraMenCost: { Regular: 11, Veteran: 14 },
     squadUpgrades: {
-      "Skirmishers": { cost: 2, grantsRule: ["Fast", "Fieldcraft"] }
+      "Skirmishers": {
+        cost: 2,
+        grantsRule: ["Fast", "Fieldcraft"],
+        requiresNoDoctrine: true
+      }
     }
   }
 },
@@ -3270,7 +3274,11 @@ const COVENANT_UNITS = [
   options: {
     extraMenCost: { Regular: 11, Veteran: 14 },
     squadUpgrades: {
-      "Skirmishers": { cost: 2, grantsRule: ["Fast", "Fieldcraft"] }
+      "Skirmishers": {
+        cost: 2,
+        grantsRule: ["Fast", "Fieldcraft"],
+        requiresNoDoctrine: true
+      }
     }
   }
 },
@@ -3618,7 +3626,11 @@ const COVENANT_UNITS = [
   specialRules: ["Team Weapon", "Sniper", "Infiltrator", "For The Great Journey!"],
   options: {
     squadUpgrades: {
-      "Skirmishers": { cost: 2, grantsRule: ["Fast", "Fieldcraft"] }
+      "Skirmishers": {
+        cost: 2,
+        grantsRule: ["Fast", "Fieldcraft"],
+        requiresNoDoctrine: true
+      }
     }
   }
 },
@@ -4322,7 +4334,11 @@ const BANISHED_UNITS = [
   options: {
     extraMenCost: { Regular: 11, Veteran: 14 },
     squadUpgrades: {
-      "Skirmishers": { cost: 2, grantsRule: ["Fast", "Fieldcraft"] }
+      "Skirmishers": {
+        cost: 2,
+        grantsRule: ["Fast", "Fieldcraft"],
+        requiresNoDoctrine: true
+      }
     }
   }
 },
@@ -4345,7 +4361,11 @@ const BANISHED_UNITS = [
   options: {
     extraMenCost: { Regular: 11, Veteran: 14 },
     squadUpgrades: {
-      "Skirmishers": { cost: 2, grantsRule: ["Fast", "Fieldcraft"] }
+      "Skirmishers": {
+        cost: 2,
+        grantsRule: ["Fast", "Fieldcraft"],
+        requiresNoDoctrine: true
+      }
     }
   }
 },
@@ -4656,7 +4676,11 @@ const BANISHED_UNITS = [
   specialRules: ["Team Weapon", "Sniper", "Infiltrator", "Forged In Chains"],
   options: {
     squadUpgrades: {
-      "Skirmishers": { cost: 2, grantsRule: ["Fast", "Fieldcraft"] }
+      "Skirmishers": {
+        cost: 2,
+        grantsRule: ["Fast", "Fieldcraft"],
+        requiresNoDoctrine: true
+      }
     }
   }
 },
@@ -10128,17 +10152,49 @@ function rerenderCurrentEditModal() {
   editUnit(editIdx);
 }
 
+function purgeIllegalDependentSquadUpgrades(unit, unitData = getUnitData(unit)) {
+  if (!unit?.squadUpgrades || !unitData?.options?.squadUpgrades) return;
+
+  Object.entries(unitData.options.squadUpgrades).forEach(([label, upgrade]) => {
+    if (upgrade.requiresNoDoctrine && unit.doctrine) {
+      unit.squadUpgrades[label] = false;
+      return;
+    }
+
+    if (!upgrade.requiresUpgrade) return;
+
+    const requiredUpgrades = Array.isArray(upgrade.requiresUpgrade)
+      ? upgrade.requiresUpgrade
+      : [upgrade.requiresUpgrade];
+
+    const hasAllRequiredUpgrades = requiredUpgrades.every(req =>
+      unit.squadUpgrades?.[req]
+    );
+
+    if (!hasAllRequiredUpgrades) {
+      unit.squadUpgrades[label] = false;
+    }
+  });
+}
+
 function onDoctrineSelectChanged(select) {
   const unit = window.currentEditUnit;
-  if (unit) {
-    unit.doctrine = select?.value || null;
+  if (!unit || editIdx == null) return;
 
-    // Doctrine changed, so old Elite/Brute-only NCO weapon selections may now be illegal.
-    unit.ncoReplacement = undefined;
-    unit.leaderMeleeUpgrade = "";
-  }
+  captureInfantryModalStateToUnit();
 
-  rerenderCurrentEditModal();
+  unit.doctrine = select?.value || null;
+
+  // Doctrine changed, so old Elite/Brute-only NCO weapon selections may now be illegal.
+  unit.ncoReplacement = undefined;
+  unit.leaderMeleeUpgrade = "";
+
+  const unitData = getUnitData(unit);
+
+  purgeIllegalDependentSquadUpgrades(unit, unitData);
+  purgeIllegalArmourySquadUpgrades(unit, unitData);
+
+  editUnit(editIdx);
 }
 
 function getAllowedEditVeterancies(unit, unitData) {
@@ -10250,6 +10306,12 @@ function renderInfantryEditFields(unit, unitData) {
 		disabled = "disabled";
 		checked = "";
 	  }
+	  
+if (upgrade.requiresNoDoctrine && unit.doctrine) {
+  disabled = "disabled";
+  checked = "";
+}	  
+	  
 const selectedSquadUpgrades = unit.squadUpgrades || {};
 
 if (upgrade.requiresUpgrade) {
