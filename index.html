@@ -395,7 +395,7 @@ const allWeaponProfiles = {
   "Fist": '+1 close combat attack per Fist (Walker only)',
   "Fists": '+1 close combat attack per Fist (Walker only)',
   "Needle Cannon": 'Range 48", Shots 2, Pen +2, Tracking, Supercombine, HE (1")',
-  "Shardstorm Launcher": 'Range 36", Shots 6, Pen –, Supercombine',
+  "Shardstorm Launcher": 'Range 36", Shots 6, Pen –, Tracking, Supercombine',
   "Multiple Launcher": 'Range 36–72", Shots 1, Pen HE, Team, Fixed, Indirect Fire, ML, HE (3")',
   "Splinter Turret": 'Range 48", Shots 3, Pen +1, Team, Fixed, HE (1")',
   "Scrap cannon": 'Range 48", Shots 3, Pen +1, Team, Fixed, HE (1")',
@@ -490,6 +490,7 @@ window.unitSpecialDescriptions = {
   "Composed Beings": "Ignore Horror's -1 morale effects, immune to Flood Infection and cannot benefit from medics.",
   "Counter-Assault Protocols": "When a unit with this rule is assaulted by enemy Infantry or Artillery, it may react with a Fire order as normal. Treat this unit as being on Ambush when determining whether it can react to the assault. If any attacking models survive and complete the assault, the assaulting unit halves its total number of attack dice, rounding up, during the first round of that close quarters combat only.",
   "Deacon": "Upgrade for the NCO. The Deacon follows the rules for a Platoon Commander, except his Morale bonus bubble is only +1, and his You men, snap to action! may only issue an order to 1 other friendly Grunt/Jackal unit. The Deacon counts as an Officer, but is not a Officer HQ and does not fulfil the requirement for a Platoon Commander.",
+  "Champion": "Upgrade for the NCO. The Champion follows the rules for a Platoon Commander, except his Morale bonus bubble is only +1, and his You men, snap to action! may only issue an order to 1 other friendly Grunt/Jackal unit. The Champion counts as an Officer, but is not a Officer HQ and does not fulfil the requirement for a Platoon Commander.",
   "Engineers": "When assaulting a building, defenders lose Defensive Position.",
   "Energy Shield": "+1 harder to damage from shooting.",
   "Energy Shields": "+1 harder to damage from shooting.",
@@ -3229,44 +3230,50 @@ const COVENANT_UNITS = [
     extraMenCost: { Regular: 8, Veteran: 11 }
   }
 },   
-  {
-    name: "Forward Observer (Air Force)",
-    type: "Infantry",
-    allowedVeterancy: ["Regular", "Veteran"],
-    costs: { Regular: 75, Veteran: 90 },
-    baseMen: 1,
-    maxMen: 3,
-    weapons: [
-      { name: "Plasma Pistol" },
-      { name: "Plasma Rifle" },
-      { name: "Needler" },
-      { name: "Carbine" },
-      { name: "Spiker" }
-    ],
-    specialRules: ["Infiltrator", "For The Great Journey!"],
-    options: {
-      extraMenCost: { Regular: 11, Veteran: 14 }
+{
+  name: "Forward Observer (Air Force)",
+  type: "Infantry",
+  allowedVeterancy: ["Regular", "Veteran"],
+  costs: { Regular: 75, Veteran: 90 },
+  baseMen: 1,
+  maxMen: 3,
+  weapons: [
+    { name: "Plasma Pistol" },
+    { name: "Plasma Rifle" },
+    { name: "Needler" },
+    { name: "Carbine" },
+    { name: "Spiker" }
+  ],
+  specialRules: ["Infiltrator", "For The Great Journey!"],
+  options: {
+    extraMenCost: { Regular: 11, Veteran: 14 },
+    squadUpgrades: {
+      "Skirmishers": { cost: 2, grantsRule: ["Fast", "Fieldcraft"] }
     }
-  },
-  {
-    name: "Forward Observer (Artillery)",
-    type: "Infantry",
-    allowedVeterancy: ["Regular", "Veteran"],
-    costs: { Regular: 75, Veteran: 90 },
-    baseMen: 1,
-    maxMen: 3,
-    weapons: [
-      { name: "Plasma Pistol" },
-      { name: "Plasma Rifle" },
-      { name: "Needler" },
-      { name: "Carbine" },
-      { name: "Spiker" }
-    ],
-    specialRules: ["Infiltrator", "For The Great Journey!"],
-    options: {
-      extraMenCost: { Regular: 11, Veteran: 14 }
+  }
+},
+{
+  name: "Forward Observer (Artillery)",
+  type: "Infantry",
+  allowedVeterancy: ["Regular", "Veteran"],
+  costs: { Regular: 75, Veteran: 90 },
+  baseMen: 1,
+  maxMen: 3,
+  weapons: [
+    { name: "Plasma Pistol" },
+    { name: "Plasma Rifle" },
+    { name: "Needler" },
+    { name: "Carbine" },
+    { name: "Spiker" }
+  ],
+  specialRules: ["Infiltrator", "For The Great Journey!"],
+  options: {
+    extraMenCost: { Regular: 11, Veteran: 14 },
+    squadUpgrades: {
+      "Skirmishers": { cost: 2, grantsRule: ["Fast", "Fieldcraft"] }
     }
-  },
+  }
+},
 
   // Infantry Squads
 {
@@ -3331,7 +3338,7 @@ const COVENANT_UNITS = [
     }
   }
 },
- {
+{
   name: "Jackal Squad",
   type: "Infantry",
   allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
@@ -3344,14 +3351,37 @@ const COVENANT_UNITS = [
     extraMenCost: { Inexperienced: 8, Regular: 11, Veteran: 14 },
     squadUpgrades: {
       "Anti-Tank Grenades": { cost: 2, grantsRule: "Tank Hunters" },
-      "Shirkers (If taken as Inexperienced or Regular only)": { cost: -2, grantsRule: "Shirkers", condition: "Unit is not taken as veteran" },
-      "Defense Gauntlets": { cost: 1, grantsRule: "Shield Wall", condition: "All models have only Plasma Pistols, Plasma Rifles, and Needlers" },
-	  "Engineers": { cost: 1, grantsRule: "Engineers" },
-      "Skirmishers": { cost: 2, grantsRule: ["Fast", "Fieldcraft"], condition: "Squad does not take Defense Gauntlets" }
+      "Defense Gauntlets": {
+        cost: 1,
+        grantsRule: "Shield Wall",
+        condition: "All models have only Plasma Pistols, Plasma Rifles, and Needlers"
+      },
+      "Skirmishers": {
+        cost: 2,
+        grantsRule: ["Fast", "Fieldcraft"],
+        condition: "Squad does not take Defense Gauntlets"
+      },
+      "Shirkers": {
+        cost: -2,
+        grantsRule: "Shirkers",
+        condition: "Unit is not taken as Veteran"
+      },
+      "Engineers": { cost: 1, grantsRule: "Engineers" },
+		"Champion (Skirmishers, Veteran only, 0-1 per army)": {
+		  cost: 15,
+		  perModel: false,
+		  requiresUpgrade: "Skirmishers",
+		  grantsRule: [
+			"Champion",
+			"Limited: Only 1 Champion may be taken per army"
+		  ],
+		  allowedVeterancy: ["Veteran"],
+		  note: "Upgrade the NCO to a Champion. Counts as an Officer, but does not fulfill Platoon Commander requirement."
+		}
     },
     weaponReplacements: {
-      "Needlers":      { max: 5, cost: 3, replaces: "Plasma Pistol", grants: "Needler" },
-      "Carbines":      { max: 5, cost: 2, replaces: "Plasma Pistol", grants: "Carbine" },
+      "Needlers": { max: 5, cost: 3, replaces: "Plasma Pistol", grants: "Needler" },
+      "Carbines": { max: 5, cost: 2, replaces: "Plasma Pistol", grants: "Carbine" },
       "Needle Rifles": { max: 5, cost: 1, replaces: "Plasma Pistol", grants: "Needle Rifle" },
       "Plasma Rifles": { max: 5, cost: 5, replaces: "Plasma Pistol", grants: "Plasma Rifle" }
     },
@@ -3574,19 +3604,24 @@ const COVENANT_UNITS = [
       }
     }
   },
-  {
-    name: "Sniper Team",
-    type: "Team",
-    allowedVeterancy: ["Regular", "Veteran"],
-    costs: { Regular: 52, Veteran: 67 },
-    baseMen: 2,
-    maxMen: 2,
-    weapons: [
-      { name: "Beam Rifle" },
-      { name: "Plasma Pistol" }
-    ],
-    specialRules: ["Team Weapon", "Sniper", "Infiltrator", "For The Great Journey!"]
-  },
+{
+  name: "Sniper Team",
+  type: "Team",
+  allowedVeterancy: ["Regular", "Veteran"],
+  costs: { Regular: 52, Veteran: 67 },
+  baseMen: 2,
+  maxMen: 2,
+  weapons: [
+    { name: "Beam Rifle" },
+    { name: "Plasma Pistol" }
+  ],
+  specialRules: ["Team Weapon", "Sniper", "Infiltrator", "For The Great Journey!"],
+  options: {
+    squadUpgrades: {
+      "Skirmishers": { cost: 2, grantsRule: ["Fast", "Fieldcraft"] }
+    }
+  }
+},
   {
     name: "Grenade Launcher Team",
     type: "Team",
@@ -3834,7 +3869,7 @@ const COVENANT_VEHICLES = [
   costs: { Regular: 125, Veteran: 150 },
   weapons: [
     { name: "Forward-facing Hull-mounted Needle Cannon" },
-    { name: "Forward-facing Hull-mounted Shardstorm Launcher" },
+    { name: "All-facing Hull-mounted Shardstorm Launcher" },
     { name: "Fist" },
     { name: "Fist" }
   ],
@@ -4268,46 +4303,52 @@ const BANISHED_UNITS = [
       extraMenCost: { Regular: 8, Veteran: 11 }
     }
   },     
-  {
-    name: "Forward Observer (Air force)",
-    type: "Infantry",
-    allowedVeterancy: ["Regular", "Veteran"],
-    costs: { Regular: 75, Veteran: 90 },
-    baseMen: 1,
-    maxMen: 3,
-    weapons: [
-      { name: "Plasma Pistol/Disruptor" },	  
-	  { name: "Stalker Rifle" },
-      { name: "Plasma Rifle" },
-      { name: "Needler" },
-      { name: "Pulse Carbine" },
-      { name: "Spiker" }
-    ],
-    specialRules: ["Infiltrator", "Forged In Chains"],
-    options: {
-      extraMenCost: { Regular: 11, Veteran: 14 }
+{
+  name: "Forward Observer (Air Force)",
+  type: "Infantry",
+  allowedVeterancy: ["Regular", "Veteran"],
+  costs: { Regular: 75, Veteran: 90 },
+  baseMen: 1,
+  maxMen: 3,
+  weapons: [
+    { name: "Plasma Pistol/Disruptor" },
+    { name: "Stalker Rifle" },
+    { name: "Plasma Rifle" },
+    { name: "Needler" },
+    { name: "Pulse Carbine" },
+    { name: "Spiker" }
+  ],
+  specialRules: ["Infiltrator", "Forged In Chains"],
+  options: {
+    extraMenCost: { Regular: 11, Veteran: 14 },
+    squadUpgrades: {
+      "Skirmishers": { cost: 2, grantsRule: ["Fast", "Fieldcraft"] }
     }
-  },
-  {
-    name: "Forward Observer (Artillery)",
-    type: "Infantry",
-    allowedVeterancy: ["Regular", "Veteran"],
-    costs: { Regular: 75, Veteran: 90 },
-    baseMen: 1,
-    maxMen: 3,
-    weapons: [
-      { name: "Plasma Pistol/Disruptor" },	  
-	  { name: "Stalker Rifle" },
-      { name: "Plasma Rifle" },
-      { name: "Needler" },
-      { name: "Pulse Carbine" },
-      { name: "Spiker" }
-    ],
-    specialRules: ["Infiltrator", "Forged In Chains"],
-    options: {
-      extraMenCost: { Regular: 11, Veteran: 14 }
+  }
+},
+{
+  name: "Forward Observer (Artillery)",
+  type: "Infantry",
+  allowedVeterancy: ["Regular", "Veteran"],
+  costs: { Regular: 75, Veteran: 90 },
+  baseMen: 1,
+  maxMen: 3,
+  weapons: [
+    { name: "Plasma Pistol/Disruptor" },
+    { name: "Stalker Rifle" },
+    { name: "Plasma Rifle" },
+    { name: "Needler" },
+    { name: "Pulse Carbine" },
+    { name: "Spiker" }
+  ],
+  specialRules: ["Infiltrator", "Forged In Chains"],
+  options: {
+    extraMenCost: { Regular: 11, Veteran: 14 },
+    squadUpgrades: {
+      "Skirmishers": { cost: 2, grantsRule: ["Fast", "Fieldcraft"] }
     }
-  },
+  }
+},
 
   // Infantry Squads
 {
@@ -4335,7 +4376,7 @@ const BANISHED_UNITS = [
 	}
   }
 },
- {
+{
   name: "Jackal Squad",
   type: "Infantry",
   allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
@@ -4348,14 +4389,37 @@ const BANISHED_UNITS = [
     extraMenCost: { Inexperienced: 8, Regular: 11, Veteran: 14 },
     squadUpgrades: {
       "Anti-Tank Grenades": { cost: 2, grantsRule: "Tank Hunters" },
-      "Shirkers (If taken as Inexperienced or Regular only)": { cost: -2, grantsRule: "Shirkers", condition: "Unit is not taken as veteran" },
-      "Defense Gauntlets": { cost: 1, grantsRule: "Shield Wall", condition: "All models have only Plasma Pistols, Plasma Rifles, and Needlers" },
-	  "Engineers": { cost: 1, grantsRule: "Engineers" },
-      "Skirmishers": { cost: 2, grantsRule: ["Fast", "Fieldcraft"], condition: "Squad does not take Defense Gauntlets" }
+      "Defense Gauntlets": {
+        cost: 1,
+        grantsRule: "Shield Wall",
+        condition: "All models have only Plasma Pistols/Disruptors, Plasma Rifles, and Needlers"
+      },
+      "Skirmishers": {
+        cost: 2,
+        grantsRule: ["Fast", "Fieldcraft"],
+        condition: "Squad does not take Defense Gauntlets"
+      },
+      "Shirkers": {
+        cost: -2,
+        grantsRule: "Shirkers",
+        condition: "Unit is not taken as Veteran"
+      },
+      "Engineers": { cost: 1, grantsRule: "Engineers" },
+	"Champion (Skirmishers, Veteran only, 0-1 per army)": {
+	  cost: 15,
+	  perModel: false,
+	  requiresUpgrade: "Skirmishers",
+	  grantsRule: [
+		"Champion",
+		"Limited: Only 1 Champion may be taken per army"
+	  ],
+	  allowedVeterancy: ["Veteran"],
+	  note: "Upgrade the NCO to a Champion. Counts as an Officer, but does not fulfill Platoon Commander requirement."
+	}
     },
     weaponReplacements: {
-      "Needlers":      { max: 5, cost: 3, replaces: "Plasma Pistol/Disruptor", grants: "Needler" },
-      "Pulse Carbines":      { max: 5, cost: 3, replaces: "Plasma Pistol/Disruptor", grants: "Pulse Carbine" },
+      "Needlers": { max: 5, cost: 3, replaces: "Plasma Pistol/Disruptor", grants: "Needler" },
+      "Pulse Carbines": { max: 5, cost: 3, replaces: "Plasma Pistol/Disruptor", grants: "Pulse Carbine" },
       "Stalker Rifles": { max: 5, cost: 0, replaces: "Plasma Pistol/Disruptor", grants: "Stalker Rifle" },
       "Plasma Rifles": { max: 5, cost: 5, replaces: "Plasma Pistol/Disruptor", grants: "Plasma Rifle" }
     },
@@ -4578,19 +4642,24 @@ const BANISHED_UNITS = [
       }
     }
   },
-  {
-    name: "Sniper Team",
-    type: "Team",
-    allowedVeterancy: ["Regular", "Veteran"],
-    costs: { Regular: 52, Veteran: 67 },
-    baseMen: 2,
-    maxMen: 2,
-    weapons: [
-      { name: "Beam Rifle" },
-      { name: "Plasma Pistol/Disruptor" }
-    ],
-    specialRules: ["Team Weapon", "Sniper", "Infiltrator", "Forged In Chains"]
-  },
+{
+  name: "Sniper Team",
+  type: "Team",
+  allowedVeterancy: ["Regular", "Veteran"],
+  costs: { Regular: 52, Veteran: 67 },
+  baseMen: 2,
+  maxMen: 2,
+  weapons: [
+    { name: "Beam Rifle" },
+    { name: "Plasma Pistol/Disruptor" }
+  ],
+  specialRules: ["Team Weapon", "Sniper", "Infiltrator", "Forged In Chains"],
+  options: {
+    squadUpgrades: {
+      "Skirmishers": { cost: 2, grantsRule: ["Fast", "Fieldcraft"] }
+    }
+  }
+},
   {
     name: "Grenade Launcher Team",
     type: "Team",
@@ -4839,7 +4908,7 @@ const BANISHED_VEHICLES = [
   costs: { Regular: 125, Veteran: 150 },
   weapons: [
     { name: "Forward-facing Hull-mounted Needle Cannon" },
-    { name: "Forward-facing Hull-mounted Shardstorm Launcher" },
+    { name: "All-facing Hull-mounted Shardstorm Launcher" },
     { name: "Fist" },
     { name: "Fist" }
   ],
@@ -6947,12 +7016,22 @@ function isGruntDeaconForValidation(unit) {
   );
 }
 
+function isChampionForValidation(unit) {
+  const unitData = getUnitData(unit);
+
+  return (
+    unitHasPickedUpgradeContaining(unit, "Champion") ||
+    unitHasRuleName(unit, "Champion", unitData) ||
+    String(unit?.name || "").toLowerCase().includes("champion")
+  );
+}
+
 function isPlatoonCommanderForValidation(unit) {
   const unitData = getUnitData(unit);
   if (!unit || !unitData) return false;
 
-  // Grunt Deacon follows some officer rules, but does NOT fill the Platoon Commander slot.
-  if (isGruntDeaconForValidation(unit)) return false;
+	// Deacons and Champions follow some officer rules, but do NOT fill the Platoon Commander slot.
+	if (isGruntDeaconForValidation(unit) || isChampionForValidation(unit)) return false;
 
   // Knight Commander upgrade fills the Platoon Commander slot.
   if (unitHasPickedUpgradeContaining(unit, "Knight Commander")) return true;
@@ -7352,7 +7431,9 @@ function isUpgradeLimitHandledSeparately(text) {
   // These are upgrades inside a unit, not limits on the unit itself.
   // They are checked separately by isKnightCommanderForValidation()
   // and isGruntDeaconForValidation().
-  return /Knight Commander/i.test(s) || /Deacon/i.test(s);
+  return /Knight Commander/i.test(s) || /Deacon/i.test(s) || /Champion/i.test(s);
+// They are checked separately by isKnightCommanderForValidation(),
+// isGruntDeaconForValidation(), and isChampionForValidation().
 }
 
 function addLimitedRuleValidation(issues, units, platoonCommanderCount) {
@@ -7508,8 +7589,11 @@ function getArmyValidation() {
   // Narrative-flexible unit and force-org limits.
   // These are NOT hard-enforced; they only mark the list as illegal.
 
-  const deaconCount = units.filter(isGruntDeaconForValidation).length;
-  pushMaxIssue(issues, "Deacons", deaconCount, 1, "per army");
+	const deaconCount = units.filter(isGruntDeaconForValidation).length;
+	pushMaxIssue(issues, "Deacons", deaconCount, 1, "per army");
+
+	const championCount = units.filter(isChampionForValidation).length;
+	pushMaxIssue(issues, "Champions", championCount, 1, "per army");
 
   const knightCommanderCount = units.filter(isKnightCommanderForValidation).length;
   pushMaxIssue(issues, "Knight Commanders", knightCommanderCount, 1, "per army");
@@ -10166,6 +10250,22 @@ function renderInfantryEditFields(unit, unitData) {
 		disabled = "disabled";
 		checked = "";
 	  }
+const selectedSquadUpgrades = unit.squadUpgrades || {};
+
+if (upgrade.requiresUpgrade) {
+  const requiredUpgrades = Array.isArray(upgrade.requiresUpgrade)
+    ? upgrade.requiresUpgrade
+    : [upgrade.requiresUpgrade];
+
+  const hasAllRequiredUpgrades = requiredUpgrades.every(req =>
+    selectedSquadUpgrades[req]
+  );
+
+  if (!hasAllRequiredUpgrades) {
+    disabled = "disabled";
+    checked = "";
+  }
+}
 		if (upgrade.conflictsWith && unit.squadUpgrades) {
 		  const conflicts = Array.isArray(upgrade.conflictsWith) ? upgrade.conflictsWith : [upgrade.conflictsWith];
 		  if (conflicts.some(conflict => unit.squadUpgrades[conflict])) {
@@ -10181,7 +10281,7 @@ function renderInfantryEditFields(unit, unitData) {
         disabled = "disabled";
 
       html += `<label>
-        <input type="checkbox" class="editSquadUpgrade" data-upgrade="${label}" ${checked} ${disabled} onchange="/Melee Weapon/i.test(this.dataset.upgrade) ? rerenderCurrentEditModal() : syncInfantryEditorState()">
+        <input type="checkbox" class="editSquadUpgrade" data-upgrade="${label}" ${checked} ${disabled} onchange="rerenderCurrentEditModal()">
         ${label} (${Number(upgrade.cost) >= 0 ? "+" : "-"}${Math.abs(Number(upgrade.cost))} pts${upgrade.perModel === false ? " flat" : " per model"}) ${upgrade.grantsRule ? "– Grants: " + upgrade.grantsRule : ""}
       </label><br>`;
     });
