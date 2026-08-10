@@ -1097,8 +1097,13 @@ function hasGruntOrGruntJackalCaste(unit) {
 
   return (
     text.includes("grunt") ||
+    text.includes("jackal") ||
+    text.includes("skirmisher") ||
     text.includes("grunt/jackal") ||
-    text.includes("for the great journey! [grunt/jackal]")
+    text.includes("for the great journey! [grunt/jackal]") ||
+    text.includes("for the great journey! [skirmisher]") ||
+    text.includes("forged in chains [grunt/jackal]") ||
+    text.includes("forged in chains [skirmisher]")
   );
 }
 
@@ -1849,6 +1854,15 @@ This affects both infantry flamethrowers and vehicle-mounted flamethrowers.`,
 // --- Army Doctrines ---
 const COVENANT_DOCTRINES = {
   _defaultLabel: "Grunt/Jackal",
+
+  "Skirmisher": {
+    label: "Skirmisher",
+    allowedVeterancy: ["Regular", "Veteran"],
+    baseCostPerModel: 3,
+    specialRules: ["Fast", "Fieldcraft"],
+    upgrades: []
+  },
+
   "Brute": {
     label: "Brute",
     allowedVeterancy: ["Regular", "Veteran"],
@@ -1859,6 +1873,7 @@ const COVENANT_DOCTRINES = {
       { name: "Melee Weapon (NCO/Officer only)", costFlat: 1, grantsRule: "Melee Weapon", ncoOnly: true }
     ]
   },
+
   "Elite": {
     label: "Elite",
     allowedVeterancy: ["Veteran"],
@@ -1873,6 +1888,15 @@ const COVENANT_DOCTRINES = {
 
 const BANISHED_DOCTRINES = {
   _defaultLabel: "Grunt/Jackal",
+
+  "Skirmisher": {
+    label: "Skirmisher",
+    allowedVeterancy: ["Regular", "Veteran"],
+    baseCostPerModel: 3,
+    specialRules: ["Fast", "Fieldcraft"],
+    upgrades: []
+  },
+
   "Brute": {
     label: "Brute",
     allowedVeterancy: ["Regular", "Veteran"],
@@ -1880,10 +1904,11 @@ const BANISHED_DOCTRINES = {
     specialRules: ["Hardened", "Stubborn", "Fieldcraft", "Berserker", "Strong"],
     upgrades: [
       { name: "Energy Shields", cost: 3, grantsRule: "Energy Shields" },
-	  { name: "Fanatics (replace Stubborn)", cost: 1, grantsRule: "Fanatics", replacesRule: "Stubborn" },
+      { name: "Fanatics (replace Stubborn)", cost: 1, grantsRule: "Fanatics", replacesRule: "Stubborn" },
       { name: "Melee Weapon (NCO/Officer only)", costFlat: 1, grantsRule: "Melee Weapon", ncoOnly: true }
     ]
   },
+
   "Elite": {
     label: "Elite",
     allowedVeterancy: ["Veteran"],
@@ -1898,6 +1923,15 @@ const BANISHED_DOCTRINES = {
 
 const UNSC_DOCTRINES = {
   _defaultLabel: "Trooper",
+
+  "Recon": {
+    label: "Recon",
+    allowedVeterancy: ["Regular", "Veteran"],
+    baseCostPerModel: 2,
+    specialRules: ["Pathfinder", "Fieldcraft"],
+    upgrades: []
+  },
+
   "Marine": {
     label: "Marine",
     allowedVeterancy: ["Regular", "Veteran"],
@@ -1905,16 +1939,18 @@ const UNSC_DOCTRINES = {
     specialRules: ["Stubborn"],
     upgrades: []
   },
+
   "ODST": {
     label: "ODST",
     allowedVeterancy: ["Veteran"],
     baseCostPerModel: 2,
     specialRules: ["Stubborn", "Behind Enemy Lines", "VISR"],
     upgrades: [
-	{ name: "Strong", cost: 1, grantsRule: "Strong" },
-	{ name: "Fieldcraft", cost: 1, grantsRule: "Fieldcraft" }
-	]
+      { name: "Strong", cost: 1, grantsRule: "Strong" },
+      { name: "Fieldcraft", cost: 1, grantsRule: "Fieldcraft" }
+    ]
   },
+
   "Spartan": {
     label: "Spartan",
     allowedVeterancy: ["Veteran"],
@@ -3248,11 +3284,6 @@ const COVENANT_UNITS = [
   options: {
     extraMenCost: { Regular: 11, Veteran: 14 },
     squadUpgrades: {
-      "Skirmishers": {
-        cost: 2,
-        grantsRule: ["Fast", "Fieldcraft"],
-        requiresNoDoctrine: true
-      }
     }
   }
 },
@@ -3274,11 +3305,6 @@ const COVENANT_UNITS = [
   options: {
     extraMenCost: { Regular: 11, Veteran: 14 },
     squadUpgrades: {
-      "Skirmishers": {
-        cost: 2,
-        grantsRule: ["Fast", "Fieldcraft"],
-        requiresNoDoctrine: true
-      }
     }
   }
 },
@@ -3375,17 +3401,6 @@ const COVENANT_UNITS = [
         condition: "Unit is not taken as Veteran"
       },
       "Engineers": { cost: 1, grantsRule: "Engineers" },
-		"Champion (Skirmishers, Veteran only, 0-1 per army)": {
-		  cost: 15,
-		  perModel: false,
-		  requiresUpgrade: "Skirmishers",
-		  grantsRule: [
-			"Champion",
-			"Limited: Only 1 Champion may be taken per army"
-		  ],
-		  allowedVeterancy: ["Veteran"],
-		  note: "Upgrade the NCO to a Champion. Counts as an Officer, but does not fulfill Platoon Commander requirement."
-		}
     },
     weaponReplacements: {
       "Needlers": { max: 5, cost: 3, replaces: "Plasma Pistol", grants: "Needler" },
@@ -3626,11 +3641,6 @@ const COVENANT_UNITS = [
   specialRules: ["Team Weapon", "Sniper", "Infiltrator", "For The Great Journey!"],
   options: {
     squadUpgrades: {
-      "Skirmishers": {
-        cost: 2,
-        grantsRule: ["Fast", "Fieldcraft"],
-        requiresNoDoctrine: true
-      }
     }
   }
 },
@@ -4334,11 +4344,7 @@ const BANISHED_UNITS = [
   options: {
     extraMenCost: { Regular: 11, Veteran: 14 },
     squadUpgrades: {
-      "Skirmishers": {
-        cost: 2,
-        grantsRule: ["Fast", "Fieldcraft"],
-        requiresNoDoctrine: true
-      }
+
     }
   }
 },
@@ -4361,11 +4367,6 @@ const BANISHED_UNITS = [
   options: {
     extraMenCost: { Regular: 11, Veteran: 14 },
     squadUpgrades: {
-      "Skirmishers": {
-        cost: 2,
-        grantsRule: ["Fast", "Fieldcraft"],
-        requiresNoDoctrine: true
-      }
     }
   }
 },
@@ -4425,17 +4426,6 @@ const BANISHED_UNITS = [
         condition: "Unit is not taken as Veteran"
       },
       "Engineers": { cost: 1, grantsRule: "Engineers" },
-	"Champion (Skirmishers, Veteran only, 0-1 per army)": {
-	  cost: 15,
-	  perModel: false,
-	  requiresUpgrade: "Skirmishers",
-	  grantsRule: [
-		"Champion",
-		"Limited: Only 1 Champion may be taken per army"
-	  ],
-	  allowedVeterancy: ["Veteran"],
-	  note: "Upgrade the NCO to a Champion. Counts as an Officer, but does not fulfill Platoon Commander requirement."
-	}
     },
     weaponReplacements: {
       "Needlers": { max: 5, cost: 3, replaces: "Plasma Pistol/Disruptor", grants: "Needler" },
@@ -4676,11 +4666,6 @@ const BANISHED_UNITS = [
   specialRules: ["Team Weapon", "Sniper", "Infiltrator", "Forged In Chains"],
   options: {
     squadUpgrades: {
-      "Skirmishers": {
-        cost: 2,
-        grantsRule: ["Fast", "Fieldcraft"],
-        requiresNoDoctrine: true
-      }
     }
   }
 },
@@ -5364,32 +5349,32 @@ const FORERUNNER_UNITS = [
   },
 
   // Infantry Squads and Teams
-  {
-    name: "Sentinel Swarm",
-    type: "Infantry",
-    allowedVeterancy: ["Inexperienced", "Regular"],
-    costs: { Inexperienced: 35, Regular: 50 },
-    baseMen: 5,
-    maxMen: 11,
-    weapons: [
-      { name: "Sentinel Beam" }
-    ],
-    specialRules: [
-      "Automaton",
-      "Flight"
-    ],
-    options: {
-      extraMenCost: { Inexperienced: 7, Regular: 10 },
-      squadUpgrades: {
-        "Energy Shield Modules": { cost: 3, grantsRule: "Energy Shields" }
-      }
+{
+  name: "Sentinel Swarm",
+  type: "Infantry",
+  allowedVeterancy: ["Inexperienced", "Regular"],
+  costs: { Inexperienced: 35, Regular: 50 },
+  baseMen: 5,
+  maxMen: 11,
+  weapons: [
+    { name: "Sentinel Beam" }
+  ],
+  specialRules: [
+    "Automaton",
+    "Flight"
+  ],
+  options: {
+    extraMenCost: { Inexperienced: 7, Regular: 10 },
+    squadUpgrades: {
+      "Energy Shield Modules": { cost: 2, grantsRule: "Energy Shields" }
     }
-  },
+  }
+},
 {
   name: "Crawler Swarm",
   type: "Infantry",
   allowedVeterancy: ["Inexperienced", "Regular"],
-  costs: { Inexperienced: 45, Regular: 60 },
+  costs: { Inexperienced: 40, Regular: 55 },
   baseMen: 5,
   maxMen: 11,
   weapons: [
@@ -5401,15 +5386,13 @@ const FORERUNNER_UNITS = [
     "Energy Shields"
   ],
   options: {
-    extraMenCost: { Inexperienced: 9, Regular: 12 },
+    extraMenCost: { Inexperienced: 8, Regular: 11 },
 
-    // Non-NCO replacements only (up to 5 additional Crawlers)
     weaponReplacements: {
       "Suppressors": { max: 8, cost: 7, replaces: "Boltshot", grants: "Suppressor" },
       "Light Rifles": { max: 8, cost: 2, replaces: "Boltshot", grants: "Light Rifle" }
     },
 
-    // NCO uses separate selector
     ncoReplacement: {
       options: ["Boltshot", "Suppressor", "Light Rifle"],
       costs: {
