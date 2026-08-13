@@ -1855,13 +1855,14 @@ This affects both infantry flamethrowers and vehicle-mounted flamethrowers.`,
 const COVENANT_DOCTRINES = {
   _defaultLabel: "Grunt/Jackal",
 
-  "Skirmisher": {
-    label: "Skirmisher",
-    allowedVeterancy: ["Regular", "Veteran"],
-    baseCostPerModel: 3,
-    specialRules: ["Fast", "Fieldcraft"],
-    upgrades: []
-  },
+	"Skirmisher": {
+	  label: "Skirmisher",
+	  illegalLabel: "(Illegal) Skirmisher",
+	  allowedVeterancy: ["Regular", "Veteran"],
+	  baseCostPerModel: 3,
+	  specialRules: ["Fast", "Fieldcraft"],
+	  upgrades: []
+	},
 
   "Brute": {
     label: "Brute",
@@ -1889,13 +1890,14 @@ const COVENANT_DOCTRINES = {
 const BANISHED_DOCTRINES = {
   _defaultLabel: "Grunt/Jackal",
 
-  "Skirmisher": {
-    label: "Skirmisher",
-    allowedVeterancy: ["Regular", "Veteran"],
-    baseCostPerModel: 3,
-    specialRules: ["Fast", "Fieldcraft"],
-    upgrades: []
-  },
+	"Skirmisher": {
+	  label: "Skirmisher",
+	  illegalLabel: "(Illegal) Skirmisher",
+	  allowedVeterancy: ["Regular", "Veteran"],
+	  baseCostPerModel: 3,
+	  specialRules: ["Fast", "Fieldcraft"],
+	  upgrades: []
+	},
 
   "Brute": {
     label: "Brute",
@@ -3391,9 +3393,9 @@ const COVENANT_UNITS = [
         condition: "All models have only Plasma Pistols, Plasma Rifles, and Needlers"
       },
       "Skirmishers": {
-        cost: 2,
+        cost: 3,
         grantsRule: ["Fast", "Fieldcraft"],
-        condition: "Squad does not take Defense Gauntlets"
+        condition: "Squad does not take Defense Gauntlets. Limited to up to 2 per army."
       },
       "Shirkers": {
         cost: -2,
@@ -4416,9 +4418,9 @@ const BANISHED_UNITS = [
         condition: "All models have only Plasma Pistols/Disruptors, Plasma Rifles, and Needlers"
       },
       "Skirmishers": {
-        cost: 2,
+        cost: 3,
         grantsRule: ["Fast", "Fieldcraft"],
-        condition: "Squad does not take Defense Gauntlets"
+        condition: "Squad does not take Defense Gauntlets. Limited to up to 2 per army."
       },
       "Shirkers": {
         cost: -2,
@@ -7329,6 +7331,38 @@ function jackalHasForbiddenDefenseGauntletWeapon(unit, unitData, useEditor = tru
   });
 }
 
+function hasSkirmisherDoctrine(unit) {
+  return unit?.doctrine === "Skirmisher";
+}
+
+function hasJackalSkirmisherUpgrade(unit) {
+  return (
+    unit?.name === "Jackal Squad" &&
+    unit?.squadUpgrades?.["Skirmishers"]
+  );
+}
+
+function isLegalSkirmisherDoctrineUnit(unit) {
+  const name = String(unit?.name || "").toLowerCase();
+
+  return (
+    name.includes("officer - platoon commander") ||
+    name.includes("forward observer") ||
+    name === "sniper team"
+  );
+}
+
+function getDoctrineChoiceDisplayLabel(choice, unit) {
+  if (
+    choice?.name === "Skirmisher" &&
+    !isLegalSkirmisherDoctrineUnit(unit)
+  ) {
+    return choice.illegalLabel || "(Illegal) Skirmisher";
+  }
+
+  return choice.label || choice.name;
+}
+
 function getRuleTextForValidation(rule) {
   if (!rule) return "";
   if (typeof rule === "string") return rule;
@@ -7441,6 +7475,48 @@ function isUpgradeLimitHandledSeparately(text) {
   return /Knight Commander/i.test(s) || /Deacon/i.test(s) || /Champion/i.test(s);
 // They are checked separately by isKnightCommanderForValidation(),
 // isGruntDeaconForValidation(), and isChampionForValidation().
+}
+
+function addSkirmisherValidation(issues, units, platoonCommanderCount) {
+  const doctrineSkirmishers = (units || []).filter(hasSkirmisherDoctrine);
+
+  const illegalDoctrineSkirmishers = doctrineSkirmishers.filter(unit =>
+    !isLegalSkirmisherDoctrineUnit(unit)
+  );
+
+  illegalDoctrineSkirmishers.forEach(unit => {
+    issues.push(
+      `${unit.name} may not legally take the Skirmisher doctrine. Skirmisher doctrine is limited to Platoon Commander, Forward Observer, and Sniper Team.`
+    );
+  });
+
+  if (platoonCommanderCount > 0) {
+    pushMaxIssue(
+      issues,
+      "Skirmisher doctrine units",
+      doctrineSkirmishers.length,
+      platoonCommanderCount * 2,
+      "per Platoon Commander"
+    );
+  }
+
+  pushMaxIssue(
+    issues,
+    "Skirmisher doctrine units",
+    doctrineSkirmishers.length,
+    4,
+    "per army"
+  );
+
+  const jackalSkirmishers = (units || []).filter(hasJackalSkirmisherUpgrade);
+
+  pushMaxIssue(
+    issues,
+    "Jackal Squad Skirmishers",
+    jackalSkirmishers.length,
+    2,
+    "per army"
+  );
 }
 
 function addLimitedRuleValidation(issues, units, platoonCommanderCount) {
@@ -7619,9 +7695,10 @@ function getArmyValidation() {
   const companyCommanderCount = units.filter(isCompanyCommanderForValidation).length;
   pushMaxIssue(issues, "Company Commanders", companyCommanderCount, 1, "per army");
 
-  addLimitedRuleValidation(issues, units, platoonCommanderCount);
+	addLimitedRuleValidation(issues, units, platoonCommanderCount);
+	addSkirmisherValidation(issues, units, platoonCommanderCount);
 
-  return {
+	return {
     valid: issues.length === 0,
     issues,
     ok,
@@ -7841,7 +7918,7 @@ function addDoctrineSpecialRules(unit) {
   // If a doctrine is chosen, inject only the bracketed rule and doctrine rules
   if (doctrineName && doctrineSet && doctrineSet[doctrineName]) {
     const doctrine = doctrineSet[doctrineName];
-    const doctrineLabel = `${triggerRule} [${doctrine.label}]`;
+    const doctrineLabel = getSkirmisherDoctrineDisplayLabel(unit, triggerRule, doctrine);
     unit.special.unshift(doctrineLabel);
 
     // Add doctrine special rules (no duplicates)
@@ -8235,23 +8312,27 @@ function getBaseCostDisplay(unit) {
 function injectDoctrineOptions(units, doctrineSet, triggerRule) {
   (units || []).forEach(unit => {
     if (Array.isArray(unit.specialRules) && unit.specialRules.includes(triggerRule)) {
-      // Already has doctrine block? (Don't overwrite)
       if (unit.options && unit.options.doctrine) return;
 
-      // If no options, create
       if (!unit.options) unit.options = {};
 
-      // Build list of choices matching allowed veterancy for this unit
       const allowedVets = Array.isArray(unit.allowedVeterancy) ? unit.allowedVeterancy : [];
-      const choices = Object.values(doctrineSet || {})
-        .filter(doc => Array.isArray(doc.allowedVeterancy) && doc.allowedVeterancy.some(v => allowedVets.includes(v)))
-		.map(doc => ({
-		  name: doc.label,
-		  costPerModel: doc.baseCostPerModel,
-		  allowedVeterancy: (doc.allowedVeterancy || []).slice(),
-		  specialRules: (doc.specialRules || []).slice(),
-		  extraUpgrades: (doc.upgrades && doc.upgrades.length) ? doc.upgrades.slice() : []
-		}))
+
+      const choices = Object.entries(doctrineSet || {})
+        .filter(([id, doc]) =>
+          id !== "_defaultLabel" &&
+          Array.isArray(doc.allowedVeterancy) &&
+          doc.allowedVeterancy.some(v => allowedVets.includes(v))
+        )
+        .map(([id, doc]) => ({
+          name: id,
+          label: doc.label || id,
+          illegalLabel: doc.illegalLabel || doc.label || id,
+          costPerModel: doc.baseCostPerModel,
+          allowedVeterancy: (doc.allowedVeterancy || []).slice(),
+          specialRules: (doc.specialRules || []).slice(),
+          extraUpgrades: (doc.upgrades && doc.upgrades.length) ? doc.upgrades.slice() : []
+        }));
 
       if (choices.length) {
         unit.options.doctrine = {
@@ -8262,6 +8343,17 @@ function injectDoctrineOptions(units, doctrineSet, triggerRule) {
       }
     }
   });
+}
+
+function getSkirmisherDoctrineDisplayLabel(unit, triggerRule, doctrine) {
+  if (
+    unit?.doctrine === "Skirmisher" &&
+    !isLegalSkirmisherDoctrineUnit(unit)
+  ) {
+    return `${triggerRule} [ILLEGAL Skirmisher]`;
+  }
+
+  return `${triggerRule} [${doctrine.label}]`;
 }
 
 // --- Use on your arrays:
@@ -10390,11 +10482,15 @@ if (upgrade.requiresUpgrade) {
       <div style="margin-top:10px;"><b>${unitData.options.doctrine.label}:</b><br>
         <select id="editDoctrineSelect" onchange="onDoctrineSelectChanged(this)">
                     <option value="">— None (${unitData.options.doctrine.defaultLabel || "Default"}) —</option>
-		${getAllowedDoctrineChoicesForUnit(unit, unitData).map(choice => `
-		  <option value="${choice.name}"${unit.doctrine === choice.name ? " selected" : ""}>
-			${choice.name} (Special: ${choice.specialRules.join(", ")}; +${choice.costPerModel} pts/model)
-		  </option>
-		`).join("")}
+		${getAllowedDoctrineChoicesForUnit(unit, unitData).map(choice => {
+		  const displayLabel = getDoctrineChoiceDisplayLabel(choice, unit);
+
+		  return `
+			<option value="${choice.name}"${unit.doctrine === choice.name ? " selected" : ""}>
+			  ${displayLabel} (Special: ${choice.specialRules.join(", ")}; +${choice.costPerModel} pts/model)
+			</option>
+		  `;
+		}).join("")}
         </select>
         <div id="doctrineExtraUpgradesBox"></div>
       </div>
