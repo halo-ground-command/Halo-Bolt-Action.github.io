@@ -847,7 +847,7 @@ Once per turn, when a Banished Infantry unit enters the battlefield from Reserve
 Trophy Takers
 
 - Effect:
-When a Banished Brute unit wins a Close Quarters combat for the first time during the battle, it gains Trophy Plate Harness for the rest of the battle. If it already has Trophy Plate Harness, improve its Trophy Plate Harness save to 5+ in Close Quarters for the rest of the battle.
+When a Banished Brute unit wins a Close Quarters combat for the first time during the battle, it gains Trophy Plate Harness for the rest of the battle. If a unit already has Trophy Plate Harness, improve its Trophy Plate Harness save to 5+ in Close Quarters for the rest of the battle.
 
 Reminder:
 Trophy Plate Harness: Models with Trophy Plate Harness have a 6+ cover save in Close Quarters.
@@ -3011,6 +3011,23 @@ const UNSC_VEHICLES = [
     ]
   },
 {
+  name: "AV-49 Wasp",
+  type: "Aircraft",
+  allowedVeterancy: ["Regular", "Veteran"],
+  costs: { Regular: 115, Veteran: 138 },
+  weapons: [
+    { name: "Hull-mounted Forward-facing Paired Heavy Machine Gun" },
+    { name: "Hull-mounted Forward-facing Hydra" }
+  ],
+  damageValue: "6+ (Light Aircraft)",
+  specialRules: [
+    "Flak",
+    "Agile",
+    "Nimble",
+    "Shielded Hull"
+  ]
+},
+{
   name: "UH-144 Falcon",
   type: "Aircraft",
   allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
@@ -4525,6 +4542,89 @@ const BANISHED_UNITS = [
       costs: { "Needler": -2, "Pulse Carbine": -2, "Concussion Rifle": 21, "Plasma Repeater": 9 }
     }
     // ncoExtraUpgrades could go here if needed for "Melee Weapon"
+  }
+},
+{
+  name: "Janissaries",
+  type: "Infantry",
+  allowedVeterancy: ["Veteran"],
+  costs: { Veteran: 120 },
+  baseMen: 4,
+  maxMen: 6,
+  weapons: [{ name: "Spiker" }],
+  specialRules: [
+    "Hardened",
+    "Fanatics",
+    "Fast",
+    "VISR",
+    "Behind Enemy Lines",
+    "Strong",
+    "Strikes First",
+    "Energy Shields",
+    "Trophy Plate Harness",
+    { name: "Limited", description: "Only 1 Janissaries unit may be taken per army." }
+  ],
+  options: {
+    extraMenCost: { Veteran: 30 },
+
+    squadUpgrades: {
+      "Anti-Tank Grenades": {
+        cost: 2,
+        grantsRule: "Tank Hunters"
+      },
+      "Engineers": {
+        cost: 1,
+        grantsRule: "Engineers"
+      },
+      "Melee Weapons": {
+        cost: 2,
+        grantsRule: "Melee Weapons",
+        perModel: true
+      },
+      "Melee Weapon (NCO only)": {
+        cost: 1,
+        grantsRule: "Melee Weapon",
+        perModel: false
+      }
+    },
+
+    weaponReplacements: {
+      "Shotguns": {
+        max: 5,
+        cost: -4,
+        replaces: "Spiker",
+        grants: "Shotgun"
+      },
+      "Brute Shot/Grenade Launchers": {
+        max: 2,
+        cost: 13,
+        replaces: "Spiker",
+        grants: "Brute Shot/Grenade Launcher"
+      },
+      "Ravagers": {
+        max: 2,
+        cost: 33,
+        replaces: "Spiker",
+        grants: "Ravager",
+        requiresUpgrade: "Engineers"
+      }
+    },
+
+    ncoReplacement: {
+      options: [
+        "Spiker",
+        "Shotgun",
+        "Brute Shot/Grenade Launcher",
+        "Ravager",
+        "Gravity Hammer"
+      ],
+      costs: {
+        "Shotgun": -4,
+        "Brute Shot/Grenade Launcher": 13,
+        "Ravager": 33,
+        "Gravity Hammer": 0
+      }
+    }
   }
 },
   {
