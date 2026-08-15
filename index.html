@@ -1928,7 +1928,8 @@ const UNSC_DOCTRINES = {
 
   "Recon": {
     label: "Recon",
-    allowedVeterancy: ["Regular", "Veteran"],
+    illegalLabel: "(Illegal) Recon",
+    allowedVeterancy: ["Veteran"],
     baseCostPerModel: 2,
     specialRules: ["Pathfinder", "Fieldcraft"],
     upgrades: []
@@ -7435,6 +7436,10 @@ function hasSkirmisherDoctrine(unit) {
   return unit?.doctrine === "Skirmisher";
 }
 
+function hasReconDoctrine(unit) {
+  return unit?.doctrine === "Recon";
+}
+
 function hasJackalSkirmisherUpgrade(unit) {
   return (
     unit?.name === "Jackal Squad" &&
@@ -7452,12 +7457,31 @@ function isLegalSkirmisherDoctrineUnit(unit) {
   );
 }
 
+function isLegalReconDoctrineUnit(unit) {
+  const name = String(unit?.name || "").toLowerCase();
+
+  return (
+    name === "engineer squad" ||
+    name === "anti tank team" ||
+    name === "anti-tank team" ||
+    name === "machine gun team" ||
+    name === "grenade launcher team"
+  );
+}
+
 function getDoctrineChoiceDisplayLabel(choice, unit) {
   if (
     choice?.name === "Skirmisher" &&
     !isLegalSkirmisherDoctrineUnit(unit)
   ) {
     return choice.illegalLabel || "(Illegal) Skirmisher";
+  }
+
+  if (
+    choice?.name === "Recon" &&
+    !isLegalReconDoctrineUnit(unit)
+  ) {
+    return choice.illegalLabel || "(Illegal) Recon";
   }
 
   return choice.label || choice.name;
@@ -7614,6 +7638,28 @@ function addSkirmisherValidation(issues, units, platoonCommanderCount) {
     issues,
     "Jackal Squad Skirmishers",
     jackalSkirmishers.length,
+    2,
+    "per army"
+  );
+}
+
+function addReconValidation(issues, units) {
+  const doctrineReconUnits = (units || []).filter(hasReconDoctrine);
+
+  const illegalDoctrineReconUnits = doctrineReconUnits.filter(unit =>
+    !isLegalReconDoctrineUnit(unit)
+  );
+
+  illegalDoctrineReconUnits.forEach(unit => {
+    issues.push(
+      `${unit.name} may not legally take the Recon doctrine. Recon doctrine is limited to Engineer Squad, Anti Tank Team, Machine Gun Team, and Grenade Launcher Team.`
+    );
+  });
+
+  pushMaxIssue(
+    issues,
+    "Recon doctrine units",
+    doctrineReconUnits.length,
     2,
     "per army"
   );
@@ -7797,6 +7843,7 @@ function getArmyValidation() {
 
 	addLimitedRuleValidation(issues, units, platoonCommanderCount);
 	addSkirmisherValidation(issues, units, platoonCommanderCount);
+	addReconValidation(issues, units);
 
 	return {
     valid: issues.length === 0,
@@ -8018,12 +8065,52 @@ function addDoctrineSpecialRules(unit) {
   // If a doctrine is chosen, inject only the bracketed rule and doctrine rules
   if (doctrineName && doctrineSet && doctrineSet[doctrineName]) {
     const doctrine = doctrineSet[doctrineName];
+
+    const selectedDoctrineUpgrades = (doctrine.upgrades || []).filter(upg =>
+      unit.extraDoctrineUpgrades && unit.extraDoctrineUpgrades[upg.name]
+    );
+
+    const replacedRules = new Set();
+    selectedDoctrineUpgrades.forEach(upg => {
+      if (!upg.replacesRule) return;
+      const rules = Array.isArray(upg.replacesRule) ? upg.replacesRule : [upg.replacesRule];
+      rules.forEach(rule => {
+        if (rule) replacedRules.add(rule);
+      });
+    });
+
+    if (replacedRules.size) {
+      unit.special = unit.special.filter(rule => !replacedRules.has(getRuleName(rule)));
+    }
+
     const doctrineLabel = getSkirmisherDoctrineDisplayLabel(unit, triggerRule, doctrine);
     unit.special.unshift(doctrineLabel);
 
-    // Add doctrine special rules (no duplicates)
+    // Add doctrine special rules, skipping rules replaced by selected doctrine upgrades.
     (doctrine.specialRules || []).forEach(rule => {
-      if (rule && !unit.special.includes(rule)) unit.special.push(rule);
+      if (!rule || replacedRules.has(getRuleName(rule))) return;
+      if (!unit.special.some(existing => getRuleName(existing) === getRuleName(rule))) {
+        unit.special.push(rule);
+      }
+    });
+
+    // Add rules granted by selected doctrine upgrades after replacements are applied.
+    selectedDoctrineUpgrades.forEach(upg => {
+      if (upg.replacesWeapon) return;
+
+      const grantList = Array.isArray(upg.grantsRule)
+        ? upg.grantsRule
+        : (upg.grantsRule ? [upg.grantsRule] : []);
+
+      grantList.forEach(rule => {
+        if (rule && !unit.special.some(existing => getRuleName(existing) === getRuleName(rule))) {
+          unit.special.push(rule);
+        }
+      });
+
+      if (!grantList.length && upg.name && !unit.special.includes(upg.name)) {
+        unit.special.push(upg.name);
+      }
     });
   } else {
     // If NO doctrine, show the faction default label
@@ -8451,6 +8538,13 @@ function getSkirmisherDoctrineDisplayLabel(unit, triggerRule, doctrine) {
     !isLegalSkirmisherDoctrineUnit(unit)
   ) {
     return `${triggerRule} [ILLEGAL Skirmisher]`;
+  }
+
+  if (
+    unit?.doctrine === "Recon" &&
+    !isLegalReconDoctrineUnit(unit)
+  ) {
+    return `${triggerRule} [ILLEGAL Recon]`;
   }
 
   return `${triggerRule} [${doctrine.label}]`;
@@ -11112,9 +11206,26 @@ function saveEdit() {
             if (upg.costFlat) extraDoctrineCost += upg.costFlat;
             if (upg.cost) extraDoctrineCost += upg.cost * men;
 
-            if (upg.grantsRule && !upg.replacesWeapon && !specialRules.includes(upg.grantsRule)) {
-              specialRules.push(upg.grantsRule);
-            } else if (!upg.grantsRule && !specialRules.includes(upg.name)) {
+            if (upg.replacesRule) {
+              const toRemove = Array.isArray(upg.replacesRule) ? upg.replacesRule : [upg.replacesRule];
+              specialRules = specialRules.filter(rule => !toRemove.includes(getRuleName(rule)));
+            }
+
+            const grantList = Array.isArray(upg.grantsRule)
+              ? upg.grantsRule
+              : (upg.grantsRule ? [upg.grantsRule] : []);
+
+            grantList.forEach(rule => {
+              if (
+                rule &&
+                !upg.replacesWeapon &&
+                !specialRules.some(existing => getRuleName(existing) === getRuleName(rule))
+              ) {
+                specialRules.push(rule);
+              }
+            });
+
+            if (!grantList.length && !specialRules.includes(upg.name)) {
               specialRules.push(upg.name);
             }
           });
