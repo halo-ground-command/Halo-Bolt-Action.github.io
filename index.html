@@ -499,7 +499,7 @@ window.unitSpecialDescriptions = {
   "Flak": "Autofires at FAO called aircraft in arc and range (5+). However against on table aircraft just ignore minus 1 to hit vs flying. Remember: Pintle mounted weapons count as having Flak too.", 
   "Fieldcraft": "Treat rough terrain as open ground for movement. When assaulting through rough ground, defenders lose Defensive Position gained from that Rough Ground.",
   "Strikes First": "When this unit assaults, it fights first as if it had Defensive Position. If the assaulted unit also has Defensive Position, Strikes First, or a rule that cancels either, both sides fight simultaneously instead.",
-  "Flight": "Advance 12\"; Run 18\"; ignore terrain for movement. Cannot end in impassable terrain (or in rough ground after a Run). If ambushed while flying, no soft/hard cover saves. Cannot pick up or carry objectives on a Run order. Infantry may instead move on the ground using normal movement rules, using other unit rules that affect movement they may have.",
+  "Flight": "Advance 12\"; Run 18\"; ignore terrain for movement. Cannot end in impassable terrain, or in rough ground after a Run. If ambushed while flying, no soft/hard cover saves. Cannot pick up or carry objectives while resolving a Run order, but may claim or take possession of an objective after a Regroup move. Infantry may instead move on the ground using normal movement rules and any other movement rules the unit has.",
   "Flood Infection": "Automatons and Composed Beings are immune to this rule. When winning vs Infantry or Artillery in CQ, immediately roll one D6 per enemy model removed during and after combat. Each roll equal to or above this flood unit’s damage value returns a slain model (up to starting size). If the flood unit has Energy Shields, it increases the requirement by +1.",
   "Green": "First casualty triggers a D6 roll: 1 = gain D6 pins and go Down, 6 = unit upgraded to Regular (morale 9 and DV 4+).",
   "Gun Shield": "Crew of a gun with a gun shield count as in soft cover vs small arms hits from within the gun’s front arc.",
@@ -1218,7 +1218,7 @@ function applyLeaderRuleModifiers(unit, rules) {
   if (leaderId === "yapyap" && unitNameIncludes(unit, "Grunt Cannon Fodder Mob")) {
     finalRules = replaceRuleByName(finalRules, "Limited", {
       name: "Limited",
-      description: "May only take up to 2 per platoon, and only 3 in total per army."
+      description: "May only take up to 2 per platoon, and only 4 in total per army."
     });
   }
 
@@ -1345,7 +1345,7 @@ For example, on Turn 2, they enter as if it were Turn 3. On Turn 4, they enter a
       name: "Commander Jerome-092",
       cost: 100,
       ruleName: "MJOLNIR Mobility",
-      ruleText: `When a Spartan unit is given a Run order that is not an assault, it treats rough ground and obstacles as open ground for that movement.`,
+      ruleText: `When a Spartan unit is given a Run order, including an order to assault, and crosses rough ground or an obstacle, it may move up to 12 instead of halving its movement. `,
       validate: units => {
         const issues = [];
 
@@ -1477,7 +1477,7 @@ For example, on Turn 2, they enter as if it were Turn 3. On Turn 4, they enter a
       ruleName: "Strength in Numbers",
       ruleText: `Grunt Infantry units may re-roll failed Order tests while they are within 6" of another friendly Grunt Infantry unit that has 7 or more models.
 
-In addition, an army led by Yapyap the Destroyer may include one additional Grunt Cannon Fodder Mob unit beyond the normal limits (up to 2 per platoon, and 3 in total per army).`,
+In addition, an army led by Yapyap the Destroyer may include two additional Grunt Cannon Fodder Mob units beyond the normal limits (up to 2 per platoon, and 4 in total per army).`,
       validate: units => {
         const issues = [];
 
@@ -1688,7 +1688,7 @@ A Flood Company Commander therefore has a 24" Morale bonus range and a 24" range
       name: "Feral Outbreak",
       cost: 75,
       ruleName: "Ravenous Surge",
-      ruleText: `Once per game, at the beginning of a turn before any Order Dice are drawn, choose any number of friendly Flood Infantry units that do not already have an Order Die assigned. For each chosen unit, take one of your Order Dice from the bag and assign it to that unit as a Run order.
+      ruleText: `Once per game, at the beginning of a turn before any Order Dice are drawn, choose any number of friendly Flood Infantry units that do not already have an Order Die assigned. For each chosen unit, take one of your Order Dice from the bag and assign it to that unit as a Run order one by one.
 
 Chosen units do not take Order tests and do not remove Pins. Each unit must move as directly as possible toward the closest enemy Infantry or Artillery unit. If that enemy is within assault range and line of sight, the Flood unit must assault it instead.
 
@@ -1723,7 +1723,7 @@ If several eligible enemy units are equally close, or it is not clear which is c
     {
       id: "didact",
       name: "The Didact",
-      cost: 100,
+      cost: 75,
       ruleName: "Warden of the Mantle",
       ruleText: `Once per game, when using the Warden of Balance army rule, you may use this rule. Instead of selecting one friendly Forerunner Infantry or Artillery unit, all friendly Forerunner Infantry units with Composed Beings gain +1 to hit when shooting until the end of that turn.`,
       validate: units => {
