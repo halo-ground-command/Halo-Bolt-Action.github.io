@@ -971,7 +971,7 @@ When an Elite Infantry unit that includes at least one model with a Melee Weapon
 War-Chants of Sanghelios
 
 - Effect:
-At the start of every Game Turn, roll a D6 for each enemy Infantry and Artillery unit on the table that has no Pin markers. On a 5+, that unit immediately receives 1 Pin marker. Do not roll for units embarked inside transports.
+Once per game, at the start of any Game Turn from Turn 2 onward, choose 1 different enemy unit on the battlefield for each Elite unit in your army list. Each chosen unit receives 1 Pin marker. Units embarked inside transports cannot be chosen. 
 `
 };
 
@@ -2444,8 +2444,9 @@ const UNSC_UNITS = [
   baseMen: 2,
   maxMen: 2,
   weapons: [
-    { name: "Sniper Rifle" },
-    { name: "Pistol" }
+  { name: "Sniper Rifle" },
+  { name: "Pistol" },
+  { name: "DMR" }
   ],
   specialRules: ["Team Weapon", "Sniper", "Infiltrator", "For Humanity’s Survival!"],
   options: {
@@ -3232,11 +3233,12 @@ const COVENANT_UNITS = [
     baseMen: 1,
     maxMen: 4,
     weapons: [
-      { name: "Plasma Pistol" },
-      { name: "Plasma Rifle" },
-      { name: "Needler" },
-      { name: "Carbine" },
-      { name: "Spiker" }
+    { name: "Plasma Pistol" },
+    { name: "Plasma Rifle" },
+    { name: "Needler" },
+    { name: "Carbine" },
+	{ name: "Needle Rifle" },
+    { name: "Spiker" }
     ],
     specialRules: ["For The Great Journey!", "Platoon Commander"],
     options: {
@@ -3253,11 +3255,12 @@ const COVENANT_UNITS = [
     baseMen: 1,
     maxMen: 4,
     weapons: [
-      { name: "Plasma Pistol" },
-      { name: "Plasma Rifle" },
-      { name: "Needler" },
-      { name: "Carbine" },
-      { name: "Spiker" }
+    { name: "Plasma Pistol" },
+    { name: "Plasma Rifle" },
+    { name: "Needler" },
+    { name: "Carbine" },
+	{ name: "Needle Rifle" },
+    { name: "Spiker" }
     ],
     specialRules: ["For The Great Journey!", "Company Commander"],
     options: {
@@ -3276,6 +3279,7 @@ const COVENANT_UNITS = [
     { name: "Plasma Rifle" },
     { name: "Needler" },
     { name: "Carbine" },
+	{ name: "Needle Rifle" },
     { name: "Spiker" }
   ],
   specialRules: [
@@ -3306,6 +3310,7 @@ const COVENANT_UNITS = [
     { name: "Plasma Rifle" },
     { name: "Needler" },
     { name: "Carbine" },
+	{ name: "Needle Rifle" },
     { name: "Spiker" }
   ],
   specialRules: ["Infiltrator", "For The Great Journey!"],
@@ -3327,6 +3332,7 @@ const COVENANT_UNITS = [
     { name: "Plasma Rifle" },
     { name: "Needler" },
     { name: "Carbine" },
+	{ name: "Needle Rifle" },
     { name: "Spiker" }
   ],
   specialRules: ["Infiltrator", "For The Great Journey!"],
@@ -3517,13 +3523,14 @@ const COVENANT_UNITS = [
     },
     weaponReplacements: {
       "Needlers":           { max: 5, cost: -2,  replaces: "Plasma Rifle", grants: "Needler" },
+      "Needle Rifles":      { max: 5, cost: -4,  replaces: "Plasma Rifle", grants: "Needle Rifle" },
       "Covenant Carbines":  { max: 5, cost: -3,  replaces: "Plasma Rifle", grants: "Covenant Carbine" },
       "Concussion Rifle":   { max: 2, cost: 21,  replaces: "Plasma Rifle", grants: "Concussion Rifle" },
       "Plasma Repeater":    { max: 2, cost: 9,   replaces: "Plasma Rifle", grants: "Plasma Repeater" }
     },
     ncoReplacement: {
-      options: ["Plasma Rifle", "Needler", "Covenant Carbine", "Concussion Rifle", "Plasma Repeater"],
-      costs: { "Needler": -2, "Covenant Carbine": -3, "Concussion Rifle": 21, "Plasma Repeater": 9 }
+      options: ["Plasma Rifle", "Needler", "Covenant Carbine", "Needle Rifle", "Concussion Rifle", "Plasma Repeater"],
+      costs: { "Needler": -2, "Covenant Carbine": -3, "Needle Rifle": -4, "Concussion Rifle": 21, "Plasma Repeater": 9 }
     }
     // ncoExtraUpgrades could go here if needed for "Melee Weapon"
   }
@@ -3663,8 +3670,9 @@ const COVENANT_UNITS = [
   baseMen: 2,
   maxMen: 2,
   weapons: [
-    { name: "Beam Rifle" },
-    { name: "Plasma Pistol" }
+  { name: "Beam Rifle" },
+  { name: "Plasma Pistol" },
+  { name: "Needle Rifle" }
   ],
   specialRules: ["Team Weapon", "Sniper", "Infiltrator", "For The Great Journey!"],
   options: {
@@ -3967,7 +3975,7 @@ const COVENANT_VEHICLES = [
   costs: { Regular: 435, Veteran: 520 },
   weapons: [
     { name: "Hull-mounted Forward-facing Super-Heavy Anti-Tank Weapon" },
-    { name: "Turret-mounted Heavy Automatic Cannon[object Object],[object Object],[object Object],[object Object]" }
+    { name: "Turret-mounted Heavy Automatic Cannon" }
   ],
   damageValue: "10+ (Super-heavy Walker)",
   transportCapacity: 20,
@@ -3975,7 +3983,7 @@ const COVENANT_VEHICLES = [
     "Flak",
     "Excavation Beam: When targeting a building or a unit inside a building, the Super-Heavy Anti-Tank Weapon counts as HE (4\") instead.",
     "Titanic Walker: When rolling on the Vehicle Damage chart against this unit, reduce the result by 1 (to a minimum of 1).",
-    "Towering Strider: For movement purposes, this walker treats all terrain and units as open ground, except tall terrain and other Titanic Walkers."
+    "Towering Strider: For movement purposes, this vehicle treats all terrain and units as open ground, except tall terrain and other Titanic vehicles. This vehicle may Advance up to 18\" and Run up to 36\". It does not double its movement when moving along roads."
   ],
   options: {
     weaponUpgrades: {
@@ -4771,8 +4779,9 @@ const BANISHED_UNITS = [
   baseMen: 2,
   maxMen: 2,
   weapons: [
-    { name: "Beam Rifle" },
-    { name: "Plasma Pistol/Disruptor" }
+  { name: "Beam Rifle" },
+  { name: "Plasma Pistol/Disruptor" },
+  { name: "Stalker Rifle" }
   ],
   specialRules: ["Team Weapon", "Sniper", "Infiltrator", "Forged In Chains"],
   options: {
@@ -5112,7 +5121,7 @@ const BANISHED_VEHICLES = [
     "Flak",
     "Excavation Beam: When targeting a building or a unit inside a building, the Super-Heavy Anti-Tank Weapon counts as HE (4\") instead.",
     "Titanic Walker: When rolling on the Vehicle Damage chart against this unit, reduce the result by 1 (to a minimum of 1).",
-    "Towering Strider: For movement purposes, this walker treats all terrain and units as open ground, except tall terrain and other Titanic Walkers."
+    "Towering Strider: For movement purposes, this vehicle treats all terrain and units as open ground, except tall terrain and other Titanic vehicles. This vehicle may Advance up to 18\" and Run up to 36\". It does not double its movement when moving along roads."
   ]
 },
 
@@ -5746,8 +5755,9 @@ const FORERUNNER_UNITS = [
     baseMen: 2,
     maxMen: 2,
     weapons: [
-      { name: "Binary Rifle" },
-      { name: "Boltshot" }
+  { name: "Binary Rifle" },
+  { name: "Boltshot" },
+  { name: "Light Rifle" }
     ],
     specialRules: [
       "Team Weapon",
@@ -6437,8 +6447,9 @@ const FLOOD_UNITS = [
   baseMen: 2,
   maxMen: 2,
   weapons: [
-    { name: "Sniper Rifle" },
-    { name: "Pistol" }
+  { name: "Sniper Rifle" },
+  { name: "Pistol" },
+  { name: "DMR" }
   ],
   specialRules: [
     "Team Weapon",
