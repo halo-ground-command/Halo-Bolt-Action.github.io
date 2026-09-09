@@ -568,6 +568,9 @@ window.vehicleSpecialDescriptions = {
 window.unitSpecialDescriptions["MJOLNIR Systems"] =
   "Models have a 5+ cover save in Close Quarters and add +1 to their soft/hard cover saves. In addition, each time this unit suffers damage, roll one D6 for each point of damage before removing casualties. On a 6, that damage is ignored and no casualty is caused. This does not stack with the Medic rule.";
 
+window.unitSpecialDescriptions["High Resolve"] =
+  "Whenever this unit successfully passes an Order test by rolling a double, it counts as having rolled Incredible Courage! and immediately removes all of its Pin markers rather than just one.";
+
 window.unitSpecialDescriptions["M301 Grenade Launcher"] =
   "Carried in addition to the model’s other weapon. When shooting, that model may fire either the M301 or its other weapon, not both.";
 
@@ -781,16 +784,14 @@ const armyRulesText = {
 Desperate Measures
 
 - Effect: 
-When a UNSC Infantry or Artillery unit is reduced to half or less of its initial starting strength (rounding up), the remaining models in that unit gain the Stubborn special rule. Units that already have Stubborn gain the Fanatics special rule instead. Units that already have Fanatics gain MJOLNIR Systems. If they already have MJOLNIR Systems, they gain Energy Shields instead.
+When a UNSC Infantry or Artillery unit is reduced to half or less of its initial starting strength (rounding up), the remaining models in that unit gain the Stubborn special rule. Units that already have Stubborn gain Fanatics instead. Units that already have Fanatics gain High Resolve instead.
 
 Reminder:
 Stubborn: Ignore pin modifiers on Morale checks, remember Morale checks are not Order tests.
 
 Fanatics: Ignore pin modifiers on Morale checks and are not routed by pins. If defeated in close quarters, fight again immediately until they win or are wiped out.
 
-MJOLNIR Systems: 5+ cover save in Close Quarters and add +1 to their soft/hard cover saves. In addition, each time this unit suffers damage, roll one D6 for each point of damage before removing casualties. On a 6, that damage is ignored and no casualty is caused. This does not stack with the Medic rule.
-
-Energy Shields: +1 harder to damage from shooting.
+High Resolve: Whenever this unit successfully passes an Order test by rolling a double, it counts as having rolled Incredible Courage! and immediately removes all of its Pin markers rather than just one.
 
 Experienced Commanders
 
@@ -1225,6 +1226,39 @@ function applyLeaderRuleModifiers(unit, rules) {
   return finalRules;
 }
 
+function getDesperateMeasuresDisplayRule(unit, rules) {
+  // Only the normal UNSC army uses Desperate Measures.
+  // Do not apply this to alternate UNSC armies such as the Insurrection.
+  if (typeof getEffectiveArmyName === "function" && getEffectiveArmyName() !== "UNSC") {
+    return null;
+  }
+
+  // Builder uses "Team" for infantry/support teams and artillery crews.
+  if (!["Infantry", "Team", "Artillery"].includes(unit?.type)) {
+    return null;
+  }
+
+  const ruleNames = new Set(
+    (rules || []).map(rule => getRuleDisplayName(rule))
+  );
+
+  let gainedRule;
+
+  if (ruleNames.has("Fanatics")) {
+    gainedRule = "High Resolve";
+  } else if (ruleNames.has("Stubborn")) {
+    gainedRule = "Fanatics";
+  } else {
+    gainedRule = "Stubborn";
+  }
+
+  return {
+    name: `${gainedRule} [After the unit is reduced to half strength]`,
+    description: window.unitSpecialDescriptions?.[gainedRule] || ""
+  };
+}
+
+
 function getDisplaySpecialRules(unit) {
   const baseRules = Array.isArray(unit?.special)
     ? unit.special
@@ -1232,7 +1266,16 @@ function getDisplaySpecialRules(unit) {
       ? unit.specialRules
       : [];
 
-  return applyLeaderRuleModifiers(unit, baseRules);
+  const finalRules = applyLeaderRuleModifiers(unit, baseRules);
+
+  const desperateMeasuresRule =
+    getDesperateMeasuresDisplayRule(unit, finalRules);
+
+  if (desperateMeasuresRule) {
+    finalRules.push(desperateMeasuresRule);
+  }
+
+  return finalRules;
 }
 
 const LEADER_DEFS = {
