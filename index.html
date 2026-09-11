@@ -529,7 +529,7 @@ window.unitSpecialDescriptions = {
   "Wide Formation": "Models may maintain up to 2\" coherency (instead of 1\").",
   "Melee Weapon": "In close combat, Officer/NCO rolls 1 additional dice.",
   "Melee Weapons": "Every model makes 2 base attacks in close quarters instead of 1.",
-  "Attached Caste Leader": "Embedded leader model added to a squad. The unit counts as ONE unit (one order die, one pin pool). Special rules don’t share between leader and squad (except: cancels Shirkers; unit ignores -1 morale for NCO dead; tests use highest veterancy while squad models remain). Shooting: casualties must be taken from non-leader models until they’re gone (excess doesn’t spill onto leader); HE/templates & snipers can hit the leader (snipers may pick it out as NCO). Close quarters: attacker allocates attacks to leader vs squad; only attacks directed at leader can remove it. If all non-leader models are removed (casualties or rout), leader breaks off and becomes a separate 1-model unit.",
+  "Attached Caste Leader": "An Attached Caste Leader is an embedded leader model added to a squad. While non-leader models remain, the leader and squad count as one unit, sharing one Order Die, one pool of Pins, one activation and normal coherency. Special rules do not normally pass between them. Unit-wide rules such as movement, routing, compulsory behaviour, Order tests and Morale tests use the squad’s rules, though tests use the highest veterancy present. Rules that specifically affect the leader’s attacks, Damage Value, saves, weapons or other model-specific effects still apply normally. While attached, the leader cancels Shirkers and the unit ignores the -1 Morale penalty for losing its NCO. Shooting and Close Quarters attacks may be allocated between the leader and squad before rolling; resolve each separately and casualties do not spill between them. If all non-leader models are removed, the leader becomes a separate unit, retaining the unit’s Pins, Order Die and activation state, and then uses its own profile and special rules in full.",
   "Flood Burster": "When successfully entering from Reserve, one unit per turn may deploy by eruption instead of from a table edge: place it legally in open ground more than 9\" from enemies, then give it a Down order. It cannot perform more actions this turn.", 
   "Patient Predators": "If this unit is in cover from enemy shooting while it has an Ambush order, improve its Cover Save by +1. Remember rolls of 1 always fail.",
   "Brood Sac": "If this unit is not Down, when a friendly Flood Infantry unit successfully enters from Reserve, it may deploy by eruption instead of from a table edge. Remove the Spawner; it counts as destroyed. Place the entering unit with at least one model within 1\" of the Spawner’s former position, outside any building and with all models in a legal position according to the rules. The unit goes Down and takes no further action. If it cannot be placed, it remains off-table and the Spawner is not removed.",
@@ -552,7 +552,7 @@ window.vehicleSpecialDescriptions = {
   "Medical Vehicle": "Treats infantry/artillery within 6\" as having medic support.",
   "Nimble": "Evasion save improves by +1, from 5+ to 4+.",
   "One-Man Turret": "Must pass order test to Advance, fires main gun or rear MG (not both).",
-  "Open-topped": "Pinned normally, including by small arms. Destroyed if damaged in close quarters. If hit on top armour, add +1 to the damage roll and +1 to the damage table result.",
+  "Open-topped": "Pinned normally, including by small arms. If hit on top armour, add +1 to the damage roll and +1 to the damage table result. Destroyed instead of rolling on the damage table if damaged in close quarters.",
   "Recce": "Can reverse at full Advance speed instead of half. If unactivated or on Ambush, may make an Escape move when shot at; resolve the shot after the move. May also Escape from assaults starting over 6\" away. Cannot Escape while towing or against barrages/air-strikes.",
   "Reinforced Front Armour": "Front armor counts +1 higher.",
   "Slower": "Advance 6\", Run 12\".",
@@ -1363,7 +1363,7 @@ For example, on Turn 2, they enter as if it were Turn 3. On Turn 4, they enter a
       name: "Sergeant Major Avery Johnson",
       cost: 25,
       ruleName: "Hold the Line!",
-      ruleText: `Once per game, when a friendly Marine Infantry unit fails an Order test, you may use this rule: Remove all Pins from that unit and treat the Order test as passed instead.`,
+      ruleText: `Once per game, when a friendly unit fails an Order test, you may use this rule: Remove all Pins from that unit and treat the Order test as passed instead.`,
       validate: units => {
         const issues = [];
 
@@ -1386,7 +1386,7 @@ For example, on Turn 2, they enter as if it were Turn 3. On Turn 4, they enter a
     {
       id: "jerome",
       name: "Commander Jerome-092",
-      cost: 100,
+      cost: 75,
       ruleName: "MJOLNIR Mobility",
       ruleText: `When a Spartan unit is given a Run order, including an order to assault, and crosses rough ground or an obstacle, it may move up to 12 instead of halving its movement. `,
       validate: units => {
@@ -1421,7 +1421,7 @@ For example, on Turn 2, they enter as if it were Turn 3. On Turn 4, they enter a
 {
   id: "regret",
   name: "Prophet of Regret",
-  cost: 50,
+  cost: 25,
   ruleName: "Divine Mandate",
   ruleText: `Twice per game, at the start of a turn, choose one friendly Covenant Platoon Commander. Until the end of that turn, that Officer counts as a Company Commander.`,
   validate: units => {
