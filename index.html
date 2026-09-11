@@ -8797,31 +8797,61 @@ function buildWeaponsTable(unit) {
 
   if (!unit || !unitData) return table;
 
-  // 1. SPECIAL CASE: Sniper Teams (only these two units!)
-  const isSniperTeam =
-    unit.type === "Team" &&
-    unit.name === "Sniper Team" &&
-    Array.isArray(unitData.weapons) &&
-    unitData.weapons.length === 2 &&
-    unitData.baseMen === 2 &&
-    unitData.maxMen === 2;
+// 1. SPECIAL CASE: Sniper Teams
+// One model carries the Sniper weapon.
+// The Spotter chooses one of the remaining weapons.
+const isSniperTeam =
+  unit.type === "Team" &&
+  unit.name === "Sniper Team" &&
+  Array.isArray(unitData.weapons) &&
+  unitData.baseMen === 2 &&
+  unitData.maxMen === 2;
 
-	if (isSniperTeam) {
-	  const weaponsToShow = Array.isArray(unit.weapons) && unit.weapons.length
-		? unit.weapons
-		: unitData.weapons;
+if (isSniperTeam) {
+  const weaponsToShow =
+    Array.isArray(unit.weapons) && unit.weapons.length
+      ? unit.weapons
+      : unitData.weapons;
 
-	  weaponsToShow.forEach(w => {
-		let prof = parseWeaponProfile(allWeaponProfiles[getBaseWeaponName(w.name)] || "");
-		table.push({
-		  qty: 1,
-		  label: `${w.name}`,
-		  ...prof
-		});
-	  });
+  // Find the actual Sniper weapon.
+  // This also works if Sniper Rifle has been replaced by Heavy Sniper Rifle.
+  const sniperWeapon = weaponsToShow.find(w => {
+    const profile =
+      allWeaponProfiles[getBaseWeaponName(w.name)] || "";
 
-	  return table;
-	}
+    return /\bSniper\b/i.test(profile);
+  });
+
+  // Show the Sniper's weapon as fixed equipment.
+  if (sniperWeapon) {
+    const prof = parseWeaponProfile(
+      allWeaponProfiles[getBaseWeaponName(sniperWeapon.name)] || ""
+    );
+
+    table.push({
+      qty: 1,
+      label: sniperWeapon.name,
+      ...prof
+    });
+  }
+
+  // All non-Sniper weapons are choices for the Spotter.
+  weaponsToShow
+    .filter(w => w !== sniperWeapon)
+    .forEach(w => {
+      const prof = parseWeaponProfile(
+        allWeaponProfiles[getBaseWeaponName(w.name)] || ""
+      );
+
+      table.push({
+        qty: 1,
+        label: `Spotter may choose: ${w.name}`,
+        ...prof
+      });
+    });
+
+  return table;
+}
 
 	// 2. Choose-any infantry, including officers with optional M301 carriers
 	if (isChooseAnyWeaponUnit(unit, unitData)) {
