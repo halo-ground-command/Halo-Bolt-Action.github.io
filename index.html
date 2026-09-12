@@ -396,6 +396,7 @@ const allWeaponProfiles = {
   "Fists": '+1 close combat attack per Fist (Walker only)',
   "Needle Cannon": 'Range 48", Shots 2, Pen +2, Tracking, Supercombine, HE (1")',
   "Shardstorm Launcher": 'Range 36", Shots 6, Pen –, Tracking, Supercombine',
+  "Methane Keg Launcher": 'Range 12–36", Shots 1, Pen –, Indirect Fire',
   "Multiple Launcher": 'Range 36–72", Shots 1, Pen HE, Team, Fixed, Indirect Fire, ML, HE (3")',
   "Splinter Turret": 'Range 48", Shots 3, Pen +1, Team, Fixed, HE (1")',
   "Scrap cannon": 'Range 48", Shots 3, Pen +1, Team, Fixed, HE (1")',
@@ -826,7 +827,7 @@ When creating a Covenant army, you may select one bonus from the following list:
 Zealotry
 
 - Effect: 
-Regular or Veteran Covenant units ignore the Morale penalty from 1 Pin when taking Advance or Run order tests, if they are not benefiting from a friendly morale bonus bubble.
+Regular or Veteran Covenant units ignore the Morale penalty from 1 Pin when taking Advance order tests, if they are not benefiting from a friendly morale bonus bubble.
 
 Orbital Superiority
 
@@ -848,7 +849,7 @@ Once per turn, when a Banished Infantry unit enters the battlefield from Reserve
 Trophy Takers
 
 - Effect:
-When a Banished Brute unit wins a Close Quarters combat for the first time during the battle, it gains Trophy Plate Harness for the rest of the battle. If a unit already has Trophy Plate Harness, improve its Trophy Plate Harness save to 5+ in Close Quarters for the rest of the battle.
+The first time a Banished Brute Infantry unit wins a Close Quarters combat, it gains Trophy Plate Harness for the rest of the battle. The first time any friendly unit that began the battle with Trophy Plate Harness wins a Close Quarters combat, improve its Trophy Plate Harness save to 5+ in Close Quarters for the rest of the battle.
 
 Reminder:
 Trophy Plate Harness: Models with Trophy Plate Harness have a 6+ cover save in Close Quarters.
@@ -934,7 +935,7 @@ Additionally, you may deploy one Infantry unit from your army list as if it had 
 Hidden Sentries
 
 - Effect:
-Enemy units using the Infiltrator special rule cannot deploy within 24" of any Insurrectionist unit that was set up on the table before them, instead of the usual 12". If this prevents an enemy Infiltrator unit from being legally deployed, that unit must be deployed as if it did not have Infiltrator instead.
+Each opposing army that is not an Insurrectionist army may deploy a maximum of one unit using the Infiltrator special deployment rules. Any additional units in that army with the Infiltrator special rule cannot use their Infiltrator special deployment.
 
 Concealed Firing Positions
 
@@ -1258,6 +1259,57 @@ function getDesperateMeasuresDisplayRule(unit, rules) {
   };
 }
 
+function getTrophyTakersDisplayRule(unit, rules) {
+  // Trophy Takers is a Banished army rule.
+  if (
+    typeof getEffectiveArmyName === "function" &&
+    getEffectiveArmyName() !== "Banished"
+  ) {
+    return null;
+  }
+
+  const ruleNames = new Set(
+    (rules || []).map(rule => getRuleDisplayName(rule))
+  );
+
+  // Any unit that BEGINS the battle with Trophy Plate Harness
+  // improves it from 6+ to 5+ after its first CQ victory.
+  // This includes Janissaries and Brutes that purchased the upgrade.
+  if (ruleNames.has("Trophy Plate Harness")) {
+    return {
+      name: "Trophy Plate Harness (5+) [After first Close Quarters win]",
+      description:
+        "Trophy Plate Harness improves to a 5+ cover save in Close Quarters for the rest of the battle."
+    };
+  }
+
+  // Banished Brute Infantry gain Trophy Plate Harness
+  // after their first CQ victory.
+  if (isBruteInfantryForLeader(unit)) {
+    return {
+      name: "Trophy Plate Harness [After first Close Quarters win]",
+      description:
+        window.unitSpecialDescriptions?.["Trophy Plate Harness"] ||
+        "Models have a 6+ cover save in Close Quarters."
+    };
+  }
+
+  // Jega's Trophy Assassins extends Trophy Takers
+  // to Banished Elite Infantry.
+  if (
+    getSelectedLeaderId() === "jega" &&
+    isEliteInfantryForLeader(unit)
+  ) {
+    return {
+      name: "Trophy Plate Harness [After first Close Quarters win]",
+      description:
+        window.unitSpecialDescriptions?.["Trophy Plate Harness"] ||
+        "Models have a 6+ cover save in Close Quarters."
+    };
+  }
+
+  return null;
+}
 
 function getDisplaySpecialRules(unit) {
   const baseRules = Array.isArray(unit?.special)
@@ -1274,6 +1326,23 @@ function getDisplaySpecialRules(unit) {
   if (desperateMeasuresRule) {
     finalRules.push(desperateMeasuresRule);
   }
+
+  const trophyTakersRule =
+    getTrophyTakersDisplayRule(unit, finalRules);
+
+  if (trophyTakersRule) {
+    finalRules.push(trophyTakersRule);
+  }
+
+  // Display special rules alphabetically by rule name.
+  finalRules.sort((a, b) => {
+    const nameA = getRuleDisplayName(a).trim();
+    const nameB = getRuleDisplayName(b).trim();
+
+    return nameA.localeCompare(nameB, undefined, {
+      sensitivity: "base"
+    });
+  });
 
   return finalRules;
 }
@@ -1518,9 +1587,11 @@ For example, on Turn 2, they enter as if it were Turn 3. On Turn 4, they enter a
       name: "Yapyap the Destroyer",
       cost: 75,
       ruleName: "Strength in Numbers",
-      ruleText: `Grunt Infantry units may re-roll failed Order tests while they are within 6" of another friendly Grunt Infantry unit that has 7 or more models.
+ruleText: `Grunt Infantry units may re-roll failed Order tests while they are within 6" of another friendly Grunt Infantry unit that has 7 or more models.
 
-In addition, an army led by Yapyap the Destroyer may include two additional Grunt Cannon Fodder Mob units beyond the normal limits (up to 2 per platoon, and 4 in total per army).`,
+In addition, an army led by Yapyap the Destroyer may include two additional Grunt Cannon Fodder Mob units beyond the normal limits (up to 2 per platoon, and 4 in total per army).
+
+An army led by Yapyap the Destroyer may also include vehicles from the Banished army list.`,
       validate: units => {
         const issues = [];
 
@@ -2423,7 +2494,28 @@ const UNSC_UNITS = [
 		}
 	  }
 	},
+	{
+	  name: "Suicide Anti-Tank Team",
+	  type: "Team",
+	  allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
+	  costs: { Inexperienced: 14, Regular: 20, Veteran: 26 },
+	  baseMen: 1,
+	  maxMen: 1,
 
+	  // Only available when Army: Insurrection is selected.
+	  requiresArmyBonus: "Insurrection",
+
+	  weapons: [{ name: "Explosive Charge" }],
+
+	  specialRules: [
+		{
+		  name: "Suicide Charge",
+		  description: "If this model successfully assaults an enemy unit and makes contact, it is immediately removed, and the assaulted unit either suffers a single hit with a Penetration value of +8 (Without any other modifiers), or HE (2\")."
+		},
+		"Tank Hunters",
+		"Infiltrator"
+	  ]
+	},
 
   // Teams
   {
@@ -5275,6 +5367,34 @@ const BANISHED_VEHICLES = [
       "Shredder Ram: This vehicle may assault soft-skin (6+) and light vehicles (7+) as if it were a fully enclosed tracked tank, following the normal vehicle assault rules."
     ]
   },
+{
+  name: "Methane Wagon",
+  type: "Car",
+  allowedVeterancy: ["Regular", "Veteran"],
+  costs: { Regular: 65, Veteran: 78 },
+  weapons: [
+    { name: "Forward-facing Hull-mounted Methane Keg Launcher" }
+  ],
+  damageValue: "7+ (Light Anti-Grav Vehicle)",
+  transportCapacity: 0,
+  specialRules: [
+    "Open-topped",
+    "Slower",
+    "Reinforced Front Armour",
+    {
+      name: "Infusion-Enriched Methane",
+      description: 'All Grunt Infantry and Artillery models within 6" of this vehicle count as being within 6" of a Medic. In addition, Grunt Infantry units that are issued an order while within 6" of this vehicle count as having the Berserker special rule for the duration of that activation. All Infantry and Artillery units that are not Grunts and are issued an order while within 6" of this vehicle count as having the Shirkers special rule for the duration of that activation.'
+    },
+    {
+      name: "Methane Keg Launcher",
+      description: 'Range 12–36", Indirect Fire. This weapon does not inflict damage. If the shot hits, place a 3" diameter Methane Cloud marker centred on the target point. The marker follows the normal rules for Smoke. Units within 6" are affected by Infusion-Enriched Methane exactly as if they were within 6" of the Methane Wagon.'
+    },
+    {
+      name: "Volatile Methane",
+      description: 'If this vehicle is destroyed as the result of a shooting attack or assault, every unit within 6" of the vehicle suffers one HE (1") hit.'
+    }
+  ]
+},
 
   // AIRCRAFTS
   {
@@ -5402,18 +5522,25 @@ const BANISHED_VEHICLES = [
 	allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
 	costs: { Inexperienced: 52, Regular: 65, Veteran: 78 },
 	weapons: [ { name: "Turret-mounted Medium Plasma MG" } ],
-	damageValue: "7+ (Armoured Anti-Grav)", transportCapacity: 10,
+	damageValue: "7+ (Armoured Anti-Grav)", transportCapacity: 8,
 	specialRules: [ "Recce", "Open-topped" ]
 	},
 	{
-	name: "Eklon'Dal Workshop Warrior Carriage",
-	type: "Car",
-	forceOrgSlot: "transport",
-	allowedVeterancy: ["Regular", "Veteran"],
-	costs: { Regular: 125, Veteran: 150 },
-	weapons: [ { name: "Casement-mounted Forward-facing Light Anti-Tank Weapon" } ],
-	damageValue: "7+ (Armoured Anti-Grav)", transportCapacity: 16,
-	specialRules: [ "Reinforced Front Armour", "Versatile: The Light AT Gun can also fire as a Light Howitzer: Range 48\" (30–60\"), Shots 1, Pen HE, Team, Fixed, Howitzer, HE (2\")." ]
+	  name: "Eklon'Dal Workshop Warrior Carriage",
+	  type: "Car",
+	  forceOrgSlot: "transport",
+	  allowedVeterancy: ["Regular", "Veteran"],
+	  costs: { Regular: 125, Veteran: 150 },
+	  weapons: [
+		{ name: "Casement-mounted Forward-facing Light Anti-Tank Weapon" }
+	  ],
+	  damageValue: "7+ (Armoured Anti-Grav)",
+	  transportCapacity: 12,
+	  specialRules: [
+		"Reinforced Front Armour",
+		'Versatile: The Light Anti-Tank Weapon can also fire as a Light Howitzer: Range 48" (30–60"), Shots 1, Pen HE, Team, Fixed, Howitzer, HE (2").',
+		"Heavy Thrusters: This vehicle only doubles its movement on roads when given a Run order."
+	  ]
 	}
 ];
 
@@ -7044,8 +7171,23 @@ function getArmyTotal() {
 }
 
 function onLeaderChange() {
+  const previousLeader = window.selectedLeader;
+
   const sel = document.getElementById("leaderSelect");
   window.selectedLeader = sel ? sel.value : "";
+
+  // If Yapyap is no longer selected, remove vehicles
+  // that were only available through his leader rule.
+  if (
+    previousLeader === "yapyap" &&
+    window.selectedLeader !== "yapyap"
+  ) {
+    window.armyList = (window.armyList || []).filter(
+      unit => !unit.isYapyapBorrowed
+    );
+  }
+
+  populateUnitSelect();
   renderArmyList();
 }
 
@@ -9414,6 +9556,30 @@ function getUnitData(unit) {
   if (!unit || !window.currentFaction) return null;
 
   let rawUnitData = null;
+  
+// --- Special case: Yapyap borrowed Banished vehicle ---
+if (
+  window.currentFaction === "Covenant" &&
+  unit.isYapyapBorrowed &&
+  unit.sourceFaction === "Banished"
+) {
+  const sourceVehicles = window.VEHICLE_LISTS?.Banished || [];
+
+  const baseName = unit.originalName || unit.name;
+
+  rawUnitData =
+    sourceVehicles.find(
+      v => v.name === baseName && v.type === unit.type
+    ) || null;
+
+  return injectLeaderMeleeNcoOptions(
+    unit,
+    injectM301Options(
+      unit,
+      applyArmouryToUnitData(unit, rawUnitData)
+    )
+  );
+}
 
   // --- Special case: Flood borrowed vehicle (Corrupted Arsenal) ---
   if (window.currentFaction === "Flood" && unit.isFloodBorrowed && unit.sourceFaction) {
@@ -10118,14 +10284,42 @@ function getUnitsForSelector(faction) {
     );
   }
 
-  // Covenant army-bonus locked units.
-  // Swords of Sanghelios uses Covenant as its base list, but should not unlock Caste System units.
-  if (faction === "Covenant") {
-    base = base.filter(unit =>
-      !unit.requiresArmyBonus || unit.requiresArmyBonus === window.selectedArmyBonus
-    );
-  }
+	// Army-bonus locked units.
+	// Used for things such as Covenant Cannon Fodder
+	// and Insurrection-only units.
+	if (faction === "UNSC" || faction === "Covenant") {
+	  base = base.filter(unit =>
+		!unit.requiresArmyBonus ||
+		unit.requiresArmyBonus === window.selectedArmyBonus
+	  );
+	}
+// Yapyap the Destroyer: add Banished-only vehicles to the Covenant list.
+// Vehicles already present in the Covenant list are not duplicated.
+if (
+  faction === "Covenant" &&
+  getSelectedLeaderId() === "yapyap"
+) {
+  const covenantVehicles = window.VEHICLE_LISTS?.Covenant || [];
+  const banishedVehicles = window.VEHICLE_LISTS?.Banished || [];
 
+  const covenantVehicleKeys = new Set(
+    covenantVehicles.map(v => `${v.type}::${v.name}`)
+  );
+
+  const yapyapVehicles = banishedVehicles
+    .filter(v => !covenantVehicleKeys.has(`${v.type}::${v.name}`))
+    .map(v => {
+      const cloned = JSON.parse(JSON.stringify(v));
+
+      cloned.isYapyapBorrowed = true;
+      cloned.sourceFaction = "Banished";
+      cloned.originalName = v.name;
+
+      return cloned;
+    });
+
+  base = base.concat(yapyapVehicles);
+}
   // If not Flood, return normal list
   if (faction !== "Flood") return base;
 
@@ -10339,10 +10533,11 @@ function addSelectedUnit() {
 	armoury: {},
     special: Array.isArray(unit.specialRules) ? [...unit.specialRules] : (unit.specialRules ? [unit.specialRules] : []),
     forcedCommandVehicle: false,
-	  // ✅ keep source info for Corrupted Arsenal vehicles
-	  isFloodBorrowed: !!unit.isFloodBorrowed,
-	  sourceFaction: unit.sourceFaction || null,
-	  originalName: unit.originalName || unit.name,
+	// Keep source info for borrowed vehicles.
+	isFloodBorrowed: !!unit.isFloodBorrowed,
+	isYapyapBorrowed: !!unit.isYapyapBorrowed,
+	sourceFaction: unit.sourceFaction || null,
+	originalName: unit.originalName || unit.name,
 	cost: baseCost
   };
 
