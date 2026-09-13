@@ -79,8 +79,8 @@ body {
 .card h3 { margin: 0 0 7px 0; font-size: 1.13em; }
 .card .details { margin: 4px 0 0 0; font-size: 0.98em; }
 .card .details b { font-weight: 600; }
-.remove-btn, .edit-btn {
-  width: 48%;
+.remove-btn, .edit-btn, .duplicate-btn {
+  width: 31%;
   font-weight: bold;
   margin: 8px 1% 0 1%;
   padding: 8px 0;
@@ -88,10 +88,42 @@ body {
   display: inline-block;
   float: none;
 }
+
+.remove-btn { background: #b33b4b; }
+.remove-btn:hover { background: #d34040; }
+
+.edit-btn { background: #333; }
+.edit-btn:hover { background: #555; }
+
+.duplicate-btn { background: #355fdc; }
+.duplicate-btn:hover { background: #2e50b7; }
 .remove-btn { background: #b33b4b; }
 .remove-btn:hover { background: #d34040; }
 .edit-btn { background: #333; }
 .edit-btn:hover { background: #555; }
+
+.move-row {
+  display: flex;
+  gap: 2%;
+  margin-top: 8px;
+}
+
+.move-btn {
+  width: 49%;
+  padding: 6px 0;
+  font-weight: bold;
+  background: #29294d;
+}
+
+.move-btn:hover:not(:disabled) {
+  background: #3a3a68;
+}
+
+.move-btn:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
 button {
   background: #355fdc;
   color: #fff;
@@ -346,7 +378,7 @@ const allWeaponProfiles = {
   "Heavy Plasma MG": 'Range 48", Shots 6, Pen +1, Team, Fixed, MG, Overheat',
   "Anti-Tank Rifle": 'Range 48", Shots 1, Pen +2, –',
   "Skewer": 'Range 48", Shots 1, Pen +2, –',
-  "Spartan Laser": 'Range 36", Shots 1, Pen +7, Team, Battery Charge, Shaped Charge',
+  "Spartan Laser": 'Range 36", Shots 1, Pen +6, Team, Battery Charge, Shaped Charge',
   "Rocket Launcher": 'Range 30", Shots 1, Pen +5, Team, Shaped Charge, Tracking, HE (1")',
   "Plasma Launcher": 'Range 30", Shots 1, Pen +5, Team, Shaped Charge, Tracking, HE (1")',
   "Fuel Rod Gun": 'Range 30", Shots 1, Pen +4, Team, Shaped Charge, HE (2")',
@@ -362,6 +394,7 @@ const allWeaponProfiles = {
   "Medium Anti-Tank Weapon": 'Range 60", Shots 1, Pen +5, Team, Fixed, HE (1"), AT Gun',
   "Heavy Anti-Tank Weapon": 'Range 72", Shots 1, Pen +6, Team, Fixed, HE (2"), AT Gun',
   "Super-Heavy Anti-Tank Weapon": 'Range 84", Shots 1, Pen +7, Team, Fixed, HE (3"), AT Gun',
+  "Super Sentinel Beam": 'Range 36", Shots 1, Pen +2, AT Gun',
 
   // COMBINED
   "Rocket Launcher/Plasma Launcher": 'Range 30", Shots 1, Pen +5, Team, Shaped Charge, Tracking, HE (1")',
@@ -403,7 +436,7 @@ const allWeaponProfiles = {
   "Unarmed": 'No ranged weapon',
 
   // If you keep using "Explosive Charge" as a weapon label in squads
-  "Explosive Charge": 'Range – , Shots – , Pen +8, Suicide Charge (special)',
+  "Explosive Charge": 'Range –, Shots –, Pen Special, Suicide Charge, HE (2")',
   
   // FLOOD CUSTOM WEAPONS
   "Tentacle Lash": 'Range 6", Shots 1, Pen +2, Shaped Charge',
@@ -557,6 +590,7 @@ window.vehicleSpecialDescriptions = {
   "Recce": "Can reverse at full Advance speed instead of half. If unactivated or on Ambush, may make an Escape move when shot at; resolve the shot after the move. May also Escape from assaults starting over 6\" away. Cannot Escape while towing or against barrages/air-strikes.",
   "Reinforced Front Armour": "Front armor counts +1 higher.",
   "Slower": "Advance 6\", Run 12\".",
+  "Sustained Beam": "If an AT Gun on this unit hits its target, draw a straight line from this unit to that target. Each other unit crossed by the line may also be hit; make a separate To Hit roll at -1 for each, plus any other modifiers that may apply. Flying Aircraft are ignored for this rule. If the original target is a Flying Aircraft, this rule does not apply.",
   "Slow Load": "Can only activate after another friendly unit has already activated in the turn; skip the first drawn dice and return it to the bag if only Slow Load units remain.",
   "Turn on the Spot": "Free pivoting during moves.",
   "Turret Rear-Mounted Machine Gun": "Rear MG fires opposite direction of main turret weapon.",
@@ -586,6 +620,9 @@ window.unitSpecialDescriptions["Plasma Capacitor Cells"] =
 
 window.unitSpecialDescriptions["Trophy Plate Harness"] =
   "Models have a 6+ cover save in Close Quarters.";
+
+window.unitSpecialDescriptions["Brute Grenadiers"] =
+  "Double the number of shots made by this unit’s weapons. In addition, if this unit is destroyed in Close Quarters, the enemy unit involved immediately suffers one HE (1\") hit.";
 
 window.unitSpecialDescriptions["Reconstruction Matrix"] =
   "After a successful Rally order, roll 1D6 for each missing model. If one or more results equals/exceeds this unit’s DV, return 1 removed model, up to starting size. Energy Shields worsen the required result by +1, max 6+. Max 1 model returned per Rally.";
@@ -699,6 +736,18 @@ Covenant: [
         unit.veterancy === "Veteran" &&
         unit.type === "Infantry" &&
         isBrute(unit, unitData)
+    },
+    {
+      id: "bruteGrenadiers",
+      type: "ruleCheckbox",
+      label: "Brute Grenadiers",
+      cost: 20,
+      costMode: "flat",
+      grantsRules: ["Brute Grenadiers"],
+      appliesTo: (unit, unitData) =>
+        window.currentFaction === "Banished" &&
+        unit.name === "Grenade Launcher Team" &&
+        unit.doctrine === "Brute"
     }
   ],
 
@@ -1406,7 +1455,7 @@ For example, on Turn 2, they enter as if it were Turn 3. On Turn 4, they enter a
         );
 
         const transports = units.filter(u => isNonFlyingVehicle(u) && hasTransportCapacity(u));
-        const hasDV8Transport = transports.some(u => hasDVAtLeast(u, 8));
+        const hasDV7Transport = transports.some(u => hasDVAtLeast(u, 7));
 
         if (trooperOrMarineInfantry < 4) {
           issues.push(`Sergeant John Forge requires at least 4 Trooper or Marine Infantry units. Current: ${trooperOrMarineInfantry}`);
@@ -1420,8 +1469,8 @@ For example, on Turn 2, they enter as if it were Turn 3. On Turn 4, they enter a
           issues.push(`Sergeant John Forge requires at least 2 non-flying Vehicles with transport capacity. Current: ${transports.length}`);
         }
 
-        if (!hasDV8Transport) {
-          issues.push("Sergeant John Forge requires at least one transport Vehicle with Damage Value 8+ or higher.");
+        if (!hasDV7Transport) {
+          issues.push("Sergeant John Forge requires at least one transport Vehicle with Damage Value 7+ or higher.");
         }
 
         return issues;
@@ -2494,28 +2543,36 @@ const UNSC_UNITS = [
 		}
 	  }
 	},
-	{
-	  name: "Suicide Anti-Tank Team",
-	  type: "Team",
-	  allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
-	  costs: { Inexperienced: 14, Regular: 20, Veteran: 26 },
-	  baseMen: 1,
-	  maxMen: 1,
+{
+  name: "Suicide Anti-Tank Team",
+  type: "Team",
+  allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
+  costs: { Inexperienced: 14, Regular: 20, Veteran: 26 },
+  baseMen: 1,
+  maxMen: 2,
+  allowManualMen: true,
 
-	  // Only available when Army: Insurrection is selected.
-	  requiresArmyBonus: "Insurrection",
+  requiresArmyBonus: "Insurrection",
 
-	  weapons: [{ name: "Explosive Charge" }],
+  weapons: [{ name: "Explosive Charge" }],
 
-	  specialRules: [
-		{
-		  name: "Suicide Charge",
-		  description: "If this model successfully assaults an enemy unit and makes contact, it is immediately removed, and the assaulted unit either suffers a single hit with a Penetration value of +8 (Without any other modifiers), or HE (2\")."
-		},
-		"Tank Hunters",
-		"Infiltrator"
-	  ]
-	},
+  specialRules: [
+    {
+      name: "Suicide Charge",
+      description: "After this unit successfully assaults an enemy unit and reaches Close Quarters, immediately remove all remaining models from this unit. If 1 model is removed, inflict one HE (2\") hit or make one Damage roll against the vehicle’s DV with +4 Penetration and no other modifiers. If 2 models are removed, inflict 2× HE (2\") hits or make the Damage roll with +6 Penetration instead."
+    },
+    "Tank Hunters",
+    "Infiltrator"
+  ],
+
+  options: {
+    extraMenCost: {
+      Inexperienced: 14,
+      Regular: 20,
+      Veteran: 26
+    }
+  }
+},
 
   // Teams
   {
@@ -3210,6 +3267,22 @@ const UNSC_VEHICLES = [
     }
   }
 },
+{
+  name: "EV-44 Nightingale",
+  type: "Aircraft",
+  allowedVeterancy: ["Regular", "Veteran"],
+  costs: { Regular: 75, Veteran: 90 },
+  weapons: [],
+  damageValue: "7+ (Medium Aircraft)",
+  transportCapacity: 5,
+  specialRules: [
+    "Medical Vehicle",
+    {
+      name: "Camouflaging Jammers",
+      description: "Friendly Infantry and Artillery units with at least one model within 6\" of this vehicle count as having the Stealth special rule. Enemy Infantry and Artillery units with at least one model within 6\" of this vehicle cannot benefit from the Stealth special rule."
+    }
+  ]
+},
   {
     name: "AV-22 Sparrowhawk",
     type: "Aircraft",
@@ -3330,27 +3403,29 @@ const UNSC_VEHICLES = [
     type: "Armoured Car",
     forceOrgSlot: "transport",
     allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
-    costs: { Inexperienced: 45, Regular: 55, Veteran: 65 },
+    costs: { Inexperienced: 56, Regular: 70, Veteran: 84 },
     weapons: [],
     damageValue: "7+ (Armoured Car)",
     transportCapacity: 15,
     specialRules: []
   },
-  {
-    name: "M650 Mastodon",
-    type: "Tank",
-    forceOrgSlot: "transport",
-    allowedVeterancy: ["Regular", "Veteran"],
-    costs: { Regular: 120, Veteran: 145 },
-    weapons: [
-      { name: "Turret-mounted Heavy Machine Gun" }
-    ],
-    damageValue: "8+ (Light Tank)",
-    transportCapacity: 12,
-    specialRules: [
-      "Reinforced Front Armour"
-    ]
-  }
+{
+  name: "M650 Mastodon",
+  type: "Armoured Car",
+  forceOrgSlot: "transport",
+  allowedVeterancy: ["Regular", "Veteran"],
+  costs: { Regular: 110, Veteran: 132 },
+  weapons: [
+    { name: "Turret-mounted Heavy Machine Gun" }
+  ],
+  damageValue: "7+ (Armoured Carrier)",
+  transportCapacity: 12,
+  specialRules: [
+    "Reinforced Front Armour",
+    "All-Terrain",
+    "Slower"
+  ]
+}
 ];
 
 
@@ -3726,19 +3801,34 @@ const COVENANT_UNITS = [
       }
     }
   },
-  {
-    name: "Suicide Anti-Tank Team",
-    type: "Team",
-    allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
-    costs: { Inexperienced: 14, Regular: 20, Veteran: 26 },
-    baseMen: 1,
-    maxMen: 1,
-    weapons: [{ name: "Explosive Charge" }],
-    specialRules: [
-       "Tank Hunters", "Infiltrator",
-	  { name: "Suicide Charge", description: "If this model successfully assaults an enemy unit and makes contact, it is immediately removed, and the assaulted unit either suffers a single hit with a Penetration value of +8 (Without any other modifiers), or HE 2"}
-    ]
-  },
+{
+  name: "Suicide Anti-Tank Team",
+  type: "Team",
+  allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
+  costs: { Inexperienced: 14, Regular: 20, Veteran: 26 },
+  baseMen: 1,
+  maxMen: 2,
+  allowManualMen: true,
+
+  weapons: [{ name: "Explosive Charge" }],
+
+  specialRules: [
+    {
+      name: "Suicide Charge",
+      description: "After this unit successfully assaults an enemy unit and reaches Close Quarters, immediately remove all remaining models from this unit. If 1 model is removed, inflict one HE (2\") hit or make one Damage roll against the vehicle’s DV with +4 Penetration and no other modifiers. If 2 models are removed, inflict 2× HE (2\") hits or make the Damage roll with +6 Penetration instead."
+    },
+    "Tank Hunters",
+    "Infiltrator"
+  ],
+
+  options: {
+    extraMenCost: {
+      Inexperienced: 14,
+      Regular: 20,
+      Veteran: 26
+    }
+  }
+},
   {
     name: "Huragok",
     type: "Infantry",
@@ -4091,7 +4181,7 @@ const COVENANT_VEHICLES = [
   name: 'Type-30 "Locust"',
   type: "Walker",
   allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
-  costs: { Inexperienced: 132, Regular: 165, Veteran: 198 },
+  costs: { Inexperienced: 140, Regular: 175, Veteran: 210 },
   weapons: [
     { name: "Turret-mounted Medium Anti-Tank Weapon" }
   ],
@@ -4100,6 +4190,7 @@ const COVENANT_VEHICLES = [
   specialRules: [
     "Slower",
     "Shielded Hull",
+    "Sustained Beam",
     'Excavation Beam: When targeting a unit inside a building or a building, the attack counts as HE (3") instead.'
   ]
 },
@@ -4107,7 +4198,7 @@ const COVENANT_VEHICLES = [
   name: "Deutoros-pattern Scarab",
   type: "Walker",
   allowedVeterancy: ["Regular", "Veteran"],
-  costs: { Regular: 435, Veteran: 520 },
+  costs: { Regular: 470, Veteran: 565 },
   weapons: [
     { name: "Hull-mounted Forward-facing Super-Heavy Anti-Tank Weapon" },
     { name: "Turret-mounted Heavy Automatic Cannon" }
@@ -4116,9 +4207,10 @@ const COVENANT_VEHICLES = [
   transportCapacity: 20,
   specialRules: [
     "Flak",
+	"Sustained Beam",
     "Excavation Beam: When targeting a building or a unit inside a building, the Super-Heavy Anti-Tank Weapon counts as HE (4\") instead.",
     "Titanic Walker: When rolling on the Vehicle Damage chart against this unit, reduce the result by 1 (to a minimum of 1).",
-    "Towering Strider: For movement purposes, this vehicle treats all terrain and units as open ground, except tall terrain and other Titanic vehicles. This vehicle may Advance up to 18\" and Run up to 36\". It does not double its movement when moving along roads."
+    "Towering Strider: For movement purposes, this vehicle treats all terrain and units as open ground, except tall terrain and other Titanic vehicles. This vehicle may Advance up to 18\" and Run up to 36\"."
   ],
   options: {
     weaponUpgrades: {
@@ -4250,7 +4342,7 @@ const COVENANT_VEHICLES = [
     transportCapacity: 0,
     specialRules: [
       "Open-topped",
-      "Shredder Ram: This vehicle may assault soft-skin (6+) and light vehicles (7+) as if it were a fully enclosed tracked tank, following the normal vehicle assault rules."
+      "Shredder Ram: This vehicle may assault infantry, artillery, soft-skin (6+) and light vehicles (7+) as if it were a fully enclosed tracked tank, following the normal vehicle assault rules."
     ]
   },
   {
@@ -4333,31 +4425,42 @@ const COVENANT_VEHICLES = [
   type: "Aircraft",
   allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
   costs: { Inexperienced: 108, Regular: 135, Veteran: 162 },
+
   weapons: [
     { name: "Turret-mounted Light Plasma Cannon" }
   ],
+
   damageValue: "8+ (Heavy Aircraft)",
   transportCapacity: 16,
+
   specialRules: [
-    "Flak"
+    "Flak",
+    {
+      name: "Gravity Lift",
+      description: "While Flying, if this Aircraft has not moved this turn, transported units may disembark from it as though it were Landed. If a unit does so, this Aircraft cannot Advance or Run for the rest of the turn."
+    }
   ],
+
   options: {
     weaponUpgrades: {
       "2 Turret-mounted Light Plasma Cannons": {
         cost: 50,
         addsWeapon: "2x Turret-mounted Light Plasma Cannons"
       },
-      "2 Pintle-mounted Medium Plasma MGs (left and right arcs)": {
+
+      "2 Pintle-mounted Medium Plasma MGs (front and right arcs)": {
         cost: 30,
         addsWeapon: [
-          "Pintle-mounted Medium Plasma MG (left arc)",
+          "Pintle-mounted Medium Plasma MG (front arc)",
           "Pintle-mounted Medium Plasma MG (right arc)"
         ]
       },
+
       "Command Vehicle": {
         cost: 10,
         grantsRule: "Command Vehicle"
       },
+
       "Shielded Hull": {
         cost: 20,
         grantsRule: "Shielded Hull"
@@ -4390,7 +4493,7 @@ const COVENANT_VEHICLES = [
     type: "Car",
 	forceOrgSlot: "transport",
     allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
-    costs: { Inexperienced: 32, Regular: 40, Veteran: 48 },
+    costs: { Inexperienced: 40, Regular: 50, Veteran: 60 },
     weapons: [],
     damageValue: "7+ (Armoured Anti-Grav)",
     transportCapacity: 10,
@@ -4820,17 +4923,27 @@ const BANISHED_UNITS = [
   allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
   costs: { Inexperienced: 14, Regular: 20, Veteran: 26 },
   baseMen: 1,
-  maxMen: 1,
+  maxMen: 2,
+  allowManualMen: true,
+
   weapons: [{ name: "Explosive Charge" }],
+
   specialRules: [
     {
       name: "Suicide Charge",
-      description: "If this model successfully assaults an enemy unit and makes contact, it is immediately removed. The assaulted unit suffers either a single hit with a Penetration value of +8, with no other Penetration modifiers, or HE (2\")."
+      description: "After this unit successfully assaults an enemy unit and reaches Close Quarters, immediately remove all remaining models from this unit. If 1 model is removed, inflict one HE (2\") hit or make one Damage roll against the vehicle’s DV with +4 Penetration and no other modifiers. If 2 models are removed, inflict 2× HE (2\") hits or make the Damage roll with +6 Penetration instead."
     },
     "Tank Hunters",
-    "Infiltrator",
+    "Infiltrator"
   ],
+
   options: {
+    extraMenCost: {
+      Inexperienced: 14,
+      Regular: 20,
+      Veteran: 26
+    },
+
     squadUpgrades: {
       "Grunt Rider": {
         cost: 4,
@@ -4886,26 +4999,41 @@ const BANISHED_UNITS = [
     }
   }
 },
-  {
-    name: "Anti Tank Team",
-    type: "Team",
-    allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
-    costs: { Inexperienced: 49, Regular: 70, Veteran: 91 },
-    baseMen: 2,
-    maxMen: 2,
-    weapons: [{ name: "Fuel Rod Gun/Hydra" }],
-    specialRules: ["Team Weapon", "Forged In Chains"],
-    options: {
-      squadUpgrades: {
-        "Rocket Launcher/Plasma Launcher": {
-          cost: 0,
-          grantsRule: "Rocket Launcher/Plasma Launcher",
-          perModel: false,
-          replacesWeapon: "Fuel Rod Gun/Hydra"
-        }
+{
+  name: "Anti Tank Team",
+  type: "Team",
+  allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
+  costs: { Inexperienced: 49, Regular: 70, Veteran: 91 },
+  baseMen: 2,
+  maxMen: 2,
+
+  weapons: [
+    { name: "Fuel Rod Gun/Hydra" }
+  ],
+
+  specialRules: [
+    "Team Weapon",
+    "Forged In Chains"
+  ],
+
+  options: {
+    squadUpgrades: {
+      "Rocket Launcher/Plasma Launcher": {
+        cost: 0,
+        grantsRule: "Rocket Launcher/Plasma Launcher",
+        perModel: false,
+        replacesWeapon: "Fuel Rod Gun/Hydra"
+      },
+
+      "Heavy Grunts": {
+        cost: 0,
+        perModel: false,
+        grantsRule: ["Hardened", "Slow"],
+        requiresNoDoctrine: true
       }
     }
-  },
+  }
+},
 {
   name: "Sniper Team",
   type: "Team",
@@ -5201,7 +5329,7 @@ const BANISHED_VEHICLES = [
   name: 'Type-30 "Locust"',
   type: "Walker",
   allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
-  costs: { Inexperienced: 132, Regular: 165, Veteran: 198 },
+  costs: { Inexperienced: 140, Regular: 175, Veteran: 210 },
   weapons: [
     { name: "Turret-mounted Medium Anti-Tank Weapon" }
   ],
@@ -5210,6 +5338,7 @@ const BANISHED_VEHICLES = [
   specialRules: [
     "Slower",
     "Shielded Hull",
+    "Sustained Beam",
     'Excavation Beam: When targeting a unit inside a building or a building, the attack counts as HE (3") instead.'
   ]
 },
@@ -5236,7 +5365,7 @@ const BANISHED_VEHICLES = [
 	name: "Goliath",
 	type: "Walker",
 	allowedVeterancy: ["Regular", "Veteran"],
-	costs: { Regular: 50, Veteran: 60 },
+	costs: { Regular: 60, Veteran: 72 },
 	weapons: [ { name: "Fist" }, { name: "Fist" } ],
 	damageValue: "7+ (Light Walker)", transportCapacity: 0,
 	specialRules: [ "Assault", "Fist", "Open-topped", "Siege Fists: +1 Penetration to melee attacks." ]
@@ -5245,7 +5374,7 @@ const BANISHED_VEHICLES = [
   name: "Barukaza Workshop Scarab",
   type: "Walker",
   allowedVeterancy: ["Regular", "Veteran"],
-  costs: { Regular: 445, Veteran: 535 },
+  costs: { Regular: 480, Veteran: 575 },
   weapons: [
     { name: "Hull-mounted Forward-facing Super-Heavy Anti-Tank Weapon" },
     { name: "Turret-mounted Rocket Launcher" }
@@ -5254,9 +5383,10 @@ const BANISHED_VEHICLES = [
   transportCapacity: 20,
   specialRules: [
     "Flak",
+	"Sustained Beam",
     "Excavation Beam: When targeting a building or a unit inside a building, the Super-Heavy Anti-Tank Weapon counts as HE (4\") instead.",
     "Titanic Walker: When rolling on the Vehicle Damage chart against this unit, reduce the result by 1 (to a minimum of 1).",
-    "Towering Strider: For movement purposes, this vehicle treats all terrain and units as open ground, except tall terrain and other Titanic vehicles. This vehicle may Advance up to 18\" and Run up to 36\". It does not double its movement when moving along roads."
+    "Towering Strider: For movement purposes, this vehicle treats all terrain and units as open ground, except tall terrain and other Titanic vehicles. This vehicle may Advance up to 18\" and Run up to 36\"."
   ]
 },
 
@@ -5364,7 +5494,7 @@ const BANISHED_VEHICLES = [
     transportCapacity: 0,
     specialRules: [
       "Open-topped",
-      "Shredder Ram: This vehicle may assault soft-skin (6+) and light vehicles (7+) as if it were a fully enclosed tracked tank, following the normal vehicle assault rules."
+      "Shredder Ram: This vehicle may assault infantry, artillery, soft-skin (6+) and light vehicles (7+) as if it were a fully enclosed tracked tank, following the normal vehicle assault rules."
     ]
   },
 {
@@ -5418,7 +5548,7 @@ const BANISHED_VEHICLES = [
   name: "Gydrozka Workshop Blisterback",
   type: "Aircraft",
   allowedVeterancy: ["Regular", "Veteran"],
-  costs: { Regular: 110, Veteran: 132 },
+  costs: { Regular: 100, Veteran: 120 },
   weapons: [
     { name: "Turret-mounted Paired Heavy Plasma MG" },
     { name: "Turret-mounted Multiple Launcher" }
@@ -5481,31 +5611,42 @@ const BANISHED_VEHICLES = [
   type: "Aircraft",
   allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
   costs: { Inexperienced: 108, Regular: 135, Veteran: 162 },
+
   weapons: [
     { name: "Turret-mounted Light Plasma Cannon" }
   ],
+
   damageValue: "8+ (Heavy Aircraft)",
   transportCapacity: 16,
+
   specialRules: [
-    "Flak"
+    "Flak",
+    {
+      name: "Gravity Lift",
+      description: "While Flying, if this Aircraft has not moved this turn, transported units may disembark from it as though it were Landed. If a unit does so, this Aircraft cannot Advance or Run for the rest of the turn."
+    }
   ],
+
   options: {
     weaponUpgrades: {
       "2 Turret-mounted Light Plasma Cannons": {
         cost: 50,
         addsWeapon: "2x Turret-mounted Light Plasma Cannons"
       },
-      "2 Pintle-mounted Medium Plasma MGs (left and right arcs)": {
+
+      "2 Pintle-mounted Medium Plasma MGs (front and right arcs)": {
         cost: 30,
         addsWeapon: [
-          "Pintle-mounted Medium Plasma MG (left arc)",
+          "Pintle-mounted Medium Plasma MG (front arc)",
           "Pintle-mounted Medium Plasma MG (right arc)"
         ]
       },
+
       "Command Vehicle": {
         cost: 10,
         grantsRule: "Command Vehicle"
       },
+
       "Shielded Hull": {
         cost: 20,
         grantsRule: "Shielded Hull"
@@ -5520,7 +5661,7 @@ const BANISHED_VEHICLES = [
 	type: "Car",
 	forceOrgSlot: "transport",
 	allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
-	costs: { Inexperienced: 52, Regular: 65, Veteran: 78 },
+	costs: { Inexperienced: 60, Regular: 75, Veteran: 90 },
 	weapons: [ { name: "Turret-mounted Medium Plasma MG" } ],
 	damageValue: "7+ (Armoured Anti-Grav)", transportCapacity: 8,
 	specialRules: [ "Recce", "Open-topped" ]
@@ -5530,7 +5671,7 @@ const BANISHED_VEHICLES = [
 	  type: "Car",
 	  forceOrgSlot: "transport",
 	  allowedVeterancy: ["Regular", "Veteran"],
-	  costs: { Regular: 125, Veteran: 150 },
+	  costs: { Regular: 135, Veteran: 162 },
 	  weapons: [
 		{ name: "Casement-mounted Forward-facing Light Anti-Tank Weapon" }
 	  ],
@@ -5987,7 +6128,7 @@ const FORERUNNER_VEHICLES = [
     name: "Warden Eternal",
     type: "Walker",
     allowedVeterancy: ["Regular", "Veteran"],
-    costs: { Regular: 130, Veteran: 156 },
+    costs: { Regular: 140, Veteran: 168 },
     weapons: [
       { name: "Forward-facing Hull-mounted Medium Anti-Tank Weapon" },
       { name: "Fist" },
@@ -6001,6 +6142,7 @@ const FORERUNNER_VEHICLES = [
 	  "Recce",
 	  "Open-topped",
 	  "Command Vehicle",
+	  "Sustained Beam",
 	  "Shielded Hull"
 	]
   },
@@ -6083,6 +6225,25 @@ const FORERUNNER_VEHICLES = [
 },
 
   // AIRCRAFT
+{
+  name: "Super Sentinel",
+  type: "Aircraft",
+  allowedVeterancy: ["Regular", "Veteran"],
+  costs: { Regular: 65, Veteran: 78 },
+  weapons: [
+    { name: "Hull-mounted Forward-facing Super Sentinel Beam" }
+  ],
+  damageValue: "6+ (Light Aircraft)",
+  transportCapacity: 0,
+  specialRules: [
+    "Shielded Hull",
+    "Sustained Beam",
+    {
+      name: "Ground Support",
+      description: "This unit cannot target Flying Aircraft."
+    }
+  ]
+},
 	{
 	  name: "Enforcer Sentinel",
 	  type: "Aircraft",
@@ -6136,7 +6297,7 @@ const FORERUNNER_VEHICLES = [
   name: "Retriever Sentinel",
   type: "Aircraft",
   allowedVeterancy: ["Regular", "Veteran"],
-  costs: { Regular: 340, Veteran: 408 },
+  costs: { Regular: 375, Veteran: 450 },
   weapons: [
     { name: "Hull-mounted Forward-facing Super-Heavy Anti-Tank Weapon" }
   ],
@@ -6144,6 +6305,7 @@ const FORERUNNER_VEHICLES = [
   specialRules: [
     "Flak",
     "Shielded Hull",
+	"Sustained Beam",
     "Titanic Aircraft: When rolling on the Aircraft Damage chart against this unit, reduce the result by 1 (to a minimum of 1).",
     "Gravitic Beam: When this unit is given a successful Fire order, it may activate its gravitic beam. If it does, each other unit within 6\" of this unit receives D3 pins."
   ],
@@ -6516,22 +6678,21 @@ const FLOOD_UNITS = [
   name: "Infection Form Swarm",
   type: "Infantry",
   allowedVeterancy: ["Inexperienced"],
-  costs: { Inexperienced: 70 },
+  costs: { Inexperienced: 60 },
   baseMen: 10,
   maxMen: 20,
   weapons: [
     { name: "Unarmed" }
   ],
   specialRules: [
-    "Flood Infection",
     "Horror",
     "Fieldcraft",
     "Behind Enemy Lines",
-    { name: "Assimilate", description: "If this unit wins an assault against a target affected by Flood Infection, you can replace each surviving Infection Form with an unarmed Combat Form. If so, the unit immediately becomes Regular, becomes an unarmed Combat Form unit and retains its current order die." },
+    { name: "Assimilate", description: "If this unit wins an assault against a target affected by Flood Infection, compare the target’s number of models at the start of the combat to the number of surviving Infection Forms. If the target began with at least half as many models (rounding down), you may replace each surviving Infection Form with an unarmed Combat Form. The unit immediately becomes Regular, uses the Combat Form rules instead, and retains its current Order Die." },
     { name: "Mindless Hunger", description: "This unit cannot pick up, carry, score or control objectives. It may still contest objectives." }
   ],
   options: {
-    extraMenCost: { Inexperienced: 7 },
+    extraMenCost: { Inexperienced: 6 },
     squadUpgrades: {
       "Flood Burster": { cost: 1, grantsRule: "Flood Burster" }
     }
@@ -6668,27 +6829,49 @@ const FLOOD_UNITS = [
 // --- FLOOD VEHICLES ---
 const FLOOD_VEHICLES = [
   // WALKERS
-  {
-    name: "Juggernaut",
-    type: "Walker",
-    allowedVeterancy: ["Regular", "Veteran"],
-    costs: { Regular: 90, Veteran: 108 },
-    weapons: [
-      { name: "Forward-facing Tentacle Lash" },
-      { name: "Forward-facing Tentacle Lash" },
-      { name: "Fist" },
-      { name: "Fist" }
-    ],
-    damageValue: "7+ (Light Walker)",
-    specialRules: [
-      "Assault",
-      "Fist",
-      "Agile",
-      "Faster",
-      "Open-topped",
-      { name: "Synaptic Relay", description: "If at least one Flood Officer is alive, this unit extends that officer’s command bubble to Flood Infantry and Artillery within 6\" of it, but with the morale bonus halved. For normal morale checks, affected units use the highest officer’s morale bonus available (halved). For Snap To via this relay, only the activating officer’s halved morale bonus is used, even if another officer on the field has a higher bonus." }
-    ]
-  },
+	{
+	  name: "Juggernaut",
+	  type: "Walker",
+	  allowedVeterancy: ["Regular", "Veteran"],
+	  costs: { Regular: 90, Veteran: 108 },
+
+	  weapons: [
+		{ name: "Forward-facing Tentacle Lash" },
+		{ name: "Forward-facing Tentacle Lash" },
+		{ name: "Fist" },
+		{ name: "Fist" }
+	  ],
+
+	  damageValue: "7+ (Light Walker)",
+
+	  specialRules: [
+		"Assault",
+		"Fist",
+		"Agile",
+		"Faster",
+		"Open-topped",
+		{
+		  name: "Synaptic Relay",
+		  description: "If at least one Flood Officer is alive, this unit extends that officer’s command bubble to Flood Infantry and Artillery within 6\" of it, but with the morale bonus halved. For normal morale checks, affected units use the highest officer’s morale bonus available (halved). For Snap To via this relay, only the activating officer’s halved morale bonus is used, even if another officer on the field has a higher bonus."
+		}
+	  ],
+
+	  options: {
+		weaponUpgrades: {
+		  "Juggernaut Key Mind": {
+			cost: 50,
+			grantsRules: [
+			  "Platoon Commander",
+			  {
+				name: "Juggernaut Key Mind",
+				description: "A Juggernaut Key Mind gains the Platoon Commander special rule and fills one Platoon Commander slot in a platoon. For all other purposes, it remains a Walker. However, it does not count towards an Armoured Platoon’s composition, vehicle limits, or vehicle requirements, and is ignored when determining any other force-organisation requirements or limits based on vehicles. A Juggernaut Key Mind cannot also be a Command Vehicle."
+			  },
+			  "Limited: Only 1 Juggernaut Key Mind may be taken per army."
+			]
+		  }
+		}
+	  }
+	},
   {
     name: "Abomination",
     type: "Walker",
@@ -7020,6 +7203,13 @@ function injectLeaderMeleeNcoOptions(unit, unitData) {
   if (!unit || !unitData) return unitData;
   if (unit.type !== "Infantry") return unitData;
 
+  // Plasma Swords and Gravity Hammers are restricted to
+  // Covenant, Banished, and Swords of Sanghelios armies.
+  if (!canUseCovenantMeleeWeapons()) {
+    clearIllegalLeaderMeleeSelections(unit, unitData);
+    return unitData;
+  }
+
   const hasMeleeWeapon = leaderHasMeleeWeapon(unit, unitData);
 
   // If the model no longer has Melee Weapon, remove any illegal sword/hammer choices.
@@ -7207,6 +7397,16 @@ function isInsurrectionArmy() {
   return window.currentFaction === "UNSC" && window.selectedArmyBonus === "Insurrection";
 }
 
+function canUseCovenantMeleeWeapons() {
+  const army = getEffectiveArmyName();
+
+  return [
+    "Covenant",
+    "Banished",
+    "Swords of Sanghelios"
+  ].includes(army);
+}
+
 function isSwordsArmy() {
   return window.currentFaction === "Covenant" && window.selectedArmyBonus === "Swords of Sanghelios";
 }
@@ -7350,6 +7550,9 @@ function isPlatoonCommanderForValidation(unit) {
   // Knight Commander upgrade fills the Platoon Commander slot.
   if (unitHasPickedUpgradeContaining(unit, "Knight Commander")) return true;
 
+	// Juggernaut Key Mind fills a Platoon Commander slot.
+  if (isJuggernautKeyMindForValidation(unit)) return true;
+
   // Optional manual override.
   const slot = getForceOrgSlot(unit, unitData);
   if (
@@ -7455,6 +7658,10 @@ function isCombatVehicleForValidation(unit) {
 
   // Transport-category vehicles are handled by the transport limit instead.
   if (isTransportForValidation(unit)) return false;
+
+  // A Juggernaut Key Mind fills a Rifle Platoon Commander slot
+  // and is ignored for Armoured Platoon force organisation.
+  if (isJuggernautKeyMindForValidation(unit)) return false;
 
   return true;
 }
@@ -7714,6 +7921,15 @@ function isKnightCommanderForValidation(unit) {
   );
 }
 
+function isJuggernautKeyMindForValidation(unit) {
+  const unitData = getUnitData(unit);
+
+  return (
+    unit?.selectedUpgrades?.includes("Juggernaut Key Mind") ||
+    unitHasRuleName(unit, "Juggernaut Key Mind", unitData)
+  );
+}
+
 function isMedicSlotForValidation(unit) {
   const unitData = getUnitData(unit);
   const name = String(unit?.name || "").toLowerCase();
@@ -7800,7 +8016,12 @@ function isUpgradeLimitHandledSeparately(text) {
   // These are upgrades inside a unit, not limits on the unit itself.
   // They are checked separately by isKnightCommanderForValidation()
   // and isGruntDeaconForValidation().
-  return /Knight Commander/i.test(s) || /Deacon/i.test(s) || /Champion/i.test(s);
+  return (
+  /Knight Commander/i.test(s) ||
+  /Juggernaut Key Mind/i.test(s) ||
+  /Deacon/i.test(s) ||
+  /Champion/i.test(s)
+	);
 // They are checked separately by isKnightCommanderForValidation(),
 // isGruntDeaconForValidation(), and isChampionForValidation().
 }
@@ -8030,6 +8251,9 @@ function getArmyValidation() {
 
   const knightCommanderCount = units.filter(isKnightCommanderForValidation).length;
   pushMaxIssue(issues, "Knight Commanders", knightCommanderCount, 1, "per army");
+
+	const juggernautKeyMindCount = units.filter(isJuggernautKeyMindForValidation).length;
+	pushMaxIssue(issues, "Juggernaut Key Minds", juggernautKeyMindCount, 1, "per army");
 
   if (platoonCommanderCount > 0) {
     const medicCount = units.filter(isMedicSlotForValidation).length;
@@ -8761,6 +8985,7 @@ injectDoctrineOptions(BANISHED_UNITS, BANISHED_DOCTRINES, "Forged In Chains");
 // Now all eligible units will have the right doctrine block in their options!
 
 function getLeaderMeleeUpgradeOptions(unit, unitData) {
+  if (!canUseCovenantMeleeWeapons()) return [];
   if (!leaderHasMeleeWeapon(unit, unitData)) return [];
 
   const caste = getCurrentLeaderCaste(unit, unitData);
@@ -9378,6 +9603,16 @@ function applyLinkedWeaponBatteryAggregation(table) {
   });
 }
 
+function applyBruteGrenadierWeaponRules(unit, table) {
+  if (!unit || !Array.isArray(table)) return table;
+  if (!unit.squadUpgrades?.["Brute Grenadiers"]) return table;
+
+  return table.map(row => ({
+    ...row,
+    shots: multiplyShotsValue(row.shots, 2)
+  }));
+}
+
 const buildWeaponsTableBase = buildWeaponsTable;
 
 function stripLeaderWeaponPrefix(label) {
@@ -9521,6 +9756,7 @@ buildWeaponsTable = function(unit) {
   table = applyLeaderMeleeUpgradeToWeaponsTable(unit, table);
   table = applyM808BScorpionImprovedHE(unit, table);
   table = applyLinkedWeaponBatteryAggregation(table);
+  table = applyBruteGrenadierWeaponRules(unit, table);
   return table;
 };
 
@@ -9536,7 +9772,8 @@ function canForceCommandVehicle(unit, unitData) {
 
   // Aircraft may not be forced Command Vehicles.
   if (unit.type === "Aircraft") return false;
-
+  // Juggernaut Key Mind cannot also be a Command Vehicle.
+  if (isJuggernautKeyMindForValidation(unit)) return false;
   const hasBuiltIn = Array.isArray(unitData.specialRules) &&
     unitData.specialRules.some(r => getRuleName(r) === "Command Vehicle");
 
@@ -9722,9 +9959,14 @@ function addRequired(label, allUpgrades, upgradesDef) {
 
 function getEditorBaseMen(unit, unitData) {
   if (!unit || !unitData) return 0;
-  if (unit.type === "Team") return unitData.baseMen || 0;
 
   const input = document.getElementById("editMenInput");
+
+  // Fixed-size Teams still use their normal base size.
+  if (unit.type === "Team" && !input) {
+    return unitData.baseMen || 0;
+  }
+
   const raw = input ? parseInt(input.value, 10) : unit.men;
   const minMen = unitData.baseMen || 0;
   const maxMen = unitData.maxMen ?? minMen;
@@ -10155,16 +10397,36 @@ function updateLiveUnitCost() {
     return;
   }
 
-  // ---- INFANTRY & TEAM LOGIC ----
-  let men;
-  if (unitData.type === "Team") {
-    men = unitData.baseMen;
-    if (unitData.options && unitData.options.squadUpgrades) {
-      Object.entries(unitData.options.squadUpgrades).forEach(([label, upgrade]) => {
-        const cb = document.querySelector(`.editSquadUpgrade[data-upgrade="${label}"]`);
-        if (cb && cb.checked && upgrade.addMan) men += upgrade.addMan;
-      });
-    }
+	// ---- INFANTRY & TEAM LOGIC ----
+	let men;
+
+	if (unitData.type === "Team") {
+	  const menInputRaw = parseInt(
+		document.getElementById("editMenInput")?.value,
+		10
+	  );
+
+	  const baseMen = !isNaN(menInputRaw)
+		? Math.max(
+			unitData.baseMen,
+			Math.min(unitData.maxMen ?? unitData.baseMen, menInputRaw)
+		  )
+		: (unit.men || unitData.baseMen);
+
+	  let bonusMen = 0;
+
+	  if (unitData.options?.squadUpgrades) {
+		Object.entries(unitData.options.squadUpgrades).forEach(([label, upgrade]) => {
+		  const cb = document.querySelector(`.editSquadUpgrade[data-upgrade="${label}"]`);
+		  if (cb && cb.checked && upgrade.addMan) {
+			bonusMen += upgrade.addMan;
+		  }
+		});
+	  }
+
+	  men = baseMen + bonusMen;
+	  window.__previewBonusMenNoExtraCost = bonusMen;
+
 	} else {
 	  // Infantry: base men comes from the input (capped by maxMen)
 	  const baseMenInputRaw = parseInt(document.getElementById("editMenInput")?.value);
@@ -10196,7 +10458,7 @@ function updateLiveUnitCost() {
   let extraCost = 0;
 
   // Extra men cost (Infantry only, not Team)
-	if (unitData.type !== "Team" && men > unitData.baseMen && unitData.options?.extraMenCost) {
+	if (men > unitData.baseMen && unitData.options?.extraMenCost) {
 	  const bonusFree = window.__previewBonusMenNoExtraCost || 0;
 	  const paidMen = Math.max(unitData.baseMen, men - bonusFree); // remove commander bonus before charging extraMenCost
 	  extraCost = (paidMen - unitData.baseMen) * (unitData.options.extraMenCost[veterancy] || 0);
@@ -10587,12 +10849,45 @@ function addSelectedUnit() {
   renderArmyList();
 }
 
+function duplicateUnit(idx) {
+  const original = window.armyList[idx];
+  if (!original) return;
+
+  // Create a completely independent snapshot of the unit as it is now.
+  const copy = typeof structuredClone === "function"
+    ? structuredClone(original)
+    : JSON.parse(JSON.stringify(original));
+
+  // Rebuild derived weapon data.
+  copy.weaponsTable = buildWeaponsTable(copy);
+
+  // Place the copy immediately below the original.
+  window.armyList.splice(idx + 1, 0, copy);
+
+  renderArmyList();
+}
+
 function removeUnit(idx) {
   window.armyList.splice(idx, 1);
   enforceXM20PGrenadeLimit();
   renderArmyList();
 }
 
+function moveUnit(idx, direction) {
+  const newIdx = idx + direction;
+
+  if (
+    newIdx < 0 ||
+    newIdx >= window.armyList.length
+  ) {
+    return;
+  }
+
+  [window.armyList[idx], window.armyList[newIdx]] =
+    [window.armyList[newIdx], window.armyList[idx]];
+
+  renderArmyList();
+}
 
 ////////////////////////////////////////////////////////////////////////////////
 // 8. MODAL LOGIC FOR EDITING UNITS & VEHICLES
@@ -10657,14 +10952,18 @@ function captureInfantryModalStateToUnit() {
 	  }
 	}
 
-  if (unit.type === "Infantry") {
-    const menRaw = parseInt(document.getElementById("editMenInput")?.value, 10);
-    if (!isNaN(menRaw)) {
-      const minMen = unitData.baseMen || 0;
-      const maxMen = unitData.maxMen ?? minMen;
-      unit.men = Math.max(minMen, Math.min(maxMen, menRaw));
-    }
-  }
+	const menInput = document.getElementById("editMenInput");
+
+	if (menInput) {
+	  const menRaw = parseInt(menInput.value, 10);
+
+	  if (!isNaN(menRaw)) {
+		const minMen = unitData.baseMen || 0;
+		const maxMen = unitData.maxMen ?? minMen;
+
+		unit.men = Math.max(minMen, Math.min(maxMen, menRaw));
+	  }
+	}
 
   if (unitData.options?.squadUpgrades) {
     unit.squadUpgrades = unit.squadUpgrades || {};
@@ -10838,12 +11137,23 @@ function renderInfantryEditFields(unit, unitData) {
 
   html += renderVeterancyEditField(unit, unitData);
 
-  // Men: Editable input for Infantry, static label for Team
-	if (unit.type === "Infantry") {
+	// Men: Infantry are editable normally.
+	// Teams are fixed unless explicitly allowed to change size manually.
+	if (
+	  unit.type === "Infantry" ||
+	  (unit.type === "Team" && unitData.allowManualMen === true)
+	) {
 	  html += `
 		<label>
 		  Men:
-		  <input type="number" id="editMenInput" min="${unitData.baseMen}" max="${unitData.maxMen}" value="${getEditorDisplayedBaseMen(unit, unitData)}" oninput="syncInfantryEditorState()" />
+		  <input
+			type="number"
+			id="editMenInput"
+			min="${unitData.baseMen}"
+			max="${unitData.maxMen}"
+			value="${getEditorDisplayedBaseMen(unit, unitData)}"
+			oninput="syncInfantryEditorState()"
+		  />
 		</label>
 		<div id="editMenInfo" style="margin-top:4px;font-size:12px;color:#cfd6ff;"></div>
 	  `;
@@ -11170,14 +11480,14 @@ function renderVehicleUpgradeFields(unit, unitData) {
       `;
     });
 
-    if (canForceCV) {
-      container.innerHTML += `
-        <label>
-          <input type="checkbox" id="editForcedCommandVehicle" ${unit.forcedCommandVehicle ? "checked" : ""}>
-          Force Command Vehicle (+10 pts)
-        </label><br>
-      `;
-    }
+	if (canForceCV && !allChecked.has("Juggernaut Key Mind")) {
+	  container.innerHTML += `
+		<label>
+		  <input type="checkbox" id="editForcedCommandVehicle" ${unit.forcedCommandVehicle ? "checked" : ""}>
+		  Force Command Vehicle (+10 pts)
+		</label><br>
+	  `;
+	}
   }
 
   let html = renderVeterancyEditField(unit, unitData);
@@ -11343,17 +11653,35 @@ function saveEdit() {
       unit.extraDoctrineUpgrades = {};
     }
 
-    // MEN COUNT for TEAMS (handle addMan from upgrades)
-    if (unit.type === "Team") {
-      let men = unitData.baseMen;
-      if (unit.squadUpgrades && unitData.options && unitData.options.squadUpgrades) {
-        Object.entries(unit.squadUpgrades).forEach(([label, picked]) => {
-          let upgrade = unitData.options.squadUpgrades[label];
-          if (picked && upgrade && upgrade.addMan) men += upgrade.addMan;
-        });
-      }
-      unit.men = men;
-    }
+	// MEN COUNT for TEAMS
+	if (unit.type === "Team") {
+	  const menInputRaw = parseInt(
+		document.getElementById("editMenInput")?.value,
+		10
+	  );
+
+	  let men = !isNaN(menInputRaw)
+		? Math.max(
+			unitData.baseMen,
+			Math.min(unitData.maxMen ?? unitData.baseMen, menInputRaw)
+		  )
+		: unitData.baseMen;
+
+	  let bonusMen = 0;
+
+	  if (unit.squadUpgrades && unitData.options?.squadUpgrades) {
+		Object.entries(unit.squadUpgrades).forEach(([label, picked]) => {
+		  const upgrade = unitData.options.squadUpgrades[label];
+
+		  if (picked && upgrade?.addMan) {
+			bonusMen += upgrade.addMan;
+		  }
+		});
+	  }
+
+	  unit.men = men + bonusMen;
+	  unit._bonusMenNoExtraCost = bonusMen;
+	}
 	// MEN COUNT for INFANTRY (allow addMan upgrades WITHOUT counting toward maxMen)
 	if (unit.type === "Infantry") {
 	  const baseMenInputRaw = parseInt(document.getElementById("editMenInput")?.value);
@@ -11436,7 +11764,7 @@ function saveEdit() {
     let men = (unit.men !== undefined) ? unit.men : (unitData.baseMen || 0);
 
 	let extraCost = 0;
-	if (unit.type !== "Team" && men > unitData.baseMen && unitData.options?.extraMenCost) {
+	if (men > unitData.baseMen && unitData.options?.extraMenCost) {
 	  const extraMenCost = unitData.options.extraMenCost?.[veterancy] || 0;
 	  const bonusFree = unit._bonusMenNoExtraCost || 0;
 	  const paidMen = Math.max(unitData.baseMen, men - bonusFree); // don't charge for commander bonus model
@@ -11594,8 +11922,14 @@ function saveEdit() {
 
     unit.selectedUpgrades = Array.from(allUpgrades);
 
-    const forcedCVBox = document.getElementById("editForcedCommandVehicle");
-    unit.forcedCommandVehicle = !!(forcedCVBox && forcedCVBox.checked);
+	const forcedCVBox = document.getElementById("editForcedCommandVehicle");
+
+	const isJuggernautKeyMind =
+	  unit.selectedUpgrades.includes("Juggernaut Key Mind");
+
+	unit.forcedCommandVehicle =
+	  !isJuggernautKeyMind &&
+	  !!(forcedCVBox && forcedCVBox.checked);
 
     const baseCost = (unitData.costs && unitData.costs[unit.veterancy]) || 0;
     let totalCost = baseCost;
@@ -11666,6 +12000,14 @@ function getDisplayUnitName(unit) {
       picked && String(label).startsWith(text)
     );
 
+	// Flood Juggernaut Key Mind
+	if (
+	  baseName === "Juggernaut" &&
+	  unit?.selectedUpgrades?.includes("Juggernaut Key Mind")
+	) {
+	  return "Juggernaut Key Mind";
+	}
+
   // ============================================================
   // COVENANT / BANISHED UNIT VARIANTS
   // ============================================================
@@ -11703,6 +12045,22 @@ function getDisplayUnitName(unit) {
   if (baseName === "Honor Guard") {
     return "Elite Honor Guard";
   }
+
+	// Banished Heavy Grunt Anti-Tank Team
+	if (
+	  baseName === "Anti Tank Team" &&
+	  upgrades["Heavy Grunts"]
+	) {
+	  return "Heavy Grunt Anti-Tank Team";
+	}
+	
+	// Brute Grenadiers
+	if (
+	  baseName === "Grenade Launcher Team" &&
+	  upgrades["Brute Grenadiers"]
+	) {
+	  return "Brute Grenadier Team";
+	}	
 
   // ============================================================
   // UNSC TROOPER VARIANTS
@@ -11798,7 +12156,22 @@ function renderArmyList() {
 		${unit.lockedByArmyBonus
 		  ? `<div style="margin-top:10px;color:#b9c6ff;"><b>Army Bonus Unit:</b> ${unit.armyBonusSource} (locked basic squad)</div>`
 		  : `
+			<div class="move-row">
+			  <button
+				class="move-btn"
+				onclick="moveUnit(${idx}, -1)"
+				${idx === 0 ? "disabled" : ""}
+			  >↑ Up</button>
+
+			  <button
+				class="move-btn"
+				onclick="moveUnit(${idx}, 1)"
+				${idx === window.armyList.length - 1 ? "disabled" : ""}
+			  >↓ Down</button>
+			</div>
+
 			<button class="edit-btn" onclick="editUnit(${idx})">Edit</button>
+			<button class="duplicate-btn" onclick="duplicateUnit(${idx})">Duplicate</button>
 			<button class="remove-btn" onclick="removeUnit(${idx})">Remove</button>
 		  `
 		}
