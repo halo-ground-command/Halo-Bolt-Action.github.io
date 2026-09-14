@@ -473,6 +473,8 @@ allWeaponProfiles["Forward facing Tentacle Lash"] = allWeaponProfiles["Tentacle 
 allWeaponProfiles["Forward-facing Tentacle Whip"] = allWeaponProfiles["Tentacle Whip"];
 allWeaponProfiles["Forward facing Tentacle Whip"] = allWeaponProfiles["Tentacle Whip"];
 
+allWeaponProfiles["Barbed Projectiles"] = allWeaponProfiles["Rifle"];
+
 allWeaponProfiles["Turret-mounted Flamethrower (Vehicle)"] = allWeaponProfiles["Flamethrower (Vehicle)"];
 allWeaponProfiles["Forward-facing Hull-mounted Flamethrower (Vehicle)"] = allWeaponProfiles["Flamethrower (Vehicle)"];
 
@@ -703,11 +705,11 @@ Covenant: [
     cost: 1,
     costMode: "perModel",
     grantsRules: ["Plasma Capacitor Cells"],
-    appliesTo: (unit, unitData) =>
-      window.currentFaction === "Covenant" &&
-      unit.type === "Infantry" &&
-      ["Veteran"].includes(unit.veterancy)
-  }
+	appliesTo: (unit, unitData) =>
+	  window.currentFaction === "Covenant" &&
+	  (unit.type === "Infantry" || unit.type === "Team") &&
+	  unit.veterancy === "Veteran" &&
+	  !hasRule(unit, unitData, "Team Weapon")  }
 ],
 
   Banished: [
@@ -3414,7 +3416,7 @@ const UNSC_VEHICLES = [
   type: "Armoured Car",
   forceOrgSlot: "transport",
   allowedVeterancy: ["Regular", "Veteran"],
-  costs: { Regular: 110, Veteran: 132 },
+  costs: { Regular: 115, Veteran: 138 },
   weapons: [
     { name: "Turret-mounted Heavy Machine Gun" }
   ],
@@ -3422,8 +3424,7 @@ const UNSC_VEHICLES = [
   transportCapacity: 12,
   specialRules: [
     "Reinforced Front Armour",
-    "All-Terrain",
-    "Slower"
+    "All-Terrain"
   ]
 }
 ];
@@ -3642,6 +3643,7 @@ const COVENANT_UNITS = [
       "Shirkers": {
         cost: -2,
         grantsRule: "Shirkers",
+		allowedVeterancy: ["Inexperienced", "Regular"],
         condition: "Unit is not taken as Veteran"
       },
       "Engineers": { cost: 1, grantsRule: "Engineers" },
@@ -4697,6 +4699,7 @@ const BANISHED_UNITS = [
       "Shirkers": {
         cost: -2,
         grantsRule: "Shirkers",
+		allowedVeterancy: ["Inexperienced", "Regular"],
         condition: "Unit is not taken as Veteran"
       },
       "Engineers": { cost: 1, grantsRule: "Engineers" },
@@ -4865,21 +4868,24 @@ const BANISHED_UNITS = [
       }
     },
 
-    ncoReplacement: {
-      options: [
-        "Spiker",
-        "Shotgun",
-        "Brute Shot/Grenade Launcher",
-        "Ravager",
-        "Gravity Hammer"
-      ],
-      costs: {
-        "Shotgun": -4,
-        "Brute Shot/Grenade Launcher": 13,
-        "Ravager": 33,
-        "Gravity Hammer": 0
-      }
-    }
+	ncoReplacement: {
+	  options: [
+		"Spiker",
+		"Shotgun",
+		"Brute Shot/Grenade Launcher",
+		"Ravager",
+		"Gravity Hammer"
+	  ],
+	  costs: {
+		"Shotgun": -4,
+		"Brute Shot/Grenade Launcher": 13,
+		"Ravager": 33,
+		"Gravity Hammer": 0
+	  },
+	  requiresUpgrade: {
+		"Ravager": "Engineers"
+	  }
+	}
   }
 },
   {
@@ -6698,7 +6704,35 @@ const FLOOD_UNITS = [
     }
   }
 },
-
+{
+  name: "Winged Swarm Form Pack",
+  type: "Infantry",
+  allowedVeterancy: ["Inexperienced", "Regular"],
+  costs: {
+    Inexperienced: 50,
+    Regular: 65
+  },
+  baseMen: 5,
+  maxMen: 10,
+  weapons: [
+    { name: "Barbed Projectiles" }
+  ],
+  specialRules: [
+    "Horror",
+    "Flight",
+    "Behind Enemy Lines",
+    {
+      name: "Aerial Form",
+      description: "This unit can only move using the Flight special rule and cannot choose to move using normal Infantry movement. In addition, this unit may only benefit from soft or hard cover saves while being Down."
+    }
+  ],
+  options: {
+    extraMenCost: {
+      Inexperienced: 10,
+      Regular: 13
+    }
+  }
+},
   // Teams
 {
   name: "Carrier Form Team",
@@ -6872,6 +6906,25 @@ const FLOOD_VEHICLES = [
 		}
 	  }
 	},
+{
+  name: "Thrasher",
+  type: "Walker",
+  allowedVeterancy: ["Regular", "Veteran"],
+  costs: {
+    Regular: 50,
+    Veteran: 60
+  },
+  weapons: [
+    { name: "Fist" },
+    { name: "Fist" }
+  ],
+  damageValue: "7+ (Light Walker)",
+  specialRules: [
+    "Assault",
+    "Fist",
+    "Open-topped"
+  ]
+},
   {
     name: "Abomination",
     type: "Walker",
@@ -6890,7 +6943,41 @@ const FLOOD_VEHICLES = [
       "Slower",
       { name: "Synaptic Relay", description: "If at least one Flood Officer is alive, this unit extends that officer’s command bubble to Flood Infantry and Artillery within 6\" of it, but with the morale bonus halved. For normal morale checks, affected units use the highest officer’s morale bonus available (halved). For Snap To via this relay, only the activating officer’s halved morale bonus is used, even if another officer on the field has a higher bonus." }
     ]
-  }
+  },
+{
+  name: "Bomber Form",
+  type: "Aircraft",
+  allowedVeterancy: ["Regular", "Veteran"],
+  costs: {
+    Regular: 70,
+    Veteran: 84
+  },
+  weapons: [
+    { name: "Unarmed" }
+  ],
+  damageValue: "7+ (Medium Aircraft)",
+  transportCapacity: 20,
+  specialRules: [
+    "Open-topped",
+    "Slower",
+    {
+      name: "Reinforcement Drop",
+      description: "After this vehicle completes an Advance or Run move, choose one friendly Infection Form Swarm that this unit moved over during that move. Return D3 previously removed Infection Forms to that unit, up to the number of models that unit began the game with."
+    },
+    {
+      name: "Airborne Carrier Form",
+      description: "This vehicle may only transport models belonging to Infection Form Swarms. It cannot transport any other units."
+    },
+    {
+      name: "Aerial Dispersal",
+      description: "While this Aircraft is Flying, embarked Infection Form Swarms may disembark normally, ignoring the usual restriction that prevents them from disembarking from a Flying Aircraft."
+    },
+    {
+      name: "Limited",
+      description: "Only 2 Bomber Forms may be taken per army."
+    }
+  ]
+}
 ];
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -11003,8 +11090,60 @@ purgeIllegalArmourySquadUpgrades(unit, refreshedUnitData);
 
 function rerenderCurrentEditModal() {
   if (editIdx == null) return;
+
   captureInfantryModalStateToUnit();
+
+  const unit = window.currentEditUnit;
+  const unitData = getUnitData(unit);
+
+  purgeIllegalDependentWeaponChoices(unit, unitData);
+
   editUnit(editIdx);
+}
+
+function purgeIllegalDependentWeaponChoices(unit, unitData = getUnitData(unit)) {
+  if (!unit || !unitData?.options) return;
+
+  // Normal model weapon replacements
+  if (unit.weaponReplacements && unitData.options.weaponReplacements) {
+    Object.entries(unitData.options.weaponReplacements).forEach(([label, spec]) => {
+      if (!spec.requiresUpgrade) return;
+
+      const requiredUpgrades = Array.isArray(spec.requiresUpgrade)
+        ? spec.requiresUpgrade
+        : [spec.requiresUpgrade];
+
+      const legal = requiredUpgrades.every(req =>
+        unit.squadUpgrades?.[req]
+      );
+
+      if (!legal) {
+        unit.weaponReplacements[label] = 0;
+      }
+    });
+  }
+
+  // NCO weapon replacements
+  const ncoData = unitData.options.ncoReplacement;
+
+  if (
+    unit.ncoReplacement &&
+    ncoData?.requiresUpgrade?.[unit.ncoReplacement]
+  ) {
+    const requirement = ncoData.requiresUpgrade[unit.ncoReplacement];
+
+    const requiredUpgrades = Array.isArray(requirement)
+      ? requirement
+      : [requirement];
+
+    const legal = requiredUpgrades.every(req =>
+      unit.squadUpgrades?.[req]
+    );
+
+    if (!legal) {
+      unit.ncoReplacement = ncoData.options[0];
+    }
+  }
 }
 
 function purgeIllegalDependentSquadUpgrades(unit, unitData = getUnitData(unit)) {
@@ -11216,35 +11355,108 @@ if (upgrade.requiresUpgrade) {
     html += `</div>`;
   }
 
-  // Weapon Replacements
-	if (unitData.options && unitData.options.weaponReplacements) {
-	  html += `<div style="margin-top:10px;"><b>Weapon Replacements:</b><br>`;
-	  Object.entries(unitData.options.weaponReplacements).forEach(([label, spec]) => {
-		const curr = (unit.weaponReplacements && unit.weaponReplacements[label]) || 0;
-		html += `
-		  <label>${label}:
-			<input type="number" class="editWeaponReplacement" data-label="${label}" min="0" max="${spec.max}" value="${curr}" style="width:40px;" oninput="syncInfantryEditorState(this)">
-			${spec.isM301
-			  ? `(M301 package, ${Number(spec.cost) >= 0 ? "+" : "-"}${Math.abs(Number(spec.cost))} pts each)`
-			  : `(max ${spec.max}, ${Number(spec.cost) >= 0 ? "+" : "-"}${Math.abs(Number(spec.cost))} pts each)`
-			}
-		  </label><br>
-		`;
-	  });
-	  html += `<div id="editWeaponReplacementInfo" style="margin-top:6px;font-size:12px;color:#cfd6ff;"></div>`;
-	  html += `</div>`;
-	}
+// Weapon Replacements
+if (unitData.options && unitData.options.weaponReplacements) {
+  html += `<div style="margin-top:10px;"><b>Weapon Replacements:</b><br>`;
 
-  // NCO Weapon Replacement
-  if (unitData.options && unitData.options.ncoReplacement) {
-    const currNCO = unit.ncoReplacement || unitData.options.ncoReplacement.options[0];
-    html += `<label style="margin-top:10px;display:block;">NCO Weapon:
-      <select id="editNcoReplacement" onchange="rerenderCurrentEditModal()">`;
-    unitData.options.ncoReplacement.options.forEach(opt => {
-      html += `<option value="${opt}"${currNCO === opt ? " selected" : ""}>${opt}</option>`;
-    });
-    html += `</select></label>`;
+  Object.entries(unitData.options.weaponReplacements).forEach(([label, spec]) => {
+    let curr = (unit.weaponReplacements && unit.weaponReplacements[label]) || 0;
+    let disabled = "";
+    let requirementText = "";
+
+    if (spec.requiresUpgrade) {
+      const requiredUpgrades = Array.isArray(spec.requiresUpgrade)
+        ? spec.requiresUpgrade
+        : [spec.requiresUpgrade];
+
+      const legal = requiredUpgrades.every(req =>
+        unit.squadUpgrades?.[req]
+      );
+
+      requirementText = ` — Requires: ${requiredUpgrades.join(", ")}`;
+
+      if (!legal) {
+        curr = 0;
+        disabled = "disabled";
+      }
+    }
+
+    html += `
+      <label>${label}:
+        <input
+          type="number"
+          class="editWeaponReplacement"
+          data-label="${label}"
+          min="0"
+          max="${spec.max}"
+          value="${curr}"
+          ${disabled}
+          style="width:40px;"
+          oninput="syncInfantryEditorState(this)"
+        >
+        ${spec.isM301
+          ? `(M301 package, ${Number(spec.cost) >= 0 ? "+" : "-"}${Math.abs(Number(spec.cost))} pts each)`
+          : `(max ${spec.max}, ${Number(spec.cost) >= 0 ? "+" : "-"}${Math.abs(Number(spec.cost))} pts each)`
+        }
+        ${requirementText}
+      </label><br>
+    `;
+  });
+
+  html += `<div id="editWeaponReplacementInfo" style="margin-top:6px;font-size:12px;color:#cfd6ff;"></div>`;
+  html += `</div>`;
+}
+
+// NCO Weapon Replacement
+if (unitData.options && unitData.options.ncoReplacement) {
+  const ncoData = unitData.options.ncoReplacement;
+
+  let currNCO = unit.ncoReplacement || ncoData.options[0];
+
+  const currentRequirement = ncoData.requiresUpgrade?.[currNCO];
+
+  if (currentRequirement) {
+    const requiredUpgrades = Array.isArray(currentRequirement)
+      ? currentRequirement
+      : [currentRequirement];
+
+    const legal = requiredUpgrades.every(req =>
+      unit.squadUpgrades?.[req]
+    );
+
+    if (!legal) {
+      currNCO = ncoData.options[0];
+      unit.ncoReplacement = currNCO;
+    }
   }
+
+  html += `<label style="margin-top:10px;display:block;">NCO Weapon:
+    <select id="editNcoReplacement" onchange="rerenderCurrentEditModal()">`;
+
+  ncoData.options.forEach(opt => {
+    const requirement = ncoData.requiresUpgrade?.[opt];
+
+    let disabled = "";
+
+    if (requirement) {
+      const requiredUpgrades = Array.isArray(requirement)
+        ? requirement
+        : [requirement];
+
+      const legal = requiredUpgrades.every(req =>
+        unit.squadUpgrades?.[req]
+      );
+
+      if (!legal) {
+        disabled = " disabled";
+      }
+    }
+
+    html += `<option value="${opt}"${currNCO === opt ? " selected" : ""}${disabled}>${opt}</option>`;
+  });
+
+  html += `</select></label>`;
+}
   // Leader Melee Weapon Upgrade
   // Only used for leaders/officers that do NOT have an NCO Weapon dropdown.
   const leaderMeleeOptions = !unitData.options?.ncoReplacement
