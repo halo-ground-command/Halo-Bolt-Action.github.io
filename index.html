@@ -6949,8 +6949,8 @@ const FLOOD_VEHICLES = [
   type: "Aircraft",
   allowedVeterancy: ["Regular", "Veteran"],
   costs: {
-    Regular: 70,
-    Veteran: 84
+    Regular: 65,
+    Veteran: 78
   },
   weapons: [
     { name: "Unarmed" }
@@ -6959,7 +6959,6 @@ const FLOOD_VEHICLES = [
   transportCapacity: 20,
   specialRules: [
     "Open-topped",
-    "Slower",
     {
       name: "Reinforcement Drop",
       description: "After this vehicle completes an Advance or Run move, choose one friendly Infection Form Swarm that this unit moved over during that move. Return D3 previously removed Infection Forms to that unit, up to the number of models that unit began the game with."
@@ -6971,6 +6970,10 @@ const FLOOD_VEHICLES = [
     {
       name: "Aerial Dispersal",
       description: "While this Aircraft is Flying, embarked Infection Form Swarms may disembark normally, ignoring the usual restriction that prevents them from disembarking from a Flying Aircraft."
+    },
+    {
+      name: "Buoyant Form",
+      description: "This Aircraft may move a maximum of 12\" with an Advance order or 24\" with a Run order."
     },
     {
       name: "Limited",
