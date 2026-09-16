@@ -2419,7 +2419,7 @@ const UNSC_UNITS = [
         grantsRule: "Engineers"
       },
       "Melee Weapons": {
-        cost: 2,
+        cost: 1,
         grantsRule: "Melee Weapons",
         perModel: true
       },
@@ -2438,19 +2438,19 @@ const UNSC_UNITS = [
         grants: "Battle Rifle"
       },
       "Shotguns": {
-        max: 4,
+        max: 5,
         cost: -3,
         replaces: "Assault Rifle",
         grants: "Shotgun"
       },
       "Submachine Guns": {
-        max: 4,
+        max: 5,
         cost: -2,
         replaces: "Assault Rifle",
         grants: "Submachine Gun"
       },
       "DMRs": {
-        max: 4,
+        max: 5,
         cost: -5,
         replaces: "Assault Rifle",
         grants: "DMR"
@@ -2466,6 +2466,12 @@ const UNSC_UNITS = [
         cost: 9,
         replaces: "Assault Rifle",
         grants: "LMG"
+      },
+      "MMG": {
+        max: 1,
+        cost: 13,
+        replaces: "Assault Rifle",
+        grants: "MMG"
       },
       "Anti-Tank Rifle": {
         max: 2,
@@ -5374,7 +5380,7 @@ const BANISHED_VEHICLES = [
 	costs: { Regular: 60, Veteran: 72 },
 	weapons: [ { name: "Fist" }, { name: "Fist" } ],
 	damageValue: "7+ (Light Walker)", transportCapacity: 0,
-	specialRules: [ "Assault", "Fist", "Open-topped", "Siege Fists: +1 Penetration to melee attacks." ]
+	specialRules: [ "Assault", "Slower", "Fist", "Open-topped", "Siege Fists: +1 Penetration to melee attacks." ]
 	},
 {
   name: "Barukaza Workshop Scarab",
@@ -6923,6 +6929,7 @@ const FLOOD_VEHICLES = [
   specialRules: [
     "Assault",
     "Fist",
+	"Slower",
     "Open-topped"
   ]
 },
