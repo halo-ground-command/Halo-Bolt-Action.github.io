@@ -2047,6 +2047,7 @@ const COVENANT_DOCTRINES = {
     specialRules: ["Behind Enemy Lines", "Fanatics", "Hardened", "Energy Shields", "Fast", "VISR", "Strong", "Strikes First"],
     upgrades: [
       { name: "Stealth", cost: 1, grantsRule: "Stealth" },
+	  { name: "Melee Weapons", costPerModel: 1, grantsRule: "Melee Weapons" },
       { name: "Melee Weapon (NCO/Officer only)", costFlat: 1, grantsRule: "Melee Weapon", ncoOnly: true }
     ]
   }
@@ -2083,6 +2084,7 @@ const BANISHED_DOCTRINES = {
     specialRules: ["Behind Enemy Lines", "Fanatics", "Hardened", "Energy Shields", "Fast", "VISR", "Strong", "Strikes First"],
     upgrades: [
       { name: "Stealth", cost: 1, grantsRule: "Stealth" },
+	  { name: "Melee Weapons", costPerModel: 1, grantsRule: "Melee Weapons" },
       { name: "Melee Weapon (NCO/Officer only)", costFlat: 1, grantsRule: "Melee Weapon", ncoOnly: true }
     ]
   }
@@ -2115,7 +2117,8 @@ const UNSC_DOCTRINES = {
     specialRules: ["Stubborn", "Behind Enemy Lines", "VISR"],
     upgrades: [
       { name: "Strong", cost: 1, grantsRule: "Strong" },
-      { name: "Fieldcraft", cost: 1, grantsRule: "Fieldcraft" }
+      { name: "Fieldcraft", cost: 1, grantsRule: "Fieldcraft" },
+      { name: "Melee Weapon (NCO/Officer only)", costFlat: 1, grantsRule: "Melee Weapon", ncoOnly: true }
     ]
   },
 
@@ -2127,6 +2130,7 @@ const UNSC_DOCTRINES = {
     upgrades: [
       { name: "Energy Shields", cost: 3, grantsRule: "Energy Shields" },
       { name: "Stealth", cost: 1, grantsRule: "Stealth" },
+	  { name: "Melee Weapons", costPerModel: 1, grantsRule: "Melee Weapons" },
       { name: "Melee Weapon (NCO/Officer only)", costFlat: 1, grantsRule: "Melee Weapon", ncoOnly: true }
     ]
   }
@@ -3737,6 +3741,7 @@ const COVENANT_UNITS = [
       "Anti-Tank Grenades": { cost: 2, grantsRule: "Tank Hunters" },
       "Jump-Jet Packs": { cost: 1, grantsRule: "Flight" },
       "Stealth Modules": { cost: 1, grantsRule: "Stealth" },
+	  "Melee Weapons": { cost: 1, grantsRule: "Melee Weapons" },
       "Melee Weapon (NCO only)": { cost: 1, grantsRule: "Melee Weapon", perModel: false }
     },
     weaponReplacements: {
@@ -4793,6 +4798,7 @@ const BANISHED_UNITS = [
       "Anti-Tank Grenades": { cost: 2, grantsRule: "Tank Hunters" },
       "Jump-Jet Packs": { cost: 1, grantsRule: "Flight" },
       "Stealth Modules": { cost: 1, grantsRule: "Stealth" },
+	  "Melee Weapons": { cost: 1, grantsRule: "Melee Weapons" },
       "Melee Weapon (NCO only)": { cost: 1, grantsRule: "Melee Weapon", perModel: false }
     },
 	weaponReplacements: {
