@@ -1,4 +1,4 @@
-﻿Armies of the Forerunnerv3.5
+﻿Armies of the Forerunnerv3.6
 
 Army Special Rules
 Enhanced Weapon Systems
@@ -165,20 +165,20 @@ Cost
 	Sentinel Beams
 	Options
 	- Add up to 6 additional Sentinels for +7pts each (Inexperienced), or +10pts each (Regular) 
-- The unit may be given Energy Shield modules for +3pts per model
+- The unit may be given Energy Shield modules for +2pts per model
 	Special Rules
 	- Automaton
 - Energy Shields: If energy shield modules are taken
 - Flight
 	Crawler Swarm
 Cost
-	45pts (Inexperienced), 60pts (Regular) 
+	40pts (Inexperienced), 55pts (Regular) 
 	Composition
 	1 NCO and 4 Crawlers
 	Weapons
 	Boltshot
 	Options
-	- Add up to 6 additional Crawlers for +9pts each (inexperienced), or +12pts each (regular) 
+	- Add up to 6 additional Crawlers for +8pts each (inexperienced), or +11pts each (regular) 
 - The NCO and up to 8 additional Crawlers may have Suppressors instead of Boltshots  for +7pts each
 - The NCO and up to 8 additional Crawlers may have Light rifles instead of Boltshots  for +2pts each
 	Special Rules
@@ -541,7 +541,7 @@ Cost
 
 Anti Tank Team
 Cost
-	86pts (Regular), 107pts (Veteran) 
+	86pts (Regular), 102pts (Veteran) 
 	Composition
 	2 Soldiers
 	Weapons
@@ -564,7 +564,7 @@ Cost
 	Composition
 	2 Soldiers
 	Weapons
-	Sniper has a Binary Rifle, spotter has a Boltshot
+	Sniper has a Binary Rifle, spotter has a Boltshot or Light Rifle
 	Options
 	- If taken as Veteran, the 2 soldiers can be upgraded to Knight Lancers, replacing the special rules Hardened and Energy shields by Resilient and Fast by Fieldcraft. Additionally, the unit also gains the special rules Melee Weapons, Large infantry and Tough Fighters for +4pts per model.
 	Special Rules
@@ -660,7 +660,7 @@ Cost
 WALKERS
 Warden Eternal 
 Cost
-	130pts (Regular), 156pts (Veteran)
+	140pts (Regular), 168pts (Veteran)
 	Weapons
 	Forward-facing Hull-mounted Medium AT Weapon, 2 Fists
 	Damage Value
@@ -673,6 +673,7 @@ Cost
 - Open-topped  
 - Command Vehicle  
 - Shielded Hull 
+- Sustained Beam
 	
 
 
@@ -839,10 +840,19 @@ Cost
 - Nimble
 - Phase Blink: Once per turn, when you fail an Evasion save for this vehicle, you may re-roll that save.
 - Shielded Hull 
+	Super Sentinel
+Cost
+	65pts (Regular), 78pts (Veteran) 
+	Weapons
+	Hull-mounted Forward-facing Super Sentinel Beam 
+	Damage Value
+	6+ (Light Aircraft)  
+	Special Rules
+	- Shielded Hull - Sustained Beam - Ground Support: This unit cannot target Flying Aircraft . - Super Sentinel Beam:  'Range 36", Shots 1, Pen +2, AT Gun' 
 	TITANIC AIRCRAFT
 Retriever Sentinel 
 Cost
-	340pts (Regular), 408pts (Veteran) 
+	375pts (Regular), 450pts (Veteran) 
 	Weapons
 	Hull-mounted Forward-facing Super-Heavy Anti-Tank Weapon 
 	Damage Value
@@ -850,21 +860,8 @@ Cost
 	Options
 	- Upgrade to Command Vehicle for +10pts
 	Special Rules
-	- Flak
-- Titanic Aircraft: When rolling on the Aircraft Damage chart against this unit, reduce the result by 1 (to a minimum of 1).
-- Gravitic Beam:  When this unit is given a successful Fire order, it may activate its gravitic beam. If it does, each other unit within 6" of this unit receives D3 pins.
-- Shielded Hull 
+	- Flak - Shielded Hull  - Sustained Beam - Titanic Aircraft: When rolling on the Aircraft Damage chart against this unit, reduce the result by 1 (to a minimum of 1). - Gravitic Beam:  When this unit is given a successful Fire order, it may activate its gravitic beam. If it does, each other unit within 6" of this unit receives D3 pins.
 	
-
-
-
-
-
-
-
-
-
-
 
 
 

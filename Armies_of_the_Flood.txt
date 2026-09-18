@@ -1,4 +1,4 @@
-﻿Armies of the Floodv3.5
+﻿Armies of the Floodv3.6
 
 Army Special Rules
 Living Nightmare
@@ -359,23 +359,20 @@ Cost
 - Limited: Only 1 Tank Form Pack may be taken per platoon
 	Infection Form Swarm
 Cost
-	70pts (Inexperienced) 
+	60pts (Inexperienced) 
 	Composition
 	1 NCO and 9 infection forms
 	Weapons
 	- Unarmed
 	Options
-	- Add up to 10 additional infection forms for +7pts each (Inexperienced). 
+	- Add up to 10 additional infection forms for +6pts each (Inexperienced). 
 	Special Rules
-	- Flood Infection
-- Horror
+	- Horror
 - Fieldcraft
 - Behind Enemy Lines
-- Assimilate: If this unit wins an assault against a target affected by Flood Infection, you can replace each surviving Infection Form with an unarmed Combat Form. If so, the unit immediately becomes Regular, becomes an unarmed Combat Form unit (Uses their rules instead) and retains its current order die. 
+- Assimilate: If this unit wins an assault against a target affected by Flood Infection, compare the target’s number of models at the start of the combat to the number of surviving Infection Forms. If the target began with at least half as many models (rounding down), you may replace each surviving Infection Form with an unarmed Combat Form. The unit immediately becomes Regular, uses the Combat Form rules instead, and retains its current Order Die. 
 - Mindless Hunger: This unit cannot pick up, carry, score or control objectives. It may still contest objectives. 
 	
-
-
 
 
 
@@ -452,7 +449,7 @@ Cost
 - Extra Selection: You may take up to 3 Carrier Form Teams as a single choice in any platoon selector that allows an Anti-Tank Team. This does not prevent you from also taking a standard Anti-Tank Team.
 	Anti Tank Team
 Cost
-	50pts (Inexperienced), 71pts (Regular), 92pts (Veteran)
+	45pts (Inexperienced), 71pts (Regular), 87pts (Veteran)
 	Composition
 	2 combat forms
 	Weapons
@@ -529,7 +526,7 @@ Cost
 	Composition
 	2 Combat forms
 	Weapons
-	Sniper has a Sniper Rifle, spotter has a Pistol
+	Sniper has a Sniper Rifle, spotter has a Pistol or DMR
 	Options
 	- The squad can be given Strong for +1pt per man
 	Special Rules
@@ -640,31 +637,23 @@ Cost
 - Horror                                                                                - Slow
 - Limited: Only 1 Spawner Form may be taken per platoon. 
 - Brood Sac: If this unit is not Down, when a friendly Flood Infantry unit successfully enters from Reserve, it may deploy by eruption instead of entering from a table edge. Remove the Spawner Form from play; it counts as destroyed. Place the entering unit with at least one model within 1" of the Spawner’s former position, outside any building and with all models in a legal position according to the rules. The entering unit is then given a Down order instead of making its normal Advance or Run move from Reserve, and cannot take any further action that turn. If the entering unit cannot be placed legally, it fails to enter from Reserve and remains off-table. In this case, the Spawner Form is not removed.
+	Winged Swarm Form Pack 
+Cost
+	50pts (Inexperienced), 65pts (Regular) 
+	Composition
+	1 NCO and 4 Winged Swarm Forms
+	Weapons
+	- Barbed Projectiles 
+	Options
+	- Add up to 5 additional Winged Swarm Forms for +10pts each (Inexperienced) or +13pts each (Regular)
+	Special Rules
+	- Horror
+- Flight
+- Wide Formation 
+- Behind Enemy Lines
+- Aerial Form: This unit can only move using the Flight special rule and cannot choose to move using normal Infantry movement. In addition, this unit may only benefit from soft or hard cover saves while being Down. 
+- Barbed Projectiles: Range 24", Shots 1, Pen –, – 
 	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -735,13 +724,12 @@ Cost
 	2 Forward facing Tentacle Lash (Range: 6", Shots: 1, Pen: +2, Shaped Charge) , 2 Fists
 	Damage Value
 	7+ (Light Walker)
+	Options
+	- One Juggernaut in the army may be upgraded to a Juggernaut Key Mind for +50pts. 
 	Special Rules
-	- Assault
-- Fist 
-- Agile
-- Faster
-- Open-topped
+	- Assault - Fist  - Agile - Faster - Open-topped
 - Synaptic Relay: If at least one Flood Officer is alive, this unit extends that officer’s command bubble to Flood Infantry and Artillery within 6" of it, but with the morale bonus halved. For normal morale checks, affected units use the highest officer’s morale bonus available (halved). For Snap To via this relay, only the activating officer’s halved morale bonus is used, even if another officer on the field has a higher bonus.
+- Juggernaut Key Mind (If taken): A Juggernaut Key Mind gains the Platoon Commander special rule and fills one Platoon Commander slot in a platoon. For all other purposes, it remains a Walker. However, it does not count towards an Armoured Platoon’s composition, vehicle limits, or vehicle requirements, and is ignored when determining any other force-organisation requirements or limits based on vehicles. A Juggernaut Key Mind cannot also be a Command Vehicle. 
 	Abomination
 Cost
 	230pts (Regular), 264pts (Veteran)
@@ -809,5 +797,33 @@ Cost
 
 
 
+
+Thrasher 
+Cost
+	50pts (Regular), 60pts (Veteran)
+	Weapons
+	2 Fists
+	Damage Value
+	7+ (Light Walker)
+	Special Rules
+	- Assault - Fist  - Open-topped
+	AIRCRAFT
+Bomber Form 
+Cost
+	65pts (Regular), 78pts (Veteran)
+	Weapons
+	Unarmed 
+	Damage Value
+	7+ (Medium Aircraft)   
+	Transport 
+	Up to 20 Infection Forms 
+	Special Rules
+	- Open-topped
+- Reinforcement Drop: After this vehicle completes an Advance or Run move, choose one friendly Infection Form Swarm that this unit moved over during that move. Return D3 previously removed Infection Forms to that unit, up to the number of models that unit began the game with. 
+- Airborne Carrier Form: This vehicle may only transport models belonging to Infection Form Swarms. It cannot transport any other units. 
+- Aerial Dispersal: While this Aircraft is Flying, embarked Infection Form Swarms may disembark normally, ignoring the usual restriction that prevents them from disembarking from a Flying Aircraft. 
+- Limited: Only 2 Bomber Forms may be taken per army. 
+- Buoyant Form: This Aircraft may move a maximum of 12" with an Advance order or 24" with a Run order. 
+	
 
  | Page

@@ -1,4 +1,4 @@
-﻿Armies of the Banishedv3.5
+﻿Armies of the Banishedv3.6
 
 Army Special Rules
 Brotherhood of Chaos
@@ -6,7 +6,7 @@ The Banished ranks are composed of fierce but unruly factions, each warband eage
 * Effect: Once per turn, when a Banished Infantry unit enters the battlefield from Reserve or Outflanking, it may enter with a Run order and still fire its Small Arms after moving. If it does so, those weapons suffer a -1 to hit penalty, even if they have Assault. 
 Trophy Takers 
 Banished Brutes tear armour, trophies, and wargear from the defeated, wearing each victory as proof of dominance. 
-* Effect: When a Banished Brute unit wins a Close Quarters combat for the first time, it gains Trophy Plate Harness for the rest of the battle. If it already has Trophy Plate Harness, improve its Trophy Plate Harness save to 5+ for the rest of the battle. 
+* Effect: The first time a Banished Brute Infantry unit wins a Close Quarters combat, it gains Trophy Plate Harness for the rest of the battle. The first time any friendly unit that began the battle with Trophy Plate Harness wins a Close Quarters combat, improve its Trophy Plate Harness save to 5+ in Close Quarters for the rest of the battle. 
 
 
 Blood Price
@@ -29,6 +29,10 @@ Units whose profiles include “FORGED IN CHAINS” in their Special Rules secti
 When selected, apply all associated rules and point costs to every model in the squad. Mixed designations are not allowed within the same unit.
 GRUNTS/JACKALS
 Default. No Bonuses.
+SKIRMISHERS
+Must be taken as Regular or Veteran. Only for: Platoon Commander, Forward observer and Sniper Team. Limited to up to 2 per platoon, and up to 4 per army.
+Gain the Fast and Fieldcraft special rules.
+Cost: +3pts per model.
 BRUTES
 Must be taken as Regular or Veteran.
 Gain the Hardened, Stubborn, Strong, Fieldcraft and Berserker special rules.
@@ -45,8 +49,7 @@ Cost: +10pts per model.
 Optional additional upgrades (Elite-only):
  – The squad may be given Stealth for +1pts per model. 
 – The NCO/Officer may be given a Melee Weapon for +1pt (This model rolls 1 additional dice in close combat) 
-
-
+- The unit may be given Melee Weapons special rule for +1pt per model
 
 
 
@@ -92,21 +95,15 @@ A Brute NCO or Officer with a Melee Weapon may take a Gravity Hammer using one o
 * If the model has no ranged weapon, it may take a Gravity Hammer for +8pts.
 If the unit already has the Tough Fighters special rule, reduce the points cost of this upgrade by 1pt.
 A model with a Gravity Hammer gains Tough Fighters. In addition, while this unit is fighting in close quarters, the Gravity Hammer wielder gains +1 extra melee attack for every full 3 enemy models involved in the fight. If a unit containing a Gravity Hammer is assaulted in open ground while it is not Down, it counts as having Defensive Position.
-
-
-
-
-
-
-
-
+Brute Grenadiers 
+A Banished Grenade Launcher Team selected as Brutes may be upgraded to Brute Grenadiers for +20pts. Double the number of shots made by this unit’s weapons. In addition, if this unit is destroyed in Close Quarters, the enemy unit involved immediately suffers one HE (1") hit. 
 INFANTRY
 HEADQUARTERS UNITS
 Officer
 Cost
-	- Platoon commander (Grunt Enforcer, Elite Taskmaster, Brute Pack Leader):  
+	- Platoon commander (Examples: Grunt Enforcer, Elite Taskmaster, Brute Pack Leader, etc):  
 21pts (Inexperienced), 30pts (Regular), 39pts (Veteran) 
-- Company commander (Grunt Warlord, Elite Blademaster, Veteran Chieftain):  
+- Company commander (Examples: Grunt Warlord, Elite Blademaster, Veteran Chieftain, etc):  
 42pts (Inexperienced), 60pts (Regular), 78pts (Veteran)
 	Team
 	1 officer and up to 3 further grunts
@@ -195,12 +192,9 @@ Cost
 
 
 
-
-
 Forward Observer
 Cost
-	Forward observer (air force or artillery)
-75pts (Regular), 90pts (Veteran)
+	Forward observer (air force or artillery) 75pts (Regular), 90pts (Veteran)
 	Team
 	1 forward observer and up to 2 further grunts
 	Weapons
@@ -209,7 +203,7 @@ Cost
 	- The observer may be accompanied by up to 2 grunts at a cost of +11pts per grunt (Regular) or +14pts per grunt (Veteran)
 	Special Rules
 	- Infiltrator
-- Forged In Chains
+- Forged In Chains 
 	INFANTRY SQUADS AND TEAMS
 Grunt Squad
 Cost
@@ -294,6 +288,8 @@ Cost
 
 
 
+
+
 Jackal Squad
 Cost
 	40pts (Inexperienced), 55pts (Regular), 70pts (Veteran) 
@@ -310,7 +306,7 @@ Cost
   – Plasma Rifles for +5pts each
 - The squad can be given anti-tank grenades for +2pts per Jackal  
 - If all models only have Plasma Pistols/Disruptors, Plasma Rifles and Needlers, the squad may take Defense Gauntlets for +1pt per Jackal  
-- If the squad does not take Defense Gauntlets, it may be upgraded to Skirmishers for +2pts per Jackal  
+- If the squad does not take Defense Gauntlets, it may be upgraded to Skirmishers for +3pts per Jackal. Up to 2 per army.
 - If not taken as Veteran, the entire squad may be Shirkers at -2pts per model
 - The squad can be given Engineers for +1pt per man
 	Special Rules
@@ -320,21 +316,27 @@ Cost
 - Fieldcraft: If Skirmishers are taken
 - Shirkers : If Shirkers are taken
 - Engineers: If Engineers are taken
-	Skimmer Squad
-Cost
-	50pts (Inexperienced), 65pts (Regular), 80pts (Veteran)  
-	Composition
-	1 NCO and 4 Skimmers
-	Weapons
-	Plasma Pistols/Disruptor
-	Options
-	- Add up to 5 additional Skimmers for +10pts each (Inexperienced), +13pts each (Regular), or +16pts each (Veteran)
-- The NCO and up to 9 Skimmers may be armed with Shock Rifles instead of Plasma Pistols/Disruptors for +1pts each.
-	Special Rules
-	- Flight
-- Infiltrator
-- Limited: Only 1 Skimmer Squad may be taken per platoon.
 	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -508,36 +510,30 @@ Cost
 - The squad may be given anti-tank grenades for +2pts per Elite  
 - The squad may be given Stealth Modules for +1pt per Elite  
 - The NCO may be given a Melee Weapon for +1pt (This model rolls 2 dice in close combat instead of 1) 
+- The unit may be given Melee Weapons special rule for +1pt per model
 	Special Rules
 	- Behind Enemy Lines                              - Flight: If Jump-Jet Packs are taken  
 - Fanatics                                                    - Hardened
-- Energy Shields  
-- Fast  
+- Energy Shields                                       - Strikes First
+- Fast                
 - VISR  
 - Strong
-- Strikes First
 - Stealth: If Stealth Modules are taken  
 - Tank Hunters: If anti-tank grenades are taken 
 - Melee Weapon: If taken, the model rolls 2 dice in close combat instead of 1
+	Skimmer Squad
+Cost
+	50pts (Inexperienced), 65pts (Regular), 80pts (Veteran)  
+	Composition
+	1 NCO and 4 Skimmers
+	Weapons
+	Plasma Pistols/Disruptor
+	Options
+	- Add up to 5 additional Skimmers for +10pts each (Inexperienced), +13pts each (Regular), or +16pts each (Veteran)
+- The NCO and up to 9 Skimmers may be armed with Shock Rifles instead of Plasma Pistols/Disruptors for +1pts each.
+	Special Rules
+	- Flight - Infiltrator - Limited: Only 1 Skimmer Squad may be taken per platoon.
 	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -699,12 +695,10 @@ Cost
 	Weapons
 	Explosive Charge 
 	Options
-	- This unit can be upgraded to a Grunt Rider for +4pts, gaining Stubborn, Hardened, Fieldcraft and Berserker.
+	- This unit can be upgraded to a Suicide Grunt Rider for +4pts per model, gaining Stubborn, Hardened, Fieldcraft and Berserker. - Add 1 additional Grunt for +14pts (Inexperienced), +20pts (Regular), or +26pts (Veteran). 
 	Special Rules
-	- Suicide Charge: If this model successfully assaults an enemy unit and makes contact, it is immediately removed, and the assaulted unit either suffers a single hit with a Penetration value of +8 (Without any other modifiers), or HE (2").  
-- Tank Hunters  
-- Infiltrator  
-- Extra Selection: You may take up to 3 Suicide Anti-Tank Teams as a single choice in any platoon selector that allows an Anti-Tank Team. This does not prevent you from also taking a standard Anti-Tank Team.
+	- Suicide Charge: After this unit successfully assaults an enemy unit and reaches Close Quarters, immediately remove all remaining models from this unit. If 1 model is removed, inflict one HE (2") hit or make one Damage roll against the vehicle’s DV with +4 Penetration and no other modifiers. If 2 models are removed, inflict 2× HE (2") hits or make the Damage roll with +6 Penetration instead. 
+- Tank Hunters  - Infiltrator  - Extra Selection: You may take up to 3 Suicide Anti-Tank Teams as a single choice in any platoon selector that allows an Anti-Tank Team. This does not prevent you from also taking a standard Anti-Tank Team.
 	Huragok
 Cost
 	45pts (Inexperienced) 
@@ -802,32 +796,32 @@ or
 - Scrap cannon: Heavy weapon: Range 48", Shots 3, Pen +1, Team, Fixed, HE (1")
 	Anti Tank Team
 Cost
-	49pts (Inexperienced), 70pts (Regular), 91pts (Veteran)
+	44pts (Inexperienced), 70pts (Regular), 86pts (Veteran)
 	Composition
 	2 Grunts 
 	Weapons
 	1 Fuel Rod Gun/Hydra
 	Options
 	- Replace Fuel Rod Gun/Hydra with Plasma/Rocket launcher for no additional cost
+- If this unit is selected as Grunts, it may be upgraded to a Heavy Grunt Anti-Tank Team for +0pts, gaining Hardened and Slow.
 	Special Rules
-	- Team Weapon  
-- Shaped charge  
-- Forged In Chains
+	- Team Weapon  - Shaped charge - Forged In Chains
 	Sniper Team
 Cost
 	52pts (Regular), 67pts (Veteran)
 	Composition
 	2 Jackal 
 	Weapons
-	Sniper has a Beam Rifle, spotter has a Plasma Pistol/Disruptor
+	Sniper has a Beam Rifle, spotter has a Plasma Pistol/Disruptor or Stalker Rifle
+	Options
+	
+
 	Special Rules
 	- Team weapon
-- Sniper
+- Sniper 
 - Infiltrator
 - Forged In Chains
 	
-
-
 
 
 
@@ -979,16 +973,16 @@ Cost
 - Open-topped  
 - Impulse Drive
 - Needle Cannon: Range 48", Shots 2, Pen +2, Shaped Charge, Tracking, Supercombine, HE (1") 
-- Shardstorm Launcher: Range 36", Shots 6, Pen –, Team, Supercombine, Fixed
+- Shardstorm Launcher: Range 36", Shots 6, Pen –, Tracking, Supercombine, Fixed
 	Type-30 Light Excavation/Anti-Fortification Platform "Locust" 
 Cost
-	132pts (Inexperienced), 165pts (Regular), 198pts (Veteran) 
+	140pts (Inexperienced), 175pts (Regular), 210pts (Veteran) 
 	Weapons
 	Turret-mounted Medium Anti-Tank Weapon
 	Damage Value
 	8+ (Medium Walker)  
 	Special Rules
-	- Slow - Excavation Beam: When targeting a unit inside a building or a building, the attack counts as HE (3") instead.    - Shielded Hull 
+	- Slow - Excavation Beam: When targeting a unit inside a building or a building, the attack counts as HE (3") instead.    - Shielded Hull  - Sustained Beam
 	Dovotaa Workshop Sky Protector "Reaver" 
 Cost
 	124pts (Inexperienced), 155pts (Regular), 186pts (Veteran) 
@@ -1070,7 +1064,7 @@ Cost
 - Impulse Drive
 	Goliath 
 Cost
-	50pts (Regular), 60pts (Veteran) 
+	60pts (Regular), 72pts (Veteran) 
 	Weapons
 	2 Fists
 	Damage Value
@@ -1131,8 +1125,7 @@ May take Shielded Hull for +25pts.
 
 
 
-
-
+                                                                               May take Shielded Hull for +25pts.
 
 
 
@@ -1185,7 +1178,7 @@ Cost
 	7+ (Armoured Car)
 	Special Rules
 	- Open-topped
-- Shredder Ram: This vehicle may assault soft-skin (6+) and light vehicles (7+) as if it were a fully enclosed tracked tank, following the normal vehicle assault rules.
+- Shredder Ram: This vehicle may assault infantry, artillery, soft-skin (6+) and light vehicles (7+) as if it were a fully enclosed tracked tank, following the normal vehicle assault rules.
 	
 
 
@@ -1266,7 +1259,7 @@ Cost
 - Nimble
 	Gydrozka Workshop Blisterback
 Cost
-	110pts (Regular), 132pts (Veteran) 
+	100pts (Regular), 120pts (Veteran) 
 	Weapons
 	Turret-mounted Paired Heavy plasma MG, turret-mounted Multiple launcher
 	Damage Value
@@ -1316,7 +1309,7 @@ Cost
 
 
 
-May take Shielded Hull for +20pts. 
+May take Shielded Hull for +15pts. 
 
 
 
@@ -1367,101 +1360,6 @@ Cost
 	Up to 30 men
 	Special Rules
 	- Flak
-	Phantom
-Cost
-	108pts (Inexperienced), 135pts (Regular), 162pts (Veteran)  
-	Weapons
-	Turret-mounted Light Plasma Cannon
-	Damage Value
-	8+ (Heavy Aircraft)  
-	Options
-	- Add 2 Turret-mounted Light Plasma Cannons for +50pts
-- Add 2 pintle-mounted PMMGs, 1 PMMG covering the front arc, and 1 PMMG covering the right arc for +30pts
-- Upgrade to Command Vehicle for +10pts
-	Transport 
-	Up to 16 men
-	Special Rules
-	- Flak
-- Command Vehicle (If Command Vehicle is taken)
-	May take Shielded Hull for +15pts. 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-May take Shielded Hull for +20pts. 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-TRANSPORTS AND TOWS
-Qavardu Workshop war-skiff 
-Cost
-	52(Inexperienced), 65(Regular), 78(Veteran) 
-	Weapons
-	Turret-mounted medium plasma MG
-	Damage Value
-	7+ (Armoured Anti-Grav Vehicle)
-	Transport 
-	Up to 10 men
-	Special Rules
-	- Recce
-- Open-topped
-	Eklon'Dal Workshop Warrior Carriage
-Cost
-	125(Regular), 150(Veteran) 
-	Weapons
-	Casement-mounted forward-facing Light Anti-Tank Weapon
-	Damage Value
-	7+ (Armoured Anti-Grav Vehicle)
-	Transport 
-	Up to 16 men
-	Special Rules
-	- Reinforced Front Armour
-- Versatile: The Light Anti-Tank Weapon can also fire as a Light Howitzer.  
 	
 
 
@@ -1482,12 +1380,101 @@ Cost
 
 
 
+May take Shielded Hull for +15pts. 
 
 
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Phantom
+Cost
+	108pts (Inexperienced), 135pts (Regular), 162pts (Veteran)  
+	Weapons
+	Turret-mounted Light Plasma Cannon
+	Damage Value
+	8+ (Heavy Aircraft)  
+	Options
+	- Add 2 Turret-mounted Light Plasma Cannons for +50pts - Add 2 pintle-mounted PMMGs, 1 PMMG covering the front arc, and 1 PMMG covering the right arc for +30pts - Upgrade to Command Vehicle for +10pts
+	Transport 
+	Up to 16 men
+	Special Rules
+	- Command Vehicle (If Command Vehicle is taken) - Flak  - Gravity Lift: While Flying, if this Aircraft has not moved this turn, transported units may disembark from it as though it were Landed. If a unit does so, this Aircraft cannot advance or run for the rest of the turn. 
+	TRANSPORTS AND TOWS
+Qavardu Workshop war-skiff 
+Cost
+	60(Inexperienced), 75(Regular), 90(Veteran) 
+	Weapons
+	Turret-mounted medium plasma MG
+	Damage Value
+	7+ (Armoured Anti-Grav Vehicle)
+	Transport 
+	Up to 8 men
+	Special Rules
+	- Recce
+- Open-topped
+	Eklon'Dal Workshop Warrior Carriage
+Cost
+	135(Regular), 162(Veteran) 
+	Weapons
+	Casement-mounted forward-facing Light Anti-Tank Weapon
+	Damage Value
+	7+ (Armoured Anti-Grav Vehicle)
+	Transport 
+	Up to 12 men
+	Special Rules
+	- Reinforced Front Armour
+- Versatile: The Light Anti-Tank Weapon can also fire as a Light Howitzer.  
+- Heavy Thrusters: This vehicle only doubles its movement on roads when given a Run order.
+	May take Shielded Hull for +20pts. 
 
 
 
@@ -1545,7 +1532,7 @@ Cost
 TITANIC WALKER
 Barukaza Workshop Scarab
 Cost
-	445pts (Regular), 535pts (Veteran)  
+	480pts (Regular), 575pts (Veteran)  
 	Weapons
 	Hull-mounted Forward-facing Super-Heavy Anti-Tank Weapon, Turret-mounted Rocket Launcher
 	Damage Value
@@ -1553,9 +1540,9 @@ Cost
 	Transport 
 	Up to 20 men
 	Special Rules
-	- Flak
+	- Flak - Excavation Beam: When targeting a building or a unit inside a building, the Super-Heavy Anti-Tank Weapon counts as HE (4") instead.
 - Titanic Walker: When rolling on the Vehicle Damage chart against this unit, reduce the result by 1 (to a minimum of 1).
-- Towering Strider: For movement purposes, this walker treats all terrain and units as open ground, except tall terrain and other Titanic Walkers.
+- Towering Strider: For movement purposes, this vehicle treats all terrain and units as open ground, except tall terrain and other Titanic vehicles. This vehicle may Advance up to 18" and Run up to 36". - Sustained Beam
 	ARTILLERY
 ANTI-AIRCRAFT GUNS
 Type-27 Anti-Infantry Stationary Gun
@@ -1676,6 +1663,188 @@ Cost
 - Forged In Chains
 - Fixed 
 	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Janissaries 
+Cost
+	120pts (Veteran) 
+	Composition
+	1 NCO and 3 Janissaries 
+	Weapons
+	Spikers 
+	Options
+	- Add up to 2 additional Janissaries for +30pts each 
+- The NCO and up to 5 Janissaries may have Shotguns instead of Spikers for -4pts each 
+- The NCO and up to 2 Janissaries may have Brute Shot/Grenade Launchers instead of Spikers for +13pts each 
+- If the squad has Engineers, the NCO and up to 2 Janissaries may have Ravagers instead of Spikers for +33pts each  
+- The NCO may have a Gravity Hammer instead of a Spiker for +0pts 
+- The squad may be given Anti-Tank Grenades for +2pts per Janissary 
+- The squad may be given Engineers for +1pt per Janissary 
+- The squad may be given Melee Weapons for +2pts per Janissary 
+- The NCO may be given a Melee Weapon for +1pt (This model rolls 2 dice in close combat instead of 1) 
+	Special Rules
+	- Behind Enemy Lines
+- Energy Shields
+- Fanatics
+- Fast
+- Hardened
+- Limited: Only 1 Janissaries unit may be taken per army
+- Strong
+- Strikes First
+- Trophy Plate Harness
+- VISR
+- Engineers: If Engineers are taken
+- Tank Hunters: If Anti-Tank Grenades are taken
+- Melee Weapons: If Melee Weapons are taken
+- Melee Weapon: If taken, the NCO rolls 2 dice in close combat instead of 1 
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+VEHICLES
+ARMOURED CARS
+Methane Wagon
+Cost
+	65 pts (Regular), 78 pts (Veteran)
+	Weapons
+	Forward-facing hull mounted Methane Keg Launcher
+	Damage Value
+	7+ (Light Anti-Grav Vehicle) 
+	Special Rules
+	- Open-topped 
+- Slower  
+- Reinforced Front Armour 
+- Infusion-Enriched Methane :  All Grunt Infantry and Artillery models within 6" of this vehicle count as being within 6" of a Medic. In addition, Grunt Infantry units that are issued an order while within 6" of this vehicle count as having the Berserker special rule for the duration of that activation. All Infantry and Artillery units that are not Grunts and are issued an order while within 6" of this vehicle count as having the Shirkers special rule for the duration of that activation. 
+- Methane Keg Launcher : Range 12–36", Indirect Fire. This weapon does not inflict damage. If the shot hits, place a 3" diameter Methane Cloud marker centred on the target point. The marker follows the normal rules for Smoke. Units within 6" are affected by Infusion-Enriched Methane exactly as if they were within 6" of the Methane Wagon.  
+- Volatile Methane : If this vehicle is destroyed as the result of a shooting attack or assault, every unit within 6" of the vehicle suffers one HE (1") hit. 
+	
+
+
+
+
+
+
+
+
 
 
 

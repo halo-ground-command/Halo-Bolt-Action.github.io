@@ -1,9 +1,9 @@
-﻿Armies of the UNSC v3.5
+﻿Armies of the UNSC v3.6
 
 Army Special Rules
 Desperate Measures
 When humanity is pushed to the brink, its soldiers rally with unwavering determination.
-* Effect: When a UNSC infantry or artillery unit is reduced to half or less of its initial starting strength (rounding up), the remaining models in that unit gain the Stubborn special rule. Units that already have Stubborn gain the Fanatics special rule instead. Units that already have Fanatics gain MJOLNIR Biofoam Systems. If they already have MJOLNIR Biofoam Systems, they gain Energy Shields instead.
+* Effect: When a UNSC Infantry or Artillery unit is reduced to half or less of its initial starting strength (rounding up), the remaining models in that unit gain the Stubborn special rule. Units that already have Stubborn gain Fanatics instead. Units that already have Fanatics gain High Resolve instead. 
 Experienced Commanders
 UNSC officers are trained to manage diverse forces and battlefield conditions effectively.
 * Effect: When a UNSC Officer uses the ‘You men, snap to action!’ ability, they may draw and assign one additional Order Die from the bag to a friendly unit within range, following the normal rules for that ability. This increases the number of units that can be activated by one.
@@ -17,12 +17,18 @@ UNSC commanders use linked battle-net systems and tactical AI support to exploit
 
 
 
+
+
 FOR HUMANITY’S SURVIVAL!
 This rule allows you to customize units to represent specific UNSC sub-factions. Each eligible unit may be upgraded individually — you can freely mix and match Marine, ODST, and Spartan squads within the same force.
 Units whose profiles include “FOR HUMANITY’S SURVIVAL!” in their Special Rules section may benefit from this customization.
 When selected, apply all associated rules and point costs to every model in the squad. Mixed designations are not allowed within the same unit.
 TROOPERS
 Default. No Bonuses.
+RECON
+Must be taken as Veteran. Only for: Engineer Squad, Anti Tank Team, Machine Gun Team and Grenade Launcher Team. Limited to up to 2 per army. 
+Gain the Pathfinder and Fieldcraft special rule.
+Cost: +2pts per model.
 MARINES
 Must be taken as Regular or Veteran.
 Gain the Stubborn special rule.
@@ -34,18 +40,7 @@ Cost: +2pts per model.
 Optional additional upgrades (ODST-only):
  – The squad can be given Strong for +1pt per model.
  – The squad can be given Fieldcraft for +1pt per model.
-
-
-
-
-
-
-
-
-
-
-
-
+– The NCO/Officer may be given a Melee Weapon for +1pt (This model rolls 1 additional dice in close combat)
 SPARTANS
 Must be taken as Veteran.
 Gain the Hardened, Fanatics, Fast, Behind Enemy Lines, Strong,  Strikes First and VISR special rules.
@@ -54,10 +49,7 @@ Optional additional upgrades (Spartan-only):
  – The squad can be given Energy Shields for +3pts per model.
  – The squad can be given Stealth for +1pt per model.
 – The NCO/Officer may be given a Melee Weapon for +1pt (This model rolls 1 additional dice in close combat)
-
-
-
-
+- The unit may be given Melee Weapons special rule for +1pt per model
 
 
 
@@ -98,21 +90,12 @@ Wheeled vehicles with this rule may enter and move through rough ground with an 
 - M12G1 Gauss Warthog
 - M12R Rocket Warthog
 - M831 Troop Transport Warthog
+- M650 Mastodon
 XM20P Grenades
 One UNSC Grenade Launcher Team per platoon may upgrade its Grenade Launcher weapon to XM20P Grenades for +5pts.
 When a weapon with XM20P Grenades hits a unit with Energy Shields or Shielded Hull, ignore the rule.
-
-
-
-
-
-
-
-
-
-
-
-
+High Resolve 
+Whenever this unit successfully passes an Order test by rolling a double, it counts as having rolled Incredible Courage! and immediately removes all of its Pin markers rather than just one. 
 
 
 
@@ -412,22 +395,22 @@ Cost
 	Assault Rifles
 	Options
 	- Add up to 2 additional men for +26pts each
-- The NCO and up to 5 men may have Battle Rifles instead of Assault Rifles for -3pts each
-- The NCO and up to 4 men may have Shotguns instead of Assault Rifles for -3pts each
-- The NCO and up to 4 men may have DMRs instead of Assault Rifles for -5pts each
+- The NCO and up to 5 men may have Battle Rifles/Shotguns  instead of Assault Rifles for -3pts each
+- The NCO and up to 5 men may have DMRs instead of Assault Rifles for -5pts each
+- The NCO and up to 5 men may have SMGs instead of Assault Rifles for -2pts each
 - Up to 2 men may have a Grenade Launcher for +17pts
 - Up to 2 men may have a Light Machine Gun for +9pts
+- Up to 1 man may have a MMG for +13pts
 - The NCO and up to 2 men may have a Anti-Tank Rifle for +10pts
 - The squad can be given Jump-Jet Packs for +1pt per man
 - The squad can be given Stealth Modules for +1pt per man
 - The squad can be given Energy Shield Modules for +3pts per man
 - The NCO may be given a Melee Weapon for +1pt 
-- The unit may be given Melee Weapons special rule for +2pt per model
+- The unit may be given Melee Weapons special rule for +1pt per model
 - The squad can be given Engineers for +1pt per man
 	Special Rules
-	- Fanatics                                                                               - Strong 
-- Engineers: If Engineers are taken                                   - Fast                                                  
-- Tank Hunters: If anti-tank grenades are taken             - VISR                                                       - Stealth: If Stealth Modules are taken                            - Strikes First                     
+	- Engineers: If Engineers are taken                                   - Fast     - Strong                                              
+- Tank Hunters: If anti-tank grenades are taken             - VISR   - Fanatics                                                    - Stealth: If Stealth Modules are taken                            - Strikes First                     
 - Energy Shields: If Energy Shield Modules are taken   - Behind Enemy Lines 
 - Flight: If Jump-Jet Packs are taken                                 - Hardened
 - Melee Weapon: If taken, the model rolls 2 dice in close combat instead of 1
@@ -445,6 +428,10 @@ Cost
 - Limited: Only 1 ONI Operative Team may be taken per platoon.
 - Tank Hunters: If anti-tank grenades are taken
 	
+
+
+
+
 
 
 
@@ -531,7 +518,7 @@ Cost
 - For Humanity’s Survival!
 	Anti Tank Team
 Cost
-	49pts (Inexperienced), 70pts (Regular), 91pts (Veteran)
+	44pts (Inexperienced), 70pts (Regular), 86pts (Veteran)
 	Composition
 	2 men  
 	Weapons
@@ -603,9 +590,9 @@ Cost
 	Composition
 	2 men  
 	Weapons
-	Sniper has a sniper rifle and a pistol, spotter has a pistol 
+	Sniper has a sniper rifle and a pistol, spotter has a pistol or DMR
 	Options
-	- The unit may be equipped with Anti-Materiel Rounds for +15pts. If this upgrade is taken, the Sniper Rifle becomes a Heavy Sniper Rifle and gains Pen +1.
+	- The unit may be equipped with Anti-Materiel Rounds for +10pts. If this upgrade is taken, the Sniper Rifle becomes a Heavy Sniper Rifle and gains Pen +1.
 	Special Rules
 	- Team weapon
 - Sniper
@@ -1395,7 +1382,7 @@ Cost
 - Open-topped
 	M88 Bison
 Cost
-	45pts (Inexperienced), 55pts (Regular), 65pts (Veteran) 
+	56pts (Inexperienced), 70pts (Regular), 84pts (Veteran) 
 	Weapons
 	None
 	Damage Value
@@ -1407,11 +1394,11 @@ Cost
 
 	M650 Mastodon
 Cost
-	120pts (Regular), 145pts (Veteran) 
+	115pts (Regular), 138pts (Veteran) 
 	Weapons
 	Turret-mounted Heavy Machine Gun 
 	Damage Value
-	8+ (Light Tank) 
+	7+ (Armoured Car)
 	Transport 
 	Up to 12 men
 	Special Rules
@@ -1782,6 +1769,30 @@ Cost
 	- Shield Wall 
 - Stubborn 
 - Engineers: If Engineers are taken 
+	AIRCRAFTS
+AV-49 Wasp
+Cost
+	115pts (Regular), 135pts (Veteran) 
+	Weapons
+	Hull-mounted Forward-facing Paired Heavy Machine Gun and Hydra 
+	Damage Value
+	6+ (Light Aircraft)  
+	Transport 
+	None
+	Special Rules
+	- Flak                                                     - Agile
+- Nimble                                               - Shielded Hull
+	EV-44 Nightingale
+Cost
+	75pts (Regular), 90pts (Veteran)  
+	Weapons
+	None
+	Damage Value
+	7+ (Medium Aircraft)  
+	Transport 
+	Up to 5 men
+	Special Rules
+	Camouflaging Jammers: Friendly Infantry and Artillery units with at least one model within 6" of this vehicle count as having the Stealth special rule. Enemy Infantry and Artillery units with at least one model within 6" of this vehicle cannot benefit from the Stealth special rule. - Medical Vehicle 
 	
 
  | Page
