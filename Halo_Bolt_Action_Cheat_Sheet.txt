@@ -1,4 +1,4 @@
-﻿Halo: Bolt Action Cheat Sheet V1.2
+﻿Halo: Bolt Action Cheat Sheet V1.3
 
 
 Turn Sequence
@@ -114,7 +114,7 @@ Terrain Type
 	OK
 	OK
 	No (!)
-	X2
+	OK
 	Anti-grav Vehicles
 	OK
 	No Run
@@ -519,13 +519,13 @@ If a firing unit scores one or more normal shooting hits with small arms or non-
 
 HE Splash: After a HE shot hits, place the template to cover as many models in the target unit as possible without touching friendly models. Enemy models from other units touched by the template are also hit and may suffer damage, but only the declared target takes Pins and only the declared target may react by Going Down.
 Aircraft Rules Summary
-Aircraft normally start in Reserve and enter with an Advance or Run order. When flying, aircraft move 24" on Advance or 48" on Run, may pivot freely, ignore terrain and units for movement. Flying Aircraft do not block LoS or provide cover.
+When flying, aircraft move 24" on Advance or 48" on Run, may pivot freely, ignore terrain and units for movement. Flying Aircraft do not block LoS or provide cover.
 
 
 Flying Aircraft do not gain point-blank bonuses, and units do not gain point-blank bonuses against them. Units suffer -1 to hit against Flying Aircraft unless they have Flak. Flying Aircraft have a 5+ Evasion save against damage, but does not negate Pins.
 
 
-A Flying Aircraft lands by receiving a Down order, landing within 9" in an allowed position. If it fails an Order test while flying, it does not land; it simply loses its activation and remains flying. Once landed, it follows normal vehicle rules. Aircrafts do not reverse on failed order tests.
+A Flying Aircraft lands by receiving a Down order, landing within 9" in an allowed position. If it fails an Order test while flying, it does not land; it simply loses its activation and remains flying. Once landed, it follows normal vehicle rules. Aircrafts do not reverse on failed order tests. Cannot enter from reserves with a down order.
 
 
 If a Flying Aircraft is destroyed while carrying passengers, transported units suffer D3 Pins, then resolve transport destruction as normal. If a Flying Aircraft would be destroyed due to accumulated Pins while carrying passengers, it lands in the nearest allowed position, becomes a wreck, and passengers dismount safely as normal. Passengers can only mount/dismount while an aircraft is landed, following the normal rules.
@@ -594,6 +594,8 @@ Damage to Passengers: If a transport suffers Immobilised or On Fire, passengers 
 
 
 Assaulting Loaded Transports: If a loaded transport is assaulted by Infantry, the vehicle may react with defensive fire if eligible. If the assault is not stopped, all passengers automatically dismount. If multiple units are aboard, all dismount, but the largest unit fights the assault; if tied, the attacker chooses. The dismounted unit does not gain Defensive Position unless the transport itself would have had it.
+
+
 
 
 
