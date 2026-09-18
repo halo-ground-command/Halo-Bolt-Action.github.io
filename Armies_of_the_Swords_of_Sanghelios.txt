@@ -1,4 +1,4 @@
-﻿Armies of the Swords_of_Sangheliosv1.1
+﻿Armies of the Swords_of_Sangheliosv1.2
 
 Use the Covenant army list, replacing the Covenant Army Special Rules with the rules below. 
 Army Special Rules
@@ -24,5 +24,5 @@ Sangheili warriors prize honourable close combat, but only those who bear the pr
 * Effect: When an Elite Infantry unit that includes at least one model with a Melee Weapon is given a Run order to assault an enemy unit, it counts as having the Fieldcraft special rule for that action. 
 War-Chants of Sanghelios 
 The Swords of Sanghelios advance beneath ancient battle-chants, open-channel challenges, and rolling war-cries.  
-* Effect: At the start of every Game Turn, roll a D6 for each enemy Infantry and Artillery unit on the table that has no Pin markers. On a 5+, that unit immediately receives 1 Pin marker. Do not roll for units embarked inside transports.
+* Effect: Once per game, at the start of any Game Turn from Turn 2 onward, choose 1 different enemy unit on the battlefield for each Elite unit in your army list. Each chosen unit receives 1 Pin marker. Units embarked inside transports cannot be chosen. 
  | Page

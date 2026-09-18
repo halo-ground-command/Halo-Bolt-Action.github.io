@@ -1,4 +1,4 @@
-﻿Armies of the Insurrectionv1.1
+﻿Armies of the Insurrectionv1.2
 
 Use the UNSC army list, replacing the UNSC Army Special Rules with the rules below.
 Army Special Rules
@@ -18,8 +18,29 @@ Insurrectionist fighters survive against better-equipped armies by fighting from
 * Effect: Insurrectionist Infantry and Artillery units improve their Cover Save by +1 while they have an Ambush order, as long as they are already in cover. 
 Hidden Sentries
 Insurrectionist territory is protected by lookouts, informants, hidden cameras, tripwires, false routes, and local warning networks.
-* Effect: Enemy units using the Infiltrator special rule cannot deploy within 24" of any Insurrectionist unit that was set up on the table before them, instead of the usual 12". If this prevents an enemy Infiltrator unit from being legally deployed, that unit must be deployed as if it did not have Infiltrator instead. 
+* Effect: Each opposing army that is not an Insurrectionist army may deploy a maximum of one unit using the Infiltrator special deployment rules. Any additional units in that army with the Infiltrator special rule cannot use their Infiltrator special deployment. 
 Local Area Control
 Insurrectionists know the back roads, service tunnels, settlements, and terrain of the battlefield better than any regular army.
 * Effect: When an Insurrectionist Infantry unit attempts to enter the battlefield by Reserves/Outflanking, it gains +1 to its Morale value for the Order test made to come onto the table. 
+
+
+Insurrectionist armies may include Suicide Anti-Tank Teams using the profile below. 
+INFANTRY
+INFANTRY SQUADS AND TEAMS
+Suicide Anti-Tank Team 
+Cost
+	14pts (Inexperienced), 20pts (Regular), 26pts (Veteran) 
+	Composition
+	1 Man
+	Weapons
+	Explosive Charge 
+	Options
+	- Add 1 additional Man for +14pts (Inexperienced), +20pts (Regular), or +26pts (Veteran). 
+	Special Rules
+	- Suicide Charge: After this unit successfully assaults an enemy unit and reaches Close Quarters, immediately remove all remaining models from this unit. If 1 model is removed, inflict one HE (2") hit or make one Damage roll against the vehicle’s DV with +4 Penetration and no other modifiers. If 2 models are removed, inflict 2× HE (2") hits or make the Damage roll with +6 Penetration instead. 
+- Tank Hunters  
+- Infiltrator  
+- Extra Selection: You may take up to 3 Suicide Anti-Tank Teams as a single choice in any platoon selector that allows an Anti-Tank Team. This does not prevent you from also taking a standard Anti-Tank Team.
+	
+
  | Page
