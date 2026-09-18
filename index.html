@@ -1432,7 +1432,7 @@ For example, on Turn 2, they enter as if it were Turn 3. On Turn 4, they enter a
       name: "Sergeant John Forge",
       cost: 25,
       ruleName: "Armoured Breakthrough",
-      ruleText: `Trooper and Marine Infantry units may re-roll failed Order tests made to mount or dismount a Vehicle. In addition, if a vehicle carrying one or more friendly Trooper or Marine Infantry units is destroyed, those Infantry units suffer D3 hits instead of the standard D6 hits.`,
+      ruleText: `Friendly UNSC Infantry units may re-roll failed Order tests made to mount or dismount a Vehicle. In addition, if a Vehicle carrying one or more friendly UNSC Infantry units is destroyed, those Infantry units suffer D3 hits instead of the standard D6 hits.`,
       validate: units => {
         const issues = [];
 
@@ -2656,7 +2656,7 @@ const UNSC_UNITS = [
   options: {
     squadUpgrades: {
       "Anti-Materiel Rounds": {
-        cost: 15,
+        cost: 10,
         perModel: false,
         grantsRule: "Heavy Sniper Rifle",
         replacesWeapon: "Sniper Rifle"
@@ -7462,6 +7462,21 @@ function getArmyTotal() {
   );
 
   return unitsTotal + getSelectedLeaderCost();
+}
+
+function isAttachedLeaderUnit(unit) {
+  const unitData = getUnitData(unit);
+
+  return (
+    unitHasRuleName(unit, "Attached Caste Leader", unitData) ||
+    /Attached Leader/i.test(String(unit?.name || ""))
+  );
+}
+
+function getArmyDiceTotal() {
+  return (window.armyList || []).reduce((total, unit) => {
+    return total + (isAttachedLeaderUnit(unit) ? 0 : 1);
+  }, 0);
 }
 
 function onLeaderChange() {
@@ -12410,7 +12425,10 @@ function renderArmyList() {
   });
   renderSummaryBlock();
 	const total = getArmyTotal();
-	document.getElementById("totalPointsDiv").innerHTML = `<b>Total Points: ${total}</b>`;
+	const totalDice = getArmyDiceTotal();
+
+	document.getElementById("totalPointsDiv").innerHTML =
+	  `<b>Total Points: ${total} &nbsp;&nbsp; Order Dice: ${totalDice}</b>`;
 }
 
 
@@ -12431,10 +12449,18 @@ function renderPdfHeader(pdf, margin, width, y) {
   pdf.text(`Faction: ${effectiveArmyName || "-"}`, margin, y);
   pdf.setTextColor(0, 0, 0);
 
-  let total = getArmyTotal();
-  pdf.setFont("helvetica", "normal");
-  pdf.setFontSize(13);
-  pdf.text(`Total Points: ${total}`, margin + 290, y);
+	let total = getArmyTotal();
+	let totalDice = getArmyDiceTotal();
+
+	pdf.setFont("helvetica", "normal");
+	pdf.setFontSize(13);
+
+	pdf.text(
+	  `Total Points: ${total}     Order Dice: ${totalDice}`,
+	  margin + width,
+	  y,
+	  { align: "right" }
+	);
 
   y += 14;
   pdf.setDrawColor(80, 120, 210);
