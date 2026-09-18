@@ -1,9 +1,9 @@
-﻿Halo: Bolt Action - Leaders v1.0
+﻿Halo: Bolt Action - Leaders v1.1
 
 Introduction
 The standard Halo: Bolt Action army lists allow players to freely combine units to create their own forces. Leaders provide an optional way to build an army around a specific command style, military doctrine, or battlefield strategy inspired by the Halo Wars series.
 A Leader does not represent an additional model or unit on the battlefield. Instead, it represents the commander, strategist, command hierarchy, or wider force doctrine behind the army. Selecting a Leader gives the army access to a unique Leader Rule that reinforces that style of warfare.
-Each Leader has its own requirements, restrictions, and points cost. These may require the army to include certain units, limit access to others, or follow a specific theme. In return, eligible units gain the Leader Rule.
+Each Leader has its own requirements, restrictions, and points cost. These may require the army to include certain units, limit access to others, or follow a specific theme. In return, eligible forces gain the Leader Rule.
 The points cost of a Leader is paid as part of the army list. A Leader does not add an Order Die.
 Leaders are entirely optional. Both players should agree before the game whether Leaders may be used or not.
 An army may only select one Leader.
@@ -73,9 +73,9 @@ Requirements
 * The army must include at least four Trooper or Marine Infantry units.
 * One of those Infantry units must be a Trooper Platoon Commander or Marine Platoon Commander.
 * The army must include at least two non-flying Vehicles with transport capacity.
-* At least one of those Vehicles must have a Damage Value of 8+ or higher.
+* At least one of those Vehicles must have a Damage Value of 7+ or higher.
 Leader Rule
-Armoured Breakthrough: Trooper and Marine Infantry units may re-roll failed Order tests made to mount or dismount a Vehicle. In addition, if a vehicle carrying one or more friendly Trooper or Marine Infantry units is destroyed, those Infantry units suffer D3 hits instead of the standard D6 hits.
+Armoured Breakthrough: Infantry units may re-roll failed Order tests made to mount or dismount a Vehicle. In addition, if a vehicle carrying one or more friendly Infantry units is destroyed, those Infantry units suffer D3 hits instead of the standard D6 hits.
 
 
 
@@ -89,7 +89,7 @@ Requirements
 * The army must include at least four Marine Infantry units.
 * One of those Marine Infantry units must be a Marine Platoon Commander.
 Leader Rule
-Hold the Line!: Once per game, when a friendly Marine Infantry unit fails an Order test, you may use this rule: Remove all Pins from that unit and treat the Order test as passed instead.
+Hold the Line!: Once per game, when a friendly unit fails an Order test, you may use this rule: Remove all Pins from that unit and treat the Order test as passed instead.
 
 
 
@@ -108,7 +108,7 @@ Hold the Line!: Once per game, when a friendly Marine Infantry unit fails an Ord
 
 Commander Jerome-092
 Points Cost
-100pts
+75pts
 Jerome-092 leads Spartan operations with discipline, precision, and overwhelming battlefield presence. Forces operating under his command rely on elite infantry, aggressive manoeuvre, and the superior mobility of MJOLNIR armour to strike where the enemy is weakest.
 Requirements
 * The army must be a UNSC army.
@@ -116,7 +116,7 @@ Requirements
 * One of those Spartan units must be a Spartan Company Commander.
 * For each Spartan unit beyond the first two, the army must also include one Marine Infantry unit.
 Leader Rule
-MJOLNIR Mobility: When a Spartan unit is given a Run order that is not an assault, it treats rough ground and obstacles as open ground for that movement. 
+MJOLNIR Mobility: When a Spartan unit is given a Run order, including an order to assault, and crosses rough ground or an obstacle, it may move up to 12" instead of halving its movement. 
 
 
 
@@ -134,7 +134,7 @@ MJOLNIR Mobility: When a Spartan unit is given a Run order that is not an assaul
 Covenant Leaders
 Prophet of Regret
 Points Cost
-50pts
+25pts
 The Prophet of Regret commands through religious authority, divine mandate, and the strict hierarchy of the Covenant. Forces acting under his command are driven forward by zeal, obedience, and the promise of glory in the name of the Great Journey.
 Requirements
 * The army must be a Covenant army.
@@ -202,7 +202,7 @@ Brutal Display: When a friendly Brute Infantry unit wins in Close Quarters, afte
 
 Yapyap the Destroyer
 Points Cost
-100pts
+75pts
 Yapyap’s followers surge into battle in vast, chaotic mobs, relying on numbers, noise, and sheer stubborn belief in their own uprising. Individually unreliable, they become far more dangerous when clustered together under the direction of their leaders and Deacons.
 Requirements
 * The army must be a Covenant army.
@@ -212,10 +212,9 @@ Requirements
 * One Grunt Infantry unit must include a Deacon.
 * All Infantry and Artillery units in the army must either be Grunt units or be upgraded as Grunts.
 Leader Rule
-Strength in Numbers: Grunt Infantry units may re-roll failed Order tests while they are within 6" of another friendly Grunt Infantry unit that has 8 or more models.
-In addition, an army led by Yapyap the Destroyer may include one additional Grunt Cannon Fodder Mob unit beyond the normal limits (Up to 2 per platoon, and 3 in total per army).
-
-
+Strength in Numbers: Grunt Infantry units may re-roll failed Order tests while they are within 6" of another friendly Grunt Infantry unit that has 7 or more models.
+In addition, an army led by Yapyap the Destroyer may include two additional Grunt Cannon Fodder Mob units beyond the normal limits (Up to 2 per platoon, and 4 in total per army).
+An army led by Yapyap the Destroyer may also include Banished Vehicles in its army list. 
 Banished Leaders
 Atriox
 Points Cost
@@ -320,7 +319,7 @@ A Flood Company Commander therefore has a 24" Morale bonus range and a 24" range
 
 Feral Outbreak
 Points Cost
-100pts
+75pts
 Without higher intelligence, the swarm acts on instinct, surging toward the nearest prey with relentless hunger. 
 Requirements
 * The army must be a Flood army.
@@ -332,13 +331,13 @@ Requirements
    * Juggernaut
    * Abomination
 Leader Rule
-Ravenous Surge: Once per game, at the beginning of a turn before any Order Dice are drawn, choose any number of friendly Flood Infantry units that do not already have an Order Die assigned. For each chosen unit, take one of your Order Dice from the bag and assign it to that unit as a Run order.
+Ravenous Surge: Once per game, at the beginning of a turn before any Order Dice are drawn, choose any number of friendly Flood Infantry units that do not already have an Order Die assigned. For each chosen unit, take one of your Order Dice from the bag and assign it to that unit as a Run order one by one.
 Chosen units do not take Order tests and do not remove Pins. Each unit must move as directly as possible toward the closest enemy Infantry or Artillery unit. If that enemy is within assault range and line of sight, the Flood unit must assault it instead.
 If several eligible enemy units are equally close, or it is not clear which is closest, the opposing player chooses the target. Units activated this way count as activated for the turn.
 Forerunner Leaders
 The Didact
 Points Cost
-100pts
+75pts
 The Didact commands as a supreme Forerunner warlord, directing Promethean forces with ancient military precision and overwhelming authority. Under his command, Forerunner armies punish enemy overextension with sudden, devastating coordination.
 Requirements
 * The army must be a Forerunner army.
