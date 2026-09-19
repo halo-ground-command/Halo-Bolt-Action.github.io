@@ -1403,7 +1403,7 @@ const LEADER_DEFS = {
     {
       id: "cutter",
       name: "Captain James Cutter",
-      cost: 50,
+      cost: 30,
       ruleName: "Feet First into Hell",
       ruleText: `ODST units and vehicles carrying only ODST units using Outflanking may attempt to enter the battlefield one turn earlier than normal. Treat the current turn as being one turn later when determining which table edges they may enter from. All other Outflanking rules apply as normal.
 
@@ -1430,7 +1430,7 @@ For example, on Turn 2, they enter as if it were Turn 3. On Turn 4, they enter a
     {
       id: "forge",
       name: "Sergeant John Forge",
-      cost: 25,
+      cost: 35,
       ruleName: "Armoured Breakthrough",
       ruleText: `Friendly UNSC Infantry units may re-roll failed Order tests made to mount or dismount a Vehicle. In addition, if a Vehicle carrying one or more friendly UNSC Infantry units is destroyed, those Infantry units suffer D3 hits instead of the standard D6 hits.`,
       validate: units => {
@@ -1481,7 +1481,7 @@ For example, on Turn 2, they enter as if it were Turn 3. On Turn 4, they enter a
     {
       id: "johnson",
       name: "Sergeant Major Avery Johnson",
-      cost: 25,
+      cost: 20,
       ruleName: "Hold the Line!",
       ruleText: `Once per game, when a friendly unit fails an Order test, you may use this rule: Remove all Pins from that unit and treat the Order test as passed instead.`,
       validate: units => {
@@ -1506,7 +1506,7 @@ For example, on Turn 2, they enter as if it were Turn 3. On Turn 4, they enter a
     {
       id: "jerome",
       name: "Commander Jerome-092",
-      cost: 75,
+      cost: 40,
       ruleName: "MJOLNIR Mobility",
       ruleText: `When a Spartan unit is given a Run order, including an order to assault, and crosses rough ground or an obstacle, it may move up to 12 instead of halving its movement. `,
       validate: units => {
@@ -1576,7 +1576,7 @@ For example, on Turn 2, they enter as if it were Turn 3. On Turn 4, they enter a
     {
       id: "ripa",
       name: "Ripa 'Moramee",
-      cost: 50,
+      cost: 40,
       ruleName: "No Time to Brace",
       ruleText: `Enemy Infantry and Artillery units assaulted by friendly Elite Infantry units do not gain Defensive Position from rough ground or obstacles. Units inside buildings, bunkers, or fortifications still gain Defensive Position as normal.`,
       validate: units => {
@@ -1687,7 +1687,7 @@ An army led by Yapyap the Destroyer may also include vehicles from the Banished 
     {
       id: "atriox",
       name: "Atriox",
-      cost: 50,
+      cost: 35,
       ruleName: "Calculated Command",
       ruleText: `Once per game, when a friendly Banished Infantry or Artillery unit is given a Down order as a reaction, you may use this rule. Choose one other friendly Banished Infantry or Artillery unit that currently has a Down order die assigned to it. Move that Down order die to the reacting unit instead.
 
@@ -1723,7 +1723,7 @@ The reacting unit is treated as having gone Down as normal. The other unit no lo
     {
       id: "colony",
       name: "Colony",
-      cost: 75,
+      cost: 50,
       ruleName: "Ironclad Hunters",
       ruleText: `Hunter Pack units improve their Carapace rule. When resolving shooting attacks that originate from more than 6" away, treat those Hunter Pack units as having DV 8+ instead of DV 7+.
 
@@ -1752,7 +1752,7 @@ In addition, an army led by Colony may include up to two Hunter Pack units per a
     {
       id: "jega",
       name: "Jega 'Rdomnai",
-      cost: 25,
+      cost: 20,
       ruleName: "Trophy Assassins",
       ruleText: `The Trophy Takers army rule also affects friendly Banished Elite Infantry units.
 
@@ -1784,7 +1784,7 @@ When a friendly Banished Elite Infantry unit wins a Close Quarters combat for th
     {
       id: "decimus",
       name: "Decimus",
-      cost: 25,
+      cost: 20,
       ruleName: "Unrelenting Advance",
       ruleText: `Once per game, when a friendly Brute Infantry unit is given a Run order that is not an assault, you may use this rule.
 
@@ -1888,7 +1888,7 @@ If several eligible enemy units are equally close, or it is not clear which is c
     {
       id: "didact",
       name: "The Didact",
-      cost: 75,
+      cost: 60,
       ruleName: "Warden of the Mantle",
       ruleText: `Once per game, when using the Warden of Balance army rule, you may use this rule. Instead of selecting one friendly Forerunner Infantry or Artillery unit, all friendly Forerunner Infantry units with Composed Beings gain +1 to hit when shooting until the end of that turn.`,
       validate: units => {
@@ -1961,7 +1961,7 @@ A unit may only receive 1 Pin per turn from this rule.`,
     {
       id: "kinsano",
       name: "Kinsano",
-      cost: 25,
+      cost: 30,
       ruleName: "Incendiary Warfare",
       ruleText: `Friendly Insurrectionist units armed with Flamethrowers do not receive the usual 1 Pin marker for firing a Flamethrower.
 
@@ -1991,7 +1991,7 @@ This affects both infantry flamethrowers and vehicle-mounted flamethrowers.`,
     {
       id: "thelVadam",
       name: "Thel 'Vadam",
-      cost: 50,
+      cost: 30,
       ruleName: "United by Honour",
       ruleText: `Friendly Swords of Sanghelios Infantry and Artillery units may benefit from Sangheili Command while within 12" of a friendly Elite Infantry unit, instead of 6".`,
       validate: units => {
@@ -3781,7 +3781,7 @@ const COVENANT_UNITS = [
     name: "Hunter Pack",
     type: "Infantry",
     allowedVeterancy: ["Regular", "Veteran"],
-    costs: { Regular: 112, Veteran: 118 },
+    costs: { Regular: 108, Veteran: 114 },
     baseMen: 2,
     maxMen: 4,
     weapons: [{ name: "Assault Cannon" }],
@@ -3792,7 +3792,7 @@ const COVENANT_UNITS = [
       { name: "Limited", description: "Only 1 Hunter Pack may be taken per army." }
     ],
     options: {
-      extraMenCost: { Regular: 56, Veteran: 59 }
+      extraMenCost: { Regular: 54, Veteran: 57 }
     }
   },
   {
@@ -4904,7 +4904,7 @@ const BANISHED_UNITS = [
     name: "Hunter Pack",
     type: "Infantry",
     allowedVeterancy: ["Regular", "Veteran"],
-    costs: { Regular: 112, Veteran: 118 },
+    costs: { Regular: 108, Veteran: 114 },
     baseMen: 2,
     maxMen: 4,
     weapons: [{ name: "Assault Cannon" }],
@@ -4915,7 +4915,7 @@ const BANISHED_UNITS = [
       { name: "Limited", description: "Only 1 Hunter Pack may be taken per army." }
     ],
     options: {
-      extraMenCost: { Regular: 56, Veteran: 59 }
+      extraMenCost: { Regular: 54, Veteran: 57 }
     }
   },
   {
