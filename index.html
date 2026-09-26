@@ -592,7 +592,7 @@ window.vehicleSpecialDescriptions = {
   "Recce": "Can reverse at full Advance speed instead of half. If unactivated or on Ambush, may make an Escape move when shot at; resolve the shot after the move. May also Escape from assaults starting over 6\" away. Cannot Escape while towing or against barrages/air-strikes.",
   "Reinforced Front Armour": "Front armor counts +1 higher.",
   "Slower": "Advance 6\", Run 12\".",
-  "Sustained Beam": "If an AT Gun on this unit hits its target, draw a straight line from this unit to that target. Each other unit crossed by the line may also be hit; make a separate To Hit roll at -1 for each, plus any other modifiers that may apply. Flying Aircraft are ignored for this rule. If the original target is a Flying Aircraft, this rule does not apply.",
+  "Sustained Beam": "If an AT Gun on this unit hits its target, draw a straight line from this unit to that target. Each other enemy unit crossed by the line may also be hit; make a separate To Hit roll at -1 for each, plus any other modifiers that may apply. Flying Aircraft are ignored for this rule. If the original target is a Flying Aircraft, this rule does not apply.",
   "Slow Load": "Can only activate after another friendly unit has already activated in the turn; skip the first drawn dice and return it to the bag if only Slow Load units remain.",
   "Turn on the Spot": "Free pivoting during moves.",
   "Turret Rear-Mounted Machine Gun": "Rear MG fires opposite direction of main turret weapon.",
@@ -1919,11 +1919,11 @@ If several eligible enemy units are equally close, or it is not clear which is c
     {
       id: "guiltySpark",
       name: "343 Guilty Spark",
-      cost: 25,
+      cost: 20,
       ruleName: "Containment Protocols",
       ruleText: `Friendly Forerunner Automaton Infantry units may be given Ambush orders.
 
-At the beginning of each turn, choose one friendly Forerunner Infantry unit. Until the end of that turn, any enemy Infantry or Artillery unit that ends its movement or activation within 6" of that unit receives 1 Pin.
+At the beginning of each turn, choose one friendly Forerunner Infantry unit. Until the end of that turn, any enemy unit that ends its movement within 6" of that unit receives 1 Pin.
 
 A unit may only receive 1 Pin per turn from this rule.`,
       validate: units => {
@@ -6249,7 +6249,7 @@ const FORERUNNER_VEHICLES = [
   name: "Super Sentinel",
   type: "Aircraft",
   allowedVeterancy: ["Regular", "Veteran"],
-  costs: { Regular: 65, Veteran: 78 },
+  costs: { Regular: 55, Veteran: 66 },
   weapons: [
     { name: "Hull-mounted Forward-facing Super Sentinel Beam" }
   ],
@@ -6258,6 +6258,7 @@ const FORERUNNER_VEHICLES = [
   specialRules: [
     "Shielded Hull",
     "Sustained Beam",
+    "Agile",
     {
       name: "Ground Support",
       description: "This unit cannot target Flying Aircraft."
