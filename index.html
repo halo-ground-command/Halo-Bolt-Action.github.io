@@ -3799,7 +3799,7 @@ const COVENANT_UNITS = [
     name: "Honor Guard",
     type: "Infantry",
     allowedVeterancy: ["Veteran"],
-    costs: { Veteran: 84 },
+    costs: { Veteran: 88 },
     baseMen: 4,
     maxMen: 6,
     weapons: [{ name: "Melee Weapon" }],
@@ -3807,7 +3807,7 @@ const COVENANT_UNITS = [
       "Behind Enemy Lines", "Fanatics", "Tough Fighters", "Energy Shields", "Hardened", "Fast", "VISR", "Melee Weapons", "Strikes First"
     ],
     options: {
-      extraMenCost: { Veteran: 21 },
+      extraMenCost: { Veteran: 22 },
       squadUpgrades: {
         "Stealth Modules": { cost: 1, grantsRule: "Stealth" },
         "Anti-Tank Grenades": { cost: 2, grantsRule: "Tank Hunters" }
@@ -4401,7 +4401,7 @@ const COVENANT_VEHICLES = [
   allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
   costs: { Inexperienced: 100, Regular: 125, Veteran: 150 },
   weapons: [
-    { name: "Turret-mounted Light Plasma Cannon" },
+    { name: "Turret-mounted Needle Cannon" },
     { name: "Turret-mounted Medium Plasma MG (left arc)" },
     { name: "Turret-mounted Medium Plasma MG (right arc)" }
   ],
@@ -4923,13 +4923,13 @@ const BANISHED_UNITS = [
     name: "Atriox’s Chosen",
     type: "Infantry",
     allowedVeterancy: ["Veteran"],
-    costs: { Veteran: 76 },
+    costs: { Veteran: 84 },
     baseMen: 4,
     maxMen: 6,
     weapons: [{ name: "Melee Weapon" }],
-    specialRules: ["Fanatics", "Hardened", "Berserker", "Tough Fighters", "Fieldcraft", "Strikes First", "Melee Weapons"],
+    specialRules: ["Fanatics", "Hardened", "Berserker", "Tough Fighters", "Fieldcraft", "Melee Weapons"],
     options: {
-      extraMenCost: { Veteran: 19 },
+      extraMenCost: { Veteran: 21 },
       squadUpgrades: {
         "Energy Shield Modules": { cost: 3, grantsRule: "Energy Shields" },
         "Anti-Tank Grenades": { cost: 2, grantsRule: "Tank Hunters" }
@@ -6672,7 +6672,7 @@ const FLOOD_UNITS = [
     name: "Tank Form Pack",
     type: "Infantry",
     allowedVeterancy: ["Veteran"],
-    costs: { Veteran: 48 },
+    costs: { Veteran: 52 },
     baseMen: 2,
     maxMen: 6,
     weapons: [
@@ -6692,7 +6692,7 @@ const FLOOD_UNITS = [
       { name: "Limited", description: "Only 1 Tank Form Pack may be taken per platoon." }
     ],
     options: {
-      extraMenCost: { Veteran: 24 }
+      extraMenCost: { Veteran: 26 }
     }
   },
 {
