@@ -1987,33 +1987,35 @@ This affects both infantry flamethrowers and vehicle-mounted flamethrowers.`,
     }
   ],
 
-  "Swords of Sanghelios": [
-    {
-      id: "thelVadam",
-      name: "Thel 'Vadam",
-      cost: 30,
-      ruleName: "United by Honour",
-      ruleText: `Friendly Swords of Sanghelios Infantry and Artillery units may benefit from Sangheili Command while within 12" of a friendly Elite Infantry unit, instead of 6".`,
-      validate: units => {
-        const issues = [];
+"Swords of Sanghelios": [
+  {
+    id: "thelVadam",
+    name: "Thel 'Vadam",
+    cost: 25,
+    ruleName: "United by Honour",
+    ruleText: `Friendly Swords of Sanghelios Infantry and Artillery units may benefit from Sangheili Command while within 12" of a friendly Elite Infantry model, instead of 6".
 
-        const elites = countUnits(units, isEliteInfantryForLeader);
-        const hasEliteCompanyCommander = units.some(u =>
-          isEliteInfantryForLeader(u) && isCompanyCommanderForValidation(u)
-        );
+In addition, at the start of each turn, you can remove 1 Pin marker from one friendly Swords of Sanghelios Elite Infantry unit.`,
+    validate: units => {
+      const issues = [];
 
-        if (elites < 3) {
-          issues.push(`Thel 'Vadam requires at least 3 Elite Infantry units. Current: ${elites}`);
-        }
+      const elites = countUnits(units, isEliteInfantryForLeader);
+      const hasElitePlatoonCommander = units.some(u =>
+        isEliteInfantryForLeader(u) && isPlatoonCommanderForValidation(u)
+      );
 
-        if (!hasEliteCompanyCommander) {
-          issues.push("Thel 'Vadam requires an Elite Company Commander.");
-        }
-
-        return issues;
+      if (elites < 3) {
+        issues.push(`Thel 'Vadam requires at least 3 Elite Infantry units. Current: ${elites}`);
       }
+
+      if (!hasElitePlatoonCommander) {
+        issues.push("Thel 'Vadam requires an Elite Platoon Commander.");
+      }
+
+      return issues;
     }
-  ]
+  }
+]
 };
 
 // --- Army Doctrines ---
