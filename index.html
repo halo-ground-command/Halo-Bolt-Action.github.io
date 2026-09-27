@@ -1819,7 +1819,7 @@ After completing its movement, that unit may fire its weapons. If it does so, th
     {
       id: "gravemind",
       name: "The Gravemind",
-      cost: 50,
+      cost: 55,
       ruleName: "Coordinated Infestation",
       ruleText: `Friendly Flood Officers double the range of their Morale bonus and You men, snap to action! ability when affecting friendly Flood Infantry or Artillery units.
 
@@ -1961,7 +1961,7 @@ A unit may only receive 1 Pin per turn from this rule.`,
     {
       id: "kinsano",
       name: "Kinsano",
-      cost: 30,
+      cost: 25,
       ruleName: "Incendiary Warfare",
       ruleText: `Friendly Insurrectionist units armed with Flamethrowers do not receive the usual 1 Pin marker for firing a Flamethrower.
 
@@ -2559,7 +2559,7 @@ const UNSC_UNITS = [
   name: "Suicide Anti-Tank Team",
   type: "Team",
   allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
-  costs: { Inexperienced: 14, Regular: 20, Veteran: 26 },
+  costs: { Inexperienced: 15, Regular: 21, Veteran: 27 },
   baseMen: 1,
   maxMen: 2,
   allowManualMen: true,
@@ -2571,17 +2571,18 @@ const UNSC_UNITS = [
   specialRules: [
     {
       name: "Suicide Charge",
-      description: "After this unit successfully assaults an enemy unit and reaches Close Quarters, immediately remove all remaining models from this unit. If 1 model is removed, inflict one HE (2\") hit or make one Damage roll against the vehicle’s DV with +4 Penetration and no other modifiers. If 2 models are removed, inflict 2× HE (2\") hits or make the Damage roll with +6 Penetration instead."
+      description: "After this unit successfully assaults an enemy unit and reaches Close Quarters, immediately remove all remaining models from this unit. If 1 model is removed, inflict one HE (2\") hit or make one Damage roll against the vehicle’s DV with +5 Penetration and no other modifiers. If 2 models are removed, inflict 2× HE (2\") hits or make the Damage roll with +7 Penetration instead."
     },
     "Tank Hunters",
+	"Berserker",
     "Infiltrator"
   ],
 
   options: {
     extraMenCost: {
-      Inexperienced: 14,
-      Regular: 20,
-      Veteran: 26
+      Inexperienced: 15,
+      Regular: 21,
+      Veteran: 27
     }
   }
 },
@@ -3828,7 +3829,7 @@ const COVENANT_UNITS = [
   specialRules: [
     {
       name: "Suicide Charge",
-      description: "After this unit successfully assaults an enemy unit and reaches Close Quarters, immediately remove all remaining models from this unit. If 1 model is removed, inflict one HE (2\") hit or make one Damage roll against the vehicle’s DV with +4 Penetration and no other modifiers. If 2 models are removed, inflict 2× HE (2\") hits or make the Damage roll with +6 Penetration instead."
+      description: "After this unit successfully assaults an enemy unit and reaches Close Quarters, immediately remove all remaining models from this unit. If 1 model is removed, inflict one HE (2\") hit or make one Damage roll against the vehicle’s DV with +5 Penetration and no other modifiers. If 2 models are removed, inflict 2× HE (2\") hits or make the Damage roll with +7 Penetration instead."
     },
     "Tank Hunters",
     "Infiltrator"
@@ -4950,7 +4951,7 @@ const BANISHED_UNITS = [
   specialRules: [
     {
       name: "Suicide Charge",
-      description: "After this unit successfully assaults an enemy unit and reaches Close Quarters, immediately remove all remaining models from this unit. If 1 model is removed, inflict one HE (2\") hit or make one Damage roll against the vehicle’s DV with +4 Penetration and no other modifiers. If 2 models are removed, inflict 2× HE (2\") hits or make the Damage roll with +6 Penetration instead."
+      description: "After this unit successfully assaults an enemy unit and reaches Close Quarters, immediately remove all remaining models from this unit. If 1 model is removed, inflict one HE (2\") hit or make one Damage roll against the vehicle’s DV with +5 Penetration and no other modifiers. If 2 models are removed, inflict 2× HE (2\") hits or make the Damage roll with +7 Penetration instead."
     },
     "Tank Hunters",
     "Infiltrator"
