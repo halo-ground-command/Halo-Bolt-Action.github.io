@@ -372,7 +372,7 @@ const allWeaponProfiles = {
   "Medium Machine Gun": 'Range 36", Shots 6, Pen –, Team, Fixed',
 
   // HEAVY WEAPONS
-  "Heavy Sniper Rifle": 'Range 36", Shots 1, Pen +1, Sniper, Team',
+  "Anti-Tank Sniper Rifle": 'Range 48", Shots 1, Pen +2, Sniper, Team',
   "Heavy Machine Gun": 'Range 48", Shots 6, Pen +1, Team, Fixed',
   "HMG": 'Range 48", Shots 6, Pen +1, Team, Fixed',
   "Heavy Plasma MG": 'Range 48", Shots 6, Pen +1, Team, Fixed, MG, Overheat',
@@ -2658,17 +2658,22 @@ const UNSC_UNITS = [
   baseMen: 2,
   maxMen: 2,
   weapons: [
-  { name: "Sniper Rifle" },
-  { name: "Pistol" },
-  { name: "DMR" }
+    { name: "Sniper Rifle" },
+    { name: "Pistol" },
+    { name: "DMR" }
   ],
-  specialRules: ["Team Weapon", "Sniper", "Infiltrator", "For Humanity’s Survival!"],
+  specialRules: [
+    "Team Weapon",
+    "Sniper",
+    "Infiltrator",
+    "For Humanity’s Survival!"
+  ],
   options: {
     squadUpgrades: {
-      "Anti-Materiel Rounds": {
-        cost: 10,
+      "Anti-Tank Sniper Rifle": {
+        cost: 15,
         perModel: false,
-        grantsRule: "Heavy Sniper Rifle",
+        grantsRule: "Anti-Tank Sniper Rifle",
         replacesWeapon: "Sniper Rifle"
       }
     }
