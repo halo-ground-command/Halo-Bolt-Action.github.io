@@ -634,6 +634,12 @@ window.unitSpecialDescriptions["Custodian Command Node"] =
 
 window.unitSpecialDescriptions["Hard-Light Calibration"] =
   "Weapons fired by this unit gain the Cover Piercing weapon rule.";
+  
+window.unitSpecialDescriptions["Translocation Deployment"] =
+  "Only one unit per army per turn may use this rule. When entering by Outflanking with a Run order, the unit may instead deploy anywhere legal on the battlefield, more than 9\" from enemy units and objectives, and not inside a building. It makes no Run move and remains there for the rest of the turn.";
+
+window.unitSpecialDescriptions["Translocation Recall"] =
+  "Only one unit per army per turn may use this rule. When given a Down order, including as a reaction but not from a failed check/test, the unit may immediately make a Translocation Check. Roll as for a Morale Check; Pins are never ignored. If passed, immediately remove all Pins and place the unit in Reserve as an Outflanker. If failed, it remains Down. Cannot be used while carrying an objective.";
 
 window.vehicleSpecialDescriptions["Scrap Armour Screens"] =
   "Shaped Charge weapons do not gain +1 Pen for side-arc hits against this vehicle.";
@@ -643,6 +649,7 @@ window.vehicleSpecialDescriptions["Shielded Hull"] =
   
 window.unitSpecialDescriptions["Flood Burster"] =
   "When successfully entering from Reserve, one unit per turn with this rule may deploy via a Flood Burster instead of from a table edge: place it legally in open ground more than 9\" from enemies, then give it Down. It cannot perform further actions that turn.";  
+
 const ARMOURY_DEFS = {
   UNSC: [
     {
@@ -6082,7 +6089,6 @@ const FORERUNNER_UNITS = [
       "Fieldcraft",
       "Large Infantry",
       "Melee Weapons",
-      { name: "Phase Step", description: "If unactivated, not carrying an objective, and shot from >6\" away (excluding prelim bombardment/artillery barrage/air-strike), it may teleport up to 6\" as a reaction (no test required). Must end within 6\" of start, farther from attacker, and not in impassable/buildings/off-table/within 1\" of any unit; ignores intervening terrain/models; doesn’t trigger Ambush. Then set die to Down (or just goes Down if no legal spot)." },
       { name: "Limited", description: "Only up to 2 Promethean Knight Teams may be taken per platoon." }
     ],
     options: {
@@ -6239,6 +6245,18 @@ const FORERUNNER_UNITS = [
   }
 ];
 
+// ADD TRANLOCATION GRANT CODE HERE
+
+FORERUNNER_UNITS.forEach(unit => {
+  if (unit.specialRules?.some(rule =>
+    (typeof rule === "string" ? rule : rule?.name) === "Composed Beings"
+  )) {
+    unit.specialRules.push(
+      "Translocation Deployment",
+      "Translocation Recall"
+    );
+  }
+});
 
 // --- FORERUNNER VEHICLES ---
 const FORERUNNER_VEHICLES = [
