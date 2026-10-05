@@ -647,8 +647,11 @@ window.vehicleSpecialDescriptions["Scrap Armour Screens"] =
 window.vehicleSpecialDescriptions["Shielded Hull"] =
   "When resolving a shooting attack against this vehicle, if this vehicle had no Pin markers when the attack was declared, reduce the Penetration value of each hit by 1, to a minimum of 0. If this vehicle had one or more Pin markers when the attack was declared, this rule has no effect.";
 
+window.vehicleSpecialDescriptions["Gravity Lift"] =
+  "While Flying, if this Aircraft has not moved yet this turn, transported Infantry units may disembark from it as though it were Landed.";
+
 window.vehicleSpecialDescriptions["Rappelling Lines"] =
-  "While Flying, transported Infantry may disembark with a Run order, unless this Aircraft has a Run order.";
+  "While Flying, if this Aircraft has not moved yet this turn, transported Infantry units may disembark from it as though it were Landed.";
   
 window.unitSpecialDescriptions["Flood Burster"] =
   "When successfully entering from Reserve, one unit per turn with this rule may deploy via a Flood Burster instead of from a table edge: place it legally in open ground more than 9\" from enemies, then give it Down. It cannot perform further actions that turn.";  
@@ -3301,7 +3304,7 @@ const UNSC_VEHICLES = [
         requires: ["Pintle-mounted MMGs (left and right arcs)"]
       },
       "Rappelling Lines": {
-        cost: 7,
+        cost: 5,
         grantsRule: "Rappelling Lines"
       }
     }
@@ -3321,7 +3324,15 @@ const UNSC_VEHICLES = [
       name: "Camouflaging Jammers",
       description: "Friendly Infantry and Artillery units with at least one model within 6\" of this vehicle count as having the Stealth special rule. Enemy Infantry and Artillery units with at least one model within 6\" of this vehicle cannot benefit from the Stealth special rule."
     }
-  ]
+  ],
+  options: {
+    weaponUpgrades: {
+      "Rappelling Lines": {
+        cost: 5,
+        grantsRule: "Rappelling Lines"
+      }
+    }
+  }
 },
   {
     name: "AV-22 Sparrowhawk",
@@ -3382,7 +3393,7 @@ const UNSC_VEHICLES = [
         grantsRule: "Command Vehicle"
       },
       "Rappelling Lines": {
-        cost: 16,
+        cost: 10,
         grantsRule: "Rappelling Lines"
       }
     }
@@ -4479,7 +4490,7 @@ const COVENANT_VEHICLES = [
   name: "Type-52 Phantom",
   type: "Aircraft",
   allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
-  costs: { Inexperienced: 108, Regular: 135, Veteran: 162 },
+  costs: { Inexperienced: 118, Regular: 145, Veteran: 172 },
 
   weapons: [
     { name: "Turret-mounted Light Plasma Cannon" }
@@ -4490,10 +4501,7 @@ const COVENANT_VEHICLES = [
 
   specialRules: [
     "Flak",
-    {
-      name: "Gravity Lift",
-      description: "While Flying, if this Aircraft has not moved this turn, transported units may disembark from it as though it were Landed. If a unit does so, this Aircraft cannot Advance or Run for the rest of the turn."
-    }
+    "Gravity Lift"
   ],
 
   options: {
@@ -4503,10 +4511,10 @@ const COVENANT_VEHICLES = [
         addsWeapon: "2x Turret-mounted Light Plasma Cannons"
       },
 
-      "2 Pintle-mounted Medium Plasma MGs (front and right arcs)": {
+      "2 Pintle-mounted Medium Plasma MGs (left and right arcs)": {
         cost: 30,
         addsWeapon: [
-          "Pintle-mounted Medium Plasma MG (front arc)",
+          "Pintle-mounted Medium Plasma MG (left arc)",
           "Pintle-mounted Medium Plasma MG (right arc)"
         ]
       },
@@ -5712,7 +5720,7 @@ const BANISHED_VEHICLES = [
   name: "Type-52 Phantom",
   type: "Aircraft",
   allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
-  costs: { Inexperienced: 108, Regular: 135, Veteran: 162 },
+  costs: { Inexperienced: 118, Regular: 145, Veteran: 172 },
 
   weapons: [
     { name: "Turret-mounted Light Plasma Cannon" }
@@ -5723,10 +5731,7 @@ const BANISHED_VEHICLES = [
 
   specialRules: [
     "Flak",
-    {
-      name: "Gravity Lift",
-      description: "While Flying, if this Aircraft has not moved this turn, transported units may disembark from it as though it were Landed. If a unit does so, this Aircraft cannot Advance or Run for the rest of the turn."
-    }
+    "Gravity Lift"
   ],
 
   options: {
@@ -5736,10 +5741,10 @@ const BANISHED_VEHICLES = [
         addsWeapon: "2x Turret-mounted Light Plasma Cannons"
       },
 
-      "2 Pintle-mounted Medium Plasma MGs (front and right arcs)": {
+      "2 Pintle-mounted Medium Plasma MGs (left and right arcs)": {
         cost: 30,
         addsWeapon: [
-          "Pintle-mounted Medium Plasma MG (front arc)",
+          "Pintle-mounted Medium Plasma MG (left arc)",
           "Pintle-mounted Medium Plasma MG (right arc)"
         ]
       },
