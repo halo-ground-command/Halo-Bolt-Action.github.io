@@ -378,7 +378,7 @@ const allWeaponProfiles = {
   "Heavy Plasma MG": 'Range 48", Shots 6, Pen +1, Team, Fixed, MG, Overheat',
   "Anti-Tank Rifle": 'Range 48", Shots 1, Pen +2, –',
   "Skewer": 'Range 48", Shots 1, Pen +2, –',
-  "Spartan Laser": 'Range 36", Shots 1, Pen +6, Team, Charged Beam, Shaped Charge',
+  "Spartan Laser": 'Range 30", Shots 1, Pen +6, Team, Charged Beam, Shaped Charge',
   "Rocket Launcher": 'Range 30", Shots 1, Pen +5, Team, Shaped Charge, Tracking, HE (1")',
   "Plasma Launcher": 'Range 30", Shots 1, Pen +5, Team, Shaped Charge, Tracking, HE (1")',
   "Fuel Rod Gun": 'Range 30", Shots 1, Pen +4, Team, Shaped Charge, HE (2")',
@@ -489,7 +489,7 @@ allWeaponProfiles["Gravity Hammer"] = 'Range –, Shots –, Pen –, Gravity Ha
 const weaponSpecialDescriptions = {
   "AT Gun": "All anti-tank guns, from light to super-heavy, including vehicle-mounted anti-tank guns, gain +1 to hit vehicles (Not vs flying aircraft) when firing with a Fire order, including Ambush and reaction fire.",
   "Assault": "No -1 to hit when moving and shooting. Models with an Assault weapon gain Tough Fighters: When fighting in close quarters against Infantry, Artillery, or Assault Walkers, a unit may re-roll a number of failed melee rolls up to the number of friendly models with Tough Fighters taking part in that fight.",
-  "Charged Beam": "Has a -1 penalty to hit when shooting. On a hit, extend a straight line 6\" beyond the target. The first unit crossed, friend or foe, may also be hit; make a separate To Hit roll at an additional -1.",
+  "Charged Beam": "When firing at a unit that has an Advance or Run order, this weapon suffers an additional -1 to hit. On a hit, extend a straight line 6\" beyond the target. The first unit crossed, friend or foe, may also be hit; make a separate To Hit roll at an additional -1.",
   "Cover Piercing": "When this weapon hits an Infantry or Artillery unit that is in soft/hard cover and not Down, any natural 6 rolled to Wound worsens the target’s cover save by 1, for that wound only.",
   "Fixed": "Fixed weapons can only fire within a 90-degree arc. A Run order must be used to reposition them. Cannot perform assaults.",
   "Flamethrower": "Roll 1 die to hit. If it hits, an infantry Flamethrower inflicts D6 hits, while a vehicle-mounted Flamethrower inflicts D6+1 hits. No cover saves, including Down saves. Target takes D3+1 Pins and must pass Morale or be destroyed/knocked out. Hits vehicles on top armour and ignores long/point-blank Pen modifiers. Fuel may run out after use. Against buildings, needs an opening and may set normal buildings on fire on 4+ even if it misses.",
@@ -646,6 +646,9 @@ window.vehicleSpecialDescriptions["Scrap Armour Screens"] =
   
 window.vehicleSpecialDescriptions["Shielded Hull"] =
   "When resolving a shooting attack against this vehicle, if this vehicle had no Pin markers when the attack was declared, reduce the Penetration value of each hit by 1, to a minimum of 0. If this vehicle had one or more Pin markers when the attack was declared, this rule has no effect.";
+
+window.vehicleSpecialDescriptions["Rappelling Lines"] =
+  "While Flying, transported Infantry may disembark with a Run order, unless this Aircraft has a Run order.";
   
 window.unitSpecialDescriptions["Flood Burster"] =
   "When successfully entering from Reserve, one unit per turn with this rule may deploy via a Flood Burster instead of from a table edge: place it legally in open ground more than 9\" from enemies, then give it Down. It cannot perform further actions that turn.";  
@@ -2486,13 +2489,12 @@ const UNSC_UNITS = [
         replaces: "Assault Rifle",
         grants: "MMG"
       },
-	"Spartan Laser": {
-	  max: 1,
-	  cost: 57,
-	  replaces: "Assault Rifle",
-	  grants: "Spartan Laser",
-	  armyMax: 1
-	},
+		"Spartan Laser": {
+		  max: 1,
+		  cost: 62,
+		  replaces: "Assault Rifle",
+		  grants: "Spartan Laser"
+		},
       "Anti-Tank Rifle": {
         max: 2,
         cost: 10,
@@ -3297,6 +3299,10 @@ const UNSC_VEHICLES = [
           "Pintle-mounted Grenade Launcher (right arc)"
         ],
         requires: ["Pintle-mounted MMGs (left and right arcs)"]
+      },
+      "Rappelling Lines": {
+        cost: 7,
+        grantsRule: "Rappelling Lines"
       }
     }
   }
@@ -3343,41 +3349,45 @@ const UNSC_VEHICLES = [
       }
     }
   },
-  {
-    name: "D77-TC Pelican",
-    type: "Aircraft",
-    allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
-    costs: { Inexperienced: 108, Regular: 135, Veteran: 162 },
-    weapons: [
-      { name: "Turret-mounted Light Autocannon" }
-    ],
-    damageValue: "8+ (Heavy Aircraft)",
-    transportCapacity: 16,
-    specialRules: [
-      "Flak"
-    ],
-    options: {
-      weaponUpgrades: {
-        "Turret-mounted Heavy Autocannon (replace Light Autocannon)": {
-          cost: 15,
-          replaces: ["Turret-mounted Light Autocannon"],
-          addsWeapon: "Turret-mounted Heavy Autocannon"
-        },
-        "Hull-mounted Forward-facing Rocket Launcher": {
-          cost: 50,
-          addsWeapon: "Hull-mounted Forward-facing Rocket Launcher"
-        },
-        "Pintle-mounted MMG (rear arc)": {
-          cost: 15,
-          addsWeapon: "Pintle-mounted MMG (rear arc)"
-        },
-        "Command Vehicle": {
-          cost: 10,
-          grantsRule: "Command Vehicle"
-        }
+{
+  name: "D77-TC Pelican",
+  type: "Aircraft",
+  allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
+  costs: { Inexperienced: 108, Regular: 135, Veteran: 162 },
+  weapons: [
+    { name: "Turret-mounted Light Autocannon" }
+  ],
+  damageValue: "8+ (Heavy Aircraft)",
+  transportCapacity: 16,
+  specialRules: [
+    "Flak"
+  ],
+  options: {
+    weaponUpgrades: {
+      "Turret-mounted Heavy Autocannon (replace Light Autocannon)": {
+        cost: 15,
+        replaces: ["Turret-mounted Light Autocannon"],
+        addsWeapon: "Turret-mounted Heavy Autocannon"
+      },
+      "Hull-mounted Forward-facing Rocket Launcher": {
+        cost: 50,
+        addsWeapon: "Hull-mounted Forward-facing Rocket Launcher"
+      },
+      "Pintle-mounted MMG (rear arc)": {
+        cost: 15,
+        addsWeapon: "Pintle-mounted MMG (rear arc)"
+      },
+      "Command Vehicle": {
+        cost: 10,
+        grantsRule: "Command Vehicle"
+      },
+      "Rappelling Lines": {
+        cost: 16,
+        grantsRule: "Rappelling Lines"
       }
     }
-  },
+  }
+},
   {
     name: "AC-220 Vulture",
     type: "Aircraft",
@@ -8482,20 +8492,6 @@ function getArmyValidation() {
   // Narrative-flexible unit and force-org limits.
   // These are NOT hard-enforced; they only mark the list as illegal.
   
-const spartanTeamLaserCount = units.reduce((total, unit) => {
-  if (unit.name !== "Spartan Team") return total;
-
-  return total + (Number(unit.weaponReplacements?.["Spartan Laser"]) || 0);
-}, 0);
-
-pushMaxIssue(
-  issues,
-  "Spartan Lasers in Spartan Teams",
-  spartanTeamLaserCount,
-  1,
-  "per army"
-);
-
 	const deaconCount = units.filter(isGruntDeaconForValidation).length;
 	pushMaxIssue(issues, "Deacons", deaconCount, 1, "per army");
 
