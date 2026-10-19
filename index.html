@@ -3898,7 +3898,7 @@ const COVENANT_UNITS = [
     name: "Huragok",
     type: "Infantry",
     allowedVeterancy: ["Inexperienced"],
-    costs: { Inexperienced: 45 },
+    costs: { Inexperienced: 55 },
     baseMen: 1,
     maxMen: 1,
     weapons: [{ name: "Unarmed" }],
@@ -3906,7 +3906,7 @@ const COVENANT_UNITS = [
       "Flight", "Energy Shields",
       { name: "Limited", description: "Only 1 Huragok may be taken per army" },
 	  { name: "Mechanical Stabilization", description: "When this unit is successfully activated, it may remove 1 pin marker from a friendly vehicle or artillery unit within 6. " },
-      { name: "Utility Construct", description: "Huragoks do not use up an infantry slot when building your platoon." }
+      { name: "Shield Projector", description: "While this Huragok is embarked aboard a friendly vehicle, that vehicle counts as having the Shielded Hull special rule." }
     ]
   },
 
@@ -5065,7 +5065,7 @@ const BANISHED_UNITS = [
     name: "Huragok",
     type: "Infantry",
     allowedVeterancy: ["Inexperienced"],
-    costs: { Inexperienced: 45 },
+    costs: { Inexperienced: 55 },
     baseMen: 1,
     maxMen: 1,
     weapons: [{ name: "Unarmed" }],
@@ -5073,7 +5073,7 @@ const BANISHED_UNITS = [
       "Flight", "Energy Shields",
       { name: "Limited", description: "Only 1 Huragok may be taken per army" },
 	  { name: "Mechanical Stabilization", description: "When this unit is successfully activated, it may remove 1 pin marker from a friendly vehicle or artillery unit within 6. " },
-      { name: "Utility Construct", description: "Huragoks do not use up an infantry slot when building your platoon." }
+      { name: "Shield Projector", description: "While this Huragok is embarked aboard a friendly vehicle, that vehicle counts as having the Shielded Hull special rule." }
     ]
   },
 
@@ -7833,7 +7833,6 @@ function isSupportOrExtraHQForValidation(unit) {
     unitHasRuleName(unit, "Chaplain", unitData) ||
     unitHasRuleName(unit, "Bloodhandler", unitData) ||
     unitHasRuleName(unit, "Watcher", unitData) ||
-    unitHasRuleName(unit, "Utility Construct", unitData) ||
     name.includes("company commander") ||
     name.includes("medic") ||
     name.includes("forward observer") ||
@@ -7842,7 +7841,6 @@ function isSupportOrExtraHQForValidation(unit) {
     name.includes("bloodhandler") ||
     name.includes("watcher") ||
     name.includes("attached leader") ||
-    name.includes("huragok")
   );
 }
 
