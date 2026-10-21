@@ -933,7 +933,7 @@ Units with the Berserker special rule can ignore the compulsory Run behavior cau
 Enhanced Weapon Systems
 
 - Effect:
-When a Forerunner Infantry or Artillery unit fires a Heavy weapon, each 6+ to hit grants +1 Penetration to that shot’s damage roll. This has no effect on HE shots/templates.
+When a Forerunner Infantry or Artillery unit fires a Heavy weapon, any successful to-hit roll with a modified result of 6 or higher grants that shot +1 Penetration. This bonus does not apply to HE.
 
 Uphold the Mantle
 
@@ -2576,6 +2576,98 @@ const UNSC_UNITS = [
 		}
 	  }
 	},
+{
+  name: "KOBOLD Combat Drone Team",
+  type: "Infantry",
+  allowedVeterancy: ["Veteran"],
+  costs: { Veteran: 110 },
+  baseMen: 5,
+  maxMen: 9,
+
+  weapons: [
+    { name: "Assault Rifle" }
+  ],
+
+  specialRules: [
+    "Automaton",
+    "Fanatics",
+    "Hardened",
+    "VISR",
+    "Fieldcraft",
+    {
+      name: "Limited",
+      description: "May only take 1 per platoon, and only 2 in total per army."
+    }
+  ],
+
+  options: {
+    extraMenCost: {
+      Veteran: 22
+    },
+
+    squadUpgrades: {
+      "Engineers": {
+        cost: 1,
+        grantsRule: "Engineers"
+      }
+    },
+
+    weaponReplacements: {
+      "Battle Rifles": {
+        max: 8,
+        cost: -3,
+        replaces: "Assault Rifle",
+        grants: "Battle Rifle"
+      },
+
+      "Shotguns": {
+        max: 8,
+        cost: -3,
+        replaces: "Assault Rifle",
+        grants: "Shotgun"
+      },
+
+      "DMRs": {
+        max: 8,
+        cost: -5,
+        replaces: "Assault Rifle",
+        grants: "DMR"
+      },
+
+      "Submachine Guns": {
+        max: 8,
+        cost: -2,
+        replaces: "Assault Rifle",
+        grants: "Submachine Gun"
+      },
+
+      "LMG": {
+        max: 2,
+        cost: 9,
+        replaces: "Assault Rifle",
+        grants: "LMG"
+      }
+    },
+
+    ncoReplacement: {
+      options: [
+        "Assault Rifle",
+        "Battle Rifle",
+        "Shotgun",
+        "DMR",
+        "Submachine Gun"
+      ],
+
+      costs: {
+        "Assault Rifle": 0,
+        "Battle Rifle": -3,
+        "Shotgun": -3,
+        "DMR": -5,
+        "Submachine Gun": -2
+      }
+    }
+  }
+},
 {
   name: "Suicide Anti-Tank Team",
   type: "Team",
@@ -5809,8 +5901,7 @@ const FORERUNNER_UNITS = [
 	  "Platoon Commander",
       "Flight",
       "Composed Beings",
-      "Energy Shield",
-      { name: "Custodian Uplink", description: "If the Officer is destroyed, immediately replace the Composed Beings special rule with Automaton for the remaining models in this unit for the rest of the game." }
+      "Energy Shield"
     ],
     options: {
       extraMenCost: { Inexperienced: 7, Regular: 10, Veteran: 13 }
@@ -5830,8 +5921,7 @@ const FORERUNNER_UNITS = [
 	  "Company Commander",
       "Flight",
       "Composed Beings",
-      "Energy Shield",
-      { name: "Custodian Uplink", description: "If the Officer is destroyed, immediately replace the Composed Beings special rule with Automaton for the remaining models in this unit for the rest of the game." }
+      "Energy Shield"
     ],
     options: {
       extraMenCost: { Inexperienced: 7, Regular: 10, Veteran: 13 }
