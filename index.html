@@ -517,14 +517,13 @@ const weaponSpecialDescriptions = {
 
 // --- Unit Special Rule Descriptions ---
 window.unitSpecialDescriptions = {
-  "Automaton": "Cannot receive Ambush orders, ignore Horror's -1 morale effects and immune to Flood Infection, cannot benefit from medics or 'You men, snap to action!' orders.",
+  "Automaton": "Ignore Horror's -1 morale effects and immune to Flood Infection, cannot benefit from medics or 'You men, snap to action!' orders.",
   "Artillery": "Artillery are support team weapons and are usually Fixed. A gun model and its crew form a single unit; crew must remain within 1\" of the gun. Light/medium guns may Run only 6\" when manhandled; heavy/super-heavy guns, heavy howitzers, and guns reduced to 1 crewman cannot be moved by crew (they may rotate on an Advance order as normal for Fixed). Platform-mounted/rotating-platform guns may pivot freely on a Fire order (effectively 360° arc). If all crew are killed, the gun is abandoned and may be re-crewed. Artillery cannot assault, but can be assaulted; if defeated in close combat, both gun and crew are destroyed.",
   "Behind Enemy Lines": "Ignores the -1 penalty when performing Reserve/Outflank order tests.",
   "Berserker": "When performing an assault, models gain one extra Attack die during the first round of that close combat. Additionally, if an Order test is failed (excluding FUBAR) and an enemy Infantry/Artillery unit is within assault reach, this unit must Run (Assault) the nearest eligible target. Otherwise resolve the failed test as normal (Down).",
   "Platoon Commander": "+2 Morale within 6\". Snap: after a successful order other than Down, may issue up to 2 orders to friendly units within 6\".",
   "Company Commander": "+4 Morale within 12\". Snap: after a successful order other than Down, may issue up to 4 orders to friendly units within 12\".",
   "Composed Beings": "Ignore Horror's -1 morale effects, immune to Flood Infection and cannot benefit from medics.",
-  "Counter-Assault Protocols": "When a unit with this rule is assaulted by enemy Infantry or Artillery, it may react with a Fire order as normal. Treat this unit as being on Ambush when determining whether it can react to the assault. If any attacking models survive and complete the assault, the assaulting unit halves its total number of attack dice, rounding up, during the first round of that close quarters combat only.",
   "Deacon": "Upgrade for the NCO. The Deacon follows the rules for a Platoon Commander, except his Morale bonus bubble is only +1, and his You men, snap to action! may only issue an order to 1 other friendly Grunt/Jackal unit. The Deacon counts as an Officer, but is not a Officer HQ and does not fulfil the requirement for a Platoon Commander.",
   "Champion": "Upgrade for the NCO. The Champion follows the rules for a Platoon Commander, except his Morale bonus bubble is only +1, and his You men, snap to action! may only issue an order to 1 other friendly Grunt/Jackal unit. The Champion counts as an Officer, but is not a Officer HQ and does not fulfil the requirement for a Platoon Commander.",
   "Engineers": "When assaulting a building, defenders lose Defensive Position.",
@@ -629,8 +628,6 @@ window.unitSpecialDescriptions["Brute Grenadiers"] =
 window.unitSpecialDescriptions["Reconstruction Matrix"] =
   "After a successful Rally order, roll 1D6 for each missing model. If one or more results equals/exceeds this unit’s DV, return 1 removed model, up to starting size. Energy Shields worsen the required result by +1, max 6+. Max 1 model returned per Rally.";
   
-window.unitSpecialDescriptions["Custodian Command Node"] =
-  "May be affected by You men, snap to action! despite having Automaton.";
 
 window.unitSpecialDescriptions["Hard-Light Calibration"] =
   "Weapons fired by this unit gain the Cover Piercing weapon rule.";
@@ -638,8 +635,6 @@ window.unitSpecialDescriptions["Hard-Light Calibration"] =
 window.unitSpecialDescriptions["Translocation Deployment"] =
   "Only one unit per army per turn may use this rule. When entering by Outflanking with a Run order, the unit may instead deploy anywhere legal on the battlefield, more than 9\" from enemy units and objectives, and not inside a building. It makes no Run move and remains there for the rest of the turn.";
 
-window.unitSpecialDescriptions["Translocation Recall"] =
-  "Only one unit per army per turn may use this rule. When given a Down order, including as a reaction but not from a failed check/test, the unit may immediately make a Translocation Check. Roll as for a Morale Check; Pins are never ignored. If passed, immediately remove all Pins and place the unit in Reserve as an Outflanker. If failed, it remains Down. Cannot be used while carrying an objective.";
 
 window.vehicleSpecialDescriptions["Scrap Armour Screens"] =
   "Shaped Charge weapons do not gain +1 Pen for side-arc hits against this vehicle.";
@@ -805,42 +800,47 @@ Covenant: [
     }
   ],
 
-  Forerunner: [
-    {
-      id: "reconstructionMatrix",
-      type: "ruleCheckbox",
-      label: "Reconstruction Matrix",
-      cost: 1,
-      costMode: "perModel",
-      grantsRules: ["Reconstruction Matrix"],
-      appliesTo: (unit, unitData) =>
-        window.currentFaction === "Forerunner" &&
-        hasRule(unit, unitData, "Composed Beings")
-    },
-    {
-      id: "custodianCommandNode",
-      type: "ruleCheckbox",
-      label: "Custodian Command Node",
-      cost: 1,
-      costMode: "perModel",
-      grantsRules: ["Custodian Command Node"],
-      appliesTo: (unit, unitData) =>
-        window.currentFaction === "Forerunner" &&
-        unit.type === "Infantry" &&
-        hasRule(unit, unitData, "Automaton")
-    },
-    {
-      id: "hardLightCalibration",
-      type: "ruleCheckbox",
-      label: "Hard-Light Calibration",
-      cost: 1,
-      costMode: "perModel",
-      grantsRules: ["Hard-Light Calibration"],
-      appliesTo: (unit, unitData) =>
-        window.currentFaction === "Forerunner" &&
-        (unit.type === "Infantry" || unit.type === "Team")
-    }
-  ]
+
+Forerunner: [
+  {
+    id: "reconstructionMatrix",
+    type: "ruleCheckbox",
+    label: "Reconstruction Matrix",
+    cost: 1,
+    costMode: "perModel",
+    grantsRules: ["Reconstruction Matrix"],
+    appliesTo: (unit, unitData) =>
+      window.currentFaction === "Forerunner" &&
+      hasRule(unit, unitData, "Composed Beings")
+  },
+  {
+    id: "hardLightCalibration",
+    type: "ruleCheckbox",
+    label: "Hard-Light Calibration",
+    cost: 1,
+    costMode: "perModel",
+    grantsRules: ["Hard-Light Calibration"],
+    appliesTo: (unit, unitData) =>
+      window.currentFaction === "Forerunner" &&
+      (unit.type === "Infantry" || unit.type === "Team")
+  },
+  {
+    id: "translocationDeployment",
+    type: "ruleCheckbox",
+    label: "Translocation Deployment",
+    cost: 1,
+    costMode: "perModel",
+    grantsRules: ["Translocation Deployment"],
+    appliesTo: (unit, unitData) =>
+      window.currentFaction === "Forerunner" &&
+      (
+        hasRule(unit, unitData, "Automaton") ||
+        hasRule(unit, unitData, "Composed Beings") ||
+        hasRule(unit, unitData, "Composed Being")
+      )
+  }
+]
+
 };
 
 // --- Army Rules ---
@@ -930,10 +930,10 @@ Units with the Berserker special rule can ignore the compulsory Run behavior cau
 `,
 
   "Forerunner": `
-Enhanced Weapon Systems
+Counter-Assault Protocols
 
 - Effect:
-When a Forerunner Infantry or Artillery unit fires a Heavy weapon, any successful to-hit roll with a modified result of 6 or higher grants that shot +1 Penetration. This bonus does not apply to HE.
+When an ambush or unactivated Forerunner Infantry unit is assaulted by enemy Infantry or Artillery, it may react with a Fire order, treating itself as being on Ambush when determining whether it can react. If any attacking models survive and complete the assault, the assaulting unit halves its total number of attack dice, rounding up, during the first round of that Close Quarters combat only.
 
 Uphold the Mantle
 
@@ -1934,11 +1934,12 @@ If several eligible enemy units are equally close, or it is not clear which is c
       name: "343 Guilty Spark",
       cost: 20,
       ruleName: "Containment Protocols",
-      ruleText: `Friendly Forerunner Automaton Infantry units may be given Ambush orders.
+ruleText: `Friendly Forerunner Automaton Infantry units may be affected by You men, snap to action! as if they did not have the Automaton special rule.
 
 At the beginning of each turn, choose one friendly Forerunner Infantry unit. Until the end of that turn, any enemy unit that ends its movement within 6" of that unit receives 1 Pin.
 
 A unit may only receive 1 Pin per turn from this rule.`,
+
       validate: units => {
         const issues = [];
 
@@ -6143,7 +6144,6 @@ const FORERUNNER_UNITS = [
     ],
     specialRules: [
       "Composed Beings",
-	  "Counter-Assault Protocols",
       "Energy Shields",
 	  "Hardened",
       "Fanatics",
@@ -6180,7 +6180,6 @@ const FORERUNNER_UNITS = [
     specialRules: [
       "Composed Beings",
       "Infiltrator",
-      "Counter-Assault Protocols",
       "Energy Shields",
 	  "Hardened",
       "Fanatics",
@@ -6219,7 +6218,6 @@ const FORERUNNER_UNITS = [
     ],
     specialRules: [
       "Composed Beings",
-      "Counter-Assault Protocols",
       "Fanatics",
       "Resilient",
       "Strong",
@@ -6279,7 +6277,6 @@ const FORERUNNER_UNITS = [
     specialRules: [
       "Team Weapon",
       "Composed Beings",
-      "Counter-Assault Protocols",
       "Energy Shields",
 	  "Hardened",
       "Fanatics",
@@ -6302,7 +6299,6 @@ const FORERUNNER_UNITS = [
   ],
   specialRules: [
     "Team Weapon",
-    "Counter-Assault Protocols",
     "Composed Beings",
     "Energy Shields",
 	"Hardened",
@@ -6362,10 +6358,7 @@ const FORERUNNER_UNITS = [
           "VISR",
           "Behind Enemy Lines",
           "Fast",
-          "Strong",
-          "Counter-Assault Protocols",
-          "Translocation Deployment",
-          "Translocation Recall"
+          "Strong"
         ]
       },
 
@@ -6403,7 +6396,6 @@ const FORERUNNER_UNITS = [
     specialRules: [
       "Team Weapon",
       "Composed Beings",
-	  "Counter-Assault Protocols",
       "Energy Shields",
 	  "Hardened",
       "Fanatics",
@@ -6414,19 +6406,6 @@ const FORERUNNER_UNITS = [
     ],
   }
 ];
-
-// ADD TRANLOCATION GRANT CODE HERE
-
-FORERUNNER_UNITS.forEach(unit => {
-  if (unit.specialRules?.some(rule =>
-    (typeof rule === "string" ? rule : rule?.name) === "Composed Beings"
-  )) {
-    unit.specialRules.push(
-      "Translocation Deployment",
-      "Translocation Recall"
-    );
-  }
-});
 
 // --- FORERUNNER VEHICLES ---
 const FORERUNNER_VEHICLES = [
