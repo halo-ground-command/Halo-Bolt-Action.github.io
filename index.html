@@ -5977,6 +5977,7 @@ const FORERUNNER_UNITS = [
   },
 
   // Infantry Squads and Teams
+
 {
   name: "Sentinel Swarm",
   type: "Infantry",
@@ -5984,41 +5985,75 @@ const FORERUNNER_UNITS = [
   costs: { Inexperienced: 35, Regular: 50 },
   baseMen: 5,
   maxMen: 11,
+
   weapons: [
     { name: "Sentinel Beam" }
   ],
+
   specialRules: [
     "Automaton",
-    "Flight"
+    "Flight",
+    {
+      name: "Core Overload",
+      description: "When the last model in this unit is destroyed, if any enemy units are within 3\" of that model's position, roll a D6. On a 5+, each enemy unit receives 1 Pin marker."
+    }
   ],
+
   options: {
-    extraMenCost: { Inexperienced: 7, Regular: 10 },
+    extraMenCost: {
+      Inexperienced: 7,
+      Regular: 10
+    },
+
     squadUpgrades: {
-      "Energy Shield Modules": { cost: 2, grantsRule: "Energy Shields" }
+      "Energy Shield Modules": {
+        cost: 2,
+        grantsRule: "Energy Shields"
+      }
     }
   }
 },
 {
   name: "Crawler Swarm",
   type: "Infantry",
-  allowedVeterancy: ["Inexperienced", "Regular"],
-  costs: { Inexperienced: 40, Regular: 55 },
+  allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
+  costs: {
+    Inexperienced: 30,
+    Regular: 45,
+    Veteran: 60
+  },
   baseMen: 5,
   maxMen: 11,
+
   weapons: [
     { name: "Boltshot" }
   ],
+
   specialRules: [
     "Automaton",
-    "Fieldcraft",
-    "Energy Shields"
+    "Fieldcraft"
   ],
+
   options: {
-    extraMenCost: { Inexperienced: 8, Regular: 11 },
+    extraMenCost: {
+      Inexperienced: 6,
+      Regular: 9,
+      Veteran: 12
+    },
 
     weaponReplacements: {
-      "Suppressors": { max: 8, cost: 7, replaces: "Boltshot", grants: "Suppressor" },
-      "Light Rifles": { max: 8, cost: 2, replaces: "Boltshot", grants: "Light Rifle" }
+      "Suppressors": {
+        max: 8,
+        cost: 7,
+        replaces: "Boltshot",
+        grants: "Suppressor"
+      },
+      "Light Rifles": {
+        max: 8,
+        cost: 2,
+        replaces: "Boltshot",
+        grants: "Light Rifle"
+      }
     },
 
     ncoReplacement: {
@@ -6288,43 +6323,73 @@ const FORERUNNER_UNITS = [
     }
   }
 },
-  {
-    name: "Sniper Team",
-    type: "Team",
-    allowedVeterancy: ["Regular", "Veteran"],
-    costs: { Regular: 68, Veteran: 83 },
-    baseMen: 2,
-    maxMen: 2,
-    weapons: [
-  { name: "Binary Rifle" },
-  { name: "Boltshot" },
-  { name: "Light Rifle" }
-    ],
-    specialRules: [
-      "Team Weapon",
-      "Sniper",
-      "Infiltrator",
-      "Composed Beings",
-	  "Counter-Assault Protocols",
-      "Energy Shields",
-	  "Hardened",
-      "Fanatics",
-      "VISR",
-      "Behind Enemy Lines",
-	  "Strong",
-      "Fast"
-    ],
-    options: {
-      squadUpgrades: {
-		"Knight Lancers (Veteran only)": {
-		  cost: 4,
-		  perModel: true,
-		  grantsRule: ["Resilient", "Fieldcraft", "Melee Weapons", "Large Infantry", "Tough Fighters"],
-		  replacesRule: ["Energy Shields", "Hardened", "Fast"]
-		}
+{
+  name: "Sniper Team",
+  type: "Team",
+  allowedVeterancy: ["Regular", "Veteran"],
+  costs: { Regular: 52, Veteran: 67 },
+  baseMen: 2,
+  maxMen: 2,
+
+  weapons: [
+    { name: "Binary Rifle" },
+    { name: "Boltshot" },
+    { name: "Light Rifle" }
+  ],
+
+  specialRules: [
+    "Team Weapon",
+    "Sniper",
+    "Infiltrator",
+    "Automaton",
+    "Fieldcraft"
+  ],
+
+  options: {
+    squadUpgrades: {
+      "Promethean Soldiers": {
+        cost: 8,
+        perModel: true,
+        replacesRule: [
+          "Automaton",
+          "Fieldcraft"
+        ],
+        grantsRule: [
+          "Composed Beings",
+          "Energy Shields",
+          "Hardened",
+          "Fanatics",
+          "VISR",
+          "Behind Enemy Lines",
+          "Fast",
+          "Strong",
+          "Counter-Assault Protocols",
+          "Translocation Deployment",
+          "Translocation Recall"
+        ]
+      },
+
+      "Knight Lancers (Veteran only)": {
+        cost: 4,
+        perModel: true,
+        allowedVeterancy: ["Veteran"],
+        requiresUpgrade: "Promethean Soldiers",
+        replacesRule: [
+          "Hardened",
+          "Energy Shields",
+          "Fast"
+        ],
+        grantsRule: [
+          "Resilient",
+          "Fieldcraft",
+          "Melee Weapons",
+          "Large Infantry",
+          "Tough Fighters"
+        ]
       }
     }
-  },
+  }
+},
   {
     name: "Machine Gun Team",
     type: "Team",
@@ -11295,25 +11360,39 @@ function captureInfantryModalStateToUnit() {
 	  }
 	}
 
-	const menInput = document.getElementById("editMenInput");
 
-	if (menInput) {
-	  const menRaw = parseInt(menInput.value, 10);
-
-	  if (!isNaN(menRaw)) {
-		const minMen = unitData.baseMen || 0;
-		const maxMen = unitData.maxMen ?? minMen;
-
-		unit.men = Math.max(minMen, Math.min(maxMen, menRaw));
-	  }
-	}
-
+  // Save squad upgrades before calculating the total model count.
   if (unitData.options?.squadUpgrades) {
     unit.squadUpgrades = unit.squadUpgrades || {};
+
     document.querySelectorAll(".editSquadUpgrade").forEach(cb => {
       unit.squadUpgrades[cb.dataset.upgrade] = cb.checked;
     });
   }
+
+  // The Men input counts ordinary squad models only.
+  // Models added by upgrades are counted separately.
+  const menInput = document.getElementById("editMenInput");
+
+  if (menInput) {
+    const menRaw = parseInt(menInput.value, 10);
+
+    if (!isNaN(menRaw)) {
+      const minMen = unitData.baseMen || 0;
+      const maxMen = unitData.maxMen ?? minMen;
+
+      const ordinaryMen = Math.max(
+        minMen,
+        Math.min(maxMen, menRaw)
+      );
+
+      const bonusMen = getSavedBonusMen(unit, unitData);
+
+      unit.men = ordinaryMen + bonusMen;
+      unit._bonusMenNoExtraCost = bonusMen;
+    }
+  }
+
 
   if (unitData.options?.weaponReplacements) {
     unit.weaponReplacements = unit.weaponReplacements || {};
