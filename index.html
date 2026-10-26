@@ -2581,7 +2581,7 @@ const UNSC_UNITS = [
   name: "KOBOLD Combat Drone Team",
   type: "Infantry",
   allowedVeterancy: ["Veteran"],
-  costs: { Veteran: 110 },
+  costs: { Veteran: 100 },
   baseMen: 5,
   maxMen: 9,
 
@@ -2591,10 +2591,9 @@ const UNSC_UNITS = [
 
   specialRules: [
     "Automaton",
-    "Fanatics",
+    "Stubborn",
     "Hardened",
     "VISR",
-    "Fieldcraft",
     {
       name: "Limited",
       description: "May only take 1 per platoon, and only 2 in total per army."
@@ -2603,7 +2602,7 @@ const UNSC_UNITS = [
 
   options: {
     extraMenCost: {
-      Veteran: 22
+      Veteran: 20
     },
 
     squadUpgrades: {
@@ -5888,94 +5887,146 @@ const BANISHED_VEHICLES = [
 // --- FORERUNNER UNITS ---
 const FORERUNNER_UNITS = [
   // Headquarters Units
-  {
-    name: "Officer - Sub-monitor (Platoon commander)",
-    type: "Infantry",
-    allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
-    costs: { Inexperienced: 21, Regular: 30, Veteran: 39 },
-    baseMen: 1,
-    maxMen: 4,
-    weapons: [
-      { name: "Sentinel Beam" }
-    ],
-    specialRules: [
-	  "Platoon Commander",
-      "Flight",
-      "Composed Beings",
-      "Energy Shield"
-    ],
-    options: {
-      extraMenCost: { Inexperienced: 7, Regular: 10, Veteran: 13 }
-    }
+
+{
+  name: "Officer - Sub-monitor (Platoon commander)",
+  type: "Infantry",
+  allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
+  costs: {
+    Inexperienced: 21,
+    Regular: 30,
+    Veteran: 39
   },
-  {
-    name: "Officer - Monitor (Company commander)",
-    type: "Infantry",
-    allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
-    costs: { Inexperienced: 42, Regular: 60, Veteran: 78 },
-    baseMen: 1,
-    maxMen: 4,
-    weapons: [
-      { name: "Sentinel Beam" }
-    ],
-    specialRules: [
-	  "Company Commander",
-      "Flight",
-      "Composed Beings",
-      "Energy Shield"
-    ],
-    options: {
-      extraMenCost: { Inexperienced: 7, Regular: 10, Veteran: 13 }
+  baseMen: 1,
+  maxMen: 4,
+
+  weapons: [
+    { name: "Sentinel Beam" }
+  ],
+
+  specialRules: [
+    "Platoon Commander",
+    "Flight",
+    "Composed Beings",
+    "Energy Shield",
+    "Stubborn"
+  ],
+
+  options: {
+    extraMenCost: {
+      Inexperienced: 7,
+      Regular: 10,
+      Veteran: 13
     }
+  }
+},
+{
+  name: "Officer - Monitor (Company commander)",
+  type: "Infantry",
+  allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
+  costs: {
+    Inexperienced: 42,
+    Regular: 60,
+    Veteran: 78
   },
-  {
-    name: "Watcher (Air force)",
-    type: "Infantry",
-    allowedVeterancy: ["Regular", "Veteran"],
-    costs: { Regular: 85, Veteran: 100 },
-    baseMen: 1,
-    maxMen: 3,
-    weapons: [
-      { name: "Sentinel Beam" },
-      { name: "Boltshot" }
-    ],
-    specialRules: [
-      "Infiltrator",
-      "Automaton",
-      "Energy Shield",
-      "Flight",
-      { name: "Forward Observer", description: "Counts as an Air force forward observer." },
-      { name: "Reconstruction Suite", description: "If the Watcher’s own unit, or a friendly Infantry or Artillery unit with Composed Beings or Automaton and at least one model within 6\" of the Watcher model, suffers damage from Small Arms fire, roll one die for each point of damage before removing casualties. On each 6, one point of damage is ignored and no casualty is caused." },
-      "Hardlight Screen"
-    ],
-    options: {
-      extraMenCost: { Regular: 11, Veteran: 14 }
+  baseMen: 1,
+  maxMen: 4,
+
+  weapons: [
+    { name: "Sentinel Beam" }
+  ],
+
+  specialRules: [
+    "Company Commander",
+    "Flight",
+    "Composed Beings",
+    "Energy Shield",
+    "Stubborn"
+  ],
+
+  options: {
+    extraMenCost: {
+      Inexperienced: 7,
+      Regular: 10,
+      Veteran: 13
     }
-  },
-  {
-    name: "Watcher (Artillery)",
-    type: "Infantry",
-    allowedVeterancy: ["Regular", "Veteran"],
-    costs: { Regular: 85, Veteran: 100 },
-    baseMen: 1,
-    maxMen: 3,
-    weapons: [
-      { name: "Sentinel Beam" },
-      { name: "Boltshot" }
-    ],
-    specialRules: [
-      "Infiltrator",
-      "Automaton",
-      "Energy Shield",
-      "Flight",
-      { name: "Forward Observer", description: "Counts as an Artillery forward observer." },
-      { name: "Reconstruction Suite", description: "If the Watcher’s own unit, or a friendly Infantry or Artillery unit with Composed Beings or Automaton and at least one model within 6\" of the Watcher model, suffers damage from Small Arms fire, roll one die for each point of damage before removing casualties. On each 6, one point of damage is ignored and no casualty is caused." },
-      "Hardlight Screen"
-    ],
-    options: {
-      extraMenCost: { Regular: 11, Veteran: 14 }
+  }
+},
+{
+  name: "Watcher (Air force)",
+  type: "Infantry",
+  allowedVeterancy: ["Regular", "Veteran"],
+  costs: { Regular: 85, Veteran: 100 },
+  baseMen: 1,
+  maxMen: 3,
+
+  weapons: [
+    { name: "Sentinel Beam" },
+    { name: "Boltshot" }
+  ],
+
+  specialRules: [
+    "Infiltrator",
+    "Automaton",
+    "Energy Shield",
+    "Stubborn",
+    "Flight",
+    {
+      name: "Forward Observer",
+      description: "Counts as an Air force forward observer."
+    },
+    {
+      name: "Reconstruction Suite",
+      description: "If the Watcher’s own unit, or a friendly Infantry or Artillery unit with Composed Beings or Automaton and at least one model within 6\" of the Watcher model, suffers damage from Small Arms fire, roll one die for each point of damage before removing casualties. On each 6, one point of damage is ignored and no casualty is caused."
+    },
+    "Hardlight Screen"
+  ],
+
+  options: {
+    extraMenCost: {
+      Regular: 11,
+      Veteran: 14
     }
-  },
+  }
+},
+{
+  name: "Watcher (Artillery)",
+  type: "Infantry",
+  allowedVeterancy: ["Regular", "Veteran"],
+  costs: { Regular: 85, Veteran: 100 },
+  baseMen: 1,
+  maxMen: 3,
+
+  weapons: [
+    { name: "Sentinel Beam" },
+    { name: "Boltshot" }
+  ],
+
+  specialRules: [
+    "Infiltrator",
+    "Automaton",
+    "Energy Shield",
+    "Stubborn",
+    "Flight",
+    {
+      name: "Forward Observer",
+      description: "Counts as an Artillery forward observer."
+    },
+    {
+      name: "Reconstruction Suite",
+      description: "If the Watcher’s own unit, or a friendly Infantry or Artillery unit with Composed Beings or Automaton and at least one model within 6\" of the Watcher model, suffers damage from Small Arms fire, roll one die for each point of damage before removing casualties. On each 6, one point of damage is ignored and no casualty is caused."
+    },
+    "Hardlight Screen"
+  ],
+
+  options: {
+    extraMenCost: {
+      Regular: 11,
+      Veteran: 14
+    }
+  }
+},
+
 
   // Infantry Squads and Teams
 
@@ -5983,7 +6034,10 @@ const FORERUNNER_UNITS = [
   name: "Sentinel Swarm",
   type: "Infantry",
   allowedVeterancy: ["Inexperienced", "Regular"],
-  costs: { Inexperienced: 35, Regular: 50 },
+  costs: {
+    Inexperienced: 40,
+    Regular: 55
+  },
   baseMen: 5,
   maxMen: 11,
 
@@ -5993,6 +6047,7 @@ const FORERUNNER_UNITS = [
 
   specialRules: [
     "Automaton",
+    "Stubborn",
     "Flight",
     {
       name: "Core Overload",
@@ -6002,8 +6057,8 @@ const FORERUNNER_UNITS = [
 
   options: {
     extraMenCost: {
-      Inexperienced: 7,
-      Regular: 10
+      Inexperienced: 8,
+      Regular: 11
     },
 
     squadUpgrades: {
@@ -6019,9 +6074,9 @@ const FORERUNNER_UNITS = [
   type: "Infantry",
   allowedVeterancy: ["Inexperienced", "Regular", "Veteran"],
   costs: {
-    Inexperienced: 30,
-    Regular: 45,
-    Veteran: 60
+    Inexperienced: 35,
+    Regular: 50,
+    Veteran: 65
   },
   baseMen: 5,
   maxMen: 11,
@@ -6032,14 +6087,15 @@ const FORERUNNER_UNITS = [
 
   specialRules: [
     "Automaton",
-    "Fieldcraft"
+    "Fieldcraft",
+    "Stubborn"
   ],
 
   options: {
     extraMenCost: {
-      Inexperienced: 6,
-      Regular: 9,
-      Veteran: 12
+      Inexperienced: 7,
+      Regular: 10,
+      Veteran: 13
     },
 
     weaponReplacements: {
@@ -6058,7 +6114,11 @@ const FORERUNNER_UNITS = [
     },
 
     ncoReplacement: {
-      options: ["Boltshot", "Suppressor", "Light Rifle"],
+      options: [
+        "Boltshot",
+        "Suppressor",
+        "Light Rifle"
+      ],
       costs: {
         "Boltshot": 0,
         "Suppressor": 7,
@@ -6319,11 +6379,12 @@ const FORERUNNER_UNITS = [
     }
   }
 },
+
 {
   name: "Sniper Team",
   type: "Team",
   allowedVeterancy: ["Regular", "Veteran"],
-  costs: { Regular: 52, Veteran: 67 },
+  costs: { Regular: 53, Veteran: 68 },
   baseMen: 2,
   maxMen: 2,
 
@@ -6338,7 +6399,8 @@ const FORERUNNER_UNITS = [
     "Sniper",
     "Infiltrator",
     "Automaton",
-    "Fieldcraft"
+    "Fieldcraft",
+    "Stubborn"
   ],
 
   options: {
@@ -6348,7 +6410,8 @@ const FORERUNNER_UNITS = [
         perModel: true,
         replacesRule: [
           "Automaton",
-          "Fieldcraft"
+          "Fieldcraft",
+          "Stubborn"
         ],
         grantsRule: [
           "Composed Beings",
