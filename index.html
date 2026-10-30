@@ -3426,32 +3426,53 @@ const UNSC_VEHICLES = [
     }
   }
 },
-  {
-    name: "AV-22 Sparrowhawk",
-    type: "Aircraft",
-    allowedVeterancy: ["Regular", "Veteran"],
-    costs: { Regular: 200, Veteran: 240 },
-    weapons: [
-      { name: "Turret-mounted Heavy Autocannon" },
-      { name: "Hull-mounted Quad-linked Forward-facing Light Autocannon" },
-      { name: "Hull-mounted Quad-linked Forward-facing Light Autocannon" },
-      { name: "Hull-mounted Quad-linked Forward-facing Light Autocannon" },
-      { name: "Hull-mounted Quad-linked Forward-facing Light Autocannon" }
-    ],
-    damageValue: "7+ (Medium Aircraft)",
-    specialRules: [
-      "Flak"
-    ],
-    options: {
-      weaponUpgrades: {
-        "Turret-mounted Spartan Laser (replace Heavy Autocannon)": {
-          cost: 25,
-          replaces: ["Turret-mounted Heavy Autocannon"],
-          addsWeapon: "Turret-mounted Spartan Laser",
-        }
+{
+  name: "AV-22 Sparrowhawk",
+  type: "Aircraft",
+  allowedVeterancy: ["Regular", "Veteran"],
+  costs: {
+    Regular: 200,
+    Veteran: 240
+  },
+  weapons: [
+    { name: "Turret-mounted Heavy Autocannon" },
+    { name: "Hull-mounted Quad-linked Forward-facing Light Autocannon" },
+    { name: "Hull-mounted Quad-linked Forward-facing Light Autocannon" },
+    { name: "Hull-mounted Quad-linked Forward-facing Light Autocannon" },
+    { name: "Hull-mounted Quad-linked Forward-facing Light Autocannon" }
+  ],
+  damageValue: "7+ (Medium Aircraft)",
+  specialRules: [
+    "Flak"
+  ],
+  options: {
+    weaponUpgrades: {
+      "Turret-mounted Spartan Laser (replace Heavy Autocannon)": {
+        cost: 25,
+        replaces: [
+          "Turret-mounted Heavy Autocannon"
+        ],
+        addsWeapon: "Turret-mounted Spartan Laser"
+      },
+
+      "2 Turret-mounted Paired HMGs (replace 4 Light Autocannons)": {
+        cost: -50,
+        replaces: [
+          "Hull-mounted Quad-linked Forward-facing Light Autocannon"
+        ],
+        addsWeapon: [
+          "Turret-mounted Paired Heavy Machine Gun",
+          "Turret-mounted Paired Heavy Machine Gun"
+        ]
+      },
+
+      "Hull-mounted Forward-facing Rocket Launcher": {
+        cost: 50,
+        addsWeapon: "Hull-mounted Forward-facing Rocket Launcher"
       }
     }
-  },
+  }
+},
 {
   name: "D77-TC Pelican",
   type: "Aircraft",
