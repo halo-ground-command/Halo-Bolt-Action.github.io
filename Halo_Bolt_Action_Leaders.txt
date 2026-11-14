@@ -1,4 +1,4 @@
-﻿Halo: Bolt Action - Leaders v1.1
+﻿Halo: Bolt Action - Leaders v1.2
 
 Introduction
 The standard Halo: Bolt Action army lists allow players to freely combine units to create their own forces. Leaders provide an optional way to build an army around a specific command style, military doctrine, or battlefield strategy inspired by the Halo Wars series.
@@ -45,7 +45,7 @@ The special rule granted by the Leader. This may also include changes to unit av
 UNSC Leaders
 Captain James Cutter
 Points Cost
-50pts
+30pts
 Captain Cutter favours disciplined, coordinated operations supported by rapid deployment assets and elite strike teams. Under his command, ODST units are deployed aggressively to seize key positions, disrupt enemy movements, and open the way for the main UNSC assault.
 Requirements
 * The army must be a UNSC army.
@@ -66,7 +66,7 @@ For example, on Turn 2, they enter as if it were Turn 3. On Turn 4, they enter a
 
 Sergeant John Forge
 Points Cost
-25pts
+35pts
 Sergeant Forge leads from the front, favouring aggressive mechanised pushes, armoured support, and close cooperation between infantry and vehicles. His forces are trained to advance under fire, dismount quickly, and keep fighting even when their transports are destroyed around them.
 Requirements
 * The army must be a UNSC army.
@@ -108,7 +108,7 @@ Hold the Line!: Once per game, when a friendly unit fails an Order test, you may
 
 Commander Jerome-092
 Points Cost
-75pts
+35pts
 Jerome-092 leads Spartan operations with discipline, precision, and overwhelming battlefield presence. Forces operating under his command rely on elite infantry, aggressive manoeuvre, and the superior mobility of MJOLNIR armour to strike where the enemy is weakest.
 Requirements
 * The army must be a UNSC army.
@@ -134,7 +134,7 @@ MJOLNIR Mobility: When a Spartan unit is given a Run order, including an order t
 Covenant Leaders
 Prophet of Regret
 Points Cost
-25pts
+30pts
 The Prophet of Regret commands through religious authority, divine mandate, and the strict hierarchy of the Covenant. Forces acting under his command are driven forward by zeal, obedience, and the promise of glory in the name of the Great Journey.
 Requirements
 * The army must be a Covenant army.
@@ -158,7 +158,7 @@ Divine Mandate: Twice per game, at the start of a turn, choose one friendly Cove
 
 Ripa 'Moramee
 Points Cost
-50pts
+35pts
 Ripa 'Moramee, the Arbiter, leads through fear, speed, and brutal personal authority. Under his command, Elite warriors are unleashed as shock troops, striking quickly and decisively to break the enemy’s line before they can properly brace for the assault.
 Requirements
 * The army must be a Covenant army.
@@ -177,7 +177,7 @@ No Time to Brace: Enemy Infantry and Artillery units assaulted by friendly Elite
 
 Tartarus
 Points Cost
-25pts
+20pts
 Tartarus leads the Jiralhanae with savage authority, driving his packs into battle through intimidation, dominance, and the promise of brutal victory. Covenant forces under his command rely on Brute shock assaults to crush resistance at close range.
 Requirements
 * The army must be a Covenant army.
@@ -218,7 +218,7 @@ An army led by Yapyap the Destroyer may also include Banished Vehicles in its ar
 Banished Leaders
 Atriox
 Points Cost
-50pts
+30pts
 Atriox leads through strength, patience, and brutal battlefield calculation. Unlike many warlords, he does not waste lives needlessly, instead forcing the enemy to overcommit before striking where they are weakest. Armies under Atriox’s command are aggressive, but disciplined enough to exploit openings and recover from enemy pressure.
 Requirements
 * The army must be a Banished army.
@@ -226,11 +226,11 @@ Requirements
 * One of those Infantry units must be a Brute Platoon Commander.
 * The army must include at least one Grunt, Jackal, or Elite Infantry unit.
 Leader Rule
-Calculated Command: Once per game, when a friendly Banished Infantry or Artillery unit is given a Down order as a reaction, you may use this rule. Choose one other friendly Banished Infantry or Artillery unit that currently has a Down order die assigned to it. Move that Down order die to the reacting unit instead.
+Calculated Command: Once per game, when a friendly Banished Infantry or Artillery unit is given a Down order as a reaction, you may use this rule. Choose one other friendly Banished Infantry or Artillery unit that currently has a Down order die assigned to it. You may remove 1 pin from it and move that Down order die to the reacting unit instead.
 The reacting unit is treated as having gone Down as normal. The other unit no longer has an order die assigned and may be activated later in the turn as normal.
 Colony
 Points Cost
-75pts
+50pts
 Colony directs the Lekgolo with a collective intelligence, using coordinated Hunter pairs and Skitterer support as an armoured spearhead. Under Colony’s control, Lekgolo formations advance with terrifying discipline, shrugging off punishment as they crush the enemy line.
 Requirements
 * The army must be a Banished army.
@@ -251,7 +251,7 @@ In addition, an army led by Colony may include up to two Hunter Pack units per a
 
 Jega 'Rdomnai
 Points Cost
-25pts
+20pts
 Jega 'Rdomnai leads through terror, silence, and ritualised brutality. Under his command, Banished Elites fight not only to kill, but to claim proof of their victories. Their trophies become symbols of dominance, marking them as assassins and executioners within the Banished warhost.
 Requirements
 * The army must be a Banished army.
@@ -275,7 +275,7 @@ When a friendly Banished Elite Infantry unit wins a Close Quarters combat for th
 
 Decimus
 Points Cost
-25pts
+20pts
 Decimus leads through overwhelming force, aggression, and raw physical dominance. Under his command, Banished Brutes advance with brutal confidence, closing the distance under fire while unleashing volleys of weapons before crashing into the enemy line.
 Requirements
 * The army must be a Banished army.
@@ -284,7 +284,7 @@ Requirements
 * The army may not include more Elite Infantry units than Brute Infantry units.
 Leader Rule
 Unrelenting Advance: Once per game, when a friendly Brute Infantry unit is given a Run order that is not an assault, you may use this rule.
-After completing its movement, that unit may fire its weapons. If it does so, those weapons suffer a -1 to hit penalty, even if they have Assault.
+After completing its movement, that unit may fire its weapons as if it had advanced.
 
 
 
@@ -302,7 +302,7 @@ After completing its movement, that unit may fire its weapons. If it does so, th
 Flood Leaders
 The Gravemind
 Points Cost
-50pts
+55pts
 The Gravemind does not command through shouted orders or battlefield signals, but through the shared consciousness of the Flood itself. Under its influence, scattered infection forms move with terrifying coordination, reacting as one mind across the battlefield and overwhelming the enemy through perfect predatory instinct.
 Requirements
 * The army must be a Flood army.
@@ -337,7 +337,7 @@ If several eligible enemy units are equally close, or it is not clear which is c
 Forerunner Leaders
 The Didact
 Points Cost
-75pts
+50pts
 The Didact commands as a supreme Forerunner warlord, directing Promethean forces with ancient military precision and overwhelming authority. Under his command, Forerunner armies punish enemy overextension with sudden, devastating coordination.
 Requirements
 * The army must be a Forerunner army.
@@ -356,7 +356,7 @@ Warden of the Mantle: Once per game, when using the Warden of Balance army rule,
 
 343 Guilty Spark
 Points Cost
-25pts
+20pts
 343 Guilty Spark commands through containment protocols, automated security routines, and the defensive systems of the Forerunner installations. Under his direction, Forerunner forces create exclusion zones that punish enemy movement and restrict hostile advances.
 Requirements
 * The army must be a Forerunner army.
@@ -364,8 +364,8 @@ Requirements
 * The army must include a Monitor Company Commander.
 * The army must include at least three Automaton Infantry units.
 Leader Rule
-Containment Protocols: Friendly Forerunner Automaton Infantry units may be given Ambush orders.
-At the beginning of each turn, choose one friendly Forerunner Infantry unit. Until the end of that turn, any enemy Infantry or Artillery unit that ends its movement or activation within 6" of that unit receives 1 Pin.
+Containment Protocols: Friendly Forerunner Automaton Infantry units may be affected by You men, snap to action! as if they did not have the Automaton special rule.
+At the beginning of each turn, choose one friendly Forerunner Infantry unit. Until the end of that turn, any enemy unit that ends its movement within 6" of that unit receives 1 Pin.
 A unit may only receive 1 Pin per turn from this rule.
 
 
@@ -374,18 +374,15 @@ A unit may only receive 1 Pin per turn from this rule.
 Swords of Sanghelios Leaders
 Thel 'Vadam
 Points Cost
-50pts
+25pts
 Thel 'Vadam leads the Swords of Sanghelios through honour, discipline, and unity of purpose. Under his command, Sangheili warriors and their allies fight as a renewed Covenant of choice rather than obedience, holding the line through loyalty instead of fear.
 Requirements
 * The army must be a Swords of Sanghelios army.
 * The army must include at least three Elite Infantry units.
-* One of those Elite Infantry units must be an Elite Company Commander.
+* One of those Elite Infantry units must be an Elite Platoon Commander.
 Leader Rule
-United by Honour: Friendly Swords of Sanghelios Infantry and Artillery units may benefit from Sangheili Command while within 12" of a friendly Elite Infantry unit, instead of 6".
-
-
-
-
+United by Honour: Friendly Swords of Sanghelios Infantry and Artillery units may benefit from Sangheili Command while within 12" of a friendly Elite Infantry model, instead of 6".
+In addition, at the start of each turn, you can remove 1 Pin marker from one friendly Swords of Sanghelios Elite Infantry unit. 
 
 
 
