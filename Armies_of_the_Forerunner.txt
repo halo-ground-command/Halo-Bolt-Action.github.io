@@ -1,15 +1,15 @@
-﻿Armies of the Forerunnerv3.6
+﻿Armies of the Forerunnerv3.7
 
 Army Special Rules
-Enhanced Weapon Systems
-Forerunner weapons exhibit unmatched precision and lethality.
-* Effect: When a Forerunner Infantry or Artillery unit fires a Heavy weapon, each 6+ to hit grants +1 Penetration to that shot’s damage roll. This however has no effect on HE shots/templates.
-Uphold the Mantle
-Guided by an ancient charge to preserve order.
-* Effect: Any Veteran Forerunner unit that passes an Order test may remove 2 Pin markers instead of 1.
+Counter-Assault Protocols
+Forerunner combat constructs employ advanced predictive algorithms and coordinated defensive protocols to anticipate and repel enemy assaults.
+* Effect: When an ambush or unactivated Forerunner Infantry unit is assaulted by enemy Infantry or Artillery, it may react with a Fire order, treating itself as being on Ambush when determining whether it can react. If any attacking models survive and complete the assault, the assaulting unit halves its total number of attack dice, rounding up, during the first round of that Close Quarters combat only.
 Warden of Balance
 Forerunner doctrine punishes overextension.
 * Effect: At the beginning of each turn, if your opponent has more units on the battlefield than you, select one friendly Forerunner Infantry or Artillery unit from your army list. During this turn, that unit gains +1 to hit when shooting. This does not stack across turns and expires at the end of each turn.
+Uphold the Mantle
+Guided by an ancient charge to preserve order.
+* Effect: Any Veteran Forerunner unit that passes an Order test may remove 2 Pin markers instead of 1.
 Teleportation Network
 Phase relays enable instantaneous redeployment.
 * Effect: Each time a Forerunner Officer successfully uses You men, snap to action!, you may choose one friendly Infantry or Artillery unit that is being issued an order by that Snap. The order issued to that unit cannot be Advance, Run, or Assault. A unit carrying an objective cannot be chosen. If the chosen unit is required to take an Order test (e.g., because it is pinned), resolve the test as normal:
@@ -19,31 +19,17 @@ Phase relays enable instantaneous redeployment.
 
 
 
-
-
 Forerunner Armoury
 Reconstruction Matrix
 Forerunner units with Composed Beings may take a Reconstruction Matrix for +1pt per model.
 After this unit successfully receives a Rally order, roll one D6 for each model this unit is currently missing. If at least one result is equal to or greater than the unit’s Damage Value, one previously removed model from this unit may be returned, up to its original starting size. If the unit has Energy Shields, increase the required result by +1, to a maximum of 6+.
 A unit may return a maximum of 1 model per Rally order. The returned model must be placed in unit coherency and more than 1" from enemy units. If it cannot be placed, it is not returned.
-Counter-Assault Protocols
-When a unit with the Counter-Assault Protocols special rule is assaulted by enemy Infantry or Artillery while it has not yet been given an order this turn, or while it is on Ambush, it may react with a Fire order as normal. Treat this unit as being on Ambush when determining whether it can react to the assault.
-If any attacking models survive and complete the assault, the assaulting unit halves its total number of attack dice, rounding up, during the first round of that close quarters combat only.
-Custodian Command Node
-Forerunner Automaton Infantry units may take a Custodian Command Node for +1pt per model.
-This unit may be affected by You men, snap to action! as if it did not have the Automaton special rule.
 Hard-Light Calibration
 Forerunner Infantry units may take Hard-Light Calibration for +1pt per model.
 Weapons fired by a unit with this upgrade gain the Cover Piercing weapon rule.
-
-
-
-
-
-
-
-
-
+Translocation Deployment
+Forerunner units with Automaton or Composed Beings may take Translocation Deployment for +1pt per model.
+Only one unit per army per turn may use this rule. When a unit with Translocation Deployment enters the battlefield by Outflanking with a Run order, it may instead deploy anywhere legal on the battlefield, more than 9" from enemy units and objectives, and not inside a building. The unit does not make its Run move and remains in that position for the rest of the turn.
 
 
 
@@ -80,7 +66,7 @@ Cost
 	- Flight
 - Composed Being
 - Energy Shield
-- Custodian Uplink: If the Officer is destroyed, immediately replace the Composed Beings special rule with Automaton for the remaining models in this unit for the rest of the game.
+- Stubborn
 	Watcher
 Cost
 	Forward observer (air force or artillery)
@@ -95,6 +81,7 @@ Cost
 	- Infiltrator
 - Automaton
 - Energy Shield
+- Stubborn
 - Forward Observer: Counts as an Air force or artillery forward observer.
 - Flight
 - Reconstruction Suite: If the Watcher’s own unit, or a friendly Infantry or Artillery unit with Composed Beings or Automaton and at least one model within 6" of the Watcher model, suffers damage from Small Arms fire, roll one die per point of damage before removing casualties. Each 6 ignores one point of damage.
@@ -158,38 +145,36 @@ Cost
 INFANTRY SQUADS AND TEAMS
 Sentinel Swarm
 Cost
-	35pts (Inexperienced), 50pts (Regular) 
+	40pts (Inexperienced), 55pts (Regular) 
 	Composition
 	1 NCO and 4 Sentinels
 	Weapons
 	Sentinel Beams
 	Options
-	- Add up to 6 additional Sentinels for +7pts each (Inexperienced), or +10pts each (Regular) 
+	- Add up to 6 additional Sentinels for +8pts each (Inexperienced), or +11pts each (Regular) 
 - The unit may be given Energy Shield modules for +2pts per model
 	Special Rules
 	- Automaton
+- Stubborn
 - Energy Shields: If energy shield modules are taken
 - Flight
+- Core Overload: When the last model in this unit is destroyed, if any enemy units are within 3" of that model's position, roll a D6. On a 5+, each enemy unit receives 1 Pin marker.
 	Crawler Swarm
 Cost
-	40pts (Inexperienced), 55pts (Regular) 
+	35pts (Inexperienced), 50pts (Regular), 65pts (Veteran) 
 	Composition
 	1 NCO and 4 Crawlers
 	Weapons
 	Boltshot
 	Options
-	- Add up to 6 additional Crawlers for +8pts each (inexperienced), or +11pts each (regular) 
+	- Add up to 6 additional Crawlers for +7pts each (inexperienced), or +10pts each (regular), or +13pts each (veteran) 
 - The NCO and up to 8 additional Crawlers may have Suppressors instead of Boltshots  for +7pts each
 - The NCO and up to 8 additional Crawlers may have Light rifles instead of Boltshots  for +2pts each
 	Special Rules
 	- Automaton
 - Fieldcraft
-- Energy Shields
+- Stubborn
 	
-
-
-
-
 
 
 
@@ -291,7 +276,6 @@ Cost
 - Behind Enemy Lines
 - Fast
 - Strong
-- Counter-Assault Protocols
 	
 
 
@@ -370,7 +354,6 @@ Cost
 - Knight Commander (Platoon Commander, 0–1 per army): Add a single officer model to this unit for +52pts. If taken, this unit takes a Platoon Commander slot from a platoon. The Knight Commander is considered a Platoon Commander, but remains part of this unit. Limited to 1 per army.
 	Special Rules
 	- Composed Beings
-- Counter-Assault Protocols
 - Fanatics
 - Resilient
 - Strong
@@ -380,10 +363,21 @@ Cost
 - Behind Enemy Lines
 - Fieldcraft
 - Large Infantry
-- Phase Step: If this unit has not yet activated, it isn’t carrying an objective and is targeted by shooting from more than 6" away (not Preliminary Bombardment, artillery barrage, or air-strike), it may immediately react by teleporting up to 6". No order test is required. If you do so, place the unit within 6" of its starting position, ending farther from the attacking unit than before and not in impassable terrain, inside a building, outside the battlefield or within 1" of any unit. You may ignore intervening models and terrain while moving. This reaction does not trigger enemy Ambush. After teleporting, set the unit’s die to Down. If no legal placement exists, the unit goes down instead.
 - Knight Commander (If Knight commander is taken): The added officer model is considered a Platoon Commander and this unit takes a Platoon Commander slot from a platoon. The Knight Commander remains part of this unit. While the Knight Commander is alive, the unit does not suffer the effects of losing its NCO.
 - Limited: Only up to 2 Promethean Knight teams may be taken per platoon. 
 	
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -456,7 +450,7 @@ Cost
 - The squad can be given Engineers for +1pt per man
 	Special Rules
 	- Composed Beings                                                       - Infiltrator      
-- Energy Shields                                                             - Counter-Assault Protocols
+- Energy Shields                                                             
 - Fanatics                                                                         - Strong
 - VISR                                                                               - Behind Enemy Lines
 - Fast                                                                                - Hardened
@@ -480,8 +474,13 @@ Cost
 - Behind Enemy Lines
 - Fast
 - Strong
-- Counter-Assault Protocols
 	
+
+
+
+
+
+
 
 
 
@@ -557,29 +556,29 @@ Cost
 - Behind Enemy Lines
 - Fast
 - Strong
-- Counter-Assault Protocols
 	Sniper Team
 Cost
-	68pts (Regular), 83pts (Veteran)
+	53pts (Regular), 68pts (Veteran)
 	Composition
-	2 Soldiers
+	2 Crawlers
 	Weapons
 	Sniper has a Binary Rifle, spotter has a Boltshot or Light Rifle
 	Options
-	- If taken as Veteran, the 2 soldiers can be upgraded to Knight Lancers, replacing the special rules Hardened and Energy shields by Resilient and Fast by Fieldcraft. Additionally, the unit also gains the special rules Melee Weapons, Large infantry and Tough Fighters for +4pts per model.
+	- The two Crawlers may be upgraded to Promethean Soldiers for +8pts per model. Replace Automaton, Fieldcraft and Stubborn with Composed Beings, Energy Shields, Hardened, Fanatics, VISR, Behind Enemy Lines, Fast and Strong.
+- If taken as Veteran and upgraded to Promethean Soldiers, the two Soldiers may be further upgraded to Knight Lancers for +4pts per model. Replace Hardened and Energy Shields with Resilient, and Fast with Fieldcraft. Additionally, the unit gains Melee Weapons, Large Infantry, and Tough Fighters.
 	Special Rules
-	- Team weapon
-- Sniper
-- Infiltrator
-- Composed Beings
-- Energy Shields                    - Hardened
-- Fanatics
-- VISR
-- Behind Enemy Lines
-- Fast
-- Strong
-- Counter-Assault Protocols
+	- Team Weapon - Sniper - Infiltrator - Automaton - Fieldcraft - Stubborn
 	
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -654,15 +653,14 @@ Cost
 - Behind Enemy Lines
 - Fast
 - Strong
-- Counter-Assault Protocols
 - Splinter Turret: Heavy weapon: Range 48", Shots 3, Pen +1, Team, Fixed, HE (1")
 	VEHICLES
 WALKERS
 Warden Eternal 
 Cost
-	140pts (Regular), 168pts (Veteran)
+	165pts (Regular), 198pts (Veteran)
 	Weapons
-	Forward-facing Hull-mounted Medium AT Weapon, 2 Fists
+	Forward-facing Hull-mounted Medium AT Weapon, 2 Fists, Hardlight Blade
 	Damage Value
 	7+ (Light Walker)
 	Special Rules
@@ -674,11 +672,8 @@ Cost
 - Command Vehicle  
 - Shielded Hull 
 - Sustained Beam
+- Hardlight Blade: This unit has an additional +1 to penetration for its melee attacks.
 	
-
-
-
-
 
 
 
@@ -842,13 +837,13 @@ Cost
 - Shielded Hull 
 	Super Sentinel
 Cost
-	65pts (Regular), 78pts (Veteran) 
+	55pts (Regular), 66pts (Veteran) 
 	Weapons
 	Hull-mounted Forward-facing Super Sentinel Beam 
 	Damage Value
 	6+ (Light Aircraft)  
 	Special Rules
-	- Shielded Hull - Sustained Beam - Ground Support: This unit cannot target Flying Aircraft . - Super Sentinel Beam:  'Range 36", Shots 1, Pen +2, AT Gun' 
+	- Shielded Hull - Sustained Beam - Ground Support: This unit cannot target Flying Aircraft . - Super Sentinel Beam:  'Range 36", Shots 1, Pen +2, AT Gun' - Agile
 	TITANIC AIRCRAFT
 Retriever Sentinel 
 Cost
@@ -937,15 +932,25 @@ Cost
 - Phase Blink: Once per turn, when you fail an Evasion save for this vehicle, you may re-roll that save.
 - Shield Pylon Deployment: When this vehicle is given a Fire or Advance order, it may place up to two Shield Pylon Sentinels within 12" instead of firing, removing any previously placed by this vehicle. Shield Pylon Sentinels count as obstacles only for enemy units. Friendly units ignore them for movement, but can gain hard cover from them. Enemy units never receive cover from them.
 - Shielded Hull 
+	EXTRA
+INFANTRY SQUADS AND TEAMS
+Morolaath Pack 
+Cost
+	60pts (Inexperienced), 78pts (Regular) 
+	Composition
+	6 Morolaath
+	Weapons
+	- Unarmed
+	Options
+	- Add up to 4 additional Morolaath for +10pts Inexperienced / +13pts Regular each 
+	Special Rules
+	- Horror
+- Fieldcraft
+- Behind Enemy Lines
+- Tooth and Claw 
+- Mindless Hunger: This unit cannot pick up, carry, score or control objectives. It may still contest objectives. 
+- Limited: Only 1 Morolaath Pack may be taken per platoon.
 	
-
-
-
-
-
-
-
-
 
 
 

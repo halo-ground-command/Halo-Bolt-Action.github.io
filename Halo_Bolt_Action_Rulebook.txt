@@ -1,4 +1,4 @@
-﻿Halo: Bolt Action Rulebook V3.6
+﻿Halo: Bolt Action Rulebook V3.7
 Introduction
 Welcome to Halo: Bolt Action, where the tactical depth of Bolt Action meets the epic universe of Halo. Command forces from the UNSC or Covenant in fast-paced tabletop battles, using infantry, vehicles, and air support to outmaneuver and defeat your opponent.
 Tabletop simulator mod here
@@ -79,7 +79,7 @@ If a flying Aircraft would be destroyed due to accumulated pin markers while car
 Assaults
 Aircraft can’t initiate assaults, whether flying or landed. Flying Aircraft are immune to assault. Landed Aircraft may be assaulted using the standard rules for vehicles and transports.
 Aircraft Damage Rules
-Aircraft use the following vehicle damage tables. However, Aircraft with Damage Value 6+ are destroyed outright when damaged. 
+Aircraft use the following vehicle damage tables. However, Aircraft with Damage Value 6+ are destroyed outright when damaged and use the Destroyed effect. 
 SUPERFICIAL DAMAGE RESULTS ON AIRCRAFT
 D6
 	Effect
@@ -338,10 +338,10 @@ Type - HEAVY WEAPONS
 	+2
 	–
 	Spartan Laser
-	36"
+	30"
 	1
 	+6
-	Team, Battery Charge, Shaped Charge
+	Team, Charged Beam, Shaped Charge
 	Rocket/Plasma Launcher
 	30"
 	1
@@ -445,8 +445,8 @@ Type - HEAVY WEAPONS
 	Weapon Special Rules
 Assault
 Weapons with the Assault rule suffer no penalty to hit when moving and shooting. Additionally, infantry models armed with an Assault weapon count as having the Tough Fighters special rule, allowing them to re-roll failed rolls in close combat.
-Battery Charge
-Weapons with this rule require to charge up powerful energy attacks. As a result, they suffer a -1 to hit modifier when shooting.
+Charged Beam
+When firing at a unit that has an Advance or Run order, this weapon suffers an additional -1 to hit. On a hit, extend a straight line 6" beyond the target. The first unit crossed, friend or foe, may also be hit; make a separate To Hit roll at an additional -1. 
 Cover Piercing
 When this weapon hits an Infantry or Artillery unit that is in soft/hard cover and not Down, any natural 6 rolled to wound worsens the target’s cover save by 1, for that wound only. 
 Fixed
@@ -481,7 +481,7 @@ Tracking
 Weapons with the Tracking rule are highly advanced and accurate. When issuing a FIRE order, ignore the -1 to hit penalty caused by the unit being pinned. All other modifiers apply as normal.
 Unit Special Rules
 Automaton
-Automatons possess basic decision-making capabilities but lack the quick reactions and judgment of human soldiers. Units with this rule cannot be issued Ambush orders and are not affected by Horror’s -1 morale. Automatons cannot benefit from medics or the YOU MEN, SNAP TO ACTION! rule.
+Units with this rule are not affected by Horror’s -1 morale. Automatons cannot benefit from medics or the YOU MEN, SNAP TO ACTION! rule.
 Behind Enemy Lines
 Units with the Behind Enemy Lines special rule are highly trained in infiltration and surprise tactics. When entering the battlefield using Reserves or the Outflank deployment, these units ignore the -1 modifier to the order test for coming onto the table.
 Berserker
@@ -494,6 +494,8 @@ Energy Shield
 Units equipped with advanced energy shielding gain additional protection in battle. When targeted by shooting attacks, units with this rule increase their “to wound” difficulty by +1. For example, a weapon that would normally wound on a 4+ now wounds on a 5+. 
 Fanatics
 Fanatics refuse to retreat or surrender, choosing instead to fight to the bitter end. They ignore negative morale modifiers from pin markers when taking morale checks. Fanatics are not automatically routed when their pin markers equal or exceed their morale value. In close quarters, if a Fanatic infantry/artillery unit is defeated, the fight is treated as a draw, and another round of combat is immediately fought. This continues until the Fanatics either win or are wiped out.
+
+
 Fast
 Units with the Fast rule have a base movement of 8 inches, allowing them to Run up to 16 inches.
 Fieldcraft
@@ -578,7 +580,7 @@ When resolving a shooting attack against this vehicle, if this vehicle had no Pi
 Slow
 Vehicles with this rule are less mobile, moving only 6" with an Advance order and 12" with a Run order.
 Sustained Beam 
-If an AT Gun on this unit hits its target, draw a straight line from this unit to that target. Each other unit crossed by the line may also be hit; make a separate To Hit roll at -1 for each, plus any other modifiers that may apply. Flying Aircraft are ignored for this rule. If the original target is a Flying Aircraft, this rule does not apply. 
+If an AT Gun on this unit hits its target, draw a straight line from this unit to that target. Each other enemy unit crossed by the line may also be hit; make a separate To Hit roll at -1 for each, plus any other modifiers that may apply. Flying Aircraft are ignored for this rule. If the original target is a Flying Aircraft, this rule does not apply. 
 Weak Sides
 Vehicles with this rule have vulnerable side armor. Attacks against the sides count as hitting the rear, gaining a +2 penetration modifier instead of +1.
 Demolition Charges

@@ -1,4 +1,4 @@
-﻿Armies of the Floodv3.6
+﻿Armies of the Floodv3.7
 
 Army Special Rules
 Living Nightmare
@@ -338,13 +338,13 @@ Cost
 
 Tank Form Pack
 Cost
-	48pts (Veteran) 
+	52pts (Veteran) 
 	Composition
 	1 NCO and 1 Tank form
 	Weapons
 	Unarmed
 	Options
-	- Add up to 4 additional Tank Forms for +24pts each
+	- Add up to 4 additional Tank Forms for +26pts each
 	Special Rules
 	- Flood Infection
 - Tooth and Claw
@@ -651,9 +651,13 @@ Cost
 - Flight
 - Wide Formation 
 - Behind Enemy Lines
-- Aerial Form: This unit can only move using the Flight special rule and cannot choose to move using normal Infantry movement. In addition, this unit may only benefit from soft or hard cover saves while being Down. 
+- Limited: May only take 1 per platoon, and only 2 in total per army. 
 - Barbed Projectiles: Range 24", Shots 1, Pen –, – 
 	
+
+
+
+
 
 
 
@@ -719,7 +723,7 @@ VEHICLES
 WALKERS
 Juggernaut 
 Cost
-	90pts (Regular), 108pts (Veteran)
+	95pts (Regular), 114pts (Veteran)
 	Weapons
 	2 Forward facing Tentacle Lash (Range: 6", Shots: 1, Pen: +2, Shaped Charge) , 2 Fists
 	Damage Value
@@ -732,7 +736,7 @@ Cost
 - Juggernaut Key Mind (If taken): A Juggernaut Key Mind gains the Platoon Commander special rule and fills one Platoon Commander slot in a platoon. For all other purposes, it remains a Walker. However, it does not count towards an Armoured Platoon’s composition, vehicle limits, or vehicle requirements, and is ignored when determining any other force-organisation requirements or limits based on vehicles. A Juggernaut Key Mind cannot also be a Command Vehicle. 
 	Abomination
 Cost
-	230pts (Regular), 264pts (Veteran)
+	200pts (Regular), 240pts (Veteran)
 	Weapons
 	2 Forward facing Tentacle Whip (Range 12", Shots 1, Pen +3, Shaped Charge) , 2 Fists
 	Damage Value
@@ -740,7 +744,7 @@ Cost
 	Special Rules
 	- Assault
 - Fist 
-- Slow
+- Slower
 - Synaptic Relay: If at least one Flood Officer is alive, this unit extends that officer’s command bubble to Flood Infantry and Artillery within 6" of it, but with the morale bonus halved. For normal morale checks, affected units use the highest officer’s morale bonus available (halved). For Snap To via this relay, only the activating officer’s halved morale bonus is used, even if another officer on the field has a higher bonus.
 	
 
@@ -806,7 +810,7 @@ Cost
 	Damage Value
 	7+ (Light Walker)
 	Special Rules
-	- Assault - Fist  - Open-topped
+	- Assault - Fist  - Open-topped - Slower
 	AIRCRAFT
 Bomber Form 
 Cost

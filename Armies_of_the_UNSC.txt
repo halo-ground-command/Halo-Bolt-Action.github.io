@@ -1,4 +1,4 @@
-﻿Armies of the UNSC v3.6
+﻿Armies of the UNSC v3.7
 
 Army Special Rules
 Desperate Measures
@@ -401,6 +401,8 @@ Cost
 - Up to 2 men may have a Grenade Launcher for +17pts
 - Up to 2 men may have a Light Machine Gun for +9pts
 - Up to 1 man may have a MMG for +13pts
+- Up to 1 man may have a Spartan Laser instead of their Assault Rifle for +62pts. 
+- The squad may be given anti-tank grenades for +2pts per man 
 - The NCO and up to 2 men may have a Anti-Tank Rifle for +10pts
 - The squad can be given Jump-Jet Packs for +1pt per man
 - The squad can be given Stealth Modules for +1pt per man
@@ -428,10 +430,6 @@ Cost
 - Limited: Only 1 ONI Operative Team may be taken per platoon.
 - Tank Hunters: If anti-tank grenades are taken
 	
-
-
-
-
 
 
 
@@ -592,7 +590,7 @@ Cost
 	Weapons
 	Sniper has a sniper rifle and a pistol, spotter has a pistol or DMR
 	Options
-	- The unit may be equipped with Anti-Materiel Rounds for +10pts. If this upgrade is taken, the Sniper Rifle becomes a Heavy Sniper Rifle and gains Pen +1.
+	- The sniper may replace their Sniper Rifle with an Anti-Tank Rifle for +15pts. The Anti-Tank Rifle retains the benefits of the Sniper rule, but its range remains 48" when using the scope.
 	Special Rules
 	- Team weapon
 - Sniper
@@ -622,8 +620,6 @@ Cost
 	- Team Weapon
 - For Humanity’s Survival!
 	
-
-
 
 
 
@@ -809,7 +805,7 @@ Cost
 Cost
 	180pts (Regular), 216pts (Veteran)
 	Weapons
-	Turret-mounted Heavy Machine Gun and Rocket Launcher
+	Turret-mounted Paired Heavy Machine Gun and Rocket Launcher
 	Damage Value
 	8+ (Medium Walker)
 	Special Rules
@@ -1185,8 +1181,7 @@ Cost
 	Transport 
 	Up to 4 men
 	Special Rules
-	- Flak                                                     - Agile
-- Nimble
+	- Flak                 - Nimble                                    - Agile
 	UH-144 Falcon
 Cost
 	64pts (Inexperienced), 80pts (Regular), 96pts (Veteran)  
@@ -1195,13 +1190,12 @@ Cost
 	Damage Value
 	7+ (Medium Aircraft)  
 	Options
-	- Add 2 pintle-mounted MMGs, 1 MMG covering the left arc, and 1 MMG covering the right arc for +30pts
-- Replace the 2 pintle-mounted MMGs with 2 pintle-mounted Grenade Launchers for +15pts  
+	- Add 2 pintle-mounted MMGs, 1 MMG covering the left arc, and 1 MMG covering the right arc for +30pts - Replace the 2 pintle-mounted MMGs with 2 pintle-mounted Grenade Launchers for +15pts  
+- The unit may take Rappelling Lines for +5pts: While Flying, if this Aircraft has not moved yet this turn, transported Infantry units may disembark from it as though it were Landed. 
 	Transport 
 	Up to 7 men
 	Special Rules
-	- Flak  
-- Open-topped
+	- Flak   - Open-topped
 	AV-22 Sparrowhawk
 Cost
 	200 pts (Regular), 240 pts (Veteran)
@@ -1211,11 +1205,11 @@ Cost
 	7+ (Medium Aircraft)  
 	Options
 	- Replace Heavy Autocannon with Spartan Laser for +25 pts
+- Replace all 4 Light Autocannons with 2 Turret-mounted Paired HMGs for −50pts. 
+- Add a Hull-mounted Forward-facing Rocket Launcher for +50pts. 
 	Special Rules
 	- Flak  
 	
-
-
 
 
 
@@ -1283,11 +1277,11 @@ Cost
 - Add a Hull-mounted Forward-facing Rocket Launcher for +50pts
 - Add a pintle-mounted MMG covering the rear arc for +15pts
 - Upgrade to Command Vehicle for +10pts
+- The unit may take Rappelling Lines for +10pts: While Flying, if this Aircraft has not moved yet this turn, transported Infantry units may disembark from it as though it were Landed. 
 	Transport 
 	Up to 16 men
 	Special Rules
-	- Flak
-- Command Vehicle (If Command Vehicle is taken)
+	- Flak - Command Vehicle (If Command Vehicle is taken)
 	TITANIC AIRCRAFT
 Vulture
 Cost
@@ -1310,8 +1304,6 @@ Cost
 	- Flak
 - Titanic Aircraft: When rolling on the Aircraft Damage chart against this unit, reduce the result by 1 (to a minimum of 1).
 	
-
-
 
 
 
@@ -1583,11 +1575,11 @@ Cost
 - Faster
 	Elephant
 Cost
-	111pts (Regular), 133pts (Veteran) 
+	151pts (Regular), 181pts (Veteran) 
 	Weapons
 	Turret-mounted Paired Heavy Machine Gun 
 	Damage Value
-	8+ (Light Tank)  
+	9+ (Medium Tank)  
 	Transport
 	Up to 16 men 
 	Options
@@ -1769,7 +1761,90 @@ Cost
 	- Shield Wall 
 - Stubborn 
 - Engineers: If Engineers are taken 
-	AIRCRAFTS
+	KOBOLD Combat Drone Team 
+Cost
+	100pts (Veteran)
+	Composition
+	1 NCO and 4 KOBOLDS
+	Weapons
+	Assault Rifles
+	Options
+	- Add up to 4 additional KOBOLDS for +20 pts each.
+- The NCO and up to 8 KOBOLDS may replace their Assault Rifles with Battle Rifles or Shotguns for −3 pts each, DMRs for −5 pts each, or SMGs for −2 pts each.
+- Up to 2 KOBOLDS may replace their Assault Rifles with Light Machine Guns for +9 pts each.
+- The squad can be given Engineers for +1pt per model
+	Special Rules
+	- Automaton  
+- Stubborn
+- Hardened 
+- VISR 
+- Engineers: If Engineers are taken 
+- Limited: May only take 1 per platoon, and only 2 in total per army. 
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+AIRCRAFTS
 AV-49 Wasp
 Cost
 	115pts (Regular), 135pts (Veteran) 
@@ -1791,6 +1866,8 @@ Cost
 	7+ (Medium Aircraft)  
 	Transport 
 	Up to 5 men
+	Options
+	- The unit may take Rappelling Lines for +5pts: While Flying, if this Aircraft has not moved yet this turn, transported Infantry units may disembark from it as though it were Landed. 
 	Special Rules
 	Camouflaging Jammers: Friendly Infantry and Artillery units with at least one model within 6" of this vehicle count as having the Stealth special rule. Enemy Infantry and Artillery units with at least one model within 6" of this vehicle cannot benefit from the Stealth special rule. - Medical Vehicle 
 	

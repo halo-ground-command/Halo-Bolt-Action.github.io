@@ -1,4 +1,4 @@
-﻿Armies of the Banishedv3.6
+﻿Armies of the Banishedv3.7
 
 Army Special Rules
 Brotherhood of Chaos
@@ -591,33 +591,32 @@ Cost
 
 Atriox’s Chosen  
 Cost
-	76pts (Veteran)  
+	84pts (Veteran)  
 	Composition
 	1 NCO and 3 Brutes 
 	Weapons
 	Melee weapons (Unarmed)
 	Options
-	- Add up to 2 additional Brutes for +19pts each  
+	- Add up to 2 additional Brutes for +21pts each  
 - The squad may be given Energy Shield Modules for +3pts per Brute 
 - The squad may be given anti-tank grenades for +2pts per Brute 
 	Special Rules
 	- Fanatics                               - Hardened
-- Berserker
+- Berserker                            - Strong
 - Tough Fighters
 - Fieldcraft
-- Strikes First
 - Melee Weapons: All models roll 2 dice in close combat instead of 1 
 - Energy Shields: If Energy Shield Modules are taken
 - Tank Hunters: If anti-tank grenades are taken
 	Hunter Pack
 Cost
-	112pts (Regular), 118pts (Veteran) 
+	108pts (Regular), 114pts (Veteran) 
 	Composition
 	2 Hunters
 	Weapons
 	Assault Cannons 
 	Options
-	- Add up to 2 additional Hunters for +56pts each (Regular) or +59pts each (Veteran) 
+	- Add up to 2 additional Hunters for +54pts each (Regular) or +57pts each (Veteran) 
 	Special Rules
 	- Resilient   
 - Tough Fighters  
@@ -697,11 +696,11 @@ Cost
 	Options
 	- This unit can be upgraded to a Suicide Grunt Rider for +4pts per model, gaining Stubborn, Hardened, Fieldcraft and Berserker. - Add 1 additional Grunt for +14pts (Inexperienced), +20pts (Regular), or +26pts (Veteran). 
 	Special Rules
-	- Suicide Charge: After this unit successfully assaults an enemy unit and reaches Close Quarters, immediately remove all remaining models from this unit. If 1 model is removed, inflict one HE (2") hit or make one Damage roll against the vehicle’s DV with +4 Penetration and no other modifiers. If 2 models are removed, inflict 2× HE (2") hits or make the Damage roll with +6 Penetration instead. 
+	- Suicide Charge: After this unit successfully assaults an enemy unit and reaches Close Quarters, immediately remove all remaining models from this unit. If 1 model is removed, inflict one HE (2") hit or make one Damage roll against the vehicle’s DV with +5 Penetration and no other modifiers. If 2 models are removed, inflict 2× HE (2") hits or make the Damage roll with +7 Penetration instead. 
 - Tank Hunters  - Infiltrator  - Extra Selection: You may take up to 3 Suicide Anti-Tank Teams as a single choice in any platoon selector that allows an Anti-Tank Team. This does not prevent you from also taking a standard Anti-Tank Team.
 	Huragok
 Cost
-	45pts (Inexperienced) 
+	55pts (Inexperienced) 
 	Composition
 	1 Huragok 
 	Weapons
@@ -711,7 +710,7 @@ Cost
 - Flight  
 - Energy Shields  
 - Limited: Only 1 Huragok may be taken per army 
-- Utility Construct: Huragoks do not use up an infantry slot when building your platoon.
+- Shield Projector: While this Huragok is embarked aboard a friendly vehicle, that vehicle counts as having the Shielded Hull 
 	Flamethrower Team
 Cost
 	60pts (Regular), 75pts (Veteran)  
@@ -958,13 +957,13 @@ May take Shielded Hull for +25pts.
 WALKERS
 Pnap-pattern Goblin 
 Cost
-	125pts (Regular), 150pts (Veteran)
+	130pts (Regular), 156pts (Veteran)
 	Weapons
 	Forward-facing Hull-mounted Needle Cannon and Shardstorm Launcher, 2 Fists
 	Damage Value
 	7+ (Light Walker)
 	Options
-	- Replace Needle Cannon with a Light Anti-Tank Weapon for +10pts
+	- Replace Needle Cannon with a Light Anti-Tank Weapon and gain Sustained Beam for +15pts
 	Special Rules
 	- Assault   - Shielded Hull 
 - Fist  
@@ -1049,8 +1048,6 @@ Cost
 
 
 
-
-
 Klavrig Workshop "Skitterer" 
 Cost
 	60pts (Inexperienced), 75pts (Regular), 90pts (Veteran) 
@@ -1070,7 +1067,7 @@ Cost
 	Damage Value
 	7+ (Light Walker)  
 	Special Rules
-	- Assault
+	- Assault      - Slower
 - Fist
 - Open-topped
 - Siege Fists: This unit has an additional +1 to penetration for its melee attacks.
@@ -1437,17 +1434,17 @@ May take Shielded Hull for +15pts.
 
 Phantom
 Cost
-	108pts (Inexperienced), 135pts (Regular), 162pts (Veteran)  
+	118pts (Inexperienced), 145pts (Regular), 172pts (Veteran)  
 	Weapons
 	Turret-mounted Light Plasma Cannon
 	Damage Value
 	8+ (Heavy Aircraft)  
 	Options
-	- Add 2 Turret-mounted Light Plasma Cannons for +50pts - Add 2 pintle-mounted PMMGs, 1 PMMG covering the front arc, and 1 PMMG covering the right arc for +30pts - Upgrade to Command Vehicle for +10pts
+	- Add 2 Turret-mounted Light Plasma Cannons for +50pts - Add 2 pintle-mounted PMMGs, 1 PMMG covering the left arc, and 1 PMMG covering the right arc for +30pts - Upgrade to Command Vehicle for +10pts
 	Transport 
 	Up to 16 men
 	Special Rules
-	- Command Vehicle (If Command Vehicle is taken) - Flak  - Gravity Lift: While Flying, if this Aircraft has not moved this turn, transported units may disembark from it as though it were Landed. If a unit does so, this Aircraft cannot advance or run for the rest of the turn. 
+	- Command Vehicle (If Command Vehicle is taken) - Flak  - Gravity Lift: While Flying, if this Aircraft has not moved yet this turn, transported infantry units may disembark from it as though it were Landed. 
 	TRANSPORTS AND TOWS
 Qavardu Workshop war-skiff 
 Cost
@@ -1461,7 +1458,7 @@ Cost
 	Special Rules
 	- Recce
 - Open-topped
-	Eklon'Dal Workshop Warrior Carriage
+	Eklon'Dal Workshop Warrior Carriage Wraith In
 Cost
 	135(Regular), 162(Veteran) 
 	Weapons
@@ -1820,7 +1817,22 @@ Cost
 
 
 
-VEHICLES
+Ogre-Wolf Pack
+Cost
+	48pts (Inexperienced ), 66pts (Regular)
+	Composition
+	6 Ogre-wolves 
+	Weapons
+	- Unarmed
+	Options
+	- Add up to 4 additional Ogre-wolves for +8pts Inexperienced / +11pts Regular each 
+	Special Rules
+	- Horror
+- Fast
+- Berserker
+- Mindless Hunger: This unit cannot pick up, carry, score or control objectives. It may still contest objectives. 
+- Limited: Only 1 Ogre-Wolf Pack may be taken per platoon.
+	VEHICLES
 ARMOURED CARS
 Methane Wagon
 Cost

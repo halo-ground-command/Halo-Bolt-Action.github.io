@@ -1,13 +1,13 @@
-﻿Armies of the Covenant v3.6
+﻿Armies of the Covenant v3.7
 
 Army Special Rules
 Caste System
 The Covenant draws its strength from the unique abilities of its member species, each excelling in different aspects of warfare.
 * Effect: When creating a Covenant army, you may select one bonus from the following list:
-   * Commanding Presence: Covenant Infantry and artillery units that are within 6″ of at least one Elite unit and not within an officer’s morale bubble gain a +1 Morale bonus.
+   * Commanding Presence: Covenant Infantry and artillery units that are within 6″ of at least one Elite model and not within an officer’s morale bubble gain a +1 Morale bonus.
    * Cannon Fodder: Your army gets a free basic inexperienced Grunt squad unit.
    * Wall of Deflection: Friendly units with Shield Wall or Resilient provide hard cover instead of soft cover to other friendly units when the line of fire passes through them.
-   * Fury Unleashed: Covenant infantry units that fail their Assault order test when within 9" of a Brute unit may re-roll the failed order test.
+   * Fury Unleashed: Covenant infantry units that fail their Assault order test when within 9" of a Brute model may re-roll the failed order test.
 Zealotry
 Covenant troops are fanatically devoted to their cause, fighting without fear of death.
 * Effect: Regular or Veteran Covenant units ignore the Morale penalty from 1 Pin when taking Advance order tests, if they are not benefiting from a friendly morale bonus bubble.
@@ -557,13 +557,13 @@ Cost
 
 Hunter Pack
 Cost
-	112pts (Regular), 118pts (Veteran) 
+	108pts (Regular), 114pts (Veteran) 
 	Composition
 	2 Hunters
 	Weapons
 	Assault Cannons 
 	Options
-	- Add up to 2 additional Hunters for +56pts each (Regular) or +59pts each (Veteran) 
+	- Add up to 2 additional Hunters for +54pts each (Regular) or +57pts each (Veteran) 
 	Special Rules
 	- Resilient                                                           - Wide Formation 
 - Tough Fighters  
@@ -576,19 +576,19 @@ Cost
 - Limited: Only 1 Hunter Pack may be taken per army.
 	Honor Guard  
 Cost
-	84pts (Veteran)  
+	96pts (Veteran)  
 	Composition
 	1 NCO and 3 Elites  
 	Weapons
 	Melee Weapons (Unnamed)
 	Options
-	- Add up to 2 additional Elites for +21pts each  
+	- Add up to 2 additional Elites for +24pts each  
 - The squad may be given Stealth Modules for +1pt per Elite  
 - The squad may be given anti-tank grenades for +2pts per Elite 
 	Special Rules
 	- Behind Enemy Lines                                                           - Strikes First
 - Fanatics                                                                                - Hardened
-- Tough Fighters  
+- Tough Fighters                                                                     - Strong
 - Energy Shields  
 - Fast  
 - VISR  
@@ -665,11 +665,11 @@ Cost
 	Options
 	- Add 1 additional Grunt for +14pts (Inexperienced), +20pts (Regular), or +26pts (Veteran). 
 	Special Rules
-	- Suicide Charge: After this unit successfully assaults an enemy unit and reaches Close Quarters, immediately remove all remaining models from this unit. If 1 model is removed, inflict one HE (2") hit or make one Damage roll against the vehicle’s DV with +4 Penetration and no other modifiers. If 2 models are removed, inflict 2× HE (2") hits or make the Damage roll with +6 Penetration instead. 
+	- Suicide Charge: After this unit successfully assaults an enemy unit and reaches Close Quarters, immediately remove all remaining models from this unit. If 1 model is removed, inflict one HE (2") hit or make one Damage roll against the vehicle’s DV with +5 Penetration and no other modifiers. If 2 models are removed, inflict 2× HE (2") hits or make the Damage roll with +7 Penetration instead. 
 - Tank Hunters  - Infiltrator  - Extra Selection: You may take up to 3 Suicide Anti-Tank Teams as a single choice in any platoon selector that allows an Anti-Tank Team. This does not prevent you from also taking a standard Anti-Tank Team.
 	Huragok
 Cost
-	45pts (Inexperienced) 
+	55pts (Inexperienced) 
 	Composition
 	1 Huragok 
 	Weapons
@@ -679,7 +679,7 @@ Cost
 - Flight  
 - Energy Shields  
 - Limited: Only 1 Huragok may be taken per army 
-- Utility Construct: Huragoks do not use up an infantry slot when building your platoon.
+- Shield Projector: While this Huragok is embarked aboard a friendly vehicle, that vehicle counts as having the Shielded Hull 
 	
 
 
@@ -945,13 +945,13 @@ TANK DESTROYERS
 WALKERS
 Pnap-pattern Goblin 
 Cost
-	125pts (Regular), 150pts (Veteran)
+	130pts (Regular), 156pts (Veteran)
 	Weapons
 	Forward-facing Hull-mounted Needle Cannon and Shardstorm Launcher, 2 Fists
 	Damage Value
 	7+ (Light Walker)
 	Options
-	- Replace Needle Cannon with a Light Anti-Tank Weapon for +10pts
+	- Replace Needle Cannon with a Light Anti-Tank Weapon and gain Sustained Beam for +15pts
 	Special Rules
 	- Assault  - Shielded Hull 
 - Fist  
@@ -1248,7 +1248,7 @@ Cost
 Cost
 	100pts (Inexperienced), 125pts (Regular), 150pts (Veteran) 
 	Weapons
-	Turret-mounted Light Plasma Cannon, 2 turret-mounted Medium Plasma MGs, 1  covering the front arc, and 1 covering the right arc.
+	Turret-mounted Needle Cannon, 2 turret-mounted Medium Plasma MGs, 1  covering the front arc, and 1 covering the right arc.
 	Damage Value
 	7+ (Medium Aircraft)  
 	Special Rules
@@ -1256,9 +1256,8 @@ Cost
 - Stasis Cannon: After an Advance or Fire order, the Vampire may target one non-activated enemy aircraft within 12" and line of sight. That aircraft must immediately take a Morale test.  
   - If passed: no effect.  
   - If failed: the targeted aircraft gains 1 pin and it cannot make an Advance or Run order this turn, unless the Vampire is destroyed beforehand.
+- Needle Cannon: Range 48", Shots 2, Pen +2, Shaped Charge, Tracking, Supercombine, HE (1") 
 	
-
-
 
 
 
@@ -1326,8 +1325,6 @@ May take Shielded Hull for +15pts.
 
 
 
-
-
 Spirit
 Cost
 	120pts (Inexperienced), 150pts (Regular), 180pts (Veteran)  
@@ -1341,19 +1338,19 @@ Cost
 	- Flak
 	Phantom
 Cost
-	108pts (Inexperienced), 135pts (Regular), 162pts (Veteran)  
+	118pts (Inexperienced), 145pts (Regular), 172pts (Veteran)  
 	Weapons
 	Turret-mounted Light Plasma Cannon  
 	Damage Value
 	8+ (Heavy Aircraft)  
 	Options
 	- Add 2 Turret-mounted Light Plasma Cannons for +50pts
-- Add 2 pintle-mounted PMMGs, 1 PMMG covering the front arc, and 1 PMMG covering the right arc for +30pts
+- Add 2 pintle-mounted PMMGs, 1 PMMG covering the left arc, and 1 PMMG covering the right arc for +30pts
 - Upgrade to Command Vehicle for +10pts
 	Transport 
 	Up to 16 men
 	Special Rules
-	- Command Vehicle (If Command Vehicle is taken) - Flak  - Gravity Lift: While Flying, if this Aircraft has not moved this turn, transported units may disembark from it as though it were Landed. If a unit does so, this Aircraft cannot advance or run for the rest of the turn. 
+	- Command Vehicle (If Command Vehicle is taken) - Flak  - Gravity Lift: While Flying, if this Aircraft has not moved yet this turn, transported infantry units may disembark from it as though it were Landed.
 	
 
 
@@ -1385,6 +1382,8 @@ Cost
 
 
 May take Shielded Hull for +20pts. 
+
+
 
 
 
