@@ -1,4 +1,4 @@
-﻿Halo: Bolt Action - Optional Rules v1.7
+﻿Halo: Bolt Action - Optional Rules v1.8
 
 Introduction
 This supplement contains optional rules modules for Halo: Bolt Action, designed primarily for narrative play but usable in any game if both players agree.
@@ -878,7 +878,7 @@ Airlift Capability
 Only Pelicans, Phantoms and Spirits may use this rule.
 An aircraft with Airlift may carry:
 ● 1 Artillery unit (Any artillery unit), or
-● 1 Vehicle up to Medium classification
+● 1 Vehicle up to Medium classification, or up to 2 Damage Value 6 vehicles.
 Aircraft may not airlift:
 ● Heavy or Super-heavy vehicles
 ● other Aircraft
@@ -910,6 +910,7 @@ If the aircraft suffers pin markers:
 Dropping / Deploying an Airlifted Load
 To deploy an airlifted unit, the aircraft must be landed.
 ● The airlifted unit must then be given its own movement order to deploy.
+However, a Vehicle may instead be dropped while the aircraft is Flying. No Order test is required. The Vehicle goes Down and takes 1 Pin. Then roll a D6; on a 6, it rolls on the Superficial Damage Table. If the Vehicle has Damage Value 6+, it is destroyed instead. 
 Orders required to deploy
  ● Vehicle: may deploy with an Advance or Run order
 ● Artillery: must deploy with a Run order 
@@ -927,19 +928,11 @@ Place the airlifted unit:
 The dropped unit then takes a Down order.
 Additional Effects If the Aircraft Was Flying When Destroyed
 If the airlifted entity is a Vehicle
-If the aircraft was flying when destroyed, the airlifted vehicle must immediately roll on the Superficial Damage Table.
+If the aircraft was flying when destroyed, the airlifted vehicle must immediately roll on the Superficial Damage Table. If the vehicle has Damage Value 6, it is destroyed instead.
 If the airlifted entity is Artillery
 If the aircraft is destroyed or abandoned/routed while carrying an artillery entity, resolve it using the same rules used for infantry/passengers in your Aircraft Transport Rules (including any crash or forced disembark effects that apply).
 Bolt Action Third Edition Compatibility
 Except where replaced or expanded by this optional rule, all other towing, transport, and artillery rules are resolved normally using the Bolt Action Third Edition rulebook.
-
-
-
-
-
-
-
-
 
 
 
